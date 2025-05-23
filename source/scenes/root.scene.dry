@@ -17,7 +17,7 @@ go-to: start_menu_2
 
 
 @start
-on-arrival: {!
+on-arrival: 
 Q.started = 1;
 // time elapsed (in months)
 Q.time = 1;
@@ -540,7 +540,7 @@ Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
 Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
-!}
+
 set-bg: img/map_2.jpg
 new-page: true
 
