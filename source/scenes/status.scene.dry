@@ -34,11 +34,11 @@ Congress composition:
 
 House of Representatives:
 
-Republicans: [+ rep_r +]%, Democrats: [+ dem_r +]%, Others: [+ other_r +]%, Vacant seats: [+ vacant_r +]%
+Republicans: [+ rep_r +] seats, Democrats: [+ dem_r +] seats, Others: [+ other_r +] seats, Vacant seats: [+ vacant_r +] seats
 
 Senate Seats:
 
-Republicans: [+ rep_senate_r +]%, Democrats: [+ dem_senate_r +]%, Others: [+ other_senate_r +]%, Vacant seats: [+ vacant_senate_r +]%
+Republicans: [+ rep_senate_r +] seats, Democrats: [+ dem_senate_r +] seats, Others: [+ other_senate_r +] seats, Vacant seats: [+ vacant_senate_r +] seats
 
 [? if spd_in_government = 1 : Budget: [+ budget +] ?]
 
