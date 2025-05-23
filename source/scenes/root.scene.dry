@@ -284,30 +284,30 @@ Q.catholics_nsdap = 0;
 Q.catholics_other = 12;
 
 
-// Current Reichstag composition
-// % of Reichstag in Jan 1928
-// source: wikipedia
-// note: the Z figures also include the BVP (Bavarian people's party)
-// since they were ideologically similar, but they were separate parties.
-// They did not have a CDU/CSU-style relationship.
-Q.spd_r = 26;
-Q.kpd_r = 9;
-Q.z_r = 17;
-Q.ddp_r = 6;
-Q.dvp_r = 10;
-Q.dnvp_r = 20;
-Q.nsdap_r = 3;
-Q.other_r = 9;
+// Current House composition
+
+Q.rep_r = 136;
+Q.dem_r = 50;
+Q.other_r = 10;
+Q.vacant_r = 45;
 
 // diff from prev
-Q.old_spd_r = 26;
-Q.old_kpd_r = 9;
-Q.old_z_r = 17;
-Q.old_ddp_r = 6;
-Q.old_dvp_r = 10;
-Q.old_dnvp_r = 20;
-Q.old_nsdap_r = 3;
-Q.old_other_r = 9;
+Q.old_rep_r = 133;
+Q.old_dem_r = 52;
+Q.old_other_r = 12;
+Q.old_vacant_r = 44;
+
+// Current House composition
+
+Q.rep_senate_r = 36;
+Q.dem_senate_r = 20;
+Q.other_senate_r = 2;
+Q.vacant_senate_r = 18;
+
+Q.old_rep_senate_r = 34;
+Q.old_dem_senate_r = 21;
+Q.old_other_senate_r = 3;
+Q.old_vacant_senate_r = 18;
 
 // sapd isn't formed yet, but it may be formed
 Q.sapd_r = 0;
