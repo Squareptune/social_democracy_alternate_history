@@ -20,8 +20,6 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-rep_majority
-
 Republican Position: [? if rep_majority : Majority government ?][? if !rep_majority : Minority government ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
