@@ -623,7 +623,7 @@ audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-= 1928
+= 1865
 
 After years of brutal conflict, the Union has been preserved, and slavery has been abolished. Though the wounds of war run deep, the nation begins to rebuild. The economy in the North is poised for expansion, and the promise of freedom brings new possibilities for millions. In foreign affairs, the United States stands united once more, and with peace restored, we look to the future with cautious optimism.
 
