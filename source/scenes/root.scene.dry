@@ -268,7 +268,7 @@ Q.old_dem_r = 52;
 Q.old_other_r = 12;
 Q.old_vacant_r = 44;
 
-// Current House composition
+// Current Senate composition
 
 Q.rep_senate_r = 36;
 Q.dem_senate_r = 20;
