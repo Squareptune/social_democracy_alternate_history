@@ -163,14 +163,14 @@ Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: Republican: [+ workers_rep_display +]%, Democrat: [+ workers_dem_display +]%, [? if other_name != 0 : [+ other_name +]?]: [+ workers_other_display +]%, Vacant: [+ workers_vac_display +]%
+Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%, Vacant: [+ workers_vac +]%
 
-Middle Class: Republican: [+ middle_class_rep_display +]%, Democrat: [+ middle_class_dem_display +]%, [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other_display +]%, Vacant: [+ middle_class_vac_display +]%
+Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%, Vacant: [+ middle_class_vac +]%
 
-Freemen: Republican: [+ freemen_rep_display +]%, Democrat: [+ freemen_dem_display +]%, [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other_display +]%, Vacant: [+ freemen_vac_display +]%
+Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%, Vacant: [+ freemen_vac +]%
 
-Immigrant Laborers: Republican: [+ immigrant_laborers_rep_display +]%, Democrat: [+ immigrant_laborers_dem_display +]%, [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other_display +]%, Vacant: [+ immigrant_laborers_vac_display +]%
+Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%, Vacant: [+ immigrant_laborers_vac +]%
 
-Unemployed: Republican: [+ unemployed_rep_display +]%, Democrat: [+ unemployed_dem_display +]%, [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other_display +]%, Vacant: [+ unemployed_vac_display +]%
+Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%, Vacant: [+ unemployed_vac +]%
 
 Support for the Republic: [+ pro_republic_disp +]%
