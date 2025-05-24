@@ -333,8 +333,7 @@ Q.dem_r = Q.dem_votes;
 Q.other_r = Q.other_votes;
 Q.vac_r = Q.vac_votes;
 !}
-The electoral system is essentially proportional, with the proportion of Reichstag seats roughly equal to the proportion of votes.
- 
+
 **Election results:**
 
 Republicans: [+ rep_r +]
