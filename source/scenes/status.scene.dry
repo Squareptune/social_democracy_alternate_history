@@ -64,7 +64,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Internal Factions of the Party
 
-{!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution ">Redical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
+{!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution ">Radical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
 
 {!<span class="tooltip-text" title="The Moderates follow the ideas of Lincoln and quick reintegration of the south">Moderate</span>!} strength: [+ moderate_strength : strength +], dissent: [+ moderate_dissent : dissent +]
 
@@ -106,9 +106,9 @@ SA Militarization: [+ sa_militancy : militancy +]
 
 = Official military/paramilitaries
 
-Reichswehr: [+ reichswehr_strength +] thousand troops.
+U.S Army: [+ army_strength +] thousand troops.
 
-Reichswehr Loyalty: [+ reichswehr_loyalty : loyalty +]
+Army Loyalty: [+ army_loyalty : loyalty +]
 
 Prussian police: [+ prussian_police_strength +] thousand members.
 
