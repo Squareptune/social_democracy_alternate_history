@@ -60,31 +60,15 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Inter-party Relations
 
+{!<span class="tooltip-text" title="Democratic Party">Dem</span>!}: [+ dem_relation : relationships +]
 
-{!<span class="tooltip-text" title="Center Party">Z</span>!}: [+ z_relation : relationships +]
+= Internal Factions of the Party
 
-{!<span class="tooltip-text" title="German Democratic Party">!}[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]{!</span>!}: [+ ddp_relation : relationships +]
+{!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution ">Redical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
 
-{!<span class="tooltip-text" title="German People's Party">DVP</span>!}: [+ dvp_relation : relationships +]
+{!<span class="tooltip-text" title="The Moderates follow the ideas of Lincoln and quick reintegration of the south">Moderate</span>!} strength: [+ moderate_strength : strength +], dissent: [+ moderate_dissent : dissent +]
 
-{!<span class="tooltip-text" title="Communist Party of Germany">KPD</span>!}: [+ kpd_relation : relationships +]
-
-{!<span class="tooltip-text" title="German National People's Party">DNVP</span>!}: [+ dnvp_relation : relationships +]
-
-{!<span class="tooltip-text" title="National-Socialist German Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_relation : relationships +]
-
-= Internal Factions of the SPD
-
-{!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the KPD.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
-
-{!<span class="tooltip-text" title="The Center is a faction of Center Marxists, between reform and revolution.">Center</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Labor's goal is economic reform and benefits for organized workers.">Labor</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy.">Reformist</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
-
-[? if neorevisionism > 0 : Neorevisionist strength: [+ neorevisionist_strength : strength +], dissent: [+ neorevisionist_dissent : dissent +] ?]
-
+{!<span class="tooltip-text" title="Oppose the more ideas of the Radical Republicans and sought a less extreme path for southern reintegration">Conservative</span>!} strength: [+ conservative_strength : strength +], dissent: [+ conservative_dissent : dissent +]
 
 @paramilitaries
 on-arrival: {!
