@@ -1,4 +1,4 @@
-title: Root Scene
+reichswehr_strengthtitle: Root Scene
 new-page: true
 go-to: post_event if started = 1; start_menu if started = 0
 
@@ -145,9 +145,9 @@ Q.prussian_police_militancy = 1;
 Q.prussian_police_loyalty = 0.5;
 
 // strength includes actual military and de facto reserves?
-Q.reichswehr_strength = 100;
-Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+Q.army_strength = 1000;
+Q.army_militancy = 5;
+Q.army_loyalty = 0.8;
 
 // The state of the country
 
