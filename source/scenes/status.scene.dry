@@ -143,34 +143,22 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 (if the election were to be held now):
 
-SPD: [+ spd_votes +]%
+Republicans: [+ rep_votes +]%
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
-
-Z + BVP: [+ z_votes +]%
-
-KPD: [+ kpd_votes +]%
-
-[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ ddp_votes +]%
-
-DVP: [+ dvp_votes +]%
-
-DNVP: [+ dnvp_votes +]%
-
-NSDAP: [+ nsdap_votes +]%
+Democrats: [+ dem_votes +]%
 
 Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%, Vacant: [+ workers_vac +]%
+Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%
 
-Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%, Vacant: [+ middle_class_vac +]%
+Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%
 
-Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%, Vacant: [+ freemen_vac +]%
+Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%
 
-Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%, Vacant: [+ immigrant_laborers_vac +]%
+Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%
 
-Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%, Vacant: [+ unemployed_vac +]%
+Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other: [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
 Support for the Republic: [+ pro_republic_disp +]%
