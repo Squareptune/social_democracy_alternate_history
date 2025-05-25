@@ -3,7 +3,7 @@ new-page: true
 on-arrival: month_actions += 1
 max-visits: 36
 is-card: true
-card-image: img/Campaign.webp
+card-image: img/flags.jpg
 frequency: 100
 tags: party_affairs
 
@@ -11,12 +11,12 @@ tags: party_affairs
 
 Whether or not we are in an electoral campaign, the party is always trying to broaden its voter base. Who should we focus our campaign efforts on?
 
-- @workers: Urban industrial workers, a Republican-leaning group.
-- @middle_class: Northern professionals and businessmen.
-- @rural: Small farmers and rural populations.
-- @freemen: Newly emancipated Black Americans.
-- @immigrants: Immigrant laborers, a divided and volatile bloc.
-- @unemployed: The unemployed and displaced workers.
+- @workers: The urban working class, our traditional support base.
+- @middle_class: The middle class of professionals and businessmen.
+- @rural: Rural farmers and Southern yeomanry.
+- @freemen: The newly emancipated freedmen.
+- @immigrant_laborers: Immigrant workers, often skeptical of Reconstruction.
+- @unemployed: The unemployed.
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
@@ -24,46 +24,70 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.workers_rep += 6*(1-dissent); Q.workers_rep -= 2 if Q.unemployed >= 15; Q.workers_rep -= 2 if Q.unemployed >= 25; resources -= 1
+on-arrival: {! 
+  Q.workers_rep += 6 * (1 - dissent);
+  if (Q.unemployed >= 15) {
+    Q.workers_rep -= 2;
+  }
+  if (Q.unemployed >= 25) {
+    Q.workers_rep -= 2;
+  }
+  resources -= 1;
+!}
 
-We have increased our campaigning among Northern industrial workers. [? if Q.unemployed >= 15: High unemployment makes it harder to rally support. ?]
+We have increased our campaigning among the workers.
 
 @middle_class
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.middle_class_rep += 6*(1-dissent); resources -= 1
+on-arrival: {! 
+  Q.middle_class_rep += 6 * (1 - dissent);
+  resources -= 1;
+!}
 
-We have increased our campaigning among Northern professionals and businessmen.
+We have increased our campaigning among the middle class.
 
 @rural
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.rural_rep += 5*(1-dissent); Q.rural_rep -= 3*(1-dissent) if Q.rural_dem >= 60; resources -= 1
+on-arrival: {! 
+  Q.rural_rep += 5 * (1 - dissent);
+  resources -= 1;
+!}
 
-We have increased our campaigning among rural populations. [? if Q.rural_dem >= 60: Strong Democratic leanings here make our work difficult. ?]
+We have increased our campaigning among farmers.
 
 @freemen
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.freemen_rep += 7*(1-dissent); resources -= 1
+on-arrival: {! 
+  Q.freemen_rep += 8 * (1 - dissent);
+  resources -= 1;
+!}
 
 We have increased our campaigning among the freedmen.
 
-@immigrants
+@immigrant_laborers
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.immigrant_laborers_rep += 5*(1-dissent); resources -= 1
+on-arrival: {! 
+  Q.immigrant_laborers_rep += 4 * (1 - dissent);
+  resources -= 1;
+!}
 
-We have increased our campaigning among immigrant laborers.
+We have increased our campaigning among immigrant workers.
 
 @unemployed
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.unemployed_rep += 5*(1-dissent); resources -= 1
+on-arrival: {! 
+  Q.unemployed_rep += 5 * (1 - dissent);
+  resources -= 1;
+!}
 
 We have increased our campaigning among the unemployed.
