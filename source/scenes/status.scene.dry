@@ -88,33 +88,23 @@ if (Q.sa_strength) {
 
 = Paramilitaries
 
-{!<span class="tooltip-text" title="The Reichsbanner Schwarz-Rot-Gold is a popular organization for defending democracy, mostly affiliated with the SPD.">Reichsbanner</span>!} Strength: [+ rb_strength_2 +] thousand
+{!<span class="tooltip-text" title="The Ku Klux Klan is a white supremacist group aimed against Reconstruction governments and freedmen.">KKK</span>!} Strength: [+ kkk_strength +] thousand
 
-Reichsbanner Militarization: [+ rb_militancy : militancy +]
+KKK Militarization: [+ kkk_strength : militancy +]
 
-{!<span class="tooltip-text" title="The RFB (Rotfrontkämpferbund) is a communist group associated with the KPD.">RFB</span>!} Strength: [+ rfb_strength_2 +] thousand
 
-RFB Militarization: [+ rfb_militancy : militancy +]
 
-{!<span class="tooltip-text" title="The Stahlhelm is a right-wing organization of war veterans associated with the DNVP.">Stahlhelm</span>!} Strength: [+ sh_strength_2 +] thousand
-
-Stahlhelm Militarization: [+ sh_militancy : militancy +]
-
-{!<span class="tooltip-text" title="The SA (Sturmabteilung) is the Nazi paramilitary.">SA</span>!} Strength: [+ sa_strength_2 +] thousand
-
-SA Militarization: [+ sa_militancy : militancy +]
-
-= Official military/paramilitaries
+= Official Forces
 
 U.S Army: [+ army_strength +] thousand troops.
 
 Army Loyalty: [+ army_loyalty : loyalty +]
 
-Prussian police: [+ prussian_police_strength +] thousand members.
+Federal Police: [+ Us_police_strength +] thousand members.
 
-Prussian police loyalty: [+ prussian_police_loyalty : loyalty +]
+Police loyalty: [+ Us_police_loyalty : loyalty +]
 
-[? if spd_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
+[? if state_militia : State militia strength: [+ state_militia_strength +] ?]
 
 @polls
 on-arrival: {!
@@ -145,4 +135,4 @@ Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immi
 
 Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
-Support for the Republic: [+ pro_republic_disp +]%
+Support for Reconstruction: [+ pro_republic_disp +]%
