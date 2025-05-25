@@ -145,7 +145,7 @@ Q.nationalism = 60;
 // socialism vs capitalism
 Q.socialism = 40;
 // pro-republic vs anti-republic
-Q.pro_republic = 59;
+Q.pro_republic = 70;
 
 Q.emergency_rule = 0;
 
