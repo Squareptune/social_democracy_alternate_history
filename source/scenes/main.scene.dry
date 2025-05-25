@@ -43,7 +43,7 @@ max-cards: 4
 
 @party
 title: Party Affairs
-card-image: img/Republicanlogo.svg.png
+card-image: img/Party.png
 is-deck: true
 
 - #party_affairs
