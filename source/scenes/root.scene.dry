@@ -282,12 +282,6 @@ Q.president = "Lincoln";
 Q.speaker = "Colfax";
 Q.speaker_party = 'Rep';
 Q.rep_majority = 1;
-Q.z_in_government = 1;
-Q.ddp_in_government = 0;
-Q.dvp_in_government = 1;
-Q.dnvp_in_government = 1;
-Q.kpd_in_government = 0;
-Q.nsdap_in_government = 0;
 
 Q.in_right_coalition = 0;
 // Weimar coalition = SPD + Z + DDP
