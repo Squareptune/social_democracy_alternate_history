@@ -1,58 +1,43 @@
 title: Election
 on-arrival: {!
-// calculate normalized class voting amounts (0 to 100)
+// Normalize class support (0–100)
 for (var c of Q.classes) {
     var class_votes = 0;
     for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-        class_votes += Q[c+'_'+party];
+        if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
+        class_votes += Q[c + '_' + party];
     }
     for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+        Q[c + '_' + party + '_normalized'] = 100 * Q[c + '_' + party] / class_votes;
+        Q[c + '_' + party + '_display'] = Math.round(100 * Q[c + '_' + party] / class_votes);
     }
 }
-
-// 1. calculate support for each of the parties
-var total_support = 0;
+// Reset Senate seats
 for (var party of Q.parties) {
-    var party_support = 0;
-    for (var c of Q.classes) {
-        // but this version is somewhat more entertaining and allows for wilder swings in votes.
-        // the other option basically necessitates a multi-class strategy. while the first option allows for a working-class-only strategy.
-        if (Q.old_demographics) {
-            // okay i'm pretty sure this is wrong, and the hard version is correct
-            // basically this allows for "spillover" effects in other demographics.
-            // so you can campaign among say the workers and 
-            party_support += Q[c]*Q[c+'_'+party];
-            // However, there should be a cap on how much party support you can get in a certain demo.
-        } else  {
-            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
+    Q[party + '_senate_seats'] = 0;
+}
+// Each state gets 2 Senate seats
+for (var state of Q.states) {
+    var state_support = [];
+    for (var party of Q.parties) {
+        var support = 0;
+        for (var c of Q.classes) {
+            var class_percent = Q[c] || 0; // Replace with Q[state + '_' + c] if using state-specific
+            if (Q.old_demographics) {
+                support += class_percent * (Q[c + '_' + party] || 0);
+            } else {
+                support += class_percent * (Q[c + '_' + party + '_normalized'] || 0);
+            }
         }
+        state_support.push({ party: party, support: support });
     }
-    Q[party + '_support'] = party_support;
-    total_support += party_support;
-}
-// 2. normalize support (fraction)
-// 3. Round to integers
-// TODO: round to 1 decimal instead of rounding to integers
-// to do that, we multiply party_normalized*1000 and divide the rounded number by 10.
-for (var party of Q.parties) {
-    Q[party+'_normalized'] = Q[party + '_support']/total_support;
-    Q[party+'_votes_dec'] = Math.round(Q[party+'_normalized']*1000)/10;
-    if (Q.use_decimals) {
-        Q[party+'_votes'] = Q[party+'_votes_dec'];
-        Q[party + '_votes_disp'] = Q[party+'_votes'];
-    } else {
-        Q[party+'_votes'] = Math.round(Q[party+'_normalized']*100);
-        Q[party + '_votes_disp'] = Q[party+'_votes_dec'].toFixed(1);
-    }
-    //Q[party+'_votes'] = Q[party+'_votes_dec'];
-    // display
+    // Sort by support descending and assign 2 Senate seats to top 2
+    state_support.sort((a, b) => b.support - a.support);
+    Q[state + '_senate_winner_1'] = state_support[0].party;
+    Q[state + '_senate_winner_2'] = state_support[1].party;
+
+    Q[state_support[0].party + '_senate_seats'] += 1;
+    Q[state_support[1].party + '_senate_seats'] += 1;
 }
 !}
 go-to: jumpScene
-
-# note: this is a helpful utility to deal with elections and so on.
