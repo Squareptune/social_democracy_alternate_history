@@ -3,6 +3,7 @@ subtitle: A great travesty
 on-arrival: {!
 Q.moderate_strength -= 5;
 Q.radical_strength += 5;
+Q.president = "Johnson"
 !}
 tags: event
 view-if: year = 1865 and month = 5
