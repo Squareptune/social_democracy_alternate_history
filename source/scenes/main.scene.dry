@@ -50,7 +50,7 @@ is-deck: true
 
 @govt
 title: Government Affairs
-view-if: time >= 6
+view-if: rep_majority = 1
 card-image: img/gov't.jpg
 is-deck: true
 
