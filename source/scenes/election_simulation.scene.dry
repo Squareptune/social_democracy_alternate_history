@@ -328,19 +328,18 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 // set congress proportion to votes
-Q.rep_r = Q.rep_votes;
-Q.dem_r = Q.dem_votes;
-Q.other_r = Q.other_votes;
-Q.vac_r = Q.vac_votes;
+Q.rep_votes = Q.rep_r;
+Q.dem_votes = Q.dem_r;
+Q.other_votes = Q.other_r;
 !}
 
 **Election results:**
 
-Republicans: [+ rep_r +]
+Republicans: [+ rep_votes +]
 
-Democrats: [+ dem_r +]
+Democrats: [+ dem_votes +]
 
-Other: [+ other_r +]
+Other: [+ other_votes +]
 
 Vacant: [+ vac_r +]
 
