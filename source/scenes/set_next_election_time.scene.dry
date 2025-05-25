@@ -1,15 +1,25 @@
 title: next election time
-on-arrival: {
-  if year < 1865 then next_election_year = 1865;
-  else if year < 1866 then next_election_year = 1866;
-  else if year < 1868 then next_election_year = 1868;
-  else if year < 1870 then next_election_year = 1870;
-  else if year < 1872 then next_election_year = 1872;
-  else if year < 1874 then next_election_year = 1874;
-  else if year < 1876 then next_election_year = 1876;
-  else next_election_year = year + 2; // after 1876, assume every 2 years
-  next_election_month = 11;  // assume elections happen in November
-  // calculate next_election_time based on next_election_year and month
+on-arrival: {! 
+  if (year < 1865) {
+    next_election_year = 1865;
+  } else if (year < 1866) {
+    next_election_year = 1866;
+  } else if (year < 1868) {
+    next_election_year = 1868;
+  } else if (year < 1870) {
+    next_election_year = 1870;
+  } else if (year < 1872) {
+    next_election_year = 1872;
+  } else if (year < 1874) {
+    next_election_year = 1874;
+  } else if (year < 1876) {
+    next_election_year = 1876;
+  } else {
+    next_election_year = year + 2;
+  }
+  next_election_month = 11; // November
+  // Calculate next election time as months from a base (e.g. 1865 January)
   next_election_time = (next_election_year - 1865) * 12 + next_election_month;
-}
+!}
+
 
