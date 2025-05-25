@@ -261,12 +261,19 @@ Q.old_dem_senate_r = 21;
 Q.old_other_senate_r = 3;
 Q.old_vacant_senate_r = 18;
 
-// sapd isn't formed yet, but it may be formed
-Q.sapd_r = 0;
-Q.old_sapd_r = 0;
+// break
 
-// for changing the DDP's name to the DStP
-Q.ddp_name = "DDP";
+Q.workers = 13;
+Q.middle_class = 5;
+Q.rural = 52;
+Q.unemployed = 2;
+Q.immigrant_laborers = 8;
+Q.freemen = 12;
+
+Q.states = ["CA", "CT", "DE", "IL", "IN", "IA", "KS", "KY", "ME", "MD", "MA", "MI", "MN", "MO", "NV", "NH", "NJ", "NY", "OH", "OR", "PA", "RI", "VT", "WV", "WI"];
+
+
+
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
