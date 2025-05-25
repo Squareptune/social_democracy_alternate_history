@@ -54,6 +54,8 @@ Q.moderate_strength = 30;
 Q.moderate_dissent = 0;
 Q.conservative_strength = 10;
 Q.conservative_dissent = 5;
+Q.socialism_strength = 5;
+Q.socialist_dissent = 35;
 
 // secret events...
 Q.unions_independent = 0;
@@ -61,8 +63,8 @@ Q.centrists_resign = 0;
 Q.left_split = 0;
 Q.reformists_resigned = 0;
 
-// have we discovered neorevisionism?
-Q.neorevisionism = 0;
+// have we discovered socialism?
+Q.socialism = 0;
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
