@@ -7,7 +7,7 @@ Q.radical_strength += 5;
 
 !}
 tags: event
-view-if: year = 1865 and month = 4
+view-if: year = 1865 and month = 5
 priority: 2
 max-visits: 1
 
