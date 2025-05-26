@@ -1,6 +1,6 @@
 title: Election
 on-arrival: {!
-// Normalize class support (0–100)
+// Normalize class support (0–100) for each state
 for (var c of Q.classes) {
     var class_votes = 0;
     for (var party of Q.parties) {
@@ -16,33 +16,31 @@ for (var c of Q.classes) {
 for (var party of Q.parties) {
     Q[party + '_senate_seats'] = 0;
 }
-// Each state gets 2 Senate seats (winner-takes-all, top 2 parties per state)
+// Each state gets 2 Senate seats
 for (var state of Q.states) {
     var state_support = [];
+    // Calculate party support for each state
     for (var party of Q.parties) {
         var support = 0;
         for (var c of Q.classes) {
-            var class_percent = Q[c] || 0; // Replace with Q[state + '_' + c] if using state-specific
-            if (Q.old_demographics) {
-                support += class_percent * (Q[c + '_' + party] || 0);
-            } else {
-                support += class_percent * (Q[c + '_' + party + '_normalized'] || 0);
-            }
+            // Get state-specific class population
+            var state_class_population = Q[state + '_' + c] || 0; // Default to 0 if no value is set for the state_class combination
+            // Calculate the weighted support based on class population and normalized support
+            support += state_class_population * (Q[c + '_' + party + '_normalized'] || 0);
         }
         state_support.push({ party: party, support: support });
     }
-    // Sort by support descending
+    // Sort by support in descending order and assign 2 Senate seats to top 2
     state_support.sort((a, b) => b.support - a.support);
-
-    // Assign 2 Senate seats to top 2 parties (both get 1 seat)
     Q[state + '_senate_winner_1'] = state_support[0].party;
     Q[state + '_senate_winner_2'] = state_support[1].party;
 
+    // Allocate 1 Senate seat to each of the top 2 parties in the state
     Q[state_support[0].party + '_senate_seats'] += 1;
     Q[state_support[1].party + '_senate_seats'] += 1;
 }
 
-// Track overall Senate seat results for each party
+// Calculate total Senate votes
 Q.rep_votes = Q["rep_senate_seats"];
 Q.dem_votes = Q["dem_senate_seats"];
 Q.other_votes = (Q["lib_senate_seats"] || 0) + (Q["green_senate_seats"] || 0); // adjust if you have more parties
