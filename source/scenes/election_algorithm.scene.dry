@@ -26,7 +26,8 @@ for (var state of Q.states) {
     for (var party of Q.parties) {
         var support = 0;
         for (var c of Q.classes) {
-            var state_class_population = Q[state + '_' + c] || 0; // Ensure no undefined populations
+            // Access the class population dynamically for each state
+            var state_class_population = Q[state + '_' + c] || 0;  // Ensure no undefined populations
             support += state_class_population * (Q[c + '_' + party + '_normalized'] || 0);
         }
         state_support.push({ party: party, support: support });
@@ -57,5 +58,6 @@ if (Q.other_votes > 2) {
 Q.vac_r = 0; // Set this as needed if you simulate unfilled seats or ties
 !}
 go-to: jumpScene
+
 
 
