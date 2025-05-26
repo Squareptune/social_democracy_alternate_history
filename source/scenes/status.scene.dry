@@ -117,11 +117,13 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 (if the election were to be held now):
 
-Republicans: [+ rep_votes +]%
+Senate: 
 
-Democrats: [+ dem_votes +]%
+Republicans: [+ rep_votes +] seats
 
-Others: [+ other_votes +]%
+Democrats: [+ dem_votes +] seats
+
+Others: [+ other_votes +] seats
 
 **Detailed results for each demographic**
 
