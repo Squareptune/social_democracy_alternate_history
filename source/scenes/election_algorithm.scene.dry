@@ -39,5 +39,9 @@ for (var state of Q.states) {
     Q[state_support[0].party + '_senate_seats'] += 1;
     Q[state_support[1].party + '_senate_seats'] += 1;
 }
+Q.rep_votes = Q["rep_senate_seats"];
+Q.dem_votes = Q["dem_senate_seats"];
+Q.other_votes = (Q["lib_senate_seats"] || 0) + (Q["green_senate_seats"] || 0); // adjust if you have more parties
+Q.vac_r = 0; // If you simulate unfilled seats or ties, set this as needed
 !}
 go-to: jumpScene
