@@ -256,6 +256,156 @@ Q.freemen = 12;
 
 Q.states = ["CA", "CT", "DE", "IL", "IN", "IA", "KS", "KY", "ME", "MD", "MA", "MI", "MN", "MO", "NV", "NH", "NJ", "NY", "OH", "OR", "PA", "RI", "VT", "WV", "WI"];
 
+Q.CA_workers = 500000; // Workers in California
+Q.CA_rural = 250000; // Rural population in California
+Q.CA_unemployed = 50000; // Unemployed in California
+Q.CA_immigrant_laborers = 100000; // Immigrant laborers in California
+Q.CA_freemen = 30000; // Freemen in California
+
+Q.CT_workers = 200000; // Workers in Connecticut
+Q.CT_rural = 150000; // Rural population in Connecticut
+Q.CT_unemployed = 20000; // Unemployed in Connecticut
+Q.CT_immigrant_laborers = 30000; // Immigrant laborers in Connecticut
+Q.CT_freemen = 10000; // Freemen in Connecticut
+
+Q.DE_workers = 90000; // Workers in Delaware
+Q.DE_rural = 50000; // Rural population in Delaware
+Q.DE_unemployed = 10000; // Unemployed in Delaware
+Q.DE_immigrant_laborers = 5000; // Immigrant laborers in Delaware
+Q.DE_freemen = 5000; // Freemen in Delaware
+
+Q.IL_workers = 1000000; // Workers in Illinois
+Q.IL_rural = 500000; // Rural population in Illinois
+Q.IL_unemployed = 100000; // Unemployed in Illinois
+Q.IL_immigrant_laborers = 200000; // Immigrant laborers in Illinois
+Q.IL_freemen = 50000; // Freemen in Illinois
+
+Q.IN_workers = 800000; // Workers in Indiana
+Q.IN_rural = 500000; // Rural population in Indiana
+Q.IN_unemployed = 100000; // Unemployed in Indiana
+Q.IN_immigrant_laborers = 100000; // Immigrant laborers in Indiana
+Q.IN_freemen = 40000; // Freemen in Indiana
+
+Q.IA_workers = 400000; // Workers in Iowa
+Q.IA_rural = 300000; // Rural population in Iowa
+Q.IA_unemployed = 50000; // Unemployed in Iowa
+Q.IA_immigrant_laborers = 30000; // Immigrant laborers in Iowa
+Q.IA_freemen = 20000; // Freemen in Iowa
+
+Q.KS_workers = 300000; // Workers in Kansas
+Q.KS_rural = 200000; // Rural population in Kansas
+Q.KS_unemployed = 40000; // Unemployed in Kansas
+Q.KS_immigrant_laborers = 10000; // Immigrant laborers in Kansas
+Q.KS_freemen = 20000; // Freemen in Kansas
+
+Q.KY_workers = 700000; // Workers in Kentucky
+Q.KY_rural = 600000; // Rural population in Kentucky
+Q.KY_unemployed = 50000; // Unemployed in Kentucky
+Q.KY_immigrant_laborers = 70000; // Immigrant laborers in Kentucky
+Q.KY_freemen = 60000; // Freemen in Kentucky
+
+Q.ME_workers = 150000; // Workers in Maine
+Q.ME_rural = 100000; // Rural population in Maine
+Q.ME_unemployed = 10000; // Unemployed in Maine
+Q.ME_immigrant_laborers = 5000; // Immigrant laborers in Maine
+Q.ME_freemen = 5000; // Freemen in Maine
+
+Q.MD_workers = 350000; // Workers in Maryland
+Q.MD_rural = 200000; // Rural population in Maryland
+Q.MD_unemployed = 50000; // Unemployed in Maryland
+Q.MD_immigrant_laborers = 100000; // Immigrant laborers in Maryland
+Q.MD_freemen = 50000; // Freemen in Maryland
+
+Q.MA_workers = 900000; // Workers in Massachusetts
+Q.MA_rural = 300000; // Rural population in Massachusetts
+Q.MA_unemployed = 100000; // Unemployed in Massachusetts
+Q.MA_immigrant_laborers = 300000; // Immigrant laborers in Massachusetts
+Q.MA_freemen = 40000; // Freemen in Massachusetts
+
+Q.MI_workers = 500000; // Workers in Michigan
+Q.MI_rural = 300000; // Rural population in Michigan
+Q.MI_unemployed = 50000; // Unemployed in Michigan
+Q.MI_immigrant_laborers = 70000; // Immigrant laborers in Michigan
+Q.MI_freemen = 30000; // Freemen in Michigan
+
+Q.MN_workers = 150000; // Workers in Minnesota
+Q.MN_rural = 120000; // Rural population in Minnesota
+Q.MN_unemployed = 20000; // Unemployed in Minnesota
+Q.MN_immigrant_laborers = 50000; // Immigrant laborers in Minnesota
+Q.MN_freemen = 10000; // Freemen in Minnesota
+
+Q.MO_workers = 800000; // Workers in Missouri
+Q.MO_rural = 500000; // Rural population in Missouri
+Q.MO_unemployed = 100000; // Unemployed in Missouri
+Q.MO_immigrant_laborers = 150000; // Immigrant laborers in Missouri
+Q.MO_freemen = 50000; // Freemen in Missouri
+
+Q.NV_workers = 50000; // Workers in Nevada
+Q.NV_rural = 30000; // Rural population in Nevada
+Q.NV_unemployed = 10000; // Unemployed in Nevada
+Q.NV_immigrant_laborers = 5000; // Immigrant laborers in Nevada
+Q.NV_freemen = 5000; // Freemen in Nevada
+
+Q.NH_workers = 100000; // Workers in New Hampshire
+Q.NH_rural = 50000; // Rural population in New Hampshire
+Q.NH_unemployed = 10000; // Unemployed in New Hampshire
+Q.NH_immigrant_laborers = 5000; // Immigrant laborers in New Hampshire
+Q.NH_freemen = 5000; // Freemen in New Hampshire
+
+Q.NJ_workers = 400000; // Workers in New Jersey
+Q.NJ_rural = 150000; // Rural population in New Jersey
+Q.NJ_unemployed = 20000; // Unemployed in New Jersey
+Q.NJ_immigrant_laborers = 100000; // Immigrant laborers in New Jersey
+Q.NJ_freemen = 30000; // Freemen in New Jersey
+
+Q.NY_workers = 1200000; // Workers in New York
+Q.NY_rural = 500000; // Rural population in New York
+Q.NY_unemployed = 100000; // Unemployed in New York
+Q.NY_immigrant_laborers = 300000; // Immigrant laborers in New York
+Q.NY_freemen = 150000; // Freemen in New York
+
+Q.OH_workers = 1000000; // Workers in Ohio
+Q.OH_rural = 700000; // Rural population in Ohio
+Q.OH_unemployed = 100000; // Unemployed in Ohio
+Q.OH_immigrant_laborers = 150000; // Immigrant laborers in Ohio
+Q.OH_freemen = 50000; // Freemen in Ohio
+
+Q.OR_workers = 250000; // Workers in Oregon
+Q.OR_rural = 150000; // Rural population in Oregon
+Q.OR_unemployed = 10000; // Unemployed in Oregon
+Q.OR_immigrant_laborers = 50000; // Immigrant laborers in Oregon
+Q.OR_freemen = 20000; // Freemen in Oregon
+
+Q.PA_workers = 1300000; // Workers in Pennsylvania
+Q.PA_rural = 800000; // Rural population in Pennsylvania
+Q.PA_unemployed = 150000; // Unemployed in Pennsylvania
+Q.PA_immigrant_laborers = 250000; // Immigrant laborers in Pennsylvania
+Q.PA_freemen = 200000; // Freemen in Pennsylvania
+
+Q.RI_workers = 100000; // Workers in Rhode Island
+Q.RI_rural = 30000; // Rural population in Rhode Island
+Q.RI_unemployed = 10000; // Unemployed in Rhode Island
+Q.RI_immigrant_laborers = 20000; // Immigrant laborers in Rhode Island
+Q.RI_freemen = 5000; // Freemen in Rhode Island
+
+Q.VT_workers = 50000; // Workers in Vermont
+Q.VT_rural = 30000; // Rural population in Vermont
+Q.VT_unemployed = 5000; // Unemployed in Vermont
+Q.VT_immigrant_laborers = 5000; // Immigrant laborers in Vermont
+Q.VT_freemen = 5000; // Freemen in Vermont
+
+Q.WV_workers = 200000; // Workers in West Virginia
+Q.WV_rural = 100000; // Rural population in West Virginia
+Q.WV_unemployed = 20000; // Unemployed in West Virginia
+Q.WV_immigrant_laborers = 5000; // Immigrant laborers in West Virginia
+Q.WV_freemen = 20000; // Freemen in West Virginia
+
+Q.WI_workers = 500000; // Workers in Wisconsin
+Q.WI_rural = 400000; // Rural population in Wisconsin
+Q.WI_unemployed = 50000; // Unemployed in Wisconsin
+Q.WI_immigrant_laborers = 100000; // Immigrant laborers in Wisconsin
+Q.WI_freemen = 50000; // Freemen in Wisconsin
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
