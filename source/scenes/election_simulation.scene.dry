@@ -332,14 +332,3 @@ Q.rep_votes = Q.rep_r;
 Q.dem_votes = Q.dem_r;
 Q.other_votes = Q.other_r;
 !}
-
-**Election results:**
-
-Republicans: [+ rep_votes +]
-
-Democrats: [+ dem_votes +]
-
-Other: [+ other_votes +]
-
-Vacant: [+ vac_r +]
-
