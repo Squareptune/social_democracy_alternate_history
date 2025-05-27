@@ -291,7 +291,7 @@ Who should be the speaker of the House?
 - @Stevens_super_majority: Thaddeus Stevens for speaker.
 - @Wade_super_majority: Benjamin F. Wade for speaker.
 
-@@Colfax_super_majority
+@Colfax_super_majority
 on-arrival: speaker = "Colfax"; speaker_party = "Rep"
 
 The new House of Representatives has chosen Colfax as Speaker
