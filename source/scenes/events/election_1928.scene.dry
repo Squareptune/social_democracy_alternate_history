@@ -296,7 +296,7 @@ on-arrival: speaker = "Colfax"; speaker_party = "Rep"
 
 The new House of Representatives has chosen Colfax as Speaker
 
-@Blaine_majority_chancellor
+@Blaine_majority_majority
 on-arrival: speaker = "Blaine"; speaker_party = "Rep"
 
 The new House of Representatives has chosen Blaine as Speaker
