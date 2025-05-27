@@ -218,13 +218,13 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ spd_r +]%** {!</td><td>!} **[+ str_change_spd +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ rep_r  +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#00AEF3'> </div> !}Democrats: {!</td><td>!} [+ dem_r +]% {!</td><td>!} [+ str_change_kpd +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#00AEF3'> </div> !}Democrats: {!</td><td>!} [+ dem_r +]% {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
  
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_r +]% {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu
@@ -238,7 +238,7 @@ go-to: coalition_menu
 @majority
 title: Republicans get a simple majority
 subtitle: Repubicans: [+ rep_r +] seats
-view-if: rep_r/224 >= 50 || rep_r/244 < 75
+view-if: rep_r >= 123 && rep_r < 183
 on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05; 
 achievement: majority_party
 
@@ -278,7 +278,7 @@ The new House of Representatives has chosen Wade as Speaker
 @super_majority
 title: Republicans get a super majority
 subtitle: Repubicans: [+ rep_r +] seats
-view-if: rep_r/244 <= 75
+view-if: rep_r / 244 >= 0.75
 on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05; 
 achievement: majority_party
 
