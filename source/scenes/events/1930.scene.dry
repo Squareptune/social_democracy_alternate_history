@@ -1,5 +1,5 @@
-title: Lincoln Assassinated
-subtitle: A great travesty
+title: End of the Civil War
+subtitle: Victory at last!!!
 on-arrival:
 tags: event
 view-if: year = 1865 and month = 4
