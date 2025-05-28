@@ -13,28 +13,9 @@ face-image: img/Rothe_Wahlen_1903.jpg
 
 = Elections, [+ month : month +] [+ year +]
 
-The Reichstag elections are to be held now.
+The Senate elections are to be held now.
 
 - @election_algorithm: May we do our best...
-- @cancel_elections
-
-@cancel_elections
-title: We cannot hold the elections now. Cancel the elections.
-subtitle: This is an anti-democratic move that may backfire.
-view-if: in_emergency_government == 1 and president == "Braun" and not presidential_powers
-
-Since we are currently ruling as part of an emergency government, we may use quasi-constitutional trickery to significantly delay these elections, and continue governing via Article 48. This is likely to be extremely unpopular both with our base and with the other parties. However, this may be necessary to prevent the extremists from gaining power.
-
-- @cancel_elections_2: Yes, do it.
-- @election_algorithm: No, let's hold the elections.
-
-@cancel_elections_2
-on-departure: next_election_year = next_election_year + 1; next_election_time = time + 12; pro_republic -= 10; dvp_relation -= 8; z_relation -= 8; ddp_relation -= 10; kpd_relation -= 8; coup_progress += 2; workers_spd -= 4; new_middle_spd -= 5; old_middle_spd -= 5; rural_spd -= 5; catholics_spd -= 5; unemployed_spd -= 5; coup_progress += 2 if nsdap_normalized >= 0.3; coup_progress += 2 if nsdap_normalized + dnvp_normalized >= 0.5; sa_strength += 100 if coup_progress >= 7; sh_strength += 100 if coup_progress >= 7
-achievement: ausnahmezustand
-
-Fine. President [+ president +] has taken the unprecedented step of canceling these elections. New elections are scheduled for [+ next_election_month : month +] [+ next_election_year +].
-
-Let us hope this does not backfire.
 
 @post_election_1928
 on-arrival: {!
