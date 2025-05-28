@@ -286,12 +286,12 @@ We have gained a super majority! Now, we can pass our proposed legislation witho
 
 Who should be the speaker of the House?
 
-- @Colfax_super_majority: Schuyler Colfax for speaker.
+- @Colfax: Schuyler Colfax for speaker.
 - @Blaine_super_majority: James G. Blaine for speaker.
 - @Stevens_super_majority: Thaddeus Stevens for speaker.
 - @Wade_super_majority: Benjamin F. Wade for speaker.
 
-@Colfax_super_majority
+@Colfax
 on-arrival: speaker = "Colfax"; speaker_party = "Rep"
 
 The new House of Representatives has chosen Colfax as Speaker
