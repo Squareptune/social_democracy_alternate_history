@@ -30,7 +30,7 @@ on-arrival: enemies = "KKK"; radical_strength += 5; radical_dissent -= 5; modera
 [? if kkk_strength < 10000 or year < 1867 : The southern paramilitary groups are currently small and barely have any members. Some question our choices. ?][? if kkk_strength >= 10000 or year >= 1867 : The KKK and others are the biggest obstacle for our black supporter. ?]
 
 @imma
-on-arrival: enemies = "imma"; conservative_strength += 5; workers_nsdap -= 4; immigrant_laborers_rep -= 5; workers_rep += 3;
+on-arrival: enemies = "immigrants"; conservative_strength += 5; workers_nsdap -= 4; immigrant_laborers_rep -= 5; workers_rep += 3;
 
 Despite having bigger priorities at the moment, we decide to go after the immigrants who pose to steal the jobs of the northern workers.
 
