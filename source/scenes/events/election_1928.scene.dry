@@ -235,7 +235,7 @@ go-to: coalition_menu
 - @tie
 
 
-@majority
+@simple_majority
 title: Republicans get a simple majority
 subtitle: Repubicans: [+ rep_r +] seats
 view-if: rep_r >= 123 && rep_r < 183
