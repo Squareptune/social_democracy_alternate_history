@@ -1,20 +1,11 @@
-title: 1930
-subtitle: A new year 
-audio: clear shuffle music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1930_1933/ironfront_normalized.mp3 music/1930_1933/KommSusserTod.mp3 music/1930_1933/Warszawianka.mp3 music/1928_1933/Liebesleid_normalized.mp3 music/1928_1933/SozialistenMarsch.mp3
-on-arrival: {!
-// increase NSDAP vote share 
-Q.unemployed += 6.8; 
-Q.inflation -= 4;
-if (Q.budget > 0) {
-    Q.budget -= 1;
-}
-// historical: -1.4
-Q.economic_growth -= 1;
-// moved demographic changes to post_event
-!}
+title: Lincoln Assassinated
+subtitle: A great travesty
+on-arrival:
 tags: event
-view-if: year = 1930 and month = 1 
+view-if: year = 1865 and month = 4
 priority: 2
 max-visits: 1
 
-A new year begins. The economic crisis is worsening throughout the world, with no end in sight. The NSDAP seems to be strengthening in local elections. All very worrisome trends.
+The long and bloody conflict draws to a close. General Robert E. Lee, commanding the battered remnants of the Confederate Army of Northern Virginia, has surrendered to Union General Ulysses S. Grant. The terms are generous—officers may keep their swords, men their horses.
+
+The guns fall silent. After four years, the Civil War is effectively over.
