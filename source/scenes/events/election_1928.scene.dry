@@ -183,12 +183,6 @@ data = [
         "name": "other",
         "seats": Math.round(Q.other_r*5),
     },
-    {
-        "id": "vacant",
-        "legend": "vacant",
-        "name": "vacant",
-        "seats": Math.round(Q.vacant_r*5),
-    },
 ]);
 if (window && d3) {
     var width = 500; 
