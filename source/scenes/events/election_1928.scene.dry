@@ -166,7 +166,7 @@ on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
 on-display: {!
 data = [
     {
-        "id": "republicans",
+        "id": "Rep",
         "legend": "rep",
         "name": "republicans",
         "seats": Math.round(Q.rep_r*5),
@@ -215,13 +215,25 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ rep_r  +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td><td>!} **[+ str_change_spd +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#00AEF3'> </div> !}Democrats: {!</td><td>!} [+ dem_r +]% {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
+
+{!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}KPD: {!</td><td>!} [+ kpd_r +]% {!</td><td>!} [+ str_change_kpd +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#000'> </div> !} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!}
  
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_r +]% {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#954B00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
 {!</table>!}
 
 **Potential coalitions:**
