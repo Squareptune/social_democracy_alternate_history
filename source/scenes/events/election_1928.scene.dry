@@ -7,8 +7,6 @@ on-departure: month_actions += 1; in_election = 0; next_election_year = next_ele
 set-jump: post_election_1928
 face-image: img/Rothe_Wahlen_1903.jpg
 
-# the low priority means that this event is only seen after all other events are resolved for the month.
-
 = Elections, [+ month : month +] [+ year +]
 
 The Congressional elections are to be held now.
