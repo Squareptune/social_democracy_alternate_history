@@ -110,7 +110,7 @@ Q.hindenburg_relation = 25;
 Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
 Q.state_militia_strength = 0
-
+Q.civil_war = 1;
 Q.Us_police_strength = 20;
 Q.Us_police_militancy = 1;
 Q.Us_police_loyalty = 0.7;
