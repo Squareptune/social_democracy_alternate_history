@@ -1,6 +1,6 @@
 title: Choosing Our Enemies
 new-page: true
-view-if: year <= 1871 and enemies_timer <= 0; month != 3
+view-if: year <= 1871 and enemies_timer <= 0; month != 3;
 on-arrival: month_actions += 1; enemies_timer = 18;
 max-visits: 3
 is-card: true
