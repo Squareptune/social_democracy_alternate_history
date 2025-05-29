@@ -27,7 +27,7 @@ if (Q.ideology && Q.ideology != "radical") {
 }  
 !}  
 go-to: changed if changed = 1
-on-departure: ideology = "radical"; radical_strength += 10; Q.freemen_rep += 3; Q.radical_dissent -= 5; Q.moderate_dissent += 5; Q.rural_other += 2;
+on-departure: ideology = "radical"; radical_strength += 10; freemen_rep += 3; radical_dissent -= 5; moderate_dissent += 5; rural_other += 2;
 
 Radical Republicans support full Reconstruction, racial equality, and a democratic revolution in the South.
 
