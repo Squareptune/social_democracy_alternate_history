@@ -31,7 +31,7 @@ on-departure: ideology = "radical"; radical_strength += 10; freemen_rep += 3; ra
 
 Radical Republicans support full Reconstruction, racial equality, and a democratic revolution in the South.
 
-@moderate  
+@moderate_republican  
 on-arrival: {!  
 if (Q.ideology && Q.ideology != "moderate") {  
     Q.changed = 1;  
@@ -42,7 +42,7 @@ on-departure: ideology = "moderate"; moderate_strength += 10; moderate_dissent -
 
 Moderates hope to reconcile North and South with a more cautious approach, avoiding excess upheaval.
 
-@labor
+@labor_republican
 on-arrival: {!
 if (Q.ideology && Q.ideology != "labor") {
     Q.changed = 1;
@@ -53,7 +53,7 @@ on-departure:ideology = "labor"; socialism_strength += 5; socialist_dissent -= 5
 
 The republicans that support the workers emphasise the plight of Northern workers and freedmen alike, supporting job creation and land redistribution.
 
-@bourgeois
+@bourgeois_republican
 on-arrival: {!
 if (Q.ideology && Q.ideology != "reformist") {
     Q.changed = 1;
