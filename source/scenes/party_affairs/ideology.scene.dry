@@ -9,7 +9,7 @@ max-visits: 3
 #subtitle: Setting the party's ideological direction.
 
 = Questions of Ideology
-// hi
+
 Our party is divided among competing ideological visions for the future of the Republic. What path should we prioritise?
 
 [? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
