@@ -10,37 +10,37 @@ max-visits: 3
 
 = Questions of Ideology
 
-The SPD is torn between many different ideological currents. What should be our primary ideological guidance for now?
+Our party is divided among competing ideological visions for the future of the Republic. What path should we prioritise?
 
 [? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
 
-- @class_struggle: Class struggle and preparing the proletariat for the revolution are our primary goals.
-- @centrist: The Center Marxism of Karl Kautsky remains the best way to resolve our internal contradictions.
-- @labor: We should work with the trade unions to improve the lives of workers.
-- @reform: Following Eduard Bernstein, we should work for ethical socialism, strengthen democracy, and expand the party's electorate.
+- @radical_republican: Total equality, Southern reconstruction, and popular democracy must be pursued with vigour.
+- @moderate_republican: A moderate course will restore national unity without further division.
+- @labor_republican: The party must focus on workers’ rights, land reform, and economic justice.
+- @bourgeois_republican: Strengthening institutions, markets, and constitutional reform should guide us.
 - @easy_discard
 
-@class_struggle
-on-arrival: {!
-if (Q.ideology && Q.ideology != "left") {
-    Q.changed = 1;
-}
-!}
+@radical_republican  
+on-arrival: {!  
+if (Q.ideology && Q.ideology != "radical") {  
+    Q.changed = 1;  
+}  
+!}  
 go-to: changed if changed = 1
-on-departure: ideology = "left"; left_strength += 10; communist_coalition += 1; left_dissent -= 5; z_relation -= 3; dvp_relation -= 5; nationalization_support += 1; kpd_relation += 3
+on-departure: ideology = "radical"; radical_strength += 10; Q.freemen_rep += 3; Q.radical_dissent -= 5; Q.moderate_dissent += 5; Q.rural_other += 2;
 
-The radical left of the party supports a course of class struggle, and potentially a reconcilliation with the Communists.
+Radical Republicans support full Reconstruction, racial equality, and a democratic revolution in the South.
 
-@centrist
-on-arrival: {!
-if (Q.ideology && Q.ideology != "centrist") {
-    Q.changed = 1;
-}
-!}
-go-to: changed if changed = 1
-on-departure: ideology = "centrist"; center_strength += 10; center_dissent -= 10; left_dissent -= 5; reformist_dissent -= 5
+@moderate  
+on-arrival: {!  
+if (Q.ideology && Q.ideology != "moderate") {  
+    Q.changed = 1;  
+}  
+!}  
+go-to: changed if changed = 1  
+on-departure: ideology = "moderate"; moderate_strength += 10; moderate_dissent -= 5; radical_dissent += 5; conservative_dissent -= 2; middle_class_rep += 3; rural_rep += 2; freemen_rep -= 2;
 
-The Center Marxists, represented by Kautsky and Hilferding, support a middle course of preparing for revolution while building up the consciousness of the working class.
+Moderates hope to reconcile North and South with a more cautious approach, avoiding excess upheaval.
 
 @labor
 on-arrival: {!
@@ -49,22 +49,22 @@ if (Q.ideology && Q.ideology != "labor") {
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "labor"; labor_strength += 10; wtb_support += 1; labor_dissent -= 5; kpd_relation -= 3
+on-departure:ideology = "labor"; socialism_strength += 5; socialist_dissent -= 5; radical_dissent -= 2; workers_other += 3; immigrant_laborers_other += 2; unemployed_other += 3; freemen_other += 2; middle_class_other += 1;
 
-The labor wing of the party supports continued particpation in government in order to provide benefits to the workers, and the creation of public works programs for employment.
+The republicans that support the workers emphasise the plight of Northern workers and freedmen alike, supporting job creation and land redistribution.
 
-@reform
+@bourgeois
 on-arrival: {!
 if (Q.ideology && Q.ideology != "reformist") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "reformist"; reformist_strength += 10; democratization += 1; reformist_dissent -= 5; z_relation += 5; dvp_relation += 5; kpd_relation -= 8; moderate_plan_support += 1
+on-departure: ideology = "bourgeois"; conservative_strength += 10; middle_class_rep += 3;
 
-The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+Liberal conservatives prioritise economic stability and constitutional order.
 
-@changed
-on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; reformist_dissent += 5
+@changed  
+on-arrival: radical_dissent += 5; moderate_dissent += 5; conservative_dissent += 5; socialist_dissent += 5;
 
-We have changed ideologies. Many in the party feel unmoored.
+Changing ideological course has unsettled various factions.
