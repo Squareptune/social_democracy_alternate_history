@@ -17,6 +17,9 @@ max-cards: 3
 - @party
 - @govt
 - #advisor
+- @shuffle_leadership_pinned
+
+
 @main_easy
 set-bg: img/Background.jpg
 is-hand: true
@@ -36,6 +39,7 @@ max-cards: 4
 - @party
 - @govt
 - #advisor
+- @shuffle_leadership_pinned
 
 @party
 title: Party Affairs
