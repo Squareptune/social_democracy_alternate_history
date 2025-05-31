@@ -1,5 +1,5 @@
 title: Next month
-set-bg: img/map_2.jpg
+set-bg: img/Background.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -47,7 +47,7 @@ max-cards: 4
 
 @party
 title: Party Affairs
-card-image: img/Vorwaerts_nr_1.png
+card-image: img/Party.png
 is-deck: true
 
 - #party_affairs
@@ -55,7 +55,7 @@ is-deck: true
 @govt
 title: Government Affairs
 view-if: time >= 6
-card-image: img/reichstag_2.jpg
+card-image: img/gov't.jpg
 is-deck: true
 
 - #govt_affairs
