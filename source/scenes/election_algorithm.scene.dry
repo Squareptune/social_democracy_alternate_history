@@ -4,12 +4,12 @@ on-arrival: {!
 for (var c of classes) {
     var class_votes = 0;
     for (var party of parties) {
-        if (this[c + '_' + party] < 0) this[c + '_' + party] = 0;
-        class_votes += this[c + '_' + party];
+        if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
+        class_votes += Q[c + '_' + party];
     }
     for (var party of parties) {
-        this[c + '_' + party + '_normalized'] = 100 * this[c + '_' + party] / class_votes;
-        this[c + '_' + party + '_display'] = Math.round(100 * this[c + '_' + party] / class_votes);
+        this[c + '_' + party + '_normalized'] = 100 * Q[c + '_' + party] / class_votes;
+        this[c + '_' + party + '_display'] = Math.round(100 * Q[c + '_' + party] / class_votes);
     }
 }
 // Reset Senate seats
