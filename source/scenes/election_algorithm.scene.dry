@@ -1,61 +1,46 @@
 title: Election
 on-arrival: {!
-// Normalize class support (0-100) for each state
-for (var c of Q.classes) {
+// Normalize class support (0–100)
+for (var c of classes) {
     var class_votes = 0;
-    for (var party of Q.parties) {
-        if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
-        class_votes += Q[c + '_' + party];
+    for (var party of parties) {
+        if (this[c + '_' + party] < 0) this[c + '_' + party] = 0;
+        class_votes += this[c + '_' + party];
     }
-    for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100 * Q[c + '_' + party] / class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100 * Q[c + '_' + party] / class_votes);
+    for (var party of parties) {
+        this[c + '_' + party + '_normalized'] = 100 * this[c + '_' + party] / class_votes;
+        this[c + '_' + party + '_display'] = Math.round(100 * this[c + '_' + party] / class_votes);
     }
 }
-
-// Reset Senate seats to avoid inflated results
-for (var party of Q.parties) {
-    Q[party + '_senate_seats'] = 0;
+// Reset Senate seats
+for (var party of parties) {
+    this[party + '_senate_seats'] = 0;
 }
-
-// Calculate support for each state
-for (var state of Q.states) {
+// State-level support and seat allocation
+for (var state of states) {
     var state_support = [];
-    
-    // Calculate party support for each state
-    for (var party of Q.parties) {
+    for (var party of parties) {
         var support = 0;
-        for (var c of Q.classes) {
-            // Access the class population dynamically for each state
-            var state_class_population = Q[state + '_' + c] || 0;  // Ensure no undefined populations
-            support += state_class_population * (Q[c + '_' + party + '_normalized'] || 0);
+        for (var c of classes) {
+            var pop = this[state + '_' + c] || 0;
+            support += pop * (this[c + '_' + party + '_normalized'] || 0);
         }
         state_support.push({ party: party, support: support });
     }
-
-    // Sort by support in descending order and assign 2 Senate seats to top 2
     state_support.sort((a, b) => b.support - a.support);
-    
-    // Ensure that only 2 senators are assigned to each state (limit 'Others')
-    Q[state + '_senate_winner_1'] = state_support[0].party;
-    Q[state + '_senate_winner_2'] = state_support[1].party;
-
-    // Assign one seat to each of the top 2 parties in the state
-    Q[state_support[0].party + '_senate_seats'] += 1;
-    Q[state_support[1].party + '_senate_seats'] += 1;
+    this[state + '_senate_winner_1'] = state_support[0].party;
+    this[state + '_senate_winner_2'] = state_support[1].party;
+    this[state_support[0].party + '_senate_seats'] += 1;
+    this[state_support[1].party + '_senate_seats'] += 1;
 }
-
-// Correct the final vote totals for realistic seat distribution
-Q.rep_votes = Q["rep_senate_seats"];
-Q.dem_votes = Q["dem_senate_seats"];
-Q.other_votes = (Q["lib_senate_seats"] || 0) + (Q["green_senate_seats"] || 0); // Include other parties as needed
-
-// If you still get incorrect totals, cap or adjust the 'other' category
-if (Q.other_votes > 2) {
-    Q.other_votes = 2; // Limit 'other' to 2 seats (or a reasonable cap)
+// Final vote total calculation
+rep_votes = this["rep_senate_seats"];
+dem_votes = this["dem_senate_seats"];
+other_votes = (this["lib_senate_seats"] || 0) + (this["green_senate_seats"] || 0);
+if (other_votes > 2) {
+    other_votes = 2;
 }
-
-Q.vac_r = 0; // Set this as needed if you simulate unfilled seats or ties
+vac_r = 0; // adjust manually for ties/unfilled
 !}
 go-to: jumpScene
 
