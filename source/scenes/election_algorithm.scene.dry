@@ -34,8 +34,8 @@ for (var state of states) {
     this[state_support[1].party + '_senate_seats'] += 1;
 }
 // Final vote total calculation
-rep_votes = this["rep_senate_seats"];
-dem_votes = this["dem_senate_seats"];
+rep_senate_votes = this["rep_senate_seats"];
+dem_senate_votes = this["dem_senate_seats"];
 other_votes = (this["lib_senate_seats"] || 0) + (this["green_senate_seats"] || 0);
 if (other_votes > 2) {
     other_votes = 2;
