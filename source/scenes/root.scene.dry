@@ -186,7 +186,7 @@ Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
-Q.parties = ['rep', 'dem', 'other', 'vac'];  // Republicans, Democrats, minor parties, vacant seats
+Q.parties = ['rep', 'dem', 'other'];  // Republicans, Democrats, minor parties, vacant seats
 
 // Support for party by social group (normalized later)
 Q.workers_rep = 50;    // Northern industrial workers, pro-Union, pro-GOP
