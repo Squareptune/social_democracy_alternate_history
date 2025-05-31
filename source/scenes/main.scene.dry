@@ -22,7 +22,7 @@ max-cards: 3
 - @shuffle_leadership_pinned
 
 @main_easy
-set-bg: img/map_2.jpg
+set-bg: img/Background.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -54,7 +54,6 @@ is-deck: true
 
 @govt
 title: Government Affairs
-view-if: time >= 6
 card-image: img/gov't.jpg
 is-deck: true
 
