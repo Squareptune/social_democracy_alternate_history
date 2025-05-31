@@ -34,9 +34,10 @@ for (var state of states) {
     this[state_support[1].party + '_senate_seats'] += 1;
 }
 // Final vote total calculation
-rep_senate_votes = this["rep_senate_seats"];
-dem_senate_votes = this["dem_senate_seats"];
-other_senate_votes = (this["lib_senate_seats"] || 0) + (this["green_senate_seats"] || 0);
+this.rep_senate_votes = this["rep_senate_seats"];
+this.dem_senate_votes = this["dem_senate_seats"];
+this.other_senate_votes = (this["other_senate_seats"] || 0);
+this.vacant_senate_votes = (this["vac_senate_seats"] || 0);
 if (other_votes > 2) {
     other_votes = 2;
 }
