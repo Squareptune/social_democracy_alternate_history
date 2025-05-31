@@ -123,7 +123,7 @@ Republicans: [+ rep_senate_votes +] seats
 
 Democrats: [+ dem_senate_votes +] seats
 
-Others: [+ other_votes +] seats
+Others: [+ other_senate_votes +] seats
 
 House:
 
@@ -131,7 +131,7 @@ Republicans: [+ rep_senate_votes +] seats
 
 Democrats: [+ dem_senate_votes +] seats
 
-Others: [+ other_votes +] seats
+Others: [+ other_senate_votes +] seats
 
 **Detailed results for each demographic**
 
