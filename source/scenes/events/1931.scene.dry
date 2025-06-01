@@ -21,7 +21,7 @@ if (Q.works_program && Q.works_program > 1) {
 // moved demographic changes to post_event
 !}
 tags: event
-view-if: year = 1931 and month = 1 
+view-if: year = 1865 and month = 4
 priority: 2
 max-visits: 1
 
