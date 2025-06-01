@@ -49,7 +49,7 @@ if (Q.ideology && Q.ideology != "labor") {
 }
 !}
 go-to: changed if changed = 1
-on-departure:ideology = "labor"; socialism_strength += 5; socialist_dissent -= 5; radical_dissent -= 2; workers_other += 3; immigrant_laborers_other += 2; unemployed_other += 3; freemen_other += 2; middle_class_other += 1;
+on-departure:ideology = "labor"; socialism_strength += 5; socialist_dissent -= 5; radical_dissent -= 2; workers_other += 3; immigrant_laborers_other += 2; unemployed_other += 3; freemen_other += 2; middle_class_other += 1; labor_support += 1;
 
 The republicans that support the workers emphasise the plight of Northern workers and freedmen alike, supporting job creation and land redistribution.
 
