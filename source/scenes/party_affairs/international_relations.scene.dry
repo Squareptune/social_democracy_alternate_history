@@ -6,15 +6,14 @@ view-if: international_relations_timer <= 0
 on-arrival: month_actions += 1; international_relations_timer += 12;
 card-image: img/international.jpg
 max-visits: 4
-#subtitle: Building ties with our fraternal socialist parties.
+#subtitle: Republican connections abroad
 
-At the Labor and Socialist International, we can forge contacts with our fraternal socialist parties in Europe and across the world.
+As the Republican Party emerges as a force for liberty and union, we have a chance to build relationships with foreign allies who share our ideals—radicals, abolitionists, and republicans across the globe.
 
-- @fr_uk: Build relationships with the French SFIO and British Labour Party to move their governments in Germany's favor.
-- @austria: Learn organization and street fighting from the Austrian SDAPÖ.
-- @scandi: Learn the path of economics and reform from the Scandinavian social democrats.
-- @comintern: Forget the second international - embed a spy in the Comintern's conference.
-- @america: Contact the Socialist party of America.
+- @britain: Correspond with British Liberals and anti-slavery reformers. 
+- @germany: Observe the German Forty-Eighters and support constitutionalism. 
+- @haiti: Reaffirm ties with the Haitian Republic. 
+- @france: Connect with French republicans fighting Bonapartist reaction.
 - @return: We do not need international contacts at the moment.
 - @easy_discard
 - @cancel_advisor_action
@@ -23,45 +22,35 @@ At the Labor and Socialist International, we can forge contacts with our fratern
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; west_relation += 1; reformist_strength += 5; pacifism += 1; moderate_plan_support += 1
+on-arrival: resources -= 1; europe_relation += 1; moderate_strength += 1;
 
-The socialists of France and Britain can influence their governments to be friendlier towards Germany. Hopefully they will reduce our reparations burden.
+British liberals and abolitionist networks have long supported our cause. Sustaining these ties bolsters the party’s moderate wing and increases our standing abroad.
 
-@austria
-subtitle: -1 resources [? if austrian_parliament_seen and not austrian_civil_war_seen: - We will also help the Austrians oppose their dictatorship. ?]
+@germany
+subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 audio: shuffle music/communist/workers_of_vienna_normalized.mp3
-on-arrival: left_strength += 5; radicalization += 1; rb_militancy += 0.03; resources -= 1; austria_relation += 1; sdapo_strength += 1 if austrian_parliament_seen = 1
+on-arrival: resources -= 1; radical_strength += 1; europe_relation += 1
 
-Our Reichsbanner can learn much in paramilitary organization and training from the Austrian Republikanischer Schutzbund (Republican Protection Units), the paramilitary branch of the Austrian social democrats.
+The ideals of 1848 live on in the German states. Their exiled leaders now influence American politics, and we may, in turn, encourage their continued push for liberty in Europe.
 
-[? if austrian_parliament_seen and not austrian_civil_war_seen: We are also helping the Austrian Social Democratic Worker's Party build up their resources in preparation for a future struggle, legally and illegally. ?]
-
-
-@scandi
+@haiti
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: reformist_strength += 8; wtb_support += 1; resources -= 1; moderate_plan_support += 1
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; 
 
-The programs of the Nordic socialists involve active government intervention in the economy. We can learn from their economic strategies, and how they moved beyond their working-class base to attract a broader set of constituents.
+The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symbolic ties strengthens our claim to moral leadership in the post-slavery world—even if few in Congress care to notice.
 
-@comintern
+@france
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; kpd_relation += 5*(1-dissent); communist_coalition += 1 if comintern_seen == 0; comintern_seen += 1
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1
 
-The Stalinists of the KPD insists on calling us "social fascists", suggesting that we social democrats are as bad or worse than actual fascists. Needless to say, this is not good for our relationship with the Communists. By observing the Comintern, we can better understand the KPD, enabling us to potentially improve relations, or counter the KPD if it may come to that.
+Though France has slid back under imperial rule, republican sentiment remains strong. Our engagement signals that the Republican Party is part of a global democracy movement.
 
-@america
-subtitle: -1 resources
-choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1
-
-The Socialist Party of America is tiny and has limited support. There is not much we can do for them, and conversely, not much they can do for us.
 
 @reduce
 
