@@ -493,7 +493,7 @@ Q.land_reform = 0;
 Q.works_program = 0;
 Q.wtb_implemented = 0;
 // Relations with the Western countries (France, UK).
-Q.west_relation = 0;
+Q.europe_relation = 0;
 // Relations with the Eastern countries (Poland, Czechoslovakia)
 Q.east_relation = 0;
 // Relations with the Soviet Union
