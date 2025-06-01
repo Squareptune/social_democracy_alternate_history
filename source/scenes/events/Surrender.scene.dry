@@ -3,7 +3,6 @@ subtitle: Victory at last!!!
 on-arrival: civil_war = 0;
 tags: event
 view-if: year = 1865 and month = 4
-priority: 2
 max-visits: 1
  
 The long and bloody conflict draws to a close. General Robert E. Lee, commanding the battered remnants of the Confederate Army of Northern Virginia, has surrendered to Union General Ulysses S. Grant. The terms are generous—officers may keep their swords, men their horses.
