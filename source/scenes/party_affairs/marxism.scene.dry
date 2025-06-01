@@ -20,7 +20,7 @@ Parsons and his allies urge us to **abandon vague reformist slogans** and instea
 - @easy_discard
 
 @support_socialists
-on-arrival: socialism_strength += 10; socialism = 1; labor_dissent -= 5; europe_relations -= 1; conservative_dissent += 5; workers_rep += 5; unemployed_rep += 5; workers_dem -= 3; middle_class_rep -= 3; rural_rep -= 3
+on-arrival: socialism = 1; labor_dissent -= 5; europe_relations -= 1; conservative_dissent += 5; workers_rep += 5; unemployed_rep += 5; workers_dem -= 3; middle_class_rep -= 3; rural_rep -= 3
 
 We endorse Albert Parsons and the Socialist faction, realigning our message with revolutionary Marxist principles. Our base among workers and the unemployed is energised, though more moderate elements of society grow wary.
 
