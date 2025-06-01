@@ -2,7 +2,7 @@ title: Marxism: A New Idea
 new-page: true
 is-card: true
 card-image: img/portraits/Albert_Parsons_portrait.jpg
-view-if: labor_support >= 3 and year >= 1869
+view-if: labor_support >= 3 and year >= 1871
 on-arrival: shuffle_leadership_timer = 0;
 tags: party_affairs
 frequency: 400
