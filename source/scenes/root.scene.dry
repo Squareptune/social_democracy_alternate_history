@@ -65,6 +65,7 @@ Q.reformists_resigned = 0;
 
 // have we discovered socialism?
 Q.socialism = 0;
+Q.labor_support = 0;
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
