@@ -1,82 +1,75 @@
-title: Media
+title: Media Strategy
 new-page: true
 is-card: true
 tags: party_affairs
 view-if: media_timer <= 0
 on-arrival: month_actions += 1; media_timer += 6;
-card-image: img/sangerbund.jpg
-#subtitle: Setting the direction for our newspapers and radio.
+card-image: img/reconstruction_media.webp
 
-= Media
+= Media Strategy
 
-The SPD runs a veritable media empire, with many newspapers throughout every German city and region. We could use the media for various purposes...
+The Republican Party maintains a growing network of newspapers and loyal publications throughout the Union. With our message in high demand after the war, we must decide how to wield our media power.
 
 - @commercial
 - @campaign
 - @ideological
-- @radio
-- @radio_2
-- @radio_3
-- @radio_4
-- @return: We should not do anything with media at the moment.
+- @freedmen_press
+- @northern_press
+- @borderlands
+- @return: We will not focus on media matters for now.
 - @easy_discard
 - @cancel_advisor_action
 
 @commercial
-title: Make our newspapers more commercialized by broadening their appeal beyond party supporters.
-subtitle: This might upset ideological purists, but it may bring in more funds and perhaps expose the middle class to socialist views.
-on-arrival: resources += 1; commercialized_media += 1; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1-dissent); left_dissent += 10; labor_dissent += 10
+title: Commercialize the Republican press
+subtitle: We broaden our appeal, risking ideological clarity.
+on-arrival: resources += 1; europe_relations += 1; conservative_strength += 4; moderate_strength += 2; radical_dissent += 5; socialism_strength -= 1;
+middle_class_rep += 4; immigrant_laborers_rep += 3; rural_rep += 2; workers_rep += 1
 
-Our commercialized newspapers are able to bring in more funds. However, the left and labor factions express their displeasure.
+Our newspapers shift toward patriotic business owners and loyal moderates. The party brings in more funds, but radicals decry the dilution of our Reconstruction values.
 
 @campaign
-title: The purpose of our media is to elect more Social Democrats.
-subtitle: Our newspapers will focus on the electoral campaign.
-on-arrival: campaign_media += 1; workers_spd += 4*(1 - dissent); unemployed_spd += 2*(1-dissent);
+title: Focus our press on campaigning
+subtitle: Target loyal Republican voters and shore up our base.
+on-arrival: moderate_strength += 3; radical_strength += 1; conservative_strength += 1; dissent -= 2;
+workers_rep += 3; middle_class_rep += 2; rural_rep += 1; freemen_rep += 2
 
-Our campaign media is mostly reaching the workers who are already saturated with Socialist propaganda, but it must be doing *something*, or at least that is what we hope.
+Election coverage strengthens enthusiasm among Republicans and mobilizes our base across the North and border states.
 
 @ideological
-title: We will have vibrant ideological debate within our newspapers.
-subtitle: There will be space for all factions to air their views.
-on-arrival: left_dissent -= 6; labor_dissent -= 6; center_dissent -= 6; reformist_dissent -= 6; neorevisionist_dissent -= 6
+title: Promote vibrant internal debate
+subtitle: Let all factions express themselves through the press.
+on-arrival: radical_dissent -= 5; moderate_dissent -= 5; conservative_dissent -= 5;
+workers_rep += 1; middle_class_rep += 1; freemen_rep += 1
 
-This has been our media course historically, and it has successfully paved over the many tensions in our party.
+We allow the party press to become a forum for ideas and factional debates. It risks some confusion in messaging, but tensions ease within the coalition.
 
-@radio
-title: Why not fund a radio station?
-subtitle: -2 resources
-choose-if: resources >= 2
-unavailable-subtitle: Not enough resources.
-view-if: radio = 0
-on-arrival: radio += 1; resources -= 2; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 2*(1 - dissent); labor_dissent += 5; socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent) if pacifism > 1; pro_republic += 3*(1-dissent) if democratization > 1
-
-Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of socialism along with music and other popular content. Since most proletarians cannot afford family radios right now, we are reaching the middle class, a fact of which our labor comrades are painfully aware.
-
-@radio_2
-title: We must keep on building up our radio network.
+@freedmen_press
+title: Support Freedmen’s newspapers and editors
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-view-if: radio > 0 and radio <= 3
-on-arrival: radio += 1; resources -= 1; new_middle_spd += 5*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: resources -= 1; radical_strength += 3; socialism_strength += 2; europe_relations += 1;
+freemen_rep += 5; rural_rep -= 1; immigrant_laborers_rep -= 1
 
-Our new radio network has a mix of popular and political programming, and is proving a success.
+We invest in Black-led Republican papers across the South. These serve as vital tools for political education and uplift, even under threats of violence.
 
-@radio_3
-title: We must keep on building up our radio network.
-subtitle: It is now financially self-sufficient, and does not require any more resources.
-view-if: radio > 3 and radio <= 5 and year <= 1931
-on-arrival: radio += 1; new_middle_spd += 5*(1 - dissent); old_middle_spd += 4*(1 - dissent); workers_spd += 4*(1 - dissent); rural_spd += 3*(1 - dissent); unemployed_spd += 2*(1-dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
-
-Our radio network has become a successful tool for spreading our message.
-
-@radio_4
-title: We should keep on supporting our radio network.
-subtitle: As radio becomes more common, the novelty is beginning to wear off, and radio is becoming saturated in society. -1 resources
+@northern_press
+title: Build up press networks in Northern cities
+subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-view-if: radio > 3 and (radio >= 6 or year >= 1932) and radio <= 9
-on-arrival: radio += 1; resources -= 1; new_middle_spd += 3*(1 - dissent); old_middle_spd += 2*(1 - dissent); workers_spd += 3*(1 - dissent); rural_spd += 2*(1 - dissent); unemployed_spd += 2*(1-dissent); socialism += 2*(1 - dissent); nationalism -= 2*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 2*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: resources -= 1; moderate_strength += 3; conservative_strength += 1; europe_relations += 1;
+middle_class_rep += 4; workers_rep += 2; immigrant_laborers_rep += 2
 
-We are continuing to invest in our radio stations. Both commercial and political radio are becoming more prevalent, making it harder to spread our message amidst the competition.
+Our Northern papers emphasize peace, prosperity, and the Union cause. This strategy appeals to middle-class voters, war veterans, and businessmen.
+
+@borderlands
+title: Expand Republican messaging into border states
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; moderate_strength += 2; conservative_strength += 2; europe_relations += 1; radical_dissent += 3;
+rural_rep += 3; rural_dem -= 2; freemen_rep += 1
+
+By promoting cautious moderation in Kentucky, Missouri, and Tennessee, we hope to appeal to loyal Unionists and former Whigs. But this comes at a cost with more radical party elements.
