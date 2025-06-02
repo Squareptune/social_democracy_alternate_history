@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 view-if: party_disunity_timer = 0 and (dissent >= 0.3 or (radical_dissent > 30) or (moderate_dissent > 30) or (conservative_dissent > 30) or (socialist_dissent > 30))
 on-arrival: month_actions += 1; party_disunity_timer = 4
-card-image: img/Reichstagsfraktion_der_SPD.jpg
+card-image: img/Dissent.jpg
 frequency: 200
 tags: party_affairs
 
