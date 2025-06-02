@@ -54,7 +54,7 @@ We promise more gradual reforms and traditional messaging, which angers radicals
 
 @concessions_socialists
 title: Give concessions to the socialists.
-view-if: socialist_dissent > 30
+view-if: socialist_dissent > 30 and socialism = 1
 on-arrival: socialist_dissent -= 7; conservative_dissent += 4; moderate_dissent += 2
 
 We shift our platform to include more worker-focused policies and emphasize class struggle, risking backlash from other wings.
