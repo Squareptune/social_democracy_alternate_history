@@ -1,101 +1,66 @@
 title: Party Disunity
 new-page: true
 is-card: true
-view-if: party_disunity_timer = 0 and (dissent >= 0.3 or (reformist_dissent > 30 and not reformists_resign) or (center_dissent > 30 and not centrists_resign) or (left_dissent > 30 and not sapd_formed) or (labor_dissent > 30 and not unions_independent) or (neorevisionist_dissent > 30 and neorevisionism))
+view-if: party_disunity_timer = 0 and (dissent >= 0.3 or (radical_dissent > 30) or (moderate_dissent > 30) or (conservative_dissent > 30) or (socialist_dissent > 30))
 on-arrival: month_actions += 1; party_disunity_timer = 4
 card-image: img/Reichstagsfraktion_der_SPD.jpg
 frequency: 200
 tags: party_affairs
 
-# TODO: party dissent events for every faction, have a good image for this... 
-
 = Party Disunity
 
-The party is being torn apart by internal dissent. Upset at the leadership and general direction, factions have started sabotaging their rivals, hampering our efforts to win votes and carry out our policies.
+Internal conflict is tearing our party apart. With little agreement on goals or strategy, factions are openly undermining each other, sabotaging our campaigns and weakening our message.
 
-[? if reformist_dissent > 30 : The reformists are upset at our direction.  ?]
-[? if center_dissent > 30 : The centrists are displeased with the direction of our party. ?]
-[? if labor_dissent > 30 : The trade unions disagree with our present course of action. ?]
-[? if left_dissent > 30: Leftists are making noises about another party split. ?]
-[? if neorevisionist_dissent > 30 and neorevisionism = 1 : Neorevisionists are in disagreement about our political direction. ?]
+[? if radical_dissent > 30 : The radicals are increasingly confrontational toward the party establishment. ?]
+[? if moderate_dissent > 30 : The moderates are voicing frustration at the party’s growing instability. ?]
+[? if conservative_dissent > 30 : The conservatives argue that we’ve strayed too far from pragmatism. ?]
+[? if socialist_dissent > 30 and socialism = 1: The socialists are threatening to break with the party leadership. ?]
 
-Something must be done to reinforce party unity.
+We must address these tensions before a split becomes inevitable.
 
 - @enforce_unity
-- @concessions_reformists
-- @concessions_center
-- @concessions_left
-- @concessions_labor
-- @concessions_neorevisionists
+- @concessions_radicals
+- @concessions_moderates
+- @concessions_conservatives
+- @concessions_socialists
 - @do_nothing
-
 
 @enforce_unity
 title: Enforce party discipline.
-on-arrival: reformist_dissent -= 5; center_dissent -= 5; labor_dissent -= 5; left_dissent -= 5; neorevisionist_dissent -= 5; workers_spd -= 4; new_middle_spd -= 2; unemployed_spd -= 2
+on-arrival: radical_dissent -= 5; moderate_dissent -= 5; conservative_dissent -= 5; socialist_dissent -= 5; radical_strength -= 2; socialist_strength -= 2
 
-Enforcing party discipline reduces dissent, but it could lead to an exit of dissenting members.
+We apply pressure across the board to restore order, but risk losing influence with key factions.
 
-# enforcing party discipline applies to all parties.
+@concessions_radicals
+title: Give concessions to the radicals.
+view-if: radical_dissent > 30
+on-arrival: radical_dissent -= 7; moderate_dissent += 4; conservative_dissent += 2
 
-# each party has a concessions action and an expulsions action.
+We adopt more radical rhetoric and promise bold reforms, at the risk of alienating more cautious voices.
 
-@concessions_reformists
-title: Give concessions to the reformists.
-view-if: reformist_dissent > 30
-on-arrival: reformist_dissent -= 7; left_dissent += 5
+@concessions_moderates
+title: Give concessions to the moderates.
+view-if: moderate_dissent > 30
+on-arrival: moderate_dissent -= 7; radical_dissent += 3; socialist_dissent += 2
 
-We have promised to adopt a more reformist posture. This may alienate the left, however.
+We moderate our tone and focus on achievable goals. The radicals and socialists aren't pleased.
 
-@concessions_center
-title: Give concessions to the centrists.
-view-if: center_dissent > 30
-on-arrival: center_dissent -= 7; reformist_dissent += 2; left_dissent += 2; neorevisionist_dissent += 2
+@concessions_conservatives
+title: Give concessions to the conservatives.
+view-if: conservative_dissent > 30
+on-arrival: conservative_dissent -= 7; radical_dissent += 3; moderate_dissent += 2
 
-We have promised to take more policy suggestions from the centrists. Both the left and reformist wings of the party might be displeased.
+We promise more gradual reforms and traditional messaging, which angers radicals and centrists alike.
 
-@concessions_left
-title: Give concessions to the left.
-view-if: left_dissent > 30
-on-arrival: left_dissent -= 7; reformist_dissent += 5
+@concessions_socialists
+title: Give concessions to the socialists.
+view-if: socialist_dissent > 30
+on-arrival: socialist_dissent -= 7; conservative_dissent += 4; moderate_dissent += 2
 
-We have promised that we will listen to the left wing of the party. Of course, this leads to increased dissent from the centrists.
-
-@concessions_labor
-title: Give concessions to labor.
-view-if: labor_dissent > 30
-on-arrival: labor_dissent -= 7; center_dissent += 5
-
-The trade unions will be granted more influence in party decision making. This upsets the centrists, who would prefer to centralize political decision making within the party.
-
-@concessions_neorevisionists
-title: Give concessions to the neorevisionists.
-view-if: neorevisionist_dissent > 30 and neorevisionism = 1
-on-arrival: neorevisionist_dissent -= 7; center_dissent += 5;
-
-Giving the neorevisionists more influence will cause increased dissent from the centrists.
-
+We shift our platform to include more worker-focused policies and emphasize class struggle, risking backlash from other wings.
 
 @do_nothing
-title: Let the factions argue with themselves.
-on-arrival: labor_dissent += 1; left_dissent += 1; center_dissent += 1; reformist_dissent += 1
+title: Let them argue it out.
+on-arrival: radical_dissent += 1; moderate_dissent += 1; conservative_dissent += 1; socialist_dissent += 1
 
-Let the factions bicker; perhaps dissent is healthy for the party.
-
-# TODO: should we be allowed to preemptively expel factions?
-
-@expel_reformists
-title: Expel the dissident reformists.
-view-if: reformist_dissent > 30
-
-@expel_left
-title: Expel the dissident leftists.
-view-if: left_dissent > 30
-
-@expel_center
-title: Expel the centrists.
-view-if: center_dissent > 30
-
-@expel_labor
-title: Expel the labor supporters.
-view-if: labor_dissent > 30
+We allow internal debate to play out, hoping things will resolve naturally, but tensions rise.
