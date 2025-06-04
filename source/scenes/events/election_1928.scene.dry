@@ -166,6 +166,8 @@ data = [
         "legend": "rep",
         "name": "republicans",
         "seats": Math.round(Q.rep_r*5),
+        color: "#0044cc",
+        outline: "#003399"
     }
 ];
 data = data.concat([
