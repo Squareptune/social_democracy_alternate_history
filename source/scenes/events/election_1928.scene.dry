@@ -163,33 +163,37 @@ on-display: {!
 data = [
     {
         "id": "republicans",
-        "legend": "rep",
+        "legend": "rep", 
         "name": "republicans",
         "seats": Math.round(Q.rep_r*5),
-        color: "#0044cc",
-        outline: "#003399"
-    }
-];
-data = data.concat([
+        "color": "#0044cc",
+        "outline": "#003399"
+    },
     {
         "id": "democrats",
         "legend": "dem",
-        "name": "democrats",
+        "name": "democrats", 
         "seats": Math.round(Q.dem_r*5),
+        "color": "#cc0000",        // Add this
+        "outline": "#990000"       // Add this
     },
     {
         "id": "others",
         "legend": "other",
         "name": "other",
         "seats": Math.round(Q.other_r*5),
+        "color": "#00cc00",        // Add this
+        "outline": "#009900"       // Add this
     },
     {
-        "id": "vacant",
+        "id": "vacant", 
         "legend": "vacant",
         "name": "vacant",
         "seats": Math.round(Q.vacant_r*5),
-    },
-]);
+        "color": "#cccccc",        // Add this
+        "outline": "#999999"       // Add this
+    }
+];
 
 if (window && d3) {
     var width = 500; 
