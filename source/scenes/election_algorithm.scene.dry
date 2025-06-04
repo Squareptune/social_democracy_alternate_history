@@ -53,5 +53,36 @@ for (let party of Q.parties) {
         Q[party + '_votes_disp'] = dec.toFixed(1);
     }
 }
+
+// 4. Senate election simulation (2 seats per state to majority winner)
+Q.rep_senate_r = 0;
+Q.dem_senate_r = 0;
+Q.other_senate_r = 0;
+
+for (let state of Q.states) {
+    let party_support = {
+        rep: 0,
+        dem: 0,
+        other: 0
+    };
+
+    for (let cls of Q.classes) {
+        const pop = Q[state + '_' + cls] || 0;
+
+        const rep = Q[cls + '_rep_normalized'] || 0;
+        const dem = Q[cls + '_dem_normalized'] || 0;
+        const other = Q[cls + '_other_normalized'] || 0;
+
+        party_support.rep += pop * rep;
+        party_support.dem += pop * dem;
+        party_support.other += pop * other;
+    }
+
+    const winner = Object.entries(party_support).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
+
+    if (winner === 'rep') Q.rep_senate_r += 2;
+    else if (winner === 'dem') Q.dem_senate_r += 2;
+    else Q.other_senate_r += 2;
+}
 !}
 go-to: jumpScene
