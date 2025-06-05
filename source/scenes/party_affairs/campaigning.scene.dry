@@ -56,7 +56,7 @@ We have increased our campaigning among the freedmen.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.immigrant_laborers_rep += 4 * (1 - dissent); resources -= 1;
+on-arrival: immigrant_laborers_rep += 4 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among immigrant workers.
 
