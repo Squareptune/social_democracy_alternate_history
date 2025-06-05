@@ -42,7 +42,7 @@ Mass rallies are a key part of building up Republican support, especially among 
 - @unity: Heal the Union while upholding Republican values.
 - @law_order: Crack down on Klan violence and defend law and order.
 - @local: Address specific concerns of the local population.
-- @easy_discard
+- @easy_discard: I don't care.
 
 @reconstruction
 on-arrival: freemen_rep += 5 * (1 - radical_dissent / 100); radical_strength += 3; conservative_dissent += 2;
