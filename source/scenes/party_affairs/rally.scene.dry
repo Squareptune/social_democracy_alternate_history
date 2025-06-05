@@ -21,7 +21,7 @@ go-to: police_win if police_success >= 0; police_lose if police_success < 0
 @police_win
 go-to: main_rally
 
-The police successfully protected the rally. I just wanted to let you know that the meeting can proceed as planned.
+The police successfully protected the rally. The meeting can proceed as planned.
 
 @police_lose
 on-arrival: freemen_rep -= 3; workers_rep -= 2; radical_dissent += 4;
@@ -35,7 +35,7 @@ We chose to cancel the rally due to the threat of violence. While it may be the 
 
 @main_rally
 
-Mass rallies are key to building up Republican support, especially among loyal Unionists and newly enfranchised voters. What is the main focus of this rally?
+Mass rallies are a key part of building up Republican support, especially among loyal Unionists and newly enfranchised voters. What is the main focus of this rally?
 
 - @reconstruction: Uphold Reconstruction and protect the rights of Freedmen.
 - @industry: Promote industrial growth and northern prosperity.
@@ -57,7 +57,7 @@ Our focus on economic progress and industry appeals to the northern business cla
 @unity
 on-arrival: middle_class_rep += 2; rural_rep += 2; moderate_strength += 3; radical_dissent -= 2; conservative_dissent -= 2;
 
-We emphasize national unity and healing, aiming to unite former Unionists and moderates behind a stable Republican vision.
+We emphasize national unity and healing, aiming to bring together former Unionists and moderates behind a stable Republican vision.
 
 @law_order
 on-arrival: rural_rep += 3; freemen_rep += 2; conservative_strength += 3; radical_dissent -= 1;
