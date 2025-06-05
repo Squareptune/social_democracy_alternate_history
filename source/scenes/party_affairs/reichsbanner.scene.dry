@@ -1,4 +1,4 @@
-title: Reichsbanner
+title: Union League
 new-page: true
 is-card: true
 tags: party_affairs
@@ -10,19 +10,17 @@ max-visits: 5
 
 = Reichsbanner
 
-The *Reichsbanner Schwarz-Rot-Gold* is a mass organization for the defense of the Republic against the extremists who threaten it. Some would call it a paramilitary, although currently it is hardly any sort of military. It is officially associated with the pro-democratic parties -the SPD, Center, and [+ ddp_name +], but by far the largest component is with the SPD.
+The Union League is a quasi-secretive men's club formed during the Civil War and continues to exist to the present. They serve as auxiliaries of the Republican Party down South to protect the freedmen and new northern migrants.
 
-[? if workers_spd < 46 or workers_spd < workers_nsdap or workers_spd < workers_kpd : The Reichsbanner is having a more difficult time recruiting, as the SPD is no longer the dominant party among the workers. Many of its members have left. ?]
-
-- @militant: Fund more military-style training and equipment for the Reichsbanner.
-- @militant_2: Use our existing resources to support more training for the Reichsbanner.
-- @same: Keep the Reichsbanner as it is.
-- @cut_rb: Cut funding for the Reichsbanner.
+- @militant: Fund more military-style training and equipment for the Union League.
+- @militant_2: Use our existing resources to support more training for the Union League.
+- @same: Keep the Union League as it is.
+- @cut_rb: Cut funding for the Union League.
 - @women_rb
 - @easy_discard
 - @cancel_advisor_action
 
-#- Orient reichsbanner towards anti-fascism (only available if we have prioritized anti fascism)
+#- Orient Reichsbanner towards anti-fascism (only available if we have prioritized anti fascism)
 
 @militant
 choose-if: resources >= rb_militarization_cost
