@@ -24,7 +24,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.workers_rep += 6 * (1 - dissent); resources -= 1;
+on-arrival: workers_rep += 6 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among the workers.
 
@@ -32,7 +32,7 @@ We have increased our campaigning among the workers.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: Q.middle_class_rep += 6 * (1 - dissent); resources -= 1;
+on-arrival: middle_class_rep += 6 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among the middle class.
 
