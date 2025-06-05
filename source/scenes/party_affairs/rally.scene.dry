@@ -12,6 +12,7 @@ go-to: main_rally; dem_attack if dem_strength > 20
 A Democratic mob, possibly with Ku Klux Klan sympathizers, has attacked the Republican rally!
 
 - @police_protect: Call the police to protect our rally.
+- @unionleague_protect: Rely on the Union League to defend the rally.
 - @cancel: Cancel the rally.
 
 @police_protect
@@ -28,6 +29,20 @@ on-arrival: freemen_rep -= 3; workers_rep -= 2; radical_dissent += 4;
 
 The police failed to secure the rally. The attackers broke it up, undermining our presence and terrifying our supporters.
 
+@unionleague_protect
+on-arrival: ul_success = Union_League_militancy * Union_League_strength - kkk_strength * 1.5;
+go-to: ul_win if ul_success >= 0; ul_lose if ul_success < 0
+
+@ul_win
+go-to: main_rally
+
+The Union League successfully defended the rally. Their courage strengthens our movement and builds confidence among our supporters.
+
+@ul_lose
+on-arrival: freemen_rep -= 2; radical_dissent += 2; Union_League_strength -= 10;
+
+The Union League fought bravely but couldn't stop the attackers. Some supporters are shaken, and the League has taken losses.
+
 @cancel
 on-arrival: radical_dissent += 3; freemen_rep -= 2; unemployed_rep -= 1;
 
@@ -35,7 +50,7 @@ We chose to cancel the rally due to the threat of violence. While it may be the 
 
 @main_rally
 
-Mass rallies are a key part of building up Republican support, especially among loyal Unionists and newly enfranchised voters. What is the main focus of this rally?
+Mass rallies are key to building up Republican support, especially among loyal Unionists and newly enfranchised voters. What is the main focus of this rally?
 
 - @reconstruction: Uphold Reconstruction and protect the rights of Freedmen.
 - @industry: Promote industrial growth and northern prosperity.
@@ -57,7 +72,7 @@ Our focus on economic progress and industry appeals to the northern business cla
 @unity
 on-arrival: middle_class_rep += 2; rural_rep += 2; moderate_strength += 3; radical_dissent -= 2; conservative_dissent -= 2;
 
-We emphasize national unity and healing, aiming to bring together former Unionists and moderates behind a stable Republican vision.
+We emphasize national unity and healing, aiming to unite former Unionists and moderates behind a stable Republican vision.
 
 @law_order
 on-arrival: rural_rep += 3; freemen_rep += 2; conservative_strength += 3; radical_dissent -= 1;
