@@ -8,7 +8,7 @@ on-arrival: month_actions += 1; reichsbanner_timer += 6; rb_militarization_cost 
 max-visits: 5
 #subtitle: Paramilitary organizing in defense of the republic.
 
-= Reichsbanner
+= Union League
 
 The Union League is a quasi-secretive men's club formed during the Civil War and continues to exist to the present. They serve as auxiliaries of the Republican Party down South to protect the freedmen and new northern migrants.
 
