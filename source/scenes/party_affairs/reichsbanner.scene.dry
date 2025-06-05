@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 tags: party_affairs
 view-if: reichsbanner_timer <= 0
-card-image: img/reichsbanner.jpg
+card-image: img/Union League.png
 on-arrival: month_actions += 1; reichsbanner_timer += 6; rb_militarization_cost = 2 if rb_militancy > 0.1 else rb_militarization_cost = 1; rb_militarization_cost = 3 if rb_militancy > 0.25
 max-visits: 5
 #subtitle: Paramilitary organizing in defense of the republic.
@@ -20,49 +20,44 @@ The Union League is a quasi-secretive men's club formed during the Civil War and
 - @easy_discard
 - @cancel_advisor_action
 
-#- Orient Reichsbanner towards anti-fascism (only available if we have prioritized anti fascism)
+#- Orient Union League towards anti-fascism (only available if we have prioritized anti fascism)
 
 @militant
 choose-if: resources >= rb_militarization_cost
 unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
 subtitle: -[+ rb_militarization_cost +] resources
-on-arrival: resources -= rb_militarization_cost; rb_investment += 1; rb_strength += 100; rb_militancy += 0.05; left_strength += 2; left_dissent -= 2; reformist_dissent += 5; spd_militancy += 0.05; workers_spd += 2*(1-dissent); unemployed_spd += 2*(1-dissent); z_relation -= 5 if historical_mode 
+on-arrival: resources -= rb_militarization_cost; rb_investment += 1; Union_League_strength += 50; Union_League_militancy += 0.05; radical_strength += 2; radical_dissent -= 2; moderate_dissent += 5; workers_rep += 2*(1-dissent); unemployed_rep += 2*(1-dissent); dem_relation -= 5 if historical_mode 
 
-Some in our party decry the increasing militarization of the Reichsbanner. They say it is emulating the right-wing nationalists or the communists, and risks alienating our allies in the centrist parties. On the other hand, more left-leaning radicals are being lured to our organizations, away from the communists.
-
-[? if historical_mode : The Center Party decries the militarization of the Reichsbanner, and its members are leaving the republican organization. ?]
-
+Some in our party decry the increasing militarization of the Union League. They say it is emulating the Southern Redeemers or the labor radicals, and risks alienating our allies in the moderate factions. On the other hand, more radical Republicans are being drawn to our organizations, away from the labor agitators.
 
 @militant_2
 view-if: funded_reichsbanner >= 1
-on-arrival: rb_militancy += 0.02; funded_reichsbanner -= 1
+on-arrival: Union_League_militancy += 0.02; funded_reichsbanner -= 1
 
-As we have already funded resources towards the Reichsbanner, we can invest in building up their militancy.
-
+As we have already funded resources towards the Union League, we can invest in building up their militancy.
 
 @same
 
-The Reichsbanner is already serving the purpose it needs to serve. There is no reason to change what already works.
+The Union League is already serving the purpose it needs to serve. There is no reason to change what already works.
 
 - @return: Continue...
 
 
 @cut_rb
 subtitle: +1 resources
-on-arrival: resources += 1; rb_strength -= 100; rb_militancy -= 0.05; left_strength -= 2; left_dissent -= 2; spd_militancy -= 0.05; workers_kpd += 2; unemployed_kpd += 2
+on-arrival: resources += 1; Union_League_strength -= 100; Union_League_militancy -= 0.05; radical_strength -= 2; radical_dissent -= 2; workers_other += 2; unemployed_other += 2;
 
-Cutting resources to the Reichsbanner causes a drop in the membership, and leads some would-be members to join the Communists instead.
-
+Cutting resources to the Union League causes a drop in the membership, and leads some would-be members to join the labor unions or democrats instead.
 
 @women_rb
-title: Allow women to join the Reichsbanner.
+title: Allow women to join the Union Leagues.
 subtitle: -1 resources - This might cause a backlash from existing members.
 choose-if: resources > 0
-view-if: womens_rights >= 4 and sender_advisor == 1 and iron_front_formed == 1
-on-arrival: resources -= 1; rb_militancy *= 0.85; rb_strength += 400; women_in_rb = 1; rb_militancy += 0.05 if repealed_175; rb_militancy += 0.04 if trans_rights; rb_militancy += 0.02 if reformed_183;
+view-if: womens_rights >= 4
+on-arrival: resources -= 1; Union_League_militancy *= 0.85; Union_League_strength += 400;
 max-visits: 1
-achievement: women_reichsbanner
+achievement: women_union_league
 
-The suggestion to allow women into the Reichsbanner is ridiculed by most, except for Toni Sender. But this is an exceptional time, and we need anyone who is willing to join. Thus, we organize specialized units for women, [? if homosexual_rights > 0: and even some covert units for transsexuals and inverts ?].
+The suggestion to allow women into the Union League is ridiculed by most, except for some progressive members. But this is an exceptional time, and we need anyone who is willing to join. Thus, we organize specialized units for women.
 
 After allowing women to join, the number of comrades who leave is more than balanced out by the number of radicalized women and others who join. However, many of our departed members were veterans, and many of the new members have no experience with military-style training.
