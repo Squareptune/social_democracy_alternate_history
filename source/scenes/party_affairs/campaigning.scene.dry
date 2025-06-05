@@ -24,16 +24,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.workers_rep += 6 * (1 - dissent);
-  if (Q.unemployed >= 15) {
-    Q.workers_rep -= 2;
-  }
-  if (Q.unemployed >= 25) {
-    Q.workers_rep -= 2;
-  }
-  resources -= 1;
-!}
+on-arrival: Q.workers_rep += 6 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among the workers.
 
@@ -41,10 +32,7 @@ We have increased our campaigning among the workers.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.middle_class_rep += 6 * (1 - dissent);
-  resources -= 1;
-!}
+on-arrival: Q.middle_class_rep += 6 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among the middle class.
 
@@ -52,10 +40,7 @@ We have increased our campaigning among the middle class.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.rural_rep += 5 * (1 - dissent);
-  resources -= 1;
-!}
+on-arrival: rural_rep += 5 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among farmers.
 
@@ -63,10 +48,7 @@ We have increased our campaigning among farmers.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.freemen_rep += 8 * (1 - dissent);
-  resources -= 1;
-!}
+on-arrival: freemen_rep += 8 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among the freedmen.
 
@@ -74,10 +56,7 @@ We have increased our campaigning among the freedmen.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.immigrant_laborers_rep += 4 * (1 - dissent);
-  resources -= 1;
-!}
+on-arrival: Q.immigrant_laborers_rep += 4 * (1 - dissent); resources -= 1;
 
 We have increased our campaigning among immigrant workers.
 
@@ -85,9 +64,6 @@ We have increased our campaigning among immigrant workers.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: {! 
-  Q.unemployed_rep += 5 * (1 - dissent);
-  resources -= 1;
-!}
+on-arrival: unemployed_rep += 5 * (1 - dissent);resources -= 1;
 
 We have increased our campaigning among the unemployed.
