@@ -80,7 +80,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 KKK Militarization: [+ kkk_strength : militancy +]
 
-{!<span class="tooltip-text" title="The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength_2 +] thousand
+{!<span class="tooltip-text" title="The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength +] thousand
 
 Union League Militancy: [+ Union_League_militancy : militancy +]
 
