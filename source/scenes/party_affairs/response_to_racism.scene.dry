@@ -1,7 +1,7 @@
 title: Confronting White Supremacy
 new-page: true
 is-card: true
-view-if: freedmens_bureau_active == 1 and kkk_urgency >= 3
+view-if: freedmens_bureau_active = 1 and kkk_urgency >= 3
 on-arrival: confronting_racism += 1; month_actions += 1
 card-image: img/Union League.png
 tags: party_affairs, antiracism
