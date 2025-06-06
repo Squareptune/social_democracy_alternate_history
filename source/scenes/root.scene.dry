@@ -422,6 +422,8 @@ Q.speaker = "Colfax";
 Q.speaker_party = 'Rep';
 Q.rep_majority = 1;
 Q.freedmens_bureau_active = 0;
+Q.reconstruction_support = 75;
+
 Q.in_right_coalition = 0;
 // Weimar coalition = SPD + Z + DDP
 Q.in_weimar_coalition = 0;
