@@ -1,29 +1,29 @@
-title: Confronting Antisemitism
+title: Confronting White Supremacy
 new-page: true
 is-card: true
-view-if: iron_front_formed == 1 and nazi_urgency >= 3
-on-arrival: confronting_antisemitism += 1; month_actions += 1
-card-image: img/iron_front.png
-tags: party_affairs, antifascism
+view-if: freedmens_bureau_active == 1 and kkk_urgency >= 3
+on-arrival: confronting_racism += 1; month_actions += 1
+card-image: img/Union League.png
+tags: party_affairs, antiracism
 max-visits: 1
 
-= Confronting Antisemitism
+= Confronting White Supremacy
 
-Antisemitism has long been a latent feature of German society, but since the beginning of the economic depression, it has grown to a horrifying extent. The Nazis are the worst of it, but all the right-wing parties are deeply antisemitic. Regarding the SPD specifically, our right-wing enemies love to deploy their racist rhetoric against our many Jewish comrades, magnifying criticism of any minor transgression, and they call the entire SPD a Jewish party. We are a favorite target of their invectives.
+Racial hatred has long festered in American society, but since the end of the Civil War, it has erupted violently. The Ku Klux Klan and Redeemers are the worst offenders, but even moderate Democrats traffic in racist rhetoric. Regarding the Republican Party specifically, our Southern enemies demonize our Black and abolitionist members, magnifying any misstep to paint us as "radical racial agitators." We are a prime target of their propaganda.
 
-- @socialism_of_fools: Antisemitism is the "socialism of fools". We will defeat them with real socialism.
-- @if: Antisemitism is a crisis. Direct the full force of the Iron Front against antisemitism.
-- @all: All Germans will suffer from fascism, not just the Jews. We do not need a separate policy for them.
+- @equal_rights: Racism is the tool of tyrants. We will defeat it with true equality under law.
+- @ul: White supremacy is a crisis. Mobilize the Union League to protect Black communities.
+- @national: All Americans suffer under the Klan's terror—this is not just a Black issue.
 
-@socialism_of_fools
+@equal_rights
 
-The best policy to deal with this sort of irrational, senseless hatred is to ignore it. Few are swayed by racist rhetoric; the best way to combat it is to provide economic security so that people do not turn to antisemitism.
+The best response to this irrational hatred is to rise above it. Most people reject violent racism; our focus should be on securing economic and voting rights to undermine its appeal.
 
-@if
-on-arrival: confronting_antisemitism += 2; sa_strength -= 20; democratization += 1; pacifism += 1; nationalism -= 5*(1-dissent); workers_nsdap -= 6*(1-dissent);
+@ul
+on-arrival: confronting_racism += 2; kkk_strength -= 20; reconstruction_support += 1; reconciliation -= 1; southern_loyalty -= 5*(1-dissent); rural_rep += 6*(1-dissent)
 
-We develop an entire campaign against antisemitism under the auspices of the Iron Front. Hopefully our campaign can sway the workers away from Nazism.
+We organize Union League patrols and public campaigns exposing Klan atrocities. This weakens their grip on fearful communities and pulls poor whites toward our coalition.
 
-@all
+@national
 
-We do not need any special treatment for minorities.
+We must not prioritize racial issues above national unity. The freedmen’s fate is tied to all working Americans.
