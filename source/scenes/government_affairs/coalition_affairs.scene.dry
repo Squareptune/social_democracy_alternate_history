@@ -30,7 +30,7 @@ on-arrival: freedmens_bureau_active = 1; budget -= 1; reconstruction_support += 
 
 The Bureau begins distributing rations in refugee camps. Northern papers praise our humanity, but Southern editors warn of 'pauperizing Negroes.' Freedmen sign labor contracts - some fair, others barely better than slavery.
 
-@radical_bureau:
+@radical_bureau
 subtitle: -2 budget- Land and Liberty Now!
 unavailable-subtitle: [? if budget < 2 : Not enough budget (need 2). ?][? if radical_strength < 25: The rest of our party doesn't support such radical proposals ?]
 choose-if: budget >= 2 and radical_strength >= 25
