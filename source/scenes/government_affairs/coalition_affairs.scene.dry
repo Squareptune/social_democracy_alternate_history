@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 tags: govt_affairs
 on-arrival: month_actions += 1; coalition_affairs_timer = 5
-view-if: republican_majority = 1 and freedmens_bureau_active = 0  
+view-if: rep_majority = 1 and freedmens_bureau_active = 0  
 card-image: img/Freedmen.jpg
 #subtitle: A new idea!
 
