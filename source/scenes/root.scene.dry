@@ -48,13 +48,13 @@ Q.dissent_percent = 5;
 // factions
 Q.factions = ['radical', 'moderate', 'conservative'];
 // should this be normalized to 100%?
-Q.radical_strength = 25;
+Q.radical_strength = 20;
 Q.radical_dissent = 20;
-Q.moderate_strength = 30;
+Q.moderate_strength = 40;
 Q.moderate_dissent = 0;
-Q.conservative_strength = 10;
+Q.conservative_strength = 15;
 Q.conservative_dissent = 5;
-Q.socialism_strength = 5;
+Q.socialism_strength = 2;
 Q.socialist_dissent = 35;
 
 // secret events...
