@@ -5,7 +5,6 @@ function simulateAmendmentRatification() {
   const RATIFICATION_THRESHOLD = Math.ceil(Q.states.length * 0.75);
   let ratifiedStates = 0;
   const stateResults = {};
-
   // Calculate support for each state
   Q.states.forEach(state => {
     const prefix = `${state}_`;
