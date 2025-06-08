@@ -1,0 +1,60 @@
+title: Thaddeus Stevens
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Thaddeus_Stevens.jpg
+view-if: stevens_advisor = 1
+new-page: true
+
+= Thaddeus Stevens
+
+Thaddeus Stevens is leader of the Radical Republicans in the House
+
+- @clear_agenda
+- @constitutional_reform
+- @emergency_fundraising
+- @radicalization
+- @root: Return to main
+
+@clear_agenda
+title: Clear the agenda
+subtitle: Removes all cards from the hand.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: {!
+Q.advisor_action_timer = 6;
+if (Q.difficulty >= 0) {
+    window.dendryUI.dendryEngine.state.currentHands['main'] = [];
+} else {
+    window.dendryUI.dendryEngine.state.currentHands['main.main_easy'] = [];
+}
+!}
+
+All items from our agenda have been cleared.
+
+
+@constitutional_reform_
+title: Constitutional Reform
+subtitle: Pursue new amendments of the inadequate US Constitution.
+choose-if: advisor_action_timer = 0 and rep_majority = 1;
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if rep_majority = 0: We don't even have control of Congress? Why would we waste our time with this. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; constitutional_reform_timer -= 12
+go-to: constitutional_reform
+                                                                                                                        
+@emergency_fundraising
+title: Emergency Fundraising
+view-if: difficulty < 1
+subtitle: An emergency infusion of resources.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; resources += dues
+
+We have gained +[+ dues +] resources.
+
+@radicalization
+title: Radicalizing the Party
+subtitle: Push the party to progressivism.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; radical_strength += 6; radical_dissent -= 8; conservative_dissent += 2
+
+We have increased the strength of the radical faction within the party.
