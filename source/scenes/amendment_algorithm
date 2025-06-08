@@ -1,0 +1,55 @@
+title: Election
+on-arrival: {!
+function simulateAmendmentRatification() {
+  // Threshold for ratification (3/4 of states needed in Reconstruction era)
+  const RATIFICATION_THRESHOLD = Math.ceil(Q.states.length * 0.75);
+  let ratifiedStates = 0;
+  const stateResults = {};
+
+  // Calculate support for each state
+  Q.states.forEach(state => {
+    const prefix = `${state}_`;
+    const totalPopulation = 
+      Q[prefix + 'workers'] + 
+      Q[prefix + 'rural'] + 
+      Q[prefix + 'unemployed'] + 
+      Q[prefix + 'immigrant_laborers'] + 
+      Q[prefix + 'freemen'];
+
+    // Weighted support calculation
+    const support = (
+      (Q[prefix + 'workers'] * Q.workers_rep / 100 +
+      Q[prefix + 'rural'] * Q.rural_rep / 100 +
+      Q[prefix + 'unemployed'] * Q.unemployed_rep / 100 +
+      Q[prefix + 'immigrant_laborers'] * Q.immigrant_laborers_rep / 100 +
+      Q[prefix + 'freemen'] * Q.freemen_rep / 100
+    ) / totalPopulation;
+
+    // Add randomness (5% variance)
+    const randomFactor = 0.95 + Math.random() * 0.1;
+    const adjustedSupport = support * randomFactor;
+
+    // Determine if state ratifies (1) or rejects (0)
+    // Base threshold is 50% + scales with reconstruction_support
+    const threshold = 0.5 - (Q.reconstruction_support / 200);
+    const ratified = adjustedSupport > threshold ? 1 : 0;
+
+    stateResults[state] = ratified;
+    ratifiedStates += ratified;
+  });
+
+  // Final outcome (1 = passed, 0 = failed)
+  const amendmentPassed = ratifiedStates >= RATIFICATION_THRESHOLD ? 1 : 0;
+
+  return {
+    passed: amendmentPassed,
+    stateResults: stateResults,
+    ratifiedCount: ratifiedStates,
+    needed: RATIFICATION_THRESHOLD
+  };
+}
+
+// Example usage:
+const amendmentResult = simulateAmendmentRatification();
+!}
+go-to: jumpScene
