@@ -4,7 +4,7 @@ is-card: true
 view-if: republican_majority == 1 and year >= 1866
 frequency: 25
 on-arrival: month_actions += 1; constitutional_reform_timer += 12; pass_threshold = 0.51; pass_threshold = 0.6 if pro_republic < 65;
-card-image: img/portraits/RadbruchGustav.jpg
+card-image: img/portraits/Thaddeus_Stevens.jpg
 go-to: reforms_menu
 
 = Rewriting the Nation's Charter
@@ -15,7 +15,7 @@ A constitutional amendment requires either a two-thirds supermajority in Congres
 
 @reforms_menu
 
-- @14: Grants citizenship to freedmen and to all people who were born on American soil.
+- @14: Grants citizenship to freedmen and all people born on American soil.
 - @15: Bans racial voting restrictions to combat the southern laws against freedmen.
 - @Blain: Blocks public funds for Catholic schools.
 - @5: Amend the 5th Amendment to allow land confiscation without compensation.
@@ -23,58 +23,47 @@ A constitutional amendment requires either a two-thirds supermajority in Congres
 - @cancel_advisor_action
 
 @14
-subtitle: Turn into a Birthright citizenship system.
-on-arrival: kkk_militancy += 0.1;
+subtitle: Birthright Citizenship & Equal Protection
+choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
+unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
+on-arrival: kkk_militancy += 0.1; constitution_14th = 1; reconstruction_support += 8; radical_strength += 5; moderate_dissent += 3; freemen_rep += 12; rural_dem += 7; immigrant_laborers_dem += 4; middle_class_rep += 3; 
 
-We introduce the amendment on the floors of Congress that states that all persons born or naturalized in the United States are citizens and have equal protection under the law. It also says that the government will not pay for the lost property of slaves to slave owners and the confederacy's debt.
+The amendment passes! ' All persons born...are citizens' is now engraved in constitutional marble. All former slaves are now citizens of the United States and have the same rights as their light-skinned counterparts.
 
 - @reforms_menu: See other reform options.
 
 
 @15
-choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 30 : The Center Party does not trust us enough to support this policy. ?]
-on-arrival: constitutional_reform += 1; electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_dnvp += workers_other*0.4; workers_nsdap += workers_other*0.4; workers_other *= 0.1; new_middle_dvp += new_middle_other*0.3; new_middle_nsdap += new_middle_other*0.3; new_middle_other *= 0.1; old_middle_dvp += 0.3*old_middle_other; old_middle_nsdap += 0.3*old_middle_other; old_middle_dnvp += 0.3*old_middle_other; old_middle_other *= 0.1; rural_dnvp += 0.5*rural_other; rural_nsdap += 0.4*rural_other; rural_other *= 0.1; unemployed_nsdap += 0.3*unemployed_other; unemployed_kpd += 0.4*unemployed_other; unemployed_other *= 0.2; catholics_z += 0.6*catholics_other; catholics_other *= 0.1;
-achievement: verfassungsreform
+subtitle: Birthright Citizenship & Equal Protection
+choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
+unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
+on-arrival: constitution_15th = 1; kkk_militancy += 0.25; reconstruction_support += 10; radical_strength += 8; moderate_dissent += 5; freemen_rep += 15; rural_dem += 10; middle_class_rep += middle_class_other*0.6; middle_class_other *= 0.2; rural_rep += rural_other*0.4; rural_other *= 0.2; immigrant_laborers_rep += immigrant_laborers_other*0.3; immigrant_laborers_other *= 0.3;
 
-# this should result in a redistribution of votes - other parties should not get so many votes anymore. maybe ddp and dvp get a recovery of middle-class votes? or maybe they flow to the others.
+The amendment is ratified! 'The right to vote shall not be denied...on account of race.' Freedmen celebrate while Southern legislatures are already devising method to try to circumvent the amendment. The Klan's night rides intensify.
 
-We have passed a constitutional amendment to increase the electoral threshold to 5%. This is likely to benefit the larger parties and harm the smaller ones.
-
-
+- @reforms_menu: See other reform options.
 
 @Blain
-subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
-on-arrival: {!
-Q.reform_support = Q.spd_normalized + Q.ddp_normalized;
-if (Q.z_relation >= 30) {
-    Q.reform_support += Q.z_normalized - 0.03;
-}
-if (!Q.stresemann_dead) {
-    Q.reform_support += Q.dvp_normalized;
-}
-!}
-view-if: constructive_vonc = 0
+subtitle: Separation between Church and State
+choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
+unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
+on-arrival: blaine_amendment = 1; middle_class_rep += 8; immigrant_laborers_dem += 12; reconstruction_support -= 5; 
 
-[? if z_relation >= 30 : The Weimar Coalition parties, the [+ ddp_name +] and Center Party, support this reform, which will greatly improve the stability of the government. ?] [? if z_relation < 30 : The [+ ddp_name +] supports this reform, but the Center Party does not trust us enough to support the constitutional referendum. ?] The more conservative and radical right-wing parties and the KPD are in opposition, as they seem to relish in the republican system's instability.
+The amendment passes! Public funds are now barred from 'sectarian' (Catholic) schools. While Protestant reformers cheer, Irish immigrants riot in Northern cities, seeing this as targeted persecution.
 
 - @reforms_menu: See other reform options.
 
 @5
-subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
-on-arrival: {!
-Q.reform_support = Q.spd_normalized + Q.ddp_normalized + Q.kpd_normalized;
-if (Q.z_relation > 49 && (Q.president == "Hindenburg" || Q.president == "Eckener")) {
-    Q.reform_support += Q.z_normalized;
-} else if (Q.president == "Braun") {
-    Q.reform_support += Q.z_normalized - 0.03;
-}
-!}
-view-if: presidential_powers = 0
+subtitle: Radical Land Reform: Amend the 5th!
+choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
+unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
+on-arrival: constitution_5th = 1; conservative_dissent += 10; radical_dissent -= 5; freemen_rep += 0.2 * freemen_other; freemen_other *= 0.8; conservative_strength -= 2; socialism_strength += 3; socialist_dissent -= 5; rural_rep += 5; rural_dem -= 4; unemployed_other += 5; kkk_strength += 3; kkk_militancy += 0.1;
 
-The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments.
+The revised 5th Amendment has passed Congress and been ratified by the states. The "just compensation" clause has been struck from the Constitution—opening the door for uncompensated land confiscation from former Confederates.
 
-The KPD is in favor of this reform, having been victims of the *Reichsexekution* in the past (when KPD-supported state governments in Thuringia and Saxony were removed). The democrats of the [+ ddp_name +] also support this. [? if president == "Hindenburg": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to Hindenburg. ?] [? if z_relation <= 49 and president == "Hindenburg" : Thus, the Center Party has been influenced to oppose these reforms. ?] [? if z_relation > 49 and president == "Hindenburg" : Despite this, the Center Party supports the proposed reform. ?] [? if president == "Braun" : The Center Party supports this reform. ?]
+Radical Republicans hail the amendment as the cornerstone of true Reconstruction. Freedmen's advocates now push for aggressive redistribution—"forty acres and a mule" could become the law of the land.
+
+Southern elites are outraged, denouncing the amendment as tyranny. The path ahead will be turbulent, but this is a revolution in land ownership and federal power.
 
 - @reforms_menu: See other reform options.
 
