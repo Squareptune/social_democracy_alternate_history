@@ -1,59 +1,32 @@
 title: Constitutional Reform
 new-page: true
 is-card: true
-view-if: spd_in_government = 1 and justice_minister_party = "SPD" and constitutional_reform_timer = 0 and judicial_reform >= 4 and neorevisionism and ((in_weimar_coalition) or (in_spd_majority) or (in_left_front) or (in_popular_front)) and constitutional_reform < 3
+view-if: republican_majority == 1 and year >= 1866
 frequency: 25
 on-arrival: month_actions += 1; constitutional_reform_timer += 12; pass_threshold = 0.51; pass_threshold = 0.6 if pro_republic < 65;
 card-image: img/portraits/RadbruchGustav.jpg
 go-to: reforms_menu
-tags: govt_affairs, cabinet
-#subtitle: Major changes to government.
 
-# technically you could do some trickery to get a 2/3 quorum in the Reichstag by stopping some people from attending... if the NSDAP is boycotting the Reichstag, or if the NSDAP or DNVP are banned in the aftermath of a coup atempt...
+= Rewriting the Nation's Charter
 
-# alternatively, a constitutional referendum can be initiated, that requires a simple majority of voters to pass (as I understand article 76). This should depend on support for the republic and for democracy, and the relationships with the other parties (more similar to the presidential election).
+Many radical factions of the republican party aim to amend the Constitution to push through their agenda and speed up the reconstruction process.
 
-= Constitutional Reform
-
-# the ideas for constitutional reform here are based on the bundesrepublik basic law... I'm not sure if it's totally realistic to what someone like Mierendorff would've wanted.
-
-Many neorevisionists consider the Weimar Constitution to be inadequate. They believe that the clauses of the constitution are in part responsible for the instability of the country, and must change in order to build a more stable democratic republic. Ideas from both socialists and liberals
-
-A constitutional reform requires either a two-thirds supermajority in the Reichstag, or a constitutional referendum with support from a majority of the electorate. If we do not have a supermajority in the Reichstag, we must be assured of strong support from the other parties for the constitutional referendum.
+A constitutional amendment requires either a two-thirds supermajority in Congress as well as three-fourths support of all the states.
 
 @reforms_menu
 
-- @vote_threshold: Change the vote threshold.
-- @constructive_vonc: Ban non-constructive votes of no confidence.
-- @presidential_powers: Reduce presidential powers.
-- @as_is: Do not pursue constitutional reform.
+- @14: Grants citizenship to freedmen and to all people who were born on American soil.
+- @15: Bans racial voting restrictions to combat the southern laws against freedmen.
+- @Blain: Blocks public funds for Catholic schools.
+- @5: Amend the 5th Amendment to allow land confiscation without compensation.
 - @easy_discard
 - @cancel_advisor_action
-#- @constitutional_bans: Allow the banning of anti-constitutional parties.
 
-@vote_threshold
-subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
-on-arrival: {!
-Q.reform_support = Q.spd_normalized;
-if (Q.z_relation > 30) {
-    Q.reform_support += Q.z_normalized - 0.03;
-}
-if (Q.kpd_relation > 50 && Q.kpd_normalized >= 0.1) {
-    Q.reform_support += Q.kpd_normalized;
-}
-if (Q.nsdap_normalized >= 0.2 ) {
-    Q.reform_support += Q.nsdap_normalized;
-}
-!}
-view-if: electoral_threshold = 0
+@14
+subtitle: Turn into a Birthright citizenship system.
+on-arrival: kkk_militancy += 0.1;
 
-# The left is opposed to this.
-
-Some political thinkers believe that the proliferation of minor parties is responsible for the instability of the republic. They believe that a higher electoral threshold will reduce the influence of small radical parties. Parties that win a plurality in a constituency will maintain their representation, a gift to regional parties such as the BVP. 
-
-The smaller parties will obviously oppose this reform. [? if z_relation > 30 : The Center Party supports this reform, while their BVP partners oppose it. ?] [? if kpd_relation > 50 and kpd_normalized >= 0.1 : Perhaps surprisingly, the KPD supports this reform. ?] [? if nsdap_normalized >= 0.2 : The NSDAP supports this reform, as they believe they have something to gain. ?]
-
-The SPD Left opposes this change, as they believe it to be anti-democratic.
+We introduce the amendment on the floors of Congress that states that all persons born or naturalized in the United States are citizens and have equal protection under the law. It also says that the government will not pay for the lost property of slaves to slave owners and the confederacy's debt.
 
 - @vote_threshold_2: Call a constitutional referendum to pass the reform!
 - @reforms_menu: See other reform options.
