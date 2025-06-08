@@ -28,11 +28,10 @@ on-arrival: kkk_militancy += 0.1;
 
 We introduce the amendment on the floors of Congress that states that all persons born or naturalized in the United States are citizens and have equal protection under the law. It also says that the government will not pay for the lost property of slaves to slave owners and the confederacy's debt.
 
-- @vote_threshold_2: Call a constitutional referendum to pass the reform!
 - @reforms_menu: See other reform options.
 
 
-@vote_threshold_2
+@15
 choose-if: reform_support >= pass_threshold
 unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 30 : The Center Party does not trust us enough to support this policy. ?]
 on-arrival: constitutional_reform += 1; electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_dnvp += workers_other*0.4; workers_nsdap += workers_other*0.4; workers_other *= 0.1; new_middle_dvp += new_middle_other*0.3; new_middle_nsdap += new_middle_other*0.3; new_middle_other *= 0.1; old_middle_dvp += 0.3*old_middle_other; old_middle_nsdap += 0.3*old_middle_other; old_middle_dnvp += 0.3*old_middle_other; old_middle_other *= 0.1; rural_dnvp += 0.5*rural_other; rural_nsdap += 0.4*rural_other; rural_other *= 0.1; unemployed_nsdap += 0.3*unemployed_other; unemployed_kpd += 0.4*unemployed_other; unemployed_other *= 0.2; catholics_z += 0.6*catholics_other; catholics_other *= 0.1;
@@ -44,7 +43,7 @@ We have passed a constitutional amendment to increase the electoral threshold to
 
 
 
-@constructive_vonc
+@Blain
 subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized + Q.ddp_normalized;
@@ -59,18 +58,9 @@ view-if: constructive_vonc = 0
 
 [? if z_relation >= 30 : The Weimar Coalition parties, the [+ ddp_name +] and Center Party, support this reform, which will greatly improve the stability of the government. ?] [? if z_relation < 30 : The [+ ddp_name +] supports this reform, but the Center Party does not trust us enough to support the constitutional referendum. ?] The more conservative and radical right-wing parties and the KPD are in opposition, as they seem to relish in the republican system's instability.
 
-- @constructive_vonc_2: Call a constitutional referendum to pass the reform!
 - @reforms_menu: See other reform options.
 
-@constructive_vonc_2
-choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 30 : The Center Party does not trust us enough to support this policy. ?]
-on-arrival: constitutional_reform += 1; constructive_vonc = 1
-achievement: verfassungsreform
-
-We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
-
-@presidential_powers
+@5
 subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized + Q.ddp_normalized + Q.kpd_normalized;
@@ -86,23 +76,7 @@ The wide-ranging presidential powers promised by the constitution are a potentia
 
 The KPD is in favor of this reform, having been victims of the *Reichsexekution* in the past (when KPD-supported state governments in Thuringia and Saxony were removed). The democrats of the [+ ddp_name +] also support this. [? if president == "Hindenburg": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to Hindenburg. ?] [? if z_relation <= 49 and president == "Hindenburg" : Thus, the Center Party has been influenced to oppose these reforms. ?] [? if z_relation > 49 and president == "Hindenburg" : Despite this, the Center Party supports the proposed reform. ?] [? if president == "Braun" : The Center Party supports this reform. ?]
 
-- @presidential_powers_2: Call a constitutional referendum to pass the reform!
 - @reforms_menu: See other reform options.
-
-@presidential_powers_2
-choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 49 and president != "Braun" : The Center Party does not trust us enough to support this policy. ?]
-on-arrival: constitutional_reform += 1; presidential_powers = 1
-achievement: verfassungsreform
-
-We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
-
-
-
-@constitutional_bans
-
-# Temporarily disable this for now - how would this interact with the already-extant law for the protection of the republic? This 
-
 
 @as_is
 go-to: root
