@@ -44,7 +44,7 @@ Q.dues = 2;
 // overall dissent reduces every increase in party support.
 Q.dissent = 0.05;
 Q.dissent_percent = 5;
-
+Q.amendmentResult = 0;
 // factions
 Q.factions = ['radical', 'moderate', 'conservative'];
 // should this be normalized to 100%?
