@@ -24,6 +24,8 @@ Republican position: [? if rep_majority = 1 : Majority government ?][? if rep_ma
 
 Internal dissent: [+ dissent_percent : dissent +]
 
+State 3/4: [+ amendmentResult +]
+
 = Government
 
 President: [+ president +]
