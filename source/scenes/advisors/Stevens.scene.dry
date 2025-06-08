@@ -35,7 +35,7 @@ All items from our agenda have been cleared.
 @constitutional_reform_
 title: Constitutional Reform
 subtitle: Pursue new amendments of the inadequate US Constitution.
-choose-if: advisor_action_timer = 0 and rep_majority = 1;
+choose-if: advisor_action_timer = 0 and rep_majority = 1
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if rep_majority = 0: We don't even have control of Congress? Why would we waste our time with this. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; constitutional_reform_timer -= 12
 go-to: constitutional_reform
