@@ -33,7 +33,7 @@ on-arrival: conservative_strength += 4; radical_dissent += 5; freemen_rep -= 3; 
 We back Johnson’s call for national healing and emphasize that the war is over. But many of our supporters see this as capitulation to the very men who tried to destroy the Union.
 
 @radicalize
-choose-if: Q.radical_strength >= 30
+choose-if: radical_strength >= 30
 unavailable-subtitle: The Radical faction is not yet strong enough to mount a challenge.
 on-arrival: radical_strength += 8; moderate_dissent += 5; freemen_rep += 4; workers_rep += 2; unemployed_other += 2; middle_class_rep -= 2
 
