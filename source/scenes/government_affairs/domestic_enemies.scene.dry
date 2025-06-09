@@ -70,8 +70,3 @@ view-if: state_militia_formed == 1
 on-arrival: state_militia_formed = 0; state_militia_strength = 0; Union_League_strength -= 20; Us_police_strength -= 10; moderate_support += 1; dem_relation += 3; rural_dem -= 1; resource += 1
 
 To avoid further escalation, we order the demobilization of Republican-aligned militias in the South. This eases tensions — but leaves our allies more vulnerable.
-
-@root
-Take no immediate action.
-
-We choose not to escalate our involvement in the Southern situation for now. This may allow local authorities to act on their own — for better or worse.
