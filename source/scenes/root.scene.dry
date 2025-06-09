@@ -109,12 +109,16 @@ Q.hindenburg_relation = 25;
 Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
 Q.state_militia_strength = 0
+Q.state_militia_formed = 0
 Q.civil_war = 1;
 Q.Us_police_strength = 20;
 Q.Us_police_militancy = 1;
 Q.Us_police_loyalty = 0.7;
 Q.Union_League_strength = 60;
 Q.Union_League_militancy = 0.24;
+Q.occupation = 0;
+Q.kkk_banned = 0;
+
 
 // strength includes actual military and de facto reserves?
 Q.army_strength = 1000;
@@ -609,7 +613,7 @@ Q.coalition_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;
-Q.sa_ban_timer = 0;
+Q.kkk_ban_timer = 0;
 Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
