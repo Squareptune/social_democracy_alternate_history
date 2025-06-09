@@ -1,0 +1,40 @@
+title: A Pardon Too Far
+subtitle: Johnson’s mercy infuriates the Radicals.
+view-if: year = 1865 and month >= 5 and month <= 12 and president = Johnson
+max-visits: 1
+tags: event
+new-page: true
+face-image: img/All_Quiet.jpg
+
+= A Pardon Too Far
+
+President Andrew Johnson issued sweeping presidential pardons to thousands of former Confederate officials, officers, and wealthy planters. Declaring that "amnesty and reconciliation" are the key to restoring the Union, Johnson has unilaterally restored civil and property rights to large numbers of unreconstructed Southern elites.
+
+The move has sparked fury among Radical Republicans, who view the ex-Confederates as traitors who should be punished, not empowered. Johnson insists he's preserving peace. But many in our party suspect he's laying the groundwork for the return of the Old South.
+
+- @condemn: Publicly denounce Johnson’s pardons.
+- @caution: Quietly express unease.
+- @endorse: Support Johnson’s call for reconciliation.
+- @radicalize: Use this to rally the Radical wing.
+
+@condemn
+on-arrival: radical_strength += 5; moderate_dissent += 3; conservative_dissent += 4; freemen_rep += 2; workers_rep += 2; rural_dem += 1; rural_rep -= 1
+
+We denounce the pardons as a whitewashing of treason. This wins support from Black Republicans and Union veterans, but deepens tensions inside the party and with Johnson.
+
+@caution
+on-arrival: radical_dissent += 2; moderate_strength += 1; conservative_dissent -= 1; middle_class_rep -= 1; rural_rep += 1
+
+We tread carefully, voicing mild concern but urging unity. This placates the President, but frustrates our Radical allies.
+
+@endorse
+on-arrival: conservative_strength += 4; radical_dissent += 5; freemen_rep -= 3; rural_rep += 2; rural_dem -= 1
+
+We back Johnson’s call for national healing and emphasize that the war is over. But many of our supporters see this as capitulation to the very men who tried to destroy the Union.
+
+@radicalize
+choose-if: Q.radical_strength >= 30
+unavailable-subtitle: The Radical faction is not yet strong enough to mount a challenge.
+on-arrival: radical_strength += 8; moderate_dissent += 5; freemen_rep += 4; workers_rep += 2; unemployed_other += 2; middle_class_rep -= 2
+
+We launch a full-throated campaign against Johnson’s appeasement of the slaveocracy. Radical newspapers erupt, and the demand for Black citizenship and loyal governance grows louder. The party begins to split—into those who want justice, and those who want peace.
