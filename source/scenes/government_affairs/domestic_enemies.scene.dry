@@ -11,11 +11,11 @@ With Republican control of Congress, we can take a more assertive role in managi
 
 - @form_republican_militias
 - @expand_union_league
-- @deploy_federal_troops
-- @crackdown_kkk
-- @persecute_kkk
-- @demobilize_state_militias
-- @reinstate_state_militias
+- @deploy_federal_troops: Send troops down south!
+- @crackdown_kkk: Crackdown on the KKK's violence against our supporters!
+- @persecute_kkk: Persecute the leaders of the Ku Klux Klan!
+- @demobilize_state_militias: Demobilize the newly formed state_militias!
+- @reinstate_state_militias: Allow Republican controlled Southern states to reform their militias!
 - @root: Take no action.
 
 @form_republican_militias
@@ -28,6 +28,7 @@ on-arrival: state_militia_formed = 1; state_militia_strength = 50; Union_League_
 We authorize the formation of Republican-aligned militias in the South, drawn from loyal Unionists and Black veterans. Their mission is to defend Reconstruction and suppress paramilitary violence.
 
 @expand_union_league
+title: Expand the Union League
 view-if: Union_League_strength < 100
 choose-if: resource >= 0.6
 unavailable-subtitle: We don't have the funds for this.
