@@ -1,6 +1,6 @@
 title: A Pardon Too Far
 subtitle: Johnson’s mercy infuriates the Radicals.
-view-if: year = 1865 and month >= 5 and month <= 12 and president = Johnson
+view-if: year = 1865 and month = 5
 max-visits: 1
 tags: event
 new-page: true
