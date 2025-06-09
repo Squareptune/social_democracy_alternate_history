@@ -15,8 +15,6 @@ As with the state police units and the Reichswehr, the internal police tends to 
 - @loyalty: Improve the loyalty of the Interior Ministry forces.
 - @investigate_corruption: Investigate corruption by big businesses.
 - @investigate_far_right: Investigate illegal activity among the far right.
-- @domestic_enemies: Investigate or ban our domestic enemies.
-- @deport_hitler
 - @root: Take no action for now.
 - @easy_discard
 - @cancel_advisor_action
