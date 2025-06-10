@@ -6,7 +6,6 @@ view-if: international_relations_timer <= 0
 on-arrival: month_actions += 1; international_relations_timer += 12;
 card-image: img/international.jpg
 max-visits: 4
-#subtitle: Republican connections abroad
 
 As the Republican Party emerges as a force for liberty and union, we have a chance to build relationships with foreign allies who share our ideals—radicals, abolitionists, and republicans across the globe.
 
@@ -22,7 +21,7 @@ As the Republican Party emerges as a force for liberty and union, we have a chan
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; europe_relation += 1; moderate_strength += 1;
+on-arrival: resources -= 1; europe_relation += 1; moderate_strength += 1; liberal_strength += 2;
 
 British liberals and abolitionist networks have long supported our cause. Sustaining these ties bolsters the party’s moderate wing and increases our standing abroad.
 
@@ -31,7 +30,7 @@ subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 audio: shuffle music/communist/workers_of_vienna_normalized.mp3
-on-arrival: resources -= 1; radical_strength += 1; europe_relation += 1
+on-arrival: resources -= 1; radical_strength += 1; europe_relation += 1; liberal_strength += 1;
 
 The ideals of 1848 live on in the German states. Their exiled leaders now influence American politics, and we may, in turn, encourage their continued push for liberty in Europe.
 
@@ -39,7 +38,7 @@ The ideals of 1848 live on in the German states. Their exiled leaders now influe
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; 
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 1;
 
 The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symbolic ties strengthens our claim to moral leadership in the post-slavery world—even if few in Congress care to notice.
 
@@ -47,10 +46,9 @@ The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symb
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 2;
 
 Though France has slid back under imperial rule, republican sentiment remains strong. Our engagement signals that the Republican Party is part of a global democracy movement.
-
 
 @reduce
 
