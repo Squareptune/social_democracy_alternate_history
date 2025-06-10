@@ -21,7 +21,7 @@ Removing advisors will increase dissent from their faction of the party, while s
 
 @rm_main
 title: Remove advisors.
-tags: radical_advisor, moderate_advisor, conservative_advisor, socialist_advisor, nonfactional_advisor
+tags: radical_advisor, moderate_advisor, conservative_advisor, liberal_advisor, nonfactional_advisor
 frequency: 1
 
 - #remove_advisor
@@ -51,14 +51,14 @@ go-to: advisor_menu
 
 @advisor_menu
 title: Add other advisors.
-tags: radical_advisor, moderate_advisor, conservative_advisor, socialist_advisor, nonfactional_advisor
+tags: radical_advisor, moderate_advisor, conservative_advisor, liberal_advisor, nonfactional_advisor
 frequency: 1
 
 
 - @Radical: Add Radical
 - @Moderate: Add Moderate
 - @Conservative: Add Conservative
-- @Socialist: Add Socialist
+- @liberal: Add Liberal
 - @nonfactional: Add non-factional advisors
 - @rm_main: Remove advisors instead.
 - @remove_none: Stop changing advisors.
@@ -78,10 +78,10 @@ view-if: n_advisors < 3
 
 - #conservative_advisor
 
-@Socialist
+@liberal
 view-if: socialism = 1 and n_advisors < 3
 
-- #socialist_advisor
+- #liberal_advisor
 
 @nonfactional
 view-if: n_advisors < 3
