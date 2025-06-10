@@ -23,21 +23,21 @@ The Republican Party maintains a growing network of newspapers and loyal publica
 @commercial
 title: Commercialize the Republican press
 subtitle: We broaden our appeal, risking ideological clarity.
-on-arrival: resources += 1; europe_relations += 1; conservative_strength += 4; moderate_strength += 2; radical_dissent += 5; socialism_strength -= 1; middle_class_rep += 4; immigrant_laborers_rep += 3; rural_rep += 2; workers_rep += 1
+on-arrival: resources += 1; europe_relations += 1; conservative_strength += 4; moderate_strength += 2; liberal_strength += 2; radical_dissent += 5; socialism_strength -= 1; middle_class_rep += 4; immigrant_laborers_rep += 3; rural_rep += 2; workers_rep += 1
 
 Our newspapers shift toward patriotic business owners and loyal moderates. The party brings in more funds, but radicals decry the dilution of our Reconstruction values.
 
 @campaign
 title: Focus our press on campaigning
 subtitle: Target loyal Republican voters and shore up our base.
-on-arrival: moderate_strength += 3; radical_strength += 1; conservative_strength += 1; dissent -= 2; workers_rep += 3; middle_class_rep += 2; rural_rep += 1; freemen_rep += 2
+on-arrival: moderate_strength += 3; liberal_strength += 2; radical_strength += 1; conservative_strength += 1; dissent -= 2; workers_rep += 3; middle_class_rep += 2; rural_rep += 1; freemen_rep += 2
 
 Election coverage strengthens enthusiasm among Republicans and mobilizes our base across the North and border states.
 
 @ideological
 title: Promote vibrant internal debate
 subtitle: Let all factions express themselves through the press.
-on-arrival: radical_dissent -= 5; moderate_dissent -= 5; conservative_dissent -= 5; workers_rep += 1; middle_class_rep += 1; freemen_rep += 1
+on-arrival: radical_dissent -= 5; moderate_dissent -= 5; conservative_dissent -= 5; liberal_dissent -= 5; workers_rep += 1; middle_class_rep += 1; freemen_rep += 1
 
 We allow the party press to become a forum for ideas and factional debates. It risks some confusion in messaging, but tensions ease within the coalition.
 
@@ -46,7 +46,7 @@ title: Support Freedmen’s newspapers and editors
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; radical_strength += 3; socialism_strength += 2; europe_relations += 1; freemen_rep += 5; rural_rep -= 1; immigrant_laborers_rep -= 1
+on-arrival: resources -= 1; radical_strength += 3; socialism_strength += 2; europe_relations += 1; liberal_strength += 1; freemen_rep += 5; rural_rep -= 1; immigrant_laborers_rep -= 1
 
 We invest in Black-led Republican papers across the South. These serve as vital tools for political education and uplift, even under threats of violence.
 
@@ -55,7 +55,7 @@ title: Build up press networks in Northern cities
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 3; conservative_strength += 1; europe_relations += 1; middle_class_rep += 4; workers_rep += 2; immigrant_laborers_rep += 2
+on-arrival: resources -= 1; moderate_strength += 3; liberal_strength += 2; conservative_strength += 1; europe_relations += 1; middle_class_rep += 4; workers_rep += 2; immigrant_laborers_rep += 2
 
 Our Northern papers emphasize peace, prosperity, and the Union cause. This strategy appeals to middle-class voters, war veterans, and businessmen.
 
@@ -64,6 +64,6 @@ title: Expand Republican messaging into border states
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 2; conservative_strength += 2; europe_relations += 1; radical_dissent += 3; rural_rep += 3; rural_dem -= 2; freemen_rep += 1
+on-arrival: resources -= 1; moderate_strength += 2; conservative_strength += 2; liberal_strength += 1; europe_relations += 1; radical_dissent += 3; rural_rep += 3; rural_dem -= 2; freemen_rep += 1
 
 By promoting cautious moderation in Kentucky, Missouri, and Tennessee, we hope to appeal to loyal Unionists and former Whigs. But this comes at a cost with more radical party elements.
