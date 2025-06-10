@@ -16,14 +16,16 @@ Racial hatred has long festered in American society, but since the end of the Ci
 - @national: All Americans suffer under the Klan's terror—this is not just a Black issue.
 
 @equal_rights
+on-arrival: liberal_strength += 5; liberal_dissent -= 3; radical_strength += 2; conservative_dissent += 1
 
 The best response to this irrational hatred is to rise above it. Most people reject violent racism; our focus should be on securing economic and voting rights to undermine its appeal.
 
 @ul
-on-arrival: confronting_racism += 2; kkk_strength -= 20; reconstruction_support += 1; reconciliation -= 1; southern_loyalty -= 5*(1-dissent); rural_rep += 6*(1-dissent)
+on-arrival: confronting_racism += 2; kkk_strength -= 20; reconstruction_support += 1; reconciliation -= 1; southern_loyalty -= 5*(1-dissent); rural_rep += 6*(1-dissent); liberal_strength += 3; radical_strength += 4; liberal_dissent -= 2
 
 We organize Union League patrols and public campaigns exposing Klan atrocities. This weakens their grip on fearful communities and pulls poor whites toward our coalition.
 
 @national
+on-arrival: moderate_strength += 3; liberal_dissent += 2; conservative_dissent -= 1; radical_dissent -= 1
 
 We must not prioritize racial issues above national unity. The freedmen’s fate is tied to all working Americans.
