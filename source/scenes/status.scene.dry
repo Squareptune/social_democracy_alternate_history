@@ -72,7 +72,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 {!<span class="tooltip-text" title="Oppose the more ideas of the Radical Republicans and sought a less extreme path for southern reintegration">Conservative</span>!} strength: [+ conservative_strength : strength +], dissent: [+ conservative_dissent : dissent +]
 
-[? if socialism = 1 : {!<span class="tooltip-text" title="Advocate for radical economic reforms, collective ownership, and class struggle beyond the mainstream Republican platform.">Marxist</span>!} strength: [+ socialism_strength : strength +], dissent: [+ socialist_dissent : dissent +]?]
+{!<span class="tooltip-text" title="Support civil liberties and free markets, but are skeptical of strong federal enforcement of racial equality or occupation policies">Liberal</span>!} strength: [+ liberal_strength : strength +], dissent: [+ liberal_dissent : dissent +]
 
 @paramilitaries
 
