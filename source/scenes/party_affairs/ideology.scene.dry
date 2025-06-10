@@ -6,7 +6,6 @@ view-if: ideology_timer = 0
 on-arrival: month_actions += 1; old_ideology = ideology; ideology_timer = 18
 card-image: img/ideology.jpg
 max-visits: 3
-#subtitle: Setting the party's ideological direction.
 
 = Questions of Ideology
 
@@ -16,8 +15,8 @@ Our party is divided among competing ideological visions for the future of the R
 
 - @radical_republican: Total equality, Southern reconstruction, and popular democracy must be pursued with vigour.
 - @moderate_republican: A moderate course will restore national unity without further division.
-- @labor_republican: The party must focus on workers’ rights, land reform, and economic justice.
-- @bourgeois_republican: Strengthening institutions, markets, and constitutional reform should guide us.
+- @conservative_republican: Preserve tradition and order, while slowly guiding the South toward reform.
+- @liberal_republican: Support constitutionalism, institutions, and gradual liberal reforms.
 - @easy_discard
 
 @radical_republican  
@@ -27,7 +26,7 @@ if (Q.ideology && Q.ideology != "radical") {
 }  
 !}  
 go-to: changed if changed = 1
-on-departure: ideology = "radical"; radical_strength += 10; freemen_rep += 3; radical_dissent -= 5; moderate_dissent += 5; rural_other += 2;
+on-departure: ideology = "radical"; radical_strength += 10; freemen_rep += 3; radical_dissent -= 5; moderate_dissent += 5; rural_other += 2; liberal_dissent += 2; conservative_dissent += 3;
 
 Radical Republicans support full Reconstruction, racial equality, and a democratic revolution in the South.
 
@@ -38,33 +37,33 @@ if (Q.ideology && Q.ideology != "moderate") {
 }  
 !}  
 go-to: changed if changed = 1  
-on-departure: ideology = "moderate"; moderate_strength += 10; moderate_dissent -= 5; radical_dissent += 5; conservative_dissent -= 2; middle_class_rep += 3; rural_rep += 2; freemen_rep -= 2;
+on-departure: ideology = "moderate"; moderate_strength += 10; moderate_dissent -= 5; radical_dissent += 5; conservative_dissent -= 2; middle_class_rep += 3; rural_rep += 2; freemen_rep -= 2; liberal_strength += 3; liberal_dissent -= 2;
 
 Moderates hope to reconcile North and South with a more cautious approach, avoiding excess upheaval.
 
-@labor_republican
+@conservative_republican
 on-arrival: {!
-if (Q.ideology && Q.ideology != "labor") {
+if (Q.ideology && Q.ideology != "conservative") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure:ideology = "labor"; socialism_strength += 5; socialist_dissent -= 5; radical_dissent -= 2; workers_other += 3; immigrant_laborers_other += 2; unemployed_other += 3; freemen_other += 2; middle_class_other += 1; labor_support += 1;
+on-departure: ideology = "conservative"; conservative_strength += 10; conservative_dissent -= 5; radical_dissent += 5; liberal_dissent += 3; freemen_rep -= 2; rural_rep += 2; middle_class_rep += 1;
 
-The republicans that support the workers emphasise the plight of Northern workers and freedmen alike, supporting job creation and land redistribution.
+Conservatives seek to preserve order and stability, prioritizing unity over rapid social transformation.
 
-@bourgeois_republican
+@liberal_republican
 on-arrival: {!
-if (Q.ideology && Q.ideology != "reformist") {
+if (Q.ideology && Q.ideology != "liberal") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "bourgeois"; conservative_strength += 10; middle_class_rep += 3;
+on-departure: ideology = "liberal"; liberal_strength += 10; liberal_dissent -= 5; conservative_dissent += 3; middle_class_rep += 3; moderate_dissent -= 2; radical_dissent += 2;
 
-Liberal conservatives prioritise economic stability and constitutional order.
+Liberals favor institutions, civil liberties, constitutional reforms, and a rules-based path to justice and equality.
 
 @changed  
-on-arrival: radical_dissent += 5; moderate_dissent += 5; conservative_dissent += 5; socialist_dissent += 5;
+on-arrival: radical_dissent += 5; moderate_dissent += 5; conservative_dissent += 5; liberal_dissent += 4;
 
 Changing ideological course has unsettled various factions.
