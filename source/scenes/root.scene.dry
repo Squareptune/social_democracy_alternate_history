@@ -54,6 +54,8 @@ Q.moderate_strength = 40;
 Q.moderate_dissent = 0;
 Q.conservative_strength = 15;
 Q.conservative_dissent = 5;
+Q.liberal_strength = 5;
+Q.liberal_dissent = 10;
 
 // secret events...
 Q.unions_independent = 0;
