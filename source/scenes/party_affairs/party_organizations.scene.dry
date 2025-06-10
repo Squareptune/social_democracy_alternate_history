@@ -24,7 +24,7 @@ Political parties in America are more than just electoral machines—they are hu
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; media_timer = 0; middle_class_rep += 2; workers_rep += 1;
+on-arrival: resources -= 1; media_timer = 0; middle_class_rep += 2; workers_rep += 1; liberal_strength += 2; liberal_dissent -= 1;
 go-to: media
 
 We invest in loyal newspapers and pamphleteers to bolster our political messaging. As the saying goes: control the ink, control the narrative.
@@ -33,7 +33,7 @@ We invest in loyal newspapers and pamphleteers to bolster our political messagin
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; freemen_rep += 3; unemployed_rep += 3; rural_rep += 1; radical_dissent -= 5;
+on-arrival: resources -= 1; freemen_rep += 3; unemployed_rep += 3; rural_rep += 1; radical_dissent -= 5; liberal_strength += 1; liberal_dissent -= 2;
 
 Freedmen, veterans, and the poor look to us, not for handouts, but for dignity. Through local aid societies and the Freedmen’s Bureau, we renew their faith in our party and its promises.
 
@@ -41,7 +41,7 @@ Freedmen, veterans, and the poor look to us, not for handouts, but for dignity. 
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; cultural_organizations += 1; radical_dissent -= 6; moderate_dissent -= 6; conservative_dissent -= 4;
+on-arrival: resources -= 1; cultural_organizations += 1; radical_dissent -= 6; moderate_dissent -= 6; conservative_dissent -= 4; liberal_strength += 3; liberal_dissent -= 3;
 
 Education, oration, and loyalist clubs provide spiritual glue in a nation torn by war. These civic efforts show that the Republican Party stands for more than elections—it stands for civilization.
 
@@ -49,7 +49,7 @@ Education, oration, and loyalist clubs provide spiritual glue in a nation torn b
 choose-if: resources > 0  
 unavailable-subtitle: Not enough resources.  
 subtitle: -1 resources  
-on-arrival: resources -= 1; rural_rep += 2; freemen_rep += 2; conservative_dissent -= 3;
+on-arrival: resources -= 1; rural_rep += 2; freemen_rep += 2; conservative_dissent -= 3; liberal_dissent -= 1;
 
 We bolster Union veterans’ lodges and black militias alike—groups that remain the last line of defense for Republican government in the South.
 
@@ -57,7 +57,7 @@ We bolster Union veterans’ lodges and black militias alike—groups that remai
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; youth_clubs += 1; radical_strength += 5; moderate_strength += 2; workers_rep += 2; radical_dissent -= 2;
+on-arrival: resources -= 1; youth_clubs += 1; radical_strength += 5; moderate_strength += 2; workers_rep += 2; liberal_strength += 2; radical_dissent -= 2; liberal_dissent -= 2;
 
 When given purpose, young Republicans—apprentices, veterans, and civic-minded youth—flock to our cause. But this next generation often pushes for deeper Reconstruction and more radical change.
 
