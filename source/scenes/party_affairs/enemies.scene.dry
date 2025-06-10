@@ -6,7 +6,7 @@ max-visits: 3
 is-card: true
 card-image: img/KKK.webp
 tags: party_affairs
- 
+
 = Choosing our enemies
 
 In our media and campaign materials, who should we consider as our main opponents?
@@ -20,21 +20,21 @@ In our media and campaign materials, who should we consider as our main opponent
 - @easy_discard
 
 @confederates
-on-arrival: enemies = "confederates"; radical_strength += 5; moderate_strength += 5; conservative_dissent += 5; workers_dem -= 2; middle_class_rep -= 2; freemen_rep -= 2;
+on-arrival: enemies = "confederates"; radical_strength += 5; moderate_strength += 5; conservative_dissent += 5; workers_dem -= 2; middle_class_rep -= 2; freemen_rep -= 2; liberal_dissent += 2
 
 Aiming our focus at the former Confederates amongst our midst is popular among the entire party, although the conservative republicans are worried that we are too aggressive against a now defeated enemy.
 
 @KKK
-on-arrival: enemies = "KKK"; radical_strength += 5; radical_dissent -= 5; moderate_dissent += 5; rural_dem -= 3; unemployed_dem -= 3;
+on-arrival: enemies = "KKK"; radical_strength += 5; radical_dissent -= 5; moderate_dissent += 5; rural_dem -= 3; unemployed_dem -= 3; liberal_strength += 2; liberal_dissent -= 1
 
 [? if kkk_strength < 10000 or year < 1867 : The southern paramilitary groups are currently small and barely have any members. Some question our choices. ?][? if kkk_strength >= 10000 or year >= 1867 : The KKK and others are the biggest obstacle for our black supporter. ?]
 
 @imma
-on-arrival: enemies = "immigrants"; conservative_strength += 5; workers_nsdap -= 4; immigrant_laborers_rep -= 5; workers_rep += 3;
+on-arrival: enemies = "immigrants"; conservative_strength += 5; workers_nsdap -= 4; immigrant_laborers_rep -= 5; workers_rep += 3; liberal_dissent += 3; liberal_strength -= 2
 
 Despite having bigger priorities at the moment, we decide to go after the immigrants who pose to steal the jobs of the northern workers.
 
 @bourgeois
-on-arrival: enemies = "bourgeois"; socialism_strength += 8; socialist_dissent -= 5; conservative_dissent += 8; workers_dem -= 3; workers_other -= 5;
+on-arrival: enemies = "bourgeois"; workers_rep += 3; conservative_dissent += 8; workers_dem -= 3; workers_other -= 5; liberal_strength -= 3; liberal_dissent += 4
 
 Our anti-bourgeois rhetoric is popular among the workers, but these ideas are fringe and may reduce funding from our patrons.
