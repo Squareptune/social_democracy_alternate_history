@@ -9,12 +9,12 @@ tags: party_affairs
 
 = Party Disunity
 
-Internal conflict is tearing our party apart. With little agreement on goals or strategy, factions are openly undermining each other, sabotaging our campaigns and weakening our message.
+Internal conflict is tearing our party apart. With little agreement on goals or strategy, factions openly undermine each other, sabotaging our campaigns and weakening our message.
 
 [? if radical_dissent > 30 : The radicals are increasingly confrontational toward the party establishment. ?]
-[? if moderate_dissent > 30 : The moderates are voicing frustration at the party’s growing instability. ?]
+[? if moderate_dissent > 30 : The moderates are frustrated at the party’s growing instability. ?]
 [? if conservative_dissent > 30 : The conservatives argue that we’ve strayed too far from pragmatism. ?]
-[? if socialist_dissent > 30 and socialism = 1: The socialists are threatening to break with the party leadership. ?]
+[? if liberal_dissent > 30: The liberals threaten to break with the party leadership. ?]
 
 We must address these tensions before a split becomes inevitable.
 
@@ -22,7 +22,7 @@ We must address these tensions before a split becomes inevitable.
 - @concessions_radicals
 - @concessions_moderates
 - @concessions_conservatives
-- @concessions_socialists
+- @concessions_liberals
 - @do_nothing
 
 @enforce_unity
@@ -52,12 +52,12 @@ on-arrival: conservative_dissent -= 7; radical_dissent += 3; moderate_dissent +=
 
 We promise more gradual reforms and traditional messaging, which angers radicals and centrists alike.
 
-@concessions_socialists
-title: Give concessions to the socialists.
-view-if: socialist_dissent > 30 and socialism = 1
-on-arrival: socialist_dissent -= 7; conservative_dissent += 4; moderate_dissent += 2
+@concessions_liberals
+title: Give concessions to the liberals
+view-if: liberal_dissent > 30
+on-arrival: liberal_dissent -= 7; radical_dissent += 4; moderate_dissent += 2
 
-We shift our platform to include more worker-focused policies and emphasize class struggle, risking backlash from other wings.
+We incorporate more civil liberties and reformist policies to satisfy liberal demands, though some moderates and radicals may object.
 
 @do_nothing
 title: Let them argue it out.
