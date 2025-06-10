@@ -43,7 +43,7 @@ title: Give concessions to the moderates.
 view-if: moderate_dissent > 30
 on-arrival: moderate_dissent -= 7; radical_dissent += 3; socialist_dissent += 2
 
-We moderate our tone and focus on achievable goals. The radicals and socialists aren't pleased.
+We moderate our tone and focus on achievable goals. The radicals aren't pleased.
 
 @concessions_conservatives
 title: Give concessions to the conservatives.
