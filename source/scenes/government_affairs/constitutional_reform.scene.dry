@@ -26,7 +26,7 @@ A constitutional amendment requires either a two-thirds supermajority in Congres
 subtitle: Birthright Citizenship & Equal Protection
 choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
 unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: kkk_militancy += 0.1; constitution_14th = 1; reconstruction_support += 8; radical_strength += 5; moderate_dissent += 3; freemen_rep += 12; rural_dem += 7; immigrant_laborers_dem += 4; middle_class_rep += 3; 
+on-arrival: kkk_militancy += 0.1; constitution_14th = 1; reconstruction_support += 8; radical_strength += 5; moderate_dissent += 3; freemen_rep += 12; rural_dem += 7; immigrant_laborers_dem += 4; middle_class_rep += 3; liberal_strength += 6; liberal_dissent -= 3
 
 The amendment passes! ' All persons born...are citizens' is now engraved in constitutional marble. All former slaves are now citizens of the United States and have the same rights as their light-skinned counterparts.
 
@@ -37,7 +37,7 @@ The amendment passes! ' All persons born...are citizens' is now engraved in cons
 subtitle: Birthright Citizenship & Equal Protection
 choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
 unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: constitution_15th = 1; kkk_militancy += 0.25; reconstruction_support += 10; radical_strength += 8; moderate_dissent += 5; freemen_rep += 15; rural_dem += 10; middle_class_rep += middle_class_other*0.6; middle_class_other *= 0.2; rural_rep += rural_other*0.4; rural_other *= 0.2; immigrant_laborers_rep += immigrant_laborers_other*0.3; immigrant_laborers_other *= 0.3;
+on-arrival: constitution_15th = 1; kkk_militancy += 0.25; reconstruction_support += 10; radical_strength += 8; moderate_dissent += 5; freemen_rep += 15; rural_dem += 10; middle_class_rep += middle_class_other*0.6; middle_class_other *= 0.2; rural_rep += rural_other*0.4; rural_other *= 0.2; immigrant_laborers_rep += immigrant_laborers_other*0.3; immigrant_laborers_other *= 0.3; liberal_strength += 8; liberal_dissent -= 4
 
 The amendment is ratified! 'The right to vote shall not be denied...on account of race.' Freedmen celebrate while Southern legislatures are already devising method to try to circumvent the amendment. The Klan's night rides intensify.
 
@@ -47,7 +47,7 @@ The amendment is ratified! 'The right to vote shall not be denied...on account o
 subtitle: Separation between Church and State
 choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
 unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: blaine_amendment = 1; middle_class_rep += 8; immigrant_laborers_dem += 12; reconstruction_support -= 5; 
+on-arrival: blaine_amendment = 1; middle_class_rep += 8; immigrant_laborers_dem += 12; reconstruction_support -= 5; liberal_strength += 4
 
 The amendment passes! Public funds are now barred from 'sectarian' (Catholic) schools. While Protestant reformers cheer, Irish immigrants riot in Northern cities, seeing this as targeted persecution.
 
@@ -57,9 +57,9 @@ The amendment passes! Public funds are now barred from 'sectarian' (Catholic) sc
 subtitle: Radical Land Reform: Amend the 5th!
 choose-if: amendmentResult = 1 and rep_r >= 140 and rep_senate_r >= 45 or amendmentResult = 1 and (rep_r + other_r >= 140) and (rep_senate_r + other_senate_r) >= 45
 unavailable-subtitle: [? if rep_r < 140: We do not have enough seats in the House ?][? if rep_senate_r < 45: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: constitution_5th = 1; conservative_dissent += 10; radical_dissent -= 5; freemen_rep += 0.2 * freemen_other; freemen_other *= 0.8; conservative_strength -= 2; socialism_strength += 3; socialist_dissent -= 5; rural_rep += 5; rural_dem -= 4; unemployed_other += 5; kkk_strength += 3; kkk_militancy += 0.1;
+on-arrival: constitution_5th = 1; conservative_dissent += 10; radical_dissent -= 5; freemen_rep += 0.2 * freemen_other; freemen_other *= 0.8; conservative_strength -= 2; rural_rep += 5; rural_dem -= 4; unemployed_other += 5; kkk_strength += 3; kkk_militancy += 0.1; liberal_strength += 5; liberal_dissent -= 2;
 
-The revised 5th Amendment has passed Congress and been ratified by the states. The "just compensation" clause has been struck from the Constitution—opening the door for uncompensated land confiscation from former Confederates.
+The revised 5th Amendment has passed Congress and been ratified by the states. The "just compensation" clause has been struck from the Constitution, opening the door for uncompensated land confiscation from former Confederates.
 
 Radical Republicans hail the amendment as the cornerstone of true Reconstruction. Freedmen's advocates now push for aggressive redistribution—"forty acres and a mule" could become the law of the land.
 
