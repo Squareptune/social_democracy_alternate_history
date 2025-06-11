@@ -487,9 +487,13 @@ Q.land_reform = 0;
 Q.works_program = 0;
 Q.wtb_implemented = 0;
 // Relations with the Western countries (France, UK).
+
 Q.europe_relation = 0;
-// Relations with the Eastern countries (Poland, Czechoslovakia)
-Q.east_relation = 0;
+Q.french_mexico = 0;
+Q.treaty_Washington = 0;
+Q.haiti_support = 0;
+Q.fenian = 0;
+
 // Relations with the Soviet Union
 Q.soviet_relation = 0;
 // How much have we exposed the secret rearmament programs?
