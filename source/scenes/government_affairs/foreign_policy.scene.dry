@@ -75,22 +75,6 @@ The Caribbean is crawling with European ships and pirates. With our navy moderni
 
 This reassures American businesses and reminds Europe that the Monroe Doctrine remains in effect.
 
-@navy_fight
-on-arrival: {!
-Q.fight2 = Math.floor(Math.random() * 10)+1;
-!}
-go-to: navy_fight_win if fight2 >= 5; navy_fight_lose if fight2 < 5
-
-@navy_fight_win
-on-arrival: navy_strength -= 12; middle_class_rep += 4
-
-We have been attacked by a European fleet in the Caribbean! Our Navy was able to defeat the fleet and return home safely.
-
-@navy_fight_lose
-on-arrival: navy_strength -= 35; middle_class_rep -= 4; middle_class_dem -= 4
-
-We have been attacked by a European fleet in the Caribbean! Our Navy was defeated by the fleet and lost some ships, and the rest returned home safely.
-
 @british_reconciliation
 title: Improve relations with Britain.
 view-if: treaty_Washington = 0
@@ -157,3 +141,29 @@ on-arrival: immigrant_laborers_rep += 3; europe_relation -= 2; radical_strength 
 Irish-American war veterans organize cross-border raids into Canada, aiming to pressure Britain into freeing Ireland. Officially, we do nothing. Unofficially, we let it happen.
 
 This earns us praise from Irish communities and condemnation from London.
+
+@navy_fight
+
+- @fight: Engage with the enemy fleet!
+- @flee: Escape to prevent damage to our fleet.
+
+@fight
+on-arrival: {!
+Q.fight2 = Math.floor(Math.random() * 10)+1;
+!}
+go-to: navy_fight_win if fight2 >= 5; navy_fight_lose if fight2 < 5
+
+@navy_fight_win
+on-arrival: navy_strength -= 12; middle_class_rep += 4
+
+We have been attacked by a European fleet in the Caribbean! Our Navy was able to defeat the fleet and return home safely.
+
+@navy_fight_lose
+on-arrival: navy_strength -= 35; middle_class_rep -= 4; middle_class_dem += 4
+
+We have been attacked by a European fleet in the Caribbean! Our Navy was defeated by the fleet and lost some ships, and the rest returned home safely.
+
+@flee
+on-arrival: navy_strength -= 5; middle_class_rep -= 2; middle_class_dem += 4
+
+We escape from the enemy navy and we arrive home, but the populous says that we are cowards for not fighting. Also, Europe sees us as weak.
