@@ -68,7 +68,12 @@ title: Continue to enforce a naval presence in the Caribbean.
 view-if: caribbean_patrol = 1
 choose-if: navy_strength >= 220 and budget >= 1
 unavailable-subtitle: Our Navy isn't large enough to enforce the Monroe Doctrine.
-on-arrival: {! Q.fight = Math.floor(Math.random() * 10)+1; !}
+on-arrival: {! 
+  Q.fight = Math.floor(Math.random() * 10)+1; 
+  if (Q.fight === 10) {
+    G.goto("navy_fight");
+  }
+!}
 go-to: navy_fight if fight = 10;
 
 The Caribbean is crawling with European ships and pirates. With our navy modernizing, we deploy warships to project power and enforce stability.
