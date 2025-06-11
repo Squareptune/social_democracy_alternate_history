@@ -450,22 +450,19 @@ Q.minority_government = 0;
 // ministries - which parties control the ministries?
 // starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
 // is the agricultural ministry useful at all?
-Q.foreign_minister = 'Streseman';
-Q.foreign_minister_party = 'DVP';
-Q.interior_minister = 'von Keudell';
-Q.interior_minister_party = 'DNVP';
-Q.justice_minister = 'Hergt';
-Q.justice_minister_party = 'DNVP';
-Q.labor_minister = 'Brauns';
-Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Groener';
-Q.reichswehr_minister_party = 'I';
-Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'DVP';
-Q.finance_minister = 'Köhler';
-Q.finance_minister_party = 'Z';
-Q.agriculture_minister = 'Schiele';
-Q.agriculture_minister_party = 'DNVP';
+
+Q.sect_state = 'William H. Seward';
+Q.sect_state_party = 'Republican';
+Q.sect_interior = 'John P. Usher';
+Q.sect_interior_party = 'Republican';
+Q.attorney_general = 'James Speed';
+Q.attorney_general_party = 'Republican';
+Q.sect_war = 'Edwin M. Stanton';  // Secretary of War
+Q.sect_war_party = 'Republican ';
+Q.sect_treasury = 'Hugh McCulloch';  // Secretary of the Treasury (1865)
+Q.sect_treasury_party = 'Republican';
+Q.sect_agriculture = 'Isaac Newton';  // First Commissioner of Agriculture
+Q.sect_agriculture_party = 'Republican';
 
 // Events: what has occurred?
 Q.panzerkreuzer_seen = 0;
@@ -610,7 +607,7 @@ Q.march_on_berlin_timer = 0;
 
 
 // all the initial advisors are centrists.
-Q.wels_advisor = 1; // Otto Wels
+Q.stevens_advisor = 1;
 Q.muller_advisor = 1; // Hermann Müller
 Q.muller_dead = 0;
 // okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
