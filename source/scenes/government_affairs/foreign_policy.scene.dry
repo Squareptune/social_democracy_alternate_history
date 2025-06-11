@@ -16,6 +16,8 @@ What should our foreign policy priority be?
 
 - @pressure_mexico
 - @pressure_mexico2
+- @monroe_doctrine
+- @monroe_doctrine2
 - @british_reconciliation
 - @british_reconciliation2
 - @british_reconciliation3
@@ -49,6 +51,47 @@ on-arrival: europe_relation -= 2; budget -= 1; french_mexico = 2; middle_class_r
 Facing mounting pressure and lacking international support, the French military evacuates Mexico. The Republican forces seize the opportunity to strike, defeating Maximilian's regime and executing the would-be Emperor.
 
 Europe takes notice of the reassertion of American resolve in the Western Hemisphere.
+
+@monroe_doctrine
+title: Assert naval presence in the Caribbean.
+view-if: caribbean_patrol = 0
+choose-if: navy_strength >= 220 and budget >= 1
+unavailable-subtitle: Our Navy isn't large enough to enforce the Monroe Doctrine.
+on-arrival: caribbean_patrol += 1; europe_relation -= 1; moderate_strength += 1; economic_growth += 0.1; budget -= 1; navy_strength -= 5
+
+The Caribbean is crawling with European ships and pirates. With our navy modernizing, we deploy warships to project power and enforce stability.
+
+This reassures American businesses and reminds Europe that the Monroe Doctrine remains in effect.
+
+@monroe_doctrine2
+title: Continue to enforce a naval presence in the Caribbean.
+view-if: caribbean_patrol = 1
+choose-if: navy_strength >= 220 and budget >= 1
+unavailable-subtitle: Our Navy isn't large enough to enforce the Monroe Doctrine.
+on-arrival: {!
+Q.fight = Math.floor(Math.random() * 10)+1;
+!}
+go-to: navy_fight if fight = 10;
+
+The Caribbean is crawling with European ships and pirates. With our navy modernizing, we deploy warships to project power and enforce stability.
+
+This reassures American businesses and reminds Europe that the Monroe Doctrine remains in effect.
+
+@navy_fight
+on-arrival: {!
+Q.fight2 = Math.floor(Math.random() * 10)+1;
+!}
+go-to: navy_fight_win if fight2 >= 5; navy_fight_lose if fight2 < 5
+
+@navy_fight_win
+on-arrival: navy_strength -= 12; middle_class_rep += 4
+
+We have been attacked by a European fleet in the Caribbean! Our Navy was able to defeat the fleet and return home safely.
+
+@navy_fight_lose
+on-arrival: navy_strength -= 35; middle_class_rep -= 4; middle_class_dem -= 4
+
+We have been attacked by a European fleet in the Caribbean! Our Navy was defeated by the fleet and lost some ships, and the rest returned home safely.
 
 @british_reconciliation
 title: Improve relations with Britain.
