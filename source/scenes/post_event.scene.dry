@@ -78,12 +78,19 @@ if (Q.unemployed <= 1) {
 // re-calculate dissent.
 var total_strength = Q.radical_strength + Q.moderate_strength + Q.conservative_strength + Q.socialism_strength;
 
-// normalize strength for the different factions
-Q.radical_strength = 100*Q.radical_strength/total_strength;
-Q.moderate_strength = 100*Q.moderate_strength/total_strength;
-Q.conservative_strength = 100*Q.conservative_strength/total_strength;
-Q.liberal_strength = 100*Q.liberal_strength/total_strength;
-
+// Prevent division by zero
+if (total_strength <= 0) {
+    Q.radical_strength = 25;
+    Q.moderate_strength = 25;
+    Q.conservative_strength = 25;
+    Q.liberal_strength = 25;
+    total_strength = 100;
+} else {
+    Q.radical_strength = 100 * Q.radical_strength / total_strength;
+    Q.moderate_strength = 100 * Q.moderate_strength / total_strength;
+    Q.conservative_strength = 100 * Q.conservative_strength / total_strength;
+    Q.liberal_strength = 100 * Q.liberal_strength / total_strength;
+}
 var total_dissent = Q.radical_strength*Q.radical_dissent + Q.moderate_strength*Q.moderate_dissent + Q.conservative_strength* Q.conservative_dissent + Q.liberal_strength*Q.liberal_dissent
 
 
