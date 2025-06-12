@@ -91,6 +91,13 @@ if (total_strength <= 0) {
     Q.conservative_strength = 100 * Q.conservative_strength / total_strength;
     Q.liberal_strength = 100 * Q.liberal_strength / total_strength;
 }
+console.log('Strengths before normalization:', {
+    radical: Q.radical_strength,
+    moderate: Q.moderate_strength,
+    conservative: Q.conservative_strength,
+    socialism: Q.socialism_strength
+});
+console.log('Total strength:', total_strength);
 var total_dissent = Q.radical_strength*Q.radical_dissent + Q.moderate_strength*Q.moderate_dissent + Q.conservative_strength* Q.conservative_dissent + Q.liberal_strength*Q.liberal_dissent
 
 
