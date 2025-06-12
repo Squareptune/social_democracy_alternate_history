@@ -88,57 +88,66 @@ Q.election_records.push(election_result);
 !}
 on-departure: republican_urgency = 1 if (republican_urgency == 0 and rep_senate_r >= 15)
 on-display: {!
-data = [
-    {
+  // Load required libraries
+  function loadScript(src, callback) {
+    var script = document.createElement('script');
+    script.src = src;
+    script.onload = callback;
+    document.head.appendChild(script);
+  }
+
+  function drawChart() {
+    // Prepare data in correct format
+    var chartData = [
+      {
         "id": "republicans",
-        "legend": "rep", 
-        "name": "republicans",
-        "seats": Math.round(Q.rep_senate_r*5),
-        "color": "#0044cc",
+        "seats": Math.round(Q.rep_senate_r), // Use direct seat count
+        "color": "#E3000F",
         "outline": "#003399"
-    },
-    {
+      },
+      {
         "id": "democrats",
-        "legend": "dem",
-        "name": "democrats", 
-        "seats": Math.round(Q.dem_senate_r*5),
-        "color": "#cc0000",        // Add this
-        "outline": "#990000"       // Add this
-    },
-    {
+        "seats": Math.round(Q.dem_senate_r),
+        "color": "#00AEF3",
+        "outline": "#990000"
+      },
+      {
         "id": "others",
-        "legend": "other",
-        "name": "other",
-        "seats": Math.round(Q.other_senate_r*5),
-        "color": "#00cc00",        // Add this
-        "outline": "#009900"       // Add this
-    },
-    {
-        "id": "vacant", 
-        "legend": "vacant",
-        "name": "vacant",
-        "seats": Math.round(Q.vacant_senate_r*5),
-        "color": "#cccccc",        // Add this
-        "outline": "#999999"       // Add this
-    }
-];
+        "seats": Math.round(Q.other_senate_r),
+        "color": "#00cc00",
+        "outline": "#009900"
+      }
+    ].filter(function(d) { return d.seats > 0; }); // Remove parties with 0 seats
 
-if (window && d3) {
-    var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('content').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
-    } 
+    // Set up container
+    var container = d3.select("#reichstag");
+    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
+    var height = width * 0.5;
+    
+    container.attr("width", width)
+             .attr("height", height)
+             .html(""); // Clear previous chart
 
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#reichstag").datum(data).call(parliament);
-}
+    // Create parliament chart
+    var parliament = d3.parliament()
+      .width(width)
+      .height(height)
+      .innerRadiusCoef(0.4);
+
+    container.datum(chartData)
+      .call(parliament);
+  }
+
+  // Load dependencies sequentially
+  if (!window.d3) {
+    loadScript('https://d3js.org/d3.v7.min.js', function() {
+      loadScript('https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js', drawChart);
+    });
+  } else if (!window.d3.parliament) {
+    loadScript('https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js', drawChart);
+  } else {
+    drawChart();
+  }
 !}
 go-to: coalition_menu
 
