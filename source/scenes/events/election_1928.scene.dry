@@ -9,7 +9,7 @@ face-image: img/Rothe_Wahlen_1903.jpg
 
 = Elections, [+ month : month +] [+ year +]
 
-The Congressional elections are to be held now.
+The Senate elections are to be held now.
 
 - @election_algorithm: May we do our best...
 
@@ -20,152 +20,80 @@ on-arrival: {!
 // banning parties
 var new_party_sum = 0;
 for (var party of Q.parties) {
-    Q['old_' + party + '_r'] = Q[party + '_r'];
+    Q['old_' + party + '_senate_r'] = Q[party + '_senate_r'];
     if (Q.constitutional_reform > 0) {
         if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
-            Q[party + '_r'] = 0;
+            Q[party + '_senate_r'] = 0;
         } else {
-            Q[party + '_r'] = Q[party + '_votes'];
+            Q[party + '_senate_r'] = Q[party + '_votes'];
         }
-        new_party_sum += Q[party + '_r'];
+        new_party_sum += Q[party + '_senate_r'];
     } else {
-        Q[party + '_r'] = Q[party + '_votes'];
+        Q[party + '_senate_r'] = Q[party + '_votes'];
     }
     // if we use decimals, then we might want to truncate the numbers
     if (Q.use_decimals) {
-        Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
+        Q[party + '_senate_r_disp'] = Q[party+'_senate_r'].toFixed(1);
     }  else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
+            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'];
     }
-    Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-    var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+    Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
+    var sign = Q['change_' + party + '_senate_r'] > 0 ? '+'  : '';
+    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];//.toFixed(1);
 }
 // calculate new party sum if electoral reform
 if (Q.electoral_threshold && Q.electoral_threshold > 0) {
     for (var party of Q.parties) {
-        if (Q[party + '_r'] > 0) {
+        if (Q[party + '_senate_r'] > 0) {
             if (Q.use_decimals) {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
+                Q[party + '_senate_r'] = Math.round(Q[party + '_senate_r']*1000/new_party_sum)/10;
             } else {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
+                Q[party + '_senate_r'] = Math.round(Q[party + '_senate_r']*100/new_party_sum);
             }
         }
         if (Q.use_decimals) {
-            Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
+            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'].toFixed(1);
         } else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
+            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'];
         }
-        Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-        var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-        Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+        Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
+        var sign = Q['change_' + party + '_senate_r'] > 0 ? '+'  : '';
+        Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];//.toFixed(1);
     }
 }
 
 // get change arrows and signs
 
 
-// The largest party can only be the NSDAP or the SPD.
-Q.largest_party = 'SPD';
-if (Q.nsdap_r >= Q.spd_r && Q.nsdap_r >= Q.kpd_r) {
-    Q.largest_party = 'NSDAP';
+// The largest party can only be the Republicans or the Democrats.
+Q.largest_party = 'rep';
+if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
+    Q.largest_party = 'dem';
 }
 
-if (Q.kpd_r >= Q.spd_r && Q.kpd_r >= Q.nsdap_r) {
-    Q.largest_party = 'KPD';
+if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
+    Q.largest_party = 'other';
 }
 
 // coalitions
-Q.weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r - 3;
-Q.grand_coalition = Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r;
-Q.bourgeois_coalition = Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r;
-Q.center_right_coalition = Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r;
-Q.right_coalition = Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r;
-Q.far_right_coalition = Q.dnvp_r + Q.nsdap_r;
-Q.left_coalition = Q.spd_r + Q.kpd_r + Q.sapd_r;
-// this is an absurd concept lol
-Q.popular_front_coalition = Q.spd_r + Q.kpd_r + Q.z_r + Q.ddp_r - 3 + Q.sapd_r;
-Q.anti_democratic_coalition = Q.kpd_r + Q.nsdap_r + Q.dnvp_r;
-// aka everyone except nazi, kpd, dnvp
-Q.neo_weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r;
-// Hitler + Right-wing parties (only comes into effect if you've alienated Z too badly)
-Q.hitler_right_coalition = Q.z_r + Q.dnvp_r + Q.nsdap_r;
-// Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
-Q.progressive_coalition = Q.spd_r + Q.kpd_r + Q.ddp_r + Q.sapd_r;
-
-if (Q.kpd_relation >= 30) {
-    Q.weimar_coalition += Q.sapd_r;
-}
-
-Q.leverage = Q.spd_r;
-
-Q.grand_coalition_failed = 0;
-// Reset government and ministers... Based on Brüning's 1930 govt
-Q.coalition_dissent = 0;
-Q.kpd_coalition_dissent = 0;
-Q.spd_in_government = 0;
-Q.in_weimar_coalition = 0;
-Q.in_grand_coalition = 0;
-Q.in_left_front = 0;
-Q.in_popular_front = 0;
-Q.in_emergency_government = 0;
-Q.in_minority_government = 0;
-Q.in_unity_government = 0;
-Q.spd_toleration = 0;
-Q.spd_caretaker = 0;
-Q.foreign_minister_party = 'DVP';
-Q.interior_minister_party = 'Z';
-Q.justice_minister_party = 'I';
-Q.labor_minister_party = 'Z';
-Q.reichswehr_minister_party = 'I';
-Q.economic_minister_party = Q.ddp_name;
-Q.finance_minister_party = 'DVP';
-Q.agriculture_minister_party = 'Z';
-
-// reset KPD goals
-Q.kpd_goals_seen = 0;
-Q.kpd_ultimatum_seen = 0;
-Q.welfare_goal = 0;
-Q.agriculture_goal = 0;
-Q.economy_goal = 0;
-Q.finance_goal = 0;
-Q.labor_goal = 0;
-Q.foreign_goal = 0;
-Q.interior_goal = 0;
-Q.reichswehr_goal = 0;
-
-Q.welfare_goal_completed = 0;
-Q.agriculture_goal_completed = 0;
-Q.economy_goal_completed = 0;
-Q.finance_goal_completed = 0;
-Q.labor_goal_completed = 0;
-Q.foreign_goal_completed = 0;
-Q.interior_goal_completed = 0;
-Q.reichswehr_goal_completed = 0;
-
-Q.strike_term_seen = 0;
-
-Q.z_minus_bvp_r = Q.z_r - 3;
-
-// understanding the enemy
-if (Q.nsdap_r >= 15) {
-    Q.understanding_enemy_timer = 2;
-}
+Q.republican_majority = Q.rep_senate_r;
+Q.democrat_majority = Q.dem_senate_r;
+Q.other_majority = Q.other_senate_r;
 
 var election_result = {'date': new Date(Q.year, Q.month - 1)};
 for (var party of Q.parties) {
-    election_result[party] = Q[party + '_r'];
+    election_result[party] = Q[party + '_senate_r'];
 }
 Q.election_records.push(election_result);
 !}
-on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
+on-departure: republican_urgency = 1 if (republican_urgency == 0 and rep_senate_r >= 15)
 on-display: {!
 data = [
     {
         "id": "republicans",
         "legend": "rep", 
         "name": "republicans",
-        "seats": Math.round(Q.rep_r*5),
+        "seats": Math.round(Q.rep_senate_r*5),
         "color": "#0044cc",
         "outline": "#003399"
     },
@@ -173,7 +101,7 @@ data = [
         "id": "democrats",
         "legend": "dem",
         "name": "democrats", 
-        "seats": Math.round(Q.dem_r*5),
+        "seats": Math.round(Q.dem_senate_r*5),
         "color": "#cc0000",        // Add this
         "outline": "#990000"       // Add this
     },
@@ -181,7 +109,7 @@ data = [
         "id": "others",
         "legend": "other",
         "name": "other",
-        "seats": Math.round(Q.other_r*5),
+        "seats": Math.round(Q.other_senate_r*5),
         "color": "#00cc00",        // Add this
         "outline": "#009900"       // Add this
     },
@@ -189,7 +117,7 @@ data = [
         "id": "vacant", 
         "legend": "vacant",
         "name": "vacant",
-        "seats": Math.round(Q.vacant_r*5),
+        "seats": Math.round(Q.vacant_senate_r*5),
         "color": "#cccccc",        // Add this
         "outline": "#999999"       // Add this
     }
@@ -220,13 +148,13 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ rep_r  +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ rep_senate_r +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#00AEF3'> </div> !}Democrats: {!</td><td>!} [+ dem_r +]% {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#00AEF3'> </div> !}Democrats: {!</td><td>!} [+ dem_senate_r +]% {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_senate_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_r +]% {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_senate_r +]% {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu
@@ -239,100 +167,32 @@ go-to: coalition_menu
 
 @simple_majority
 title: Republicans get a simple majority
-subtitle: Repubicans: [+ rep_r +] seats
-view-if: (rep_r >= 123) and (rep_r < 183)
-on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05; 
-achievement: majority_party
+subtitle: Repubicans: [+ rep_senate_r +] seats
+view-if: (rep_senate_r >= 51) and (rep_senate_r < 67)
+on-arrival: speaker = "Colfax"; speaker_party = "Rep"; pro_republic += 5;
 
-We have gained a simple majority! Now, we can pass our proposed legislation, but only with a simple majority, so we need to have all men on deck when voting.
-
-Who should be the speaker of the House?
-
-- @Colfax_majority_chancellor: Schuyler Colfax for speaker.
-- @Blaine_majority_chancellor: James G. Blaine for speaker.
-- @Stevens_majority_chancellor: Thaddeus Stevens for speaker.
-- @Wade_majority_chancellor: Benjamin F. Wade for speaker.
-
-@Colfax_majority_chancellor
-on-arrival: speaker = "Colfax"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Colfax as Speaker
-
-@Blaine_majority_chancellor
-on-arrival: speaker = "Blaine"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Blaine as Speaker
-
-@Stevens_majority_chancellor
-view-if: muller_dead = 0
-on-arrival: chancellor = "Stevens"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Stevens as Speaker
-
-@Wade_majority_chancellor
-view-if: muller_dead = 1
-on-arrival: chancellor = "Wade"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Wade as Speaker
-
-# TODO: Otto Wels should be able to be chancellor of a Grand Coalition, Weimar Coalition, or SPD majority after Müller dies.
+The Republicans have gained a simple majority in the Senate!
 
 @super_majority
 title: Republicans get a super majority
-subtitle: Repubicans: [+ rep_r +] seats
-view-if: rep_r / 244 >= 0.75
-on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05; 
-achievement: majority_party
+subtitle: Repubicans: [+ rep_senate_r +] seats
+view-if: rep_senate_r >= 67
+on-arrival: speaker = "Colfax"; speaker_party = "Rep"; pro_republic += 5;
 
-We have gained a super majority! Now, we can pass our proposed legislation without any concerns of democratic opposition.
-
-Who should be the speaker of the House?
-
-- @Colfax: Schuyler Colfax for speaker.
-- @Blaine_super_majority: James G. Blaine for speaker.
-- @Stevens_super_majority: Thaddeus Stevens for speaker.
-- @Wade_super_majority: Benjamin F. Wade for speaker.
-
-@Colfax
-on-arrival: speaker = "Colfax"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Colfax as Speaker
-
-@Blaine_super_majority
-on-arrival: speaker = "Blaine"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Blaine as Speaker
-
-@Stevens_super_majority
-view-if: muller_dead = 0
-on-arrival: chancellor = "Stevens"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Stevens as Speaker
-
-@Wade_super_majority
-view-if: muller_dead = 1
-on-arrival: chancellor = "Wade"; speaker_party = "Rep"
-
-The new House of Representatives has chosen Wade as Speaker
+The Republicans have gained a super majority in the Senate! Now they can override any presidential veto.
 
 @defeat
 title: Republicans have lost the election
-subtitle: Repubicans: [+ rep_r +] seats
-view-if: rep_r/244 > 50
-on-arrival: chancellor = "Wood"; speaker_party = "Dem"
+subtitle: Repubicans: [+ rep_senate_r +] seats
+view-if: dem_senate_r > rep_senate_r
+on-arrival: speaker = "Wood"; speaker_party = "Dem"
 
-We have lost the election in the House, now the democrats can oppose our reconstruction legislation.
-
-They chose Fernando Wood as the next Speaker of the House.
+The Republicans have lost control of the Senate to the Democrats.
 
 @tie
 title: A TIE?!?!?!?
 subtitle: I guess there is no government today
-view-if: rep_r/244 = 50
-on-arrival: speaker = "Empty";
+view-if: rep_senate_r = dem_senate_r
+on-arrival: speaker = "Richardson";
 
-In a complete shock, the election has ended up as a complete shock to both sides!
-
-As a compromise candidate, both parties agree on centrist democrat William A. Richardson as Speaker of the House.
-
-speaker = "Richardson"
+In a complete shock, the Senate election has ended in a tie! As a compromise, the parties agree on William A. Richardson as the Senate leader.
