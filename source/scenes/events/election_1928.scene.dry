@@ -97,47 +97,43 @@ on-display: {!
   }
 
   function drawChart() {
-    // Prepare data in correct format
-    var chartData = [
-      {
-        "id": "republicans",
-        "seats": Math.round(Q.rep_senate_r), // Use direct seat count
-        "color": "#E3000F",
-        "outline": "#003399"
-      },
-      {
-        "id": "democrats",
-        "seats": Math.round(Q.dem_senate_r),
-        "color": "#00AEF3",
-        "outline": "#990000"
-      },
-      {
-        "id": "others",
-        "seats": Math.round(Q.other_senate_r),
-        "color": "#00cc00",
-        "outline": "#009900"
-      }
-    ].filter(function(d) { return d.seats > 0; }); // Remove parties with 0 seats
+  var chartData = [
+    {
+      id: "republicans",
+      seats: Math.round(Q.rep_senate_r),
+      color: "#E3000F",
+      outline: "#003399"
+    },
+    {
+      id: "democrats",
+      seats: Math.round(Q.dem_senate_r),
+      color: "#00AEF3",
+      outline: "#990000"
+    },
+    {
+      id: "others",
+      seats: Math.round(Q.other_senate_r),
+      color: "#00cc00",
+      outline: "#009900"
+    }
+  ].filter(d => d.seats > 0);
 
-    // Set up container
-    var container = d3.select("#reichstag");
-    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
-    var height = width * 0.5;
-    
-    container.attr("width", width)
-             .attr("height", height)
-             .html(""); // Clear previous chart
+  var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
 
-    // Create parliament chart
-    var parliament = d3.parliament()
-      .width(width)
-      .height(height)
-      .innerRadiusCoef(0.4);
-
-    container.datum(chartData)
-      .call(parliament);
+  // Ensure #reichstag exists
+  var container = d3.select("#reichstag");
+  if (container.empty()) {
+    container = d3.select("#content").append("svg").attr("id", "reichstag");
   }
+  container.attr("width", width)
+           .attr("height", width / 2)
+           .html("");
 
+  var parliament = d3.parliament()
+    .width(width)
+    .innerRadiusCoef(0.4);
+  container.data([chartData]).call(parliament);
+}
   // Load dependencies sequentially
   if (!window.d3) {
     loadScript('https://d3js.org/d3.v7.min.js', function() {
