@@ -16,7 +16,9 @@ The Senate elections are to be held now.
 @post_election_1928
 on-arrival: {!
 // Config
-const TOTAL_SEATS = 72;
+const VACANT_SEATS = 12;
+const TOTAL_SEATS = 72 - VACANT_SEATS;
+Q.vacant_senate_r = VACANT_SEATS;
 
 // Set old results
 var total_votes = 0;
@@ -48,6 +50,11 @@ for (var party of Q.parties) {
     Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
 }
 
+// Track vacant seat change
+Q.change_vacant = Q.vacant_senate_r - (Q.old_vacant_senate_r || 0);
+Q.str_change_vacant = (Q.change_vacant >= 0 ? '+' : '') + Q.change_vacant;
+Q.old_vacant_senate_r = Q.vacant_senate_r;
+
 // Largest party logic
 Q.largest_party = 'rep';
 if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
@@ -68,10 +75,9 @@ for (var party of Q.parties) {
     election_result[party] = Q[party + '_senate_r'];
 }
 Q.election_records.push(election_result);
-console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r);
+console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.vacant_senate_r);
 !}
 on-display: {!
-  // Load required libraries
   function loadScript(src, callback) {
     var script = document.createElement('script');
     script.src = src;
@@ -80,44 +86,49 @@ on-display: {!
   }
 
   function drawChart() {
-  var chartData = [
-    {
-      id: "republicans",
-      seats: Math.round(Q.rep_senate_r),
-      color: "#E3000F",
-      outline: "#003399"
-    },
-    {
-      id: "democrats",
-      seats: Math.round(Q.dem_senate_r),
-      color: "#00AEF3",
-      outline: "#990000"
-    },
-    {
-      id: "others",
-      seats: Math.round(Q.other_senate_r),
-      color: "#00cc00",
-      outline: "#009900"
+    var chartData = [
+      {
+        id: "republicans",
+        seats: Math.round(Q.rep_senate_r),
+        color: "#E3000F",
+        outline: "#003399"
+      },
+      {
+        id: "democrats",
+        seats: Math.round(Q.dem_senate_r),
+        color: "#00AEF3",
+        outline: "#990000"
+      },
+      {
+        id: "others",
+        seats: Math.round(Q.other_senate_r),
+        color: "#00cc00",
+        outline: "#ffd68f"
+      },
+      {
+        id: "vacants",
+        seats: Q.vacant_senate_r,
+        color: "#DCCA4A",
+        outline: "#777777"
+      }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
+
+    var container = d3.select("#reichstag");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "reichstag");
     }
-  ].filter(d => d.seats > 0);
+    container.attr("width", width)
+             .attr("height", width / 2)
+             .html("");
 
-  var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
-
-  // Ensure #reichstag exists
-  var container = d3.select("#reichstag");
-  if (container.empty()) {
-    container = d3.select("#content").append("svg").attr("id", "reichstag");
+    var parliament = d3.parliament()
+      .width(width)
+      .innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
   }
-  container.attr("width", width)
-           .attr("height", width / 2)
-           .html("");
 
-  var parliament = d3.parliament()
-    .width(width)
-    .innerRadiusCoef(0.4);
-  container.data([chartData]).call(parliament);
-}
-  // Load dependencies sequentially
   if (!window.d3) {
     loadScript('https://d3js.org/d3.v7.min.js', function() {
       loadScript('https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js', drawChart);
@@ -152,11 +163,10 @@ go-to: coalition_menu
 - @defeat
 - @tie
 
-
 @simple_majority
 title: Republicans get a simple majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: (rep_senate_r >= 51) and (rep_senate_r < 67)
+view-if: {! (rep_senate_r >= Math.floor(TOTAL_SEATS / 2) + 1) && (rep_senate_r < Math.floor(TOTAL_SEATS * 2 / 3)) !}
 on-arrival: speaker = "Colfax"; speaker_party = "Rep"; pro_republic += 5;
 
 The Republicans have gained a simple majority in the Senate!
@@ -164,7 +174,7 @@ The Republicans have gained a simple majority in the Senate!
 @super_majority
 title: Republicans get a super majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: rep_senate_r >= 67
+view-if: {! rep_senate_r >= Math.floor(TOTAL_SEATS * 2 / 3) !}
 on-arrival: speaker = "Colfax"; speaker_party = "Rep"; pro_republic += 5;
 
 The Republicans have gained a super majority in the Senate! Now they can override any presidential veto.
@@ -172,7 +182,7 @@ The Republicans have gained a super majority in the Senate! Now they can overrid
 @defeat
 title: Republicans have lost the election
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: dem_senate_r > rep_senate_r
+view-if: dem_senate_r > rep_senate_r 
 on-arrival: speaker = "Wood"; speaker_party = "Dem"
 
 The Republicans have lost control of the Senate to the Democrats.
