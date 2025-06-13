@@ -70,8 +70,6 @@ for (var party of Q.parties) {
 Q.election_records.push(election_result);
 console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r);
 !}
-
-on-departure: republican_urgency = 1 if (republican_urgency == 0 and rep_senate_r >= 15)
 on-display: {!
   // Load required libraries
   function loadScript(src, callback) {
