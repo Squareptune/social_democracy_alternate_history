@@ -25,6 +25,8 @@ go-to: Army
 
 @Army
 
+Even after Appomattox, the Army remains a decisive tool of national authority in the former Confederate states. Federal troops guard courthouses, oversee voter registration, and protect freedmen from white supremacist violence. But public opinion is divided. Some demand a more forceful hand against Southern resistance, while others insist on returning power to local governments and curbing military spending. Reformers within the Republican Party argue that the officer corps must be purged of lingering Confederate sympathizers to make the Army a true instrument of Reconstruction.
+
 - @increase_funding: Increase military funding to strengthen federal enforcement in the South.
 - @decrease_funding: Reduce military spending in favor of civilian programs.
 - @reform: Reform the officer corps and enlistment to make the Army more loyal to Reconstruction ideals.
@@ -42,8 +44,8 @@ The decision to increase funding for the Army reassures conservative Republicans
 
 @decrease_funding
 subtitle: +1 budget
-unavailable-subtitle: There is nothing left to cut.
-choose-if: reichswehr_strength > 0
+unavailable-subtitle: We still need some kind of standing army to protect the republic.
+choose-if: reichswehr_strength < 5
 on-arrival: budget += 1; dem_relation += 8; army_militancy -= 1; army_strength -= 20; kkk_strength += 15; kkk_militancy += 0.05; army_loyalty -= 0.05 if army_loyalty > 0; economic_growth -= 0.1
 
 With reduced funds, the Army scales back operations across the South. Though budget savings are welcomed, demobilization leads to arms disappearing and discharged soldiers joining violent ex-Confederate militias. Our grip on Southern states may weaken unless other enforcement measures are taken.
@@ -59,6 +61,8 @@ Reforms are underway to democratize the Army. Officers with known Confederate sy
 Many conservatives view this as the dangerous politicization of the military, and Democrats accuse us of provoking instability.
 
 @Navy
+
+The Navy played only a minor role in the Civil War's aftermath but remains essential for protecting American interests abroad. With European powers testing our resolve in the Caribbean, naval strength underpins the Monroe Doctrine. Meanwhile, some freedmen look to emigrate to Liberia or the Caribbean, requiring safe routes and patrols. Debates continue over whether to modernize the fleet or redirect resources entirely toward domestic Reconstruction efforts.
 
 - @increase_funding2: Increase funding for the Navy to enforce the Monroe Doctrine.
 - @decrease_funding2: Reduce funding for the Navy and focus on Reconstruction.
