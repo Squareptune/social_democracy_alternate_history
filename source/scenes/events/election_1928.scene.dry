@@ -15,10 +15,11 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
-// set old results
-// election threshold constitutional reform
-// banning parties
-var new_party_sum = 0;
+// Config
+const TOTAL_SEATS = 72;
+
+// Set old results
+var total_votes = 0;
 for (var party of Q.parties) {
     Q['old_' + party + '_senate_r'] = Q[party + '_senate_r'];
     if (Q.constitutional_reform > 0) {
@@ -27,65 +28,49 @@ for (var party of Q.parties) {
         } else {
             Q[party + '_senate_r'] = Q[party + '_votes'];
         }
-        new_party_sum += Q[party + '_senate_r'];
     } else {
         Q[party + '_senate_r'] = Q[party + '_votes'];
     }
-    // if we use decimals, then we might want to truncate the numbers
-    if (Q.use_decimals) {
-        Q[party + '_senate_r_disp'] = Q[party+'_senate_r'].toFixed(1);
-    }  else {
-            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'];
+    total_votes += Q[party + '_senate_r'];
+}
+
+// Normalize to TOTAL_SEATS
+for (var party of Q.parties) {
+    if (Q[party + '_senate_r'] > 0) {
+        Q[party + '_senate_r'] = Math.round(Q[party + '_senate_r'] * TOTAL_SEATS / total_votes);
+    } else {
+        Q[party + '_senate_r'] = 0;
     }
+
+    Q[party + '_senate_r_disp'] = Q[party + '_senate_r'];
     Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
-    var sign = Q['change_' + party + '_senate_r'] > 0 ? '+'  : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];//.toFixed(1);
-}
-// calculate new party sum if electoral reform
-if (Q.electoral_threshold && Q.electoral_threshold > 0) {
-    for (var party of Q.parties) {
-        if (Q[party + '_senate_r'] > 0) {
-            if (Q.use_decimals) {
-                Q[party + '_senate_r'] = Math.round(Q[party + '_senate_r']*1000/new_party_sum)/10;
-            } else {
-                Q[party + '_senate_r'] = Math.round(Q[party + '_senate_r']*100/new_party_sum);
-            }
-        }
-        if (Q.use_decimals) {
-            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'].toFixed(1);
-        } else {
-            Q[party + '_senate_r_disp'] = Q[party+'_senate_r'];
-        }
-        Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
-        var sign = Q['change_' + party + '_senate_r'] > 0 ? '+'  : '';
-        Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];//.toFixed(1);
-    }
+    var sign = Q['change_' + party + '_senate_r'] > 0 ? '+' : '';
+    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
 }
 
-// get change arrows and signs
-
-
-// The largest party can only be the Republicans or the Democrats.
+// Largest party logic
 Q.largest_party = 'rep';
 if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
     Q.largest_party = 'dem';
 }
-
 if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
     Q.largest_party = 'other';
 }
 
-// coalitions
+// Store coalition counts
 Q.republican_majority = Q.rep_senate_r;
 Q.democrat_majority = Q.dem_senate_r;
 Q.other_majority = Q.other_senate_r;
 
+// Record the result
 var election_result = {'date': new Date(Q.year, Q.month - 1)};
 for (var party of Q.parties) {
     election_result[party] = Q[party + '_senate_r'];
 }
 Q.election_records.push(election_result);
+console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r);
 !}
+
 on-departure: republican_urgency = 1 if (republican_urgency == 0 and rep_senate_r >= 15)
 on-display: {!
   // Load required libraries
