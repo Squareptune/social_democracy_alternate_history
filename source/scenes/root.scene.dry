@@ -415,10 +415,10 @@ Q.economic_records = [];
 
 // State of the government
 Q.president = "Lincoln";
-Q.president_party = 'rep';
+Q.president_party = "rep";
 // starting chancellor: Wilhelm Marx
 Q.speaker = "Colfax";
-Q.speaker_party = 'Rep';
+Q.speaker_party = "Rep";
 Q.sen_majority = 1;
 Q.house_majority = 1;
 Q.rep_majority = (sen_majority + house_majority) - 1;
