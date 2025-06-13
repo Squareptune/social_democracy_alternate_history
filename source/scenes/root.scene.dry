@@ -122,6 +122,7 @@ Q.army_strength = 1000;
 Q.army_militancy = 5;
 Q.army_loyalty = 0.8;
 Q.navy_strength = 200;
+Q.navy_loyalty = 0.8;
 
 // The state of the country
 
