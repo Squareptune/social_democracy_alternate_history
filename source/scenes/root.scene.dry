@@ -235,7 +235,7 @@ Q.old_vacant_r = 44;
 Q.rep_senate_r = 37;
 Q.dem_senate_r = 9;
 Q.other_senate_r = 2;
-Q.vacant_senate_r = 24;
+Q.vacant_senate = 24;
 
 Q.TOTALSEATS = 72
 
