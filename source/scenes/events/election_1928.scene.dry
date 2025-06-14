@@ -90,8 +90,8 @@ on-display: {!
       {
         id: "republicans",
         seats: Math.round(Q.rep_senate_r),
-        color: "#E3000F",
-        outline: "#003399"
+        color: "#003399",
+        outline: "#E3000F"
       },
       {
         id: "democrats",
