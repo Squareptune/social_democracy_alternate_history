@@ -708,7 +708,7 @@ this.state.disableSaves = true;
 go-to: 1928_main
 
 @1928_main
-audio: shuffle music/Battle Cry of Freedom.mp3 music/Battle Hymn of the Republic - Rare Instrumental.mp3 music/Good Old Rebel.mp3 music/We Are Coming, Father Abr'am !.mp3
+audio: shuffle music/BattleCryofFreedom.mp3 music/BattleHymnoftheRepublic-RareInstrumental.mp3 music/GoodOldRebel.mp3 music/WeAreComing,FatherAbr'am!.mp3
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
