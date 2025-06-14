@@ -9,6 +9,8 @@ if (Q.advisor_action_timer <= 0) {
 } else {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
+
+console.log(rep_majority)
 !}
 max-cards: 3
 
