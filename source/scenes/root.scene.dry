@@ -600,6 +600,9 @@ next_senate_election_year = 1866;
 next_senate_election_month = 11;
 next_senate_election_time = 6;
 
+time_to_house_election = 24
+time_to_senate_election = 24
+
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
