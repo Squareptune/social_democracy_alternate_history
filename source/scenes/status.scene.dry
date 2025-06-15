@@ -42,9 +42,11 @@ Senate Seats:
 
 Republicans: [+ rep_senate_r +] seats, Democrats: [+ dem_senate_r +] seats, Others: [+ other_senate_r +] seats, Vacant seats: [+ vacant_senate_r +] seats
 
-[? if spd_in_government = 1 : Budget: [+ budget +] ?]
+[? if rep_majority = 1 : Budget: [+ budget +] ?]
 
-Next election: [+ next_election_month : month +] [+ next_election_year +]
+Next House election: [+ next_house_election_month : month +] [+ next_house_election_year +]
+
+Next Senate election: [+ next_senate_election_month : month +] [+ next_senate_election_year +]
 
 = Economics
 
