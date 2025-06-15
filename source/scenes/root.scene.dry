@@ -603,6 +603,9 @@ next_senate_election_time = 6;
 time_to_house_election = 24
 time_to_senate_election = 24
 
+n_house_elections = 0
+n_senate_elections = 0
+
 console.log("House Election:");
 console.log("Next House Election Year:", next_house_election_year);
 console.log("Next House Election Month:", next_house_election_month);
