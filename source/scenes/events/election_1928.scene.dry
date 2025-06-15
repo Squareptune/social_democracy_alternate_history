@@ -5,7 +5,6 @@ priority: -1
 view-if: (year = next_senate_election_year and month >= next_senate_election_month) or (year > next_senate_election_year)
 on-departure: month_actions += 1; in_election = 0; next_senate_election_year = next_senate_election_year + 2; n_elections += 1; next_senate_election_time = time + 24;
 set-jump: post_election_1928
-face-image: img/Rothe_Wahlen_1903.jpg
 
 = Elections, [+ month : month +] [+ year +]
 
