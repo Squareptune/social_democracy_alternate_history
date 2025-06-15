@@ -1,11 +1,8 @@
 title: next election time
 on-arrival:
-  # House elections every 2 years in November
   next_house_election_time = time + time_to_house_election if next_house_election_time >= time + time_to_house_election;
   next_house_election_month = 11 if next_house_election_time >= time + time_to_house_election;
   next_house_election_year += 2 if next_house_election_time >= time + time_to_house_election;
-
-  # Senate elections every 2 years in November (simulate 1/3 of the Senate rotating)
   next_senate_election_time = time + time_to_senate_election if next_senate_election_time >= time + time_to_senate_election;
   next_senate_election_month = 11 if next_senate_election_time >= time + time_to_senate_election;
   next_senate_election_year += 2 if next_senate_election_time >= time + time_to_senate_election;
