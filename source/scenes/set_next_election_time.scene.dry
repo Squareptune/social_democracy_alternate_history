@@ -1,22 +1,2 @@
 title: next election time
-on-arrival: {!
-  console.log("BEFORE UPDATE:");
-  console.log("House time:", next_house_election_time, "Type:", typeof next_house_election_time);
-  console.log("Senate time:", next_senate_election_time, "Type:", typeof next_senate_election_time);
-  
-  if (next_house_election_time <= time) {
-    next_house_election_time = time + time_to_house_election;
-    next_house_election_month = 11;
-    next_house_election_year += 2;
-  }
-  
-  if (next_senate_election_time <= time) {
-    next_senate_election_time = time + time_to_senate_election;
-    next_senate_election_month = 11;
-    next_senate_election_year += 2;
-  }
-  
-  console.log("AFTER UPDATE:");
-  console.log("House time:", next_house_election_time);
-  console.log("Senate time:", next_senate_election_time);
-!}
+on-arrival: next_election_time = time+time_to_election if next_election_time >= time+time_to_election; next_election_month = month + 3 if next_election_time >= time+time_to_election; next_election_year = year if next_election_time >= time+time_to_election; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
