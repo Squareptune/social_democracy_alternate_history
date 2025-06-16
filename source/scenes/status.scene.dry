@@ -56,6 +56,7 @@ Inflation: [+ inflation_2 +]%
 
 Economic growth: [+ economic_growth_2 +]%
 
+Tariff rate: [+ tariff +]
 
 
 # = Public Opinion
@@ -139,4 +140,4 @@ Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immi
 
 Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
-Support for Reconstruction: [+ pro_republic_disp +]%
+Support for Reconstruction: [+ reconstruction_support +]%
