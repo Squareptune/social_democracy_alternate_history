@@ -14,6 +14,11 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
+
+Q.rep_senate_r = Q.rep_senate_p || 0;
+Q.dem_senate_r = Q.dem_senate_p || 0;
+Q.other_senate_r = Q.other_senate_p || 0;
+
 // Config
 const VACANT_SEATS = vacant_senate;
 const TOTAL_SEATS = 72 - VACANT_SEATS;
