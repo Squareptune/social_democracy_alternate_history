@@ -58,9 +58,9 @@ for (let party of Q.parties) {
 }
 
 // 4. Senate election simulation (2 seats per state to majority winner)
-Q.rep_senate_r = 0;
-Q.dem_senate_r = 0;
-Q.other_senate_r = 0;
+Q.rep_senate_p = 0;
+Q.dem_senate_p = 0;
+Q.other_senate_p = 0;
 
 for (let state of Q.states) {
     let party_support = {
@@ -83,12 +83,12 @@ for (let state of Q.states) {
 
     const winner = Object.entries(party_support).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
 
-    if (winner === 'rep') Q.rep_senate_r += 2;
-    else if (winner === 'dem') Q.dem_senate_r += 2;
-    else Q.other_senate_r += 2;
+    if (winner === 'rep') Q.rep_senate_p += 2;
+    else if (winner === 'dem') Q.dem_senate_p += 2;
+    else Q.other_senate_p += 2;
 }
 
 // Output Senate seat results
-console.log(`Senate seats - Republicans: ${Q.rep_senate_r}, Democrats: ${Q.dem_senate_r}, Others: ${Q.other_senate_r}`);
+console.log(`Senate seats - Republicans: ${Q.rep_senate_p}, Democrats: ${Q.dem_senate_p}, Others: ${Q.other_senate_p}`);
 !}
 go-to: jumpScene
