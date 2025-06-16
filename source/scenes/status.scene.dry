@@ -114,19 +114,19 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 Senate:
 
-Republicans: [+ rep_senate_r +] seats
+Republicans: [+ rep_senate_p +] seats
 
-Democrats: [+ dem_senate_r +] seats
+Democrats: [+ dem_senate_p +] seats
 
-Others: [+ other_senate_r +] seats
+Others: [+ other_senate_p +] seats
 
 House:
 
-Republicans: [+ rep_senate_votes +] seats
+Republicans: [+ rep_p +] seats
 
-Democrats: [+ dem_senate_votes +] seats
+Democrats: [+ dem_p +] seats
 
-Others: [+ other_senate_votes +] seats
+Others: [+ other_p +] seats
 
 **Detailed results for each demographic**
 
