@@ -591,33 +591,24 @@ Q.n_elections = 0;
 Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 1;
-
 next_house_election_year = 1866;
 next_house_election_month = 11;
 next_house_election_time = 6;
-
 next_senate_election_year = 1866;
 next_senate_election_month = 11;
 next_senate_election_time = 6;
-
-time_to_house_election = 24
-time_to_senate_election = 24
-
 n_house_elections = 0
 n_senate_elections = 0
-
 console.log("House Election:");
 console.log("Next House Election Year:", next_house_election_year);
 console.log("Next House Election Month:", next_house_election_month);
 console.log("Next House Election Time:", next_house_election_time);
 console.log("Number of House Elections:", n_house_elections);
-
 console.log("Senate Election:");
 console.log("Next Senate Election Year:", next_senate_election_year);
 console.log("Next Senate Election Month:", next_senate_election_month);
 console.log("Next Senate Election Time:", next_senate_election_time);
 console.log("Number of Senate Elections:", n_senate_elections);
-
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
