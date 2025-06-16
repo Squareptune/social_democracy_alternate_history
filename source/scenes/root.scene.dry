@@ -528,7 +528,7 @@ Q.education_science = 0;
 // Tax rates relative to 1928 baseline
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
-Q.tariffs = 0;
+Q.tariffs = 5;
 
 Q.electoral_threshold = 0;
 
