@@ -508,6 +508,8 @@ Q.treaty_Washington = 0;
 Q.haiti_support = 0;
 Q.fenian = 0;
 Q.caribbean_patrol = 0;
+Q.native_relations = 3;
+Q.Sioux_Treaty = 0;
 
 // Relations with the Soviet Union
 Q.soviet_relation = 0;
