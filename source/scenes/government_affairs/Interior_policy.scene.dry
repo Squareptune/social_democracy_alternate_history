@@ -37,10 +37,38 @@ Land grants and subsidies will be prioritized for the expansion of major railroa
 @Indian_Affairs
 go-to: Indian
 
+@Land_Purchase
+go-to: purchase
+
 @natural_resources_management
 on-arrival: middle_class_rep += 1; rural_other += 1; liberal_strength += 1; conservative_dissent += 1; economic_growth -= 0.3
 
 The Interior Department begins efforts to manage the nation’s vast public lands more responsibly. While still in its infancy, the idea of conservation gains support among reformers and scientists. We expand geological surveys, set aside some forest lands, and regulate mining claims more strictly. These measures face opposition from powerful corporate interests but appeal to moderates and progressives concerned about long-term national prosperity.
+
+@purchase
+
+We open large swaths of federal land in the West for sale, a key step in raising revenue and encouraging settlement. But who shall we favor in distributing this land — the formerly enslaved, poor white homesteaders, or wealthy corporations?
+
+-@Freemen: Prioritize land access for freedmen and black families.
+-@White: Prioritize small land sales to white homesteaders and Union veterans.
+-@Corporations: Prioritize bulk land sales to railroads and corporate land syndicates.
+
+@Freemen
+subtitle: +1 Budget
+on-arrival: reemen_rep += 2; rural_dem -= 1; conservative_dissent += 1; liberal_strength += 1; budget += 1
+
+We move to ensure freedmen have access to land ownership out west, helping black families build economic independence. This angers white Southerners and conservative factions, but boosts support among reformers and black communities.
+
+@White
+subtitle: +1 Budget
+on-arrival: rural_rep += 1; rural_dem += 1; moderate_strength += 1; freemen_other += 1; budget += 1
+
+Land is sold in small parcels primarily to white homesteaders, Union veterans, and yeoman farmers. It’s a moderate policy that satisfies many but fails to address racial land inequities.
+
+@Corporations
+on-arrival: middle_class_rep += 1; conservative_strength += 1; radical_dissent += 1; inflation += 0.1; budget += 2; economic_growth += 0.2
+
+We auction large tracts of land to powerful railroad companies and land syndicates. This generates short-term economic gains and investment but angers radicals and populists who see it as corruption and exploitation.
 
 @Indian
 
