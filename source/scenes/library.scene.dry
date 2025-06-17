@@ -143,7 +143,7 @@ Q.nationalism_disp = Math.round(Q.nationalism);
 Q.socialism_disp = Math.round(Q.socialism);
 !}
 view-if: (not historical_mode) or game_over
-go-to: senate_election_algorithm
+go-to: Senate_election_algorithm
 set-jump: election_projections
 
 **Public Opinion**
