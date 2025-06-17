@@ -10,7 +10,7 @@ set-jump: post_election_1928
 
 The Senate elections are to be held now.
 
-- @senate_election_algorithm: May we do our best...
+- @Senate_election_algorithm: May we do our best...
 
 @post_election_1928
 on-arrival: {!
