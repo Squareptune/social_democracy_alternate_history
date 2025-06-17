@@ -25,7 +25,7 @@ With millions of acres to administer, railroads demanding subsidy, freedmen peti
 - @cancel_advisor_action
 
 @freedmen_land
-on-arrival: freemen_rep += 5; rural_rep += 3; rural_dem -= 5; unemployed_dem -= 3; middle_class_rep += 2; Q.kkk_strength += 1;
+on-arrival: freemen_rep += 5; rural_rep += 3; rural_dem -= 5; unemployed_dem -= 3; middle_class_rep += 2; kkk_strength += 1;
 
 Freedmen and loyal Unionists will be prioritized in the redistribution of western lands. This policy aims to empower those who fought for the Union and secure their economic future, but it may alienate some Southern farmers and speculators.
 
