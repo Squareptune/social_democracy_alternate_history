@@ -11,8 +11,8 @@ tags: party_affairs
 
 Whether or not we are in an electoral campaign, the party is always trying to broaden its voter base. Who should we focus our campaign efforts on?
 
-- @workers: The urban working class, our traditional support base.
-- @middle_class: The middle class of professionals and businessmen.
+- @workers: The urban working class
+- @middle_class: The middle class of professionals and businessmen (Our traditional Base)
 - @rural: Rural farmers and Southern yeomanry.
 - @freemen: The newly emancipated freedmen.
 - @immigrant_laborers: Immigrant workers, often skeptical of Reconstruction.
