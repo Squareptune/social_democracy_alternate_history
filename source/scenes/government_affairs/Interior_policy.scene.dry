@@ -61,6 +61,7 @@ on-arrival: rural_rep += 1; rural_dem += 1; moderate_strength += 1; freemen_othe
 Land is sold in small parcels primarily to white homesteaders, Union veterans, and yeoman farmers. It’s a moderate policy that satisfies many but fails to address racial land inequities.
 
 @Corporations
+subtitle: +2 Budget
 on-arrival: middle_class_rep += 1; conservative_strength += 1; radical_dissent += 1; inflation += 0.1; budget += 2; economic_growth += 0.2
 
 We auction large tracts of land to powerful railroad companies and land syndicates. This generates short-term economic gains and investment but angers radicals and populists who see it as corruption and exploitation.
