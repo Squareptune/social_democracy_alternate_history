@@ -1,0 +1,96 @@
+title: Interior Policy
+new-page: true
+is-card: true
+tags: govt_affairs, cabinet
+on-arrival: interior_policy_timer += 6; month_actions += 1
+view-if: rep_majority = 1 and interior_policy_timer <= 0
+card-image: img/portraits/James_Harlan.jpg
+go-to: policy
+
+= Interior Policy
+
+The Department of the Interior governs the bones of the Republic: land, peoples, and resources. Its reach stretches across the Reconstruction South, the Native-held West, and the expanding territories of the Union. In this fragile postwar moment, control over land and law could determine the shape of the nation's soul.
+
+With millions of acres to administer, railroads demanding subsidy, freedmen petitioning for land, and Native nations resisting dispossession, Interior policy stands at the crossroads of justice, exploitation, and expansion.
+
+@policy
+
+- @freedmen_land: Prioritize freedmen and loyal Unionists in land redistribution.
+- @railroad_subsidies: Prioritize land grants and subsidies to major railroad companies.
+- @Indian_Affairs: Deal with the Indians that live in the western land.
+- @Land_Purchase: Sell land out west to settlers and corporations.
+- @natural_resources_management: Begin conservation efforts to manage public lands and natural resources responsibly.
+- @root: Take no action for now.
+- @easy_discard
+- @cancel_advisor_action
+
+@freedmen_land
+on-arrival: freemen_rep += 5; rural_rep += 3; rural_dem -= 5; unemployed_dem -= 3; middle_class_rep += 2; Q.kkk_strength += 1;
+
+Freedmen and loyal Unionists will be prioritized in the redistribution of western lands. This policy aims to empower those who fought for the Union and secure their economic future, but it may alienate some Southern farmers and speculators.
+
+@railroad_subsidies
+on-arrival: middle_class_rep += 5; workers_rep += 3; workers_dem -= 2; rural_dem += 1; freemen_rep -= 2; rural_dem -= 1; economic_growth += 0.3
+
+Land grants and subsidies will be prioritized for the expansion of major railroad companies. While this accelerates economic growth and connectivity, it risks fostering corporate influence and resentment among rural populations.
+
+@Indian_Affairs
+go-to: Indian
+
+@natural_resources_management
+on-arrival: middle_class_rep += 1; rural_other += 1; liberal_strength += 1; conservative_dissent += 1; economic_growth -= 0.3
+
+The Interior Department begins efforts to manage the nation’s vast public lands more responsibly. While still in its infancy, the idea of conservation gains support among reformers and scientists. We expand geological surveys, set aside some forest lands, and regulate mining claims more strictly. These measures face opposition from powerful corporate interests but appeal to moderates and progressives concerned about long-term national prosperity.
+
+@Indian
+
+Ever since the beginning of Anglo-American rule in North America, we have had to contend with the native peoples of this land. Today, many of the tribes formerly east of the Mississippi reside in the Indian Territory. But as we continue westward, new conflicts arise with the Native nations who still inhabit those lands.
+
+- @peaceful_negotiations: Begin negotiations to avoid further conflict with the western tribes.
+- @peaceful_negotiations2: Continue diplomacy to resolve tensions with the Plains tribes.
+- @peaceful_negotiations3: Finalize treaty talks with the tribes of the northern plains.
+- @Sioux_Treaty: Sign a treaty with the Sioux Nation to end Red Cloud’s War.
+- @military_action: Deploy the army to forcibly remove tribes from disputed territories.
+- @assimilation_policies: Advance policies to assimilate Native Americans into American society.
+
+@peaceful_negotiations
+view-if: Sioux_Treaty = 0
+on-arrival: Sioux_Treaty += 1; native_relations += 1
+
+We open diplomatic talks with tribal leaders to prevent further bloodshed between settlers and the Native nations. This is the first step toward a broader peace.
+
+@peaceful_negotiations2
+view-if: Sioux_Treaty = 1
+on-arrival: Sioux_Treaty += 1; native_relations += 1
+
+Diplomatic envoys continue to negotiate with the Sioux and other Plains tribes, aiming to settle disputes before they ignite into open conflict.
+
+@peaceful_negotiations3
+view-if: Sioux_Treaty = 2
+on-arrival: Sioux_Treaty += 1; native_relations += 1
+
+We near the completion of treaty negotiations with the Sioux. The details must still be finalized, but peace is finally within reach.
+
+@Sioux_Treaty
+view-if: Sioux_Treaty = 3
+on-arrival: native_relations += 2; army_loyalty += 0.1; conservative_dissent += 2; liberal_strength += 1
+
+We sign the Second Treaty of Fort Laramie. Representing the United States are General William Tecumseh Sherman and Commissioner of Indian Affairs Nathaniel G. Taylor.
+
+The treaty ends Red Cloud’s War, establishes the Great Sioux Reservation—including the Black Hills—and guarantees hunting rights in unceded territory. The U.S. agrees to abandon several forts and pledges to keep settlers out of Sioux land.
+
+@military_action
+subtitle: -1 Budget
+choose-if: budget >= 1 and army_loyalty > 0.5
+unavailable-subtitle: [? if budget < 1: We do not have the budget.?][? if army_loyalty <= 0.5: The Army is too disloyal to carry out this operation.?]
+on-arrival: native_relations -= 2; Sioux_Treaty = 0; army_strength -= 0.5; army_militancy += 1; conservative_strength += 1; radical_dissent += 2; budget -= 1
+
+We take a hardline approach and order the military to suppress Native resistance in the West. Forts are reinforced, and settlers are escorted into contested areas.
+
+@assimilation_policies
+subtitle: -1 Budget
+choose-if: budget >= 1
+unavailable-subtitle: [? if budget < 1: We do not have the budget.?]
+on-arrival: native_relations -= 1; middle_class_rep += 1; liberal_strength += 1; freemen_rep += 1
+
+We push forward with assimilationist policies: Indian boarding schools, the introduction of agriculture on reservations, and efforts to “civilize” Native populations in line with American values.
