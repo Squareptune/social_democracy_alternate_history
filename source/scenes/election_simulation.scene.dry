@@ -53,7 +53,7 @@ Q.unemployed_dem = 50;
 Q.unemployed_other = 25;
 Q.unemployed_vac = 5;
 !}
-go-to: senate_election_algorithm
+go-to: Senate_election_algorithm
 set-jump: post_election
 
 @1866
@@ -105,7 +105,7 @@ Q.unemployed_dem = 50;
 Q.unemployed_other = 20;
 Q.unemployed_vac = 5;
 !}
-go-to: senate_election_algorithm
+go-to: Senate_election_algorithm
 set-jump: post_election
 
 @1868
@@ -323,7 +323,7 @@ Q.unemployed_other = 28;
 Q.unemployed_vac = 5;
 !}
 
-go-to: senate_election_algorithm
+go-to: Senate_election_algorithm
 set-jump: post_election
 @post_election
 on-arrival: {!
