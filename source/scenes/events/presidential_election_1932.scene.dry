@@ -6,7 +6,7 @@ max-visits: 1
 new-page: true
 on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
 tags: event
-go-to: election_algorithm
+go-to: senate_election_algorithm
 set-jump: pres_election
 face-image: img/hindenburg_election.jpg
 
