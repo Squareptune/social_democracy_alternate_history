@@ -566,7 +566,7 @@ if (!Array.isArray(Q.timers)) {
         'police', 'interior_policy_timer', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
         'homosexual_rights', 'economic_policy', 'coalition_affairs',
         'war_guilt', 'womens_rights', 'economic_democracy',
-        'dealing_with_toleration',
+        'monetary_policy_timer',
         'constitutional_reform', 'labor_rights',
         'education_science', 'curriculum',
         // events
@@ -574,7 +574,7 @@ if (!Array.isArray(Q.timers)) {
         'sa_ban', 'sh_ban', 'papen_chancellor',
         'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
         'high_inflation', 'banking_crisis', 'march_on_berlin',
-        'understanding_enemy', 'schleichers_schemes'
+        'understanding_enemy', 'schleichers_schemes',
     ];
 }
 Q.advisor_action_timer = 0;
@@ -622,6 +622,7 @@ console.log("Number of Senate Elections:", n_senate_elections);
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
 Q.economic_policy_timer = 0;
+Q.monetary_policy_timer = 0;
 Q.fiscal_policy_timer = 0;
 Q.foreign_policy_timer = 0;
 Q.judiciary_timer = 0;
