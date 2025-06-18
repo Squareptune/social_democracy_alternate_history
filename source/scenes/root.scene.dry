@@ -168,7 +168,7 @@ Q.income = 1600;
 // what about incomes for different classes? rural workers? middle-class workers?
 
 Q.inflation = 3.82;
-
+Q.GreenBacks = 1;
 // economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
 Q.economic_growth = 2.9;
 
