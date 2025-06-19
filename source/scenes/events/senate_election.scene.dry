@@ -44,9 +44,6 @@ Q.other_majority = Q.other_senate_r;
 console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.display_vacant_senate);
 !}
 on-display: {!
-// unchanged chart drawing code
-!}
-on-display: {!
   function loadScript(src, callback) {
     var script = document.createElement('script');
     script.src = src;
