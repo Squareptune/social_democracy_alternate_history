@@ -19,49 +19,90 @@ Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
-// Config
-const VACANT_SEATS = vacant_senate;
+// Config: Make sure TOTAL_SEATS is defined somewhere, fallback to 72 if not
+const TOTAL_SEATS = typeof TOTAL_SEATS !== 'undefined' ? TOTAL_SEATS : 72;
+
+const VACANT_SEATS = Q.vacant_senate || 0;
 Q.vacant_senate_r = VACANT_SEATS;
 
 // Save old results
-for (var party of Q.parties) {
-    Q['old_' + party + '_senate_r'] = Q[party + '_senate_r'];
+for (let party of Q.parties) {
+    Q['old_' + party + '_senate_r'] = Q[party + '_senate_r'] || 0;
 }
 
-// Compute votes from states and classes
-let partyVotes = { rep: 0, dem: 0, other: 0 };
+// Initialize vote counts
+let partyVotes = {};
+for (let party of Q.parties) {
+    partyVotes[party] = 0;
+}
+
+// Confirm your parties and keys by printing
+console.log("Parties:", Q.parties);
+console.log("States:", Q.states);
+console.log("Classes:", Q.classes);
+
+// Calculate total votes weighted by population and support
 for (let state of Q.states) {
     for (let cls of Q.classes) {
         const pop = Q[state + '_' + cls] || 0;
         for (let party of Q.parties) {
-            const support = Q[cls + '_' + party] || 0;
-            partyVotes[party] += (pop * support) / 100;
+            // Make sure these keys exist and are numbers
+            const supportKey = cls + '_' + party;
+            const support = Q[supportKey];
+            if (support === undefined) {
+                console.warn(`Missing support data for ${supportKey}, assuming 0`);
+            }
+            const supportValue = typeof support === 'number' ? support : 0;
+
+            partyVotes[party] += (pop * supportValue) / 100;
         }
     }
 }
 
-// Total votes sum
-let totalVotes = partyVotes.rep + partyVotes.dem + partyVotes.other;
+// Log raw votes to debug zeros
+console.log("Raw party votes before normalization:", partyVotes);
 
-// Allocate seats proportionally to TOTAL_SEATS with thresholds
+// Sum total votes (exclude vacant seats)
+let totalVotes = 0;
 for (let party of Q.parties) {
-    let rawVotes = partyVotes[party];
-    if (Q.constitutional_reform > 0) {
-        const threshold = Q.electoral_threshold || 0;
-        const isBanned = Q[party + '_banned'] || false;
-        const belowThreshold = (rawVotes / totalVotes) * 100 < threshold;
-        if (belowThreshold || (threshold > 1 && party === 'other') || isBanned) {
-            Q[party + '_senate_r'] = 0;
-        } else {
-            Q[party + '_senate_r'] = Math.round(rawVotes * TOTAL_SEATS / totalVotes);
-        }
-    } else {
-        Q[party + '_senate_r'] = Math.round(rawVotes * TOTAL_SEATS / totalVotes);
+    totalVotes += partyVotes[party];
+}
+
+// Avoid division by zero
+if (totalVotes === 0) {
+    console.warn("Total votes calculated as zero. Assigning equal shares.");
+    let equalShare = TOTAL_SEATS / Q.parties.length;
+    for (let party of Q.parties) {
+        Q[party + '_senate_r'] = Math.round(equalShare);
     }
-    Q[party + '_senate_r_disp'] = Q[party + '_senate_r'];
-    Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
-    let sign = Q['change_' + party + '_senate_r'] > 0 ? '+' : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
+} else {
+    // Allocate seats proportionally to TOTAL_SEATS minus vacant seats
+    let seatsToAllocate = TOTAL_SEATS - VACANT_SEATS;
+    for (let party of Q.parties) {
+        let rawVotes = partyVotes[party];
+
+        if (Q.constitutional_reform > 0) {
+            const threshold = Q.electoral_threshold || 0;
+            const isBanned = Q[party + '_banned'] || false;
+            const belowThreshold = (rawVotes / totalVotes) * 100 < threshold;
+
+            if (belowThreshold || (threshold > 1 && party === 'other') || isBanned) {
+                Q[party + '_senate_r'] = 0;
+            } else {
+                Q[party + '_senate_r'] = Math.round(rawVotes * seatsToAllocate / totalVotes);
+            }
+        } else {
+            Q[party + '_senate_r'] = Math.round(rawVotes * seatsToAllocate / totalVotes);
+        }
+
+        // Make sure these are numbers
+        Q[party + '_senate_r'] = Q[party + '_senate_r'] || 0;
+
+        Q[party + '_senate_r_disp'] = Q[party + '_senate_r'];
+        Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
+        let sign = Q['change_' + party + '_senate_r'] > 0 ? '+' : '';
+        Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
+    }
 }
 
 // Vacant seat change
@@ -83,7 +124,7 @@ Q.republican_majority = Q.rep_senate_r;
 Q.democrat_majority = Q.dem_senate_r;
 Q.other_majority = Q.other_senate_r;
 
-// Record results
+// Record result for history log
 let result = { date: new Date(Q.year, Q.month - 1) };
 for (let party of Q.parties) {
     result[party] = Q[party + '_senate_r'];
@@ -92,6 +133,7 @@ Q.election_records.push(result);
 
 console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.vacant_senate_r);
 
+// For display in UI
 Q.display_rep_senate = Q.rep_senate_r;
 Q.display_dem_senate = Q.dem_senate_r;
 Q.display_other_senate = Q.other_senate_r;
