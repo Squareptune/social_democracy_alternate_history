@@ -144,14 +144,6 @@ Q.unemployed_dem = 50;  // Poor whites in South (resentful of Reconstruction)
 Q.unemployed_other = 25; // Radicals/agrarian protest
 Q.unemployed_vac = 5;
 
-Q.rep_p = 136;
-Q.dem_p = 50;
-Q.other_p = 10;
-
-Q.rep_senate_p = 37;
-Q.dem_senate_p = 9;
-Q.other_senate_p = 2;
-
 // Current House composition
 
 Q.rep_r = 136;
