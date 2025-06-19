@@ -164,7 +164,7 @@ Q.dem_senate_r = 9;
 Q.other_senate_r = 2;
 Q.vacant_senate = 24;
 
-Q.TOTAL_SEATS = 72
+Q.TOTAL_SEATS_S = 72 - vacant_senate;
 
 Q.old_rep_senate_r = 33;
 Q.old_dem_senate_r = 10;
