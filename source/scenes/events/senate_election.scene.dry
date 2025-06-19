@@ -20,7 +20,7 @@ Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
 // Config: Make sure TOTAL_SEATS is defined somewhere, fallback to 72 if not
-const TOTAL_SEATS = typeof TOTAL_SEATS !== 'undefined' ? TOTAL_SEATS : 72;
+const TOTAL_SEATS = Q.TOTAL_SEATS;
 
 const VACANT_SEATS = Q.vacant_senate || 0;
 Q.vacant_senate_r = VACANT_SEATS;
@@ -228,7 +228,7 @@ go-to: coalition_menu
 @simple_majority
 title: Republicans get a simple majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: {! (rep_senate_r >= Math.floor(TOTAL_SEATS_S / 2) + 1) !}
+view-if: {! (Q.rep_senate_r >= Math.floor(TOTAL_SEATS / 2) + 1) !}
 on-arrival: sen_majority = 1;
 
 The Republicans have gained a simple majority in the Senate!
@@ -236,7 +236,7 @@ The Republicans have gained a simple majority in the Senate!
 @super_majority
 title: Republicans get a super majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: {! (rep_senate_r >= Math.floor(TOTAL_SEATS_S * 2 / 3)) !}
+view-if: {! (Q.rep_senate_r >= Math.floor(TOTAL_SEATS * 2 / 3)) !}
 on-arrival: sen_majority = 1;
 
 The Republicans have gained a supermajority in the Senate! Now they can override any presidential veto.
