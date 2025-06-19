@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 view-if: rep_majority = 1
 on-arrival: month_actions += 1; judiciary_timer += 6
-card-image: img/portraits/RadbruchGustav.jpg
+card-image: img/portraits/Salmon-P-Chase.webp
 tags: govt_affairs, cabinet
 
 = Judiciary Reform
