@@ -16,7 +16,7 @@ for (let c of Q.classes) {
     }
 }
 
-// 2. National support
+// 2. Calculate national party support
 let total_support = 0;
 for (let party of Q.parties) {
     let support = 0;
@@ -30,8 +30,7 @@ for (let party of Q.parties) {
     Q[party + '_support'] = support;
     total_support += support;
 }
-
-// 3. Normalize to vote shares
+// 3. Normalize vote shares and allocate seats proportionally
 for (let party of Q.parties) {
     let norm = Q[party + '_support'] / total_support;
     let dec = Math.round(norm * 1000) / 10;
@@ -44,13 +43,13 @@ for (let party of Q.parties) {
         Q[party + '_votes'] = Math.round(norm * 100);
         Q[party + '_votes_disp'] = dec.toFixed(1);
     }
+    // Allocate seats using your existing TOTAL_SEATS variable
+    Q[party + '_senate_r'] = Math.round(norm * TOTAL_SEATS);
 }
-
-// 4. Senate simulation
+// 4. Senate state-level 2-seat majority winner
 Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
-
 for (let state of Q.states) {
     let party_support = { rep: 0, dem: 0, other: 0 };
     for (let cls of Q.classes) {
@@ -67,11 +66,10 @@ for (let state of Q.states) {
     else if (winner === 'dem') Q.dem_senate_r += 2;
     else Q.other_senate_r += 2;
 }
-
-// Assign display values
+// Set display variables (optional)
 Q.display_rep_senate = Q.rep_senate_r;
 Q.display_dem_senate = Q.dem_senate_r;
 Q.display_other_senate = Q.other_senate_r;
-Q.display_vacant_senate = vacant_senate;
+Q.display_vacant_senate = vacant_senate; // assuming this exists
 !}
 go-to: jumpScene
