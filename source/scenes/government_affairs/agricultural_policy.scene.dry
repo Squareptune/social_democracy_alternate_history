@@ -12,6 +12,7 @@ tags: govt_affairs, cabinet
 The Republican Party must address the crisis of Southern agriculture. Former plantations lie fallow, freedmen demand land, and poor whites face ruin. Our Northern industrial base wants cheap cotton and food, while Southern Republicans—Black and white—need economic survival. Radicals push for confiscating Confederate estates, while moderates prefer market solutions.  
 
 - @land_reform
+- @land_reform2
 - @agricultural_finance
 - @pro_consumer
 - @state_buyer
@@ -22,11 +23,22 @@ The Republican Party must address the crisis of Southern agriculture. Former pla
 @land_reform
 title: 40 Acres and a Mule
 subtitle: -1 budget - Break up Confederate plantations for freedmen’s homesteads.
-unavailable-subtitle: [? if budget <= 0 : Requires 1 budget. ?] [? if freedmens_bureau_active = 0 : We have no mechanism for this. ?]
-choose-if: freedmens_bureau_active = 1 and budget > 0
+unavailable-subtitle: [? if budget <= 0 : Requires 1 budget. ?] [? if judical_reform < 2 : The courts wouldn't support such action ?]
+choose-if: judical_reform = 2 and budget > 0
+view-if: fifth_A = 0
 on-arrival: budget -= 1; freemen_rep += 3; land_reform += 1; rural_dem -= 8*(1-dissent); radical_strength += 8; moderate_dissent += 5; kkk_militancy += 0.1; agriculture_goal_completed += 1; liberal_strength += 3; liberal_dissent -= 2
 
 We seize rebel estates under the Confiscation Acts, granting land to freedmen’s cooperatives. Former slaves become yeoman farmers—but ex-Confederates scream of ‘Negro domination.’ The Klan burns crops in response.
+
+@land_reform2
+title: 40 Acres and a Mule
+subtitle: Break up Confederate plantations for freedmen’s homesteads without compensation
+unavailable-subtitle: [? if judical_reform < 2 : The courts wouldn't support such action ?]
+choose-if: judical_reform = 2
+view-if: fifth_A = 1
+on-arrival: budget -= 1; freemen_rep += 4; land_reform += 2; rural_dem -= 9*(1-dissent); radical_strength += 9; moderate_dissent += 6; kkk_militancy += 0.2; agriculture_goal_completed += 1; liberal_strength += 4; liberal_dissent -= 3
+
+The Reconstruction government has authorized a bold land redistribution effort: seizing and subdividing former Confederate plantations for freedmen, without compensating their former owners. Thanks to judicial reform and a revised Fifth Amendment, the courts now allow such a radical move.
 
 @agricultural_finance
 title: Freedmen’s Credit
