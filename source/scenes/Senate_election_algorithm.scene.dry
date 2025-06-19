@@ -1,19 +1,14 @@
 title: Election
 on-arrival: {!
-// Election simulation logic
-
-// 1. Normalize class-based party support (per class, sum to 100)
+// 1. Normalize class-based party support
 for (let c of Q.classes) {
     let total = 0;
-
     for (let party of Q.parties) {
         Q[c + '_' + party] = Q[c + '_' + party] || 0;
         if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
         total += Q[c + '_' + party];
     }
-
-    if (total === 0) total = 1; // prevent division by zero
-
+    if (total === 0) total = 1;
     for (let party of Q.parties) {
         let norm = (100 * Q[c + '_' + party]) / total;
         Q[c + '_' + party + '_normalized'] = norm;
@@ -21,33 +16,27 @@ for (let c of Q.classes) {
     }
 }
 
-// 2. Calculate national party support
+// 2. National support
 let total_support = 0;
-
 for (let party of Q.parties) {
     let support = 0;
-
     for (let c of Q.classes) {
         let class_pop = Q[c] || 0;
         let weight = Q.old_demographics
             ? Q[c + '_' + party]
             : Q[c + '_' + party + '_normalized'];
-
         support += class_pop * weight;
     }
-
     Q[party + '_support'] = support;
     total_support += support;
 }
 
-// 3. Normalize, round, and display vote shares
+// 3. Normalize to vote shares
 for (let party of Q.parties) {
     let norm = Q[party + '_support'] / total_support;
     let dec = Math.round(norm * 1000) / 10;
-
     Q[party + '_normalized'] = norm;
     Q[party + '_votes_dec'] = dec;
-
     if (Q.use_decimals) {
         Q[party + '_votes'] = dec;
         Q[party + '_votes_disp'] = dec;
@@ -57,38 +46,32 @@ for (let party of Q.parties) {
     }
 }
 
-// 4. Senate election simulation (2 seats per state to majority winner)
+// 4. Senate simulation
 Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
 for (let state of Q.states) {
-    let party_support = {
-        rep: 0,
-        dem: 0,
-        other: 0
-    };
-
+    let party_support = { rep: 0, dem: 0, other: 0 };
     for (let cls of Q.classes) {
         const pop = Q[state + '_' + cls] || 0;
-
         const rep = Q[cls + '_rep_normalized'] || 0;
         const dem = Q[cls + '_dem_normalized'] || 0;
         const other = Q[cls + '_other_normalized'] || 0;
-
         party_support.rep += pop * rep;
         party_support.dem += pop * dem;
         party_support.other += pop * other;
     }
-
     const winner = Object.entries(party_support).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
-
     if (winner === 'rep') Q.rep_senate_r += 2;
     else if (winner === 'dem') Q.dem_senate_r += 2;
     else Q.other_senate_r += 2;
 }
 
-// Output Senate seat results
-console.log(`Senate seats - Republicans: ${Q.rep_senate_r}, Democrats: ${Q.dem_senate_r}, Others: ${Q.other_senate_r}`);
+// Assign display values
+Q.display_rep_senate = Q.rep_senate_r;
+Q.display_dem_senate = Q.dem_senate_r;
+Q.display_other_senate = Q.other_senate_r;
+Q.display_vacant_senate = vacant_senate;
 !}
 go-to: jumpScene
