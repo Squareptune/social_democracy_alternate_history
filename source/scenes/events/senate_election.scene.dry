@@ -14,63 +14,20 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
-Q.rep_senate_r = 0;
-Q.dem_senate_r = 0;
-Q.other_senate_r = 0;
-// Config
-const VACANT_SEATS = vacant_senate;
-const TOTAL_SEATS = 72 - VACANT_SEATS;
-Q.vacant_senate_r = VACANT_SEATS;
-// Set old results
-for (var party of Q.parties) {
+// Calculate seat changes
+for (let party of Q.parties) {
+    Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - (Q['old_' + party + '_senate_r'] || 0);
+    let sign = Q['change_' + party + '_senate_r'] > 0 ? '+' : '';
+    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
     Q['old_' + party + '_senate_r'] = Q[party + '_senate_r'];
 }
-// Dynamically compute total class-based vote weight
-let partyVotes = {
-    rep: 0,
-    dem: 0,
-    other: 0
-};
-const classes = Q.classes;
-const states = Q.states;
-for (let state of states) {
-    for (let cls of classes) {
-        const pop = Q[state + '_' + cls] || 0;
-        for (let party of Q.parties) {
-            const support = Q[cls + '_' + party] || 0;
-            partyVotes[party] += (pop * support) / 100;
-        }
-    }
-}
-// Normalize to total seats
-let totalVotes = partyVotes.rep + partyVotes.dem + partyVotes.other;
-for (let party of Q.parties) {
-    let rawVotes = partyVotes[party];
-    // Apply threshold if needed
-    if (Q.constitutional_reform > 0) {
-        const threshold = Q.electoral_threshold || 0;
-        const isBanned = Q[party + '_banned'] || false;
-        const belowThreshold = (rawVotes / totalVotes) * 100 < threshold;
-        if (belowThreshold || (threshold > 1 && party === 'other') || isBanned) {
-            Q[party + '_senate_r'] = 0;
-        } else {
-            Q[party + '_senate_r'] = Math.round(rawVotes * TOTAL_SEATS / totalVotes);
-        }
-    } else {
-        Q[party + '_senate_r'] = Math.round(rawVotes * TOTAL_SEATS / totalVotes);
-    }
 
-    Q[party + '_senate_r_disp'] = Q[party + '_senate_r'];
-    Q['change_' + party + '_senate_r'] = Q[party + '_senate_r'] - Q['old_' + party + '_senate_r'];
-    var sign = Q['change_' + party + '_senate_r'] > 0 ? '+' : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_senate_r'];
-}
-// Vacant seat diff
-Q.change_vacant = Q.vacant_senate_r - (Q.old_vacant_senate_r || 0);
+// Vacant seat change
+Q.change_vacant = Q.display_vacant_senate - (Q.old_vacant_senate_r || 0);
 Q.str_change_vacant = (Q.change_vacant >= 0 ? '+' : '') + Q.change_vacant;
-Q.old_vacant_senate_r = Q.vacant_senate_r;
+Q.old_vacant_senate_r = Q.display_vacant_senate;
 
-// Determine largest party
+// Largest party
 Q.largest_party = 'rep';
 if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
     Q.largest_party = 'dem';
@@ -78,23 +35,16 @@ if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
 if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
     Q.largest_party = 'other';
 }
-// Store majorities
+
+// Majorities
 Q.republican_majority = Q.rep_senate_r;
 Q.democrat_majority = Q.dem_senate_r;
 Q.other_majority = Q.other_senate_r;
 
-// Record result
-let result = { date: new Date(Q.year, Q.month - 1) };
-for (let party of Q.parties) {
-    result[party] = Q[party + '_senate_r'];
-}
-Q.election_records.push(result);
-
-console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.vacant_senate_r);
-Q.display_rep_senate = Q.rep_senate_r;
-Q.display_dem_senate = Q.dem_senate_r;
-Q.display_other_senate = Q.other_senate_r;
-Q.display_vacant_senate = Q.vacant_senate_r;
+console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.display_vacant_senate);
+!}
+on-display: {!
+// unchanged chart drawing code
 !}
 on-display: {!
   function loadScript(src, callback) {
