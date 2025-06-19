@@ -85,7 +85,7 @@ Q.Union_League_strength = 60;
 Q.Union_League_militancy = 0.24;
 Q.occupation = 0;
 Q.kkk_banned = 0;
-
+Q.judical_reform = 0;
 
 // strength includes actual military and de facto reserves?
 Q.army_strength = 1000;
