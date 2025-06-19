@@ -91,6 +91,10 @@ for (let party of Q.parties) {
 Q.election_records.push(result);
 
 console.log("Final Senate seats - Republicans:", Q.rep_senate_r, "Democrats:", Q.dem_senate_r, "Others:", Q.other_senate_r, "Vacant:", Q.vacant_senate_r);
+Q.display_rep_senate = Q.rep_senate_r;
+Q.display_dem_senate = Q.dem_senate_r;
+Q.display_other_senate = Q.other_senate_r;
+Q.display_vacant_senate = Q.vacant_senate_r;
 !}
 on-display: {!
   function loadScript(src, callback) {
@@ -162,13 +166,13 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ rep_senate_r +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ display_rep_senate +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ dem_senate_r +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_senate_r +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_senate_r +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu
