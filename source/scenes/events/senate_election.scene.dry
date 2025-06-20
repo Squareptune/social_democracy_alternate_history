@@ -118,7 +118,6 @@ for party in parties {
     result[party] = get(party + "_senate_r") or 0;
 }
 election_records.append(result);
-
 display_rep_senate = rep_senate_r;
 display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
