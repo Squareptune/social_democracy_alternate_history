@@ -3,13 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: (year = next_senate_election_year and month >= next_senate_election_month) or (year > next_senate_election_year)
-on-departure: {
-    month_actions += 1;
-    in_election = 0;
-    next_senate_election_year += 2;
-    n_elections += 1;
-    next_senate_election_time = time + 24;
-}
+on-departure: month_actions += 1; in_election = 0; next_senate_election_year += 2; n_elections += 1; next_senate_election_time = time + 24;
 set-jump: post_election_1928
 
 = Elections, [+ month : month +] [+ year +]
@@ -20,105 +14,110 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
-
-// Reset seat counts
 rep_senate_r = 0;
 dem_senate_r = 0;
 other_senate_r = 0;
 
-TOTAL_SEATS = TOTAL_SEATS or 72;
-VACANT_SEATS = vacant_senate or 0;
+TOTAL_SEATS = TOTAL_SEATS || 72;
+VACANT_SEATS = vacant_senate || 0;
 vacant_senate_r = VACANT_SEATS;
 
 // Save old results
-for party in parties {
-    set("old_" + party + "_senate_r", get(party + "_senate_r") or 0);
+for (let party of parties) {
+    set("old_" + party + "_senate_r", get(party + "_senate_r") || 0);
 }
 
 // Initialize vote totals
-partyVotes = {};
-for party in parties {
+let partyVotes = {};
+for (let party of parties) {
     partyVotes[party] = 0;
 }
 
 // Calculate weighted votes by state, class, and party support
-for state in states {
-    for cls in classes {
-        pop = get(state + "_" + cls) or 0;
-        for party in parties {
-            supportKey = cls + "_" + party;
-            support = get(supportKey) or 0;
+for (let state of states) {
+    for (let cls of classes) {
+        let pop = get(state + "_" + cls) || 0;
+        for (let party of parties) {
+            let supportKey = cls + "_" + party;
+            let support = get(supportKey) || 0;
             partyVotes[party] += (pop * support) / 100;
         }
     }
 }
 
 // Sum total votes
-totalVotes = 0;
-for party in parties {
+let totalVotes = 0;
+for (let party of parties) {
     totalVotes += partyVotes[party];
 }
 
 // If total votes zero, assign equal shares
-if totalVotes = 0 {
-    equalShare = round(TOTAL_SEATS / length(parties));
-    for party in parties {
+if (totalVotes === 0) {
+    let equalShare = Math.round(TOTAL_SEATS / parties.length);
+    for (let party of parties) {
         set(party + "_senate_r", equalShare);
     }
 } else {
-    seatsToAllocate = TOTAL_SEATS - VACANT_SEATS;
-    for party in parties {
-        rawVotes = partyVotes[party];
-        if constitution_reform > 0 {
-            threshold = electoral_threshold or 0;
-            banned = get(party + "_banned") or false;
-            belowThreshold = (rawVotes / totalVotes) * 100 < threshold;
+    let seatsToAllocate = TOTAL_SEATS - VACANT_SEATS;
+    for (let party of parties) {
+        let rawVotes = partyVotes[party];
+        if (constitution_reform > 0) {
+            let threshold = electoral_threshold || 0;
+            let banned = get(party + "_banned") || false;
+            let belowThreshold = ((rawVotes / totalVotes) * 100) < threshold;
 
-            if belowThreshold or (threshold > 1 and party = "other") or banned {
+            if (belowThreshold || (threshold > 1 && party === "other") || banned) {
                 set(party + "_senate_r", 0);
             } else {
-                seats = round(rawVotes * seatsToAllocate / totalVotes);
+                let seats = Math.round(rawVotes * seatsToAllocate / totalVotes);
                 set(party + "_senate_r", seats);
             }
         } else {
-            seats = round(rawVotes * seatsToAllocate / totalVotes);
+            let seats = Math.round(rawVotes * seatsToAllocate / totalVotes);
             set(party + "_senate_r", seats);
         }
     }
 }
 
 // Set display and calculate changes
-for party in parties {
-    curSeats = get(party + "_senate_r") or 0;
-    oldSeats = get("old_" + party + "_senate_r") or 0;
+for (let party of parties) {
+    let curSeats = get(party + "_senate_r") || 0;
+    let oldSeats = get("old_" + party + "_senate_r") || 0;
     set(party + "_senate_r_disp", curSeats);
-    change = curSeats - oldSeats;
+    let change = curSeats - oldSeats;
     set("change_" + party + "_senate_r", change);
-    sign = change > 0 ? "+" : "";
+    let sign = change > 0 ? "+" : "";
     set("str_change_" + party, sign + change);
 }
+
 // Vacant seat changes
-change_vacant = vacant_senate_r - (old_vacant_senate_r or 0);
-str_change_vacant = (change_vacant >= 0 ? "+" : "") + change_vacant;
-old_vacant_senate_r = vacant_senate_r;
+let change_vacant = vacant_senate_r - (get("old_vacant_senate_r") || 0);
+let str_change_vacant = (change_vacant >= 0 ? "+" : "") + change_vacant;
+set("str_change_vacant", str_change_vacant);
+set("old_vacant_senate_r", vacant_senate_r);
+
 // Determine largest party
 largest_party = "rep";
-if dem_senate_r >= rep_senate_r and dem_senate_r >= other_senate_r {
+if (dem_senate_r >= rep_senate_r && dem_senate_r >= other_senate_r) {
     largest_party = "dem";
 }
-if other_senate_r >= rep_senate_r and other_senate_r >= dem_senate_r {
+if (other_senate_r >= rep_senate_r && other_senate_r >= dem_senate_r) {
     largest_party = "other";
 }
+
 // Store majorities
 republican_majority = rep_senate_r;
 democrat_majority = dem_senate_r;
 other_majority = other_senate_r;
+
 // Record election result
-result = {date: year + "-" + month};
-for party in parties {
-    result[party] = get(party + "_senate_r") or 0;
+let result = { date: year + "-" + month };
+for (let party of parties) {
+    result[party] = get(party + "_senate_r") || 0;
 }
-election_records.append(result);
+election_records.push(result);
+
+// Set display variables
 display_rep_senate = rep_senate_r;
 display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
