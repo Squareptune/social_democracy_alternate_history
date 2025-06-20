@@ -1,75 +1,161 @@
 title: Election
 on-arrival: {!
-// 1. Normalize class-based party support
-for (let c of Q.classes) {
-    let total = 0;
-    for (let party of Q.parties) {
-        Q[c + '_' + party] = Q[c + '_' + party] || 0;
-        if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
-        total += Q[c + '_' + party];
-    }
-    if (total === 0) total = 1;
-    for (let party of Q.parties) {
-        let norm = (100 * Q[c + '_' + party]) / total;
-        Q[c + '_' + party + '_normalized'] = norm;
-        Q[c + '_' + party + '_display'] = Math.round(norm);
-    }
-}
 
-// 2. Calculate national party support
-let total_support = 0;
-for (let party of Q.parties) {
-    let support = 0;
-    for (let c of Q.classes) {
-        let class_pop = Q[c] || 0;
-        let weight = Q.old_demographics
-            ? Q[c + '_' + party]
-            : Q[c + '_' + party + '_normalized'];
-        support += class_pop * weight;
-    }
-    Q[party + '_support'] = support;
-    total_support += support;
-}
-// 3. Normalize vote shares and allocate seats proportionally
-for (let party of Q.parties) {
-    let norm = Q[party + '_support'] / total_support;
-    let dec = Math.round(norm * 1000) / 10;
-    Q[party + '_normalized'] = norm;
-    Q[party + '_votes_dec'] = dec;
-    if (Q.use_decimals) {
-        Q[party + '_votes'] = dec;
-        Q[party + '_votes_disp'] = dec;
-    } else {
-        Q[party + '_votes'] = Math.round(norm * 100);
-        Q[party + '_votes_disp'] = dec.toFixed(1);
-    }
-    // Allocate seats using your existing TOTAL_SEATS variable
-    Q[party + '_senate_r'] = Math.round(norm * TOTAL_SEATS);
-}
-// 4. Senate state-level 2-seat majority winner
+// Reset seat counts and national vote totals
 Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
+let totalRepVotes = 0;
+let totalDemVotes = 0;
+let totalOtherVotes = 0;
+
+// Iterate over all states
 for (let state of Q.states) {
-    let party_support = { rep: 0, dem: 0, other: 0 };
+
+    // Initialize per-state vote totals
+    let stateRep = 0;
+    let stateDem = 0;
+    let stateOther = 0;
+
+    // For each class, calculate weighted votes
     for (let cls of Q.classes) {
-        const pop = Q[state + '_' + cls] || 0;
-        const rep = Q[cls + '_rep_normalized'] || 0;
-        const dem = Q[cls + '_dem_normalized'] || 0;
-        const other = Q[cls + '_other_normalized'] || 0;
-        party_support.rep += pop * rep;
-        party_support.dem += pop * dem;
-        party_support.other += pop * other;
+        // population of class in state
+        let clsPop = Q[state + '_' + cls] || 0;
+
+        // normalized support per party for this class
+        let repPct = Q[cls + '_rep_normalized'] || 0;
+        let demPct = Q[cls + '_dem_normalized'] || 0;
+        let otherPct = Q[cls + '_other_normalized'] || 0;
+
+        // sum of party supports for normalization (should be 100)
+        let totalPct = repPct + demPct + otherPct;
+        if (totalPct <= 0) totalPct = 1;
+
+        // weighted votes by class population and party share
+        stateRep += clsPop * (repPct / totalPct);
+        stateDem += clsPop * (demPct / totalPct);
+        stateOther += clsPop * (otherPct / totalPct);
     }
-    const winner = Object.entries(party_support).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
-    if (winner === 'rep') Q.rep_senate_r += 2;
-    else if (winner === 'dem') Q.dem_senate_r += 2;
-    else Q.other_senate_r += 2;
+
+    // Add state votes to national totals
+    totalRepVotes += stateRep;
+    totalDemVotes += stateDem;
+    totalOtherVotes += stateOther;
+
+    // Calculate percentages in state
+    let totalStateVotes = stateRep + stateDem + stateOther;
+    if (totalStateVotes <= 0) totalStateVotes = 1;
+    let repPercent = (stateRep / totalStateVotes) * 100;
+    let demPercent = (stateDem / totalStateVotes) * 100;
+    let otherPercent = (stateOther / totalStateVotes) * 100;
+
+    // Determine seat allocation for 2 Senate seats
+    // Sort parties by vote percent descending
+    let margins = [
+        {party:'rep', pct:repPercent},
+        {party:'dem', pct:demPercent},
+        {party:'other', pct:otherPercent}
+    ];
+    margins.sort((a,b) => b.pct - a.pct);
+
+    let first = margins[0];
+    let second = margins[1];
+
+    // Initialize seats for each party in this state
+    let repSeat = 0;
+    let demSeat = 0;
+    let otherSeat = 0;
+
+    // Seat allocation logic based on margins
+    if (first.pct >= 66) {
+        // Landslide - 2 seats to winner
+        if (first.party == 'rep') repSeat = 2;
+        else if (first.party == 'dem') demSeat = 2;
+        else otherSeat = 2;
+    } else if (first.pct >= 55 && (first.pct - second.pct) > 10) {
+        // Strong win - 2 seats to winner
+        if (first.party == 'rep') repSeat = 2;
+        else if (first.party == 'dem') demSeat = 2;
+        else otherSeat = 2;
+    } else if ((first.pct - second.pct) <= 12) {
+        // Competitive - split seats
+        if (first.party == 'rep') repSeat = 1;
+        else if (first.party == 'dem') demSeat = 1;
+        else otherSeat = 1;
+
+        if (second.party == 'rep') repSeat++;
+        else if (second.party == 'dem') demSeat++;
+        else otherSeat++;
+    } else {
+        // Default - winner takes both
+        if (first.party == 'rep') repSeat = 2;
+        else if (first.party == 'dem') demSeat = 2;
+        else otherSeat = 2;
+    }
+
+    // Adjust seats to total exactly 2
+    let totalSeats = repSeat + demSeat + otherSeat;
+    let repShare = stateRep / totalStateVotes;
+    let demShare = stateDem / totalStateVotes;
+    let otherShare = stateOther / totalStateVotes;
+
+    if (totalSeats > 2) {
+        // Remove from party with lowest remainder
+        let remainders = [
+            {party:'rep', remainder: repShare * 2 - repSeat},
+            {party:'dem', remainder: demShare * 2 - demSeat},
+            {party:'other', remainder: otherShare * 2 - otherSeat}
+        ];
+        remainders.sort((a,b) => a.remainder - b.remainder);
+        while (totalSeats > 2) {
+            let target = remainders.shift();
+            if (target.party == 'rep' && repSeat > 0) { repSeat--; totalSeats--; }
+            else if (target.party == 'dem' && demSeat > 0) { demSeat--; totalSeats--; }
+            else if (target.party == 'other' && otherSeat > 0) { otherSeat--; totalSeats--; }
+        }
+    } else if (totalSeats < 2) {
+        // Add to party with highest remainder
+        let remainders = [
+            {party:'rep', remainder: repShare * 2 - repSeat},
+            {party:'dem', remainder: demShare * 2 - demSeat},
+            {party:'other', remainder: otherShare * 2 - otherSeat}
+        ];
+        remainders.sort((a,b) => b.remainder - a.remainder);
+        while (totalSeats < 2) {
+            let target = remainders.shift();
+            if (target.party == 'rep') { repSeat++; totalSeats++; }
+            else if (target.party == 'dem') { demSeat++; totalSeats++; }
+            else { otherSeat++; totalSeats++; }
+        }
+    }
+
+    // Add state seats to national totals
+    Q.rep_senate_r += repSeat;
+    Q.dem_senate_r += demSeat;
+    Q.other_senate_r += otherSeat;
 }
-// Set display variables (optional)
+
+// Calculate total votes to normalize national vote shares
+let nationalTotalVotes = totalRepVotes + totalDemVotes + totalOtherVotes;
+if (nationalTotalVotes <= 0) nationalTotalVotes = 1;
+
+Q.rep_normalized = totalRepVotes / nationalTotalVotes;
+Q.dem_normalized = totalDemVotes / nationalTotalVotes;
+Q.other_normalized = totalOtherVotes / nationalTotalVotes;
+
+Q.rep_votes_dec = Math.round(Q.rep_normalized * 1000) / 10;
+Q.dem_votes_dec = Math.round(Q.dem_normalized * 1000) / 10;
+Q.other_votes_dec = Math.round(Q.other_normalized * 1000) / 10;
+
+// Optional: set display vars
+Q.rep_votes = Math.round(Q.rep_normalized * 100);
+Q.dem_votes = Math.round(Q.dem_normalized * 100);
+Q.other_votes = Math.round(Q.other_normalized * 100);
+
+// Set display variables for senate seats and vacant
 Q.display_rep_senate = Q.rep_senate_r;
 Q.display_dem_senate = Q.dem_senate_r;
 Q.display_other_senate = Q.other_senate_r;
-Q.display_vacant_senate = vacant_senate; // assuming this exists
+Q.display_vacant_senate = vacant_senate || 0;
 !}
 go-to: jumpScene
