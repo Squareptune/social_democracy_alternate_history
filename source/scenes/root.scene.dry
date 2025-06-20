@@ -113,37 +113,6 @@ Q.economic_expansion = 0;
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
 Q.parties = ['rep', 'dem', 'other'];  // Republicans, Democrats, minor parties, vacant seats
 
-// Support for party by social group (normalized later)
-Q.workers_rep = 50;    // Northern industrial workers, pro-Union, pro-GOP
-Q.workers_dem = 30;    // Some urban laborers (esp. Irish immigrants) leaned Democratic
-Q.workers_other = 15;  // Radical labor/reform parties
-Q.workers_vac = 5;     // Marginal/undecided
-
-Q.middle_class_rep = 60;   // Northern businessmen, professionals, pro-Reconstruction
-Q.middle_class_dem = 25;   // Some merchants in border states/Dem-leaning cities
-Q.middle_class_other = 10; // Liberal Republicans (1872)
-Q.middle_class_vac = 5;
-
-Q.rural_rep = 30;      // Yeoman farmers (North), some Southern Unionists
-Q.rural_dem = 60;      // White Southern farmers, anti-Reconstruction
-Q.rural_other = 5;     // Agrarian protest movements
-Q.rural_vac = 5;
-
-Q.freemen_rep = 90;    // Freedmen overwhelmingly Republican (only party supporting rights)
-Q.freemen_dem = 0;     // Democrats hostile to Black suffrage
-Q.freemen_other = 5;   // Independent Black politicians
-Q.freemen_vac = 5;
-
-Q.immigrant_laborers_rep = 40;  // German/Scandinavian immigrants (pro-GOP)
-Q.immigrant_laborers_dem = 50;  // Irish Catholics (anti-Black, pro-Democratic)
-Q.immigrant_laborers_other = 5; // Labor unions/nativists
-Q.immigrant_laborers_vac = 5;
-
-Q.unemployed_rep = 20;  // War veterans, displaced workers (mixed loyalties)
-Q.unemployed_dem = 50;  // Poor whites in South (resentful of Reconstruction)
-Q.unemployed_other = 25; // Radicals/agrarian protest
-Q.unemployed_vac = 5;
-
 // Current House composition
 
 Q.rep_r = 136;
@@ -182,155 +151,780 @@ Q.freemen = 12;
 
 Q.states = ["CA", "CT", "DE", "IL", "IN", "IA", "KS", "KY", "ME", "MD", "MA", "MI", "MN", "MO", "NV", "NH", "NJ", "NY", "OH", "OR", "PA", "RI", "VT", "WV", "WI"];
 
-Q.CA_workers = 500000; // Workers in California
-Q.CA_rural = 250000; // Rural population in California
-Q.CA_unemployed = 50000; // Unemployed in California
-Q.CA_immigrant_laborers = 100000; // Immigrant laborers in California
-Q.CA_freemen = 30000; // Freemen in California
+// === CALIFORNIA ===
+Q.CA_workers = 20000;
+Q.CA_workers_rep = 55;
+Q.CA_workers_dem = 35;
+Q.CA_workers_other = 10;
 
-Q.CT_workers = 200000; // Workers in Connecticut
-Q.CT_rural = 150000; // Rural population in Connecticut
-Q.CT_unemployed = 20000; // Unemployed in Connecticut
-Q.CT_immigrant_laborers = 30000; // Immigrant laborers in Connecticut
-Q.CT_freemen = 10000; // Freemen in Connecticut
+Q.CA_middle_class = 10000;
+Q.CA_middle_class_rep = 60;
+Q.CA_middle_class_dem = 30;
+Q.CA_middle_class_other = 10;
 
-Q.DE_workers = 90000; // Workers in Delaware
-Q.DE_rural = 50000; // Rural population in Delaware
-Q.DE_unemployed = 10000; // Unemployed in Delaware
-Q.DE_immigrant_laborers = 5000; // Immigrant laborers in Delaware
-Q.DE_freemen = 5000; // Freemen in Delaware
+Q.CA_rural = 300000;
+Q.CA_rural_rep = 50;
+Q.CA_rural_dem = 40;
+Q.CA_rural_other = 10;
 
-Q.IL_workers = 1000000; // Workers in Illinois
-Q.IL_rural = 500000; // Rural population in Illinois
-Q.IL_unemployed = 100000; // Unemployed in Illinois
-Q.IL_immigrant_laborers = 200000; // Immigrant laborers in Illinois
-Q.IL_freemen = 50000; // Freemen in Illinois
+Q.CA_freemen = 4000;
+Q.CA_freemen_rep = 90;
+Q.CA_freemen_dem = 5;
+Q.CA_freemen_other = 5;
 
-Q.IN_workers = 800000; // Workers in Indiana
-Q.IN_rural = 500000; // Rural population in Indiana
-Q.IN_unemployed = 100000; // Unemployed in Indiana
-Q.IN_immigrant_laborers = 100000; // Immigrant laborers in Indiana
-Q.IN_freemen = 40000; // Freemen in Indiana
+Q.CA_immigrant_laborers = 50000;
+Q.CA_immigrant_laborers_rep = 45;
+Q.CA_immigrant_laborers_dem = 45;
+Q.CA_immigrant_laborers_other = 10;
 
-Q.IA_workers = 400000; // Workers in Iowa
-Q.IA_rural = 300000; // Rural population in Iowa
-Q.IA_unemployed = 50000; // Unemployed in Iowa
-Q.IA_immigrant_laborers = 30000; // Immigrant laborers in Iowa
-Q.IA_freemen = 20000; // Freemen in Iowa
+Q.CA_unemployed = 25000;
+Q.CA_unemployed_rep = 40;
+Q.CA_unemployed_dem = 50;
+Q.CA_unemployed_other = 10;
 
-Q.KS_workers = 300000; // Workers in Kansas
-Q.KS_rural = 200000; // Rural population in Kansas
-Q.KS_unemployed = 40000; // Unemployed in Kansas
-Q.KS_immigrant_laborers = 10000; // Immigrant laborers in Kansas
-Q.KS_freemen = 20000; // Freemen in Kansas
+// === CONNECTICUT ===
+Q.CT_workers = 70000;
+Q.CT_workers_rep = 50;
+Q.CT_workers_dem = 40;
+Q.CT_workers_other = 10;
 
-Q.KY_workers = 700000; // Workers in Kentucky
-Q.KY_rural = 600000; // Rural population in Kentucky
-Q.KY_unemployed = 50000; // Unemployed in Kentucky
-Q.KY_immigrant_laborers = 70000; // Immigrant laborers in Kentucky
-Q.KY_freemen = 60000; // Freemen in Kentucky
+Q.CT_middle_class = 40000;
+Q.CT_middle_class_rep = 65;
+Q.CT_middle_class_dem = 25;
+Q.CT_middle_class_other = 10;
 
-Q.ME_workers = 150000; // Workers in Maine
-Q.ME_rural = 100000; // Rural population in Maine
-Q.ME_unemployed = 10000; // Unemployed in Maine
-Q.ME_immigrant_laborers = 5000; // Immigrant laborers in Maine
-Q.ME_freemen = 5000; // Freemen in Maine
+Q.CT_rural = 160000;
+Q.CT_rural_rep = 60;
+Q.CT_rural_dem = 30;
+Q.CT_rural_other = 10;
 
-Q.MD_workers = 350000; // Workers in Maryland
-Q.MD_rural = 200000; // Rural population in Maryland
-Q.MD_unemployed = 50000; // Unemployed in Maryland
-Q.MD_immigrant_laborers = 100000; // Immigrant laborers in Maryland
-Q.MD_freemen = 50000; // Freemen in Maryland
+Q.CT_freemen = 6000;
+Q.CT_freemen_rep = 95;
+Q.CT_freemen_dem = 0;
+Q.CT_freemen_other = 5;
 
-Q.MA_workers = 900000; // Workers in Massachusetts
-Q.MA_rural = 300000; // Rural population in Massachusetts
-Q.MA_unemployed = 100000; // Unemployed in Massachusetts
-Q.MA_immigrant_laborers = 300000; // Immigrant laborers in Massachusetts
-Q.MA_freemen = 40000; // Freemen in Massachusetts
+Q.CT_immigrant_laborers = 30000;
+Q.CT_immigrant_laborers_rep = 40;
+Q.CT_immigrant_laborers_dem = 50;
+Q.CT_immigrant_laborers_other = 10;
 
-Q.MI_workers = 500000; // Workers in Michigan
-Q.MI_rural = 300000; // Rural population in Michigan
-Q.MI_unemployed = 50000; // Unemployed in Michigan
-Q.MI_immigrant_laborers = 70000; // Immigrant laborers in Michigan
-Q.MI_freemen = 30000; // Freemen in Michigan
+Q.CT_unemployed = 21000;
+Q.CT_unemployed_rep = 45;
+Q.CT_unemployed_dem = 45;
+Q.CT_unemployed_other = 10;
 
-Q.MN_workers = 150000; // Workers in Minnesota
-Q.MN_rural = 120000; // Rural population in Minnesota
-Q.MN_unemployed = 20000; // Unemployed in Minnesota
-Q.MN_immigrant_laborers = 50000; // Immigrant laborers in Minnesota
-Q.MN_freemen = 10000; // Freemen in Minnesota
+// === DELAWARE ===
+Q.DE_workers = 20000;
+Q.DE_workers_rep = 45;
+Q.DE_workers_dem = 45;
+Q.DE_workers_other = 10;
 
-Q.MO_workers = 800000; // Workers in Missouri
-Q.MO_rural = 500000; // Rural population in Missouri
-Q.MO_unemployed = 100000; // Unemployed in Missouri
-Q.MO_immigrant_laborers = 150000; // Immigrant laborers in Missouri
-Q.MO_freemen = 50000; // Freemen in Missouri
+Q.DE_middle_class = 10000;
+Q.DE_middle_class_rep = 50;
+Q.DE_middle_class_dem = 40;
+Q.DE_middle_class_other = 10;
 
-Q.NV_workers = 50000; // Workers in Nevada
-Q.NV_rural = 30000; // Rural population in Nevada
-Q.NV_unemployed = 10000; // Unemployed in Nevada
-Q.NV_immigrant_laborers = 5000; // Immigrant laborers in Nevada
-Q.NV_freemen = 5000; // Freemen in Nevada
+Q.DE_rural = 80000;
+Q.DE_rural_rep = 40;
+Q.DE_rural_dem = 50;
+Q.DE_rural_other = 10;
 
-Q.NH_workers = 100000; // Workers in New Hampshire
-Q.NH_rural = 50000; // Rural population in New Hampshire
-Q.NH_unemployed = 10000; // Unemployed in New Hampshire
-Q.NH_immigrant_laborers = 5000; // Immigrant laborers in New Hampshire
-Q.NH_freemen = 5000; // Freemen in New Hampshire
+Q.DE_freemen = 8000;
+Q.DE_freemen_rep = 85;
+Q.DE_freemen_dem = 10;
+Q.DE_freemen_other = 5;
 
-Q.NJ_workers = 400000; // Workers in New Jersey
-Q.NJ_rural = 150000; // Rural population in New Jersey
-Q.NJ_unemployed = 20000; // Unemployed in New Jersey
-Q.NJ_immigrant_laborers = 100000; // Immigrant laborers in New Jersey
-Q.NJ_freemen = 30000; // Freemen in New Jersey
+Q.DE_immigrant_laborers = 2000;
+Q.DE_immigrant_laborers_rep = 35;
+Q.DE_immigrant_laborers_dem = 55;
+Q.DE_immigrant_laborers_other = 10;
 
-Q.NY_workers = 1200000; // Workers in New York
-Q.NY_rural = 500000; // Rural population in New York
-Q.NY_unemployed = 100000; // Unemployed in New York
-Q.NY_immigrant_laborers = 300000; // Immigrant laborers in New York
-Q.NY_freemen = 150000; // Freemen in New York
+Q.DE_unemployed = 7000;
+Q.DE_unemployed_rep = 35;
+Q.DE_unemployed_dem = 55;
+Q.DE_unemployed_other = 10;
 
-Q.OH_workers = 1000000; // Workers in Ohio
-Q.OH_rural = 700000; // Rural population in Ohio
-Q.OH_unemployed = 100000; // Unemployed in Ohio
-Q.OH_immigrant_laborers = 150000; // Immigrant laborers in Ohio
-Q.OH_freemen = 50000; // Freemen in Ohio
+// === ILLINOIS ===
+Q.IL_workers = 100000;
+Q.IL_workers_rep = 55;
+Q.IL_workers_dem = 35;
+Q.IL_workers_other = 10;
 
-Q.OR_workers = 250000; // Workers in Oregon
-Q.OR_rural = 150000; // Rural population in Oregon
-Q.OR_unemployed = 10000; // Unemployed in Oregon
-Q.OR_immigrant_laborers = 50000; // Immigrant laborers in Oregon
-Q.OR_freemen = 20000; // Freemen in Oregon
+Q.IL_middle_class = 70000;
+Q.IL_middle_class_rep = 65;
+Q.IL_middle_class_dem = 25;
+Q.IL_middle_class_other = 10;
 
-Q.PA_workers = 1300000; // Workers in Pennsylvania
-Q.PA_rural = 800000; // Rural population in Pennsylvania
-Q.PA_unemployed = 150000; // Unemployed in Pennsylvania
-Q.PA_immigrant_laborers = 250000; // Immigrant laborers in Pennsylvania
-Q.PA_freemen = 200000; // Freemen in Pennsylvania
+Q.IL_rural = 1320000;
+Q.IL_rural_rep = 60;
+Q.IL_rural_dem = 30;
+Q.IL_rural_other = 10;
 
-Q.RI_workers = 100000; // Workers in Rhode Island
-Q.RI_rural = 30000; // Rural population in Rhode Island
-Q.RI_unemployed = 10000; // Unemployed in Rhode Island
-Q.RI_immigrant_laborers = 20000; // Immigrant laborers in Rhode Island
-Q.RI_freemen = 5000; // Freemen in Rhode Island
+Q.IL_freemen = 13000;
+Q.IL_freemen_rep = 95;
+Q.IL_freemen_dem = 0;
+Q.IL_freemen_other = 5;
 
-Q.VT_workers = 50000; // Workers in Vermont
-Q.VT_rural = 30000; // Rural population in Vermont
-Q.VT_unemployed = 5000; // Unemployed in Vermont
-Q.VT_immigrant_laborers = 5000; // Immigrant laborers in Vermont
-Q.VT_freemen = 5000; // Freemen in Vermont
+Q.IL_immigrant_laborers = 220000;
+Q.IL_immigrant_laborers_rep = 40;
+Q.IL_immigrant_laborers_dem = 50;
+Q.IL_immigrant_laborers_other = 10;
 
-Q.WV_workers = 200000; // Workers in West Virginia
-Q.WV_rural = 100000; // Rural population in West Virginia
-Q.WV_unemployed = 20000; // Unemployed in West Virginia
-Q.WV_immigrant_laborers = 5000; // Immigrant laborers in West Virginia
-Q.WV_freemen = 20000; // Freemen in West Virginia
+Q.IL_unemployed = 117000;
+Q.IL_unemployed_rep = 45;
+Q.IL_unemployed_dem = 45;
+Q.IL_unemployed_other = 10;
 
-Q.WI_workers = 500000; // Workers in Wisconsin
-Q.WI_rural = 400000; // Rural population in Wisconsin
-Q.WI_unemployed = 50000; // Unemployed in Wisconsin
-Q.WI_immigrant_laborers = 100000; // Immigrant laborers in Wisconsin
-Q.WI_freemen = 50000; // Freemen in Wisconsin
+// === INDIANA ===
+Q.IN_workers = 90000;
+Q.IN_workers_rep = 60;
+Q.IN_workers_dem = 30;
+Q.IN_workers_other = 10;
+
+Q.IN_middle_class = 60000;
+Q.IN_middle_class_rep = 65;
+Q.IN_middle_class_dem = 25;
+Q.IN_middle_class_other = 10;
+
+Q.IN_rural = 1080000;
+Q.IN_rural_rep = 55;
+Q.IN_rural_dem = 35;
+Q.IN_rural_other = 10;
+
+Q.IN_freemen = 16000;
+Q.IN_freemen_rep = 95;
+Q.IN_freemen_dem = 0;
+Q.IN_freemen_other = 5;
+
+Q.IN_immigrant_laborers = 180000;
+Q.IN_immigrant_laborers_rep = 45;
+Q.IN_immigrant_laborers_dem = 45;
+Q.IN_immigrant_laborers_other = 10;
+
+Q.IN_unemployed = 96000;
+Q.IN_unemployed_rep = 40;
+Q.IN_unemployed_dem = 50;
+Q.IN_unemployed_other = 10;
+
+// === IOWA ===
+Q.IA_workers = 60000;
+Q.IA_workers_rep = 65;
+Q.IA_workers_dem = 25;
+Q.IA_workers_other = 10;
+
+Q.IA_middle_class = 40000;
+Q.IA_middle_class_rep = 70;
+Q.IA_middle_class_dem = 20;
+Q.IA_middle_class_other = 10;
+
+Q.IA_rural = 580000;
+Q.IA_rural_rep = 60;
+Q.IA_rural_dem = 30;
+Q.IA_rural_other = 10;
+
+Q.IA_freemen = 5000;
+Q.IA_freemen_rep = 95;
+Q.IA_freemen_dem = 0;
+Q.IA_freemen_other = 5;
+
+Q.IA_immigrant_laborers = 100000;
+Q.IA_immigrant_laborers_rep = 50;
+Q.IA_immigrant_laborers_dem = 40;
+Q.IA_immigrant_laborers_other = 10;
+
+Q.IA_unemployed = 53000;
+Q.IA_unemployed_rep = 45;
+Q.IA_unemployed_dem = 45;
+Q.IA_unemployed_other = 10;
+
+// === KANSAS ===
+Q.KS_workers = 30000;
+Q.KS_workers_rep = 70;
+Q.KS_workers_dem = 20;
+Q.KS_workers_other = 10;
+
+Q.KS_middle_class = 20000;
+Q.KS_middle_class_rep = 75;
+Q.KS_middle_class_dem = 15;
+Q.KS_middle_class_other = 10;
+
+Q.KS_rural = 270000;
+Q.KS_rural_rep = 65;
+Q.KS_rural_dem = 25;
+Q.KS_rural_other = 10;
+
+Q.KS_freemen = 6000;
+Q.KS_freemen_rep = 95;
+Q.KS_freemen_dem = 0;
+Q.KS_freemen_other = 5;
+
+Q.KS_immigrant_laborers = 20000;
+Q.KS_immigrant_laborers_rep = 55;
+Q.KS_immigrant_laborers_dem = 35;
+Q.KS_immigrant_laborers_other = 10;
+
+Q.KS_unemployed = 23000;
+Q.KS_unemployed_rep = 50;
+Q.KS_unemployed_dem = 40;
+Q.KS_unemployed_other = 10;
+
+// === KENTUCKY ===
+Q.KY_workers = 40000;
+Q.KY_workers_rep = 40;
+Q.KY_workers_dem = 50;
+Q.KY_workers_other = 10;
+
+Q.KY_middle_class = 20000;
+Q.KY_middle_class_rep = 45;
+Q.KY_middle_class_dem = 45;
+Q.KY_middle_class_other = 10;
+
+Q.KY_rural = 900000;
+Q.KY_rural_rep = 30;
+Q.KY_rural_dem = 60;
+Q.KY_rural_other = 10;
+
+Q.KY_freemen = 225000;
+Q.KY_freemen_rep = 90;
+Q.KY_freemen_dem = 5;
+Q.KY_freemen_other = 5;
+
+Q.KY_immigrant_laborers = 60000;
+Q.KY_immigrant_laborers_rep = 35;
+Q.KY_immigrant_laborers_dem = 55;
+Q.KY_immigrant_laborers_other = 10;
+
+Q.KY_unemployed = 68000;
+Q.KY_unemployed_rep = 30;
+Q.KY_unemployed_dem = 60;
+Q.KY_unemployed_other = 10;
+
+// === MAINE ===
+Q.ME_workers = 30000;
+Q.ME_workers_rep = 55;
+Q.ME_workers_dem = 35;
+Q.ME_workers_other = 10;
+
+Q.ME_middle_class = 20000;
+Q.ME_middle_class_rep = 70;
+Q.ME_middle_class_dem = 20;
+Q.ME_middle_class_other = 10;
+
+Q.ME_rural = 560000;
+Q.ME_rural_rep = 65;
+Q.ME_rural_dem = 25;
+Q.ME_rural_other = 10;
+
+Q.ME_freemen = 2000;
+Q.ME_freemen_rep = 95;
+Q.ME_freemen_dem = 0;
+Q.ME_freemen_other = 5;
+
+Q.ME_immigrant_laborers = 40000;
+Q.ME_immigrant_laborers_rep = 40;
+Q.ME_immigrant_laborers_dem = 50;
+Q.ME_immigrant_laborers_other = 10;
+
+Q.ME_unemployed = 44000;
+Q.ME_unemployed_rep = 50;
+Q.ME_unemployed_dem = 40;
+Q.ME_unemployed_other = 10;
+
+// === MARYLAND ===
+Q.MD_workers = 60000;
+Q.MD_workers_rep = 48;
+Q.MD_workers_dem = 42;
+Q.MD_workers_other = 10;
+
+Q.MD_middle_class = 40000;
+Q.MD_middle_class_rep = 55;
+Q.MD_middle_class_dem = 35;
+Q.MD_middle_class_other = 10;
+
+Q.MD_rural = 600000;
+Q.MD_rural_rep = 35;
+Q.MD_rural_dem = 55;
+Q.MD_rural_other = 10;
+
+Q.MD_freemen = 90000;
+Q.MD_freemen_rep = 92;
+Q.MD_freemen_dem = 3;
+Q.MD_freemen_other = 5;
+
+Q.MD_immigrant_laborers = 60000;
+Q.MD_immigrant_laborers_rep = 40;
+Q.MD_immigrant_laborers_dem = 50;
+Q.MD_immigrant_laborers_other = 10;
+
+Q.MD_unemployed = 52000;
+Q.MD_unemployed_rep = 38;
+Q.MD_unemployed_dem = 52;
+Q.MD_unemployed_other = 10;
+
+// === MASSACHUSETTS ===
+Q.MA_workers = 120000;
+Q.MA_workers_rep = 50;
+Q.MA_workers_dem = 40;
+Q.MA_workers_other = 10;
+
+Q.MA_middle_class = 80000;
+Q.MA_middle_class_rep = 65;
+Q.MA_middle_class_dem = 25;
+Q.MA_middle_class_other = 10;
+
+Q.MA_rural = 870000;
+Q.MA_rural_rep = 60;
+Q.MA_rural_dem = 30;
+Q.MA_rural_other = 10;
+
+Q.MA_freemen = 11000;
+Q.MA_freemen_rep = 95;
+Q.MA_freemen_dem = 0;
+Q.MA_freemen_other = 5;
+
+Q.MA_immigrant_laborers = 160000;
+Q.MA_immigrant_laborers_rep = 35;
+Q.MA_immigrant_laborers_dem = 55;
+Q.MA_immigrant_laborers_other = 10;
+
+Q.MA_unemployed = 83000;
+Q.MA_unemployed_rep = 45;
+Q.MA_unemployed_dem = 45;
+Q.MA_unemployed_other = 10;
+
+// === MICHIGAN ===
+Q.MI_workers = 60000;
+Q.MI_workers_rep = 60;
+Q.MI_workers_dem = 30;
+Q.MI_workers_other = 10;
+
+Q.MI_middle_class = 40000;
+Q.MI_middle_class_rep = 65;
+Q.MI_middle_class_dem = 25;
+Q.MI_middle_class_other = 10;
+
+Q.MI_rural = 550000;
+Q.MI_rural_rep = 55;
+Q.MI_rural_dem = 35;
+Q.MI_rural_other = 10;
+
+Q.MI_freemen = 7000;
+Q.MI_freemen_rep = 95;
+Q.MI_freemen_dem = 0;
+Q.MI_freemen_other = 5;
+
+Q.MI_immigrant_laborers = 100000;
+Q.MI_immigrant_laborers_rep = 45;
+Q.MI_immigrant_laborers_dem = 45;
+Q.MI_immigrant_laborers_other = 10;
+
+Q.MI_unemployed = 51000;
+Q.MI_unemployed_rep = 40;
+Q.MI_unemployed_dem = 50;
+Q.MI_unemployed_other = 10;
+
+// === MINNESOTA ===
+Q.MN_workers = 30000;
+Q.MN_workers_rep = 65;
+Q.MN_workers_dem = 25;
+Q.MN_workers_other = 10;
+
+Q.MN_middle_class = 20000;
+Q.MN_middle_class_rep = 70;
+Q.MN_middle_class_dem = 20;
+Q.MN_middle_class_other = 10;
+
+Q.MN_rural = 260000;
+Q.MN_rural_rep = 60;
+Q.MN_rural_dem = 30;
+Q.MN_rural_other = 10;
+
+Q.MN_freemen = 1000;
+Q.MN_freemen_rep = 95;
+Q.MN_freemen_dem = 0;
+Q.MN_freemen_other = 5;
+
+Q.MN_immigrant_laborers = 70000;
+Q.MN_immigrant_laborers_rep = 50;
+Q.MN_immigrant_laborers_dem = 40;
+Q.MN_immigrant_laborers_other = 10;
+
+Q.MN_unemployed = 26000;
+Q.MN_unemployed_rep = 45;
+Q.MN_unemployed_dem = 45;
+Q.MN_unemployed_other = 10;
+
+// === MISSOURI ===
+Q.MO_workers = 70000;
+Q.MO_workers_rep = 52;
+Q.MO_workers_dem = 38;
+Q.MO_workers_other = 10;
+
+Q.MO_middle_class = 50000;
+Q.MO_middle_class_rep = 55;
+Q.MO_middle_class_dem = 35;
+Q.MO_middle_class_other = 10;
+
+Q.MO_rural = 880000;
+Q.MO_rural_rep = 40;
+Q.MO_rural_dem = 50;
+Q.MO_rural_other = 10;
+
+Q.MO_freemen = 120000;
+Q.MO_freemen_rep = 93;
+Q.MO_freemen_dem = 2;
+Q.MO_freemen_other = 5;
+
+Q.MO_immigrant_laborers = 80000;
+Q.MO_immigrant_laborers_rep = 38;
+Q.MO_immigrant_laborers_dem = 52;
+Q.MO_immigrant_laborers_other = 10;
+
+Q.MO_unemployed = 69000;
+Q.MO_unemployed_rep = 35;
+Q.MO_unemployed_dem = 55;
+Q.MO_unemployed_other = 10;
+
+// === NEVADA ===
+Q.NV_workers = 15000;
+Q.NV_workers_rep = 60;
+Q.NV_workers_dem = 30;
+Q.NV_workers_other = 10;
+
+Q.NV_middle_class = 10000;
+Q.NV_middle_class_rep = 65;
+Q.NV_middle_class_dem = 25;
+Q.NV_middle_class_other = 10;
+
+Q.NV_rural = 50000;
+Q.NV_rural_rep = 55;
+Q.NV_rural_dem = 35;
+Q.NV_rural_other = 10;
+
+Q.NV_freemen = 1000;
+Q.NV_freemen_rep = 90;
+Q.NV_freemen_dem = 5;
+Q.NV_freemen_other = 5;
+
+Q.NV_immigrant_laborers = 20000;
+Q.NV_immigrant_laborers_rep = 45;
+Q.NV_immigrant_laborers_dem = 45;
+Q.NV_immigrant_laborers_other = 10;
+
+Q.NV_unemployed = 6000;
+Q.NV_unemployed_rep = 40;
+Q.NV_unemployed_dem = 50;
+Q.NV_unemployed_other = 10;
+
+// === NEW HAMPSHIRE ===
+Q.NH_workers = 20000;
+Q.NH_workers_rep = 55;
+Q.NH_workers_dem = 35;
+Q.NH_workers_other = 10;
+
+Q.NH_middle_class = 15000;
+Q.NH_middle_class_rep = 70;
+Q.NH_middle_class_dem = 20;
+Q.NH_middle_class_other = 10;
+
+Q.NH_rural = 300000;
+Q.NH_rural_rep = 65;
+Q.NH_rural_dem = 25;
+Q.NH_rural_other = 10;
+
+Q.NH_freemen = 1000;
+Q.NH_freemen_rep = 95;
+Q.NH_freemen_dem = 0;
+Q.NH_freemen_other = 5;
+
+Q.NH_immigrant_laborers = 30000;
+Q.NH_immigrant_laborers_rep = 40;
+Q.NH_immigrant_laborers_dem = 50;
+Q.NH_immigrant_laborers_other = 10;
+
+Q.NH_unemployed = 25000;
+Q.NH_unemployed_rep = 50;
+Q.NH_unemployed_dem = 40;
+Q.NH_unemployed_other = 10;
+
+// === NEW JERSEY ===
+Q.NJ_workers = 90000;
+Q.NJ_workers_rep = 50;
+Q.NJ_workers_dem = 40;
+Q.NJ_workers_other = 10;
+
+Q.NJ_middle_class = 60000;
+Q.NJ_middle_class_rep = 60;
+Q.NJ_middle_class_dem = 30;
+Q.NJ_middle_class_other = 10;
+
+Q.NJ_rural = 300000;
+Q.NJ_rural_rep = 55;
+Q.NJ_rural_dem = 35;
+Q.NJ_rural_other = 10;
+
+Q.NJ_freemen = 20000;
+Q.NJ_freemen_rep = 95;
+Q.NJ_freemen_dem = 0;
+Q.NJ_freemen_other = 5;
+
+Q.NJ_immigrant_laborers = 100000;
+Q.NJ_immigrant_laborers_rep = 35;
+Q.NJ_immigrant_laborers_dem = 55;
+Q.NJ_immigrant_laborers_other = 10;
+
+Q.NJ_unemployed = 38000;
+Q.NJ_unemployed_rep = 45;
+Q.NJ_unemployed_dem = 45;
+Q.NJ_unemployed_other = 10;
+
+// === NEW YORK ===
+Q.NY_workers = 400000;
+Q.NY_workers_rep = 45;
+Q.NY_workers_dem = 45;
+Q.NY_workers_other = 10;
+
+Q.NY_middle_class = 200000;
+Q.NY_middle_class_rep = 55;
+Q.NY_middle_class_dem = 35;
+Q.NY_middle_class_other = 10;
+
+Q.NY_rural = 2780000;
+Q.NY_rural_rep = 50;
+Q.NY_rural_dem = 40;
+Q.NY_rural_other = 10;
+
+Q.NY_freemen = 49000;
+Q.NY_freemen_rep = 95;
+Q.NY_freemen_dem = 0;
+Q.NY_freemen_other = 5;
+
+Q.NY_immigrant_laborers = 500000;
+Q.NY_immigrant_laborers_rep = 30;
+Q.NY_immigrant_laborers_dem = 60;
+Q.NY_immigrant_laborers_other = 10;
+
+Q.NY_unemployed = 260000;
+Q.NY_unemployed_rep = 40;
+Q.NY_unemployed_dem = 50;
+Q.NY_unemployed_other = 10;
+
+// === OHIO ===
+Q.OH_workers = 120000;
+Q.OH_workers_rep = 60;
+Q.OH_workers_dem = 30;
+Q.OH_workers_other = 10;
+
+Q.OH_middle_class = 80000;
+Q.OH_middle_class_rep = 65;
+Q.OH_middle_class_dem = 25;
+Q.OH_middle_class_other = 10;
+
+Q.OH_rural = 1800000;
+Q.OH_rural_rep = 55;
+Q.OH_rural_dem = 35;
+Q.OH_rural_other = 10;
+
+Q.OH_freemen = 65000;
+Q.OH_freemen_rep = 95;
+Q.OH_freemen_dem = 0;
+Q.OH_freemen_other = 5;
+
+Q.OH_immigrant_laborers = 300000;
+Q.OH_immigrant_laborers_rep = 45;
+Q.OH_immigrant_laborers_dem = 45;
+Q.OH_immigrant_laborers_other = 10;
+
+Q.OH_unemployed = 161000;
+Q.OH_unemployed_rep = 40;
+Q.OH_unemployed_dem = 50;
+Q.OH_unemployed_other = 10;
+
+// === OREGON ===
+Q.OR_workers = 10000;
+Q.OR_workers_rep = 65;
+Q.OR_workers_dem = 25;
+Q.OR_workers_other = 10;
+
+Q.OR_middle_class = 5000;
+Q.OR_middle_class_rep = 70;
+Q.OR_middle_class_dem = 20;
+Q.OR_middle_class_other = 10;
+
+Q.OR_rural = 60000;
+Q.OR_rural_rep = 60;
+Q.OR_rural_dem = 30;
+Q.OR_rural_other = 10;
+
+Q.OR_freemen = 0;
+Q.OR_freemen_rep = 95;
+Q.OR_freemen_dem = 0;
+Q.OR_freemen_other = 5;
+
+Q.OR_immigrant_laborers = 10000;
+Q.OR_immigrant_laborers_rep = 50;
+Q.OR_immigrant_laborers_dem = 40;
+Q.OR_immigrant_laborers_other = 10;
+
+Q.OR_unemployed = 6000;
+Q.OR_unemployed_rep = 45;
+Q.OR_unemployed_dem = 45;
+Q.OR_unemployed_other = 10;
+
+// === PENNSYLVANIA ===
+Q.PA_workers = 250000;
+Q.PA_workers_rep = 50;
+Q.PA_workers_dem = 40;
+Q.PA_workers_other = 10;
+
+Q.PA_middle_class = 150000;
+Q.PA_middle_class_rep = 65;
+Q.PA_middle_class_dem = 25;
+Q.PA_middle_class_other = 10;
+
+Q.PA_rural = 2126000;
+Q.PA_rural_rep = 55;
+Q.PA_rural_dem = 35;
+Q.PA_rural_other = 10;
+
+Q.PA_freemen = 61000;
+Q.PA_freemen_rep = 95;
+Q.PA_freemen_dem = 0;
+Q.PA_freemen_other = 5;
+
+Q.PA_immigrant_laborers = 380000;
+Q.PA_immigrant_laborers_rep = 45;
+Q.PA_immigrant_laborers_dem = 45;
+Q.PA_immigrant_laborers_other = 10;
+
+Q.PA_unemployed = 191000;
+Q.PA_unemployed_rep = 40;
+Q.PA_unemployed_dem = 50;
+Q.PA_unemployed_other = 10;
+
+// === RHODE ISLAND ===
+Q.RI_workers = 25000;
+Q.RI_workers_rep = 50;
+Q.RI_workers_dem = 40;
+Q.RI_workers_other = 10;
+
+Q.RI_middle_class = 15000;
+Q.RI_middle_class_rep = 65;
+Q.RI_middle_class_dem = 25;
+Q.RI_middle_class_other = 10;
+
+Q.RI_rural = 80000;
+Q.RI_rural_rep = 60;
+Q.RI_rural_dem = 30;
+Q.RI_rural_other = 10;
+
+Q.RI_freemen = 7000;
+Q.RI_freemen_rep = 95;
+Q.RI_freemen_dem = 0;
+Q.RI_freemen_other = 5;
+
+Q.RI_immigrant_laborers = 30000;
+Q.RI_immigrant_laborers_rep = 40;
+Q.RI_immigrant_laborers_dem = 50;
+Q.RI_immigrant_laborers_other = 10;
+
+Q.RI_unemployed = 10000;
+Q.RI_unemployed_rep = 45;
+Q.RI_unemployed_dem = 45;
+Q.RI_unemployed_other = 10;
+
+// === VERMONT ===
+Q.VT_workers = 10000;
+Q.VT_workers_rep = 70;
+Q.VT_workers_dem = 20;
+Q.VT_workers_other = 10;
+
+Q.VT_middle_class = 10000;
+Q.VT_middle_class_rep = 75;
+Q.VT_middle_class_dem = 15;
+Q.VT_middle_class_other = 10;
+
+Q.VT_rural = 300000;
+Q.VT_rural_rep = 65;
+Q.VT_rural_dem = 25;
+Q.VT_rural_other = 10;
+
+Q.VT_freemen = 1000;
+Q.VT_freemen_rep = 95;
+Q.VT_freemen_dem = 0;
+Q.VT_freemen_other = 5;
+
+Q.VT_immigrant_laborers = 10000;
+Q.VT_immigrant_laborers_rep = 55;
+Q.VT_immigrant_laborers_dem = 35;
+Q.VT_immigrant_laborers_other = 10;
+
+Q.VT_unemployed = 22000;
+Q.VT_unemployed_rep = 50;
+Q.VT_unemployed_dem = 40;
+Q.VT_unemployed_other = 10;
+
+// === WEST VIRGINIA ===
+Q.WV_workers = 30000;
+Q.WV_workers_rep = 55;
+Q.WV_workers_dem = 35;
+Q.WV_workers_other = 10;
+
+Q.WV_middle_class = 20000;
+Q.WV_middle_class_rep = 60;
+Q.WV_middle_class_dem = 30;
+Q.WV_middle_class_other = 10;
+
+Q.WV_rural = 300000;
+Q.WV_rural_rep = 45;
+Q.WV_rural_dem = 45;
+Q.WV_rural_other = 10;
+
+Q.WV_freemen = 30000;
+Q.WV_freemen_rep = 90;
+Q.WV_freemen_dem = 5;
+Q.WV_freemen_other = 5;
+
+Q.WV_immigrant_laborers = 10000;
+Q.WV_immigrant_laborers_rep = 40;
+Q.WV_immigrant_laborers_dem = 50;
+Q.WV_immigrant_laborers_other = 10;
+
+Q.WV_unemployed = 24000;
+Q.WV_unemployed_rep = 35;
+Q.WV_unemployed_dem = 55;
+Q.WV_unemployed_other = 10;
+
+// === WISCONSIN ===
+Q.WI_workers = 70000;
+Q.WI_workers_rep = 60;
+Q.WI_workers_dem = 30;
+Q.WI_workers_other = 10;
+
+Q.WI_middle_class = 40000;
+Q.WI_middle_class_rep = 65;
+Q.WI_middle_class_dem = 25;
+Q.WI_middle_class_other = 10;
+
+Q.WI_rural = 600000;
+Q.WI_rural_rep = 55;
+Q.WI_rural_dem = 35;
+Q.WI_rural_other = 10;
+
+Q.WI_freemen = 2000;
+Q.WI_freemen_rep = 95;
+Q.WI_freemen_dem = 0;
+Q.WI_freemen_other = 5;
+
+Q.WI_immigrant_laborers = 140000;
+Q.WI_immigrant_laborers_rep = 45;
+Q.WI_immigrant_laborers_dem = 45;
+Q.WI_immigrant_laborers_other = 10;
+
+Q.WI_unemployed = 58000;
+Q.WI_unemployed_rep = 40;
+Q.WI_unemployed_dem = 50;
+Q.WI_unemployed_other = 10;
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
