@@ -1,127 +1,127 @@
-title: Senate Elections
-new-page: true
-tags: event
-priority: -1
-view-if: (year = next_senate_election_year and month >= next_senate_election_month) or (year > next_senate_election_year)
-on-departure: month_actions += 1; in_election = 0; next_senate_election_year += 2; n_elections += 1; next_senate_election_time = time + 24;
-
-set-jump: post_election_1928
-
-= Elections, [+ month : month +] [+ year +]
-
-The Senate elections are to be held now.
-
-- @Senate_election_algorithm: May we do our best...
-
 @post_election_1928
 on-arrival: {!
 
 // Reset seat counts
-rep_senate_r = 0;
-dem_senate_r = 0;
-other_senate_r = 0;
+rep_senate_r = 0
+dem_senate_r = 0
+other_senate_r = 0
 
-TOTAL_SEATS = TOTAL_SEATS or 72;
-VACANT_SEATS = vacant_senate or 0;
-vacant_senate_r = VACANT_SEATS;
+// Set constants with fallback
+if TOTAL_SEATS = 0 or TOTAL_SEATS = null {
+    TOTAL_SEATS = 72
+}
+if vacant_senate = null {
+    vacant_senate = 0
+}
+vacant_senate_r = vacant_senate
 
 // Save old results
 for party in parties {
-    set("old_" + party + "_senate_r", get(party + "_senate_r") or 0);
+    old_key = "old_" + party + "_senate_r"
+    current_key = party + "_senate_r"
+    set(old_key, get(current_key) or 0)
 }
 
-// Initialize vote totals
-partyVotes = {};
+// Initialize vote totals dictionary
 for party in parties {
-    partyVotes[party] = 0;
+    partyVotes[party] = 0
 }
 
 // Calculate weighted votes by state, class, and party support
 for state in states {
     for cls in classes {
-        pop = get(state + "_" + cls) or 0;
+        pop_key = state + "_" + cls
+        pop = get(pop_key) or 0
         for party in parties {
-            supportKey = cls + "_" + party;
-            support = get(supportKey) or 0;
-            partyVotes[party] += (pop * support) / 100;
+            support_key = cls + "_" + party
+            support = get(support_key) or 0
+            partyVotes[party] = partyVotes[party] + ((pop * support) / 100)
         }
     }
 }
 
 // Sum total votes
-totalVotes = 0;
+totalVotes = 0
 for party in parties {
-    totalVotes += partyVotes[party];
+    totalVotes = totalVotes + partyVotes[party]
 }
 
 // If total votes zero, assign equal shares
 if totalVotes = 0 {
-    equalShare = round(TOTAL_SEATS / length(parties));
+    equalShare = round(TOTAL_SEATS / length(parties))
     for party in parties {
-        set(party + "_senate_r", equalShare);
+        set(party + "_senate_r", equalShare)
     }
 } else {
-    seatsToAllocate = TOTAL_SEATS - VACANT_SEATS;
+    seatsToAllocate = TOTAL_SEATS - vacant_senate
     for party in parties {
-        rawVotes = partyVotes[party];
+        rawVotes = partyVotes[party]
         if constitution_reform > 0 {
-            threshold = electoral_threshold or 0;
-            banned = get(party + "_banned") or false;
-            belowThreshold = (rawVotes / totalVotes) * 100 < threshold;
+            threshold = electoral_threshold or 0
+            banned = get(party + "_banned") or false
+            belowThreshold = ((rawVotes / totalVotes) * 100) < threshold
 
             if belowThreshold or (threshold > 1 and party = "other") or banned {
-                set(party + "_senate_r", 0);
+                set(party + "_senate_r", 0)
             } else {
-                seats = round(rawVotes * seatsToAllocate / totalVotes);
-                set(party + "_senate_r", seats);
+                seats = round(rawVotes * seatsToAllocate / totalVotes)
+                set(party + "_senate_r", seats)
             }
         } else {
-            seats = round(rawVotes * seatsToAllocate / totalVotes);
-            set(party + "_senate_r", seats);
+            seats = round(rawVotes * seatsToAllocate / totalVotes)
+            set(party + "_senate_r", seats)
         }
     }
 }
 
 // Set display and calculate changes
 for party in parties {
-    curSeats = get(party + "_senate_r") or 0;
-    oldSeats = get("old_" + party + "_senate_r") or 0;
-    set(party + "_senate_r_disp", curSeats);
-    change = curSeats - oldSeats;
-    set("change_" + party + "_senate_r", change);
-    sign = change > 0 ? "+" : "";
-    set("str_change_" + party, sign + change);
+    currentSeats = get(party + "_senate_r") or 0
+    oldSeats = get("old_" + party + "_senate_r") or 0
+    set(party + "_senate_r_disp", currentSeats)
+    change = currentSeats - oldSeats
+    set("change_" + party + "_senate_r", change)
+    sign = ""
+    if change > 0 { sign = "+" }
+    set("str_change_" + party, sign + change)
 }
 
 // Vacant seat changes
-change_vacant = vacant_senate_r - (old_vacant_senate_r or 0);
-str_change_vacant = (change_vacant >= 0 ? "+" : "") + change_vacant;
-old_vacant_senate_r = vacant_senate_r;
+oldVacant = get("old_vacant_senate_r") or 0
+change_vacant = vacant_senate_r - oldVacant
+str_change_vacant = ""
+if change_vacant >= 0 { str_change_vacant = "+" }
+str_change_vacant = str_change_vacant + change_vacant
+old_vacant_senate_r = vacant_senate_r
 
 // Determine largest party
-largest_party = "rep";
+largest_party = "rep"
 if dem_senate_r >= rep_senate_r and dem_senate_r >= other_senate_r {
-    largest_party = "dem";
+    largest_party = "dem"
 }
 if other_senate_r >= rep_senate_r and other_senate_r >= dem_senate_r {
-    largest_party = "other";
+    largest_party = "other"
 }
 
 // Store majorities
-republican_majority = rep_senate_r;
-democrat_majority = dem_senate_r;
-other_majority = other_senate_r;
+republican_majority = rep_senate_r
+democrat_majority = dem_senate_r
+other_majority = other_senate_r
 
 // Record election result
-result = {date: year + "-" + month};
+result = {}
+result["date"] = year + "-" + month
 for party in parties {
-    result[party] = get(party + "_senate_r") or 0;
+    result[party] = get(party + "_senate_r") or 0
 }
-election_records.append(result);
-display_rep_senate = rep_senate_r;
-display_dem_senate = dem_senate_r;
-display_other_senate = other_senate_r;
-display_vacant_senate = vacant_senate_r;
+election_records.append(result)
+
+// Set display variables
+display_rep_senate = rep_senate_r
+display_dem_senate = dem_senate_r
+display_other_senate = other_senate_r
+display_vacant_senate = vacant_senate_r
+
 !}
 
 on-display: {!
