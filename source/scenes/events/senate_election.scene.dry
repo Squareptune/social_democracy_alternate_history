@@ -26,13 +26,11 @@ vacant_senate_r = VACANT_SEATS;
 for (let party of parties) {
     set("old_" + party + "_senate_r", get(party + "_senate_r") || 0);
 }
-
 // Initialize vote totals
 let partyVotes = {};
 for (let party of parties) {
     partyVotes[party] = 0;
 }
-
 // Calculate weighted votes by state, class, and party support
 for (let state of states) {
     for (let cls of classes) {
@@ -44,13 +42,11 @@ for (let state of states) {
         }
     }
 }
-
 // Sum total votes
 let totalVotes = 0;
 for (let party of parties) {
     totalVotes += partyVotes[party];
 }
-
 // If total votes zero, assign equal shares
 if (totalVotes === 0) {
     let equalShare = Math.round(TOTAL_SEATS / parties.length);
@@ -78,7 +74,6 @@ if (totalVotes === 0) {
         }
     }
 }
-
 // Set display and calculate changes
 for (let party of parties) {
     let curSeats = get(party + "_senate_r") || 0;
@@ -89,7 +84,6 @@ for (let party of parties) {
     let sign = change > 0 ? "+" : "";
     set("str_change_" + party, sign + change);
 }
-
 // Vacant seat changes
 let change_vacant = vacant_senate_r - (get("old_vacant_senate_r") || 0);
 let str_change_vacant = (change_vacant >= 0 ? "+" : "") + change_vacant;
@@ -104,26 +98,22 @@ if (dem_senate_r >= rep_senate_r && dem_senate_r >= other_senate_r) {
 if (other_senate_r >= rep_senate_r && other_senate_r >= dem_senate_r) {
     largest_party = "other";
 }
-
 // Store majorities
 republican_majority = rep_senate_r;
 democrat_majority = dem_senate_r;
 other_majority = other_senate_r;
-
 // Record election result
 let result = { date: year + "-" + month };
 for (let party of parties) {
     result[party] = get(party + "_senate_r") || 0;
 }
 election_records.push(result);
-
 // Set display variables
 display_rep_senate = rep_senate_r;
 display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
 display_vacant_senate = vacant_senate_r;
 !}
-
 on-display: {!
   function loadScript(src, callback) {
     var script = document.createElement('script');
