@@ -123,6 +123,7 @@ display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
 display_vacant_senate = vacant_senate_r;
 !}
+
 on-display: {!
   function loadScript(src, callback) {
     var script = document.createElement('script');
