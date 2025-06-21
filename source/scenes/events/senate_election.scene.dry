@@ -35,7 +35,8 @@ for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
     for (let party of Q.parties) {
-      let support = Q[cls + "_" + party] || 0;
+      let supportKey = state + "_" + cls + "_" + party;
+      let support = Q[supportKey] || 0;
       partyVotes[party] += (pop * support) / 100;
     }
   }
