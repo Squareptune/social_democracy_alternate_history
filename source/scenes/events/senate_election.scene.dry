@@ -130,6 +130,16 @@ for (let party of parties) {
     set(party + "_senate_r_disp", curSeats);       // Display variable if UI uses it
 }
 
+Q.change_rep_senate_r = Q.rep_senate_r - Q.old_rep_senate_r;
+Q.change_dem_senate_r = Q.dem_senate_r - Q.old_dem_senate_r;
+Q.change_other_senate_r = Q.other_senate_r - Q.old_other_senate_r;
+Q.change_vacant_senate_r = Q.vacant_senate - Q.old_vacant_senate_r;
+
+Q.str_change_rep = (Q.change_rep_senate_r > 0 ? "+" : "") + Q.change_rep_senate_r;
+Q.str_change_dem = (Q.change_dem_senate_r > 0 ? "+" : "") + Q.change_dem_senate_r;
+Q.str_change_other = (Q.change_other_senate_r > 0 ? "+" : "") + Q.change_other_senate_r;
+Q.str_change_vacant = (Q.change_vacant_senate_r > 0 ? "+" : "") + Q.change_vacant_senate_r;
+
 !}
 on-display: {!
   function loadScript(src, callback) {
