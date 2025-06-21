@@ -209,13 +209,13 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ display_rep_senate +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ display_rep_senate +] seats** {!</td><td>!} **[+ Q.str_change_rep +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ Q.str_change_dem +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ Q.str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ Q.str_change_vacant +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu
