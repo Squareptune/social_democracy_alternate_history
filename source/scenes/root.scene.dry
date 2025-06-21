@@ -140,11 +140,6 @@ Q.old_dem_senate_r = 10;
 Q.old_other_senate_r = 7;
 Q.old_vacant_senate_r = 22;
 
-Q.change_rep_senate_r = 0
-Q.change_dem_senate_r = 0
-Q.change_other_senate_r = 0
-Q.change_vacant_senate_r = 0
-
 // break
 
 Q.workers = 13;
