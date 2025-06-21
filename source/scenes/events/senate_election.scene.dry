@@ -203,7 +203,9 @@ go-to: coalition_menu
 @simple_majority
 title: Republicans get a simple majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: {! (Q.rep_senate_r >= Math.floor(TOTAL_SEATS / 2) + 1) !}
+view-if: {! 
+Q.rep_senate_r > Q.states.length && Q.rep_senate_r < Math.ceil(Q.states.length * 2 * (2/3))
+!}
 on-arrival: sen_majority = 1;
 
 The Republicans have gained a simple majority in the Senate!
@@ -211,7 +213,9 @@ The Republicans have gained a simple majority in the Senate!
 @super_majority
 title: Republicans get a super majority
 subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: {! (Q.rep_senate_r >= Math.floor(TOTAL_SEATS * 2 / 3)) !}
+view-if: {!
+Q.rep_senate_r >= Math.ceil(Q.states.length * 2 * (2/3))
+!}
 on-arrival: sen_majority = 1;
 
 The Republicans have gained a supermajority in the Senate! Now they can override any presidential veto.
