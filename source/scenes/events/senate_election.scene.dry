@@ -14,27 +14,23 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
-// 1. Backup current seat counts BEFORE anything is reset
+// === 1. Save old seat values ===
 for (let party of Q.parties) {
   Q["old_" + party + "_senate_r"] = Q[party + "_senate_r"] || 0;
 }
 Q.old_vacant_senate_r = Q.vacant_senate || 0;
 
-// 2. Reset current election seat counts
-Q.rep_senate_r = 0;
-Q.dem_senate_r = 0;
-Q.other_senate_r = 0;
-
-// 3. Set up constants
-Q.TOTAL_SEATS = Q.TOTAL_SEATS || 72;
-Q.VACANT_SEATS = Q.vacant_senate || 0;
-Q.vacant_senate_r = Q.VACANT_SEATS;
-
-// 4. Tally raw vote totals
-let partyVotes = {};
+// === 2. Reset live counts ===
 for (let party of Q.parties) {
-  partyVotes[party] = 0;
+  Q[party + "_senate_r"] = 0;
 }
+Q.vacant_senate_r = Q.vacant_senate || 0;
+Q.TOTAL_SEATS = Q.TOTAL_SEATS || 72;
+
+// === 3. Tally vote totals by state/class ===
+let partyVotes = {};
+for (let party of Q.parties) partyVotes[party] = 0;
+
 for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
@@ -45,67 +41,56 @@ for (let state of Q.states) {
   }
 }
 
-// 5. Normalize vote totals and allocate seats
-let totalVotes = 0;
-for (let party of Q.parties) {
-  totalVotes += partyVotes[party];
-}
-let seatsToAllocate = Q.TOTAL_SEATS - Q.VACANT_SEATS;
+let totalVotes = Object.values(partyVotes).reduce((a, b) => a + b, 0);
+let seatsToAllocate = Q.TOTAL_SEATS - Q.vacant_senate_r;
 
+// === 4. Assign seats based on vote totals ===
 for (let party of Q.parties) {
   Q[party + "_votes"] = partyVotes[party];
 
   if (totalVotes === 0) {
-    Q[party + "_senate_r"] = Math.floor(Q.TOTAL_SEATS / Q.parties.length);
-  } else if (Q.constitution_reform > 0) {
-    let threshold = Q.electoral_threshold || 0;
+    Q[party + "_senate_r"] = Math.floor(seatsToAllocate / Q.parties.length);
+  } else {
     let votePercent = (partyVotes[party] / totalVotes) * 100;
     let banned = Q[party + "_banned"] || false;
+    let threshold = Q.electoral_threshold || 0;
     let belowThreshold = votePercent < threshold;
 
-    if (belowThreshold || (threshold > 1 && party === "other") || banned) {
+    if (Q.constitution_reform > 0 && (belowThreshold || (threshold > 1 && party === "other") || banned)) {
       Q[party + "_senate_r"] = 0;
     } else {
       Q[party + "_senate_r"] = Math.round((partyVotes[party] / totalVotes) * seatsToAllocate);
     }
-  } else {
-    Q[party + "_senate_r"] = Math.round((partyVotes[party] / totalVotes) * seatsToAllocate);
   }
 }
 
-// 6. Compute seat changes, formatted strings, and display variables
+// === 5. Calculate changes and format strings ===
 for (let party of Q.parties) {
-  let oldSeats = Q["old_" + party + "_senate_r"];
-  let newSeats = Q[party + "_senate_r"];
-
-  let change = newSeats - oldSeats;
-  Q["change_" + party + "_senate_r"] = change;
-  Q["str_change_" + party] = (change > 0 ? "+" : "") + change;
-
-  Q[party + "_senate_r_disp"] = Q.use_decimals ? newSeats.toFixed(1) : newSeats;
+  let oldVal = Q["old_" + party + "_senate_r"];
+  let newVal = Q[party + "_senate_r"];
+  Q["change_" + party + "_senate_r"] = newVal - oldVal;
+  Q["str_change_" + party] = (newVal - oldVal > 0 ? "+" : "") + (newVal - oldVal);
+  Q[party + "_senate_r_disp"] = Q.use_decimals ? newVal.toFixed(1) : newVal;
 }
 
-// 7. Handle vacant seat change
-let vacantChange = Q.vacant_senate - Q.old_vacant_senate_r;
-Q.change_vacant_senate_r = vacantChange;
-Q.str_change_vacant = (vacantChange >= 0 ? "+" : "") + vacantChange;
-Q.display_vacant_senate = Q.vacant_senate;
+Q.change_vacant_senate_r = Q.vacant_senate_r - Q.old_vacant_senate_r;
+Q.str_change_vacant = (Q.change_vacant_senate_r > 0 ? "+" : "") + Q.change_vacant_senate_r;
 
-// 8. Determine largest party
+// === 6. Record display and results ===
+Q.display_rep_senate = Q.rep_senate_r;
+Q.display_dem_senate = Q.dem_senate_r;
+Q.display_other_senate = Q.other_senate_r;
+Q.display_vacant_senate = Q.vacant_senate_r;
+
 Q.largest_party = "rep";
-if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
-  Q.largest_party = "dem";
-}
-if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
-  Q.largest_party = "other";
-}
+if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) Q.largest_party = "dem";
+if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) Q.largest_party = "other";
 
-// 9. Store majorities for logic
 Q.republican_majority = Q.rep_senate_r;
 Q.democrat_majority = Q.dem_senate_r;
 Q.other_majority = Q.other_senate_r;
 
-// 10. Record full election results
+// === 7. Store record (optional) ===
 let result = { date: Q.year + "-" + Q.month };
 for (let party of Q.parties) {
   result[party] = Q[party + "_senate_r"];
@@ -113,10 +98,8 @@ for (let party of Q.parties) {
 Q.election_records = Q.election_records || [];
 Q.election_records.push(result);
 
-// 11. Display variables used in templates
-Q.display_rep_senate = Q.rep_senate_r;
-Q.display_dem_senate = Q.dem_senate_r;
-Q.display_other_senate = Q.other_senate_r;
+console.log("Votes:", partyVotes);
+console.log("Seats:", Q.rep_senate_r, Q.dem_senate_r, Q.other_senate_r);
 !}
 on-display: {!
   function loadScript(src, callback) {
