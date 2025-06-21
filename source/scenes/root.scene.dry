@@ -150,6 +150,7 @@ Q.immigrant_laborers = 8;
 Q.freemen = 12;
 
 Q.states = ["CA", "CT", "DE", "IL", "IN", "IA", "KS", "KY", "ME", "MD", "MA", "MI", "MN", "MO", "NV", "NH", "NJ", "NY", "OH", "OR", "PA", "RI", "VT", "WV", "WI"];
+Q.num_states = 25;
 
 // === CALIFORNIA ===
 Q.CA_workers = 20000;
