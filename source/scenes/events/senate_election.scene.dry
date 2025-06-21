@@ -115,19 +115,6 @@ display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
 display_vacant_senate = vacant_senate_r;
 !}
-
-{! 
-// Now assign change variables globally so engine can see them outside JS block
-Q.change_rep_senate_r = Q.rep_senate_r - Q.old_rep_senate_r;
-Q.change_dem_senate_r = Q.dem_senate_r - Q.old_dem_senate_r;
-Q.change_other_senate_r = Q.other_senate_r - Q.old_other_senate_r;
-Q.change_vacant_senate_r = Q.vacant_senate_r - Q.old_vacant_senate_r;
-
-Q.str_change_rep = (Q.change_rep_senate_r > 0 ? "+" : "") + Q.change_rep_senate_r;
-Q.str_change_dem = (Q.change_dem_senate_r > 0 ? "+" : "") + Q.change_dem_senate_r;
-Q.str_change_other = (Q.change_other_senate_r > 0 ? "+" : "") + Q.change_other_senate_r;
-Q.str_change_vacant = (Q.change_vacant_senate_r > 0 ? "+" : "") + Q.change_vacant_senate_r;
-!}
 on-display: {!
   function loadScript(src, callback) {
     var script = document.createElement('script');
