@@ -113,6 +113,23 @@ display_rep_senate = rep_senate_r;
 display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
 display_vacant_senate = vacant_senate_r;
+
+for (let party of parties) {
+    let curSeats = get(party + "_senate_r") || 0;
+    let oldSeats = get("old_" + party + "_senate_r") || 0;
+
+    // Save raw change (e.g., -5, +3, 0)
+    let change = curSeats - oldSeats;
+    set("change_" + party + "_senate_r", change);  // Example: change_rep_senate_r = +5 or -3
+
+    // Save string-formatted change for display (adds + sign if positive)
+    let sign = change > 0 ? "+" : (change < 0 ? "" : "");
+    set("str_change_" + party, sign + change);     // Example: str_change_rep = "+5", "-3", or "0"
+
+    // Optional: you can also log this or display it directly if needed
+    set(party + "_senate_r_disp", curSeats);       // Display variable if UI uses it
+}
+
 !}
 on-display: {!
   function loadScript(src, callback) {
@@ -186,11 +203,11 @@ go-to: coalition_menu
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ display_rep_senate +] seats** {!</td><td>!} **[+ str_change_rep +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ dem_senate_r +] seats {!</td><td>!} [+ display_dem_senate +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !}Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_senate_r +] seats {!</td><td>!} [+ display_other_senate +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ vacant_senate +] seats {!</td><td>!} [+ display_vacant_senate +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu
