@@ -190,12 +190,13 @@ go-to: coalition_menu
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Seats</td><td> Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} **[+ display_rep_senate +] seats** {!</td><td>!} **[+ str_change_rep_senate_r +]** {!</td></tr>!}
+{!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem_senate_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ display_rep_senate +] seats {!</td><td>!} [+ str_change_rep +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#00cc00'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other_senate_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
 {!</table>!}
