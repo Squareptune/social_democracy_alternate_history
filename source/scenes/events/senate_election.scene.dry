@@ -118,26 +118,21 @@ for (let party of parties) {
     let curSeats = get(party + "_senate_r") || 0;
     let oldSeats = get("old_" + party + "_senate_r") || 0;
 
-    // Save raw change (e.g., -5, +3, 0)
     let change = curSeats - oldSeats;
-    set("change_" + party + "_senate_r", change);  // Example: change_rep_senate_r = +5 or -3
+    set("change_" + party + "_senate_r", change);
 
-    // Save string-formatted change for display (adds + sign if positive)
     let sign = change > 0 ? "+" : (change < 0 ? "" : "");
-    set("str_change_" + party, sign + change);     // Example: str_change_rep = "+5", "-3", or "0"
-
-    // Optional: you can also log this or display it directly if needed
-    set(party + "_senate_r_disp", curSeats);       // Display variable if UI uses it
+    set("str_change_" + party, sign + change);
 }
-change_rep_senate_r = Q.rep_senate_r - Q.old_rep_senate_r;
-change_dem_senate_r = Q.dem_senate_r - Q.old_dem_senate_r;
-change_other_senate_r = Q.other_senate_r - Q.old_other_senate_r;
-change_vacant_senate_r = Q.vacant_senate - Q.old_vacant_senate_r;
+change_rep_senate_r = rep_senate_r - old_rep_senate_r;
+change_dem_senate_r = dem_senate_r - old_dem_senate_r;
+change_other_senate_r = other_senate_r - old_other_senate_r;
+change_vacant_senate_r = vacant_senate - old_vacant_senate_r;
 
-str_change_rep = (Q.change_rep_senate_r > 0 ? "+" : "") + Q.change_rep_senate_r;
-str_change_dem = (Q.change_dem_senate_r > 0 ? "+" : "") + Q.change_dem_senate_r;
-str_change_other = (Q.change_other_senate_r > 0 ? "+" : "") + Q.change_other_senate_r;
-str_change_vacant = (Q.change_vacant_senate_r > 0 ? "+" : "") + Q.change_vacant_senate_r;
+str_change_rep = (change_rep_senate_r > 0 ? "+" : "") + change_rep_senate_r;
+str_change_dem = (change_dem_senate_r > 0 ? "+" : "") + change_dem_senate_r;
+str_change_other = (change_other_senate_r > 0 ? "+" : "") + change_other_senate_r;
+str_change_vacant = (change_vacant_senate_r > 0 ? "+" : "") + change_vacant_senate_r;
 !}
 on-display: {!
   function loadScript(src, callback) {
