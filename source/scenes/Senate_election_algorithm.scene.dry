@@ -1,10 +1,9 @@
 title: Election
 on-arrival: {!
 
-// Reset Senate seat tallies
-rep_senate_r = 0;
-dem_senate_r = 0;
-other_senate_r = 0;
+Q.rep_senate_r = 0;
+Q.dem_senate_r = 0;
+Q.other_senate_r = 0;
 
 for (let state of Q.states) {
     let stateRep = 0;
@@ -12,10 +11,10 @@ for (let state of Q.states) {
     let stateOther = 0;
 
     for (let cls of Q.classes) {
-        let pop = get(state + "_" + cls) || 0;
-        let rep = get(state + "_" + cls + "_rep") || 0;
-        let dem = get(state + "_" + cls + "_dem") || 0;
-        let other = get(state + "_" + cls + "_other") || 0;
+        let pop = Q[state + "_" + cls] || 0;
+        let rep = Q[state + "_" + cls + "_rep"] || 0;
+        let dem = Q[state + "_" + cls + "_dem"] || 0;
+        let other = Q[state + "_" + cls + "_other"] || 0;
         let totalPct = rep + dem + other;
         if (totalPct === 0) continue;
 
@@ -29,7 +28,6 @@ for (let state of Q.states) {
     let demPct = (stateDem / total) * 100;
     let otherPct = (stateOther / total) * 100;
 
-    // Determine rankings
     let margins = [
         { party: "rep", pct: repPct },
         { party: "dem", pct: demPct },
@@ -63,26 +61,22 @@ for (let state of Q.states) {
         else otherSeats = 2;
     }
 
-    // Tally seats
-    rep_senate_r += repSeats;
-    dem_senate_r += demSeats;
-    other_senate_r += otherSeats;
+    Q.rep_senate_r += repSeats;
+    Q.dem_senate_r += demSeats;
+    Q.other_senate_r += otherSeats;
 }
 
-// Determine majority party
-largest_party = "rep";
-if (dem_senate_r >= rep_senate_r && dem_senate_r >= other_senate_r) {
-    largest_party = "dem";
+Q.largest_party = "rep";
+if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
+    Q.largest_party = "dem";
 }
-if (other_senate_r >= rep_senate_r && other_senate_r >= dem_senate_r) {
-    largest_party = "other";
+if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
+    Q.largest_party = "other";
 }
 
-// Store results for display
-display_rep_senate = rep_senate_r;
-display_dem_senate = dem_senate_r;
-display_other_senate = other_senate_r;
+Q.display_rep_senate = Q.rep_senate_r;
+Q.display_dem_senate = Q.dem_senate_r;
+Q.display_other_senate = Q.other_senate_r;
 
 !}
-
 go-to: jumpScene
