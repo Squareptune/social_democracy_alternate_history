@@ -14,88 +14,84 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
+// 1. Backup current seat counts BEFORE anything is reset
+for (let party of Q.parties) {
+  Q["old_" + party + "_senate_r"] = Q[party + "_senate_r"] || 0;
+}
+Q.old_vacant_senate_r = Q.vacant_senate || 0;
+
+// 2. Reset current election seat counts
 Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
-// Constants and state
+// 3. Set up constants
 Q.TOTAL_SEATS = Q.TOTAL_SEATS || 72;
 Q.VACANT_SEATS = Q.vacant_senate || 0;
 Q.vacant_senate_r = Q.VACANT_SEATS;
 
+// 4. Tally raw vote totals
 let partyVotes = {};
-// Initialize votes
 for (let party of Q.parties) {
   partyVotes[party] = 0;
 }
-
-// Calculate weighted votes by state, class, and party support
 for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
     for (let party of Q.parties) {
-      let supportKey = cls + "_" + party;
-      let support = Q[supportKey] || 0;
+      let support = Q[cls + "_" + party] || 0;
       partyVotes[party] += (pop * support) / 100;
     }
   }
 }
 
-// Sum total votes for normalization
+// 5. Normalize vote totals and allocate seats
 let totalVotes = 0;
 for (let party of Q.parties) {
   totalVotes += partyVotes[party];
 }
+let seatsToAllocate = Q.TOTAL_SEATS - Q.VACANT_SEATS;
 
-// If total votes zero, assign equal shares
-if (totalVotes === 0) {
-  let equalShare = Math.round(Q.TOTAL_SEATS / Q.parties.length);
-  for (let party of Q.parties) {
-    Q[party + "_senate_r"] = equalShare;
-  }
-} else {
-  let seatsToAllocate = Q.TOTAL_SEATS - Q.VACANT_SEATS;
-
-  for (let party of Q.parties) {
-    Q[party + "_votes"] = partyVotes[party];  // Save raw votes
-
-    if (Q.constitution_reform > 0) {
-      let threshold = Q.electoral_threshold || 0;
-      let banned = Q[party + "_banned"] || false;
-      let votePercent = (partyVotes[party] / totalVotes) * 100;
-      let belowThreshold = votePercent < threshold;
-
-      if (belowThreshold || (threshold > 1 && party === "other") || banned) {
-        Q[party + "_senate_r"] = 0;
-      } else {
-        Q[party + "_senate_r"] = Math.round(partyVotes[party] * seatsToAllocate / totalVotes);
-      }
-    } else {
-      Q[party + "_senate_r"] = Math.round(partyVotes[party] * seatsToAllocate / totalVotes);
-    }
-  }
-}
-// Now handle old values, changes, and formatted strings all together
 for (let party of Q.parties) {
-  Q["old_" + party + "_senate_r"] = Q["old_" + party + "_senate_r"] || 0;  // Ensure old is defined
-  // Calculate changes
-  Q["change_" + party + "_senate_r"] = Q[party + "_senate_r"] - Q["old_" + party + "_senate_r"];
-  // Format sign strings
-  let sign = Q["change_" + party + "_senate_r"] > 0 ? "+" : "";
-  Q["str_change_" + party] = sign + Q["change_" + party + "_senate_r"];
-  // For display
-  if (Q.use_decimals) {
-    Q[party + "_senate_r_disp"] = Q[party + "_senate_r"].toFixed(1);
+  Q[party + "_votes"] = partyVotes[party];
+
+  if (totalVotes === 0) {
+    Q[party + "_senate_r"] = Math.floor(Q.TOTAL_SEATS / Q.parties.length);
+  } else if (Q.constitution_reform > 0) {
+    let threshold = Q.electoral_threshold || 0;
+    let votePercent = (partyVotes[party] / totalVotes) * 100;
+    let banned = Q[party + "_banned"] || false;
+    let belowThreshold = votePercent < threshold;
+
+    if (belowThreshold || (threshold > 1 && party === "other") || banned) {
+      Q[party + "_senate_r"] = 0;
+    } else {
+      Q[party + "_senate_r"] = Math.round((partyVotes[party] / totalVotes) * seatsToAllocate);
+    }
   } else {
-    Q[party + "_senate_r_disp"] = Q[party + "_senate_r"];
+    Q[party + "_senate_r"] = Math.round((partyVotes[party] / totalVotes) * seatsToAllocate);
   }
 }
-// Vacant seats changes and string formatting
-Q["old_vacant_senate_r"] = Q["old_vacant_senate_r"] || 0;
-Q.change_vacant_senate_r = Q.vacant_senate - Q["old_vacant_senate_r"];
-Q.str_change_vacant = (Q.change_vacant_senate_r >= 0 ? "+" : "") + Q.change_vacant_senate_r;
-Q.old_vacant_senate_r = Q.vacant_senate;
-// Determine largest party by seats
+
+// 6. Compute seat changes, formatted strings, and display variables
+for (let party of Q.parties) {
+  let oldSeats = Q["old_" + party + "_senate_r"];
+  let newSeats = Q[party + "_senate_r"];
+
+  let change = newSeats - oldSeats;
+  Q["change_" + party + "_senate_r"] = change;
+  Q["str_change_" + party] = (change > 0 ? "+" : "") + change;
+
+  Q[party + "_senate_r_disp"] = Q.use_decimals ? newSeats.toFixed(1) : newSeats;
+}
+
+// 7. Handle vacant seat change
+let vacantChange = Q.vacant_senate - Q.old_vacant_senate_r;
+Q.change_vacant_senate_r = vacantChange;
+Q.str_change_vacant = (vacantChange >= 0 ? "+" : "") + vacantChange;
+Q.display_vacant_senate = Q.vacant_senate;
+
+// 8. Determine largest party
 Q.largest_party = "rep";
 if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
   Q.largest_party = "dem";
@@ -103,23 +99,24 @@ if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
 if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
   Q.largest_party = "other";
 }
-// Store majorities for checks
+
+// 9. Store majorities for logic
 Q.republican_majority = Q.rep_senate_r;
 Q.democrat_majority = Q.dem_senate_r;
 Q.other_majority = Q.other_senate_r;
-// Record the election results (optional array you can display later)
-let electionResult = { date: Q.year + "-" + Q.month };
+
+// 10. Record full election results
+let result = { date: Q.year + "-" + Q.month };
 for (let party of Q.parties) {
-  electionResult[party] = Q[party + "_senate_r"];
+  result[party] = Q[party + "_senate_r"];
 }
 Q.election_records = Q.election_records || [];
-Q.election_records.push(electionResult);
+Q.election_records.push(result);
 
-// For display variables outside JS sections:
+// 11. Display variables used in templates
 Q.display_rep_senate = Q.rep_senate_r;
 Q.display_dem_senate = Q.dem_senate_r;
 Q.display_other_senate = Q.other_senate_r;
-Q.display_vacant_senate = Q.vacant_senate;
 !}
 on-display: {!
   function loadScript(src, callback) {
