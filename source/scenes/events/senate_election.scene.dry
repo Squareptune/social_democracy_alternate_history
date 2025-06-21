@@ -81,12 +81,13 @@ for (let party of parties) {
     set(party + "_senate_r_disp", curSeats);
     let change = curSeats - oldSeats;
     set("change_" + party + "_senate_r", change);
-    let sign = change > 0 ? "+" : "";
+    let sign = change > 0 ? "+" : (change < 0 ? "" : "");
     set("str_change_" + party, sign + change);
 }
 // Vacant seat changes
 let change_vacant = vacant_senate_r - (get("old_vacant_senate_r") || 0);
 let str_change_vacant = (change_vacant >= 0 ? "+" : "") + change_vacant;
+set("change_vacant_senate_r", change_vacant);
 set("str_change_vacant", str_change_vacant);
 set("old_vacant_senate_r", vacant_senate_r);
 
@@ -113,26 +114,19 @@ display_rep_senate = rep_senate_r;
 display_dem_senate = dem_senate_r;
 display_other_senate = other_senate_r;
 display_vacant_senate = vacant_senate_r;
+!}
 
-for (let party of parties) {
-    let curSeats = get(party + "_senate_r") || 0;
-    let oldSeats = get("old_" + party + "_senate_r") || 0;
+{! 
+// Now assign change variables globally so engine can see them outside JS block
+Q.change_rep_senate_r = Q.rep_senate_r - Q.old_rep_senate_r;
+Q.change_dem_senate_r = Q.dem_senate_r - Q.old_dem_senate_r;
+Q.change_other_senate_r = Q.other_senate_r - Q.old_other_senate_r;
+Q.change_vacant_senate_r = Q.vacant_senate_r - Q.old_vacant_senate_r;
 
-    let change = curSeats - oldSeats;
-    set("change_" + party + "_senate_r", change);
-
-    let sign = change > 0 ? "+" : (change < 0 ? "" : "");
-    set("str_change_" + party, sign + change);
-}
-change_rep_senate_r = rep_senate_r - old_rep_senate_r;
-change_dem_senate_r = dem_senate_r - old_dem_senate_r;
-change_other_senate_r = other_senate_r - old_other_senate_r;
-change_vacant_senate_r = vacant_senate - old_vacant_senate_r;
-
-str_change_rep = (change_rep_senate_r > 0 ? "+" : "") + change_rep_senate_r;
-str_change_dem = (change_dem_senate_r > 0 ? "+" : "") + change_dem_senate_r;
-str_change_other = (change_other_senate_r > 0 ? "+" : "") + change_other_senate_r;
-str_change_vacant = (change_vacant_senate_r > 0 ? "+" : "") + change_vacant_senate_r;
+Q.str_change_rep = (Q.change_rep_senate_r > 0 ? "+" : "") + Q.change_rep_senate_r;
+Q.str_change_dem = (Q.change_dem_senate_r > 0 ? "+" : "") + Q.change_dem_senate_r;
+Q.str_change_other = (Q.change_other_senate_r > 0 ? "+" : "") + Q.change_other_senate_r;
+Q.str_change_vacant = (Q.change_vacant_senate_r > 0 ? "+" : "") + Q.change_vacant_senate_r;
 !}
 on-display: {!
   function loadScript(src, callback) {
