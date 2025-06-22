@@ -152,6 +152,32 @@ Q.freemen = 12;
 Q.states = ["CA", "CT", "DE", "IL", "IN", "IA", "KS", "KY", "ME", "MD", "MA", "MI", "MN", "MO", "NV", "NH", "NJ", "NY", "OH", "OR", "PA", "RI", "VT", "WV", "WI"];
 Q.num_states = 25;
 
+//National support levels
+
+freemen_rep = 90;
+freemen_dem = 5;
+freemen_other = 5;
+
+workers_rep = 40;
+workers_dem = 50;
+workers_other = 10;
+
+middle_class_rep = 55;
+middle_class_dem = 35;
+middle_class_other = 10;
+
+rural_rep = 45;
+rural_dem = 45;
+rural_other = 10;
+
+immigrant_laborers_rep = 30;
+immigrant_laborers_dem = 60;
+immigrant_laborers_other = 10;
+
+unemployed_rep = 25;
+unemployed_dem = 65;
+unemployed_other = 10;
+
 // === CALIFORNIA ===
 Q.CA_workers = 20000;
 Q.CA_workers_rep = 55;
