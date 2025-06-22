@@ -12,9 +12,22 @@ for (let state of Q.states) {
 
     for (let cls of Q.classes) {
         let pop = Q[state + "_" + cls] || 0;
+
+        // Base support from state
         let rep = Q[state + "_" + cls + "_rep"] || 0;
         let dem = Q[state + "_" + cls + "_dem"] || 0;
         let other = Q[state + "_" + cls + "_other"] || 0;
+
+        // Modifiers from national class-party values (e.g., freemen_rep += 5)
+        let repMod = Q[cls + "_rep"] || 0;
+        let demMod = Q[cls + "_dem"] || 0;
+        let otherMod = Q[cls + "_other"] || 0;
+
+        // Apply modifiers
+        rep = Math.max(0, rep + repMod);
+        dem = Math.max(0, dem + demMod);
+        other = Math.max(0, other + otherMod);
+
         let totalPct = rep + dem + other;
         if (totalPct === 0) continue;
 
