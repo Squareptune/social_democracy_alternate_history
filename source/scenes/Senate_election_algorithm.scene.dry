@@ -5,6 +5,23 @@ Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
+// Initialize display variables to avoid undeclared errors
+const classes = ["freemen", "workers", "middle_class", "rural", "immigrant_laborers", "unemployed"];
+const parties = ["rep", "dem", "other"];
+
+for (let cls of classes) {
+  for (let party of parties) {
+    // Base support (e.g. CA_freemen_rep)
+    let baseSupport = Q[cls + "_" + party] || 0;
+    // Modifier support (e.g. freemen_rep_modifier), default 0 if none
+    let modifier = Q[cls + "_" + party + "_modifier"] || 0;
+
+    // Display support = base + modifier, for UI display only
+    Q[cls + "_" + party + "_display"] = baseSupport + modifier;
+  }
+}
+
+// Election calculation uses base support (without modifiers)
 for (let state of Q.states) {
     let stateRep = 0;
     let stateDem = 0;
@@ -13,21 +30,10 @@ for (let state of Q.states) {
     for (let cls of Q.classes) {
         let pop = Q[state + "_" + cls] || 0;
 
-        // Base support from state
+        // Use base support only here, ignore modifiers
         let rep = Q[state + "_" + cls + "_rep"] || 0;
         let dem = Q[state + "_" + cls + "_dem"] || 0;
         let other = Q[state + "_" + cls + "_other"] || 0;
-
-        // Modifiers from national class-party values (e.g., freemen_rep += 5)
-        let repMod = Q[cls + "_rep"] || 0;
-        let demMod = Q[cls + "_dem"] || 0;
-        let otherMod = Q[cls + "_other"] || 0;
-
-        // Apply modifiers
-        rep = Math.max(0, rep + repMod);
-        dem = Math.max(0, dem + demMod);
-        other = Math.max(0, other + otherMod);
-
         let totalPct = rep + dem + other;
         if (totalPct === 0) continue;
 
