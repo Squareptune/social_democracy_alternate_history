@@ -12,9 +12,39 @@ for (var c of Q.classes) {
     }
 }
 
-Q.pro_republic = Math.round(Q.pro_republic);
-Q.nationalism = Math.round(Q.nationalism);
-Q.socialism = Math.round(Q.socialism);
+const classes = Q.classes;   // e.g. ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed']
+const parties = ['rep', 'dem', 'other'];
+
+for (let cls of classes) {
+  let totalPop = 0;
+  let totalSupport = { rep: 0, dem: 0, other: 0 };
+
+  for (let state of Q.states) {
+    let pop = Q[state + "_" + cls] || 0;
+    totalPop += pop;
+
+    for (let party of parties) {
+      let support = Q[state + "_" + cls + "_" + party] || 0;
+      totalSupport[party] += pop * support;
+    }
+  }
+
+  // Compute weighted base support averages per party for this class
+  let baseRep = totalPop ? totalSupport.rep / totalPop : 0;
+  let baseDem = totalPop ? totalSupport.dem / totalPop : 0;
+  let baseOther = totalPop ? totalSupport.other / totalPop : 0;
+
+  // Apply modifiers (these should be defined somewhere else and can be changed by player actions)
+  // E.g. Q.freemen_rep_mod, Q.workers_dem_mod, etc.
+  let repMod = Q[cls + "_rep_mod"] || 0;
+  let demMod = Q[cls + "_dem_mod"] || 0;
+  let otherMod = Q[cls + "_other_mod"] || 0;
+
+  // Store the display values (clamped 0-100)
+  Q[cls + "_rep_display"] = Math.min(100, Math.max(0, baseRep + repMod));
+  Q[cls + "_dem_display"] = Math.min(100, Math.max(0, baseDem + demMod));
+  Q[cls + "_other_display"] = Math.min(100, Math.max(0, baseOther + otherMod));
+}
 
 if (Q.pro_republic < 0) {
     Q.pro_republic = 0;
