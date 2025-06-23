@@ -1,0 +1,36 @@
+title: House Election
+on-arrival: {!
+
+// === 1. Initialize support display values ===
+for (let cls of classes) {
+  for (let party of parties) {
+    let base = Q[cls + "_" + party] || 0;
+    let mod = Q[cls + "_" + party + "_modifier"] || 0;
+    Q[cls + "_" + party + "_display"] = base + mod;
+  }
+}
+
+// === 2. Reset national vote totals ===
+Q.rep_r = 0;
+Q.dem_r = 0;
+Q.other_r = 0;
+
+// === 3. Tally national votes using per-state class support ===
+for (let state of Q.states) {
+  for (let cls of Q.classes) {
+    let pop = Q[state + "_" + cls] || 0;
+    let rep = Q[state + "_" + cls + "_rep"] || 0;
+    let dem = Q[state + "_" + cls + "_dem"] || 0;
+    let other = Q[state + "_" + cls + "_other"] || 0;
+
+    let totalPct = rep + dem + other;
+    if (totalPct === 0) continue;
+
+    Q.rep_r += pop * (rep / totalPct);
+    Q.dem_r += pop * (dem / totalPct);
+    Q.other_r += pop * (other / totalPct);
+  }
+}
+
+!}
+go-to: jumpScene
