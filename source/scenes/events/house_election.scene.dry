@@ -1,0 +1,162 @@
+title: House Elections
+new-page: true
+tags: event
+priority: -1
+view-if: (year = next_house_election_year and month >= next_house_election_month) or (year > next_house_election_year)
+on-departure: month_actions += 1; in_election = 0; next_house_election_year += 2; n_elections += 1; next_house_election_time = time + 24;
+set-jump: post_house_election
+
+= Elections, [+ month : month +] [+ year +]
+
+The House elections are to be held now.
+
+- @House_election_algorithm: May we do our best...
+
+@House_election_algorithm
+on-arrival: {!
+// === 1. Save old seat values if not already saved ===
+for (let party of Q.parties) {
+  Q["old_" + party + "_r"] = Q["old_" + party + "_r"] || 0;
+}
+
+// === 2. Compute seat changes ===
+for (let party of Q.parties) {
+  let cur = Q[party + "_r"] || 0;
+  let old = Q["old_" + party + "_r"];
+  Q["change_" + party + "_r"] = cur - old;
+  Q["str_change_" + party + "_r"] = (cur - old > 0 ? "+" : "") + (cur - old);
+  Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
+}
+
+// === 3. Update display values ===
+Q.display_rep_r = Q.rep_r;
+Q.display_dem_r = Q.dem_r;
+Q.display_other_r = Q.other_r;
+
+// === 4. Record election result (optional) ===
+let result = { date: Q.year + "-" + Q.month };
+for (let party of Q.parties) {
+  result[party] = Q[party + "_r"];
+}
+Q.house_election_records = Q.house_election_records || [];
+Q.house_election_records.push(result);
+
+// === 5. Update largest party and majority markers ===
+Q.largest_party_r = "rep";
+if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
+if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
+
+Q.republican_majority_r = Q.rep_r;
+Q.democrat_majority_r = Q.dem_r;
+Q.other_majority_r = Q.other_r;
+!}
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      {
+        id: "republicans",
+        seats: Math.round(Q.rep_r),
+        color: "#E3000F",
+        outline: "#E3000F"
+      },
+      {
+        id: "democrats",
+        seats: Math.round(Q.dem_r),
+        color: "#0015BC",
+        outline: "#0015BC"
+      },
+      {
+        id: "others",
+        seats: Math.round(Q.other_r),
+        color: "#00cc00",
+        outline: "#a0a0a0"
+      }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
+
+    var container = d3.select("#houseChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "houseChart");
+    }
+    container.attr("width", width)
+             .attr("height", width / 2)
+             .html("");
+
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var script = document.createElement('script');
+    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.onload = function() {
+      var subscript = document.createElement('script');
+      subscript.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+      subscript.onload = drawChart;
+      document.head.appendChild(subscript);
+    };
+    document.head.appendChild(script);
+  } else if (!window.d3.parliament) {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+    script.onload = drawChart;
+    document.head.appendChild(script);
+  } else {
+    drawChart();
+  }
+!}
+go-to: house_coalition_menu
+
+= House Election Results
+
+{!<svg id="houseChart" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ display_rep_r +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_r +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_r +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
+{!</table>!}
+
+@house_coalition_menu
+
+- @house_simple_majority
+- @house_super_majority
+- @house_defeat
+- @house_tie
+
+@house_simple_majority
+title: Republicans gain a majority in the House
+subtitle: Republicans: [+ rep_r +] seats
+view-if: {! rep_r > Q.total_house_seats / 2 !}
+on-arrival: house_majority = 1;
+
+The Republicans have secured a majority in the House of Representatives.
+
+@house_super_majority
+title: Republicans secure a supermajority
+subtitle: Republicans: [+ rep_r +] seats
+view-if: {! rep_r >= Math.ceil(Q.total_house_seats * (2/3)) !}
+on-arrival: house_majority = 1;
+
+With two-thirds of the House, Republicans now wield veto-proof power.
+
+@house_defeat
+title: Republicans lose the House
+subtitle: Republicans: [+ rep_r +] seats
+view-if: dem_r > rep_r
+on-arrival: house_majority = 0;
+
+The Democrats have taken control of the House of Representatives.
+
+@house_tie
+title: The House is tied!
+subtitle: Both parties are neck and neck
+view-if: rep_r = dem_r
+on-arrival: house_majority = 0;
+
+A tied House will cause major legislative deadlock in the months ahead.
