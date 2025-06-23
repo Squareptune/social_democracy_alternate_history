@@ -130,14 +130,14 @@ Others: [+ other_r +] seats
 
 **Detailed results for each demographic**
 
-Workers: Republican: [+ workers_rep.display +]%, Democrat: [+ workers_dem.display +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ workers_other.display +]%
+Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%
 
-Middle Class: Republican: [+ middle_class_rep.display +]%, Democrat: [+ middle_class_dem.display +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other.display +]%
+Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%
 
-Freemen: Republican: [+ freemen_rep.display +]%, Democrat: [+ freemen_dem.display +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other.display +]%
+Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%
 
-Immigrant Laborers: Republican: [+ immigrant_laborers_rep.display +]%, Democrat: [+ immigrant_laborers_dem.display +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other.display +]%
+Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%
 
-Unemployed: Republican: [+ unemployed_rep.display +]%, Democrat: [+ unemployed_dem.display +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other.display +]%
+Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
 Support for Reconstruction: [+ reconstruction_support +]%
