@@ -12,7 +12,7 @@ The House elections are to be held now.
 
 - @House_election_algorithm: May we do our best...
 
-@House_election_algorithm
+@post_house_election
 on-arrival: {!
 // === 1. Save old seat values if not already saved ===
 for (let party of Q.parties) {
