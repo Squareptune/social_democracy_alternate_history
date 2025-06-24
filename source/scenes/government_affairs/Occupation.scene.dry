@@ -29,8 +29,9 @@ on-arrival: Union_League_strength += 20; Union_League_militancy += 0.05; freedme
 We direct new resources into expanding the Union League, organizing freedmen, loyal whites, and veterans into pro-Republican grassroots defense groups.
 
 @deploy_federal_troops
-choose-if: occupation >= 2 and army_loyalty >= 0.6
-unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?]
+title: Send more troops down south to enforce reconstruction
+choose-if: occupation >= 2 and army_loyalty >= 0.6 and army_strength > 50
+unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?][? if army_strength < 50: The army is too small to redirect south. ?]
 on-arrival: army_strength -= 10; army_militancy += 0.2; kkk_strength *= 0.8; kkk_militancy -= 0.02; Union_League_strength += 3; Union_League_militancy += 0.02; rural_dem += 2; unemployed_dem += 2; dem_relation -= 7; freedmen_rep += 1
 
 We deploy federal troops into restive southern districts. The show of force disrupts white supremacist mobilization, though it heightens political tensions.
