@@ -10,17 +10,13 @@ tags: govt_affairs, cabinet
 
 With Republican control of Congress, we can take a more assertive role in managing the Reconstruction of the South. Loyal officials and paramilitary forces can be empowered, hostile organizations suppressed, and the army deployed as needed.
 
-// Limited options (occupation_score >= 1)
 - @expand_union_league
 - @reinstate_state_militias
 - @demobilize_state_militias
-
-// Extreme options (occupation_score >= 2)
 - @form_republican_militias
 - @deploy_federal_troops
 - @crackdown_kkk
 - @persecute_kkk
-
 - @easy_discard
 - @cancel_advisor_action
 
