@@ -4,6 +4,7 @@ view-if: rep_majority = 1 and occupation >= 1
 card-image: img/Occupation.jpg
 is-card: true
 new-page: true
+tags: govt_affairs, cabinet
 
 = Dealing with Southern Occupation
 
@@ -20,7 +21,8 @@ With Republican control of Congress, we can take a more assertive role in managi
 - @crackdown_kkk
 - @persecute_kkk
 
-- @root: Take no action.
+- @easy_discard
+- @cancel_advisor_action
 
 @form_republican_militias
 title: Form Republican-aligned State Militias
