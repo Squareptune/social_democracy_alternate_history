@@ -1,4 +1,4 @@
-title: House Elections
+yeartitle: House Elections
 new-page: true
 tags: event
 priority: -1
@@ -13,22 +13,18 @@ The House elections are to be held now.
 - @House_election_algorithm: May we do our best...
 
 @post_house_election
-// === 1. Save old results ===
 for (let party of Q.parties) {
   Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
 }
 
-// === 2. Reset seat counts ===
 Q.rep_r = 0;
 Q.dem_r = 0;
 Q.other_r = 0;
 
-// === 3. Tally national votes using state populations and national support modifiers ===
 for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
     
-    // Pull national class support
     let rep_pct = Q[cls + "_rep"] ?? 0;
     let dem_pct = Q[cls + "_dem"] ?? 0;
     let other_pct = Q[cls + "_other"] ?? 0;
@@ -36,7 +32,6 @@ for (let state of Q.states) {
 
     if (total_pct === 0) continue;
 
-    // Normalize just in case
     rep_pct /= total_pct;
     dem_pct /= total_pct;
     other_pct /= total_pct;
@@ -47,7 +42,6 @@ for (let state of Q.states) {
   }
 }
 
-// === 4. Normalize to total seats (House has 231 in your setup) ===
 let total = Q.rep_r + Q.dem_r + Q.other_r;
 let total_seats = 231;
 
@@ -55,7 +49,6 @@ Q.rep_r = Math.round((Q.rep_r / total) * total_seats);
 Q.dem_r = Math.round((Q.dem_r / total) * total_seats);
 Q.other_r = Math.max(0, total_seats - Q.rep_r - Q.dem_r); // balance to 231 exactly
 
-// === 5. Track changes and prepare display ===
 for (let party of Q.parties) {
   let cur = Q[party + "_r"];
   let old = Q["old_" + party + "_r"];
@@ -65,7 +58,6 @@ for (let party of Q.parties) {
   Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
 }
 
-// === 6. Update majority marker ===
 Q.largest_party_r = "rep";
 if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
 if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
@@ -74,7 +66,6 @@ Q.republican_majority_r = Q.rep_r;
 Q.democrat_majority_r = Q.dem_r;
 Q.other_majority_r = Q.other_r;
 
-// === 7. Record this election ===
 let result = { date: Q.year + "-" + Q.month };
 for (let party of Q.parties) {
   result[party] = Q[party + "_r"];
