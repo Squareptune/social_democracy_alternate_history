@@ -1,4 +1,4 @@
-@House_election_algorithm
+title: House Election
 on-arrival: {!
 
 Q.rep_r = 0;
