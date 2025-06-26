@@ -1,6 +1,9 @@
 title: House Election
 on-arrival: {!
 
+const classes = ["freemen", "workers", "middle_class", "rural", "immigrant_laborers", "unemployed"];
+const parties = ["rep", "dem", "other"];
+
 // === 1. Initialize support display values ===
 for (let cls of classes) {
   for (let party of parties) {
@@ -17,7 +20,7 @@ Q.other_r = 0;
 
 // === 3. Tally national votes using per-state class support ===
 for (let state of Q.states) {
-  for (let cls of Q.classes) {
+  for (let cls of classes) {
     let pop = Q[state + "_" + cls] || 0;
     let rep = Q[state + "_" + cls + "_rep"] || 0;
     let dem = Q[state + "_" + cls + "_dem"] || 0;
@@ -31,6 +34,13 @@ for (let state of Q.states) {
     Q.other_r += pop * (other / totalPct);
   }
 }
+
+// === 4. Optional: Round to nearest seat total
+Q.rep_r = Math.round(Q.rep_r);
+Q.dem_r = Math.round(Q.dem_r);
+Q.other_r = Math.round(Q.other_r);
+
+// Do NOT overwrite with fixed values here!
 
 !}
 go-to: jumpScene
