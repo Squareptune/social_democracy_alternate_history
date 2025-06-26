@@ -13,6 +13,7 @@ The House elections are to be held now.
 - @House_election_algorithm: May we do our best...
 
 @post_house_election
+on-arrival: {!
 for (let party of Q.parties) {
   Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
 }
