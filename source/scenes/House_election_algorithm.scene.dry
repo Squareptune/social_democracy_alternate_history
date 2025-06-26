@@ -1,36 +1,48 @@
-title: House Election
+@House_election_algorithm
 on-arrival: {!
 
-// === 1. Initialize support display values ===
-for (let cls of classes) {
-  for (let party of parties) {
-    let base = Q[cls + "_" + party] || 0;
-    let mod = Q[cls + "_" + party + "_modifier"] || 0;
-    Q[cls + "_" + party + "_display"] = base + mod;
-  }
-}
-
-// === 2. Reset national vote totals ===
 Q.rep_r = 0;
 Q.dem_r = 0;
 Q.other_r = 0;
 
-// === 3. Tally national votes using per-state class support ===
+let repVotes = 0;
+let demVotes = 0;
+let otherVotes = 0;
+
 for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
+
+    // Local support (from state)
     let rep = Q[state + "_" + cls + "_rep"] || 0;
     let dem = Q[state + "_" + cls + "_dem"] || 0;
     let other = Q[state + "_" + cls + "_other"] || 0;
 
-    let totalPct = rep + dem + other;
+    // National modifiers (from root-level vars like 'freemen_rep')
+    let repMod = Q[cls + "_rep"] || 0;
+    let demMod = Q[cls + "_dem"] || 0;
+    let otherMod = Q[cls + "_other"] || 0;
+
+    // Blend local + national: 80% state value, 20% national
+    let adjRep = 0.8 * rep + 0.2 * repMod;
+    let adjDem = 0.8 * dem + 0.2 * demMod;
+    let adjOther = 0.8 * other + 0.2 * otherMod;
+
+    let totalPct = adjRep + adjDem + adjOther;
     if (totalPct === 0) continue;
 
-    Q.rep_r += pop * (rep / totalPct);
-    Q.dem_r += pop * (dem / totalPct);
-    Q.other_r += pop * (other / totalPct);
+    repVotes += pop * (adjRep / totalPct);
+    demVotes += pop * (adjDem / totalPct);
+    otherVotes += pop * (adjOther / totalPct);
   }
 }
 
+// Normalize vote shares and allocate seats
+let totalVotes = repVotes + demVotes + otherVotes;
+let totalSeats = Q.total_house_seats || 241;
+
+Q.rep_r = Math.round((repVotes / totalVotes) * totalSeats);
+Q.dem_r = Math.round((demVotes / totalVotes) * totalSeats);
+Q.other_r = totalSeats - Q.rep_r - Q.dem_r; // Ensure full allocation
+
 !}
-go-to: jumpScene
