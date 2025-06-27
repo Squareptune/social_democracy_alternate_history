@@ -41,8 +41,18 @@ for (let state of Q.states) {
 let totalVotes = repVotes + demVotes + otherVotes;
 let totalSeats = Q.total_house_seats || 241;
 
-Q.rep_r = Math.round((repVotes / totalVotes) * totalSeats);
-Q.dem_r = Math.round((demVotes / totalVotes) * totalSeats);
-Q.other_r = totalSeats - Q.rep_r - Q.dem_r; // Ensure full allocation
+let repShare = repVotes / totalVotes;
+let demShare = demVotes / totalVotes;
+let otherShare = otherVotes / totalVotes;
+
+let repSeats = Math.floor(repShare * totalSeats);
+let demSeats = Math.floor(demShare * totalSeats);
+let otherSeats = totalSeats - repSeats - demSeats; // balance exactly
+
+Q.rep_r = repSeats;
+Q.dem_r = demSeats;
+Q.other_r = otherSeats;
+
+console.log(rep_r, dem_r, other_r)
 
 !}
