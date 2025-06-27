@@ -130,7 +130,7 @@ on-display: {!
     drawChart();
   }
 !}
-go-to: house_coalition_menu
+go-to: house_menu
 
 = House Election Results
 
@@ -146,7 +146,7 @@ go-to: house_coalition_menu
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r_disp +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
 {!</table>!}
 
-@house_coalition_menu
+@house_menu
 
 - @house_simple_majority
 - @house_super_majority
