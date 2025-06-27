@@ -4,7 +4,6 @@ tags: event
 priority: -1
 view-if: (year = next_house_election_year and month >= next_house_election_month) or (year > next_house_election_year)
 on-departure: month_actions += 1; in_election = 0; next_house_election_year += 2; n_elections += 1; next_house_election_time = time + 24;
-set-jump: post_house_election
 
 = Elections, [+ month : month +] [+ year +]
 
@@ -12,7 +11,7 @@ The House elections are to be held now.
 
 - @House_election_algorithm: May we do our best...
 
-@post_house_election
+@House_election_algorithm
 on-arrival: {!
 for (let party of Q.parties) {
   Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
