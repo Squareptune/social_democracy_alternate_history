@@ -12,7 +12,7 @@ for (var c of Q.classes) {
     }
 }
 
-const classes = Q.classes;   // e.g. ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed']
+const classes = Q.classes; 
 const parties = ['rep', 'dem', 'other'];
 
 for (let cls of classes) {
@@ -34,16 +34,24 @@ for (let cls of classes) {
   let baseDem = totalPop ? totalSupport.dem / totalPop : 0;
   let baseOther = totalPop ? totalSupport.other / totalPop : 0;
 
-  // Apply modifiers (these should be defined somewhere else and can be changed by player actions)
-  // E.g. Q.freemen_rep_mod, Q.workers_dem_mod, etc.
+  // Apply support modifiers
   let repMod = Q[cls + "_rep_mod"] || 0;
   let demMod = Q[cls + "_dem_mod"] || 0;
   let otherMod = Q[cls + "_other_mod"] || 0;
 
-  // Store the display values (clamped 0-100)
-  Q[cls + "_rep_display"] = Math.min(100, Math.max(0, baseRep + repMod));
-  Q[cls + "_dem_display"] = Math.min(100, Math.max(0, baseDem + demMod));
-  Q[cls + "_other_display"] = Math.min(100, Math.max(0, baseOther + otherMod));
+  // Final support values, clamped 0–100
+  let finalRep = Math.min(100, Math.max(0, baseRep + repMod));
+  let finalDem = Math.min(100, Math.max(0, baseDem + demMod));
+  let finalOther = Math.min(100, Math.max(0, baseOther + otherMod));
+
+  // Save display values (optional UI)
+  Q[cls + "_rep_display"] = finalRep;
+  Q[cls + "_dem_display"] = finalDem;
+  Q[cls + "_other_display"] = finalOther;
+
+  Q[cls + "_rep"] = finalRep;
+  Q[cls + "_dem"] = finalDem;
+  Q[cls + "_other"] = finalOther;
 }
 
 if (Q.pro_republic < 0) {

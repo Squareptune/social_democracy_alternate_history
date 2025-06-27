@@ -13,65 +13,104 @@ The House elections are to be held now.
 
 @House_election_algorithm
 on-arrival: {!
-for (let party of Q.parties) {
-  Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
-}
 
-Q.rep_r = 0;
-Q.dem_r = 0;
-Q.other_r = 0;
-
-for (let state of Q.states) {
-  for (let cls of Q.classes) {
-    let pop = Q[state + "_" + cls] || 0;
-    
-    let rep_pct = Q[cls + "_rep"] ?? 0;
-    let dem_pct = Q[cls + "_dem"] ?? 0;
-    let other_pct = Q[cls + "_other"] ?? 0;
-    let total_pct = rep_pct + dem_pct + other_pct;
-
-    if (total_pct === 0) continue;
-
-    rep_pct /= total_pct;
-    dem_pct /= total_pct;
-    other_pct /= total_pct;
-
-    Q.rep_r += pop * rep_pct;
-    Q.dem_r += pop * dem_pct;
-    Q.other_r += pop * other_pct;
+  // Save old seat values
+  for (let party of Q.parties) {
+    Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
   }
-}
 
-let total = Q.rep_r + Q.dem_r + Q.other_r;
-let total_seats = 231;
+  // === 1. Recalculate national class-party support averages ===
+  for (let cls of Q.classes) {
+    let totalPop = 0;
+    let totalSupport = { rep: 0, dem: 0, other: 0 };
 
-Q.rep_r = Math.round((Q.rep_r / total) * total_seats);
-Q.dem_r = Math.round((Q.dem_r / total) * total_seats);
-Q.other_r = Math.max(0, total_seats - Q.rep_r - Q.dem_r); // balance to 231 exactly
+    for (let state of Q.states) {
+      let pop = Q[state + "_" + cls] || 0;
+      totalPop += pop;
 
-for (let party of Q.parties) {
-  let cur = Q[party + "_r"];
-  let old = Q["old_" + party + "_r"];
-  let change = cur - old;
-  Q["change_" + party + "_r"] = change;
-  Q["str_change_" + party + "_r"] = (change > 0 ? "+" : "") + change;
-  Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
-}
+      totalSupport.rep += pop * (Q[state + "_" + cls + "_rep"] || 0);
+      totalSupport.dem += pop * (Q[state + "_" + cls + "_dem"] || 0);
+      totalSupport.other += pop * (Q[state + "_" + cls + "_other"] || 0);
+    }
 
-Q.largest_party_r = "rep";
-if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
-if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
+    Q[cls + "_rep"] = totalPop ? totalSupport.rep / totalPop : 0;
+    Q[cls + "_dem"] = totalPop ? totalSupport.dem / totalPop : 0;
+    Q[cls + "_other"] = totalPop ? totalSupport.other / totalPop : 0;
+  }
 
-Q.republican_majority_r = Q.rep_r;
-Q.democrat_majority_r = Q.dem_r;
-Q.other_majority_r = Q.other_r;
+  // === 2. Calculate raw vote totals using blended support (80% local, 20% national) ===
+  let repVotes = 0;
+  let demVotes = 0;
+  let otherVotes = 0;
 
-let result = { date: Q.year + "-" + Q.month };
-for (let party of Q.parties) {
-  result[party] = Q[party + "_r"];
-}
-Q.house_election_records = Q.house_election_records || [];
-Q.house_election_records.push(result);
+  for (let state of Q.states) {
+    for (let cls of Q.classes) {
+      let pop = Q[state + "_" + cls] || 0;
+
+      // Local support
+      let rep = Q[state + "_" + cls + "_rep"] || 0;
+      let dem = Q[state + "_" + cls + "_dem"] || 0;
+      let other = Q[state + "_" + cls + "_other"] || 0;
+
+      // National modifiers
+      let repMod = Q[cls + "_rep"] || 0;
+      let demMod = Q[cls + "_dem"] || 0;
+      let otherMod = Q[cls + "_other"] || 0;
+
+      // Blend: 80% local, 20% national
+      let adjRep = 0.8 * rep + 0.2 * repMod;
+      let adjDem = 0.8 * dem + 0.2 * demMod;
+      let adjOther = 0.8 * other + 0.2 * otherMod;
+
+      let totalPct = adjRep + adjDem + adjOther;
+      if (totalPct === 0) continue;
+
+      repVotes += pop * (adjRep / totalPct);
+      demVotes += pop * (adjDem / totalPct);
+      otherVotes += pop * (adjOther / totalPct);
+    }
+  }
+
+  // === 3. Allocate seats proportionally ===
+  let totalVotes = repVotes + demVotes + otherVotes;
+  let totalSeats = Q.total_house_seats || 241;
+
+  let repSeats = Math.floor((repVotes / totalVotes) * totalSeats);
+  let demSeats = Math.floor((demVotes / totalVotes) * totalSeats);
+  let otherSeats = totalSeats - repSeats - demSeats; // balance exactly
+
+  Q.rep_r = repSeats;
+  Q.dem_r = demSeats;
+  Q.other_r = otherSeats;
+
+  // === 4. Track seat changes ===
+  for (let party of Q.parties) {
+    let cur = Q[party + "_r"];
+    let old = Q["old_" + party + "_r"];
+    let change = cur - old;
+    Q["change_" + party + "_r"] = change;
+    Q["str_change_" + party + "_r"] = (change > 0 ? "+" : "") + change;
+    Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
+  }
+
+  // === 5. Largest party tracker ===
+  Q.largest_party_r = "rep";
+  if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
+  if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
+
+  // === 6. Majority display vars ===
+  Q.republican_majority_r = Q.rep_r;
+  Q.democrat_majority_r = Q.dem_r;
+  Q.other_majority_r = Q.other_r;
+
+  // === 7. Record the result ===
+  let result = { date: Q.year + "-" + Q.month };
+  for (let party of Q.parties) {
+    result[party] = Q[party + "_r"];
+  }
+  Q.house_election_records = Q.house_election_records || [];
+  Q.house_election_records.push(result);
+
 !}
 on-display: {!
   function drawChart() {
