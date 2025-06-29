@@ -14,56 +14,47 @@ The Senate elections are to be held now.
 
 @post_election_1928
 on-arrival: {!
-// === 1. Save old seat values if not already saved ===
-for (let party of Q.parties) {
-  Q["old_" + party + "_senate_r"] = Q["old_" + party + "_senate_r"] || 0;
-}
-Q.old_vacant_senate_r = Q.old_vacant_senate_r || 0;
 
-// === 2. Compute seat changes ===
-for (let party of Q.parties) {
-  let cur = Q[party + "_senate_r"] || 0;
-  let old = Q["old_" + party + "_senate_r"];
-  Q["change_" + party + "_senate_r"] = cur - old;
-  Q["str_change_" + party] = (cur - old > 0 ? "+" : "") + (cur - old);
-  Q[party + "_senate_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
-}
-
-// === 3. Vacant seat change ===
-Q.change_vacant_senate_r = Q.vacant_senate_r - Q.old_vacant_senate_r;
-Q.str_change_vacant = (Q.change_vacant_senate_r >= 0 ? "+" : "") + Q.change_vacant_senate_r;
-
-// === 4. Update display values ===
-Q.display_rep_senate = Q.rep_senate_r;
-Q.display_dem_senate = Q.dem_senate_r;
-Q.display_other_senate = Q.other_senate_r;
-Q.display_vacant_senate = Q.vacant_senate_r;
-
-// === 5. Record election result (optional) ===
-let result = { date: Q.year + "-" + Q.month };
-for (let party of Q.parties) {
-  result[party] = Q[party + "_senate_r"];
-}
-Q.election_records = Q.election_records || [];
-Q.election_records.push(result);
-
-// === 6. Update largest party and majority markers ===
-Q.largest_party = "rep";
-if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) Q.largest_party = "dem";
-if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) Q.largest_party = "other";
-
-Q.republican_majority = Q.rep_senate_r;
-Q.democrat_majority = Q.dem_senate_r;
-Q.other_majority = Q.other_senate_r;
-!}
-on-display: {!
-  function loadScript(src, callback) {
-    var script = document.createElement('script');
-    script.src = src;
-    script.onload = callback;
-    document.head.appendChild(script);
+  // === 1. Save old seat values if not already saved ===
+  for (let party of Q.parties) {
+    Q["old_" + party + "_senate_r"] = Q[party + "_senate_r"] || 0;
   }
 
+  // === 2. Compute seat changes ===
+  for (let party of Q.parties) {
+    let cur = Q[party + "_senate_r"] || 0;
+    let old = Q["old_" + party + "_senate_r"];
+    let change = cur - old;
+    Q["change_" + party + "_senate_r"] = change;
+    Q["str_change_" + party + "_senate_r"] = (change > 0 ? "+" : "") + change;
+    Q[party + "_senate_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
+  }
+
+  // === 3. Update display values ===
+  Q.display_rep_senate = Q.rep_senate_r;
+  Q.display_dem_senate = Q.dem_senate_r;
+  Q.display_other_senate = Q.other_senate_r;
+
+  // === 4. Record election result ===
+  let result = { date: Q.year + "-" + Q.month };
+  for (let party of Q.parties) {
+    result[party] = Q[party + "_senate_r"];
+  }
+  Q.senate_election_records = Q.senate_election_records || [];
+  Q.senate_election_records.push(result);
+
+  // === 5. Largest party and majority ===
+  Q.largest_party_senate = "rep";
+  if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) Q.largest_party_senate = "dem";
+  if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) Q.largest_party_senate = "other";
+
+  Q.republican_majority_senate = Q.rep_senate_r;
+  Q.democrat_majority_senate = Q.dem_senate_r;
+  Q.other_majority_senate = Q.other_senate_r;
+
+!}
+
+on-display: {!
   function drawChart() {
     var chartData = [
       {
@@ -83,57 +74,54 @@ on-display: {!
         seats: Math.round(Q.other_senate_r),
         color: "#00cc00",
         outline: "#a0a0a0"
-      },
-      {
-        id: "vacants",
-        seats: Q.vacant_senate_r,
-        color: "#DCCA4A",
-        outline: "#777777"
       }
     ].filter(d => d.seats > 0);
 
     var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
-
     var container = d3.select("#reichstag");
     if (container.empty()) {
       container = d3.select("#content").append("svg").attr("id", "reichstag");
     }
-    container.attr("width", width)
-             .attr("height", width / 2)
-             .html("");
+    container.attr("width", width).attr("height", width / 2).html("");
 
-    var parliament = d3.parliament()
-      .width(width)
-      .innerRadiusCoef(0.4);
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
     container.data([chartData]).call(parliament);
   }
 
   if (!window.d3) {
-    loadScript('https://d3js.org/d3.v7.min.js', function() {
-      loadScript('https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js', drawChart);
-    });
+    var script = document.createElement('script');
+    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.onload = function() {
+      var subscript = document.createElement('script');
+      subscript.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+      subscript.onload = drawChart;
+      document.head.appendChild(subscript);
+    };
+    document.head.appendChild(script);
   } else if (!window.d3.parliament) {
-    loadScript('https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js', drawChart);
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+    script.onload = drawChart;
+    document.head.appendChild(script);
   } else {
     drawChart();
   }
 !}
+
 go-to: coalition_menu
 
-= Election results
+= Senate Election Results
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
-{!<table>!} 
+{!<table>!}
 {!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ display_rep_senate +] seats {!</td><td>!} [+ str_change_rep +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ display_rep_senate +] seats {!</td><td>!} [+ str_change_rep_senate_r +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem +] {!</td></tr>!}
- 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem_senate_r +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} Vacants: {!</td><td>!} [+ display_vacant_senate +] seats {!</td><td>!} [+ str_change_vacant +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other_senate_r +] {!</td></tr>!}
 {!</table>!}
 
 @coalition_menu

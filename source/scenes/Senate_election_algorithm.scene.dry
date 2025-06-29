@@ -1,101 +1,95 @@
-title: Election
+title: Senate Election
 on-arrival: {!
 
 Q.rep_senate_r = 0;
 Q.dem_senate_r = 0;
 Q.other_senate_r = 0;
 
-// Initialize display variables to avoid undeclared errors
-const classes = ["freemen", "workers", "middle_class", "rural", "immigrant_laborers", "unemployed"];
-const parties = ["rep", "dem", "other"];
-
-for (let cls of classes) {
-  for (let party of parties) {
-    // Base support (e.g. CA_freemen_rep)
-    let baseSupport = Q[cls + "_" + party] || 0;
-    // Modifier support (e.g. freemen_rep_modifier), default 0 if none
-    let modifier = Q[cls + "_" + party + "_modifier"] || 0;
-
-    // Display support = base + modifier, for UI display only
-    Q[cls + "_" + party + "_display"] = baseSupport + modifier;
-  }
-}
-
-// Election calculation uses base support (without modifiers)
 for (let state of Q.states) {
-    let stateRep = 0;
-    let stateDem = 0;
-    let stateOther = 0;
+  let repVotes = 0;
+  let demVotes = 0;
+  let otherVotes = 0;
 
-    for (let cls of Q.classes) {
-        let pop = Q[state + "_" + cls] || 0;
+  for (let cls of Q.classes) {
+    let pop = Q[state + "_" + cls] || 0;
 
-        // Use base support only here, ignore modifiers
-        let rep = Q[state + "_" + cls + "_rep"] || 0;
-        let dem = Q[state + "_" + cls + "_dem"] || 0;
-        let other = Q[state + "_" + cls + "_other"] || 0;
-        let totalPct = rep + dem + other;
-        if (totalPct === 0) continue;
+    // Local support
+    let localRep = Q[state + "_" + cls + "_rep"] || 0;
+    let localDem = Q[state + "_" + cls + "_dem"] || 0;
+    let localOther = Q[state + "_" + cls + "_other"] || 0;
 
-        stateRep += pop * (rep / totalPct);
-        stateDem += pop * (dem / totalPct);
-        stateOther += pop * (other / totalPct);
-    }
+    // National support
+    let nationalRep = Q[cls + "_rep"] || 0;
+    let nationalDem = Q[cls + "_dem"] || 0;
+    let nationalOther = Q[cls + "_other"] || 0;
 
-    let total = stateRep + stateDem + stateOther;
-    let repPct = (stateRep / total) * 100;
-    let demPct = (stateDem / total) * 100;
-    let otherPct = (stateOther / total) * 100;
+    // Blend 80% local, 20% national
+    let adjRep = 0.8 * localRep + 0.2 * nationalRep;
+    let adjDem = 0.8 * localDem + 0.2 * nationalDem;
+    let adjOther = 0.8 * localOther + 0.2 * nationalOther;
 
-    let margins = [
-        { party: "rep", pct: repPct },
-        { party: "dem", pct: demPct },
-        { party: "other", pct: otherPct }
-    ];
-    margins.sort((a, b) => b.pct - a.pct);
+    let total = adjRep + adjDem + adjOther;
+    if (total === 0) continue;
 
-    let first = margins[0];
-    let second = margins[1];
-    let repSeats = 0, demSeats = 0, otherSeats = 0;
+    repVotes += pop * (adjRep / total);
+    demVotes += pop * (adjDem / total);
+    otherVotes += pop * (adjOther / total);
+  }
 
-    if (first.pct >= 66) {
-        if (first.party === "rep") repSeats = 2;
-        else if (first.party === "dem") demSeats = 2;
-        else otherSeats = 2;
-    } else if (first.pct >= 55 && (first.pct - second.pct) > 10) {
-        if (first.party === "rep") repSeats = 2;
-        else if (first.party === "dem") demSeats = 2;
-        else otherSeats = 2;
-    } else if ((first.pct - second.pct) <= 12) {
-        if (first.party === "rep") repSeats = 1;
-        else if (first.party === "dem") demSeats = 1;
-        else otherSeats = 1;
+  let totalVotes = repVotes + demVotes + otherVotes;
+  if (totalVotes === 0) continue;
 
-        if (second.party === "rep") repSeats++;
-        else if (second.party === "dem") demSeats++;
-        else otherSeats++;
-    } else {
-        if (first.party === "rep") repSeats = 2;
-        else if (first.party === "dem") demSeats = 2;
-        else otherSeats = 2;
-    }
+  let repPct = (repVotes / totalVotes) * 100;
+  let demPct = (demVotes / totalVotes) * 100;
+  let otherPct = (otherVotes / totalVotes) * 100;
 
-    Q.rep_senate_r += repSeats;
-    Q.dem_senate_r += demSeats;
-    Q.other_senate_r += otherSeats;
+  let results = [
+    { party: "rep", pct: repPct },
+    { party: "dem", pct: demPct },
+    { party: "other", pct: otherPct }
+  ];
+  results.sort((a, b) => b.pct - a.pct);
+
+  let first = results[0];
+  let second = results[1];
+  let repSeats = 0, demSeats = 0, otherSeats = 0;
+
+  // Seat distribution rules
+  if (first.pct >= 66) {
+    if (first.party === "rep") repSeats = 2;
+    else if (first.party === "dem") demSeats = 2;
+    else otherSeats = 2;
+  } else if (first.pct >= 55 && (first.pct - second.pct) > 10) {
+    if (first.party === "rep") repSeats = 2;
+    else if (first.party === "dem") demSeats = 2;
+    else otherSeats = 2;
+  } else if ((first.pct - second.pct) <= 12) {
+    if (first.party === "rep") repSeats = 1;
+    else if (first.party === "dem") demSeats = 1;
+    else otherSeats = 1;
+
+    if (second.party === "rep") repSeats++;
+    else if (second.party === "dem") demSeats++;
+    else otherSeats++;
+  } else {
+    if (first.party === "rep") repSeats = 2;
+    else if (first.party === "dem") demSeats = 2;
+    else otherSeats = 2;
+  }
+
+  Q.rep_senate_r += repSeats;
+  Q.dem_senate_r += demSeats;
+  Q.other_senate_r += otherSeats;
 }
 
+// Update majority tracking variables
 Q.largest_party = "rep";
 if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
-    Q.largest_party = "dem";
+  Q.largest_party = "dem";
 }
 if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
-    Q.largest_party = "other";
+  Q.largest_party = "other";
 }
-//hi
-Q.display_rep_senate = Q.rep_senate_r;
-Q.display_dem_senate = Q.dem_senate_r;
-Q.display_other_senate = Q.other_senate_r;
 
 !}
 go-to: jumpScene
