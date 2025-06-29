@@ -21,8 +21,7 @@ With Republican control of Congress, we can take a more assertive role in managi
 
 @expand_union_league
 title: Expand the Union League
-view-if: Union_League_strength < 100
-choose-if: occupation >= 1 and resource >= 1
+choose-if: resource >= 1
 unavailable-subtitle: [? if resource < 1: We lack the funds ?]
 on-arrival: Union_League_strength += 20; Union_League_militancy += 0.05; freedmen_rep += 1; middle_class_rep += 1; rural_dem += 1; dem_relation -= 3
 
@@ -38,8 +37,7 @@ We deploy federal troops into restive southern districts. The show of force disr
 
 @crackdown_kkk
 title: Crackdown on the KKK
-view-if: kkk_strength >= 1
-choose-if: occupation >= 2 and Us_police_loyalty >= 0.6
+choose-if: occupation >= 1 and Us_police_loyalty >= 0.6
 unavailable-subtitle: [? if occupation < 2: This requires full occupation ?][? if Us_police_loyalty < 0.6: Police won't cooperate ?]
 on-arrival: kkk_strength *= 0.7; kkk_militancy -= 0.05; Us_police_loyalty -= 0.05; army_militancy += 0.1; dem_relation -= 6; rural_dem += 2
 
@@ -47,7 +45,6 @@ We launch coordinated raids on suspected Klan hideouts. Some sympathizers within
 
 @persecute_kkk
 title: Further Persecute the Klan
-view-if: kkk_strength < 1 and kkk_militancy > 0
 choose-if: occupation >= 2 and judicial_reform >= 3 and Us_police_loyalty >= 0.7
 unavailable-subtitle: [? if occupation < 2: Federal occupation is required ?][? if judicial_reform < 3 : Courts won’t prosecute ?][? if Us_police_loyalty < 0.7 : Police are too disloyal ?]
 on-arrival: kkk_strength *= 0.6; kkk_militancy -= 0.05; Us_police_loyalty += 0.1; army_militancy += 0.1; dem_relation -= 4; rural_dem += 1

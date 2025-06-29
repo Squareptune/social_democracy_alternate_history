@@ -19,25 +19,6 @@ on-arrival: {!
     Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
   }
 
-  // === 1. Recalculate national class-party support averages ===
-  for (let cls of Q.classes) {
-    let totalPop = 0;
-    let totalSupport = { rep: 0, dem: 0, other: 0 };
-
-    for (let state of Q.states) {
-      let pop = Q[state + "_" + cls] || 0;
-      totalPop += pop;
-
-      totalSupport.rep += pop * (Q[state + "_" + cls + "_rep"] || 0);
-      totalSupport.dem += pop * (Q[state + "_" + cls + "_dem"] || 0);
-      totalSupport.other += pop * (Q[state + "_" + cls + "_other"] || 0);
-    }
-
-    Q[cls + "_rep"] = totalPop ? Math.round(totalSupport.rep / totalPop) : 0;
-    Q[cls + "_dem"] = totalPop ? Math.round(totalSupport.dem / totalPop) : 0;
-    Q[cls + "_other"] = totalPop ? Math.round(totalSupport.other / totalPop) : 0;
-  }
-
   // === 2. Calculate raw vote totals using blended support (80% local, 20% national) ===
   let repVotes = 0;
   let demVotes = 0;

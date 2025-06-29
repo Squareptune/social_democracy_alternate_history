@@ -67,6 +67,9 @@ The Navy played only a minor role in the Civil War's aftermath but remains essen
 - @increase_funding2: Increase funding for the Navy to enforce the Monroe Doctrine.
 - @decrease_funding2: Reduce funding for the Navy and focus on Reconstruction.
 - @reform2: Reform the Navy to modernize to be a match for other European powers.
+- @root: Leave current military policy unchanged.
+- @easy_discard
+- @cancel_advisor_action
 
 @increase_funding2
 subtitle: -1 budget
