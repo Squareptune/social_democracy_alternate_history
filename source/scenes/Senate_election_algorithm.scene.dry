@@ -24,9 +24,9 @@ for (let state of Q.states) {
     let nationalOther = Q[cls + "_other"] || 0;
 
     // Blend 80% local, 20% national
-    let adjRep = 0.8 * localRep + 0.2 * nationalRep;
-    let adjDem = 0.8 * localDem + 0.2 * nationalDem;
-    let adjOther = 0.8 * localOther + 0.2 * nationalOther;
+    let adjRep = 0.5 * localRep + 0.5 * nationalRep;
+    let adjDem = 0.5 * localDem + 0.5 * nationalDem;
+    let adjOther = 0.5 * localOther + 0.5 * nationalOther;
 
     let total = adjRep + adjDem + adjOther;
     if (total === 0) continue;
