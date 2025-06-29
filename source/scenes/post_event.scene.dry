@@ -3,55 +3,13 @@ new-page: true
 on-arrival: {!
 Q.last_advisor_action = 0;
 Q.last_cabinet_action = 0;
-// make sure no stat is below 0.
-for (var c of Q.classes) {
-    for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-    }
-}
 
-const classes = Q.classes; 
-const parties = ['rep', 'dem', 'other'];
-
-for (let cls of classes) {
-  let totalPop = 0;
-  let totalSupport = { rep: 0, dem: 0, other: 0 };
-
-  for (let state of Q.states) {
-    let pop = Q[state + "_" + cls] || 0;
-    totalPop += pop;
-
-    for (let party of parties) {
-      let support = Q[state + "_" + cls + "_" + party] || 0;
-      totalSupport[party] += pop * support;
+for (let c of Q.classes) {
+  for (let party of Q.parties) {
+    if (Q[c + '_' + party] < 0) {
+      Q[c + '_' + party] = 0;
     }
   }
-
-  // Compute weighted base support averages per party for this class
-  let baseRep = totalPop ? totalSupport.rep / totalPop : 0;
-  let baseDem = totalPop ? totalSupport.dem / totalPop : 0;
-  let baseOther = totalPop ? totalSupport.other / totalPop : 0;
-
-  // Apply support modifiers
-  let repMod = Q[cls + "_rep_mod"] || 0;
-  let demMod = Q[cls + "_dem_mod"] || 0;
-  let otherMod = Q[cls + "_other_mod"] || 0;
-
-  // Final support values, clamped 0–100
-  let finalRep = Math.min(100, Math.max(0, baseRep + repMod));
-  let finalDem = Math.min(100, Math.max(0, baseDem + demMod));
-  let finalOther = Math.min(100, Math.max(0, baseOther + otherMod));
-
-  // Save display values (optional UI)
-  Q[cls + "_rep_display"] = finalRep;
-  Q[cls + "_dem_display"] = finalDem;
-  Q[cls + "_other_display"] = finalOther;
-
-  Q[cls + "_rep"] = finalRep;
-  Q[cls + "_dem"] = finalDem;
-  Q[cls + "_other"] = finalOther;
 }
 
 if (Q.pro_republic < 0) {
