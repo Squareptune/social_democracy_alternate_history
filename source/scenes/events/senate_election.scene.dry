@@ -53,7 +53,6 @@ on-arrival: {!
   Q.other_majority_senate = Q.other_senate_r;
 
 !}
-
 on-display: {!
   function drawChart() {
     var chartData = [
