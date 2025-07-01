@@ -252,8 +252,9 @@ Dissent: [+ liberal_dissent : dissent +]
 @figures
 title: Figures and Charts
 go-to: menu
+on-arrival: {}
 on-display: {!
-data = [
+let houseData = [
     {
         id: "rep",
         legend: "Republican",
@@ -280,6 +281,33 @@ data = [
     }
 ];
 
+let senateData = [
+    {
+        id: "rep",
+        legend: "Republican",
+        name: "Republican",
+        color: "#B22222",
+        outline: "#600000",
+        seats: Q.rep_senate,
+    },
+    {
+        id: "dem",
+        legend: "Democrat",
+        name: "Democrat",
+        color: "#003366",
+        outline: "#001933",
+        seats: Q.dem_senate,
+    },
+    {
+        id: "other",
+        legend: "Other",
+        name: "Other",
+        color: "#AAAAAA",
+        outline: "#666666",
+        seats: Q.other_senate,
+    }
+];
+
 if (d3 && window) {
     var width = 500;
     var height = 500;
@@ -287,14 +315,19 @@ if (d3 && window) {
     if (screenWidth < width - 50) {
         width = screenWidth - 50;
         height = width;
-        document.getElementById("congress").style.height = screenWidth/2 + "px";
+        document.getElementById("house_chart").style.height = screenWidth/2 + "px";
+        document.getElementById("senate_chart").style.height = screenWidth/2 + "px";
     }
 
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#congress").datum(data).call(parliament);
+    var parliament = d3.parliament()
+        .width(width)
+        .height(height)
+        .innerRadiusCoef(0.4)
+        .enter.fromCenter(true).smallToBig(true)
+        .exit.toCenter(false).bigToSmall(true);
+
+    d3.select("#house_chart").datum(houseData).call(parliament);
+    d3.select("#senate_chart").datum(senateData).call(parliament);
 
     var lines = d3.linegraph(false, false,
         Q.parties,
@@ -327,14 +360,24 @@ if (d3 && window) {
 }
 !}
 
-= Congressional Composition
+= House Composition
 
-{!<svg id="congress" style="width: 500px; height: 250px;"> </svg>!}
+{!<svg id="house_chart" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!}
 {!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_r +]%** {!</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_r +]%** {!</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other parties:** {!</td><td>!} **[+ other_r +]%** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_r +]%** {!</td></tr>!}
+{!</table>!}
+
+= Senate Composition
+
+{!<svg id="senate_chart" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!}
+{!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_senate +] seats** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_senate +] seats** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_senate +] seats** {!</td></tr>!}
 {!</table>!}
 
 = Election History
@@ -352,4 +395,5 @@ if (d3 && window) {
 = Economic History
 
 {!<svg id="economic_history" style="width: 500px; height: 300px;"> </svg>!}
+
 
