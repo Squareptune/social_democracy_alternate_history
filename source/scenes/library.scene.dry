@@ -10,7 +10,7 @@ Herein contains relevant information about the government and politics of the Ge
 @menu
 
 - @government: The American system of government
-- @US_timeline: Timeline of the Weimar Republic before 1928
+- @US_timeline: Timeline of the United States (until 1865)
 - @curr_gov: Current government details
 - @demographics: Demographics
 - @parties: Parties
@@ -81,7 +81,6 @@ go-to: menu
 **1864**: During the 1864 presidential election Lincoln forms a temporary alliance with pro-war Democrats and runs under the banner of the National Union Party. He selects Andrew Johnson, a Southern Unionist Democrat from Tennessee, as his running mate to signal unity and reconciliation. In the November election, Lincoln defeats Democratic nominee George B. McClellan, a former Union general who campaigns on a vague peace platform.
 
 @curr_gov
-go-to: cabinet if spd_in_government; menu if not spd_in_government
 
 = Current Government
 
@@ -256,22 +255,28 @@ go-to: menu
 on-display: {!
 data = [
     {
-        "id": "rep",
-        "legend": "Republican",
-        "name": "Republican",
-        "seats": Math.round(Q.rep_r * 5),
+        id: "rep",
+        legend: "Republican",
+        name: "Republican",
+        color: "#B22222",
+        outline: "#600000",
+        seats: Math.floor(Q.rep_r * 5),
     },
     {
-        "id": "dem",
-        "legend": "Democrat",
-        "name": "Democrat",
-        "seats": Math.round(Q.dem_r * 5),
+        id: "dem",
+        legend: "Democrat",
+        name: "Democrat",
+        color: "#003366",
+        outline: "#001933",
+        seats: Math.floor(Q.dem_r * 5),
     },
     {
-        "id": "other",
-        "legend": "Other",
-        "name": "Other",
-        "seats": Math.round(Q.other_r * 5),
+        id: "other",
+        legend: "Other",
+        name: "Other",
+        color: "#AAAAAA",
+        outline: "#666666",
+        seats: Math.floor(Q.other_r * 5),
     }
 ];
 
