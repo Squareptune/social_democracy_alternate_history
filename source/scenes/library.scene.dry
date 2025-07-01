@@ -252,7 +252,6 @@ Dissent: [+ liberal_dissent : dissent +]
 @figures
 title: Figures and Charts
 go-to: menu
-on-arrival: {}
 on-display: {!
 let houseData = [
     {
