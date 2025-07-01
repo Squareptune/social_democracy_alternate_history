@@ -287,7 +287,7 @@ let senateData = [
         name: "Republican",
         color: "#B22222",
         outline: "#600000",
-        seats: Q.rep_senate,
+        seats: Q.rep_senate_r,
     },
     {
         id: "dem",
@@ -295,7 +295,7 @@ let senateData = [
         name: "Democrat",
         color: "#003366",
         outline: "#001933",
-        seats: Q.dem_senate,
+        seats: Q.dem_senate_r,
     },
     {
         id: "other",
@@ -303,7 +303,7 @@ let senateData = [
         name: "Other",
         color: "#AAAAAA",
         outline: "#666666",
-        seats: Q.other_senate,
+        seats: Q.other_senate_r,
     }
 ];
 
@@ -378,9 +378,9 @@ if (d3 && window) {
 {!<svg id="senate_chart" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!}
-{!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_senate +] seats** {!</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_senate +] seats** {!</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_senate +] seats** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_senate_r +] seats** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_senate_r +] seats** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_senate_r +] seats** {!</td></tr>!}
 {!</table>!}
 
 = Election History
