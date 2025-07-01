@@ -69,7 +69,7 @@ Tariff rate: [+ tariff +]
 
 = Internal Factions of the Party
 
-{!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution ">Radical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
+{!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution">Radical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
 
 {!<span class="tooltip-text" title="The Moderates follow the ideas of Lincoln and quick reintegration of the south">Moderate</span>!} strength: [+ moderate_strength : strength +], dissent: [+ moderate_dissent : dissent +]
 
@@ -83,7 +83,9 @@ Tariff rate: [+ tariff +]
 
 {!<span class="tooltip-text" title="The Ku Klux Klan is a white supremacist group aimed against Reconstruction governments and freedmen.">KKK</span>!} Strength: [+ kkk_strength +] thousand
 
-KKK Militarization: [+ kkk_strength : militancy +]
+KKK Militarization: [+ kkk_strength : thousand +]
+
+KKK_Militarization: [+ kkk_militancy : militancy+]
 
 {!<span class="tooltip-text" title=" The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength +] thousand
 

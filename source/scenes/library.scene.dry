@@ -9,12 +9,12 @@ Herein contains relevant information about the government and politics of the Ge
 
 @menu
 
-- @government: Germany's system of government
-- @weimar_timeline: Timeline of the Weimar Republic before 1928
+- @government: The American system of government
+- @US_timeline: Timeline of the Weimar Republic before 1928
 - @curr_gov: Current government details
 - @demographics: Demographics
 - @parties: Parties
-- @public_opinion: Public opinion (and projected election results)
+- @election_projections: Public opinion (and projected election results)
 - @paramilitaries: Paramilitary groups
 - @factions: Internal factions
 - @figures: Figures and charts
@@ -23,42 +23,62 @@ Herein contains relevant information about the government and politics of the Ge
 @government
 go-to: menu
 
-The German Republic, called by some of our detractors as the "Weimar Republic", is a parliamentary republic with a somewhat weak president and a strong parliament, called the Reichstag. The Reichstag is responsible for governing, while the President has a largely ceremonial role but also has some important governing responsibilities.
+The United States of America is a federal republic composed of individual states united under a national constitution. Its system of government balances powers between the President, Congress, and Supreme Court, with additional authority reserved for the states.
 
-The Reichstag is elected based on a proportional representation system, giving parties seats roughly proportional to their vote share in each electoral district. The Reichstag then elects the Chancellor and the cabinet by a majority vote, who are responsible for government. A majority vote-of-no-confidence can remove the current government.
+The President of the United States is both the head of state and head of government, elected every four years by a system known as the Electoral College. While citizens vote directly for electors pledged to a candidate, it is technically the electors who choose the president. The president leads the executive branch, commands the armed forces, and plays a key role in legislation through veto power and executive orders.
 
-The President is elected by a national direct vote, in two rounds. The second round is used if the first round does not result in a majority for one candidate; the candidate who receives a plurality in the second round becomes president (there is no obligation for weaker candidates to drop out). The role of the president is mostly to represent Germany, but he also has some crucial governing powers. The president and chancellor can together use emergency decrees to govern, bypassing the Reichstag. The president can also appoint or remove a chancellor when a parliamentary majority is unable to be established, and can thus influence the formation of a government.
+The Congress is the national legislature, divided into two chambers: the House of Representatives and the Senate.
 
-Germany is divided into a number of states, each of which have their own governments with some responsibilities. By far the largest and most important state is Prussia.
+The House of Representatives is the lower chamber. Its members are elected every two years from districts based on population. The House introduces tax and spending bills and represents the people more directly.
 
-@weimar_timeline
+The Senate is the upper chamber. Each state, regardless of size, has two senators, chosen by state legislatures (until 1913), serving six-year terms. The Senate confirms appointments, ratifies treaties, and tries impeachment cases.
+
+Together, both chambers must approve laws. A presidential veto can be overridden by a two-thirds vote in both houses.
+
+The Supreme Court is the highest judicial authority and has the power to strike down laws it finds unconstitutional. Justices are appointed for life, nominated by the president, and confirmed by the Senate.
+
+Each state has its own constitution, legislature, and governor. States control many areas of daily life—education, policing, and local elections—but they cannot pass laws that violate the U.S. Constitution or federal law.
+
+The system is designed with checks and balances, so that no branch dominates the others.
+
+@US_timeline
 go-to: menu
 
-= Timeline of the SPD and the Republic (until 1928)
+= Timeline of the United States (until 1865)
 
-**1875**: The SPD is formed as a merger of the General German Workers' Association, founded by Ferdinand Lassalle, and the Social Democratic Workers' Party of Germany, led by Wilhelm Liebknecht and August Bebel. Eventually, the SPD grows to become the largest party in the German Empire.
+**1787**: The U.S. Constitution is drafted in Philadelphia, replacing the weaker Articles of Confederation. It creates a strong federal government with checks and balances among the executive, legislative, and judicial branches.
 
-**1914**: The Great War begins. The SPD votes in favor of war credits, with substantial internal dissent. This begins a policy of *Burgfriedenspolitik*, a general peace between all political parties and trade unions.
+**1789**: George Washington is unanimously elected as the first President of the United States. The first Congress assembles, and the new federal government begins operation. The Bill of Rights is introduced and later ratified.
 
-**1917**: The USPD, a left-wing anti-war split from the SPD, is formed.
+**1791**: The first political factions emerge: the Federalists, led by Alexander Hamilton, support a strong national government and close ties to Britain; the Democratic-Republicans, led by Thomas Jefferson and James Madison, advocate for agrarianism and states’ rights.
 
-**1918**: Following defeats in the war and uprisings by soldiers, sailors, and workers, SPD leader Philip Scheidemann proclaims the German Republic, and Kaiser Wilhelm II abdicates from his throne. An armistice is declared, ending the Great War. Conflict between center-left social democrats and far-left radicals erupts in the streets of Berlin and elsewhere.
+**1796**: Washington declines a third term. John Adams, a Federalist, is elected president. Partisan tensions deepen between Federalists and Democratic-Republicans.
 
-**1919**: The Spartacist Uprising, in which communist workers attempt to seize control of government, is launched. The uprising is defeated by the Social Democratic government, now led by President Friedrich Ebert and Chancellor Philipp Scheidemann, with the support of the far-right Freikorps militas. The two key leaders of the uprising, Rosa Luxemburg and Karl Liebknecht, are murdered by the Freikorps. The Treaty of Versailles is signed under great protest from all political factions in Germany, officially ending the Great War. The Weimar Constitution is signed. The first "Weimar Coalition" government is formed, led by the SPD, DDP, and Center (Z) parties.
+**1800**: Thomas Jefferson defeats Adams in what is called the "Revolution of 1800." Power transfers peacefully from one party to another, a landmark in republican governance.
 
-**1920**: The Kapp Putsch, an attempt by reactionary actors within the military to take power, is launched, and is defeated by the workers with a general strike. This is followed by left-wing uprisings in the Ruhr, which are defeated by the Reichswehr and Freikorps. The Weimar Coalition is defeated in the elections, with the right and far left increasing in vote share. Elected governments in this period are very unstable, often only lasting a matter of months. There is a split in the USPD, with the majority faction joining with the KPD and the Soviet Union's Communist International (Comintern) alliance.
+**1812-1815**: The United States declares war on Britain over trade restrictions and impressment of sailors. The War of 1812 ends in a draw but increases national pride and weakens Native resistance in the Midwest.
 
-**1921**: Communist uprisings in Saxony and Hamburg are defeated. Matthias Erzberger, the Center Party leader who signed the Versailles Treaty, is assassinated.
+**1816**:  The Federalist Party collapses after the Hartford Convention, where New England Federalists were accused of disloyalty during the war. This begins the Era of Good Feelings, a period of one-party rule under the Democratic-Republicans.
 
-**1922**: The Treaty of Rapallo is signed, which normalized relations with the Soviet Union. Walther Rathenau, the DDP Foreign Minister, is assassinated. The SPD reunites with most of the remaining USPD.
+**1828**: Andrew Jackson forms the Democratic Party, emphasizing populism, white male suffrage, and states' rights. He defeats Adams in a landslide, marking the rise of the Second Party System.
 
-**1923**: Hyperinflation begins, largely due to the economic policy of "passive resistance" against the French occupation of the Ruhr and the Versailles reparations. The currency is rapidly devalued as prices for necessities rise to billions of Reichsmarks. The government launches a *Reichsexekution* against Saxony, which was led by a joint SPD-KPD government. The Nazi "Beer Hall Putsch" is launched in Munich, and fails, with the arrest of Hitler. Eventually, new policies manage to stabilize the currency, and the French occupation ends.
+**1834**: The Whig Party is formed in opposition to Jackson's executive overreach. It unites economic nationalists, reformers, and anti-Jackson Southerners.
 
-**1924**: Parliamentary elections are held in May and December, the latter leading to the bourgeois-right governments that last until 1928. Hitler is released from prison. The Dawes Plan for the replayment of the Versailles reparations is negotiated, which reduces payments and increases economic growth. Germany begins to enter a period of relative stability, with the end of the hyperinflation crisis. 
+**1846–1848**: The Mexican-American War results in the U.S. annexing vast southwestern territory. Tensions rise over whether these new lands will allow slavery.
 
-**1925**:  President Friedrich Ebert dies, and new presidential elections are held, leading to the narrow election of Paul von Hindenburg in the second round. Hindenburg is a war hero and a right-wing reactionary. The SPD adopts the Heidelberg Program as its party platform. The Locarno Treaties are signed, which confirmed Germany's post-war western borders.
+**1850**:  The Compromise of 1850, engineered by Henry Clay and Stephen Douglas, tries to maintain a North-South balance. California enters as a free state; the Fugitive Slave Act enrages Northerners.
 
-**1926**: A referendum on the expropriation of the princes, supported by the SPD and KPD, fails.
+**1854**: The Kansas-Nebraska Act allows territories to decide slavery via popular sovereignty. Violent conflict erupts in "Bleeding Kansas." The Whig Party collapses, and the Republican Party is founded as an anti-slavery party.
+
+**1857**: The Dred Scott decision by the Supreme Court declares that African Americans are not citizens and that Congress cannot prohibit slavery in the territories. The North reacts with outrage.
+
+**1860**: Abraham Lincoln, the Republican candidate, wins the presidency without any Southern electoral votes. Southern states begin seceding from the Union, fearing the end of slavery.
+
+**1861**: The Civil War begins as Confederate forces attack Fort Sumter. The Union fights to preserve the United States; the Confederacy fights for independence and to protect slavery.
+
+**1863**: Lincoln issues the Emancipation Proclamation, declaring enslaved people in rebellious states to be free. The war becomes both a fight to preserve the Union and a crusade against slavery.
+
+**1864**: During the 1864 presidential election Lincoln forms a temporary alliance with pro-war Democrats and runs under the banner of the National Union Party. He selects Andrew Johnson, a Southern Unionist Democrat from Tennessee, as his running mate to signal unity and reconciliation. In the November election, Lincoln defeats Democratic nominee George B. McClellan, a former Union general who campaigns on a vague peace platform.
 
 @curr_gov
 go-to: cabinet if spd_in_government; menu if not spd_in_government
@@ -67,429 +87,265 @@ go-to: cabinet if spd_in_government; menu if not spd_in_government
 
 President: [+ president +]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])
+Speaker of the House: [+ Speaker +] ([+ speaker_party +])
 
-Reichstag composition:
+Congress composition:
 
-# 1928: 30, 1930: 25, 1932: 22
-SPD: [+ spd_r +]%
-[? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
-# 1928: 15, 1930: 15, 1932: 
-Z + BVP: [+ z_r +]%
-# 1928: 10, 1930: 13
-KPD: [+ kpd_r +]%
-# 1928: 5, 1930: 4 (as DstP)
-[+ ddp_name +]: [+ ddp_r +]%
-# 1928: 9, 1930: 5
-DVP: [+ dvp_r +]%
-# 1928: 14, 1930: 7
-DNVP: [+ dnvp_r +]%
-# 1928: 3, 1930: 18
-NSDAP: [+ nsdap_r +]%
-# 1928: 9, 1930: 10
-Others: [+ other_r +]%
+**Senate**:
 
-SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
+Republicans: [+ rep_senate_r +]
+Democratics: [+ dem_senate_r +]
+Other: [+ other_senate_r +]
 
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+**House of Representatives**:
 
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+Republicans: [+ rep_r +]
+Democratics: [+ dem_r +]
+Other: [+ other_r +]
+
+Republican position: [? if rep_majority = 1 : Majority in government ?][? if rep_majority != 1 : Minority in government ?]
 
 @cabinet
 go-to: menu
 
 Current cabinet:
 
-Labor: [+ labor_minister_party +]
+Secretary of State: [+ sect_state +][+ sect_state_party +]
 
-Interior: [+ interior_minister_party +]
+Secretary of Interior: [+ sect_interior +][+ sect_interior_party +]
 
-Finance: [+ finance_minister_party +]
+Secretary of Treasury: [+ sect_treasury +][+ sect_treasury_party +]
 
-Economic: [+ economic_minister_party +]
+Attorney General: [+ attorney_general +][+ attorney_general_party +]
 
-Justice: [+ justice_minister_party +]
+Secretary of War: [+ sect_war +][+ sect_war_party +]
 
-Foreign: [+ foreign_minister_party +]
-
-Reichswehr: [+ reichswehr_minister_party +]
-
-Agriculture: [+ agriculture_minister_party +]
-
+Secretary of Agriculture: [+ sect_agriculture +][+ sect_agriculture_party +]
 
 @demographics
 go-to: menu
 
 **Demographic Groups**
 
-**Working Class**: The urban working class - blue-collar workers in factories, workshops, mines, and the like. Most are socialist, supporting either the SPD or KPD. They make up 40-50% of the population.
+**Freedmen**: Formerly enslaved African Americans in the South. Newly emancipated, they overwhelmingly support the Republican Party, especially its Radical faction, which promises civil rights, protection from white supremacist violence, and land reform. Freedmen often participate actively in Southern Republican politics, serving in local, state, and even national office during Reconstruction. They face constant threats from groups like the Ku Klux Klan and hostile Southern elites. They make up about 12–15% of the total U.S. population, concentrated in the Deep South.
 
-**Old Mittelstand**: The old middle class consists of independent artisans, shopkeepers, and small-time businesspeople. They tend to be conservative and are the strongest base for the far right. 10-15% of the population.
+**Urban Workers**: Urban laborers and industrial wage workers, especially in the North. This group includes both native-born and immigrant populations, employed in manufacturing, transportation, and trades. Their political loyalties are divided—Radical Republicans, early labor reformers, and Democrats all vie for their support. Some lean toward moderate reformism; others are suspicious of Black civil rights, fearing job competition. They make up around 25–30% of the national population.
 
-**New Mittelstand**: The new middle class consists of white-collar workers and government employees. This is the base of liberalism. 10-15% of the population.
+**Middle Class**: White-collar professionals, small business owners, and educated elites. This group includes lawyers, teachers, clerks, and merchants—predominantly Northern, with strong influence in newspapers and civic organizations. They are the backbone of Moderate Republicans and some Liberal Republicans, supporting Reconstruction in principle but often wary of radical measures like land confiscation or racial integration. They represent 10–15% of the population.
 
-**Rural**: Small and large farmers and independent rural workers. Protestant farmers often support the DNVP. 20-30% of the population.
+**Rural**: Smallholding farmers, planters, and tenant farmers, especially in the South and Midwest. In the North and West, many support the Republican Party due to its pro-farmer and homesteading policies. In the South, most white rural voters are Democrats and strongly oppose Reconstruction. This group is deeply divided by region and race. Rural Americans make up 30–40% of the population.
 
-**Catholics** are the largest religious minority, at about 30% of the population. They disproportionately support the Center Party (or the Bavarian People's Party in Bavaria).
+**Immigrant Laborers**: A growing group of Irish, German, and other European immigrants concentrated in Northern cities. They work in labor-intensive, often low-wage jobs. Irish immigrants in particular lean Democratic, especially in opposition to Reconstruction and in defense of Catholic schools. German immigrants are more mixed, with some radical and liberal factions supporting Republicans or early Socialist movements. Immigrant laborers comprise 10–15% of the population.
 
-**Jews** account for between 0.5% to 1% of the population, and tend to support liberal parties, mostly the DDP, although substantial numbers support the SPD or KPD.
+**Unemployed & Displaced**: A transient, politically volatile group composed of war veterans, former slaves denied land, displaced workers, and refugees from the Civil War. Many are mobile, poor, and desperate—susceptible to populist or radical appeals, but often disengaged from formal politics due to disenfranchisement or instability. This group is small but significant in times of crisis, making up around 5–8% of the population.
 
-
-@public_opinion
-on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
-Q.nationalism_disp = Math.round(Q.nationalism);
-Q.socialism_disp = Math.round(Q.socialism);
-!}
-view-if: (not historical_mode) or game_over
-go-to: Senate_election_algorithm
-set-jump: election_projections
-
-**Public Opinion**
-
-#Support for Socialism: [+ socialism +]%
-
-#Support for Nationalism: [+ nationalism +]%
-
-Support for the Republic: [+ pro_republic_disp +]%
-
+**Native Americans/Indians** are found across the western frontier, reservations, and borderlands. Largely excluded from national politics and often viewed as obstacles to westward expansion, they suffer from violent military campaigns, broken treaties, and forced removals during this period. They have been reduce to only 100,000 and 300,000 in size.
 
 @election_projections
 view-if: (not historical_mode) or game_over
 go-to: menu
 
-**Projected election results** (if the election were to be held now):
+Republicans: [+ rep_senate_r +] seats
 
-# 1928: 30, 1930: 25, 1932: 22
-SPD: [+ spd_votes +]%
+Democrats: [+ dem_senate_r +] seats
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
+Others: [+ other_senate_r +] seats
 
-# 1928: 15, 1930: 15, 1932: 
-Z + BVP: [+ z_votes +]%
+House:
 
-# 1928: 10, 1930: 13
-KPD: [+ kpd_votes +]%
+Republicans: [+ rep_r +] seats
 
-# 1928: 5, 1930: 4 (as DstP)
-[+ ddp_name +]: [+ ddp_votes +]%
+Democrats: [+ dem_r +] seats
 
-# 1928: 9, 1930: 5
-DVP: [+ dvp_votes +]%
-
-# 1928: 14, 1930: 7
-DNVP: [+ dnvp_votes +]%
-
-# 1928: 3, 1930: 18
-NSDAP: [+ nsdap_votes +]%
-
-# 1928: 9, 1930: 10
-Others: [+ other_votes +]%
+Others: [+ other_r +] seats
 
 **Detailed results for each demographic**
 
-Workers: SPD: [+ workers_spd_display +]%, Z: [+ workers_z_display +]%, KPD: [+ workers_kpd_display +]%, [+ ddp_name +]: [+ workers_ddp_display +]%, DVP: [+ workers_dvp_display +]%; DNVP: [+ workers_dnvp_display +]%, NSDAP: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
+Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%
 
-New Middle Class: SPD: [+ new_middle_spd_display +]%, Z: [+ new_middle_z_display +]%, KPD: [+ new_middle_kpd_display +]%, [+ ddp_name +]: [+ new_middle_ddp_display +]%, DVP: [+ new_middle_dvp_display +]%; DNVP: [+ new_middle_dnvp_display +]%, NSDAP: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
+Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%
 
-Old Middle Class: SPD: [+ old_middle_spd_display +]%, Z: [+ old_middle_z_display +]%, KPD: [+ old_middle_kpd_display +]%, [+ ddp_name +]: [+ old_middle_ddp_display +]%, DVP: [+ old_middle_dvp_display +]%; DNVP: [+ old_middle_dnvp_display +]%, NSDAP: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
+Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%
 
-Rural: SPD: [+ rural_spd_display +]%, Z: [+ rural_z_display +]%, KPD: [+ rural_kpd_display +]%, [+ ddp_name +]: [+ rural_ddp_display +]%, DVP: [+ rural_dvp_display +]%; DNVP: [+ rural_dnvp_display +]%, NSDAP: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
+Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%
 
-Unemployed: SPD: [+ unemployed_spd_display +]%, Z: [+ unemployed_z_display +]%, KPD: [+ unemployed_kpd_display +]%, [+ ddp_name +]: [+ unemployed_ddp_display +]%, DVP: [+ unemployed_dvp_display +]%; DNVP: [+ unemployed_dnvp_display +]%, NSDAP: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
+Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
-Catholics: SPD: [+ catholics_spd_display +]%, Z: [+ catholics_z_display +]%, KPD: [+ catholics_kpd_display +]%, [+ ddp_name +]: [+ catholics_ddp_display +]%, DVP: [+ catholics_dvp_display +]%; DNVP: [+ catholics_dnvp_display +]%, NSDAP: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
+Support for Reconstruction: [+ reconstruction_support +]%
 
 @parties
 go-to: menu
 
-**SPD** - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Germany) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, Lassalle and Bebel. We are the foremost defenders of the Republic. The modern SPD was formed from a merger of the "Majority" SPD, which supported the Great War, and the "Independent" SPD or USPD, which opposed the war.
+**Republican Party** – The party of Lincoln and the Union: We are the dominant force in Washington following the Civil War. Our coalition includes Radical Republicans, who seek full equality and Reconstruction in the South, as well as Moderates who are more cautious but still oppose secession and slavery. We are the party of emancipation, the Freedmen's Bureau, and constitutional reform. Our base includes Northern industrialists, African Americans, and many reform-minded middle-class citizens.
 
-**Z** - *Zentrumspartei* (Center Party) - a centrist to center-right Catholic party that supports the Republic, and has historically supported many of our labor, welfare, and anti-militarist priorities. They have often been in coalitions with us. They are often associated with the **BVP** (Bavarian People's Party), which represents Catholics in Bavaria. [? if year >= 1930 or chancellor = "Brüning" : They have appeared to take a more conservative turn recently, with the rise of Brüning and the party leader, Ludwig Kaas. ?]
+**Democratic Party** - The opposition party: The Democrats represent a mix of Northern conservatives and Southern ex-Confederates. Though weakened by the war, they remain a force in Congress and dominate Southern state politics where federal troops are absent. They oppose Radical Reconstruction and civil rights for freedmen, and many Democrats advocate for a swift return to “home rule” in the South. 
 
-Current relations: [+ z_relation : relationships +]
+Current relations: [+ dem_relation : relationships +]
 
-# TODO: replace this with the german state party after 1930
-**DDP** - *Deutsche Demokratische Partei* (German Democratic Party) - a center-left liberal party, popular among the intelligensia and educated middle class. They have often been in coalitions with us. [? if year >= 1930 : They have recently reformed themselves as the German State Party (DStP). ?]
-
-Current relations: [+ ddp_relation : relationships +]
-
-**DVP** - *Deutsche Volkspartei* (German People's Party) - a conservative-liberal party, supported by the middle classes and bourgeoisie. We have occasionally been in coalitions.
-
-Current relations: [+ dvp_relation : relationships +]
-
-**DNVP** - *Deutschnationale Volkspartei* (German National People's Party) - a right-wing nationalist-conservative party, with authoritarian, monarchist, and racist elements. It is supported by the former aristocracy, rural landowners, and conservative Lutherans.
-
-Current relations: [+ dnvp_relation : relationships +]
-
-**KPD** - *Kommunistische Partei Deutschlands* (German Communist Party) - a radical left-wing offshoot of the SPD that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution.
-
-Current relations: [+ kpd_relation : relationships +]
-
-[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the SPD, the SAPD is essentially an agglomeration of various left-wing splinter groups between the SPD and KPD. ?]
-
-**NSDAP** - *Nationalsozialistische Deutsche Arbeiterpartei* - (National Socialist German Worker's Party, or Nazis) - a far-right nationalist and antisemitic party. Led by Adolf Hitler, they attempted a coup in 1923, and were banned for it, but have since been legalized.
-
-Current relations: [+ nsdap_relation : relationships +]
-
-**Other parties** - there is a multitude of small, mostly conservative parties, such as the Economic Party of the German Middle Class, the Farmer's Party, the Agricultural League, and others. Their political position usually lies between the DVP and DNVP. 
+**Other parties** - there is a multitude of small, mostly single issue parties, such as the many Unionists parties and independents who don't belong to any party.
 
 @paramilitaries
 on-arrival: {!
-Q.rb_strength = Math.round(Q.rb_strength);
-Q.sh_strength = Math.round(Q.sh_strength);
-Q.sa_strength = Math.round(Q.sa_strength); 
+Q.kkk_strength = Math.round(Q.kkk_strength);
 !}
 go-to: menu
 
 **Paramilitary groups:**
 
-**Reichsbanner Schwarz-Rot-Gold**: The Reichsbanner is an organization affiliated with all of the democratic parties - the SPD, Z, and DDP, but primarily with the SPD. Historically, this has been an unarmed organization.
+**Ku Klux Klan**: The KKK was formed following the defeat of the Confederacy in the American Civil War. The goal of this Klan was to intimidate freedmen and reformers into surrendering their newly gained political and social power over what had once been the hegemonic White system of the Old South. 
 
-Strength: [+ rb_strength +] thousand
+Strength: [+ kkk_strength +] thousand
 
-Militarization: [+ rb_militancy : militancy +]
-
-**Rotfrontkämpferbund (RFB)**: The "Red Front Fighter's League" is associated with the KPD.
-
-Strength: [+ rfb_strength +] thousand
-
-Militarization: [+ rfb_militancy : militancy +]
-
-**Der Stahlhelm**: A right-wing nationalist organization of primarily Great War veterans, descended from the *Freikorps* that emerged after the war. Associated with the DNVP.
-
-Strength: [+ sh_strength +] thousand
-
-Militarization: [+ sh_militancy : militancy +]
-
-**Sturmabteilung (SA)**: This is the nazi paramilitary group.
-
-Strength: [+ sa_strength +] thousand
-
-Militarization: [+ sa_militancy : militancy +]
+Militarization: [+ kkk_militancy : militancy +]
 
 **Official military/paramilitary groups:**
 
-**Reichswehr**: [+ reichswehr_strength +] thousand troops. This is Germany's military.
+U.S Army: [+ army_strength +] thousand troops. This is the American Army.
 
-Loyalty: [+ reichswehr_loyalty : loyalty +]
+Loyalty: [+ army_loyalty : loyalty +]
 
-**Prussian police**: [+ prussian_police_strength +] thousand members.
+Militarization: [+ army_militancy : militancy +]
 
-Loyalty: [+ prussian_police_loyalty : loyalty +]
+Federal Police: [+ Us_police_strength +] thousand members.
 
+Police loyalty: [+ Us_police_loyalty : loyalty +]
 
+[? if state_militia : State militia strength: [+ state_militia_strength +] ?]
 
 @factions
-go-to: neorevisionists if neorevisionism > 0; menu if neorevisionism <= 0
 
-**Internal factions of the SPD**
+**Internal factions of the Republicans**
 
 Overall dissent: [+ dissent_percent : dissent +]
 
-**Left**
+**Radicals**
 
-Many leftists are former members of the USPD (the left-wing, anti-war Independent Social Democratic Party), or are young radicals. Many are interested in closer cooperation with the KPD, and some support extraparliamentary action.
+They are the most extreme wing of the party who supported immediate, complete, and permanent eradication of slavery in the United States. But now the war is over, they are increasing pushing  to establish civil rights for former slaves and fully implement emancipation as well as making the South be punished for what they did.
 
-Strength: [+ left_strength : strength +]
+Strength: [+ radical_dissent : strength +]
 
-Dissent: [+ left_dissent : dissent +]
+Dissent: [+ radical_dissent : dissent +]
 
-**Centrists**
+**Moderates**
 
-Centrists in the SPD are followers of the doctrine of orthodox Marxism as expounded by Karl Kautsky and later Rudolf Hilferding. They seek a middle course between reform and revolution, while defending the democratic state.
+This is the faction of Lincoln and and opposed the more militant stances advocated by the Radical Republicans. Moderate Republicans are less enthusiastic than Radical Republicans about Black suffrage, even though they otherwise embraced civil equality and the expansion of federal authority during the American Civil War.
 
-Strength: [+ center_strength : strength +]
+Strength: [+ moderate_strength : strength +]
 
-Dissent: [+ center_dissent : dissent +]
+Dissent: [+ moderate_dissent : dissent +]
 
-**Labor**
+**Conservative**
 
-Many SPD members are also part of the ADGB, the federation of free trade unions. Their goal is economic reform and benefits for organized workers.
+This factions advocated for a lenient, conciliatory policy towards the South in contrast to the harsher attitudes emphasized by Radical Republicans. generally opposed efforts by Radical Republicans to rebuild the Southern U.S. under an economically mobile, free-market system.
 
-Strength: [+ labor_strength : strength +]
+Strength: [+ conservative_strength : strength +]
 
-Dissent: [+ labor_dissent : dissent +]
+Dissent: [+ conservative_dissent : dissent +]
 
-**Reformists**
+**Liberal**
 
-Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy against the far right and left. [? if spd_prussia : They are dominant in the state government of Prussia. ?]
+The Liberal Republicans were small in the early parts of reconstruction and grew thorugh out the late 1860s and wanted to end federal intervention in the South, promoting a more hands-off approach to governing, and emphasizing issues like civil service reform and limited government. 
 
-Strength: [+ reformist_strength : strength +]
+Strength: [+ liberal_strength : strength +]
 
-Dissent: [+ reformist_dissent : dissent +]
-
-@neorevisionists
-go-to: menu
-
-**Neorevisionists**
-
-Neorevisionists focus on defending the republic and expanding democracy, while also expanding the party's base beyond the working class to create a people's party. They support new propaganda methods and extraparliamentary action in defense of the republic.
-
-Strength: [+ neorevisionist_strength : strength +]
-
-Dissent: [+ neorevisionist_dissent : dissent +]
-
+Dissent: [+ liberal_dissent : dissent +]
 
 @figures
 title: Figures and Charts
 go-to: menu
-on-arrival: z_minus_bvp_r = z_r - 3;
+on-arrival: {}
 on-display: {!
 data = [
     {
-        "id": "kpd",
-        "legend": "KPD",
-        "name": "KPD",
-        "seats": Q.kpd_r*5,
-    }];
-if (Q.sapd_formed && Q.sapd_r) {
-    data.push({
-            "id": "sapd",
-            "legend": "SAPD",
-            "name": "SAPD",
-            "seats": Math.round(Q.sapd_r*5),
-            });
-}
-data = data.concat([
-    {
-        "id": "spd",
-        "legend": "SPD",
-        "name": "SPD",
-        "seats": Q.spd_r*5,
+        "id": "rep",
+        "legend": "Republican",
+        "name": "Republican",
+        "seats": Math.round(Q.rep_r * 5),
     },
     {
-        "id": "ddp",
-        "legend": "DDP",
-        "name": "DDP",
-        "seats": Q.ddp_r*5,
-    },
-    {
-        "id": "z",
-        "legend": "Center",
-        "name": "Center",
-        "seats": (Q.z_r - 3)*5,
-    },
-    {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": 3*5,
-    },
-    {
-        "id": "dvp",
-        "legend": "DVP",
-        "name": "DVP",
-        "seats": Q.dvp_r*5,
+        "id": "dem",
+        "legend": "Democrat",
+        "name": "Democrat",
+        "seats": Math.round(Q.dem_r * 5),
     },
     {
         "id": "other",
         "legend": "Other",
         "name": "Other",
-        "seats": Q.other_r*5,
-    },
-    {
-        "id": "dnvp",
-        "legend": "DNVP",
-        "name": "DNVP",
-        "seats": Q.dnvp_r*5,
-    },
-    {
-        "id": "nsdap",
-        "legend": "NSDAP",
-        "name": "NSDAP",
-        "seats": Q.nsdap_r*5,
-    },
-]);
+        "seats": Math.round(Q.other_r * 5),
+    }
+];
+
 if (d3 && window) {
-    // get screen width
     var width = 500;
     var height = 500;
     var screenWidth = document.getElementById('content').offsetWidth;
     if (screenWidth < width - 50) {
         width = screenWidth - 50;
         height = width;
-        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+        document.getElementById("congress").style.height = screenWidth/2 + "px";
     }
+
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#reichstag").datum(data).call(parliament);
+    d3.select("#congress").datum(data).call(parliament);
 
     var lines = d3.linegraph(false, false,
-            Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+        Q.parties,
+        {"rep": "#B22222", "dem": "#003366", "other": "#AAAAAA"},
+        {"rep": "Republican", "dem": "Democrat", "other": "Other"}
+    );
     lines.width(width).height(400);
-    //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
         d3.select("#election_history").datum(Q.election_records).call(lines);
     }
-    //document.getElementById('election_history').innerHTML = svg.outerHTML;
 
-    // party support records should not have so many ticks
     if (!Q.historical_mode || Q.game_over) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {"rep": "#B22222", "dem": "#003366", "other": "#AAAAAA"},
+            {"rep": "Republican", "dem": "Democrat", "other": "Other"}
+        );
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
 
-    // economic stats
     var minInflation = d3.min(Q.economic_records, d => d.inflation);
     var maxUnemployment = d3.max(Q.economic_records, d => d.unemployment);
     var lines_3 = d3.linegraph(true, true, ['inflation', 'unemployment'],
-            {'inflation': '#0000FF', 'unemployment': '#FF0000'},
-            {'inflation': 'Inflation', 'unemployment': 'Unemployment'},
-            maxUnemployment + 5, minInflation - 5, 21);
+        {'inflation': '#0000FF', 'unemployment': '#FF0000'},
+        {'inflation': 'Inflation', 'unemployment': 'Unemployment'},
+        maxUnemployment + 5, minInflation - 5, 21);
     lines_3.width(width).height(300);
     d3.select("#economic_history").datum(Q.economic_records).call(lines_3);
 }
 !}
 
-= Reichstag composition
+= Congressional Composition
 
-{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+{!<svg id="congress" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
-
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
-
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div></td><td>!} BVP: {!</td><td>!} 3% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#D5AC27'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div></td><td>!} Other parties: {!</td><td>!} [+ other_r +] % {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#954B00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_r +]%** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_r +]%** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other parties:** {!</td><td>!} **[+ other_r +]%** {!</td></tr>!}
 {!</table>!}
 
-= Election history
+= Election History
 
-[? if year = 1928 and month < 5 : No new elections yet. ?]
+[? if year < 1866 : No federal elections yet. ?]
 
 {!<svg id="election_history" style="width: 500px; height: 400px;"> </svg>!}
 
-= Party support history
+= Party Support History
 
 [? if historical_mode: Not available in historical mode. ?]
 
 {!<svg id="party_support_history" style="width: 500px; height: 400px;"> </svg>!}
 
-= Economic history
+= Economic History
 
 {!<svg id="economic_history" style="width: 500px; height: 300px;"> </svg>!}
-# TODO: maybe add textual histories too? some accessibility stuff as well...
+

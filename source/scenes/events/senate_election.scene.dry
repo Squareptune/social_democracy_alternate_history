@@ -107,7 +107,7 @@ on-display: {!
   }
 !}
 
-go-to: coalition_menu
+go-to: house_makeup
 
 = Senate Election Results
 
@@ -123,7 +123,7 @@ go-to: coalition_menu
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other_senate_r +] {!</td></tr>!}
 {!</table>!}
 
-@coalition_menu
+@house_makeup
 
 - @simple_majority
 - @super_majority
@@ -132,9 +132,9 @@ go-to: coalition_menu
 
 @simple_majority
 title: Republicans get a simple majority
-subtitle: Repubicans: [+ rep_senate_r +] seats
+subtitle: Republicans: [+ rep_senate_r +] seats
 view-if: {! 
-rep_senate_r > num_states && rep_senate_r < Math.ceil(Q.num_states * 2 * (2/3))
+rep_senate_r > Q.num_states && rep_senate_r < Math.ceil(Q.num_states * 2 * (2/3))
 !}
 on-arrival: sen_majority = 1;
 
@@ -142,8 +142,8 @@ The Republicans have gained a simple majority in the Senate!
 
 @super_majority
 title: Republicans get a super majority
-subtitle: Repubicans: [+ rep_senate_r +] seats
-view-if: {!
+subtitle: Republicans: [+ rep_senate_r +] seats
+view-if: {! 
 rep_senate_r >= Math.ceil(Q.num_states * 2 * (2/3))
 !}
 on-arrival: sen_majority = 1;

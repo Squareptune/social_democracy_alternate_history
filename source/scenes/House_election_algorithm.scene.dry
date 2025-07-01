@@ -23,10 +23,10 @@ for (let state of Q.states) {
     let demMod = Q[cls + "_dem"] || 0;
     let otherMod = Q[cls + "_other"] || 0;
 
-    // Blend local + national: 80% state value, 20% national
-    let adjRep = 0.5 * rep + 0.5 * repMod;
-    let adjDem = 0.5 * dem + 0.5 * demMod;
-    let adjOther = 0.5 * other + 0.5 * otherMod;
+    // Blend local + national: 20% state value, 80% national
+    let adjRep = 0.2 * rep + 0.8 * repMod;
+    let adjDem = 0.2 * dem + 0.8 * demMod;
+    let adjOther = 0.2 * other + 0.8 * otherMod;
 
     let totalPct = adjRep + adjDem + adjOther;
     if (totalPct === 0) continue;
