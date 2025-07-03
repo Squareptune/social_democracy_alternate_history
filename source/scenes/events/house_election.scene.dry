@@ -38,10 +38,9 @@ on-arrival: {!
       let demMod = Q[cls + "_dem"] || 0;
       let otherMod = Q[cls + "_other"] || 0;
 
-      // Blend: 80% local, 20% national
-      let adjRep = 0.8 * rep + 0.2 * repMod;
-      let adjDem = 0.8 * dem + 0.2 * demMod;
-      let adjOther = 0.8 * other + 0.2 * otherMod;
+      let adjRep = 0.2 * rep + 0.8 * repMod;
+      let adjDem = 0.2 * dem + 0.8 * demMod;
+      let adjOther = 0.2 * other + 0.8 * otherMod;
 
       let totalPct = adjRep + adjDem + adjOther;
       if (totalPct === 0) continue;
@@ -91,6 +90,17 @@ on-arrival: {!
   }
   Q.house_election_records = Q.house_election_records || [];
   Q.house_election_records.push(result);
+
+  let totalHouse = Q.total_house_seats || (Q.rep_r + Q.dem_r + Q.other_r);
+  let repPctHouse = (Q.rep_r / totalHouse) * 100;
+
+  if (repPctHouse >= 75) {
+    Q.house_majority = 3;
+  } else if (repPctHouse >= 50) {
+    Q.house_majority = 2;
+  } else {
+    Q.house_majority = 0;
+  }
 
 !}
 on-display: {!
@@ -175,18 +185,16 @@ go-to: house_menu
 @house_simple_majority
 title: Republicans gain a majority in the House
 subtitle: Republicans: [+ rep_r +] seats
-view-if: {! rep_r > Q.total_house_seats / 2 !}
-on-arrival: house_majority = 1;
+view-if: house_majority = 2
 
 The Republicans have secured a majority in the House of Representatives.
 
 @house_super_majority
 title: Republicans secure a supermajority
 subtitle: Republicans: [+ rep_r +] seats
-view-if: {! rep_r >= Math.ceil(Q.total_house_seats * (2/3)) !}
-on-arrival: house_majority = 1;
+view-if: house_majority = 3;
 
-With two-thirds of the House, Republicans now wield veto-proof power.
+With two-thirds of the House, Republicans now wield veto-proof power
 
 @house_defeat
 title: Republicans lose the House
