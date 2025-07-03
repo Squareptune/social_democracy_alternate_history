@@ -262,8 +262,8 @@ on-arrival: {!
 !}
 
 In a stunning turn of events, the Senate election has ended in a tie!
-[? if president_party = rep: The Vice President can cast the deciding vote in favor of the Republicans.]
-[? if president_party = dem: The Vice President can cast the deciding vote in favor of the Democrats.]
+[? if president_party = rep: The Vice President can cast the deciding vote in favor of the Republicans. ?]
+[? if president_party = dem: The Vice President can cast the deciding vote in favor of the Democrats. ?]
 
 @plurality
 title: Republicans Are the Largest Party
