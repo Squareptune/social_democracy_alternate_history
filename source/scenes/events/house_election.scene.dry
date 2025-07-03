@@ -192,7 +192,7 @@ The Republicans have secured a majority in the House of Representatives.
 @house_super_majority
 title: Republicans secure a supermajority
 subtitle: Republicans: [+ rep_r +] seats
-view-if: house_majority = 3;
+view-if: house_majority = 3
 
 With two-thirds of the House, Republicans now wield veto-proof power
 
@@ -200,7 +200,6 @@ With two-thirds of the House, Republicans now wield veto-proof power
 title: Republicans lose the House
 subtitle: Republicans: [+ rep_r +] seats
 view-if: dem_r > rep_r
-on-arrival: house_majority = 0;
 
 The Democrats have taken control of the House of Representatives.
 
@@ -208,6 +207,4 @@ The Democrats have taken control of the House of Representatives.
 title: The House is tied!
 subtitle: Both parties are neck and neck
 view-if: rep_r = dem_r
-on-arrival: house_majority = 0;
-
 A tied House will cause major legislative deadlock in the months ahead.
