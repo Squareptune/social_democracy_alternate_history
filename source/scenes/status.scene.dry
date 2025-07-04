@@ -85,7 +85,7 @@ Tariff rate: [+ tariff +]
 
 KKK Militarization: [+ kkk_strength : thousand +]
 
-KKK_Militarization: [+ kkk_militancy : militancy+]
+KKK_Militarization: [+ kkk_militancy : militancy +]
 
 {!<span class="tooltip-text" title=" The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength +] thousand
 
@@ -104,11 +104,6 @@ Police loyalty: [+ Us_police_loyalty : loyalty +]
 [? if state_militia : State militia strength: [+ state_militia_strength +] ?]
 
 @polls
-on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
-Q.nationalism_disp = Math.round(Q.nationalism);
-Q.socialism_disp = Math.round(Q.socialism);
-!}
 
 = Projected election results
 

@@ -200,7 +200,6 @@ on-display: {!
     drawChart();
   }
 !}
-
 go-to: house_makeup
 
 = Senate Election Results
@@ -268,6 +267,6 @@ In a stunning turn of events, the Senate election has ended in a tie!
 @plurality
 title: Republicans Are the Largest Party
 subtitle: Republicans: [+ rep_senate_r +] seats
-view-if: sen_majority = 0 and rep_senate_r > dem_senate_r and rep_senate_r > other_senate_r
+view-if: sen_majority = 0 and (rep_senate_r > dem_senate_r and rep_senate_r > other_senate_r)
 
 The Republicans are the largest party in the Senate but fall short of a majority. They will need to form coalitions or negotiate to pass any legislation.
