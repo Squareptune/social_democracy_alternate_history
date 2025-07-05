@@ -250,7 +250,6 @@ title: A TIE?!?!?!?
 subtitle: Republicans and Democrats: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r
 on-arrival: {!
-  // Senate is tied — use VP tiebreaker
   if (Q.president_party = "rep") {
     Q.sen_majority = 2;
   } else if (Q.president_party = "dem") {
