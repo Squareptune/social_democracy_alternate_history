@@ -101,7 +101,7 @@ Federal Police: [+ Us_police_strength +] thousand members.
 
 Police loyalty: [+ Us_police_loyalty : loyalty +]
 
-[? if state_militia : State militia strength: [+ state_militia_strength +] ?]
+[? if state_militia_formed = 1 : State militia strength: [+ state_militia_strength +] ?]
 
 @polls
 
