@@ -222,7 +222,6 @@ go-to: house_makeup
 - @super_majority
 - @defeat
 - @tie
-- @plurality
 
 @simple_majority
 title: Republicans get a simple majority
@@ -250,9 +249,9 @@ title: A TIE?!?!?!?
 subtitle: Republicans and Democrats: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r
 on-arrival: {!
-  if (Q.president_party = "rep") {
+  if (Q.president_party == "rep") {
     Q.sen_majority = 2;
-  } else if (Q.president_party = "dem") {
+  } else if (Q.president_party == "dem") {
     Q.sen_majority = 2;
   } else {
     Q.sen_majority = 0;
@@ -262,10 +261,3 @@ on-arrival: {!
 In a stunning turn of events, the Senate election has ended in a tie!
 [? if president_party = rep: The Vice President can cast the deciding vote in favor of the Republicans. ?]
 [? if president_party = dem: The Vice President can cast the deciding vote in favor of the Democrats. ?]
-
-@plurality
-title: Republicans Are the Largest Party
-subtitle: Republicans: [+ rep_senate_r +] seats
-view-if: sen_majority = 0 and (rep_senate_r > dem_senate_r and rep_senate_r > other_senate_r)
-
-The Republicans are the largest party in the Senate but fall short of a majority. They will need to form coalitions or negotiate to pass any legislation.
