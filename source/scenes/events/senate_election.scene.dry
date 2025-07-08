@@ -14,6 +14,15 @@ The Senate elections are to be held now.
 @Senate_election_algorithm
 on-arrival: {!
 
+  // === 0. Defensive defaults (avoid assertion errors for some fucking reason) ===
+  Q.display_rep_senate = 0;
+  Q.display_dem_senate = 0;
+  Q.display_other_senate = 0;
+
+  Q.str_change_rep_senate_r = "+0";
+  Q.str_change_dem_senate_r = "+0";
+  Q.str_change_other_senate_r = "+0";
+
   // === 1. Save old seat values ===
   for (let party of Q.parties) {
     Q["old_" + party + "_senate_r"] = Q[party + "_senate_r"] || 0;
@@ -103,7 +112,7 @@ on-arrival: {!
     Q.other_senate_r += otherSeats;
   }
 
-  // === 4. Compute seat changes ===
+  // === 4. Compute seat changes and display strings ===
   for (let party of Q.parties) {
     let cur = Q[party + "_senate_r"] || 0;
     let old = Q["old_" + party + "_senate_r"];
@@ -113,10 +122,10 @@ on-arrival: {!
     Q[party + "_senate_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
   }
 
-  // === 5. Update display values ===
-  Q.display_rep_senate = Q.rep_senate_r;
-  Q.display_dem_senate = Q.dem_senate_r;
-  Q.display_other_senate = Q.other_senate_r;
+  // === 5. Display values for rendering ===
+  Q.display_rep_senate = Q.rep_senate_r_disp;
+  Q.display_dem_senate = Q.dem_senate_r_disp;
+  Q.display_other_senate = Q.other_senate_r_disp;
 
   // === 6. Record election result ===
   let result = { date: Q.year + "-" + Q.month };
@@ -126,7 +135,7 @@ on-arrival: {!
   Q.senate_election_records = Q.senate_election_records || [];
   Q.senate_election_records.push(result);
 
-  // === 7. Largest party and majority ===
+  // === 7. Largest party and majority level ===
   Q.largest_party_senate = "rep";
   if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) Q.largest_party_senate = "dem";
   if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) Q.largest_party_senate = "other";
@@ -145,7 +154,6 @@ on-arrival: {!
   } else {
     Q.sen_majority = 0;
   }
-
 !}
 on-display: {!
   function drawChart() {
