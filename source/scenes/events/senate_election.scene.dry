@@ -249,9 +249,9 @@ title: A TIE?!?!?!?
 subtitle: Republicans and Democrats: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r
 on-arrival: {!
-  if (Q.president_party == "rep") {
+  if (president_party == "rep") {
     Q.sen_majority = 2;
-  } else if (Q.president_party == "dem") {
+  } else if (president_party == "dem") {
     Q.sen_majority = 2;
   } else {
     Q.sen_majority = 0;
