@@ -256,15 +256,6 @@ The Republicans have lost control of the Senate to the Democrats.
 title: A TIE?!?!?!?
 subtitle: Republicans and Democrats: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r
-on-arrival: {!
-  if (president_party == "rep") {
-    Q.sen_majority = 2;
-  } else if (president_party == "dem") {
-    Q.sen_majority = 2;
-  } else {
-    Q.sen_majority = 0;
-  }
-!}
 
 In a stunning turn of events, the Senate election has ended in a tie!
 [? if president_party = rep: The Vice President can cast the deciding vote in favor of the Republicans. ?]

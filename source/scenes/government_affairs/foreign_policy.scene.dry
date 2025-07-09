@@ -131,7 +131,7 @@ title: Crack down on the Fenian raids.
 view-if: year >= 1866
 choose-if: Us_police_strength > 10 and Us_police_loyalty >= 0.7
 unavailable-subtitle: [? if Us_police_strength < 10: The Police force is too weak to forcefully stop the Fenian Brotherhood. ?][? if Us_police_loyalty < 0.7: The Police are too disloyal to effectively execute the job.?]
-on-arrival: immigrant_laborers_rep -= 4; moderate_dissent -= 1; europe_relation += 1;
+on-arrival: immigrant_laborers_rep -= 4; moderate_dissent -= 1; europe_relation += 1; fenian = 0;
 
 Irish nationalists, many Union veterans, have begun launching illegal raids into Canada from American soil. While popular among Irish Americans, these attacks threaten U.S.–British relations.
 
