@@ -1,0 +1,30 @@
+title: A Presidential Veto 
+subtitle: Johnson strikes back against Congress.
+view-if: veto > 0 and president = "Johnson"
+tags: event  
+new-page: true
+
+= A Presidential Veto
+
+President Andrew Johnson has vetoed the [+ veto_reason +], declaring it an unconstitutional assault on states’ rights and “an invitation to tyranny.”
+
+Radical Republicans are outraged. They see this as further proof that Johnson is siding with the former slaveowners and obstructing the goals of Reconstruction. Moderate Republicans are split—some urge an override, others warn of political overreach.
+
+With the Radical base demanding action and the President daring Congress to respond, the veto becomes a moment of truth.
+
+- @override: Attempt to override the veto. 
+- @stand_down: Let the veto stand, for now.
+
+@override  
+subtitle: Requires 2/3 in both chambers.
+choose-if: house_majority = 3 and sen_majority = 3
+unavailable-subtitle: [? if house_majority < 3 or sen_majority < 3: We lack the supermajority needed to override. ?]
+on-arrival: veto -= 1; radical_strength += 5; conservative_dissent += 3; freedmen_rep += 2
+
+We move swiftly to override the President’s veto. With overwhelming support in Congress, the law is enacted anyway. Johnson’s influence shrinks—and our Radical base cheers.
+
+@stand_down
+subtitle: Political caution.
+on-arrival: veto -= 1; moderate_strength += 2; radical_dissent += 4; freedmen_rep -= 2
+
+We are force to back down as Johnson has won this time. Moderates defend our decision as strategic—but to many, it looks like cowardice. The veto holds.
