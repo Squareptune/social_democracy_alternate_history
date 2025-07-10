@@ -77,6 +77,29 @@ Tariff rate: [+ tariff +]
 
 {!<span class="tooltip-text" title="Support civil liberties and free markets, but are skeptical of strong federal enforcement of racial equality or occupation policies">Liberal</span>!} strength: [+ liberal_strength : strength +], dissent: [+ liberal_dissent : dissent +]
 
+@paramilitaries
+
+= Paramilitaries
+
+{!<span class="tooltip-text" title="The Ku Klux Klan is a white supremacist group aimed against Reconstruction governments and freedmen.">KKK</span>!} Strength: [+ kkk_strength +] thousand
+
+KKK_Militarization: [+ kkk_militancy : militancy +]
+
+{!<span class="tooltip-text" title=" The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength +] thousand
+
+Union League Militancy: [+ Union_League_militancy : militancy +]
+
+= Official Forces
+
+U.S Army: [+ army_strength +] thousand troops.
+
+Army Loyalty: [+ army_loyalty : loyalty +]
+
+Federal Police: [+ Us_police_strength +] thousand members.
+
+Police loyalty: [+ Us_police_loyalty : loyalty +]
+
+[? if state_militia_formed = 1 : State militia strength: [+ state_militia_strength +] ?]
 
 @polls
 
