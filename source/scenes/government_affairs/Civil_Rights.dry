@@ -1,0 +1,34 @@
+title: Civil Rights
+is-card: true
+tags: govt_affairs
+view-if: civil_rights_act_passed != 1 and rep_majority = 1
+card-image: img/radicals_push_civil_rights.jpg
+on-arrival: civil_rights_timer += 6;
+
+= Radicals Demand a Civil Rights Act
+
+Radical Republicans are demanding that Congress pass sweeping civil rights legislation to protect freedmen from Southern "Black Codes" and ensure equality before the law.
+
+They argue that Reconstruction means nothing without federal guarantees of citizenship, due process, and equal protection.
+
+Moderates are divided. Some warn it will provoke a presidential veto and alienate conservative allies. Others say the time for compromise has passed.
+
+- @pass_civil_rights: Back the Radical push and pass the Act.
+- @stall_civil_rights: Delay action for now.
+
+@pass_civil_rights
+subtitle: -2 budget + Congress majority
+unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if house_majority > 2: We don't have a house majority ?][? if senate_majority > 2: We don't have a senate majority ?]
+choose-if: budget >= 2 and house_majority > 1 and senate_majority > 1
+on-arrival: civil_rights_act_passed = 1; veto += 1; veto_reason = "Civil Rights Act"; freedmen_rep += 5; radical_strength += 5; moderate_dissent += 3; conservative_dissent += 4; liberal_dissent += 3;
+
+You endorse the Radicals’ initiative and pass the Civil Rights Act through Congress. It marks a bold stand for equality—but may force a veto showdown with the President.
+
+@stall_civil_rights
+subtitle: Moderate Stability
+on-arrival: radical_dissent += 5; moderate_strength += 3; freedmen_rep -= 3;
+
+You decide not to move forward—yet. Moderates appreciate your restraint, but Radical allies and Black communities grow increasingly impatient.
+
+
+

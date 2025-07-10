@@ -64,8 +64,9 @@ Q.Johnson_plan = 0;
 Q.Moderate_plan = 0;
 Q.Radical_plan = 0;
 Q.Other_plan = 0;
-
-// organizations
+Q.veto = 0;
+Q.veto_reason = "";
+Q.civil_rights_act_passed = 0
 
 // inter-party relations
 Q.dem_relation = 5;
@@ -1036,7 +1037,7 @@ if (!Array.isArray(Q.timers)) {
         'war_guilt', 'womens_rights', 'economic_democracy',
         'monetary_policy_timer',
         'constitutional_reform', 'labor_rights',
-        'education_science', 'curriculum',
+        'education_science', 'curriculum', 'civil_rights',
         // events
         'emergency_cuts', 'unemployment_insurance',
         'sa_ban', 'sh_ban', 'papen_chancellor',

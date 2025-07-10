@@ -1,6 +1,5 @@
 title: Redemmers back in Control
 subtitle: JOHNSON!!!!!!!!!!!!!!
-new-page: true
 on-arrival: radical_strength += 1; moderate_strength -= 1; conservative_strength -= 2; liberal_strength -= 2;
 tags: event
 view-if: year = 1866 and month >= 11

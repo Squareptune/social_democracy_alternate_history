@@ -1,0 +1,33 @@
+title: National Union Convention
+subtitle: Johnson wants support
+tags: event
+view-if: year = 1866 and month >= 8
+max-visits: 1
+
+= National Union Convention of 1866
+
+President Johnson’s supporters have organized the National Union Convention in Philadelphia. Their goal: to forge a new coalition between moderate Republicans, War Democrats, and loyal Southerners in support of Johnson’s lenient Reconstruction policies.
+
+Radical Republicans see this as a betrayal of the war’s legacy and a threat to freedmen's rights. Tensions between Congress and the President are nearing a breaking point.
+
+- @support_johnson: Endorse the Convention and back Johnson's Reconstruction.
+- @oppose_johnson: Condemn the Convention and rally with the Radicals.
+- @stay_neutral: Attempt to stay above the fray.
+
+@support_johnson
+subtitle: Better not rock the boat.
+on-arrival: radical_dissent += 6; conservative_strength += 5; liberal_strength += 1; freedmen_rep -= 5; middle_class_rep += 3; reconstruction_support += 1; rural_dem += 2; immigrant_laborers_dem += 1;
+
+You publicly endorse the Convention’s call for reconciliation, backing Johnson’s moderate vision. While this boosts support from conservatives and War Democrats, it alienates Radical Republicans and Black constituencies.
+
+@oppose_johnson
+subtitle: Side with the Radicals
+on-arrival: radical_strength += 5; conservative_dissent += 4; freedmen_rep += 5; dissent_percent -= 5;
+
+You condemn the National Union Convention as a Trojan horse for white Southern redemption. Radicals rally to your side, but Johnson's allies begin treating you as a political enemy.
+
+@stay_neutral
+subtitle: Avoid direct involvement
+on-arrival: moderate_strength += 3; conservative_dissent += 2; radical_dissent += 3; 
+
+You express cautious support for unity while declining to take a firm stand. This appeases some moderates but frustrates activists on both sides.
