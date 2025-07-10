@@ -3,6 +3,7 @@ subtitle: Johnson wants support
 tags: event
 view-if: year = 1866 and month >= 8
 max-visits: 1
+new-page: true
 
 = National Union Convention of 1866
 
