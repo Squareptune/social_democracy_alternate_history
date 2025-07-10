@@ -1,4 +1,5 @@
 title: Civil Rights
+new-page: true
 is-card: true
 tags: govt_affairs
 view-if: civil_rights_act_passed != 1 and rep_majority = 1
