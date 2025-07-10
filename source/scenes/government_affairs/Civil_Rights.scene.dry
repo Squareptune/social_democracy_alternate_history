@@ -2,7 +2,7 @@ title: Civil Rights
 is-card: true
 tags: govt_affairs
 view-if: civil_rights_act_passed != 1 and rep_majority = 1
-card-image: img/radicals_push_civil_rights.jpg
+card-image: img/Freedmen.jpg
 on-arrival: civil_rights_timer += 6;
 
 = Radicals Demand a Civil Rights Act
