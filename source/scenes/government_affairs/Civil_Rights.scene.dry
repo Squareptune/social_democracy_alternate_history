@@ -21,7 +21,7 @@ Moderates are divided. Some warn it will provoke a presidential veto and alienat
 
 @pass_civil_rights
 subtitle: -2 budget + Congress majority
-unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if house_majority < 2: We don't have a house majority ?][? if senate_majority < 2: We don't have a senate majority ?]
+unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if house_majority < 2: We don't have a House majority. ?][? if senate_majority < 2: We don't have a Senate majority. ?]
 choose-if: budget >= 2 and house_majority > 1 and senate_majority > 1
 on-arrival: civil_rights_act_passed = 1; veto += 1; veto_reason = "Civil Rights Act"; freedmen_rep += 5; radical_strength += 5; moderate_dissent += 3; conservative_dissent += 4; liberal_dissent += 3;
 
