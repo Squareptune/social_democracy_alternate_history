@@ -1,0 +1,12 @@
+title:  Tennessee Rejoins the Union
+subtitle: A Step Toward Reconstruction
+on-arrival: {! 
+Q.states.push("TN");
+!}
+tags: event
+view-if: year = 1866 and month = 7
+max-visits: 1
+
+Tennessee becomes the first former Confederate state to rejoin the Union after the Civil War.
+
+Under the leadership of pro-Union Republicans, it has set a hopeful precedent for Reconstruction—though many challenges still lie ahead.

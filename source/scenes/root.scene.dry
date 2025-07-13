@@ -959,6 +959,68 @@ Q.WI_unemployed_rep = 40;
 Q.WI_unemployed_dem = 50;
 Q.WI_unemployed_other = 10;
 
+// === TENNESSEE ===
+Q.TN_workers = 40000;
+Q.TN_workers_rep = 50;
+Q.TN_workers_dem = 40;
+Q.TN_workers_other = 10;
+
+Q.TN_middle_class = 25000;
+Q.TN_middle_class_rep = 45;
+Q.TN_middle_class_dem = 45;
+Q.TN_middle_class_other = 10;
+
+Q.TN_rural = 700000;
+Q.TN_rural_rep = 40;
+Q.TN_rural_dem = 50;
+Q.TN_rural_other = 10;
+
+Q.TN_freemen = 150000;
+Q.TN_freemen_rep = 95;
+Q.TN_freemen_dem = 2;
+Q.TN_freemen_other = 3;
+
+Q.TN_immigrant_laborers = 10000;
+Q.TN_immigrant_laborers_rep = 35;
+Q.TN_immigrant_laborers_dem = 55;
+Q.TN_immigrant_laborers_other = 10;
+
+Q.TN_unemployed = 30000;
+Q.TN_unemployed_rep = 30;
+Q.TN_unemployed_dem = 60;
+Q.TN_unemployed_other = 10;
+
+// === NEBRASKA ===
+Q.NE_workers = 18000;
+Q.NE_workers_rep = 55;
+Q.NE_workers_dem = 35;
+Q.NE_workers_other = 10;
+
+Q.NE_middle_class = 6500;
+Q.NE_middle_class_rep = 60;
+Q.NE_middle_class_dem = 30;
+Q.NE_middle_class_other = 10;
+
+Q.NE_rural = 105000;
+Q.NE_rural_rep = 65;
+Q.NE_rural_dem = 25;
+Q.NE_rural_other = 10;
+
+Q.NE_freemen = 1200;
+Q.NE_freemen_rep = 85;
+Q.NE_freemen_dem = 5;
+Q.NE_freemen_other = 10;
+
+Q.NE_immigrant_laborers = 10000;
+Q.NE_immigrant_laborers_rep = 45;
+Q.NE_immigrant_laborers_dem = 45;
+Q.NE_immigrant_laborers_other = 10;
+
+Q.NE_unemployed = 2800;
+Q.NE_unemployed_rep = 40;
+Q.NE_unemployed_dem = 50;
+Q.NE_unemployed_other = 10;
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
