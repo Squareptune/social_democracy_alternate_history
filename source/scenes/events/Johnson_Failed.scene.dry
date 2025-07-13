@@ -18,7 +18,7 @@ Faced with this reactionary resurgence, Congressional Republicans are now forced
 @full_plan
 choose-if: radical_strength >= 35
 unavailable-subtitle: [? if radical_strength < 35: Most of our party don't support such radical ideas ?]
-on-arrival: occupation = 2; radical_strength += 4; moderate_strength += 2; freedmen_rep += 2; rural_rep -= 1; kkk_strength += 5; kkk_militancy += 0.2
+on-arrival: veto += 1; veto_reason = "Military Reconstruction Act"; occupation = 2; radical_strength += 4; moderate_strength += 2; freedmen_rep += 2; rural_rep -= 1; kkk_strength += 5; kkk_militancy += 0.2
 
 Congress passes the **Military Reconstruction Act** of 1867. The South is divided into five military districts under Union command. Confederate officials are removed, and new governments must guarantee Black suffrage.  
 

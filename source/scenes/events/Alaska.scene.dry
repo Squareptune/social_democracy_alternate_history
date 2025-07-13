@@ -1,0 +1,31 @@
+title: The Alaska Offer
+subtitle: Russia offers to sell a frozen frontier.
+tags: event
+view-if: year = 1867 and month >= 3 and alaska_purchased != 1
+max-visits: 1
+
+= A Deal in the North
+
+The Russian Empire has quietly offered to sell its vast territory of Alaska to the United States. Secretary of State William H. Seward is eager to accept, viewing it as a strategic and economic opportunity.
+
+Skeptics mock the idea saying that the land is just a frozen wasteland. With Congress still embroiled in Reconstruction, many question the wisdom of spending $7 million on an icebox.
+
+Should we proceed with this purchase—or focus our resources at home?
+
+- @buy_alaska: Purchase Alaska for $7 million.
+- @reject_alaska: Decline the offer.
+
+@buy_alaska
+subtitle: -2 budget
+choose-if: budget >= 2
+unavailable-subtitle: [? if budget < 2: Not enough budget. ?]
+on-arrival: alaska_purchased = 1; budget -= 2; moderate_strength += 2; conservative_dissent += 2; freemen_rep -= 2; freemen_other += 2; workers_rep -= 3; workers_other += 3; middle_class_rep += 2; rural_rep -= 2; rural_other += 2; immigrant_laborers_rep -= 2; immigrant_laborers_other += 2; unemployed_rep -= 2; unemployed_other += 2; europe_relation -= 3;
+
+We finalize the Alaska Purchase. While critics remain vocal, visionaries hail the acquisition as a step toward America's growing influence in the Pacific and Arctic. However, many question prioritizing expansion over justice at home.
+
+@reject_alaska
+subtitle: Focus on Reconstruction
+on-arrival: conservative_strength += 1; radical_dissent += 1; europe_relation += 2;
+
+We decline the offer. For now, we must focus on mending the Union. Russia expresses disappointment, but our critics applaud our restraint.
+
