@@ -1,7 +1,15 @@
 title: A Presidential Veto 
 subtitle: Johnson strikes back against Congress.
 view-if: veto > 0 and president = "Johnson"
-tags: event  
+tags: event
+on-arrival: {!
+  if (veto_reason === "Civil Rights Act") {
+    Q.civil_rights_act_passed = 0;
+  }
+  if (veto_reason === "Military Reconstruction Act") {
+    Q.occupation = 0;
+  }
+!}
 
 = A Presidential Veto
 

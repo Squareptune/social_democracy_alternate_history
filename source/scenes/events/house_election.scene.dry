@@ -53,7 +53,7 @@ on-arrival: {!
 
   // === 3. Allocate seats proportionally ===
   let totalVotes = repVotes + demVotes + otherVotes;
-  let totalSeats = Q.total_house_seats || 241;
+  let totalSeats = Q["house_total_seat_" + year]
 
   let repSeats = Math.floor((repVotes / totalVotes) * totalSeats);
   let demSeats = Math.floor((demVotes / totalVotes) * totalSeats);
