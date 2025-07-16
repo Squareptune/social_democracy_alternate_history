@@ -53,15 +53,15 @@ on-arrival: {!
 
   // === 3. Allocate seats proportionally ===
   let totalVotes = repVotes + demVotes + otherVotes;
-  if (year == 1866) {
+  if (Q.year == 1866) {
     totalSeats = Q.house_total_seat_1866;
-  } else if (year == 1868) {
+  } else if (Q.year == 1868) {
     totalSeats = Q.house_total_seat_1868;
-  } else if (year == 1870) {
+  } else if (Q.year == 1870) {
     totalSeats = Q.house_total_seat_1870;
-  } else if (year == 1872) {
+  } else if (Q.year == 1872) {
     totalSeats = Q.house_total_seat_1872;
-  } else if (year == 1874) {
+  } else if (Q.year == 1874) {
     totalSeats = Q.house_total_seat_1874;
   } else {
     totalSeats = Q.house_total_seat_1876;
