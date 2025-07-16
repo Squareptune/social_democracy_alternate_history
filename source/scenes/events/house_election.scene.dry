@@ -53,7 +53,19 @@ on-arrival: {!
 
   // === 3. Allocate seats proportionally ===
   let totalVotes = repVotes + demVotes + otherVotes;
-  let totalSeats = Q["house_total_seat_" + year]
+  if (year == 1866) {
+    totalSeats = Q.house_total_seat_1866;
+  } else if (year == 1868) {
+    totalSeats = Q.house_total_seat_1868;
+  } else if (year == 1870) {
+    totalSeats = Q.house_total_seat_1870;
+  } else if (year == 1872) {
+    totalSeats = Q.house_total_seat_1872;
+  } else if (year == 1874) {
+    totalSeats = Q.house_total_seat_1874;
+  } else {
+    totalSeats = Q.house_total_seat_1876;
+  }
 
   let repSeats = Math.floor((repVotes / totalVotes) * totalSeats);
   let demSeats = Math.floor((demVotes / totalVotes) * totalSeats);

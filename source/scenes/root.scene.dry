@@ -146,13 +146,6 @@ Q.house_total_seat_1872 = 292;
 Q.house_total_seat_1874 = 293;
 Q.house_total_seat_1876 = 293;
 
-Q.senate_total_seat_1866 = 54;
-Q.senate_total_seat_1868 = 66;
-Q.senate_total_seat_1870 = 70;
-Q.senate_total_seat_1872 = 74;
-Q.senate_total_seat_1874 = 74;
-Q.senate_total_seat_1876 = 76;
-
 Q.old_rep_senate_r = 33;
 Q.old_dem_senate_r = 10;
 Q.old_other_senate_r = 7;
