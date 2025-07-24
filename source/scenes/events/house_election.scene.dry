@@ -38,9 +38,9 @@ on-arrival: {!
       let demMod = Q[cls + "_dem"] || 0;
       let otherMod = Q[cls + "_other"] || 0;
 
-      let adjRep = 0.2 * rep + 0.8 * repMod;
-      let adjDem = 0.2 * dem + 0.8 * demMod;
-      let adjOther = 0.2 * other + 0.8 * otherMod;
+      let adjRep = 0.1 * rep + 0.9 * repMod;
+      let adjDem = 0.1 * dem + 0.9 * demMod;
+      let adjOther = 0.1 * other + 0.9 * otherMod;
 
       let totalPct = adjRep + adjDem + adjOther;
       if (totalPct === 0) continue;
