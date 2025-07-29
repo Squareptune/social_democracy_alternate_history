@@ -1,52 +1,43 @@
-title: Election
+title: Amendment Support Check
 on-arrival: {!
-function simulateAmendmentRatification() {
-  // Threshold for ratification (3/4 of states needed in Reconstruction era)
-  const RATIFICATION_THRESHOLD = Math.ceil(Q.states.length * 0.75);
-  let ratifiedStates = 0;
-  const stateResults = {};
-  // Calculate support for each state
-  Q.states.forEach(state => {
-    const prefix = `${state}_`;
-    const totalPopulation = 
-      Q[prefix + 'workers'] + 
-      Q[prefix + 'rural'] + 
-      Q[prefix + 'unemployed'] + 
-      Q[prefix + 'immigrant_laborers'] + 
-      Q[prefix + 'freemen'];
 
-    // Weighted support calculation
-    const support = (
-      (Q[prefix + 'workers'] * Q.workers_rep / 100 +
-      Q[prefix + 'rural'] * Q.rural_rep / 100 +
-      Q[prefix + 'unemployed'] * Q.unemployed_rep / 100 +
-      Q[prefix + 'immigrant_laborers'] * Q.immigrant_laborers_rep / 100 +
-      Q[prefix + 'freemen'] * Q.freemen_rep / 100
-    ) / totalPopulation;
+let supportiveStates = 0;
+let totalStates = Q.states.length;
 
-    // Add randomness (5% variance)
-    const randomFactor = 0.95 + Math.random() * 0.1;
-    const adjustedSupport = support * randomFactor;
+for (let state of Q.states) {
+  let repVotes = 0;
+  let demVotes = 0;
+  let otherVotes = 0;
 
-    // Determine if state ratifies (1) or rejects (0)
-    // Base threshold is 50% + scales with reconstruction_support
-    const threshold = 0.5 - (Q.reconstruction_support / 200);
-    const ratified = adjustedSupport > threshold ? 1 : 0;
+  for (let cls of Q.classes) {
+    let pop = Q[state + "_" + cls] || 0;
 
-    stateResults[state] = ratified;
-    ratifiedStates += ratified;
-  });
+    let rep = Q[state + "_" + cls + "_rep"] || 0;
+    let dem = Q[state + "_" + cls + "_dem"] || 0;
+    let other = Q[state + "_" + cls + "_other"] || 0;
 
-  // Final outcome (1 = passed, 0 = failed)
-  const amendmentPassed = ratifiedStates >= RATIFICATION_THRESHOLD ? 1 : 0;
+    let repMod = Q[cls + "_rep"] || 0;
+    let demMod = Q[cls + "_dem"] || 0;
+    let otherMod = Q[cls + "_other"] || 0;
 
-  return {
-    passed: amendmentPassed,
-    stateResults: stateResults,
-    ratifiedCount: ratifiedStates,
-    needed: RATIFICATION_THRESHOLD
-  };
+    let adjRep = 0.2 * rep + 0.8 * repMod;
+    let adjDem = 0.2 * dem + 0.8 * demMod;
+    let adjOther = 0.2 * other + 0.8 * otherMod;
+
+    let totalAdj = adjRep + adjDem + adjOther;
+    if (totalAdj === 0) continue;
+
+    repVotes += pop * (adjRep / totalAdj);
+    demVotes += pop * (adjDem / totalAdj);
+    otherVotes += pop * (adjOther / totalAdj);
+  }
+
+  if (repVotes > demVotes && repVotes > otherVotes) {
+    supportiveStates += 1;
+  }
 }
 
+// Amendment passes if 3/4 of states support
+Q.amendmentResult = (supportiveStates >= Math.ceil(0.75 * totalStates)) ? 1 : 0;
+
 !}
-go-to: jumpScene
