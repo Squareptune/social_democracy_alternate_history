@@ -48,7 +48,5 @@ function simulateAmendmentRatification() {
   };
 }
 
-// Example usage:
-const amendmentResult = simulateAmendmentRatification();
 !}
 go-to: jumpScene

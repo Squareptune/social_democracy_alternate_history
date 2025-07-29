@@ -19,7 +19,8 @@ max-cards: 3
 [? if year = 1928 and month = 2 : The current bourgeois-right government has fallen. The next elections are slated for May of this year. ?]
 
 - @party
-- @govt
+- @congress
+- @executive
 - #advisor
 - @shuffle_leadership_pinned
 
