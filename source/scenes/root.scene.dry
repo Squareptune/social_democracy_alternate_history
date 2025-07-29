@@ -117,9 +117,9 @@ Q.parties = ['rep', 'dem', 'other'];  // Republicans, Democrats, minor parties, 
 // Current House composition
 
 Q.rep_r = 136;
-Q.dem_r = 50;
-Q.other_r = 10;
-Q.vacant_r = 45;
+Q.dem_r = 38;
+Q.other_r = 15;
+Q.vacant_r = 52;
 
 Q.old_rep_r = 133;
 Q.old_dem_r = 52;
@@ -134,9 +134,9 @@ Q.old_vacant_r = 44;
 
 // Current Senate composition
 
-Q.rep_senate_r = 37;
+Q.rep_senate_r = 38;
 Q.dem_senate_r = 9;
-Q.other_senate_r = 2;
+Q.other_senate_r = 1;
 Q.vacant_senate = 24;
 
 Q.house_total_seat_1866 = 193;
