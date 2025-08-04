@@ -1,9 +1,9 @@
 title: Interior Policy
 new-page: true
 is-card: true
-tags: cotus_affairs, cabinet
+tags: potus_affairs, cabinet
 on-arrival: interior_policy_timer += 6; month_actions += 1
-view-if: rep_majority = 1 and interior_policy_timer <= 0
+view-if: sect_interior_party = "R" and interior_policy_timer <= 0
 card-image: img/portraits/James_Harlan.jpg
 go-to: policy
 

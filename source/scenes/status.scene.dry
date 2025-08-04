@@ -136,3 +136,22 @@ Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immi
 Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
 Support for Reconstruction: [+ reconstruction_support +]%
+
+@cabinet
+
+Secretary of State: [+ sect_state +] ([+ sect_state_party +])
+
+Secretary of Interior: [+ sect_interior +] ([+ sect_interior_party +])
+
+Attorney General: [+ attorney_general +] ([+ attorney_general_party +])
+
+Secretary of War: [+ sect_war +] ([+ sect_war_party +])
+
+Secretary of Treasury: [+ sect_treasury +] ([+ sect_treasury_party +])
+
+Secretary of Agriculture: [+ sect_agriculture +] ([+ sect_agriculture_party +])
+
+Postmaster General: [+ sect_postmaster +] ([+ sect_postmaster_party +])
+
+
+

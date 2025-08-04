@@ -1046,17 +1046,20 @@ Q.freedmens_bureau_active = 0;
 Q.reconstruction_support = 75;
 
 Q.sect_state = 'William H. Seward';
-Q.sect_state_party = 'Republican';
+Q.sect_state_party = 'R';
 Q.sect_interior = 'John P. Usher';
-Q.sect_interior_party = 'Republican';
+Q.sect_interior_party = 'R';
 Q.attorney_general = 'James Speed';
-Q.attorney_general_party = 'Republican';
+Q.attorney_general_party = 'R';
 Q.sect_war = 'Edwin M. Stanton';  // Secretary of War
-Q.sect_war_party = 'Republican ';
+Q.sect_war_party = 'R ';
 Q.sect_treasury = 'Hugh McCulloch';  // Secretary of the Treasury (1865)
-Q.sect_treasury_party = 'Republican';
+Q.sect_treasury_party = 'R';
 Q.sect_agriculture = 'Isaac Newton';  // First Commissioner of Agriculture
-Q.sect_agriculture_party = 'Republican';
+Q.sect_agriculture_party = 'R';
+Q.sect_postmaster = "William Dennison"
+Q.sect_postmaster_party = "R"
+
 
 Q.judicial_reform = 0;
 Q.bureaucratic_reform = 0;
@@ -1099,7 +1102,7 @@ if (!Array.isArray(Q.timers)) {
         // govt
         'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
         'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-        'police', 'interior_policy_timer', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
+        'police', 'interior_policy_timer', 'postmaster_policy', 'shuffle_cabinet', 'social_welfare',
         'homosexual_rights', 'economic_policy', 'coalition_affairs',
         'war_guilt', 'womens_rights', 'economic_democracy',
         'monetary_policy_timer',

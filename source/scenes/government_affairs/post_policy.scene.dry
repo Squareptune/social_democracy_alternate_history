@@ -1,0 +1,42 @@
+title: Postal Service
+new-page: true
+is-card: true
+tags: potus_affairs, cabinet
+card-image: img/Post.webp
+on-arrival: postmaster_policy_timer += 6; month_actions += 1
+view-if: rep_majority = 1 and postmaster_policy_timer <= 0
+go-to: postmaster_policy
+
+= Postmaster General
+
+The Post Office is the largest arm of the federal bureaucracy—and the most politically lucrative. With tens of thousands of postal jobs to award, the Postmaster General wields extraordinary patronage power.
+
+@postmaster_policy
+
+- @southern_patronage: Fill Southern postal jobs with loyal Unionists and Black Republicans.
+- @machine_loyalty: Reward Northern party men and fundraisers with plum appointments.
+- @civil_service_reform: Begin removing patronage and professionalizing the postal service.
+- @root: Leave the Post Office on autopilot for now.
+- @easy_discard
+- @cancel_advisor_action
+
+@southern_patronage
+subtitle: -1 Budget
+on-arrival: freemen_rep += 3; rural_dem -= 2; radical_strength += 1; conservative_dissent += 1; budget -= 1; kkk_strength += 2
+Thousands of postal appointments across the South are handed to Black Republicans, Union loyalists, and carpetbaggers. This expands federal presence in the region—but inflames local opposition and fuels accusations of corruption.
+
+@machine_loyalty
+subtitle: +1 Budget
+choose-if: civil_service_reform < 4
+unavailable-subtitle: We have abolished such corruption with the Civil Serive Reform Act
+on-arrival: middle_class_rep += 2; moderate_strength += 1; budget += 1
+
+We funnel high-paying postal appointments to loyal party operators and fundraisers. While it strengthens internal discipline and fundraising, it risks backlash from reformers and independents.
+
+@civil_service_reform
+subtitle: -1 Budget
+view-if: civil_service_reform < 4
+on-arrival: liberal_strength += 1; civil_service_reform += 1; conservative_dissent += 1; budget -= 1
+
+We move to de-politicize the Post Office and institute merit hiring. Though it earns praise from reformers, it angers loyal partisans who expect rewards for service.
+

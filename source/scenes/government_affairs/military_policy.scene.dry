@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 tags: potus_affairs, cabinet
 on-arrival: military_policy_timer += 6; month_actions += 1
-view-if: rep_majority = 1 and military_policy_timer <= 0
+view-if: sect_war_party = "R" and military_policy_timer <= 0
 card-image: img/portraits/Stanton.jpg
 go-to: Mil
 

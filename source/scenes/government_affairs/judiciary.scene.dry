@@ -1,7 +1,7 @@
 title: Judiciary Reform
 new-page: true
 is-card: true
-view-if: rep_majority = 1
+view-if: attorney_general_party = "R"
 on-arrival: month_actions += 1; judiciary_timer += 6
 card-image: img/portraits/Salmon-P-Chase.webp
 tags: cotus_affairs, cabinet
