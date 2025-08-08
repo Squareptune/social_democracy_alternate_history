@@ -1040,7 +1040,7 @@ Q.president_party = "rep";
 Q.speaker = "Colfax";
 Q.speaker_party = "Rep";
 Q.sen_majority = 3;
-Q.house_majority = 2;
+Q.house_majority = 3;
 Q.rep_majority = 1;
 Q.freedmens_bureau_active = 0;
 Q.reconstruction_support = 75;
@@ -1085,6 +1085,7 @@ Q.upper_tax_rates = 0;
 Q.tariffs = 5;
 
 Q.electoral_threshold = 0;
+
 
 // Advisors/Leaders
 Q.n_advisors = 0;

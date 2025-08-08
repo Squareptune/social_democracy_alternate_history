@@ -5,6 +5,7 @@ max-visits: 1
 tags: event
 new-page: true
 face-image: img/All_Quiet.jpg
+on-arrival: sect_interior = "James Harlan"; sect_interior_party = "R"
 
 = A Pardon Too Far
 
