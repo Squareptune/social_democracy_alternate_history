@@ -3,10 +3,6 @@ subtitle: Johnson strikes back against Congress.
 view-if: veto > 0 and president = "Johnson"
 tags: event
 on-arrival: {!
-  if (Q.veto_event_active == 1) {
-    return;
-  }
-  Q.veto_event_active = 1;
   if (veto_reason === "Civil Rights Act") {
     Q.civil_rights_act_passed = 0;
   }
@@ -34,11 +30,10 @@ subtitle: Requires 2/3 in both chambers.
 choose-if: house_majority = 3 and sen_majority = 3
 unavailable-subtitle: [? if house_majority < 3 or sen_majority < 3: We lack the supermajority needed to override. ?]
 on-arrival: {! 
-  veto -= 1
-  Q.veto_event_active = 0;
-  radical_strength += 5
-  conservative_dissent += 3
-  freedmen_rep += 2
+  Q.veto -= 1
+  Q.radical_strength += 5
+  Q.conservative_dissent += 3
+  Q.freedmen_rep += 2
   if (veto_reason === "Civil Rights Act") {
     Q.civil_rights_act_passed = 1
   }
@@ -54,6 +49,6 @@ We move swiftly to override the President’s veto. With overwhelming support in
 
 @stand_down
 subtitle: Political caution.
-on-arrival: veto -= 1; moderate_strength += 2; radical_dissent += 4; freedmen_rep -= 2; veto_event_active = 0;
+on-arrival: veto -= 1; moderate_strength += 2; radical_dissent += 4; freedmen_rep -= 2;
 
 We are force to back down as Johnson has won this time. Moderates defend our decision as strategic—but to many, it looks like cowardice. The veto holds.

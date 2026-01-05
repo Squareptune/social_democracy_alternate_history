@@ -61,9 +61,7 @@ on-arrival: {!
   } else {
     Q.senate_convicted = 0;
   }
-
 !}
-
 on-display: {!
   function drawChart() {
     var chartData = [
