@@ -1,14 +1,131 @@
-title: WIP
+title: House Vote on the Impeachment of Andrew Johnson
 new-page: true
 tags: event
-view-if: year == 2025 and month == 6
-max-visits: 1
-on-arrival: military_policy_timer += 4
+priority: -1
 
-= Demoblize the Army
+= House Vote on Impeachment, [+ month +] [+ year +]
 
-The Army of the Potomac, once the backbone of the Union war effort, is officially disbanded on June 28. The long war has finally ended, and across the South, Confederate forces are surrendering, beaten and scattered.
+The House of Representatives convenes to vote on articles of impeachment against President Andrew Johnson.
 
-The transition to peace now begins, but peace brings its own kind of uncertainty. Union soldiers return home, demobilization picks up pace, and the task of securing the South politically and socially falls more heavily on civilian authorities and local commanders.
+- @House_impeachment_vote: Proceed to the vote
 
-This moment marks not just the end of hostilities — but the beginning of a new, difficult era.
+@House_impeachment_vote
+on-arrival: {!
+
+  // 1. House composition
+  let repSeats = Q.rep_r || 0;
+  let demSeats = Q.dem_r || 0;
+  let otherSeats = Q.other_r || 0;
+
+  let totalSeats = repSeats + demSeats + otherSeats;
+  Q.house_impeachment_total = totalSeats;
+
+  // 2. Base loyalty
+  let repYeaRate = 0.85;
+  let demYeaRate = 0.05;
+  let otherYeaRate = 0.50;
+
+  // 3. Dissent and faction effects
+  repYeaRate -= (Q.conservative_dissent || 0) * 0.02;
+  demYeaRate += (Q.liberal_dissent || 0) * 0.02;
+
+  repYeaRate += (Q.radical_strength || 0) * 0.01;
+  otherYeaRate += (Q.radical_strength || 0) * 0.01;
+
+  function clamp(x) {
+    return Math.max(0, Math.min(1, x));
+  }
+
+  repYeaRate = clamp(repYeaRate);
+  demYeaRate = clamp(demYeaRate);
+  otherYeaRate = clamp(otherYeaRate);
+
+  // 4. Count votes
+  let repYea = Math.round(repSeats * repYeaRate);
+  let demYea = Math.round(demSeats * demYeaRate);
+  let otherYea = Math.round(otherSeats * otherYeaRate);
+
+  let yeaVotes = repYea + demYea + otherYea;
+  let nahVotes = totalSeats - yeaVotes;
+
+  Q.yea_r = yeaVotes;
+  Q.nah_r = nahVotes;
+
+  Q.yea_disp = yeaVotes;
+  Q.nah_disp = nahVotes;
+
+  // 5. Outcome
+  Q.house_impeach_passed = yeaVotes > nahVotes ? 1 : 0;
+
+!}
+
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      { id: "yea", seats: Q.yea_r, color: "#228B22", outline: "#228B22" },
+      { id: "nah", seats: Q.nah_r, color: "#8B0000", outline: "#8B0000" }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById("content").offsetWidth - 50);
+
+    var container = d3.select("#houseChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "houseChart");
+    }
+
+    container.attr("width", width).attr("height", width / 2).html("");
+
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var s = document.createElement("script");
+    s.src = "https://d3js.org/d3.v7.min.js";
+    s.onload = function() {
+      var p = document.createElement("script");
+      p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+      p.onload = drawChart;
+      document.head.appendChild(p);
+    };
+    document.head.appendChild(s);
+  } else if (!window.d3.parliament) {
+    var p = document.createElement("script");
+    p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+    p.onload = drawChart;
+    document.head.appendChild(p);
+  } else {
+    drawChart();
+  }
+!}
+go-to: house_vote
+
+= House Impeachment Vote Results
+
+{!<svg id="houseChart" style="width: 500px; height: 250px;"></svg>!}
+
+{!<table>!}
+{!<tr><td>Vote</td><td>Seats</td></tr>!}
+
+{!<tr><td><div class="box" style="background-color:#228B22"></div> Yea</td><td>[+ yea_disp +]</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#8B0000"></div> Nay</td><td>[+ nah_disp +]</td></tr>!}
+{!</table>!}
+
+@house_vote
+
+- @Pass
+- @Fail
+
+@Pass
+title: The House impeaches Johnson
+subtitle: Yea votes: [+ yea_disp +]
+view-if: house_impeach_passed = 1
+
+The articles of impeachment are adopted and sent to the Senate for trial.
+
+@Fail
+title: Impeachment fails in the House
+subtitle: Nay votes: [+ nah_disp +]
+view-if: house_impeach_passed = 0
+
+The impeachment effort collapses. President Johnson survives and emerges emboldened.

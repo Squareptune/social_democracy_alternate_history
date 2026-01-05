@@ -1,0 +1,142 @@
+title: Senate Trial of Andrew Johnson
+new-page: true
+view-if: year = 1868 and month = 3
+tags: event
+priority: -1
+
+= Senate Trial on Impeachment, [+ month +] [+ year +]
+
+The Senate convenes as a court of impeachment to determine whether President Andrew Johnson shall be removed from office.
+
+- @Senate_impeachment_vote: Proceed to the verdict
+
+@Senate_impeachment_vote
+on-arrival: {!
+
+  // 1. Senate composition (from Senate elections)
+  let repSeats = Q.rep_senate_r || 0;
+  let demSeats = Q.dem_senate_r || 0;
+  let otherSeats = Q.other_senate_r || 0;
+
+  let totalSeats = repSeats + demSeats + otherSeats;
+  Q.senate_impeachment_total = totalSeats;
+
+  // 2. Base loyalty
+  let repYeaRate = 0.80;
+  let demYeaRate = 0.10;
+  let otherYeaRate = 0.50;
+
+  // 3. Dissent and faction effects
+  repYeaRate -= (Q.conservative_dissent || 0) * 0.025;
+  demYeaRate += (Q.liberal_dissent || 0) * 0.02;
+
+  repYeaRate += (Q.radical_strength || 0) * 0.015;
+  otherYeaRate += (Q.radical_strength || 0) * 0.01;
+
+  function clamp(x) {
+    return Math.max(0, Math.min(1, x));
+  }
+
+  repYeaRate = clamp(repYeaRate);
+  demYeaRate = clamp(demYeaRate);
+  otherYeaRate = clamp(otherYeaRate);
+
+  // 4. Count votes
+  let repYea = Math.round(repSeats * repYeaRate);
+  let demYea = Math.round(demSeats * demYeaRate);
+  let otherYea = Math.round(otherSeats * otherYeaRate);
+
+  let yeaVotes = repYea + demYea + otherYea;
+  let nahVotes = totalSeats - yeaVotes;
+
+  Q.yea_s = yeaVotes;
+  Q.nah_s = nahVotes;
+
+  Q.yea_s_disp = yeaVotes;
+  Q.nah_s_disp = nahVotes;
+
+  // 5. Conviction requires two-thirds
+  if (yeaVotes >= Math.ceil(totalSeats * (2 / 3))) {
+    Q.senate_convicted = 1;
+  } else {
+    Q.senate_convicted = 0;
+  }
+
+!}
+
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      { id: "guilty", seats: Q.yea_s, color: "#228B22", outline: "#228B22" },
+      { id: "not_guilty", seats: Q.nah_s, color: "#8B0000", outline: "#8B0000" }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById("content").offsetWidth - 50);
+
+    var container = d3.select("#senateChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "senateChart");
+    }
+
+    container
+      .attr("width", width)
+      .attr("height", width / 2)
+      .html("");
+
+    var parliament = d3.parliament()
+      .width(width)
+      .innerRadiusCoef(0.4);
+
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var s = document.createElement("script");
+    s.src = "https://d3js.org/d3.v7.min.js";
+    s.onload = function() {
+      var p = document.createElement("script");
+      p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+      p.onload = drawChart;
+      document.head.appendChild(p);
+    };
+    document.head.appendChild(s);
+  } else if (!window.d3.parliament) {
+    var p = document.createElement("script");
+    p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+    p.onload = drawChart;
+    document.head.appendChild(p);
+  } else {
+    drawChart();
+  }
+!}
+go-to: senate_vote
+
+= Senate Verdict
+
+{!<svg id="senateChart" style="width: 500px; height: 250px;"></svg>!}
+
+{!<table>!}
+{!<tr><td>Vote</td><td>Seats</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#228B22"></div> Guilty</td><td>[+ yea_s_disp +]</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#8B0000"></div> Not Guilty</td><td>[+ nah_s_disp +]</td></tr>!}
+{!</table>!}
+
+@senate_vote
+
+- @Convicted
+- @Acquitted
+
+@Convicted
+title: Johnson is removed from office
+subtitle: Guilty votes: [+ yea_s_disp +]
+view-if: senate_convicted = 1
+on-arrival: president = "Wade" and president_party = "rep"
+
+Andrew Johnson is convicted by the Senate and removed from the presidency. Under constitutional custom, Senate President Pro Tempore Benjamin Wade assumes the presidency to oversee the remainder of the term.
+
+@Acquitted
+title: Johnson survives impeachment
+subtitle: Not Guilty votes: [+ nah_s_disp +]
+view-if: senate_convicted = 0
+
+The Senate falls one step short of removal. Andrew Johnson remains president, bruised, embittered, and openly hostile toward Congress.

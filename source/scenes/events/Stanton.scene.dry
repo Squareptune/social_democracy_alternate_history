@@ -1,6 +1,6 @@
 title: Johnson Fires Stanton
 subtitle: A Challenge to Congress
-view-if: year == 1867 and month == 2 and tenure_act > 0
+view-if: year == 1868 and month == 2 and tenure_act > 0
 max-visits: 1
 tags: event
 new-page: true
@@ -15,7 +15,7 @@ Radical Republicans see Johnson's move as an outright defiance of the Tenure of 
 
 @Response
 
-- @resist: Push back against the President's action.
+- @resist: **ISSUE IMPEACHMENT!**
 - @allow: Accept the dismissal and avoid immediate confrontation.
 
 @resist
