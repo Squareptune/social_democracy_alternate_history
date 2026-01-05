@@ -1,6 +1,6 @@
 title: Johnson Fires Stanton
 subtitle: A Challenge to Congress
-view-if:{! year == 1867 && month == 2 && veto > 0 && president == "Johnson !}
+view-if: year == 1867 and month == 2 and tenure_act > 0
 max-visits: 1
 tags: event
 new-page: true
