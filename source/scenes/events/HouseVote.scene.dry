@@ -1,8 +1,8 @@
-title: House Vote on the Impeachment of Andrew Johnson
+title: Impeachment of Andrew Johnson
 new-page: true
+view-if: year = 1868 and month = 2 and House_Impeach = 0
 tags: event
 priority: -1
-view-if: year = 1868 and month = 2
 
 = House Vote on Impeachment, [+ month +] [+ year +]
 
@@ -120,6 +120,7 @@ go-to: house_vote
 title: The House impeaches Johnson
 subtitle: Yea votes: [+ yea_disp +]
 view-if: house_impeach_passed = 1
+on-arrival: House_Impeach = 1;
 
 The articles of impeachment are adopted and sent to the Senate for trial.
 
