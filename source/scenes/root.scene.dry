@@ -93,6 +93,7 @@ Q.occupation = 0;
 Q.kkk_banned = 0;
 Q.judical_reform = 0;
 Q.tenure_act = 0;
+Q.veto_event_active = 0;
 
 // strength includes actual military and de facto reserves?
 Q.army_strength = 1000;

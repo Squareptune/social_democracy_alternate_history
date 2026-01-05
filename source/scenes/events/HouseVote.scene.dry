@@ -2,6 +2,7 @@ title: House Vote on the Impeachment of Andrew Johnson
 new-page: true
 tags: event
 priority: -1
+view-if: year = 1868 and month = 2
 
 = House Vote on Impeachment, [+ month +] [+ year +]
 
@@ -58,7 +59,6 @@ on-arrival: {!
   Q.house_impeach_passed = yeaVotes > nahVotes ? 1 : 0;
 
 !}
-
 on-display: {!
   function drawChart() {
     var chartData = [
