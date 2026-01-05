@@ -22,12 +22,10 @@ Although Johnson will try to veto it, tensions between the executive and Congres
 
 @celebrate
 on-arrival: radical_strength += 5; radical_dissent -= 1; moderate_dissent += 1; impeachment_ready = 1; tenure_act = 2; veto += 1; veto_reason = "Tenure of Office Act";
-go-to: End
 
 The Radicals mobilize, confident that the law secures their ability to enforce Reconstruction without presidential interference.
 
 @caution
 on-arrival: moderate_strength += 3; radical_dissent += 1; conservative_dissent -= 1; impeachment_ready = 1
-go-to: End
 
 Moderates urge patience, warning that Johnson will surely test the law, but the legislative check has at least been established.
