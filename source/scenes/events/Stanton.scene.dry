@@ -1,0 +1,32 @@
+title: Johnson Fires Stanton
+subtitle: A Challenge to Congress
+view-if: year = 1867 and month = 2
+view-if: veto > 0 and president = "Johnson"
+max-visits: 1
+tags: event
+new-page: true
+go-to: Response
+on-arrival: sect_war = "Edwin M. Stanton"; sect_war_party = "R"; radical_dissent += 2; moderate_dissent += 1; conservative_strength += 1; radicalization += 5;
+
+= The Dismissal of Edwin Stanton
+
+In a direct challenge to Congress, President Andrew Johnson removes Secretary of War Edwin M. Stanton from office, claiming a conflict over Reconstruction policy. Stanton, a staunch supporter of the Radical agenda, is seen by many in Congress as indispensable for enforcing federal authority in the South.
+
+Radical Republicans see Johnson's move as an outright defiance of the Tenure of Office Act, while moderates express cautious concern over the president’s overreach. The stage is set for an unprecedented confrontation between the executive and legislative branches.
+
+@Response
+
+- @resist: Push back against the President's action.
+- @allow: Accept the dismissal and avoid immediate confrontation.
+
+@resist
+on-arrival: radical_strength += 3; moderate_strength += 1; radical_dissent += 2; impeachment_unlocked = 1
+go-to: HouseVote
+
+Congress reacts swiftly. The Radical wing rallies support for a formal impeachment resolution, arguing that the President’s violation of the Tenure of Office Act endangers the entire Reconstruction project.
+
+@allow
+on-arrival: moderate_strength += 2; conservative_dissent -= 1; radicalization -= 2
+go-to: HouseVote
+
+Some moderates hope for a cooling-off period, fearing that a direct challenge could backfire. Radicals warn that postponement risks letting Johnson sabotage Reconstruction further.

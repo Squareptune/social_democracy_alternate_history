@@ -35,7 +35,9 @@ Radical Republicans in Congress, joined by many moderates, argue that Johnson’
 - @no: Reject the proposal and allow the president to continue unchecked
 
 @yes
-
+on-arrival: tenure_act = 1;
+view-if: radical_strength >= 25; moderate_strength >= 25;
+unavailable-subtitle: [? if radical_strength < 25 and moderate_strength < 25: The Radicals and Moderates are overwhelmed by the Converatives ?]
 The Act is introduced into Congress for debate and many in congress support the bill seeing Johnson overreaching his executive powers.
 
 @no

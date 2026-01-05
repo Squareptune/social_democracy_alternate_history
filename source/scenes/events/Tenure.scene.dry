@@ -1,0 +1,33 @@
+title: Tenure of Office Act
+subtitle: Congress Asserts Its Authority
+view-if: year = 1867 and month = 3 and tenure_act = 1
+max-visits: 1
+tags: event
+new-page: true
+go-to: Response
+on-arrival: veto = 0; radical_strength += 2; moderate_strength += 1; conservative_strength -= 1; radicalization += 3;
+
+= Congress Passes the Tenure of Office Act
+
+In a historic assertion of legislative authority, Congress passes the Tenure of Office Act. The law requires the President to obtain Senate approval before removing any official whose appointment originally required Senate confirmation—a clear response to Johnson’s aggressive Cabinet purges.
+
+Radical Republicans celebrate the measure as essential to protecting Reconstruction, while moderates cautiously support it as a necessary check on executive overreach. Conservatives cry foul, calling it an unconstitutional encroachment on presidential power.  
+
+Although Johnson will try to veto it, tensions between the executive and Congress reach a new high. This legislation lays the groundwork for a future confrontation over presidential authority.
+
+@Response
+
+- @celebrate: Rally the Radical base.
+- @caution: Advise moderation and compromise.
+
+@celebrate
+on-arrival: radical_strength += 5; radical_dissent -= 1; moderate_dissent += 1; impeachment_ready = 1; tenure_act = 2; veto += 1; veto_reason = "Tenure of Office Act";
+go-to: End
+
+The Radicals mobilize, confident that the law secures their ability to enforce Reconstruction without presidential interference.
+
+@caution
+on-arrival: moderate_strength += 3; radical_dissent += 1; conservative_dissent -= 1; impeachment_ready = 1
+go-to: End
+
+Moderates urge patience, warning that Johnson will surely test the law, but the legislative check has at least been established.
