@@ -15,105 +15,119 @@ The House elections are to be held now.
 on-arrival: {!
 
   // Save old seat values
-  for (let party of Q.parties) {
-    Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
-  }
-
-  // === 2. Calculate raw vote totals using blended support (80% local, 20% national) ===
-  let repVotes = 0;
-  let demVotes = 0;
-  let otherVotes = 0;
-
-  for (let state of Q.states) {
-    for (let cls of Q.classes) {
-      let pop = Q[state + "_" + cls] || 0;
-
-      // Local support
-      let rep = Q[state + "_" + cls + "_rep"] || 0;
-      let dem = Q[state + "_" + cls + "_dem"] || 0;
-      let other = Q[state + "_" + cls + "_other"] || 0;
-
-      // National modifiers
-      let repMod = Q[cls + "_rep"] || 0;
-      let demMod = Q[cls + "_dem"] || 0;
-      let otherMod = Q[cls + "_other"] || 0;
-
-      let adjRep = 0.1 * rep + 0.9 * repMod;
-      let adjDem = 0.1 * dem + 0.9 * demMod;
-      let adjOther = 0.1 * other + 0.9 * otherMod;
-
-      let totalPct = adjRep + adjDem + adjOther;
-      if (totalPct === 0) continue;
-
-      repVotes += pop * (adjRep / totalPct);
-      demVotes += pop * (adjDem / totalPct);
-      otherVotes += pop * (adjOther / totalPct);
+    for (let party of Q.parties) {
+          Q["old_" + party + "_r"] = Q[party + "_r"] || 0;
     }
-  }
 
-  // === 3. Allocate seats proportionally ===
-  let totalVotes = repVotes + demVotes + otherVotes;
-  if (Q.year == 1866) {
-    totalSeats = Q.house_total_seat_1866;
-  } else if (Q.year == 1868) {
-    totalSeats = Q.house_total_seat_1868;
-  } else if (Q.year == 1870) {
-    totalSeats = Q.house_total_seat_1870;
-  } else if (Q.year == 1872) {
-    totalSeats = Q.house_total_seat_1872;
-  } else if (Q.year == 1874) {
-    totalSeats = Q.house_total_seat_1874;
-  } else {
-    totalSeats = Q.house_total_seat_1876;
-  }
+      // === 2. Calculate raw vote totals using blended support (80% local, 20% national) ===
+        let repVotes = 0;
+          let demVotes = 0;
+            let otherVotes = 0;
 
-  let repSeats = Math.floor((repVotes / totalVotes) * totalSeats);
-  let demSeats = Math.floor((demVotes / totalVotes) * totalSeats);
-  let otherSeats = totalSeats - repSeats - demSeats; // balance exactly
+              for (let state of Q.states) {
+                    for (let cls of Q.classes) {
+                            let pop = Q[state + "_" + cls] || 0;
 
-  Q.rep_r = repSeats;
-  Q.dem_r = demSeats;
-  Q.other_r = otherSeats;
+                                  // Local support
+                                        let rep = Q[state + "_" + cls + "_rep"] || 0;
+                                              let dem = Q[state + "_" + cls + "_dem"] || 0;
+                                                    let other = Q[state + "_" + cls + "_other"] || 0;
 
-  // === 4. Track seat changes ===
-  for (let party of Q.parties) {
-    let cur = Q[party + "_r"];
-    let old = Q["old_" + party + "_r"];
-    let change = cur - old;
-    Q["change_" + party + "_r"] = change;
-    Q["str_change_" + party + "_r"] = (change > 0 ? "+" : "") + change;
-    Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
-  }
+                                                          // National modifiers
+                                                                let repMod = Q[cls + "_rep"] || 0;
+                                                                      let demMod = Q[cls + "_dem"] || 0;
+                                                                            let otherMod = Q[cls + "_other"] || 0;
 
-  // === 5. Largest party tracker ===
-  Q.largest_party_r = "rep";
-  if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
-  if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
+                                                                                  let adjRep = 0.1 * rep + 0.9 * repMod;
+                                                                                        let adjDem = 0.1 * dem + 0.9 * demMod;
+                                                                                              let adjOther = 0.1 * other + 0.9 * otherMod;
 
-  // === 6. Majority display vars ===
-  Q.republican_majority_r = Q.rep_r;
-  Q.democrat_majority_r = Q.dem_r;
-  Q.other_majority_r = Q.other_r;
+                                                                                                    let totalPct = adjRep + adjDem + adjOther;
+                                                                                                          if (totalPct === 0) continue;
 
-  // === 7. Record the result ===
-  let result = { date: Q.year + "-" + Q.month };
-  for (let party of Q.parties) {
-    result[party] = Q[party + "_r"];
-  }
-  Q.house_election_records = Q.house_election_records || [];
-  Q.house_election_records.push(result);
+                                                                                                                repVotes += pop * (adjRep / totalPct);
+                                                                                                                      demVotes += pop * (adjDem / totalPct);
+                                                                                                                            otherVotes += pop * (adjOther / totalPct);
+                    }
+              }
 
-  let totalHouse = Q.total_house_seats || (Q.rep_r + Q.dem_r + Q.other_r);
-  let repPctHouse = (Q.rep_r / totalHouse) * 100;
+                // === 3. Allocate seats proportionally ===
+                  let totalVotes = repVotes + demVotes + otherVotes;
+                    if (Q.year == 1866) {
+                          totalSeats = Q.house_total_seat_1866;
+                    } else if (Q.year == 1868) {
+                          totalSeats = Q.house_total_seat_1868;
+                    } else if (Q.year == 1870) {
+                          totalSeats = Q.house_total_seat_1870;
+                    } else if (Q.year == 1872) {
+                          totalSeats = Q.house_total_seat_1872;
+                    } else if (Q.year == 1874) {
+                          totalSeats = Q.house_total_seat_1874;
+                    } else {
+                          totalSeats = Q.house_total_seat_1876;
+                    }
 
-  if (repPctHouse >= 75) {
-    Q.house_majority = 3;
-  } else if (repPctHouse >= 50) {
-    Q.house_majority = 2;
-  } else {
-    Q.house_majority = 0;
-  }
+                      let repSeats = Math.floor((repVotes / totalVotes) * totalSeats);
+                        let demSeats = Math.floor((demVotes / totalVotes) * totalSeats);
+                          let otherSeats = totalSeats - repSeats - demSeats; // balance exactly
 
+                            Q.rep_r = repSeats;
+                              Q.dem_r = demSeats;
+                                Q.other_r = otherSeats;
+
+                                  // === 4. Track seat changes ===
+                                    for (let party of Q.parties) {
+                                          let cur = Q[party + "_r"];
+                                              let old = Q["old_" + party + "_r"];
+                                                  let change = cur - old;
+                                                      Q["change_" + party + "_r"] = change;
+                                                          Q["str_change_" + party + "_r"] = (change > 0 ? "+" : "") + change;
+                                                              Q[party + "_r_disp"] = Q.use_decimals ? cur.toFixed(1) : cur;
+                                    }
+
+                                      // === 5. Largest party tracker ===
+                                        Q.largest_party_r = "rep";
+                                          if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r) Q.largest_party_r = "dem";
+                                            if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r) Q.largest_party_r = "other";
+
+                                              // === 6. Majority display vars ===
+                                                Q.republican_majority_r = Q.rep_r;
+                                                  Q.democrat_majority_r = Q.dem_r;
+                                                    Q.other_majority_r = Q.other_r;
+
+                                                      // === 7. Record the result ===
+                                                        let result = { date: Q.year + "-" + Q.month };
+                                                          for (let party of Q.parties) {
+                                                                result[party] = Q[party + "_r"];
+                                                          }
+                                                            Q.house_election_records = Q.house_election_records || [];
+                                                              Q.house_election_records.push(result);
+
+                                                                let totalHouse = Q.total_house_seats || (Q.rep_r + Q.dem_r + Q.other_r);
+                                                                  let repPctHouse = (Q.rep_r / totalHouse) * 100;
+
+                                                                    if (repPctHouse >= 75) {
+                                                                          Q.house_majority = 3;
+                                                                    } else if (repPctHouse >= 50) {
+                                                                          Q.house_majority = 2;
+                                                                    } else {
+                                                                          Q.house_majority = 0;
+                                                                    }
+                                                                    
+                                                                    }
+                                                                    }
+                                                                    }
+                                                          }
+                                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+              }
+    }
 !}
 on-display: {!
   function drawChart() {
