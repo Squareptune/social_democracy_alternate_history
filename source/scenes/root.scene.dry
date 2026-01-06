@@ -57,10 +57,11 @@ Q.conservative_dissent = 5;
 Q.liberal_strength = 5;
 Q.liberal_dissent = 10;
 
-yea_r = 0
-nah_r = 0
-house_impeach_passed = 0
-house_impeachment_total = 0
+Q.yea_r = 0
+Q.nah_r = 0
+Q.house_impeach_passed = 0
+Q.house_impeachment_total = 0
+
 
 Q.kkk_urgency = 0;
 Q.radicalization = 0;
