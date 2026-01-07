@@ -88,11 +88,11 @@ for (let state of Q.states) {
 }
 
 // === Cube law proportional conversion ===
-let totalVotes = repVotes + demVotes + otherVotes;
-if (totalVotes > 0) {
-  let repShare = repVotes / totalVotes;
-  let demShare = demVotes / totalVotes;
-  let otherShare = otherVotes / totalVotes;
+let totalVotesR = repVotes + demVotes + otherVotes;
+if (totalVotesR > 0) {
+  let repShare = repVotes / totalVotesR;
+  let demShare = demVotes / totalVotesR;
+  let otherShare = otherVotes / totalVotesR;
 
   let repPower = Math.pow(repShare, 3);
   let demPower = Math.pow(demShare, 3);
