@@ -2,7 +2,7 @@ title: Military Policy
 new-page: true
 is-card: true
 tags: potus_affairs, cabinet
-on-arrival: military_policy_timer += 6; month_actions += 1
+on-arrival: military_policy_timer += 4; month_actions += 1
 view-if: sect_war_party = "R" and military_policy_timer <= 0
 card-image: img/portraits/Stanton.jpg
 go-to: Mil
