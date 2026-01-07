@@ -1,9 +1,9 @@
 title: Senate Election
 on-arrival: {!
 
-Q.rep_senate_r = 0;
-Q.dem_senate_r = 0;
-Q.other_senate_r = 0;
+Q.rep_senate_pro = 0;
+Q.dem_senate_pro = 0;
+Q.other_senate_pro = 0;
 
 for (let state of Q.states) {
   let repVotes = 0;
@@ -47,26 +47,22 @@ for (let state of Q.states) {
     { party: "rep", pct: repPct },
     { party: "dem", pct: demPct },
     { party: "other", pct: otherPct }
-  ];
-  results.sort((a, b) => b.pct - a.pct);
+  ].sort((a, b) => b.pct - a.pct);
 
   let first = results[0];
   let second = results[1];
+
   let repSeats = 0, demSeats = 0, otherSeats = 0;
 
-  // Seat distribution rules
-  if (first.pct >= 66) {
+  // Seat rules
+  if (first.pct >= 66 || (first.pct >= 55 && first.pct - second.pct > 10)) {
     if (first.party === "rep") repSeats = 2;
     else if (first.party === "dem") demSeats = 2;
     else otherSeats = 2;
-  } else if (first.pct >= 55 && (first.pct - second.pct) > 10) {
-    if (first.party === "rep") repSeats = 2;
-    else if (first.party === "dem") demSeats = 2;
-    else otherSeats = 2;
-  } else if ((first.pct - second.pct) <= 12) {
-    if (first.party === "rep") repSeats = 1;
-    else if (first.party === "dem") demSeats = 1;
-    else otherSeats = 1;
+  } else if (first.pct - second.pct <= 12) {
+    if (first.party === "rep") repSeats++;
+    else if (first.party === "dem") demSeats++;
+    else otherSeats++;
 
     if (second.party === "rep") repSeats++;
     else if (second.party === "dem") demSeats++;
@@ -77,19 +73,11 @@ for (let state of Q.states) {
     else otherSeats = 2;
   }
 
-  Q.rep_senate_r += repSeats;
-  Q.dem_senate_r += demSeats;
-  Q.other_senate_r += otherSeats;
+  Q.rep_senate_pro += repSeats;
+  Q.dem_senate_pro += demSeats;
+  Q.other_senate_pro += otherSeats;
 }
 
-// Update majority tracking variables
-Q.largest_party = "rep";
-if (Q.dem_senate_r >= Q.rep_senate_r && Q.dem_senate_r >= Q.other_senate_r) {
-  Q.largest_party = "dem";
-}
-if (Q.other_senate_r >= Q.rep_senate_r && Q.other_senate_r >= Q.dem_senate_r) {
-  Q.largest_party = "other";
-}
 
 !}
 go-to: jumpScene

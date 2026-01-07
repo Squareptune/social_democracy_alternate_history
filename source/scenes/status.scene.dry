@@ -117,11 +117,11 @@ Others: [+ other_senate_r +] seats
 
 House:
 
-Republicans: [+ rep_r +] seats
+Republicans: [+ rep_r_pro +] seats
 
-Democrats: [+ dem_r +] seats
+Democrats: [+ dem_r_pro +] seats
 
-Others: [+ other_r +] seats
+Others: [+ other_r_pro +] seats
 
 **Detailed results for each demographic**
 

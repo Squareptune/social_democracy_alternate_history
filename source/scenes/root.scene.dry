@@ -130,6 +130,10 @@ Q.dem_r = 38;
 Q.other_r = 15;
 Q.vacant_r = 52;
 
+Q.rep_r_pro = 147;
+Q.dem_r_pro = 44;
+Q.other_r_pro = 4;
+
 Q.old_rep_r = 133;
 Q.old_dem_r = 52;
 Q.old_other_r = 12;
@@ -147,6 +151,10 @@ Q.rep_senate_r = 38;
 Q.dem_senate_r = 9;
 Q.other_senate_r = 1;
 Q.vacant_senate = 24;
+
+Q.rep_senate_pro = 39;
+Q.dem_senate_pro = 10;
+Q.other_senate_pro = 3;
 
 Q.house_total_seat_1866 = 193;
 Q.house_total_seat_1868 = 243;
@@ -174,29 +182,29 @@ Q.num_states = 25;
 
 //National support levels
 
-freemen_rep = 90;
-freemen_dem = 5;
-freemen_other = 5;
+Q.freemen_rep = 90;
+Q.freemen_dem = 5;
+Q.freemen_other = 5;
 
-workers_rep = 40;
-workers_dem = 50;
-workers_other = 10;
+Q.workers_rep = 40;
+Q.workers_dem = 50;
+Q.workers_other = 10;
 
-middle_class_rep = 55;
-middle_class_dem = 35;
-middle_class_other = 10;
+Q.middle_class_rep = 55;
+Q.middle_class_dem = 35;
+Q.middle_class_other = 10;
 
-rural_rep = 45;
-rural_dem = 45;
-rural_other = 10;
+Q.rural_rep = 45;
+Q.rural_dem = 45;
+Q.rural_other = 10;
 
-immigrant_laborers_rep = 30;
-immigrant_laborers_dem = 60;
-immigrant_laborers_other = 10;
+Q.immigrant_laborers_rep = 30;
+Q.immigrant_laborers_dem = 60;
+Q.immigrant_laborers_other = 10;
 
-unemployed_rep = 25;
-unemployed_dem = 65;
-unemployed_other = 10;
+Q.unemployed_rep = 25;
+Q.unemployed_dem = 65;
+Q.unemployed_other = 10;
 
 // === CALIFORNIA ===
 Q.CA_workers = 20000;
