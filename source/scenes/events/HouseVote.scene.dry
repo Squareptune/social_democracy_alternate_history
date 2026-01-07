@@ -1,6 +1,6 @@
 title: Impeachment of Andrew Johnson
 new-page: true
-view-if: year = 1868 and month = 2 and House_Impeach = 0
+view-if: year = 1868 and month = 2 and house_impeach_passed = 0
 tags: event
 priority: -1
 
@@ -107,8 +107,8 @@ go-to: house_vote
 {!<table>!}
 {!<tr><td>Vote</td><td>Seats</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#228B22"></div> Yea</td><td>[+ yea_disp +]</td></tr>!}
-{!<tr><td><div class="box" style="background-color:#8B0000"></div> Nay</td><td>[+ nah_disp +]</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#228B22"></div> Yea</td><td>[+ Q.yea_disp +]</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#8B0000"></div> Nay</td><td>[+ Qnah_disp +]</td></tr>!}
 {!</table>!}
 
 @house_vote
@@ -119,7 +119,7 @@ go-to: house_vote
 @Pass
 title: The House impeaches Johnson
 subtitle: Yea votes: [+ yea_disp +]
-view-if: house_impeach_passed = 1
+view-if: house_impeach_passed = 2
 on-arrival: House_Impeach = 1;
 
 The articles of impeachment are adopted and sent to the Senate for trial.
@@ -127,6 +127,6 @@ The articles of impeachment are adopted and sent to the Senate for trial.
 @Fail
 title: Impeachment fails in the House
 subtitle: Nay votes: [+ nah_disp +]
-view-if: house_impeach_passed = 0
+view-if: house_impeach_passed = 1
 
 The impeachment effort collapses. President Johnson survives and emerges emboldened.

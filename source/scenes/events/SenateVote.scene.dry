@@ -1,6 +1,6 @@
 title: Senate Trial of Andrew Johnson
 new-page: true
-view-if: year = 1868 and month = 3 and Senate_Impeach = 0
+view-if: year = 1868 and month = 3 and senate_convicted = 0
 tags: event
 priority: -1
 
@@ -127,7 +127,7 @@ go-to: senate_vote
 @Convicted
 title: Johnson is removed from office
 subtitle: Guilty votes: [+ yea_s_disp +]
-view-if: senate_convicted = 1
+view-if: senate_convicted = 2
 on-arrival: president = "Wade"; president_party = "rep"; Senate_Impeach = 0;
 
 Andrew Johnson is convicted by the Senate and removed from the presidency. Under constitutional custom, Senate President Pro Tempore Benjamin Wade assumes the presidency to oversee the remainder of the term.
@@ -135,6 +135,6 @@ Andrew Johnson is convicted by the Senate and removed from the presidency. Under
 @Acquitted
 title: Johnson survives impeachment
 subtitle: Not Guilty votes: [+ nah_s_disp +]
-view-if: senate_convicted = 0
+view-if: senate_convicted = 1
 
 The Senate falls short of removal. Andrew Johnson remains president, bruised, embittered, and openly hostile toward Congress.
