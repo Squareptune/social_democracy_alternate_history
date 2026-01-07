@@ -66,12 +66,10 @@ for (let state of Q.states) {
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
 
-    // Local support
     let rep = Q[state + "_" + cls + "_rep"] || 0;
     let dem = Q[state + "_" + cls + "_dem"] || 0;
     let other = Q[state + "_" + cls + "_other"] || 0;
 
-    // National modifiers
     let repMod = Q[cls + "_rep"] || 0;
     let demMod = Q[cls + "_dem"] || 0;
     let otherMod = Q[cls + "_other"] || 0;
@@ -87,6 +85,24 @@ for (let state of Q.states) {
     demVotes += pop * (adjDem / totalPct);
     otherVotes += pop * (adjOther / totalPct);
   }
+}
+
+// === Cube law proportional conversion ===
+let totalVotes = repVotes + demVotes + otherVotes;
+if (totalVotes > 0) {
+  let repShare = repVotes / totalVotes;
+  let demShare = demVotes / totalVotes;
+  let otherShare = otherVotes / totalVotes;
+
+  let repPower = Math.pow(repShare, 3);
+  let demPower = Math.pow(demShare, 3);
+  let otherPower = Math.pow(otherShare, 3);
+
+  let powerTotal = repPower + demPower + otherPower;
+
+  Q.rep_r_pro = (repPower / powerTotal) * 100;
+  Q.dem_r_pro = (demPower / powerTotal) * 100;
+  Q.other_r_pro = (otherPower / powerTotal) * 100;
 }
 
 Q.rep_senate_pro = 0;

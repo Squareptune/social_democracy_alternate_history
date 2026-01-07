@@ -182,29 +182,29 @@ Q.num_states = 25;
 
 //National support levels
 
-Q.freemen_rep = 90;
-Q.freemen_dem = 5;
-Q.freemen_other = 5;
+Q.freemen_rep = 100;
+Q.freemen_dem = 0;
+Q.freemen_other = 0;
 
-Q.workers_rep = 40;
-Q.workers_dem = 50;
-Q.workers_other = 10;
+Q.workers_rep = 52;
+Q.workers_dem = 45;
+Q.workers_other = 3;
 
-Q.middle_class_rep = 55;
-Q.middle_class_dem = 35;
-Q.middle_class_other = 10;
+Q.middle_class_rep = 65;
+Q.middle_class_dem = 31;
+Q.middle_class_other = 4;
 
-Q.rural_rep = 45;
-Q.rural_dem = 45;
-Q.rural_other = 10;
+Q.rural_rep = 58;
+Q.rural_dem = 40;
+Q.rural_other = 2;
 
-Q.immigrant_laborers_rep = 30;
-Q.immigrant_laborers_dem = 60;
-Q.immigrant_laborers_other = 10;
+Q.immigrant_laborers_rep = 40;
+Q.immigrant_laborers_dem = 55;
+Q.immigrant_laborers_other = 5;
 
-Q.unemployed_rep = 25;
-Q.unemployed_dem = 65;
-Q.unemployed_other = 10;
+Q.unemployed_rep = 35;
+Q.unemployed_dem = 63;
+Q.unemployed_other = 2;
 
 // === CALIFORNIA ===
 Q.CA_workers = 20000;
