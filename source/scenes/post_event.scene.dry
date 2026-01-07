@@ -4,198 +4,153 @@ on-arrival: {!
 Q.last_advisor_action = 0;
 Q.last_cabinet_action = 0;
 
+// Clamp negative class-party values
 for (let c of Q.classes) {
-  for (let party of Q.parties) {
-    if (Q[c + '_' + party] < 0) {
-      Q[c + '_' + party] = 0;
+    for (let party of Q.parties) {
+        if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
     }
-  }
 }
 
-if (Q.pro_republic < 0) {
-    Q.pro_republic = 0;
-}
-if (Q.pro_republic >= 100) {
-    Q.pro_republic = 99;
-}
-// re-calculate party support
-// calculate normalized class voting for the achievements
-for (var c of Q.classes) {
-    var class_votes = 0;
-    for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-        class_votes += Q[c+'_'+party];
+// Clamp pro_republic
+Q.pro_republic = Math.min(Math.max(Q.pro_republic, 0), 99);
+
+// Normalize class votes
+for (let c of Q.classes) {
+    let classVotes = 0;
+    for (let party of Q.parties) classVotes += Q[c + '_' + party];
+    if (classVotes === 0) classVotes = 1; // prevent divide by zero
+    for (let party of Q.parties) {
+        let val = Q[c + '_' + party];
+        Q[c + '_' + party + '_normalized'] = val / classVotes;
+        Q[c + '_' + party + '_display'] = Math.round(100 * val / classVotes);
     }
-    for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
-    }
-}
-// calculate support for each of the parties
-var total_support = 0; 
-for (var party of Q.parties) {
-    var party_support = 0;
-    for (var c of Q.classes) {
-        if (Q.old_demographics) { 
-            party_support += Q[c]*Q[c+'_'+party];
-        } else  { 
-            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
-        } 
-    }
-    Q[party + '_support'] = party_support;
-    total_support += party_support; 
-}
-// 2. normalize support (fraction)
-for (var party of Q.parties) {
-    Q[party+'_normalized'] = Q[party + '_support']/total_support;
-    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*100);
-    Q[party+'_votes_display'] = Math.round(Q[party+'_normalized']*100);
 }
 
-Q.rep_r_pro = 0;
-Q.dem_r_pro = 0;
-Q.other_r_pro = 0;
+// Party support
+let totalSupport = 0;
+for (let party of Q.parties) {
+    let support = 0;
+    for (let c of Q.classes) {
+        if (Q.old_demographics) support += Q[c] * Q[c + '_' + party];
+        else support += Q[c] * Q[c + '_' + party + '_normalized'];
+    }
+    Q[party + '_support'] = support;
+    totalSupport += support;
+}
 
-let repVotes = 0;
-let demVotes = 0;
-let otherVotes = 0;
+// Normalize overall party support
+for (let party of Q.parties) {
+    Q[party + '_normalized'] = totalSupport ? Q[party + '_support'] / totalSupport : 1 / Q.parties.length;
+    Q[party + '_votes'] = Math.round(Q[party + '_normalized'] * 100);
+    Q[party + '_votes_display'] = Q[party + '_votes'];
+}
+
+// === House Projections ===
+let repVotesHouse = 0, demVotesHouse = 0, otherVotesHouse = 0;
 
 for (let state of Q.states) {
-  for (let cls of Q.classes) {
-    let pop = Q[state + "_" + cls] || 0;
+    for (let cls of Q.classes) {
+        let pop = Q[state + "_" + cls] || 0;
+        let rep = Q[state + "_" + cls + "_rep"] || 0;
+        let dem = Q[state + "_" + cls + "_dem"] || 0;
+        let other = Q[state + "_" + cls + "_other"] || 0;
 
-    let rep = Q[state + "_" + cls + "_rep"] || 0;
-    let dem = Q[state + "_" + cls + "_dem"] || 0;
-    let other = Q[state + "_" + cls + "_other"] || 0;
+        let repMod = Q[cls + "_rep"] || 0;
+        let demMod = Q[cls + "_dem"] || 0;
+        let otherMod = Q[cls + "_other"] || 0;
 
-    let repMod = Q[cls + "_rep"] || 0;
-    let demMod = Q[cls + "_dem"] || 0;
-    let otherMod = Q[cls + "_other"] || 0;
+        let adjRep = 0.2 * rep + 0.8 * repMod;
+        let adjDem = 0.2 * dem + 0.8 * demMod;
+        let adjOther = 0.2 * other + 0.8 * otherMod;
 
-    let adjRep = 0.2 * rep + 0.8 * repMod;
-    let adjDem = 0.2 * dem + 0.8 * demMod;
-    let adjOther = 0.2 * other + 0.8 * otherMod;
+        let totalPct = adjRep + adjDem + adjOther;
+        if (totalPct === 0) continue;
 
-    let totalPct = adjRep + adjDem + adjOther;
-    if (totalPct === 0) continue;
-
-    repVotes += pop * (adjRep / totalPct);
-    demVotes += pop * (adjDem / totalPct);
-    otherVotes += pop * (adjOther / totalPct);
-  }
+        repVotesHouse += pop * (adjRep / totalPct);
+        demVotesHouse += pop * (adjDem / totalPct);
+        otherVotesHouse += pop * (adjOther / totalPct);
+    }
 }
 
-// === Cube law proportional conversion ===
-let totalVotesR = repVotes + demVotes + otherVotes;
-if (totalVotesR > 0) {
-  let repShare = repVotes / totalVotesR;
-  let demShare = demVotes / totalVotesR;
-  let otherShare = otherVotes / totalVotesR;
+// Cube law proportional allocation
+let totalVotesHouse = repVotesHouse + demVotesHouse + otherVotesHouse;
+if (totalVotesHouse === 0) totalVotesHouse = 1; // prevent NaN
+let repShare = repVotesHouse / totalVotesHouse;
+let demShare = demVotesHouse / totalVotesHouse;
+let otherShare = otherVotesHouse / totalVotesHouse;
 
-  let repPower = Math.pow(repShare, 3);
-  let demPower = Math.pow(demShare, 3);
-  let otherPower = Math.pow(otherShare, 3);
+Q.rep_r_pro = Math.floor(repShare * (Q.total_house_seats || 241));
+Q.dem_r_pro = Math.floor(demShare * (Q.total_house_seats || 241));
+Q.other_r_pro = (Q.total_house_seats || 241) - Q.rep_r_pro - Q.dem_r_pro;
 
-  let powerTotal = repPower + demPower + otherPower;
-
-  Q.rep_r_pro = (repPower / powerTotal) * 100;
-  Q.dem_r_pro = (demPower / powerTotal) * 100;
-  Q.other_r_pro = (otherPower / powerTotal) * 100;
-}
-
+// === Senate Projections ===
 Q.rep_senate_pro = 0;
 Q.dem_senate_pro = 0;
 Q.other_senate_pro = 0;
 
 for (let state of Q.states) {
-  let repVotes = 0;
-  let demVotes = 0;
-  let otherVotes = 0;
+    let repVotes = 0, demVotes = 0, otherVotes = 0;
 
-  for (let cls of Q.classes) {
-    let pop = Q[state + "_" + cls] || 0;
+    for (let cls of Q.classes) {
+        let pop = Q[state + "_" + cls] || 0;
+        let localRep = Q[state + "_" + cls + "_rep"] || 0;
+        let localDem = Q[state + "_" + cls + "_dem"] || 0;
+        let localOther = Q[state + "_" + cls + "_other"] || 0;
 
-    // Local support
-    let localRep = Q[state + "_" + cls + "_rep"] || 0;
-    let localDem = Q[state + "_" + cls + "_dem"] || 0;
-    let localOther = Q[state + "_" + cls + "_other"] || 0;
+        let nationalRep = Q[cls + "_rep"] || 0;
+        let nationalDem = Q[cls + "_dem"] || 0;
+        let nationalOther = Q[cls + "_other"] || 0;
 
-    // National support
-    let nationalRep = Q[cls + "_rep"] || 0;
-    let nationalDem = Q[cls + "_dem"] || 0;
-    let nationalOther = Q[cls + "_other"] || 0;
+        let adjRep = 0.8 * localRep + 0.2 * nationalRep;
+        let adjDem = 0.8 * localDem + 0.2 * nationalDem;
+        let adjOther = 0.8 * localOther + 0.2 * nationalOther;
 
-    // Blend 80% local, 20% national
-    let adjRep = 0.8 * localRep + 0.2 * nationalRep;
-    let adjDem = 0.8 * localDem + 0.2 * nationalDem;
-    let adjOther = 0.8 * localOther + 0.2 * nationalOther;
+        let total = adjRep + adjDem + adjOther;
+        if (total === 0) continue;
 
-    let total = adjRep + adjDem + adjOther;
-    if (total === 0) continue;
+        repVotes += pop * (adjRep / total);
+        demVotes += pop * (adjDem / total);
+        otherVotes += pop * (adjOther / total);
+    }
 
-    repVotes += pop * (adjRep / total);
-    demVotes += pop * (adjDem / total);
-    otherVotes += pop * (adjOther / total);
-  }
+    let totalVotes = repVotes + demVotes + otherVotes;
+    if (totalVotes === 0) continue;
 
-  let totalVotes = repVotes + demVotes + otherVotes;
-  if (totalVotes === 0) continue;
+    let repPct = (repVotes / totalVotes) * 100;
+    let demPct = (demVotes / totalVotes) * 100;
+    let otherPct = (otherVotes / totalVotes) * 100;
 
-  let repPct = (repVotes / totalVotes) * 100;
-  let demPct = (demVotes / totalVotes) * 100;
-  let otherPct = (otherVotes / totalVotes) * 100;
+    let results = [
+        { party: "rep", pct: repPct },
+        { party: "dem", pct: demPct },
+        { party: "other", pct: otherPct }
+    ].sort((a, b) => b.pct - a.pct);
 
-  let results = [
-    { party: "rep", pct: repPct },
-    { party: "dem", pct: demPct },
-    { party: "other", pct: otherPct }
-  ].sort((a, b) => b.pct - a.pct);
+    let first = results[0], second = results[1];
+    let repSeats = 0, demSeats = 0, otherSeats = 0;
 
-  let first = results[0];
-  let second = results[1];
+    if (first.pct >= 66 || (first.pct >= 55 && first.pct - second.pct > 10)) {
+        if (first.party === "rep") repSeats = 2;
+        else if (first.party === "dem") demSeats = 2;
+        else otherSeats = 2;
+    } else if (first.pct - second.pct <= 12) {
+        if (first.party === "rep") repSeats++;
+        else if (first.party === "dem") demSeats++;
+        else otherSeats++;
 
-  let repSeats = 0, demSeats = 0, otherSeats = 0;
+        if (second.party === "rep") repSeats++;
+        else if (second.party === "dem") demSeats++;
+        else otherSeats++;
+    } else {
+        if (first.party === "rep") repSeats = 2;
+        else if (first.party === "dem") demSeats = 2;
+        else otherSeats = 2;
+    }
 
-  // Seat rules
-  if (first.pct >= 66 || (first.pct >= 55 && first.pct - second.pct > 10)) {
-    if (first.party === "rep") repSeats = 2;
-    else if (first.party === "dem") demSeats = 2;
-    else otherSeats = 2;
-  } else if (first.pct - second.pct <= 12) {
-    if (first.party === "rep") repSeats++;
-    else if (first.party === "dem") demSeats++;
-    else otherSeats++;
-
-    if (second.party === "rep") repSeats++;
-    else if (second.party === "dem") demSeats++;
-    else otherSeats++;
-  } else {
-    if (first.party === "rep") repSeats = 2;
-    else if (first.party === "dem") demSeats = 2;
-    else otherSeats = 2;
-  }
-
-  Q.rep_senate_pro += repSeats;
-  Q.dem_senate_pro += demSeats;
-  Q.other_senate_pro += otherSeats;
+    Q.rep_senate_pro += repSeats;
+    Q.dem_senate_pro += demSeats;
+    Q.other_senate_pro += otherSeats;
 }
-
-// Allocate projected seats
-let totalVotes = repVotes + demVotes + otherVotes;
-let totalSeats = Q.total_house_seats || 241;
-
-let repShare = repVotes / totalVotes;
-let demShare = demVotes / totalVotes;
-
-Q.rep_r_pro = Math.floor(repShare * totalSeats);
-Q.dem_r_pro = Math.floor(demShare * totalSeats);
-Q.other_r_pro = totalSeats - Q.rep_r_pro - Q.dem_r_pro;
-
-console.log(rep_r, dem_r, other_r)
-
-
 
 // set faction strength/dissent to 0
 for (var c of Q.factions) {
