@@ -57,9 +57,9 @@ on-arrival: {!
 
   // 5. Conviction requires two-thirds
   if (yeaVotes >= Math.ceil(totalSeats * (2 / 3))) {
-    Q.senate_convicted = 1;
+    Q.senate_convicted = 2;
   } else {
-    Q.senate_convicted = 0;
+    Q.senate_convicted = 1;
   }
 !}
 on-display: {!
