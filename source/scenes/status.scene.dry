@@ -109,11 +109,11 @@ Police loyalty: [+ Us_police_loyalty : loyalty +]
 
 Senate:
 
-Republicans: [+ rep_senate_r +] seats
+Republicans: [+ rep_senate_pro +] seats
 
-Democrats: [+ dem_senate_r +] seats
+Democrats: [+ dem_senate_pro +] seats
 
-Others: [+ other_senate_r +] seats
+Others: [+ other_senate_pro +] seats
 
 House:
 
