@@ -1,0 +1,30 @@
+title: Election of 1868 (Prototype)
+new-page: true
+tags: test
+view-if: year = 1865 and month = 4
+priority: 0
+
+= Election of 1868
+
+This is a visual test. If you see a map below, the SVG system works.
+
+{!
+<svg viewBox="0 0 960 600" style="width:100%; max-width:900px; border:1px solid #444;">
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="960" height="600" fill="#f5f5f5"/>
+
+  <!-- Fake "states" just to confirm SVG works -->
+  <rect x="100" y="200" width="120" height="80" fill="#E3000F"/>
+  <rect x="240" y="200" width="120" height="80" fill="#0015BC"/>
+  <rect x="380" y="200" width="120" height="80" fill="#a0a0a0"/>
+
+  <!-- Labels -->
+  <text x="110" y="195" font-size="14">State A</text>
+  <text x="250" y="195" font-size="14">State B</text>
+  <text x="390" y="195" font-size="14">State C</text>
+
+</svg>
+!}
+
+If you can see three colored boxes, SVG rendering is working.
