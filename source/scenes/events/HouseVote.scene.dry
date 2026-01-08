@@ -104,13 +104,6 @@ go-to: house_vote
 
 {!<svg id="houseChart" style="width: 500px; height: 250px;"></svg>!}
 
-{!<table>!}
-{!<tr><td>Vote</td><td>Seats</td></tr>!}
-
-{!<tr><td><div class="box" style="background-color:#228B22"></div> Yea</td><td>[+ yea_disp +]</td></tr>!}
-{!<tr><td><div class="box" style="background-color:#8B0000"></div> Nay</td><td>[+ nah_disp +]</td></tr>!}
-{!</table>!}
-
 @house_vote
 
 - @Pass

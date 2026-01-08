@@ -113,12 +113,6 @@ go-to: senate_vote
 
 {!<svg id="senateChart" style="width: 500px; height: 250px;"></svg>!}
 
-{!<table>!}
-{!<tr><td>Vote</td><td>Seats</td></tr>!}
-{!<tr><td><div class="box" style="background-color:#228B22"></div> Guilty</td><td> [+ yea_s_disp +] </td></tr>!}
-{!<tr><td><div class="box" style="background-color:#8B0000"></div> Not Guilty</td><td> [+ nah_s_disp +] </td></tr>!}
-{!</table>!}
-
 @senate_vote
 
 - @Convicted
