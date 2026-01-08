@@ -24,6 +24,8 @@ This is a visual test. If you see a map below, the SVG system works.
 In this example, Kansas, Montana and Pennsylvania are colored blue, and California and Delaware are colored red.
 Place this code in the empty space below. */
 
+.ks {fill:#FF0000}
+
 </style>
 </defs>
 
