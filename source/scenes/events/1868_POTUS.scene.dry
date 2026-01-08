@@ -1,7 +1,9 @@
-title: Election of 1868 (Prototype)
+title: Prototype
+subtitle: test
+on-arrival: moderate_strength -= 2; radical_strength += 2; president = "Johnson"
+tags: event
 view-if: year = 1865 and month = 4
 max-visits: 1
-tags: event
 
 = Election of 1868
 
