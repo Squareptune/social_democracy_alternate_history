@@ -14,15 +14,15 @@ for (let c of Q.classes) {
 // Clamp pro_republic
 Q.pro_republic = Math.min(Math.max(Q.pro_republic, 0), 99);
 
-// Normalize class votes
 for (let c of Q.classes) {
     let classVotes = 0;
     for (let party of Q.parties) classVotes += Q[c + '_' + party];
     if (classVotes === 0) classVotes = 1; // prevent divide by zero
     for (let party of Q.parties) {
         let val = Q[c + '_' + party];
-        Q[c + '_' + party + '_normalized'] = val / classVotes;
-        Q[c + '_' + party + '_display'] = Math.round(100 * val / classVotes);
+        let normalized = val / classVotes;
+        Q[c + '_' + party + '_normalized'] = normalized;
+        Q[c + '_' + party + '_display'] = Math.min(100, Math.round(100 * normalized));
     }
 }
 
