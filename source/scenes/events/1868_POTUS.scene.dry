@@ -9,7 +9,7 @@ max-visits: 1
 
 This is a visual test. If you see a map below, the SVG system works.
 
-{!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="959" height="593">
+{!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>Blank map of the United States, territories not included</title>
 <defs>
 <style type="text/css">
