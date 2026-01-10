@@ -10,90 +10,75 @@ Q.repEVTotal = 0;
 Q.demEVTotal = 0;
 Q.otherEVTotal = 0;
 
-// === 1. Run election per state ===
+// Run election per state
 for (let state of Q.states) {
-  let repVotes = 0;
-  let demVotes = 0;
-  let otherVotes = 0;
+  let votes = { rep: 0, dem: 0, other: 0 };
 
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
 
-    let rep = Q[state + "_" + cls + "_rep"] || 0;
-    let dem = Q[state + "_" + cls + "_dem"] || 0;
-    let other = Q[state + "_" + cls + "_other"] || 0;
+    let raw = {
+      rep: Q[state + "_" + cls + "_rep"] || 0,
+      dem: Q[state + "_" + cls + "_dem"] || 0,
+      other: Q[state + "_" + cls + "_other"] || 0
+    };
 
-    let repMod = Q[cls + "_rep"] || 0;
-    let demMod = Q[cls + "_dem"] || 0;
-    let otherMod = Q[cls + "_other"] || 0;
+    let mod = {
+      rep: Q[cls + "_rep"] || 0,
+      dem: Q[cls + "_dem"] || 0,
+      other: Q[cls + "_other"] || 0
+    };
 
-    let adjRep = 0.2 * rep + 0.8 * repMod;
-    let adjDem = 0.2 * dem + 0.8 * demMod;
-    let adjOther = 0.2 * other + 0.8 * otherMod;
+    let adj = {
+      rep: 0.2 * raw.rep + 0.8 * mod.rep,
+      dem: 0.2 * raw.dem + 0.8 * mod.dem,
+      other: 0.2 * raw.other + 0.8 * mod.other
+    };
 
-    let totalPct = adjRep + adjDem + adjOther;
-    if (totalPct === 0) continue;
+    let total = adj.rep + adj.dem + adj.other;
+    if (!total) continue;
 
-    repVotes += pop * (adjRep / totalPct);
-    demVotes += pop * (adjDem / totalPct);
-    otherVotes += pop * (adjOther / totalPct);
+    votes.rep += pop * adj.rep / total;
+    votes.dem += pop * adj.dem / total;
+    votes.other += pop * adj.other / total;
   }
 
-  // Determine state winner
   let winner = "rep";
-  if (demVotes >= repVotes && demVotes >= otherVotes) winner = "dem";
-  if (otherVotes >= repVotes && otherVotes >= demVotes) winner = "other";
+  if (votes.dem >= votes.rep && votes.dem >= votes.other) winner = "dem";
+  if (votes.other >= votes.rep && votes.other >= votes.dem) winner = "other";
 
   Q[state + "_winner"] = winner;
-  Q[state.toLowerCase() + "_class"] = winner;
+  Q[state + "_class"] = winner;
 }
 
-// === 2. Allocate Electoral Votes ===
+// Allocate EVs
 for (let state of Q.states) {
   let ev = Q[state + "_EV_" + Q.year];
   if (!ev) continue;
 
-  let winner = Q[state + "_winner"];
-
-  if (winner === "rep") Q.repEVTotal += ev;
-  else if (winner === "dem") Q.demEVTotal += ev;
+  let w = Q[state + "_winner"];
+  if (w === "rep") Q.repEVTotal += ev;
+  else if (w === "dem") Q.demEVTotal += ev;
   else Q.otherEVTotal += ev;
 }
 
-// === 3. Determine POTUS winner ===
-Q.potus_winner = "rep";
-if (Q.demEVTotal >= Q.repEVTotal && Q.demEVTotal >= Q.otherEVTotal) Q.potus_winner = "dem";
-if (Q.otherEVTotal >= Q.repEVTotal && Q.otherEVTotal >= Q.demEVTotal) Q.potus_winner = "other";
-
-// === 4. Display variables ===
-Q.repEV_disp = Q.repEVTotal;
-Q.demEV_disp = Q.demEVTotal;
-Q.otherEV_disp = Q.otherEVTotal;
-
-// === 5. Record election ===
-let result = { date: Q.year + "-" + Q.month };
-result.rep = Q.repEVTotal;
-result.dem = Q.demEVTotal;
-result.other = Q.otherEVTotal;
-
-Q.potus_election_records = Q.potus_election_records || [];
-Q.potus_election_records.push(result);
-
-for (let state of Q.states) {
-  console.log(state, Q[state + "_EV_1868"]);
-}
+// POTUS winner
+Q.potus_winner =
+  Q.demEVTotal >= Q.repEVTotal && Q.demEVTotal >= Q.otherEVTotal ? "dem" :
+  Q.otherEVTotal >= Q.repEVTotal && Q.otherEVTotal >= Q.demEVTotal ? "other" :
+  "rep";
 !}
 
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>hi, is this mod good?</title>
 <defs>
 <style type="text/css">
-.state path:not(.rep):not(.dem):not(.other) { fill: #D0D0D0; }/* default color for all states not specified below */
+.path { fill: #A0A0A0; } /* default color for all states not specified below */
 .borders {stroke:#FFFFFF; stroke-width:1}    /* color and width of borders between states */
 
-.state path.rep   { fill: #FF0000; }
-.state path.dem   { fill: #0015BC; }
-.state path.other { fill: #A0A0A0; }
+.path.rep   { fill: #FF0000; }
+.path.dem   { fill: #0015BC; }
+.path.other { fill: #1eb756; }
 
 .va { fill: #4f4f4f}
 .tx { fill: #4f4f4f}
