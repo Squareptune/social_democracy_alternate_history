@@ -3,6 +3,7 @@ new-page: true
 view-if: year = 1868 and month = 2 and impeachment_unlocked = 1
 tags: event
 priority: -1
+max-visits: 1
 
 = House Vote on Impeachment, [+ month +] [+ year +]
 

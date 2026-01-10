@@ -1,0 +1,17 @@
+title: Southern States Rejoin the Union
+subtitle: Congressional Reconstruction Advances
+tags: event
+view-if: year = 1868 and month = 7
+max-visits: 1
+on-arrival: {!
+  Q.states.push("AL");
+  Q.states.push("AR");
+  Q.states.push("FL");
+  Q.states.push("LA");
+  Q.states.push("NC");
+  Q.states.push("SC");
+!}
+
+After years of military rule and political struggle, several former Confederate states are formally readmitted to the Union.
+
+New Republican-led governments, backed by federal authority and the votes of newly enfranchised freedmen, take power across the South. While readmission marks a major victory for Congressional Reconstruction, resistance remains strong, and the future of these governments is far from secure.
