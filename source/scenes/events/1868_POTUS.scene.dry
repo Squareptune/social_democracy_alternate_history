@@ -80,9 +80,6 @@ Q.potus_election_records = Q.potus_election_records || [];
 Q.potus_election_records.push(result);
 
 !}
-= Election of 1868
-
-This is a visual test. If you see a map below, the SVG system works.
 
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>hi, is this mod good?</title>
