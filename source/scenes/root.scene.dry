@@ -317,6 +317,16 @@ Q.VA_EV_1876 = 11
 Q.WV_EV_1876 = 5
 Q.WI_EV_1876 = 10
 
+Q.repEVTotal = 0;
+Q.demEVTotal = 0;
+Q.otherEVTotal = 0;
+
+Q.repEV_disp = 0;
+Q.demEV_disp = 0;
+Q.otherEV_disp = 0;
+
+Q.potus_winner = "";
+
 // === CALIFORNIA ===
 Q.CA_workers = 20000;
 Q.CA_workers_rep = 55;

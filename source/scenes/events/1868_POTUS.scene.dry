@@ -79,6 +79,9 @@ result.other = Q.otherEVTotal;
 Q.potus_election_records = Q.potus_election_records || [];
 Q.potus_election_records.push(result);
 
+for (let state of Q.states) {
+  console.log(state, Q[state + "_EV_1868"]);
+}
 !}
 
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
