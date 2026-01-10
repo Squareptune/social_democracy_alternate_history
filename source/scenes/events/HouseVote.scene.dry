@@ -1,6 +1,6 @@
 title: Impeachment of Andrew Johnson
 new-page: true
-view-if: year = 1868 and month = 2 and house_impeach_passed = 0
+view-if: year = 1868 and month = 2 and impeachment_unlocked = 1
 tags: event
 priority: -1
 
