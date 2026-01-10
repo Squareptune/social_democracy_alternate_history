@@ -74,11 +74,11 @@ Q.potus_winner =
 <defs>
 <style type="text/css">
 .path { fill: #A0A0A0; } /* default color for all states not specified below */
-.borders {stroke:#FFFFFF; stroke-width:1}    /* color and width of borders between states */
+.borders {stroke: #FFFFFF; stroke-width:1}    /* color and width of borders between states */
 
-.path.rep   { fill: #FF0000; }
-.path.dem   { fill: #0015BC; }
-.path.other { fill: #1eb756; }
+.rep   { fill: #FF0000; }
+.dem   { fill: #0015BC; }
+.other { fill: #1eb756; }
 
 .va { fill: #4f4f4f}
 .tx { fill: #4f4f4f}
