@@ -45,7 +45,7 @@ for (let state of Q.states) {
   if (otherVotes >= repVotes && otherVotes >= demVotes) winner = "other";
 
   Q[state + "_winner"] = winner;
-  Q[state + "_class"] = Q[state + "_winner"];
+  Q[state.toLowerCase() + "_class"] = winner;
 }
 
 // === 2. Allocate Electoral Votes ===

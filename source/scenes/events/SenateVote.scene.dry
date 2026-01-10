@@ -1,8 +1,7 @@
 title: Senate Trial of Andrew Johnson
 new-page: true
-view-if: year = 1868 and month = 3 and house_impeach_passed = 1
+view-if: year = 1868 and month = 3 and House_Impeach = 1
 tags: event
-priority: -1
 max-visits: 1
 
 = Senate Trial on Impeachment, [+ month +] [+ year +]
