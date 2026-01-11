@@ -1164,6 +1164,192 @@ Q.NE_unemployed_rep = 40;
 Q.NE_unemployed_dem = 50;
 Q.NE_unemployed_other = 10;
 
+// Alabama
+Q.AL_workers = 9000;
+Q.AL_workers_rep = 15;
+Q.AL_workers_dem = 75;
+Q.AL_workers_other = 10;
+
+Q.AL_middle_class = 3000;
+Q.AL_middle_class_rep = 10;
+Q.AL_middle_class_dem = 80;
+Q.AL_middle_class_other = 10;
+
+Q.AL_rural = 85000;
+Q.AL_rural_rep = 5;
+Q.AL_rural_dem = 90;
+Q.AL_rural_other = 5;
+
+Q.AL_freemen = 12000;
+Q.AL_freemen_rep = 80;
+Q.AL_freemen_dem = 10;
+Q.AL_freemen_other = 10;
+
+Q.AL_immigrant_laborers = 500;
+Q.AL_immigrant_laborers_rep = 20;
+Q.AL_immigrant_laborers_dem = 70;
+Q.AL_immigrant_laborers_other = 10;
+
+Q.AL_unemployed = 2000;
+Q.AL_unemployed_rep = 15;
+Q.AL_unemployed_dem = 75;
+Q.AL_unemployed_other = 10;
+
+// Arkansas
+Q.AR_workers = 7000;
+Q.AR_workers_rep = 15;
+Q.AR_workers_dem = 75;
+Q.AR_workers_other = 10;
+
+Q.AR_middle_class = 2500;
+Q.AR_middle_class_rep = 10;
+Q.AR_middle_class_dem = 80;
+Q.AR_middle_class_other = 10;
+
+Q.AR_rural = 60000;
+Q.AR_rural_rep = 5;
+Q.AR_rural_dem = 90;
+Q.AR_rural_other = 5;
+
+Q.AR_freemen = 9000;
+Q.AR_freemen_rep = 80;
+Q.AR_freemen_dem = 10;
+Q.AR_freemen_other = 10;
+
+Q.AR_immigrant_laborers = 400;
+Q.AR_immigrant_laborers_rep = 20;
+Q.AR_immigrant_laborers_dem = 70;
+Q.AR_immigrant_laborers_other = 10;
+
+Q.AR_unemployed = 1500;
+Q.AR_unemployed_rep = 15;
+Q.AR_unemployed_dem = 75;
+Q.AR_unemployed_other = 10;
+
+// Florida
+Q.FL_workers = 4000;
+Q.FL_workers_rep = 20;
+Q.FL_workers_dem = 70;
+Q.FL_workers_other = 10;
+
+Q.FL_middle_class = 1500;
+Q.FL_middle_class_rep = 15;
+Q.FL_middle_class_dem = 75;
+Q.FL_middle_class_other = 10;
+
+Q.FL_rural = 25000;
+Q.FL_rural_rep = 10;
+Q.FL_rural_dem = 85;
+Q.FL_rural_other = 5;
+
+Q.FL_freemen = 6000;
+Q.FL_freemen_rep = 80;
+Q.FL_freemen_dem = 10;
+Q.FL_freemen_other = 10;
+
+Q.FL_immigrant_laborers = 200;
+Q.FL_immigrant_laborers_rep = 20;
+Q.FL_immigrant_laborers_dem = 70;
+Q.FL_immigrant_laborers_other = 10;
+
+Q.FL_unemployed = 1200;
+Q.FL_unemployed_rep = 15;
+Q.FL_unemployed_dem = 75;
+Q.FL_unemployed_other = 10;
+
+// Louisiana
+Q.LA_workers = 8000;
+Q.LA_workers_rep = 20;
+Q.LA_workers_dem = 70;
+Q.LA_workers_other = 10;
+
+Q.LA_middle_class = 3000;
+Q.LA_middle_class_rep = 15;
+Q.LA_middle_class_dem = 75;
+Q.LA_middle_class_other = 10;
+
+Q.LA_rural = 70000;
+Q.LA_rural_rep = 10;
+Q.LA_rural_dem = 85;
+Q.LA_rural_other = 5;
+
+Q.LA_freemen = 15000;
+Q.LA_freemen_rep = 80;
+Q.LA_freemen_dem = 10;
+Q.LA_freemen_other = 10;
+
+Q.LA_immigrant_laborers = 1000;
+Q.LA_immigrant_laborers_rep = 30;
+Q.LA_immigrant_laborers_dem = 60;
+Q.LA_immigrant_laborers_other = 10;
+
+Q.LA_unemployed = 2500;
+Q.LA_unemployed_rep = 15;
+Q.LA_unemployed_dem = 75;
+Q.LA_unemployed_other = 10;
+
+// North Carolina
+Q.NC_workers = 10000;
+Q.NC_workers_rep = 15;
+Q.NC_workers_dem = 75;
+Q.NC_workers_other = 10;
+
+Q.NC_middle_class = 3500;
+Q.NC_middle_class_rep = 10;
+Q.NC_middle_class_dem = 80;
+Q.NC_middle_class_other = 10;
+
+Q.NC_rural = 90000;
+Q.NC_rural_rep = 5;
+Q.NC_rural_dem = 90;
+Q.NC_rural_other = 5;
+
+Q.NC_freemen = 13000;
+Q.NC_freemen_rep = 80;
+Q.NC_freemen_dem = 10;
+Q.NC_freemen_other = 10;
+
+Q.NC_immigrant_laborers = 600;
+Q.NC_immigrant_laborers_rep = 20;
+Q.NC_immigrant_laborers_dem = 70;
+Q.NC_immigrant_laborers_other = 10;
+
+Q.NC_unemployed = 2000;
+Q.NC_unemployed_rep = 15;
+Q.NC_unemployed_dem = 75;
+Q.NC_unemployed_other = 10;
+
+// South Carolina
+Q.SC_workers = 6000;
+Q.SC_workers_rep = 15;
+Q.SC_workers_dem = 75;
+Q.SC_workers_other = 10;
+
+Q.SC_middle_class = 2000;
+Q.SC_middle_class_rep = 10;
+Q.SC_middle_class_dem = 80;
+Q.SC_middle_class_other = 10;
+
+Q.SC_rural = 50000;
+Q.SC_rural_rep = 5;
+Q.SC_rural_dem = 90;
+Q.SC_rural_other = 5;
+
+Q.SC_freemen = 14000;
+Q.SC_freemen_rep = 80;
+Q.SC_freemen_dem = 10;
+Q.SC_freemen_other = 10;
+
+Q.SC_immigrant_laborers = 400;
+Q.SC_immigrant_laborers_rep = 20;
+Q.SC_immigrant_laborers_dem = 70;
+Q.SC_immigrant_laborers_other = 10;
+
+Q.SC_unemployed = 1500;
+Q.SC_unemployed_rep = 15;
+Q.SC_unemployed_dem = 75;
+Q.SC_unemployed_other = 10;
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
