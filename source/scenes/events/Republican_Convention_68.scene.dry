@@ -1,0 +1,136 @@
+title: 1868 Republican National Convention
+subtitle: Republican Candidate for President
+tags: event
+view-if: year = 1868 and month = 5
+max-visits: 1
+
+= Republican National Convention
+
+It is time to choose our candidate for President in the 1868 election. Sadly, we do not have the greatness of Lincoln to carry us to victory again.
+
+But we still have multiple good options for President.
+
+- @Grant: Ulysses S. Grant
+- @Wade: Benjamin Wade
+- @Chase: Salmon P. Chase
+
+@Grant
+subtitle: [? if president = "Johnson": Grant is our default candidate ?][? if president = "Wade": We need to convince the Party with 2 resources ?]
+choose-if: {!
+    if(Q.president == "Wade") {
+        Q.resources >= 2;
+    }
+!}
+unavailable-subtitle: You're broke
+on-arrival: {! 
+    if(Q.president = "Wade"){
+        Q.resources -= 2; 
+    }
+    Q.Candidate = "Grant";
+    Q.freedmen_rep += 2;
+    Q.rural_rep += 1;
+    Q.middle_class_rep += 1;
+    Q.working_rep += 1;
+    Q.radical_dissent -= 1;
+    Q.radical_strength += 1;
+    Q.moderate_dissent -= 2;
+    Q.moderate_strength += 2;
+    Q.conservative_dissent += 1;
+    Q.conservative_strength -= 1;
+    Q.liberal_dissent += 2;
+    Q.liberal_strength -= 2;
+!}
+
+Ulysses S. Grant is chosen as our candidate for President. His war record, humble beginnings, and willingness to support the Freedmen make him a strong choice for the party.
+
+@Wade
+subtitle: [? if president = "Johnson": We need to convince the Party with 2 resources ?][? if president = "Wade": Most of the party wants him to continue ?]
+choose-if: {!
+    if(Q.president == "Johnson") {
+        Q.resources >= 2;
+    }
+    Q.conservative_strength < 26;
+!}
+unavailable-subtitle: [? if resources < 2: You're broke ?][? if conservative_strength >= 26: The Conservatives would never allow such a Radical candidate ?]
+on-arrival: {! 
+    if(Q.president == "Johnson"){
+        Q.resources -= 2; 
+    }
+    Q.Candidate = "Wade";
+    Q.freedmen_rep += 2;
+    Q.rural_rep += 1;
+    Q.middle_class_rep += 1;
+    Q.working_rep += 1;
+    Q.radical_dissent -= 2;
+    Q.radical_strength += 2;
+    Q.moderate_dissent += 1;
+    Q.moderate_strength -= 1;
+    Q.conservative_dissent += 2;
+    Q.conservative_strength -= 2;
+    Q.liberal_dissent += 3;
+    Q.liberal_strength -= 3;
+!}
+
+Benjamin Wade is chosen as our candidate for President. [? if president == "Wade": He will continue his leadership, much to the dismay of the Conservatives ?][? if president == "Johnson": His Senate career and radical ideas may appeal to the party’s progressive base ?]
+
+@Chase
+subtitle: A rational option
+choose-if: resources >= 2 and radical_strength < 50;
+unavailable-subtitle: [? if resources < 2: ou're broke ?][? if radical_strength >= 50: The Radicals have a chokehold on the party and do not support Chase ?]
+on-arrival: {! 
+    Q.resources -= 2; 
+    Q.Candidate = "Chase";
+    Q.freedmen_rep += 2;
+    Q.rural_rep -= 1;
+    Q.middle_class_rep += 2;
+    Q.working_rep -= 1;
+    Q.radical_dissent += 3;
+    Q.radical_strength -= 1;
+    Q.moderate_dissent -= 3;
+    Q.moderate_strength += 3;
+    Q.conservative_dissent -= 2;
+    Q.conservative_strength += 2;
+!}
+
+Salmon P. Chase is chosen as our candidate. He is supported by the Old Guard and the "Anti-Grant" faction, who fear nominating a military strongman. This choice upsets the Radicals, who resent Chase [? if president == "Johnson": as they believe his impartial handling of Andrew Johnson’s impeachment blocked their opportunity to "railroad" the President.?].
+
+However, some fear that Chase's history of shifting party allegiances could make him an unreliable candidate for President.
+
+@VP
+
+It is time to choose a running mate for our presidential candidate. The VP choice can balance the ticket and appeal to different factions of the party.
+
+@Colfax: Schuyler Colfax
+@Wilson: Henry Wilson
+@Wade: Benjamin Wade
+@Fenton: Reuben Fenton
+
+@Colfax
+subtitle: Moderate, safe choice
+on-arrival: VPCandidate = "Colfax"; moderate_strength += 2; conservative_strength += 2; radical_dissent += 1; middle_class_rep += 2; rural_rep += 1; workers_rep += 1;
+
+Schuyler Colfax is chosen as Vice President. His moderate stances and Union loyalty appeal broadly to the party’s mainstream and conservative wings, though Radicals are less enthused.
+
+@Wilson
+subtitle: Strong Radical support
+choose-if: radical_strength >= 30;
+unavailable-subtitle: The Radicals are not powerful enough to push Wilson
+on-arrival: VPCandidate = "Wilson"; radical_strength += 3; radical_dissent -= 2; radical_dissent -= 2; workers_rep += 3; freemen_rep += 2; immigrant_laborers_rep += 1;
+
+Henry Wilson is chosen as Vice President. His Radical Republican credentials and ties to labor help solidify support among progressive voters, but worry moderates.
+
+@Wade
+view-if: Candidate != "Wade" and president != "Wade"
+choose-if: radical_strength >= 30;
+unavailable-subtitle: [? if radical_strength < 30: The Radicals lack the power to force Wade onto the ticket ?]
+on-arrival: VPCandidate = "Wade"; radical_strength += 4; radical_dissent -= 4; moderate_dissent += 2; moderate_dissent += 2; freemen_rep += 3; workers_rep += 2; middle_class_rep -= 1; rural_rep -= 1;
+
+Benjamin Wade is chosen as Vice President. His leadership among Radical Republicans electrifies the party’s left wing, but deeply alarms moderates and conservatives.
+
+@Fenton
+subtitle: Strategic Pick: -1 Resource
+choose-if: resources >= 1;
+unavailable-subtitle: [? Not Enough Resources?]
+on-arrival: resources -= 1; VPCandidate = "Fenton"; moderate_strength += 1; NY_workers_rep += 1; NY_middle_class_rep += 1; NY_middle_class_rep += 2; NY_rural_rep += 1; NY_freemen_rep += 1; NY_immigrant_laborers_rep += 1; NY_unemployed_rep += 1;
+
+Benjamin Wade is chosen as Vice President. His leadership among Radical Republicans electrifies the party’s left wing, but deeply alarms moderates and conservatives.
