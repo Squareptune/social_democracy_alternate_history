@@ -45,7 +45,7 @@ for (let state of Q.states) {
 
   let winner = "rep";
   if (votes.dem >= votes.rep && votes.dem >= votes.other) winner = "dem";
-  if (votes.other >= votes.rep && votes.other >= votes.dem) winner = "other";a
+  if (votes.other >= votes.rep && votes.other >= votes.dem) winner = "other";
 
   Q[state + "_winner"] = winner;
   Q[state + "_class"] = winner;
