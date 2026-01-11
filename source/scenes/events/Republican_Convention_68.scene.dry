@@ -113,7 +113,7 @@ Schuyler Colfax is chosen as Vice President. His moderate stances and Union loya
 
 @Wilson
 subtitle: Strong Radical support
-choose-if: radical_strength >= 30;
+choose-if: radical_strength >= 30
 unavailable-subtitle: The Radicals are not powerful enough to push Wilson
 on-arrival: VPCandidate = "Wilson"; radical_strength += 3; radical_dissent -= 2; radical_dissent -= 2; workers_rep += 3; freemen_rep += 2; immigrant_laborers_rep += 1;
 
@@ -121,7 +121,7 @@ Henry Wilson is chosen as Vice President. His Radical Republican credentials and
 
 @WadeVP
 view-if: Candidate != "Wade" and president != "Wade"
-choose-if: radical_strength >= 30;
+choose-if: radical_strength >= 30
 unavailable-subtitle: [? if radical_strength < 30: The Radicals lack the power to force Wade onto the ticket ?]
 on-arrival: VPCandidate = "Wade"; radical_strength += 4; radical_dissent -= 4; moderate_dissent += 2; moderate_dissent += 2; freemen_rep += 3; workers_rep += 2; middle_class_rep -= 1; rural_rep -= 1;
 
@@ -129,7 +129,7 @@ Benjamin Wade is chosen as Vice President. His leadership among Radical Republic
 
 @Fenton
 subtitle: Strategic Pick: -1 Resource
-choose-if: resources >= 1;
+choose-if: resources >= 1
 unavailable-subtitle: [? Not Enough Resources?]
 on-arrival: resources -= 1; VPCandidate = "Fenton"; moderate_strength += 1; NY_workers_rep += 1; NY_middle_class_rep += 1; NY_middle_class_rep += 2; NY_rural_rep += 1; NY_freemen_rep += 1; NY_immigrant_laborers_rep += 1; NY_unemployed_rep += 1;
 
