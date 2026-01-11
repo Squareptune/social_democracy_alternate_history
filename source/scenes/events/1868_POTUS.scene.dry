@@ -49,6 +49,7 @@ for (let state of Q.states) {
 
   Q[state + "_winner"] = winner;
   Q[state + "_class"] = winner;
+  console.log(state, Q[state+"_workers"], Q[state+"_workers_rep"], Q[state+"_workers_dem"], Q[state+"_workers_other"]);
 }
 
 // Allocate EVs
