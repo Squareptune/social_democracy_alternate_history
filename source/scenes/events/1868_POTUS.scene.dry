@@ -4,11 +4,25 @@ tags: event
 view-if: year = 1868 and month = 11
 max-visits: 1
 on-arrival:{!
-
 // Reset EV totals
 Q.repEVTotal = 0;
 Q.demEVTotal = 0;
 Q.otherEVTotal = 0;
+
+// Define close states with target margin in percent (Republican margin = REP% - DEM%)
+let closeStates = {
+  "CA": 0.48,
+  "OR": -0.74, // negative means Democrat won
+  "NY": 1.18,
+  "NJ": 1.76,
+  "AL": -2.50, // negative means Democrat won
+  "IN": 2.79,
+  "CT": 2.98,
+  "PA": 4.41,
+  "NC": -6.82,
+  "AR": -7.37,
+  "OH": 8.01
+};
 
 // Run election per state
 for (let state of Q.states) {
@@ -43,6 +57,18 @@ for (let state of Q.states) {
     votes.other += pop * adj.other / total;
   }
 
+  // Apply close state adjustment
+  if (closeStates[state] !== undefined) {
+    let marginTarget = closeStates[state]; // in percent
+    let totalTop = votes.rep + votes.dem;
+    let currentMargin = ((votes.rep - votes.dem) / totalTop) * 100;
+    let marginDiff = marginTarget - currentMargin;
+
+    // Adjust REP and DEM proportionally
+    votes.rep += totalTop * (marginDiff / 200);
+    votes.dem -= totalTop * (marginDiff / 200);
+  }
+
   let winner = "rep";
   if (votes.dem >= votes.rep && votes.dem >= votes.other) winner = "dem";
   if (votes.other >= votes.rep && votes.other >= votes.dem) winner = "other";
@@ -53,7 +79,10 @@ for (let state of Q.states) {
   else if (winner === "dem") color = "#4575b4";
   else if (winner === "other") color = "#66bd63";
   Q[state.toLowerCase() + "_winner_color"] = color;
-  console.log(state, Q[state+"_workers"], Q[state+"_workers_rep"], Q[state+"_workers_dem"], Q[state+"_workers_other"]);
+
+  let margin = votes.rep - votes.dem;
+  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem)) * 100).toFixed(2);
+  console.log(`${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, other=${votes.other.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`);
 }
 
 // Allocate EVs
@@ -72,6 +101,9 @@ Q.potus_winner =
   Q.demEVTotal >= Q.repEVTotal && Q.demEVTotal >= Q.otherEVTotal ? "dem" :
   Q.otherEVTotal >= Q.repEVTotal && Q.otherEVTotal >= Q.demEVTotal ? "other" :
   "rep";
+
+console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, OTHER=${Q.otherEVTotal}`);
+console.log(`POTUS winner: ${Q.potus_winner}`);
 !}
 
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
