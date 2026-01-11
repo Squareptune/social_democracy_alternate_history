@@ -119,7 +119,7 @@ on-arrival: VPCandidate = "Wilson"; radical_strength += 3; radical_dissent -= 2;
 
 Henry Wilson is chosen as Vice President. His Radical Republican credentials and ties to labor help solidify support among progressive voters, but worry moderates.
 
-@Wade
+@WadeVP
 view-if: Candidate != "Wade" and president != "Wade"
 choose-if: radical_strength >= 30;
 unavailable-subtitle: [? if radical_strength < 30: The Radicals lack the power to force Wade onto the ticket ?]
