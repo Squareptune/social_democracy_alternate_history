@@ -6,9 +6,9 @@ max-visits: 1
 
 = Republican National Convention
 
-It is time to choose our candidate for President in the 1868 election. Sadly, we do not have the greatness of Lincoln to carry us to victory again.
+It is time to choose our candidate for President in the 1868 election. The nation stands at a crossroads, still scarred by civil war and uncertain about the future of Reconstruction. Sadly, we no longer have the steady hand and moral authority of Abraham Lincoln to unite the country and carry us to victory once more. His absence looms large over this convention, and no successor can easily fill the role he left behind.
 
-But we still have multiple good options for President.
+Yet the cause is far from lost. The Republican Party remains strong, tested by war and tempered by responsibility, and within its ranks stand several capable men, each offering a different vision for how the Union should be preserved and rebuilt. Though none may match Lincoln’s singular greatness, each represents a path forward, and the choice we make now will shape not only the coming election, but the future of the nation itself.
 
 - @Grant: Ulysses S. Grant
 - @Wade: Benjamin Wade
@@ -40,22 +40,17 @@ on-arrival: {!
     Q.liberal_dissent += 2;
     Q.liberal_strength -= 2;
 !}
+go-to: VP
 
 Ulysses S. Grant is chosen as our candidate for President. His war record, humble beginnings, and willingness to support the Freedmen make him a strong choice for the party.
 
 @Wade
-subtitle: [? if president = "Johnson": We need to convince the Party with 2 resources ?][? if president = "Wade": Most of the party wants him to continue ?]
-choose-if: {!
-    if(Q.president == "Johnson") {
-        Q.resources >= 2;
-    }
-    Q.conservative_strength < 26;
-!}
+subtitle: We need to convince the Party with 2 resources [? if president = "Johnson": to continue his presidency?].
+choose-if: resources >= 2; conservative_strength < 26;
+
 unavailable-subtitle: [? if resources < 2: You're broke ?][? if conservative_strength >= 26: The Conservatives would never allow such a Radical candidate ?]
 on-arrival: {! 
-    if(Q.president == "Johnson"){
-        Q.resources -= 2; 
-    }
+    Q.resources -= 2; 
     Q.Candidate = "Wade";
     Q.freedmen_rep += 2;
     Q.rural_rep += 1;
@@ -70,6 +65,7 @@ on-arrival: {!
     Q.liberal_dissent += 3;
     Q.liberal_strength -= 3;
 !}
+go-to: VP
 
 Benjamin Wade is chosen as our candidate for President. [? if president == "Wade": He will continue his leadership, much to the dismay of the Conservatives ?][? if president == "Johnson": His Senate career and radical ideas may appeal to the party’s progressive base ?]
 
@@ -91,6 +87,7 @@ on-arrival: {!
     Q.conservative_dissent -= 2;
     Q.conservative_strength += 2;
 !}
+go-to: VP
 
 Salmon P. Chase is chosen as our candidate. He is supported by the Old Guard and the "Anti-Grant" faction, who fear nominating a military strongman. This choice upsets the Radicals, who resent Chase [? if president == "Johnson": as they believe his impartial handling of Andrew Johnson’s impeachment blocked their opportunity to "railroad" the President.?].
 
