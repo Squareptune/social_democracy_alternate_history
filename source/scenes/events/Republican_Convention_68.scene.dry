@@ -130,7 +130,7 @@ Benjamin Wade is chosen as Vice President. His leadership among Radical Republic
 @Fenton
 subtitle: Strategic Pick: -1 Resource
 choose-if: resources >= 1
-unavailable-subtitle: [? Not Enough Resources?]
+unavailable-subtitle: Not Enough Resources
 on-arrival: resources -= 1; VPCandidate = "Fenton"; moderate_strength += 1; NY_workers_rep += 1; NY_middle_class_rep += 1; NY_middle_class_rep += 2; NY_rural_rep += 1; NY_freemen_rep += 1; NY_immigrant_laborers_rep += 1; NY_unemployed_rep += 1;
 
 Benjamin Wade is chosen as Vice President. His leadership among Radical Republicans electrifies the party’s left wing, but deeply alarms moderates and conservatives.
