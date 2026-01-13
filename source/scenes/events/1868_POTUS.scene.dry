@@ -3,6 +3,14 @@ subtitle: test
 tags: event
 view-if: year = 1868 and month = 11
 max-visits: 1
+
+= Elections, [+ month +] [+ year +]
+
+The Presidential election are to be held now.
+
+- @POTUS_election_algorithm: May we do our best...
+
+@POTUS_election_algorithm
 on-arrival:{!
 // Reset EV totals
 Q.repEVTotal = 0;
@@ -23,6 +31,11 @@ let closeStates = {
   "AR": -7.37,
   "OH": 8.01
 };
+
+function randomNoise() {
+  const sign = Math.random() < 0.5 ? -1 : 1;
+  return sign * (Math.random() * 0.1 + 0.05); // between 1% and 5%
+}
 
 // Run election per state
 for (let state of Q.states) {
@@ -51,6 +64,12 @@ for (let state of Q.states) {
 
     let total = adj.rep + adj.dem + adj.other;
     if (!total) continue;
+
+    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
+    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
+    adj.other = Math.min(100, Math.max(0, adj.other * (1 + randomNoise())));
+
+    total = adj.rep + adj.dem + adj.other;
 
     votes.rep += pop * adj.rep / total;
     votes.dem += pop * adj.dem / total;
@@ -105,6 +124,9 @@ Q.potus_winner =
 console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, OTHER=${Q.otherEVTotal}`);
 console.log(`POTUS winner: ${Q.potus_winner}`);
 !}
+go-to: potus_menu
+
+= Presidential Election Results
 
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>hi, is this mod good?</title>
@@ -338,6 +360,48 @@ console.log(`POTUS winner: ${Q.potus_winner}`);
 <path class="va-wv" d="m 722.7,296.9 .7,.6 -.8,1.2 1.5,.7 .1,1.5 4.4,2.3 2.3,-.1 1.9,-1.8 .8,-1.7 3,1.8 5.5,-2.4 .5,-.9 -.8,-.5 .6,-1.4 1.5,1 4.3,-3.1 .7,1.1 2.3,-2 -.1,-1.4 1.5,-1.9 -1.5,-1.2 1,-3.3 3.7,-6.3 -.4,-1.9 2.1,-2.2 -.4,-1.5 1.4,-1.7 .1,-4.7 2.3,.7 1.3,1.9 2.8,.5 1.3,-1.6 2.3,-8.5 2.4,1.1 1,-2.5 .9,-.8 1.4,-1.8 .9,-.8 .5,-2.1 1.2,-.8 -.1,-2.9 .8,-2.3 -.9,-1.6 .2,-.9 10,5.2 .5,-2.3 .4,-1.6 .4,-.7"/>
 </g>
 
-
 </svg>!}
+
+{!<table>!}
+{!<tr><td>Party</td><td>Electoral votes</td></tr>!}
+
+{!<tr><td><div class="box" style="background-color:#E3000F; outline:2px solid;"></div> Republicans</td><td>[+ repEVTotal +] votes</td></tr>!}
+
+{!<tr><td><div class="box" style="background-color:#0015BC;"></div> Democrats</td><td>[+ demEVTotal +] votes</td></tr>!}
+
+{!<tr><td><div class="box" style="background-color:#a0a0a0;"></div> Others</td><td>[+ otherEVTotal +] votes</td></tr>!}
+
+{!</table>!}
+
+@potus_menu
+
+- @victory
+- @defeat_dem
+- @defeat_O
+
+@victory
+title: Republicans won the election!
+subtitle: Republicans: [+ repEVTotal +] votes
+view-if: potus_winner = "rep"
+on-arrival: president = Candidate; president_party = "rep";
+
+The Republicans have managed to get a majority of the electors in this election. [? if president == "Wade": The American people have signaled their mandate for Benjamin Wade to serve as President and work with congress?][? if president == "Grant": Grant's war career of saving the Union as made an impression on voters as the past has suggested. Hopefully he will lead us into a brighter future.?][? if president == "Chase": Chase somehow is elected president, the radical republicans despise him and this could lead to a crisis within the party. But the Moderates and Conservatives are cheering with this return to normalcy in the Executive Mansion ?]
+
+@defeat_dem
+title: Republicans lost?????
+subtitle: Democrats: [+ demEVTotal +] votes
+view-if: potus_winner = "dem"
+on-arrival: president = "Seymour"; president_party = "dem";
+
+Bruh, how the hell did you lose this election? I programmed it to make it basically **impossible** to lose this election!!!!
+
+@defeat_O
+title: Republicans lost?????
+subtitle: Other: [+ otherEVTotal +] votes
+view-if: potus_winner = "other"
+on-arrival: president = "???"; president_party = "???";
+
+Bruh, how the hell did you lose this election? I programmed it to make it basically **impossible** to lose this election!!!!
+
+**CHEATER!!!!!!!!!!!!!!**, I know that you entired the console.
 
