@@ -21,7 +21,7 @@ choose-if: {!
         Q.resources >= 2;
     }
 !}
-unavailable-subtitle: You're broke
+unavailable-subtitle: Not enough Resources
 on-arrival: {! 
     if(Q.president = "Wade"){
         Q.resources -= 2; 
@@ -45,9 +45,8 @@ go-to: VP
 Ulysses S. Grant is chosen as our candidate for President. His war record, humble beginnings, and willingness to support the Freedmen make him a strong choice for the party.
 
 @Wade
-subtitle: We need to convince the Party with 2 resources [? if president = "Johnson": to continue his presidency?].
-choose-if: resources >= 2; conservative_strength < 26;
-
+subtitle: We need to convince the Party with 2 resources [? if president = "Wade": to continue his presidency?].
+choose-if: resources >= 2 and conservative_strength < 26
 unavailable-subtitle: [? if resources < 2: You're broke ?][? if conservative_strength >= 26: The Conservatives would never allow such a Radical candidate ?]
 on-arrival: {! 
     Q.resources -= 2; 
