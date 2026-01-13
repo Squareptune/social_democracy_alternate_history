@@ -32,11 +32,6 @@ let closeStates = {
   "OH": 8.01
 };
 
-function randomNoise() {
-  const sign = Math.random() < 0.5 ? -1 : 1;
-  return sign * (Math.random() * 0.1 + 0.05); // between 1% and 5%
-}
-
 // Run election per state
 for (let state of Q.states) {
   let votes = { rep: 0, dem: 0, other: 0 };
@@ -65,9 +60,9 @@ for (let state of Q.states) {
     let total = adj.rep + adj.dem + adj.other;
     if (!total) continue;
 
-    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
-    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
-    adj.other = Math.min(100, Math.max(0, adj.other * (1 + randomNoise())));
+    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
+    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
+    adj.other = Math.min(100, Math.max(0, adj.other * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
 
     total = adj.rep + adj.dem + adj.other;
 
