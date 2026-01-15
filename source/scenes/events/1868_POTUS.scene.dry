@@ -360,11 +360,11 @@ go-to: potus_menu
 {!<table>!}
 {!<tr><td>Party</td><td>Electoral votes</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#E3000F; outline:2px solid;"></div> !}**Republicans**{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}**Republicans**{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#E3000F; outline:2px solid;"></div> !}Democrats{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}Democrats{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#E3000F; outline:2px solid;"></div> !}Other{!</td><td>!}[+ otherEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#66bd63; outline:2px solid;"></div> !}Other{!</td><td>!}[+ otherEVTotal +] votes{!</td></tr>!}
 
 {!</table>!}
 

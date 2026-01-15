@@ -16,15 +16,6 @@ Yet the cause is far from lost. The Republican Party remains strong, tested by w
 
 @Grant
 subtitle: [? if president = "Johnson": Grant is our default candidate ?][? if president = "Wade": We need to convince the Party with 2 resources ?]
-choose-if: {!
-    if(Q.president == "Wade") {
-        Q.resources >= 2;
-    }
-    else{
-        Q.resources >= 0;
-    }
-!}
-unavailable-subtitle: Not enough Resources
 on-arrival: {! 
     if(Q.president = "Wade"){
         Q.resources -= 2; 
