@@ -20,6 +20,9 @@ choose-if: {!
     if(Q.president == "Wade") {
         Q.resources >= 2;
     }
+    else{
+        Q.resources >= 0;
+    }
 !}
 unavailable-subtitle: Not enough Resources
 on-arrival: {! 
