@@ -1,5 +1,5 @@
-title: Prototype
-subtitle: test
+title: 1868 Presidential Election
+subtitle: [+ Candidate +] vs Seymour
 tags: event
 view-if: year = 1868 and month = 11
 max-visits: 1
@@ -15,88 +15,91 @@ on-arrival:{!
 // Reset EV totals
 Q.repEVTotal = 0;
 Q.demEVTotal = 0;
-Q.otherEVTotal = 0;
 
-// Define close states with target margin in percent (Republican margin = REP% - DEM%)
+// Define close states with target margin in percent (Republican margin)
 let closeStates = {
   "CA": 0.48,
-  "OR": -0.74, // negative means Democrat won
+  "OR": -0.74,
   "NY": 1.18,
   "NJ": 1.76,
-  "AL": -2.50, // negative means Democrat won
+  "AL": 2.50,
   "IN": 2.79,
   "CT": 2.98,
   "PA": 4.41,
-  "NC": -6.82,
-  "AR": -7.37,
+  "NC": 6.82,
+  "AR": 7.37,
   "OH": 8.01
 };
 
+function randomNoise() {
+  const sign = Math.random() < 0.5 ? -1 : 1;
+  return sign * (Math.random() * 0.1 + 0.05);
+}
+
 // Run election per state
 for (let state of Q.states) {
-  let votes = { rep: 0, dem: 0, other: 0 };
+  let votes = { rep: 0, dem: 0 };
 
   for (let cls of Q.classes) {
     let pop = Q[state + "_" + cls] || 0;
 
     let raw = {
       rep: Q[state + "_" + cls + "_rep"] || 0,
-      dem: Q[state + "_" + cls + "_dem"] || 0,
-      other: Q[state + "_" + cls + "_other"] || 0
+      dem: Q[state + "_" + cls + "_dem"] || 0
     };
 
     let mod = {
       rep: Q[cls + "_rep"] || 0,
-      dem: Q[cls + "_dem"] || 0,
-      other: Q[cls + "_other"] || 0
+      dem: Q[cls + "_dem"] || 0
     };
 
     let adj = {
       rep: 0.2 * raw.rep + 0.8 * mod.rep,
-      dem: 0.2 * raw.dem + 0.8 * mod.dem,
-      other: 0.2 * raw.other + 0.8 * mod.other
+      dem: 0.2 * raw.dem + 0.8 * mod.dem
     };
 
-    let total = adj.rep + adj.dem + adj.other;
+    let total = adj.rep + adj.dem;
     if (!total) continue;
 
-    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
-    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
-    adj.other = Math.min(100, Math.max(0, adj.other * (1 + (Math.random() < 0.5 ? -1 : Math.random() * 0.1 + 0.05))));
+    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
+    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
 
-    total = adj.rep + adj.dem + adj.other;
+    total = adj.rep + adj.dem;
 
     votes.rep += pop * adj.rep / total;
     votes.dem += pop * adj.dem / total;
-    votes.other += pop * adj.other / total;
   }
 
-  // Apply close state adjustment
+  // Apply close state adjustment with randomness
   if (closeStates[state] !== undefined) {
-    let marginTarget = closeStates[state]; // in percent
-    let totalTop = votes.rep + votes.dem;
-    let currentMargin = ((votes.rep - votes.dem) / totalTop) * 100;
+    let baseTarget = closeStates[state];
+    let randomJitter = (Math.random() * 0.6) - 0.3; // ±0.3%
+    let marginTarget = baseTarget + randomJitter;
+
+    let totalVotes = votes.rep + votes.dem;
+    let currentMargin = ((votes.rep - votes.dem) / totalVotes) * 100;
     let marginDiff = marginTarget - currentMargin;
 
-    // Adjust REP and DEM proportionally
-    votes.rep += totalTop * (marginDiff / 200);
-    votes.dem -= totalTop * (marginDiff / 200);
+    votes.rep += totalVotes * (marginDiff / 200);
+    votes.dem -= totalVotes * (marginDiff / 200);
+
+    // Clamp to prevent negatives
+    votes.rep = Math.max(0, votes.rep);
+    votes.dem = Math.max(0, votes.dem);
   }
 
-  let winner = "rep";
-  if (votes.dem >= votes.rep && votes.dem >= votes.other) winner = "dem";
-  if (votes.other >= votes.rep && votes.other >= votes.dem) winner = "other";
-
+  let winner = votes.rep >= votes.dem ? "rep" : "dem";
   Q[state + "_winner"] = winner;
-  let color = "#999999";
-  if (winner === "rep") color = "#d73027";
-  else if (winner === "dem") color = "#4575b4";
-  else if (winner === "other") color = "#66bd63";
+
+  let color = winner === "rep" ? "#d73027" : "#4575b4";
   Q[state.toLowerCase() + "_winner_color"] = color;
 
   let margin = votes.rep - votes.dem;
   let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem)) * 100).toFixed(2);
-  console.log(`${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, other=${votes.other.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`);
+
+  console.log(
+    `${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`
+  );
 }
 
 // Allocate EVs
@@ -106,18 +109,15 @@ for (let state of Q.states) {
 
   let w = Q[state + "_winner"];
   if (w === "rep") Q.repEVTotal += ev;
-  else if (w === "dem") Q.demEVTotal += ev;
-  else Q.otherEVTotal += ev;
+  else Q.demEVTotal += ev;
 }
 
 // POTUS winner
-Q.potus_winner =
-  Q.demEVTotal >= Q.repEVTotal && Q.demEVTotal >= Q.otherEVTotal ? "dem" :
-  Q.otherEVTotal >= Q.repEVTotal && Q.otherEVTotal >= Q.demEVTotal ? "other" :
-  "rep";
+Q.potus_winner = Q.demEVTotal >= Q.repEVTotal ? "dem" : "rep";
 
-console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, OTHER=${Q.otherEVTotal}`);
+console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}`);
 console.log(`POTUS winner: ${Q.potus_winner}`);
+
 !}
 go-to: potus_menu
 
