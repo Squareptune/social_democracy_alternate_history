@@ -10,6 +10,9 @@ for (let state of Q.states) {
   let otherVotes = 0;
 
   for (let cls of Q.classes) {
+    
+    if (cls === "freemen") continue;
+    
     let pop = Q[state + "_" + cls] || 0;
 
     let rep = Q[state + "_" + cls + "_rep"] || 0;
@@ -25,7 +28,7 @@ for (let state of Q.states) {
     let adjOther = 0.2 * other + 0.8 * otherMod;
 
     let totalAdj = adjRep + adjDem + adjOther;
-    if (totalAdj === 0) continue;
+    if (!totalAdj) continue;
 
     repVotes += pop * (adjRep / totalAdj);
     demVotes += pop * (adjDem / totalAdj);
@@ -33,11 +36,20 @@ for (let state of Q.states) {
   }
 
   if (repVotes > demVotes && repVotes > otherVotes) {
-    supportiveStates += 1;
+    supportiveStates++;
   }
+
+  console.log(
+    `${state}: REP=${repVotes.toFixed(0)}, DEM=${demVotes.toFixed(0)}, OTHER=${otherVotes.toFixed(0)}`
+  );
 }
 
-// Amendment passes if 3/4 of states support
-Q.amendmentResult = (supportiveStates >= Math.ceil(0.75 * totalStates)) ? 1 : 0;
+// 3/4 state threshold
+let requiredStates = Math.ceil(0.75 * totalStates);
+
+amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
+
+console.log(`Supportive states: ${supportiveStates}/${totalStates}`);
+console.log(`Amendment passes: ${amendmentPasses}`);
 
 !}

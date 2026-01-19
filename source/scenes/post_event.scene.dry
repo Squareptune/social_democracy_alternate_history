@@ -198,6 +198,56 @@ if (Q.dissent < 0) {
     Q.dissent = 0.95;
 }
 
+//Amendments 
+
+let supportiveStates = 0;
+let totalStates = Q.states.length;
+
+for (let state of Q.states) {
+  let repVotes = 0;
+  let demVotes = 0;
+  let otherVotes = 0;
+
+  for (let cls of Q.classes) {
+    
+    if (cls === "freemen" && Q.fortheen_A == 0) continue;
+    
+    let pop = Q[state + "_" + cls] || 0;
+
+    let rep = Q[state + "_" + cls + "_rep"] || 0;
+    let dem = Q[state + "_" + cls + "_dem"] || 0;
+    let other = Q[state + "_" + cls + "_other"] || 0;
+
+    let repMod = Q[cls + "_rep"] || 0;
+    let demMod = Q[cls + "_dem"] || 0;
+    let otherMod = Q[cls + "_other"] || 0;
+
+    let adjRep = 0.2 * rep + 0.8 * repMod;
+    let adjDem = 0.2 * dem + 0.8 * demMod;
+    let adjOther = 0.2 * other + 0.8 * otherMod;
+
+    let totalAdj = adjRep + adjDem + adjOther;
+    if (!totalAdj) continue;
+
+    repVotes += pop * (adjRep / totalAdj);
+    demVotes += pop * (adjDem / totalAdj);
+    otherVotes += pop * (adjOther / totalAdj);
+  }
+
+  if (repVotes > demVotes && repVotes > otherVotes) {
+    supportiveStates++;
+  }
+
+  console.log(
+    `${state}: REP=${repVotes.toFixed(0)}, DEM=${demVotes.toFixed(0)}, OTHER=${otherVotes.toFixed(0)}`
+  );
+}
+
+// 3/4 state threshold
+let requiredStates = Math.ceil(0.75 * totalStates);
+
+amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
+
 // 1. update dates
 if (Q.month_actions >= 1) {
     Q.time += 1;
