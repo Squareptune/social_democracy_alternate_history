@@ -41,7 +41,7 @@ on-arrival: {!
 
     for (let cls of Q.classes) {
 
-      if (cls === "freemen" && Q.fifthteen = 0){
+      if (cls === "freemen" && Q.fifthteen == 0){
         // skip freemen if 15th amendment not passed
       }
       else{
