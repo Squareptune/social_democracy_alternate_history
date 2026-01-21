@@ -41,6 +41,8 @@ for (let state of Q.states) {
   let votes = { rep: 0, dem: 0 };
 
   for (let cls of Q.classes) {
+
+    if (cls === "freemen" && Q.fifthteen = 0) continue;
     let pop = Q[state + "_" + cls] || 0;
 
     let raw = {

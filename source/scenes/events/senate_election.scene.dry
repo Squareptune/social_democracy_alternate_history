@@ -40,6 +40,8 @@ on-arrival: {!
     let otherVotes = 0;
 
     for (let cls of Q.classes) {
+
+      if (cls === "freemen" && Q.fifthteen = 0) continue;
       let pop = Q[state + "_" + cls] || 0;
 
       // Local support
