@@ -130,7 +130,6 @@ if (repPctHouse >= 75) {
     Q.house_majority = 0;
 }
 
-}
 !}
 on-display: {!
   function drawChart() {
