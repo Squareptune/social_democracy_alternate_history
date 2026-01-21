@@ -2,7 +2,7 @@ title: Constitutional Reform
 new-page: true
 is-card: true
 view-if: rep_majority = 1
-frequency: 25
+tags: cotus_affairs
 on-arrival: month_actions += 1; constitutional_reform_timer += 12; pass_threshold = 0.51; pass_threshold = 0.6 if pro_republic < 65;
 card-image: img/portraits/Thaddeus_Stevens.jpg
 go-to: reforms_menu
