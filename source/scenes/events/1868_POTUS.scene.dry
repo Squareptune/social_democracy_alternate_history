@@ -42,34 +42,38 @@ for (let state of Q.states) {
 
   for (let cls of Q.classes) {
 
-    if (cls === "freemen" && Q.fifthteen == 0) continue;
-    let pop = Q[state + "_" + cls] || 0;
+    if (cls === "freemen" && Q.fifthteen == 0){
+      // skip freemen if 15th amendment not passed
+    }
+    else{
+      let pop = Q[state + "_" + cls] || 0;
 
-    let raw = {
-      rep: Q[state + "_" + cls + "_rep"] || 0,
-      dem: Q[state + "_" + cls + "_dem"] || 0
-    };
+      let raw = {
+        rep: Q[state + "_" + cls + "_rep"] || 0,
+        dem: Q[state + "_" + cls + "_dem"] || 0
+      };
 
-    let mod = {
-      rep: Q[cls + "_rep"] || 0,
-      dem: Q[cls + "_dem"] || 0
-    };
+      let mod = {
+        rep: Q[cls + "_rep"] || 0,
+        dem: Q[cls + "_dem"] || 0
+      };
 
-    let adj = {
-      rep: 0.2 * raw.rep + 0.8 * mod.rep,
-      dem: 0.2 * raw.dem + 0.8 * mod.dem
-    };
+      let adj = {
+        rep: 0.2 * raw.rep + 0.8 * mod.rep,
+        dem: 0.2 * raw.dem + 0.8 * mod.dem
+      };
 
-    let total = adj.rep + adj.dem;
-    if (!total) continue;
+      let total = adj.rep + adj.dem;
+      if (!total) continue;
 
-    adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
-    adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
+      adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
+      adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
 
-    total = adj.rep + adj.dem;
+      total = adj.rep + adj.dem;
 
-    votes.rep += pop * adj.rep / total;
-    votes.dem += pop * adj.dem / total;
+      votes.rep += pop * adj.rep / total;
+      votes.dem += pop * adj.dem / total;
+    }
   }
 
   // Apply close state adjustment with randomness

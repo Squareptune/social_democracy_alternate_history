@@ -26,27 +26,31 @@ let otherVotes = 0;
 for (let state of Q.states) {
   for (let cls of Q.classes) {
 
-    if (cls === "freemen" && Q.fifthteen = 0) continue;
-    let pop = Q[state + "_" + cls] || 0;
+    if (cls === "freemen" && Q.fifthteen = 0){
+      // skip freemen if 15th amendment not passed
+    }
+    else{
+      let pop = Q[state + "_" + cls] || 0;
 
-    let rep = Q[state + "_" + cls + "_rep"] || 0;
-    let dem = Q[state + "_" + cls + "_dem"] || 0;
-    let other = Q[state + "_" + cls + "_other"] || 0;
+      let rep = Q[state + "_" + cls + "_rep"] || 0;
+      let dem = Q[state + "_" + cls + "_dem"] || 0;
+      let other = Q[state + "_" + cls + "_other"] || 0;
 
-    let repMod = Q[cls + "_rep"] || 0;
-    let demMod = Q[cls + "_dem"] || 0;
-    let otherMod = Q[cls + "_other"] || 0;
+      let repMod = Q[cls + "_rep"] || 0;
+      let demMod = Q[cls + "_dem"] || 0;
+      let otherMod = Q[cls + "_other"] || 0;
 
-    let adjRep = 0.2 * rep + 0.8 * repMod;
-    let adjDem = 0.2 * dem + 0.8 * demMod;
-    let adjOther = 0.2 * other + 0.8 * otherMod;
+      let adjRep = 0.2 * rep + 0.8 * repMod;
+      let adjDem = 0.2 * dem + 0.8 * demMod;
+      let adjOther = 0.2 * other + 0.8 * otherMod;
 
-    let totalPct = adjRep + adjDem + adjOther;
-    if (totalPct === 0) continue;
+      let totalPct = adjRep + adjDem + adjOther;
+      if (totalPct === 0) continue;
 
-    repVotes += pop * (adjRep / totalPct);
-    demVotes += pop * (adjDem / totalPct);
-    otherVotes += pop * (adjOther / totalPct);
+      repVotes += pop * (adjRep / totalPct);
+      demVotes += pop * (adjDem / totalPct);
+      otherVotes += pop * (adjOther / totalPct);
+      }
     }
 }
 
