@@ -493,14 +493,11 @@ if (Q.month_actions >= 1) {
     ////////////////////////// annual support changes
     }
 
-Q.has_event = 0;
-// check if there are any cards in #event, and then go to main if not.
-var scene = this.game.scenes['post_event.events_choice'];
+has_event = 0;
+var scene = this.game.scenes['events_choice'];
 var choices = this._compileChoices(scene);
-if (choices && choices[0].title != "Continue...") {
-    Q.has_event = 1;
-} else {
-    has_event = 0;
+if (choices && choices[0].title !== "Continue...") {
+    has_event = 1;
 }
 // pre-load all of the event images
 if (this.ui && this.ui.show_portraits) {
