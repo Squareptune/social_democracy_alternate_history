@@ -492,7 +492,7 @@ if (Q.month_actions >= 1) {
     Q.kkk_militancy = clamp(Q.kkk_militancy, 0.01, 1.5);
     ////////////////////////// annual support changes
     }
-}
+
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];
