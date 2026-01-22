@@ -49,7 +49,7 @@ choose-if: occupation >= 2 and judicial_reform >= 3 and Us_police_loyalty >= 0.7
 unavailable-subtitle: [? if occupation < 2: Federal occupation is required ?][? if judicial_reform < 3 : Courts won’t prosecute ?][? if Us_police_loyalty < 0.7 : Police are too disloyal ?]
 on-arrival: kkk_strength *= 0.6; kkk_militancy -= 0.05; Us_police_loyalty += 0.1; army_militancy += 0.1; dem_relation -= 4; rural_dem += 1
 
-We pursue and prosecute Klan leaders through federal courts, with backing from loyal law enforcement. White supremacist resistance weakens — for now.
+We pursue and prosecute Klan leaders through federal courts, with backing from loyal law enforcement. White supremacist resistance weakens for now.
 
 @reinstate_state_militias
 title: Reform Southern Republican State Militias.

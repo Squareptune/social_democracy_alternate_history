@@ -153,7 +153,7 @@ on-arrival: {!
   let totalSeats = Q.total_senate_seats || (Q.rep_senate_r + Q.dem_senate_r + Q.other_senate_r);
   let repPctSeats = (Q.rep_senate_r / totalSeats) * 100;
 
-  if (repPctSeats >= 75) {
+  if (repPctSeats >= 66.7) {
     Q.sen_majority = 3;
   } else if (repPctSeats >= 50) {
     Q.sen_majority = 2;

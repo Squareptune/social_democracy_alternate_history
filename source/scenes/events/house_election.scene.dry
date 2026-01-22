@@ -50,6 +50,9 @@ for (let state of Q.states) {
       repVotes += pop * (adjRep / totalPct);
       demVotes += pop * (adjDem / totalPct);
       otherVotes += pop * (adjOther / totalPct);
+      if (Q.fifteenth == 0) {
+        repVotes *= 1.0025;
+        }
       }
     }
 }
@@ -122,7 +125,7 @@ Q.house_election_records.push(result);
 let totalHouse = Q.total_house_seats || (Q.rep_r + Q.dem_r + Q.other_r);
 let repPctHouse = (Q.rep_r / totalHouse) * 100;
 
-if (repPctHouse >= 75) {
+if (repPctHouse >= 66.7) {
     Q.house_majority = 3;
 } else if (repPctHouse >= 50) {
     Q.house_majority = 2;
