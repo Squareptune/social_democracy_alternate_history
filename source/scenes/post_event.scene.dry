@@ -246,7 +246,8 @@ for (let state of Q.states) {
 // 3/4 state threshold
 let requiredStates = Math.ceil(0.75 * totalStates);
 
-amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
+
+Q.amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
 
 // 1. update dates
 if (Q.month_actions >= 1) {

@@ -10,6 +10,7 @@ tags: cotus_affairs, cabinet
 
 With Republican control of Congress, we can take a more assertive role in managing the Reconstruction of the South. Loyal officials and paramilitary forces can be empowered, hostile organizations suppressed, and the army deployed as needed.
 
+- @Reform
 - @expand_union_league
 - @reinstate_state_militias
 - @demobilize_state_militias
@@ -18,6 +19,15 @@ With Republican control of Congress, we can take a more assertive role in managi
 - @persecute_kkk
 - @easy_discard
 - @cancel_advisor_action
+
+@Reform
+title: Reform the Military Occupation Act of 1867
+view-if: occupation = 1
+choose-if: rep_majority = 1 and conservative_strength <= 35
+unavailable-subtitle: [? if rep_majority < 1: We don't control Congress to reform the Law ?][? if conservative_strength > 35: The Conservatives will block the law from being passed ?]
+on-arrival: occupation = 2
+
+We managed to reform the Military Occupation Act of 1867 to allow full military forces to be directed to the south to reinforce Reconstruction.
 
 @expand_union_league
 title: Expand the Union League
