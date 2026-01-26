@@ -135,8 +135,6 @@ Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immi
 
 Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
 
-Support for Reconstruction: [+ reconstruction_support +]%
-
 @cabinet
 
 = Cabinet
@@ -156,4 +154,30 @@ Secretary of Agriculture: [+ sect_agriculture +] ([+ sect_agriculture_party +])
 Postmaster General: [+ sect_postmaster +] ([+ sect_postmaster_party +])
 
 
+@reconstruction
 
+= Reconstruction
+
+Support for Reconstruction: [+ reconstruction_support +]%
+
+Reconstruction Level
+
+Virginia: [+ VA_reconstructionScore +]%
+
+North Carolina: [+ NC_reconstructionScore +]%
+
+South Carolina: [+ SC_reconstructionScore +]%
+
+Georgia: [+ GA_reconstructionScore +]%
+
+Alabama: [+ AL_reconstructionScore +]%
+
+Florida: [+ FL_reconstructionScore +]%
+
+Missisippi: [+ MS_reconstructionScore +]%
+
+Arkansas: [+ AK_reconstructionScore +]%
+
+Texas: [+ TX_reconstructionScore +]%
+
+Louisiana: [+ LA_reconstructionScore +]%

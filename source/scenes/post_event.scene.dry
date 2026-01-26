@@ -199,6 +199,15 @@ if (Q.dissent < 0) {
     Q.dissent = 0.95;
 }
 
+Q.Base_Support = 0.35 * Q.freemen_rep + 0.20 * Q.workers_rep + 0.20* Q.middle_class_rep + 0.15 * Q.immigrant_laborers_rep + 0.10 * Q.unemployed_rep;
+
+Q.ViolencePenalty = (kkk_strength * kkk_militancy * 0.4) + (whiteL_strength * whiteL_militancy * 0.6);
+
+Q.FatiguePenalty = min(Q.year - 1865, 10);
+
+Q.reconstruction_support = Q.Base_Support - Q.ViolencePenalty - Q.FatiguePenalty - min(Q.PoliticalCostPenalty * 0.25, 15);
+
+
 //Amendments 
 
 let supportiveStates = 0;
@@ -248,6 +257,81 @@ let requiredStates = Math.ceil(0.75 * totalStates);
 
 
 Q.amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
+
+for (let state of Q.southern_states) {
+
+  // --- Calculate white loyalty ---
+  let white_loyalty = 0;
+  let white_pop = 0;
+
+  for (let cls of Q.classes) {
+    if (cls === "freemen") continue;
+
+    let pop = Q[state + "_" + cls] || 0;
+    let repPct = (Q[state + "_" + cls + "_rep"] || 0) / 100;
+
+    white_loyalty += pop * repPct;
+    white_pop += pop;
+  }
+
+  if (white_pop > 0) {
+    white_loyalty = (white_loyalty / white_pop) * 100;
+  }
+
+  // --- Enforcement & resistance (GLOBAL variables) ---
+  let occupation = Q.occupation_level || 0;       // 0–2
+  let judicial = Q.judicial_reform || 0;           // grows slowly
+  let kkk = Q.kkk_strength || 0;                   // 0–100
+  let whiteL = Q.whiteL_strength || 0;             // 0–100
+  let unionLeague = Q.union_league_strength || 0;  // 0–100
+
+  // --- State loyalty ---
+  let state_loyalty =
+      white_loyalty
+    + (occupation * 10)
+    + judicial
+    - ((kkk + whiteL) * (1 - white_loyalty / 100));
+
+  state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
+  Q[state + "_loyalty"] = state_loyalty;
+
+  // --- Race equality support ---
+  let freedmen_rep = Q[state + "_freemen_rep"] || 0;
+
+  let raceEqualitySupport =
+      freedmen_rep
+    + (white_loyalty * 0.4)
+    + (unionLeague * 0.6)
+    + (occupation * 10)
+    - ((kkk + whiteL) * (1 - freedmen_rep / 100));
+
+  raceEqualitySupport = Math.max(0, Math.min(100, Math.round(raceEqualitySupport)));
+  Q[state + "_raceEqualitySupport"] = raceEqualitySupport;
+
+  // --- Reconstruction score ---
+  let score = 0;
+  let threshold = 0;
+
+  if (Q.Johnson_plan === 1) {
+    score = 0.9 * state_loyalty + 0.3 * white_loyalty;
+    threshold = 35;
+  }
+
+  if (Q.Moderate_plan === 1) {
+    score = 0.4 * white_loyalty + 0.4 * raceEqualitySupport + 0.4 * state_loyalty;
+    threshold = 70;
+  }
+
+  if (Q.Radical_plan === 1) {
+    score = 0.15 * white_loyalty + 0.7 * raceEqualitySupport + 0.7 * state_loyalty;
+    threshold = 90;
+  }
+
+  score = Math.round(score);
+  Q[state + "_reconstructionScore"] = score;
+  Q[state + "_canReadmit"] = score >= threshold;
+}
+
 
 // 1. update dates
 if (Q.month_actions >= 1) {

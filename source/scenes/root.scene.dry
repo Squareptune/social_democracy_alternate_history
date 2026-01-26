@@ -83,9 +83,13 @@ Q.dem_relation = 5;
 
 // The array of forces - paramilitary groups
 // Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
+
 Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
+Q.whiteL_strength = 0;
+Q.whiteL_militancy = 0;
+Q.whiteL_formed = 0;
+
 Q.state_militia_strength = 0
 Q.state_militia_formed = 0
 Q.civil_war = 1;
@@ -127,6 +131,30 @@ Q.economic_expansion = 0;
 
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
 Q.parties = ['rep', 'dem', 'other'];  // Republicans, Democrats, minor parties, vacant seats
+
+Q.southern_states = ['VA', 'NC', 'SC', 'GA', 'AL', 'FL', 'MS', 'AK', 'TX', 'LA'];
+
+Q.VA_reconstructionScore = 0;
+Q.NC_reconstructionScore = 0;
+Q.SC_reconstructionScore = 0;
+Q.GA_reconstructionScore = 0;
+Q.AL_reconstructionScore = 0;
+Q.FL_reconstructionScore = 0;
+Q.MS_reconstructionScore = 0;
+Q.AK_reconstructionScore = 0;
+Q.TX_reconstructionScore = 0;
+Q.LA_reconstructionScore = 0;
+
+Q.VA_canReadmit = 0;
+Q.NC_canReadmit = 0;
+Q.SC_canReadmit = 0;
+Q.GA_canReadmit = 0;
+Q.AL_canReadmit = 0;
+Q.FL_canReadmit = 0;
+Q.MS_canReadmit = 0;
+Q.AK_canReadmit = 0;
+Q.TX_canReadmit = 0;
+Q.LA_canReadmit = 0;
 
 // Current House composition
 
@@ -1350,6 +1378,126 @@ Q.SC_unemployed_rep = 15;
 Q.SC_unemployed_dem = 75;
 Q.SC_unemployed_other = 10;
 
+Q.TX_workers = 26772;
+Q.TX_workers_rep = 15;
+Q.TX_workers_dem = 75;
+Q.TX_workers_other = 10;
+
+Q.TX_middle_class = 23000;
+Q.TX_middle_class_rep = 10;
+Q.TX_middle_class_dem = 80;
+Q.TX_middle_class_other = 10;
+
+Q.TX_rural = 218411;
+Q.TX_rural_rep = 5;
+Q.TX_rural_dem = 90;
+Q.TX_rural_other = 5;
+
+Q.TX_freemen = 91460;
+Q.TX_freemen_rep = 80;
+Q.TX_freemen_dem = 10;
+Q.TX_freemen_other = 10;
+
+Q.TX_immigrant_laborers = 21711;
+Q.TX_immigrant_laborers_rep = 20;
+Q.TX_immigrant_laborers_dem = 70;
+Q.TX_immigrant_laborers_other = 10;
+
+Q.TX_unemployed = 36600;
+Q.TX_unemployed_rep = 15;
+Q.TX_unemployed_dem = 75;
+Q.TX_unemployed_other = 10;
+
+Q.MS_workers = 14187;
+Q.MS_workers_rep = 15;
+Q.MS_workers_dem = 75;
+Q.MS_workers_other = 10;
+
+Q.MS_middle_class = 9231;
+Q.MS_middle_class_rep = 10;
+Q.MS_middle_class_dem = 80;
+Q.MS_middle_class_other = 10;
+
+Q.MS_rural = 61581;
+Q.MS_rural_rep = 5;
+Q.MS_rural_dem = 90;
+Q.MS_rural_other = 5;
+
+Q.MS_freemen = 219673;
+Q.MS_freemen_rep = 80;
+Q.MS_freemen_dem = 10;
+Q.MS_freemen_other = 10;
+
+Q.MS_immigrant_laborers = 8558;
+Q.MS_immigrant_laborers_rep = 20;
+Q.MS_immigrant_laborers_dem = 70;
+Q.MS_immigrant_laborers_other = 10;
+
+Q.MS_unemployed = 93439;
+Q.MS_unemployed_rep = 15;
+Q.MS_unemployed_dem = 75;
+Q.MS_unemployed_other = 10;
+
+Q.VA_workers = 57598;
+Q.VA_workers_rep = 15;
+Q.VA_workers_dem = 75;
+Q.VA_workers_other = 10;
+
+Q.VA_middle_class = 9367;
+Q.VA_middle_class_rep = 10;
+Q.VA_middle_class_dem = 80;
+Q.VA_middle_class_other = 10;
+
+Q.VA_rural = 107447;
+Q.VA_rural_rep = 5;
+Q.VA_rural_dem = 90;
+Q.VA_rural_other = 5;
+
+Q.VA_freemen = 277235;
+Q.VA_freemen_rep = 80;
+Q.VA_freemen_dem = 10;
+Q.VA_freemen_other = 10;
+
+Q.VA_immigrant_laborers = 35058;
+Q.VA_immigrant_laborers_rep = 20;
+Q.VA_immigrant_laborers_dem = 70;
+Q.VA_immigrant_laborers_other = 10;
+
+Q.VA_unemployed = 33039;
+Q.VA_unemployed_rep = 15;
+Q.VA_unemployed_dem = 75;
+Q.VA_unemployed_other = 10;
+
+Q.GA_workers = 28974;
+Q.GA_workers_rep = 15;
+Q.GA_workers_dem = 75;
+Q.GA_workers_other = 10;
+
+Q.GA_middle_class = 12262;
+Q.GA_middle_class_rep = 10;
+Q.GA_middle_class_dem = 80;
+Q.GA_middle_class_other = 10;
+
+Q.GA_rural = 75964;
+Q.GA_rural_rep = 5;
+Q.GA_rural_dem = 90;
+Q.GA_rural_other = 5;
+
+Q.GA_freemen = 230862;
+Q.GA_freemen_rep = 80;
+Q.GA_freemen_dem = 10;
+Q.GA_freemen_other = 10;
+
+Q.GA_immigrant_laborers = 11671;
+Q.GA_immigrant_laborers_rep = 20;
+Q.GA_immigrant_laborers_dem = 70;
+Q.GA_immigrant_laborers_other = 10;
+
+Q.GA_unemployed = 206883;
+Q.GA_unemployed_rep = 15;
+Q.GA_unemployed_dem = 75;
+Q.GA_unemployed_other = 10;
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
@@ -1369,7 +1517,13 @@ Q.sen_majority = 3;
 Q.house_majority = 3;
 Q.rep_majority = 1;
 Q.freedmens_bureau_active = 0;
+
 Q.reconstruction_support = 75;
+Q.Base_Support = 0;
+Q.ViolencePenalty = 0;
+Q.FatiguePenalty = 0;
+Q.PoliticalCostPenalty = 0;
+
 Q.Candidate = "";
 Q.VPCandidate = "";
 
