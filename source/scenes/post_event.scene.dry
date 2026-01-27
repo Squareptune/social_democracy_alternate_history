@@ -279,11 +279,11 @@ for (let state of Q.southern_states) {
   }
 
   // --- Enforcement & resistance (GLOBAL variables) ---
-  let occupation = Q.occupation_level || 0;       // 0–2
-  let judicial = Q.judicial_reform || 0;           // grows slowly
+  let occupation = Q.occupation || 0;       // 0–2
+  let judicial = Q.judical_reform || 0;           // grows slowly
   let kkk = Q.kkk_strength || 0;                   // 0–100
   let whiteL = Q.whiteL_strength || 0;             // 0–100
-  let unionLeague = Q.union_league_strength || 0;  // 0–100
+  let unionLeague = Q.Union_League_strength || 0;  // 0–100
 
   // --- State loyalty ---
   let state_loyalty =
