@@ -201,7 +201,7 @@ if (Q.dissent < 0) {
 
 Q.Base_Support = 0.35 * Q.freemen_rep + 0.20 * Q.workers_rep + 0.20* Q.middle_class_rep + 0.15 * Q.immigrant_laborers_rep + 0.10 * Q.unemployed_rep;
 
-Q.ViolencePenalty = (kkk_strength * kkk_militancy * 0.4) + (whiteL_strength * whiteL_militancy * 0.6);
+Q.ViolencePenalty = (Q.kkk_strength * Q.kkk_militancy * 0.4) + (Q.whiteL_strength * Q.whiteL_militancy * 0.6);
 
 Q.FatiguePenalty = min(Q.year - 1865, 10);
 

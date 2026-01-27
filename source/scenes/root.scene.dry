@@ -67,8 +67,6 @@ Q.house_impeach_passed = 0
 Q.house_impeachment_total = 0
 Q.impeachment_unlocked = 0
 
-Q.kkk_urgency = 0;
-Q.radicalization = 0;
 Q.reconstruction_support  = 70;
 Q.Johnson_plan = 0;
 Q.Moderate_plan = 0;
@@ -84,7 +82,7 @@ Q.dem_relation = 5;
 // The array of forces - paramilitary groups
 // Number of members in 1928 (in thousands)
 
-Q.occupation = 1;
+Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
 Q.whiteL_strength = 0;
 Q.whiteL_militancy = 0;
