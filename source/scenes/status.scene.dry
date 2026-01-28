@@ -160,7 +160,9 @@ Postmaster General: [+ sect_postmaster +] ([+ sect_postmaster_party +])
 
 Support for Reconstruction: [+ reconstruction_support +]%
 
-Reconstruction Level
+Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate Plan ?][? if Radical_plan = 1: Radical Plan ?]
+
+= State Reconstruction Level
 
 Virginia: [+ VA_reconstructionScore +]%
 
