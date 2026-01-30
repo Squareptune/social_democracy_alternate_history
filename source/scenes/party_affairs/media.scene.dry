@@ -13,8 +13,7 @@ The Republican Party maintains a growing network of newspapers and loyal publica
 - @commercial
 - @campaign
 - @ideological
-- @freedmen_press
-- @northern_press
+- @Southern_press: Campaign in the South
 - @borderlands
 - @return: We will not focus on media matters for now.
 - @easy_discard
@@ -23,7 +22,7 @@ The Republican Party maintains a growing network of newspapers and loyal publica
 @commercial
 title: Commercialize the Republican press
 subtitle: We broaden our appeal, risking ideological clarity.
-on-arrival: resources += 1; europe_relations += 1; conservative_strength += 4; moderate_strength += 2; liberal_strength += 2; radical_dissent += 5; socialism_strength -= 1; middle_class_rep += 4; immigrant_laborers_rep += 3; rural_rep += 2; workers_rep += 1
+on-arrival: resources += 1; europe_relations += 1; conservative_strength += 4; moderate_strength += 2; liberal_strength += 2; radical_dissent += 5; middle_class_rep += 4; immigrant_laborers_rep += 3; rural_rep += 2; workers_rep += 1
 
 Our newspapers shift toward patriotic business owners and loyal moderates. The party brings in more funds, but radicals decry the dilution of our Reconstruction values.
 
@@ -41,29 +40,55 @@ on-arrival: radical_dissent -= 5; moderate_dissent -= 5; conservative_dissent -=
 
 We allow the party press to become a forum for ideas and factional debates. It risks some confusion in messaging, but tensions ease within the coalition.
 
-@freedmen_press
-title: Support Freedmen’s newspapers and editors
+@Southern_press
+go-to: Dixie
+
+@Dixie
+
+Using our media empire is eccential for reconstruction to counter the anti-freedmen and anti-reconstruction ideas in the south. But to which state will we target in this cycle?
+
+- @DeepSouth: Alabama, Mississippi, Georgia, Florida
+- @Carolinas: North and South Carolina
+- @MississippiValley: Louisiana and Arkansas 
+- @Texas: TEXAS
+
+@Texas
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; radical_strength += 3; socialism_strength += 2; europe_relations += 1; liberal_strength += 1; freemen_rep += 5; rural_rep -= 1; immigrant_laborers_rep -= 1
+on-arrival: resources -= 1; TX_middle_class_rep += 7; TX_rural_rep += 7; TX_immigrant_laborers_rep += 5; dem_relation -= 1;
 
-We invest in Black-led Republican papers across the South. These serve as vital tools for political education and uplift, even under threats of violence.
+We invested political capital and money into a sustained campaign across Texas. Republican speakers, Union League organizers, and federal officials worked to undermine reactionary narratives and promote Reconstruction policies. The effort strengthens loyal institutions, but fuels resentment among Southern Democrats.
 
-@northern_press
-title: Build up press networks in Northern cities
+@DeepSouth
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 3; liberal_strength += 2; conservative_strength += 1; europe_relations += 1; middle_class_rep += 4; workers_rep += 2; immigrant_laborers_rep += 2
+on-arrival: resources -= 1; AL_middle_class_rep += 3; AL_rural_rep += 3; MS_middle_class_rep += 3; MS_rural_rep += 3; GA_middle_class_rep += 3; GA_rural_rep += 3; FL_middle_class_rep += 3; FL_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2;
 
-Our Northern papers emphasize peace, prosperity, and the Union cause. This strategy appeals to middle-class voters, war veterans, and businessmen.
+Republican newspapers, Union League speakers, and federal allies coordinated a media and political push across the Deep South. While deeply hostile territory limits immediate gains, the effort strengthens loyal networks and challenges reactionary dominance at the cost of further inflaming Southern Democrats.
+
+@Carolinas
+subtitle: -1 resources
+choose-if: resources >= 1
+unavaiable-subtitle: Not enough resources.
+on-arrival: resources -= 1; NC_middle_class_rep += 4; NC_rural_rep += 3; SC_middle_class_rep += 3; SC_rural_rep += 2; Union_League_strength += 2; dem_relation -= 1;
+
+Republican organizers fanned out across the Carolinas, holding rallies, registering voters, and defending Reconstruction governments against Democratic obstruction.
+
+@MississippiValley
+subtitle: -1 resources
+choose-if: resources >= 1
+unavaiable-subtitle: Not enough resources.
+on-arrival: resources -= 1; LA_middle_class_rep += 4; LA_rural_rep += 2; AR_middle_class_rep += 3; AR_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2;
+
+Party agents mobilized freedmen and loyalists along the Mississippi, strengthening Union Leagues while provoking fierce resistance from Democratic machines.
 
 @borderlands
 title: Expand Republican messaging into border states
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 2; conservative_strength += 2; liberal_strength += 1; europe_relations += 1; radical_dissent += 3; rural_rep += 3; rural_dem -= 2; freemen_rep += 1
+on-arrival: resources -= 1; moderate_strength += 2; conservative_strength += 2; liberal_strength += 1; radical_dissent += 3; rural_rep += 3; rural_dem -= 2; freemen_rep += 1; KY_middle_class_rep += 3; KY_rural_rep += 3; MO_middle_class_rep += 3; MO_rural_rep += 3; TN_middle_class_rep += 3; MO_rural_rep += 3
 
 By promoting cautious moderation in Kentucky, Missouri, and Tennessee, we hope to appeal to loyal Unionists and former Whigs. But this comes at a cost with more radical party elements.

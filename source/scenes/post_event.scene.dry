@@ -341,6 +341,9 @@ if (Q.month_actions >= 1) {
     if (Q.month >= 13) {
         Q.month = 1;
         Q.year += 1;
+        if (Q.limit < 1){
+            Q.limit = 1;
+        }
         if (Q.historical_mode) {
             Q.resources += 2;
         }
