@@ -56,7 +56,7 @@ Using our media empire is eccential for reconstruction to counter the anti-freed
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; TX_middle_class_rep += 7; TX_rural_rep += 7; TX_immigrant_laborers_rep += 5; dem_relation -= 1;
+on-arrival: resources -= 1; TX_middle_class_rep += 7; TX_rural_rep += 7; TX_immigrant_laborers_rep += 5; dem_relation -= 1
 
 We invested political capital and money into a sustained campaign across Texas. Republican speakers, Union League organizers, and federal officials worked to undermine reactionary narratives and promote Reconstruction policies. The effort strengthens loyal institutions, but fuels resentment among Southern Democrats.
 
@@ -64,7 +64,7 @@ We invested political capital and money into a sustained campaign across Texas. 
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; AL_middle_class_rep += 3; AL_rural_rep += 3; MS_middle_class_rep += 3; MS_rural_rep += 3; GA_middle_class_rep += 3; GA_rural_rep += 3; FL_middle_class_rep += 3; FL_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2;
+on-arrival: resources -= 1; AL_middle_class_rep += 3; AL_rural_rep += 3; MS_middle_class_rep += 3; MS_rural_rep += 3; GA_middle_class_rep += 3; GA_rural_rep += 3; FL_middle_class_rep += 3; FL_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2
 
 Republican newspapers, Union League speakers, and federal allies coordinated a media and political push across the Deep South. While deeply hostile territory limits immediate gains, the effort strengthens loyal networks and challenges reactionary dominance at the cost of further inflaming Southern Democrats.
 
@@ -72,7 +72,7 @@ Republican newspapers, Union League speakers, and federal allies coordinated a m
 subtitle: -1 resources
 choose-if: resources >= 1
 unavaiable-subtitle: Not enough resources.
-on-arrival: resources -= 1; NC_middle_class_rep += 4; NC_rural_rep += 3; SC_middle_class_rep += 3; SC_rural_rep += 2; Union_League_strength += 2; dem_relation -= 1;
+on-arrival: resources -= 1; NC_middle_class_rep += 4; NC_rural_rep += 3; SC_middle_class_rep += 3; SC_rural_rep += 2; Union_League_strength += 2; dem_relation -= 1
 
 Republican organizers fanned out across the Carolinas, holding rallies, registering voters, and defending Reconstruction governments against Democratic obstruction.
 
@@ -80,7 +80,7 @@ Republican organizers fanned out across the Carolinas, holding rallies, register
 subtitle: -1 resources
 choose-if: resources >= 1
 unavaiable-subtitle: Not enough resources.
-on-arrival: resources -= 1; LA_middle_class_rep += 4; LA_rural_rep += 2; AR_middle_class_rep += 3; AR_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2;
+on-arrival: resources -= 1; LA_middle_class_rep += 4; LA_rural_rep += 2; AR_middle_class_rep += 3; AR_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2
 
 Party agents mobilized freedmen and loyalists along the Mississippi, strengthening Union Leagues while provoking fierce resistance from Democratic machines.
 
