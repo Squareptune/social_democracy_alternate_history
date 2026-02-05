@@ -1,17 +1,44 @@
-title: Southern States Rejoin the Union
+title: Southern State Readmitted
 subtitle: Congressional Reconstruction Advances
 tags: event
-view-if: year = 1868 and month = 7
-max-visits: 1
+view-if:
+    (VA_canReadmit = 1 && VA_admitted = 0) ||
+    (NC_canReadmit = 1 && NC_admitted = 0) ||
+    (SC_canReadmit = 1 && SC_admitted = 0) ||
+    (GA_canReadmit = 1 && GA_admitted = 0) ||
+    (AL_canReadmit = 1 && AL_admitted = 0) ||
+    (FL_canReadmit = 1 && FL_admitted = 0) ||
+    (MS_canReadmit = 1 && MS_admitted = 0) ||
+    (AK_canReadmit = 1 && AK_admitted = 0) ||
+    (TX_canReadmit = 1 && TX_admitted = 0) ||
+    (LA_canReadmit = 1 && LA_admitted = 0)
+max-visits: 999
 on-arrival: {!
-  Q.states.push("AL");
-  Q.states.push("AR");
-  Q.states.push("FL");
-  Q.states.push("LA");
-  Q.states.push("NC");
-  Q.states.push("SC");
+Q.readmitted_list = "";
+
+function admit(state) {
+    Q.states.push(state);
+    Q[state + "_admitted"] = 1;
+    if (Q.readmitted_list.length > 0) {
+        Q.readmitted_list += ", ";
+    }
+    Q.readmitted_list += state;
+}
+
+if (Q.VA_canReadmit === 1 && Q.VA_admitted === 0) admit("VA");
+if (Q.NC_canReadmit === 1 && Q.NC_admitted === 0) admit("NC");
+if (Q.SC_canReadmit === 1 && Q.SC_admitted === 0) admit("SC");
+if (Q.GA_canReadmit === 1 && Q.GA_admitted === 0) admit("GA");
+if (Q.AL_canReadmit === 1 && Q.AL_admitted === 0) admit("AL");
+if (Q.FL_canReadmit === 1 && Q.FL_admitted === 0) admit("FL");
+if (Q.MS_canReadmit === 1 && Q.MS_admitted === 0) admit("MS");
+if (Q.AK_canReadmit === 1 && Q.AK_admitted === 0) admit("AK");
+if (Q.TX_canReadmit === 1 && Q.TX_admitted === 0) admit("TX");
+if (Q.LA_canReadmit === 1 && Q.LA_admitted === 0) admit("LA");
 !}
 
-After years of military rule and political struggle, several former Confederate states are formally readmitted to the Union.
+After years of military rule and political struggle, the following states are formally readmitted to the Union:
 
-New Republican-led governments, backed by federal authority and the votes of newly enfranchised freedmen, take power across the South. While readmission marks a major victory for Congressional Reconstruction, resistance remains strong, and the future of these governments is far from secure.
+**{{readmitted_list}}**
+
+New governments, backed by federal authority and loyal voters, take their seats in Congress. While this marks a major victory for Reconstruction, resistance across the South remains fierce.

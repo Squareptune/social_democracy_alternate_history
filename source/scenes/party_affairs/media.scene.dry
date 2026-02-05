@@ -71,7 +71,7 @@ Republican newspapers, Union League speakers, and federal allies coordinated a m
 @Carolinas
 subtitle: -1 resources
 choose-if: resources >= 1
-unavaiable-subtitle: Not enough resources.
+unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; NC_middle_class_rep += 4; NC_rural_rep += 3; SC_middle_class_rep += 3; SC_rural_rep += 2; Union_League_strength += 2; dem_relation -= 1
 
 Republican organizers fanned out across the Carolinas, holding rallies, registering voters, and defending Reconstruction governments against Democratic obstruction.
@@ -79,7 +79,7 @@ Republican organizers fanned out across the Carolinas, holding rallies, register
 @MississippiValley
 subtitle: -1 resources
 choose-if: resources >= 1
-unavaiable-subtitle: Not enough resources.
+unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; LA_middle_class_rep += 4; LA_rural_rep += 2; AR_middle_class_rep += 3; AR_rural_rep += 3; Union_League_strength += 3; dem_relation -= 2
 
 Party agents mobilized freedmen and loyalists along the Mississippi, strengthening Union Leagues while provoking fierce resistance from Democratic machines.

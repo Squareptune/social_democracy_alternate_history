@@ -154,6 +154,17 @@ Q.AK_canReadmit = 0;
 Q.TX_canReadmit = 0;
 Q.LA_canReadmit = 0;
 
+Q.VA_admitted = 0;
+Q.NC_admitted = 0;
+Q.SC_admitted = 0;
+Q.GA_admitted = 0;
+Q.AL_admitted = 0;
+Q.FL_admitted = 0;
+Q.MS_admitted = 0;
+Q.AK_admitted = 0;
+Q.TX_admitted = 0;
+Q.LA_admitted = 0;
+
 // Current House composition
 
 Q.rep_r = 136;
