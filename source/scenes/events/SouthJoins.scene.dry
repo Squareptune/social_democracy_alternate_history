@@ -15,7 +15,7 @@ function admit(state) {
     Q.readmitted_list += state;
 }
 
-if (Q.VA_canReadmit === 1 && Q.VA_admitted === 0) {admit("VA");
+if (Q.VA_canReadmit === 1 && Q.VA_admitted === 0) admit("VA");
 if (Q.NC_canReadmit === 1 && Q.NC_admitted === 0) admit("NC");
 if (Q.SC_canReadmit === 1 && Q.SC_admitted === 0) admit("SC");
 if (Q.GA_canReadmit === 1 && Q.GA_admitted === 0) admit("GA");
