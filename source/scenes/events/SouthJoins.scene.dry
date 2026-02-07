@@ -1,34 +1,93 @@
 title: Southern State Readmitted
 subtitle: Congressional Reconstruction Advances
 tags: event
-view-if: (VA_canReadmit == 1 or VA_admitted == 0) or (NC_canReadmit == 1 or NC_admitted == 0) or (SC_canReadmit == 1 or SC_admitted == 0) or (GA_canReadmit == 1 or GA_admitted == 0) or (AL_canReadmit == 1 or AL_admitted == 0) or (FL_canReadmit == 1 or FL_admitted == 0) or (MS_canReadmit == 1 or MS_admitted == 0) or (AK_canReadmit == 1 or AK_admitted == 0) or (TX_canReadmit == 1 or TX_admitted == 0) or (LA_canReadmit == 1 or LA_admitted == 0)
-max-visits: 999
+view-if: (VA_canReadmit == 1 and VA_admitted == 0) or (NC_canReadmit == 1 and NC_admitted == 0) or (SC_canReadmit == 1 and SC_admitted == 0) or (GA_canReadmit == 1 and GA_admitted == 0) or (AL_canReadmit == 1 and AL_admitted == 0) or (FL_canReadmit == 1 and FL_admitted == 0) or (MS_canReadmit == 1 and MS_admitted == 0) or (AK_canReadmit == 1 and AK_admitted == 0) or (TX_canReadmit == 1 and TX_admitted == 0) or (LA_canReadmit == 1 and LA_admitted == 0)
 on-arrival: {!
 Q.readmitted_list = "";
 
-function admit(state) {
-    Q.states.push(state);
-    Q[state + "_admitted"] = 1;
-    if (Q.readmitted_list.length > 0) {
-        Q.readmitted_list += ", ";
-    }
-    Q.readmitted_list += state;
+// Virginia
+if (Q.VA_canReadmit === 1 && Q.VA_admitted === 0) {
+    Q.states.push("VA");
+    Q.VA_admitted = 1;
+    Q.readmitted_list += "Virginia";
 }
 
-if (Q.VA_canReadmit === 1 && Q.VA_admitted === 0) admit("VA");
-if (Q.NC_canReadmit === 1 && Q.NC_admitted === 0) admit("NC");
-if (Q.SC_canReadmit === 1 && Q.SC_admitted === 0) admit("SC");
-if (Q.GA_canReadmit === 1 && Q.GA_admitted === 0) admit("GA");
-if (Q.AL_canReadmit === 1 && Q.AL_admitted === 0) admit("AL");
-if (Q.FL_canReadmit === 1 && Q.FL_admitted === 0) admit("FL");
-if (Q.MS_canReadmit === 1 && Q.MS_admitted === 0) admit("MS");
-if (Q.AK_canReadmit === 1 && Q.AK_admitted === 0) admit("AK");
-if (Q.TX_canReadmit === 1 && Q.TX_admitted === 0) admit("TX");
-if (Q.LA_canReadmit === 1 && Q.LA_admitted === 0) admit("LA");
+// North Carolina
+if (Q.NC_canReadmit === 1 && Q.NC_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("NC");
+    Q.NC_admitted = 1;
+    Q.readmitted_list += "North Carolina";
+}
+
+// South Carolina
+if (Q.SC_canReadmit === 1 && Q.SC_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("SC");
+    Q.SC_admitted = 1;
+    Q.readmitted_list += "South Carolina";
+}
+
+// Georgia
+if (Q.GA_canReadmit === 1 && Q.GA_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("GA");
+    Q.GA_admitted = 1;
+    Q.readmitted_list += "Georgia";
+}
+
+// Alabama
+if (Q.AL_canReadmit === 1 && Q.AL_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("AL");
+    Q.AL_admitted = 1;
+    Q.readmitted_list += "Alabama";
+}
+
+// Florida
+if (Q.FL_canReadmit === 1 && Q.FL_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("FL");
+    Q.FL_admitted = 1;
+    Q.readmitted_list += "Florida";
+}
+
+// Mississippi
+if (Q.MS_canReadmit === 1 && Q.MS_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("MS");
+    Q.MS_admitted = 1;
+    Q.readmitted_list += "Mississippi";
+}
+
+// Arkansas
+if (Q.AK_canReadmit === 1 && Q.AK_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("AK");
+    Q.AK_admitted = 1;
+    Q.readmitted_list += "Arkansas";
+}
+
+// Texas
+if (Q.TX_canReadmit === 1 && Q.TX_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("TX");
+    Q.TX_admitted = 1;
+    Q.readmitted_list += "Texas";
+}
+
+// Louisiana
+if (Q.LA_canReadmit === 1 && Q.LA_admitted === 0) {
+    if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
+    Q.states.push("LA");
+    Q.LA_admitted = 1;
+    Q.readmitted_list += "Louisiana";
+}
+
 !}
 
 After years of military rule and political struggle, the following states are formally readmitted to the Union:
 
-**{{readmitted_list}}**
+[+ readmitted_list +]
 
 New governments, backed by federal authority and loyal voters, take their seats in Congress. While this marks a major victory for Reconstruction, resistance across the South remains fierce.

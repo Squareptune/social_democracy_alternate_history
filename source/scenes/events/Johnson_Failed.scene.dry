@@ -1,4 +1,4 @@
-title: Redemmers back in Control
+title: Redeemer back in Control
 subtitle: JOHNSON!!!!!!!!!!!!!!
 on-arrival: radical_strength += 1; moderate_strength -= 1; conservative_strength -= 2; liberal_strength -= 2;
 tags: event

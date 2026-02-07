@@ -6,10 +6,32 @@ Q.last_cabinet_action = 0;
 
 // Clamp out of bound class-party values
 for (let c of Q.classes) {
+
+    // Step 1: clamp each party
     for (let party of Q.parties) {
         if (Q[c + '_' + party] < 0) Q[c + '_' + party] = 0;
         if (Q[c + '_' + party] > 100) Q[c + '_' + party] = 100;
     }
+
+    // Step 2: calculate total
+    let total =
+        Q[c + '_rep'] +
+        Q[c + '_dem'] +
+        Q[c + '_other'];
+
+    // Step 3: scale down if over 100
+    if (total > 100) {
+        let scale = 100 / total;
+
+        Q[c + '_rep'] *= scale;
+        Q[c + '_dem'] *= scale;
+        Q[c + '_other'] *= scale;
+    }
+
+    // Optional: round to whole numbers
+    Q[c + '_rep'] = Math.round(Q[c + '_rep']);
+    Q[c + '_dem'] = Math.round(Q[c + '_dem']);
+    Q[c + '_other'] = Math.round(Q[c + '_other']);
 }
 
 // Clamp pro_republic
