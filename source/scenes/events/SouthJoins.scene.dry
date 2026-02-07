@@ -1,17 +1,7 @@
 title: Southern State Readmitted
 subtitle: Congressional Reconstruction Advances
 tags: event
-view-if:
-    (VA_canReadmit = 1 && VA_admitted = 0) ||
-    (NC_canReadmit = 1 && NC_admitted = 0) ||
-    (SC_canReadmit = 1 && SC_admitted = 0) ||
-    (GA_canReadmit = 1 && GA_admitted = 0) ||
-    (AL_canReadmit = 1 && AL_admitted = 0) ||
-    (FL_canReadmit = 1 && FL_admitted = 0) ||
-    (MS_canReadmit = 1 && MS_admitted = 0) ||
-    (AK_canReadmit = 1 && AK_admitted = 0) ||
-    (TX_canReadmit = 1 && TX_admitted = 0) ||
-    (LA_canReadmit = 1 && LA_admitted = 0)
+view-if: (VA_canReadmit == 1 && VA_admitted == 0) || (NC_canReadmit == 1 && NC_admitted == 0) || (SC_canReadmit == 1 && SC_admitted == 0) || (GA_canReadmit == 1 && GA_admitted == 0) || (AL_canReadmit == 1 && AL_admitted == 0) || (FL_canReadmit == 1 && FL_admitted == 0) || (MS_canReadmit == 1 && MS_admitted == 0) || (AK_canReadmit == 1 && AK_admitted == 0) || (TX_canReadmit == 1 && TX_admitted == 0) || (LA_canReadmit == 1 && LA_admitted == 0)
 max-visits: 999
 on-arrival: {!
 Q.readmitted_list = "";
