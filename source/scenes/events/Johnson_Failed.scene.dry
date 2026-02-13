@@ -18,14 +18,14 @@ Faced with this reactionary resurgence, Congressional Republicans are now forced
 @full_plan
 choose-if: radical_strength >= 35
 unavailable-subtitle: [? if radical_strength < 35: Most of our party don't support such radical ideas ?]
-on-arrival: veto += 1; veto_reason = "Military Reconstruction Act"; occupation = 2; radical_strength += 4; moderate_strength += 2; freedmen_rep += 2; rural_rep -= 1; kkk_strength += 5; kkk_militancy += 0.2
+on-arrival: Radical_plan = 1; Johnson_plan = 0; veto += 1; veto_reason = "Military Reconstruction Act"; occupation = 2; radical_strength += 4; moderate_strength += 2; freedmen_rep += 2; rural_rep -= 1; kkk_strength += 5; kkk_militancy += 0.2
 
 Congress passes the **Military Reconstruction Act** of 1867. The South is divided into five military districts under Union command. Confederate officials are removed, and new governments must guarantee Black suffrage.  
 
 Radical Republicans celebrate. But resistance mounts. The Klan stirs in the shadows.
 
 @limited_plan
-on-arrival: occupation = 1; radical_strength -= 4;  moderate_strength += 2; freedmen_rep += 1; rural_rep += 1; conservative_strength += 1; liberal_strength +=1; kkk_strength += 3; kkk_militancy += 0.1
+on-arrival: Johnson_plan = 0; Moderate_plan = 1; occupation = 1; radical_strength -= 4;  moderate_strength += 2; freedmen_rep += 1; rural_rep += 1; conservative_strength += 1; liberal_strength +=1; kkk_strength += 3; kkk_militancy += 0.1
 
 Congress compromises on a **moderate Reconstruction plan**: military governors oversee Southern elections, but states retain some autonomy.  
 

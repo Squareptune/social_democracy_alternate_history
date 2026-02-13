@@ -302,17 +302,24 @@ for (let state of Q.southern_states) {
 
   // --- Enforcement & resistance (GLOBAL variables) ---
   let occupation = Q.occupation || 0;       // 0–2
-  let judicial = Q.judical_reform || 0;           // grows slowly
-  let kkk = Q.kkk_strength || 0;                   // 0–100
-  let whiteL = Q.whiteL_strength || 0;             // 0–100
-  let unionLeague = Q.Union_League_strength || 0;  // 0–100
+  let judicial = Q.judical_reform || 0;     // grows slowly
+  let kkk = Q.kkk_strength || 0;            // 0–100
+  let whiteL = Q.whiteL_strength || 0;      // 0–100
+  let unionLeague = Q.Union_League_strength || 0; // 0–100
+
+  // --- Resistance Suppression Logic ---
+  // The Clan is more effective where white loyalty is low; 
+  // occupation helps mitigate this "fear factor."
+  let resistance = (kkk + whiteL) / 2;
+  let suppression_modifier = Math.max(0, resistance * (1 - (white_loyalty / 100)) - (occupation * 5));
 
   // --- State loyalty ---
+  // Now factored to be more sensitive to judicial reform and occupation
   let state_loyalty =
       white_loyalty
-    + (occupation * 10)
-    + judicial
-    - ((kkk + whiteL) * (1 - white_loyalty / 100));
+    + (occupation * 8)
+    + (judicial * 1.2) 
+    - (resistance * 0.25);
 
   state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
   Q[state + "_loyalty"] = state_loyalty;
@@ -320,12 +327,13 @@ for (let state of Q.southern_states) {
   // --- Race equality support ---
   let freedmen_rep = Q[state + "_freemen_rep"] || 0;
 
+  // Union League acts as a force multiplier for freedmen mobilization
   let raceEqualitySupport =
-      freedmen_rep
-    + (white_loyalty * 0.4)
-    + (unionLeague * 0.6)
+      (freedmen_rep * 0.5)
+    + (white_loyalty * 0.2)
+    + (unionLeague * 0.5) 
     + (occupation * 10)
-    - ((kkk + whiteL) * (1 - freedmen_rep / 100));
+    - suppression_modifier;
 
   raceEqualitySupport = Math.max(0, Math.min(100, Math.round(raceEqualitySupport)));
   Q[state + "_raceEqualitySupport"] = raceEqualitySupport;
@@ -334,26 +342,29 @@ for (let state of Q.southern_states) {
   let score = 0;
   let threshold = 0;
 
+  // Johnson: Focused almost entirely on white conservative loyalty
   if (Q.Johnson_plan === 1) {
-    score = 0.2 * state_loyalty + 0.3 * white_loyalty;
-    threshold = 10;
+    score = (state_loyalty * 0.7) + (white_loyalty * 0.3);
+    threshold = 25;
   }
 
+  // Moderate: Seeks a "Peaceful Middle" — penalizes a high gap between white and black support
   if (Q.Moderate_plan === 1) {
-    score = 0.4 * white_loyalty + 0.1 * raceEqualitySupport + 0.4 * state_loyalty;
-    threshold = 30;
+    let stability_gap = Math.abs(white_loyalty - raceEqualitySupport) * 0.2;
+    score = (white_loyalty * 0.35) + (raceEqualitySupport * 0.35) + (state_loyalty * 0.3) - stability_gap;
+    threshold = 45;
   }
 
+  // Radical: Heavy focus on equality and military-backed loyalty
   if (Q.Radical_plan === 1) {
-    score = 0.15 * white_loyalty + 0.25 * raceEqualitySupport + 0.5 * state_loyalty;
-    threshold = 50;
+    score = (white_loyalty * 0.1) + (raceEqualitySupport * 0.5) + (state_loyalty * 0.4);
+    threshold = 65;
   }
 
-  score = Math.round(score);
+  score = Math.max(0, Math.round(score));
   Q[state + "_reconstructionScore"] = score;
   Q[state + "_canReadmit"] = score >= threshold;
 }
-
 
 // 1. update dates
 if (Q.month_actions >= 1) {

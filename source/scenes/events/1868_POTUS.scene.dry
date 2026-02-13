@@ -20,8 +20,8 @@ Q.demEVTotal = 0;
 let closeStates = {
   "CA": 0.48,
   "OR": -0.74,
-  "NY": 1.18,
-  "NJ": 1.76,
+  "NY": -1.18,
+  "NJ": -1.76,
   "AL": 2.50,
   "IN": 2.79,
   "CT": 2.98,
