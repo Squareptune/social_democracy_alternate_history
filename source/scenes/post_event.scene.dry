@@ -335,18 +335,18 @@ for (let state of Q.southern_states) {
   let threshold = 0;
 
   if (Q.Johnson_plan === 1) {
-    score = 0.9 * state_loyalty + 0.3 * white_loyalty;
-    threshold = 35;
+    score = 0.2 * state_loyalty + 0.3 * white_loyalty;
+    threshold = 10;
   }
 
   if (Q.Moderate_plan === 1) {
-    score = 0.4 * white_loyalty + 0.4 * raceEqualitySupport + 0.4 * state_loyalty;
-    threshold = 70;
+    score = 0.4 * white_loyalty + 0.1 * raceEqualitySupport + 0.4 * state_loyalty;
+    threshold = 30;
   }
 
   if (Q.Radical_plan === 1) {
-    score = 0.15 * white_loyalty + 0.7 * raceEqualitySupport + 0.7 * state_loyalty;
-    threshold = 90;
+    score = 0.15 * white_loyalty + 0.25 * raceEqualitySupport + 0.5 * state_loyalty;
+    threshold = 50;
   }
 
   score = Math.round(score);
