@@ -308,13 +308,10 @@ for (let state of Q.southern_states) {
   let unionLeague = Q.Union_League_strength || 0; // 0–100
 
   // --- Resistance Suppression Logic ---
-  // The Clan is more effective where white loyalty is low; 
-  // occupation helps mitigate this "fear factor."
   let resistance = (kkk + whiteL) / 2;
   let suppression_modifier = Math.max(0, resistance * (1 - (white_loyalty / 100)) - (occupation * 5));
 
   // --- State loyalty ---
-  // Now factored to be more sensitive to judicial reform and occupation
   let state_loyalty =
       white_loyalty
     + (occupation * 8)
@@ -327,7 +324,6 @@ for (let state of Q.southern_states) {
   // --- Race equality support ---
   let freedmen_rep = Q[state + "_freemen_rep"] || 0;
 
-  // Union League acts as a force multiplier for freedmen mobilization
   let raceEqualitySupport =
       (freedmen_rep * 0.5)
     + (white_loyalty * 0.2)
@@ -341,29 +337,37 @@ for (let state of Q.southern_states) {
   // --- Reconstruction score ---
   let score = 0;
   let threshold = 0;
+  let planName = "";
 
-  // Johnson: Focused almost entirely on white conservative loyalty
   if (Q.Johnson_plan === 1) {
     score = (state_loyalty * 0.7) + (white_loyalty * 0.3);
     threshold = 25;
-  }
-
-  // Moderate: Seeks a "Peaceful Middle" — penalizes a high gap between white and black support
-  if (Q.Moderate_plan === 1) {
+    planName = "Johnson";
+  } else if (Q.Moderate_plan === 1) {
     let stability_gap = Math.abs(white_loyalty - raceEqualitySupport) * 0.2;
     score = (white_loyalty * 0.35) + (raceEqualitySupport * 0.35) + (state_loyalty * 0.3) - stability_gap;
     threshold = 45;
-  }
-
-  // Radical: Heavy focus on equality and military-backed loyalty
-  if (Q.Radical_plan === 1) {
+    planName = "Moderate";
+  } else if (Q.Radical_plan === 1) {
     score = (white_loyalty * 0.1) + (raceEqualitySupport * 0.5) + (state_loyalty * 0.4);
     threshold = 65;
+    planName = "Radical";
   }
 
   score = Math.max(0, Math.round(score));
   Q[state + "_reconstructionScore"] = score;
   Q[state + "_canReadmit"] = score >= threshold;
+
+  // --- Percent relative to plan difficulty ---
+  Q[state + "_percentOfThreshold"] = Math.min(100, Math.round((score / threshold) * 100));
+  Q[state + "_planName"] = planName;
+
+  // --- Optional: print important info per state ---
+  console.log(`${state} (${planName} Plan)`);
+  console.log("Reconstruction Score:", score);
+  console.log("Percent of Plan Threshold:", Q[state + "_percentOfThreshold"] + "%");
+  console.log("Eligible for Readmission:", Q[state + "_canReadmit"] ? "YES" : "NO");
+  console.log("-------------------------");
 }
 
 // 1. update dates
