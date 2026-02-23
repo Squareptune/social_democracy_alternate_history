@@ -309,13 +309,13 @@ for (let state of Q.southern_states) {
 
   // --- Resistance Suppression Logic ---
   let resistance = (kkk + whiteL) / 2;
-  let suppression_modifier = Math.max(0, resistance * (1 - (white_loyalty / 100)) - (occupation * 5));
+  let suppression_modifier = Math.max(0, resistance * (1 - (white_loyalty / 100)));
 
   // --- State loyalty ---
   let state_loyalty =
       white_loyalty
-    + (occupation * 8)
-    + (judicial * 1.2) 
+    + (occupation * 5)
+    + (judicial) 
     - (resistance * 0.25);
 
   state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
@@ -326,9 +326,8 @@ for (let state of Q.southern_states) {
 
   let raceEqualitySupport =
       (freedmen_rep * 0.5)
-    + (white_loyalty * 0.2)
-    + (unionLeague * 0.5) 
-    + (occupation * 10)
+    + (Union_League_strength * 0.5)
+    + (occupation * 8)
     - suppression_modifier;
 
   raceEqualitySupport = Math.max(0, Math.min(100, Math.round(raceEqualitySupport)));

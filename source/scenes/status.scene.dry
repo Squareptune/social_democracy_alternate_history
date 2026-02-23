@@ -164,22 +164,42 @@ Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate
 
 = State Reconstruction Level
 
-Virginia: [+ VA_reconstructionScore +]%
+Virginia: 
+Reconstruction Score: [+ VA_reconstructionScore +]%
+Readmission Score: [+ VA_percentOfThreshold +]
 
-North Carolina: [+ NC_reconstructionScore +]%
+North Carolina: 
+Reconstruction Score: [+ NC_reconstructionScore +]%
+Readmission Score: [+ NC_percentOfThreshold +]
 
-South Carolina: [+ SC_reconstructionScore +]%
+South Carolina:
+Reconstruction Score: [+ SC_reconstructionScore +]%
+Readmission Score: [+ SC_percentOfThreshold +]
 
-Georgia: [+ GA_reconstructionScore +]%
+Georgia:
+Reconstruction Score: [+ GA_reconstructionScore +]%
+Readmission Score: [+ GA_percentOfThreshold +]
 
-Alabama: [+ AL_reconstructionScore +]%
+Alabama:
+Reconstruction Score: [+ AL_reconstructionScore +]%
+Readmission Score: [+ AL_percentOfThreshold +]
 
-Florida: [+ FL_reconstructionScore +]%
+Florida:
+Reconstruction Score: [+ FL_reconstructionScore +]%
+Readmission Score: [+ FL_percentOfThreshold +]
 
-Missisippi: [+ MS_reconstructionScore +]%
+Missisippi:
+Reconstruction Score: [+ MS_reconstructionScore +]%
+Readmission Score: [+ MS_percentOfThreshold +]
 
-Arkansas: [+ AK_reconstructionScore +]%
+Arkansas:
+Reconstruction Score: [+ AK_reconstructionScore +]%
+Readmission Score: [+ AK_percentOfThreshold +]
 
-Texas: [+ TX_reconstructionScore +]%
+Texas:
+Reconstruction Score: [+ TX_reconstructionScore +]%
+Readmission Score: [+ TX_percentOfThreshold +]
 
-Louisiana: [+ LA_reconstructionScore +]%
+Louisiana:
+Reconstruction Score: [+ LA_reconstructionScore +]%
+Readmission Score: [+ LA_percentOfThreshold +]
