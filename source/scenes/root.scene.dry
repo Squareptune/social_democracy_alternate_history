@@ -1532,6 +1532,7 @@ Q.Base_Support = 0;
 Q.ViolencePenalty = 0;
 Q.FatiguePenalty = 0;
 Q.PoliticalCostPenalty = 0;
+Q.reconstructionPlanActive = 0
 
 Q.Candidate = "";
 Q.VPCandidate = "";

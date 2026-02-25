@@ -3,7 +3,7 @@ subtitle: Johnson's new plan?
 tags: event
 view-if: year = 1865 and month = 5
 max-visits: 1
-on-arrival: Johnson_plan = 1; radical_dissent += 2; conservative_strength += 1
+on-arrival: Johnson_plan = 1; radical_dissent += 2; conservative_strength += 1; reconstructionPlanActive = 1;
 
 = Presidential Reconstruction
 

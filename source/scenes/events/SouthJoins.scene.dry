@@ -1,7 +1,7 @@
 title: Southern State Readmitted
 subtitle: Congressional Reconstruction Advances
 tags: event
-view-if: (VA_canReadmit = 1 and VA_admitted = 0) or (NC_canReadmit = 1 and NC_admitted = 0) or (SC_canReadmit = 1 and SC_admitted = 0) or (GA_canReadmit = 1 and GA_admitted = 0) or (AL_canReadmit = 1 and AL_admitted = 0) or (FL_canReadmit = 1 and FL_admitted = 0) or (MS_canReadmit = 1 and MS_admitted = 0) or (AK_canReadmit = 1 and AK_admitted = 0) or (TX_canReadmit = 1 and TX_admitted = 0) or (LA_canReadmit = 1 and LA_admitted = 0)
+view-if: reconstructionPlanActive = 1 and ((VA_canReadmit = 1 and VA_admitted = 0) or (NC_canReadmit = 1 and NC_admitted = 0) or (SC_canReadmit = 1 and SC_admitted = 0) or (GA_canReadmit = 1 and GA_admitted = 0) or (AL_canReadmit = 1 and AL_admitted = 0) or (FL_canReadmit = 1 and FL_admitted = 0) or (MS_canReadmit = 1 and MS_admitted = 0) or (AK_canReadmit = 1 and AK_admitted = 0) or (TX_canReadmit = 1 and TX_admitted = 0) or (LA_canReadmit = 1 and LA_admitted = 0))
 on-arrival: {!
 Q.readmitted_list = "";
 
