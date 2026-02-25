@@ -302,7 +302,7 @@ for (let state of Q.southern_states) {
 
   // --- Enforcement & resistance (GLOBAL variables) ---
   let occupation = Q.occupation || 0;       // 0–2
-  let judicial = Q.judical_reform || 0;     // grows slowly
+  let judicial = Q.judicial_reform || 0;     // grows slowly
   let kkk = Q.kkk_strength || 0;            // 0–100
   let whiteL = Q.whiteL_strength || 0;      // 0–100
   let unionLeague = Q.Union_League_strength || 0; // 0–100
@@ -326,7 +326,7 @@ for (let state of Q.southern_states) {
 
   let raceEqualitySupport =
       (freedmen_rep * 0.5)
-    + (Union_League_strength * 0.5)
+    + (unionLeague * 0.5)
     + (occupation * 8)
     - suppression_modifier;
 
@@ -355,8 +355,8 @@ for (let state of Q.southern_states) {
 
   score = Math.max(0, Math.round(score));
   Q[state + "_reconstructionScore"] = score;
-  Q[state + "_canReadmit"] = score >= threshold;
-
+  Q[state + "_canReadmit"] = score >= threshold ? 1 : 0;
+  
   // --- Percent relative to plan difficulty ---
   Q[state + "_percentOfThreshold"] = Math.min(100, Math.round((score / threshold) * 100));
   Q[state + "_planName"] = planName;
