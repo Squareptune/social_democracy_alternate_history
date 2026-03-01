@@ -280,6 +280,10 @@ let requiredStates = Math.ceil(0.75 * totalStates);
 
 Q.amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
 
+if (!Q.Johnson_plan && !Q.Moderate_plan && !Q.Radical_plan) {
+  return;
+}
+
 for (let state of Q.southern_states) {
 
   // --- Calculate white loyalty ---
@@ -301,11 +305,11 @@ for (let state of Q.southern_states) {
   }
 
   // --- Enforcement & resistance (GLOBAL variables) ---
-  let occupation = Q.occupation || 0;       // 0–2
-  let judicial = Q.judicial_reform || 0;     // grows slowly
-  let kkk = Q.kkk_strength || 0;            // 0–100
-  let whiteL = Q.whiteL_strength || 0;      // 0–100
-  let unionLeague = Q.Union_League_strength || 0; // 0–100
+  let occupation = Q.occupation || 0;
+  let judicial = Q.judicial_reform || 0;
+  let kkk = Q.kkk_strength || 0;
+  let whiteL = Q.whiteL_strength || 0;
+  let unionLeague = Q.Union_League_strength || 0;
 
   // --- Resistance Suppression Logic ---
   let resistance = (kkk + whiteL) / 2;
@@ -315,7 +319,7 @@ for (let state of Q.southern_states) {
   let state_loyalty =
       white_loyalty
     + (occupation * 5)
-    + (judicial) 
+    + (judicial)
     - (resistance * 0.25);
 
   state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
@@ -337,6 +341,7 @@ for (let state of Q.southern_states) {
   let score = 0;
   let threshold = 0;
   let planName = "";
+
   if (Q.Johnson_plan === 1) {
     threshold = 30;
     planName = "Johnson";
@@ -348,16 +353,21 @@ for (let state of Q.southern_states) {
   else if (Q.Radical_plan === 1) {
     threshold = 75;
     planName = "Radical";
-  }   
+  }
 
   score = (state_loyalty * 0.5) + (white_loyalty * 0.25) + (raceEqualitySupport * 0.25);
 
   score = Math.max(0, Math.round(score));
   Q[state + "_reconstructionScore"] = score;
   Q[state + "_canReadmit"] = score >= threshold ? 1 : 0;
-  
-  // --- Percent relative to plan difficulty ---
-  Q[state + "_percentOfThreshold"] = Math.min(100, Math.round((score / threshold) * 100));
+
+  // --- Percent relative to plan difficulty (safe guard) ---
+  if (threshold > 0) {
+    Q[state + "_percentOfThreshold"] = Math.min(100, Math.round((score / threshold) * 100));
+  } else {
+    Q[state + "_percentOfThreshold"] = 0;
+  }
+
   Q[state + "_planName"] = planName;
 
   // --- Optional: print important info per state ---
