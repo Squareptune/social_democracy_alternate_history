@@ -338,7 +338,7 @@ for (let state of Q.southern_states) {
   if (Q.Johnson_plan === 1) {
     threshold = 30;
     planName = "Johnson";
-    x} 
+    } 
     else if (Q.Moderate_plan === 1) {
         threshold = 55;
         planName = "Moderate";
