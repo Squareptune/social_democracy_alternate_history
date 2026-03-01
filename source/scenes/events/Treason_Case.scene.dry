@@ -17,12 +17,12 @@ Do we proceed with prosecuting Davis?
 subtitle: Take the risk, try him in court
 choose-if: rep_majority >= 1
 unavailable-subtitle: [if rep_majority < 1: We don't have a majority]
-on-arrival: radical_strength += 1; radical_dissent -= 2; moderate_strength -= 1; conservative_strength -= 2; conservative_dissent += 2; kkk_strength += 5; kkk_militancy += 0.1; //add more if you want
+on-arrival: radical_strength += 1; radical_dissent -= 2; moderate_strength -= 1; conservative_strength -= 2; conservative_dissent += 2; kkk_strength += 5; kkk_militancy += 0.1;
 
 Congress votes to put Davis on trial. Radicals celebrate a stand for the Republic, while Moderates and Conservatives warn of the dangers: Southern resentment may explode, and a hostile court could even declare secession legal, threatening the legitimacy of Reconstruction.
 
 @NOPE
 subtitle: Exercise caution, avoid provocation
-on-arrival: radical_strength -= 1; radical_dissent += 2; moderate_strength += 2; conservative_strength += 2; conservative_dissent -= 2; kkk_strength -= 3; kkk_militancy -= 0.1; //add more if you want
+on-arrival: radical_strength -= 1; radical_dissent += 2; moderate_strength += 2; conservative_strength += 2; conservative_dissent -= 2; kkk_strength -= 3; kkk_militancy -= 0.1;
 
 Moderate and Conservative voices prevail. They cite Lincoln’s approach of forgiveness and argue that a trial could validate Redeemer propaganda in the South. Avoiding the trial maintains relative stability but frustrates the Radicals, who see an opportunity for federal authority lost.
