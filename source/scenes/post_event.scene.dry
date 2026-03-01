@@ -338,15 +338,15 @@ for (let state of Q.southern_states) {
   if (Q.Johnson_plan === 1) {
     threshold = 30;
     planName = "Johnson";
-    } 
-    else if (Q.Moderate_plan === 1) {
-        threshold = 55;
-        planName = "Moderate";
-    } 
-    else if (Q.Radical_plan === 1) {
-        threshold = 75;
-        planName = "Radical";
-    }   
+  } 
+  else if (Q.Moderate_plan === 1) {
+    threshold = 55;
+    planName = "Moderate";
+  } 
+  else if (Q.Radical_plan === 1) {
+    threshold = 75;
+    planName = "Radical";
+  }   
   let planName = "";
 
   score = (state_loyalty * 0.5) + (white_loyalty * 0.25) + (raceEqualitySupport * 0.25);
