@@ -338,20 +338,7 @@ for (let state of Q.southern_states) {
   let threshold = 0;
   let planName = "";
 
-  if (Q.Johnson_plan === 1) {
-    score = (state_loyalty * 0.7) + (white_loyalty * 0.3);
-    threshold = 25;
-    planName = "Johnson";
-  } else if (Q.Moderate_plan === 1) {
-    let stability_gap = Math.abs(white_loyalty - raceEqualitySupport) * 0.2;
-    score = (white_loyalty * 0.35) + (raceEqualitySupport * 0.35) + (state_loyalty * 0.3) - stability_gap;
-    threshold = 45;
-    planName = "Moderate";
-  } else if (Q.Radical_plan === 1) {
-    score = (white_loyalty * 0.1) + (raceEqualitySupport * 0.5) + (state_loyalty * 0.4);
-    threshold = 65;
-    planName = "Radical";
-  }
+  score = (state_loyalty * 0.5) + (white_loyalty * 0.25) + (raceEqualitySupport * 0.25);
 
   score = Math.max(0, Math.round(score));
   Q[state + "_reconstructionScore"] = score;

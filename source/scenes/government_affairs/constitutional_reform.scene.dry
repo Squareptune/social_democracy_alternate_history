@@ -28,7 +28,7 @@ subtitle: Birthright Citizenship & Equal Protection
 view-if: fortheen_A = 0
 choose-if: amendmentResult = 1 and house_majority = 3 and sen_majority = 3 and limit = 1
 unavailable-subtitle: [? if limit < 1: We shouldn't pass too many amendments?][? if house_majority < 3: We do not have enough seats in the House ?][? if sen_majority < 3: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: limit -= 1; kkk_militancy += 0.1; constitution_14th = 1; reconstruction_support += 8; radical_strength += 5; moderate_dissent += 3; freemen_rep += 12; rural_dem += 7; immigrant_laborers_dem += 4; middle_class_rep += 3; liberal_strength += 6; liberal_dissent -= 3; fortheen_A = 1
+on-arrival: limit -= 1; kkk_militancy += 0.1; fortheen_A = 1; reconstruction_support += 8; radical_strength += 5; moderate_dissent += 3; freemen_rep += 12; rural_dem += 7; immigrant_laborers_dem += 4; middle_class_rep += 3; liberal_strength += 6; liberal_dissent -= 3; fortheen_A = 1
 
 The amendment passes! ' All persons born...are citizens' is now engraved in constitutional marble. All former slaves are now citizens of the United States and have the same rights as their light-skinned counterparts.
 
@@ -40,7 +40,7 @@ subtitle: Birthright Citizenship & Equal Protection
 view-if: fifthteen = 0
 choose-if: amendmentResult = 1 and house_majority = 3 and sen_majority = 3 and limit = 1
 unavailable-subtitle: [? if limit < 1: We shouldn't pass too many amendments?][? if house_majority < 3: We do not have enough seats in the House ?][? if sen_majority < 3: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: limit -= 1; constitution_15th = 1; kkk_militancy += 0.25; reconstruction_support += 10; radical_strength += 8; moderate_dissent += 5; freemen_rep += 15; rural_dem += 10; middle_class_rep += middle_class_other*0.6; middle_class_other *= 0.2; rural_rep += rural_other*0.4; rural_other *= 0.2; immigrant_laborers_rep += immigrant_laborers_other*0.3; immigrant_laborers_other *= 0.3; liberal_strength += 8; liberal_dissent -= 4; fifthteen = 1
+on-arrival: limit -= 1; fifthteen = 1; kkk_militancy += 0.25; reconstruction_support += 10; radical_strength += 8; moderate_dissent += 5; freemen_rep += 15; rural_dem += 10; middle_class_rep += middle_class_other*0.6; middle_class_other *= 0.2; rural_rep += rural_other*0.4; rural_other *= 0.2; immigrant_laborers_rep += immigrant_laborers_other*0.3; immigrant_laborers_other *= 0.3; liberal_strength += 8; liberal_dissent -= 4; fifthteen = 1
 
 The amendment is ratified! 'The right to vote shall not be denied...on account of race.' Freedmen celebrate while Southern legislatures are already devising method to try to circumvent the amendment. The Klan's night rides intensify.
 
@@ -51,7 +51,7 @@ subtitle: Separation between Church and State
 view-if: Blain = 0
 choose-if: amendmentResult = 1 and house_majority = 3 and sen_majority = 3 and limit = 1
 unavailable-subtitle: [? if limit < 1: We shouldn't pass too many amendments?][? if house_majority < 3: We do not have enough seats in the House ?][? if sen_majority < 3: We also do not have enough seats in the Senate ?][? if amendmentResult = 0: 3/4th of the States don't approve of the amendment?]
-on-arrival: limit -= 1; blaine_amendment = 1; middle_class_rep += 8; immigrant_laborers_dem += 12; reconstruction_support -= 5; liberal_strength += 4; Blain = 1
+on-arrival: limit -= 1; Blain = 1; middle_class_rep += 8; immigrant_laborers_dem += 12; reconstruction_support -= 5; liberal_strength += 4; Blain = 1
 
 The amendment passes! Public funds are now barred from 'sectarian' (Catholic) schools. While Protestant reformers cheer, Irish immigrants riot in Northern cities, seeing this as targeted persecution.
 

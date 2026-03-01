@@ -1,0 +1,28 @@
+title: Jefferson Davis Treason Case
+subtitle: The Rebel Leader on Trial
+tags: event
+view-if: year = 1866 and month >= 6
+max-visits: 1
+
+= Jefferson Davis Treason Case
+
+Jefferson Davis remains under arrest for his leadership of the rebellious Confederate states. Radical Republicans push for a high-profile treason trial, seeing it as essential to uphold federal authority. Moderates and Conservatives warn that such a trial could spark Southern vengeance or risk a Supreme Court ruling that legitimizes secession.
+
+Do we proceed with prosecuting Davis?
+
+- @CONVICT: Pursue the treason trial
+- @NOPE: Avoid the trial
+
+@CONVICT
+subtitle: Take the risk, try him in court
+choose-if: rep_majority >= 1
+unavailable-subtitle: [if rep_majority < 1: We don't have a majority]
+on-arrival: radical_strength += 1; radical_dissent -= 2; moderate_strength -= 1; conservative_strength -= 2; conservative_dissent += 2; kkk_strength += 5; kkk_militancy += 0.1; //add more if you want
+
+Congress votes to put Davis on trial. Radicals celebrate a stand for the Republic, while Moderates and Conservatives warn of the dangers: Southern resentment may explode, and a hostile court could even declare secession legal, threatening the legitimacy of Reconstruction.
+
+@NOPE
+subtitle: Exercise caution, avoid provocation
+on-arrival: radical_strength -= 1; radical_dissent += 2; moderate_strength += 2; conservative_strength += 2; conservative_dissent -= 2; kkk_strength -= 3; kkk_militancy -= 0.1; //add more if you want
+
+Moderate and Conservative voices prevail. They cite Lincoln’s approach of forgiveness and argue that a trial could validate Redeemer propaganda in the South. Avoiding the trial maintains relative stability but frustrates the Radicals, who see an opportunity for federal authority lost.

@@ -136,10 +136,6 @@ go-to: potus_menu
 .path { fill: #A0A0A0; } /* default color for all states not specified below */
 .borders {stroke: #FFFFFF; stroke-width:1}    /* color and width of borders between states */
 
-.va { fill: #4f4f4f}
-.tx { fill: #4f4f4f}
-.ms { fill: #4f4f4f}
-
 </style>
 </defs>
 
