@@ -280,9 +280,6 @@ let requiredStates = Math.ceil(0.75 * totalStates);
 
 Q.amendmentResult = (supportiveStates >= requiredStates) ? 1 : 0;
 
-if (!Q.Johnson_plan && !Q.Moderate_plan && !Q.Radical_plan) {
-  return;
-}
 
 for (let state of Q.southern_states) {
 
