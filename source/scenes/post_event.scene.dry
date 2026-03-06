@@ -624,10 +624,7 @@ if (Q.month_actions >= 1) {
 
     if (Q.kkk_history && Q.kkk_history.length >= 24) {
         let l = Q.kkk_history.length;
-        if (
-            Q.kkk_history[l-1] < Q.kkk_history[l-2] &&
-            Q.kkk_history[l-1] < Q.kkk_history[l-2] &&
-        ) {
+        if (Q.kkk_history[l-1] < Q.kkk_history[l-2] && Q.kkk_history[l-1] < Q.kkk_history[l-2]) {
             Q.white_league_trigger = 1;
         }
     }
