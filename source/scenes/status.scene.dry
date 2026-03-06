@@ -167,39 +167,49 @@ Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate
 Virginia: 
 Reconstruction Score: [+ VA_reconstructionScore +]%, 
 Readmission Score: [+ VA_percentOfThreshold +]
+Admission Status: [? if VA_admitted = 1: True ?][? if VA_admitted = 0: False ?]
 
 North Carolina: 
 Reconstruction Score: [+ NC_reconstructionScore +]%, 
 Readmission Score: [+ NC_percentOfThreshold +]
+Admission Status: [? if NC_admitted = 1: True ?][? if NC_admitted = 0: False ?]
 
 South Carolina:
 Reconstruction Score: [+ SC_reconstructionScore +]%, 
 Readmission Score: [+ SC_percentOfThreshold +]
+Admission Status: [? if SC_admitted = 1: True ?][? if SC_admitted = 0: False ?]
 
 Georgia:
 Reconstruction Score: [+ GA_reconstructionScore +]%, 
 Readmission Score: [+ GA_percentOfThreshold +]
+Admission Status: [? if GA_admitted = 1: True ?][? if GA_admitted = 0: False ?]
 
 Alabama:
 Reconstruction Score: [+ AL_reconstructionScore +]%, 
 Readmission Score: [+ AL_percentOfThreshold +]
+Admission Status: [? if AL_admitted = 1: True ?][? if AL_admitted = 0: False ?]
 
 Florida:
 Reconstruction Score: [+ FL_reconstructionScore +]%, 
 Readmission Score: [+ FL_percentOfThreshold +]
+Admission Status: [? if FL_admitted = 1: True ?][? if FL_admitted = 0: False ?]
 
 Missisippi:
 Reconstruction Score: [+ MS_reconstructionScore +]%, 
 Readmission Score: [+ MS_percentOfThreshold +]
+Admission Status: [? if MS_admitted = 1: True ?][? if MS_admitted = 0: False ?]
 
 Arkansas:
 Reconstruction Score: [+ AK_reconstructionScore +]%, 
 Readmission Score: [+ AK_percentOfThreshold +]
+Admission Status: [? if AK_admitted = 1: True ?][? if AK_admitted = 0: False ?]
 
 Texas:
 Reconstruction Score: [+ TX_reconstructionScore +]%, 
 Readmission Score: [+ TX_percentOfThreshold +]
+Admission Status: [? if TX_admitted = 1: True ?][? if TX_admitted = 0: False ?]
 
 Louisiana:
 Reconstruction Score: [+ LA_reconstructionScore +]%, 
 Readmission Score: [+ LA_percentOfThreshold +]
+Admission Status: [? if LA_admitted = 1: True ?][? if LA_admitted = 0: False ?]
