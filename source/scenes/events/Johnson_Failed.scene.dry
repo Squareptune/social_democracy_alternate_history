@@ -53,7 +53,7 @@ on-arrival:{!
     Q.conservative_strength += 1; 
     Q.liberal_strength += 1; 
     Q.kkk_strength += 3; 
-    Q.kkk_militancy += 0.1
+    Q.kkk_militancy += 0.1;
     for (let state of Q.southern_states) {
         Q[state + "_admitted"] = 0;
     }
