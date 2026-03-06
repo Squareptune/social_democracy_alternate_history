@@ -41,7 +41,7 @@ Congress passes the **Military Reconstruction Act** of 1867. The South is divide
 Radical Republicans celebrate. But resistance mounts. The Klan stirs in the shadows.
 
 @limited_plan
-on-arrival:{!
+on-arrival: {!
 
     Q.Johnson_plan = 0; 
     Q.Moderate_plan = 1; 

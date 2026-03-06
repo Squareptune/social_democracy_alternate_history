@@ -1,0 +1,35 @@
+title: A New Force Emerges
+subtitle: The Ghost of the Confederacy
+on-arrival: whiteL_formed = 1; whiteL_strength += 2; whiteL_militancy = 0.35; kkk_strength -= 2;
+tags: event
+view-if: white_league_trigger >= 1
+max-visits: 1
+
+= Formation of the White Leagues
+
+Federal crackdowns and declining Klan activity have not ended Southern resistance to Reconstruction. Instead, a new organization is emerging across Louisiana, Mississippi, and the Carolinas: the **White Leagues**.
+
+Unlike the secretive Klan, these groups operate openly. Their members march in daylight, drill like soldiers, and receive open support from wealthy Redeemers and former Confederate officers. Newspapers sympathetic to the Southern cause portray them as patriotic defenders of local government.
+
+In truth, their purpose is clear: to restore white Democratic rule and destroy Reconstruction governments by force if necessary.
+
+- @crackdown: Confront the White Leagues directly.
+- @ignore: Avoid provoking another Southern backlash.
+
+@crackdown
+choose-if: radical_strength + moderate_strength >= 50
+unavailable-subtitle: [? if radical_strength + moderate_strength < 50: Congress lacks the support for such a confrontation. ?]
+on-arrival: Union_League_strength += 6; Union_League_militancy += 0.08; Us_police_strength += 2; whiteL_militancy += 0.05; kkk_militancy += 0.05
+
+Federal authorities begin organizing **Union Leagues**, local militias, and federal marshals to confront the White Leagues. Early clashes break out across the South.
+
+Though the government wins some victories, the new paramilitaries are disciplined veterans with powerful backers. Suppressing them will not be easy.
+
+@ignore
+choose-if: conservative_strength + liberal_strength >= 50
+unavailable-subtitle: [? if conservative_strength + liberal_strength < 50: Too many Republicans demand action. ?]
+on-arrival: whiteL_strength += 3; whiteL_militancy += 0.05; radical_dissent += 4; moderate_dissent += 2
+
+The administration chooses not to escalate the situation. Many newspapers portray the White Leagues as harmless veterans' associations, and confronting them could inflame tensions in the South.
+
+Radicals are furious, warning that ignoring the threat will only embolden Reconstruction’s enemies.

@@ -5,18 +5,18 @@ tags: party_affairs
 view-if: rally_timer <= 0
 on-arrival: month_actions += 1; rally_timer = 6
 card-image: img/protest.jpg
-go-to: main_rally; dem_attack if kkk_strength > 20
+go-to: main_rally; dem_attack if whiteL_strength >= 6
 
 @dem_attack
 
-A Democratic mob, possibly with Ku Klux Klan sympathizers, has attacked the Republican rally!
+A mob, possibly with White League soldiers, has attacked the Republican rally!
 
 - @police_protect: Call the police to protect our rally.
 - @unionleague_protect: Rely on the Union League to defend the rally.
 - @cancel: Cancel the rally.
 
 @police_protect
-on-arrival: police_success = Us_police_loyalty * Us_police_militancy * Us_police_strength * 2 - kkk_strength * 1.5;
+on-arrival: police_success = Us_police_loyalty * Us_police_militancy * Us_police_strength * 2 - whitel_strength * 1.5;
 go-to: police_win if police_success >= 0; police_lose if police_success < 0
 
 @police_win
@@ -30,7 +30,7 @@ on-arrival: freemen_rep -= 3; workers_rep -= 2; radical_dissent += 4; liberal_di
 The police failed to secure the rally. The attackers broke it up, undermining our presence and terrifying our supporters.
 
 @unionleague_protect
-on-arrival: ul_success = Union_League_militancy * Union_League_strength - kkk_strength * 1.5;
+on-arrival: ul_success = Union_League_militancy * Union_League_strength - whitel_strength * 1.5;
 go-to: ul_win if ul_success >= 0; ul_lose if ul_success < 0
 
 @ul_win
@@ -55,7 +55,7 @@ Mass rallies are key to building up Republican support, especially among loyal U
 - @reconstruction: Uphold Reconstruction and protect the rights of Freedmen.
 - @industry: Promote industrial growth and northern prosperity.
 - @unity: Heal the Union while upholding Republican values.
-- @law_order: Crack down on Klan violence and defend law and order.
+- @law_order: Crack down on Southern violence and defend law and order.
 - @local: Address specific concerns of the local population.
 - @easy_discard: I don't care.
 
@@ -77,7 +77,7 @@ We emphasize national unity and healing, aiming to unite former Unionists and mo
 @law_order
 on-arrival: rural_rep += 3; freemen_rep += 2; conservative_strength += 3; radical_dissent -= 1; liberal_dissent -= 1;
 
-We condemn Klan terror and lawlessness. Our firm stance strengthens our image as the party of law and order.
+We condemn Southern terror and lawlessness. Our firm stance strengthens our image as the party of law and order.
 
 @local
 on-arrival: workers_rep += 2; unemployed_rep += 2; middle_class_rep += 1; liberal_strength += 1;

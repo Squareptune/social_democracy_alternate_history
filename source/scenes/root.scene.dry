@@ -83,9 +83,11 @@ Q.dem_relation = 5;
 
 Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
+Q.kkk_history = [];
 Q.whiteL_strength = 0;
 Q.whiteL_militancy = 0;
 Q.whiteL_formed = 0;
+Q.white_league_trigger = 0;
 
 Q.state_militia_strength = 0
 Q.state_militia_formed = 0
