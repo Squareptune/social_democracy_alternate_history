@@ -14,14 +14,18 @@ The Union Army remains one of the few instruments through which the federal gove
 @Mil
 
 - @army: Focus on Army policy
-- @Navy: Focus on Navy policy
+- @navy: Focus on Navy policy
+- @Popo: Shift Inwards
 
 
 @army
 go-to: Army
 
 @navy
-go-to: Army
+go-to: Navy
+
+@Popo:
+go-to: Police
 
 @Army
 
@@ -94,5 +98,42 @@ unavailable-subtitle: [? if budget < 1 : We do not have the budget. ?][? if navy
 on-arrival: budget -= 1; navy_loyalty += 0.15; navy_strength += 10; economic_growth += 0.05; european_relation += 1
 
 We implement reforms in naval education and promotion, ensuring officers are chosen by merit and loyalty to the Republic. We also retire some secessionist holdovers and begin investing in modern vessels.
+
+While some see this as a bold modernization effort, others fear it invites entanglements abroad when our focus should be on Reconstruction.
+
+@Police
+
+The internal security forces of the union help protect the nation from the nation's internal enemies.
+
+- @increase_funding3: Increase funding for the Police to enforce law and order.
+- @decrease_funding3: Reduce funding for the Police.
+- @reform3: Reform the Police to modernize to be a match for the crime syndidates and paramilitaries.
+- @root: Leave current military policy unchanged.
+- @easy_discard
+- @cancel_advisor_action
+
+@increase_funding3
+subtitle: -1 budget
+choose-if: budget >= 1
+unavailable-subtitle: We do not have the budget.
+on-arrival: budget -= 1; Us_police_strength += 5; economic_growth += 0.1; Us_police_militancy += 0.01; democrat_support -= 1; radical_dissent += 2
+
+With a stronger fleet, we can better enforce the Monroe Doctrine, assert American influence in the Caribbean, and protect freedmen's emigration routes. However, critics argue that this diverts resources from urgent domestic needs.
+
+@decrease_funding3
+subtitle: +1 budget
+unavailable-subtitle: There is nothing left to cut.
+choose-if: Us_police_strength > 0
+on-arrival: budget += 1; Us_police_strength -= 5; Us_police_militancy -= 0.02; reconstruction_support += 1
+
+Reallocating naval funds helps support schools, land offices, and the Freedmen’s Bureau. Some worry that weakening the Navy may invite European meddling or reduce America’s reach, but the people in the South see the federal presence more clearly at home.
+
+@reform3
+subtitle: -1 budget
+choose-if: budget >= 1 and Us_police_loyalty < 1
+unavailable-subtitle: [? if budget < 1 : We do not have the budget. ?][? if Us_police_loyalty >= 1 : The Police is already fully loyal to the government. ?]
+on-arrival: budget -= 1; Us_police_loyalty += 0.15; Us_police_loyalty += 4; economic_growth += 0.05;
+
+We implement reforms in naval education and promotion, ensuring officers are chosen by merit and loyalty to the Republic. We also retire some secessionist holdovers and begin investing in modern doctines and equipment.
 
 While some see this as a bold modernization effort, others fear it invites entanglements abroad when our focus should be on Reconstruction.
