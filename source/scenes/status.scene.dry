@@ -85,9 +85,9 @@ Tariff rate: [+ tariffs +]
 
 KKK_Militarization: [+ kkk_militancy : militancy +]
 
-{!<span class="tooltip-text" title="The White League, also known as the White Man's League is a white supremacist paramilitary terrorist organization">KKK</span>!} Strength: [+ whiteL_strength +] thousand
+[? if whiteL_formed = 1 : {!<span class="tooltip-text" title="The White League, also known as the White Man's League is a white supremacist paramilitary terrorist organization">White League</span>!} Strength: [+ whiteL_strength +] thousand ?]
 
-KKK_Militarization: [+ whiteL_militancy : militancy +]
+[? if whiteL_formed = 1 : White League Militarization: [+ whiteL_militancy : militancy +] ?]
 
 {!<span class="tooltip-text" title=" The Union League is a Republican-aligned patriotic society defending Black civil rights and Reconstruction.">Union League</span>!} Strength: [+ Union_League_strength +] thousand
 
