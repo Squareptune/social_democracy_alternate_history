@@ -191,9 +191,9 @@ go-to: potus_menu
 .state path:nth-child(48) { animation-delay: 0.96s; }
 .state path:nth-child(49) { animation-delay: 0.98s; }
 .state path:nth-child(50) { animation-delay: 1.00s; }
-</style>!}
+</style>
 
-{!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>hi, is this mod good?</title>
 <defs>
 <style type="text/css">
