@@ -129,6 +129,70 @@ go-to: potus_menu
 
 = Presidential Election Results
 
+{!<style>
+.state path {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Stagger each state by cycling through delays */
+.state path:nth-child(1)  { animation-delay: 0.02s; }
+.state path:nth-child(2)  { animation-delay: 0.04s; }
+.state path:nth-child(3)  { animation-delay: 0.06s; }
+.state path:nth-child(4)  { animation-delay: 0.08s; }
+.state path:nth-child(5)  { animation-delay: 0.10s; }
+.state path:nth-child(6)  { animation-delay: 0.12s; }
+.state path:nth-child(7)  { animation-delay: 0.14s; }
+.state path:nth-child(8)  { animation-delay: 0.16s; }
+.state path:nth-child(9)  { animation-delay: 0.18s; }
+.state path:nth-child(10) { animation-delay: 0.20s; }
+.state path:nth-child(11) { animation-delay: 0.22s; }
+.state path:nth-child(12) { animation-delay: 0.24s; }
+.state path:nth-child(13) { animation-delay: 0.26s; }
+.state path:nth-child(14) { animation-delay: 0.28s; }
+.state path:nth-child(15) { animation-delay: 0.30s; }
+.state path:nth-child(16) { animation-delay: 0.32s; }
+.state path:nth-child(17) { animation-delay: 0.34s; }
+.state path:nth-child(18) { animation-delay: 0.36s; }
+.state path:nth-child(19) { animation-delay: 0.38s; }
+.state path:nth-child(20) { animation-delay: 0.40s; }
+.state path:nth-child(21) { animation-delay: 0.42s; }
+.state path:nth-child(22) { animation-delay: 0.44s; }
+.state path:nth-child(23) { animation-delay: 0.46s; }
+.state path:nth-child(24) { animation-delay: 0.48s; }
+.state path:nth-child(25) { animation-delay: 0.50s; }
+.state path:nth-child(26) { animation-delay: 0.52s; }
+.state path:nth-child(27) { animation-delay: 0.54s; }
+.state path:nth-child(28) { animation-delay: 0.56s; }
+.state path:nth-child(29) { animation-delay: 0.58s; }
+.state path:nth-child(30) { animation-delay: 0.60s; }
+.state path:nth-child(31) { animation-delay: 0.62s; }
+.state path:nth-child(32) { animation-delay: 0.64s; }
+.state path:nth-child(33) { animation-delay: 0.66s; }
+.state path:nth-child(34) { animation-delay: 0.68s; }
+.state path:nth-child(35) { animation-delay: 0.70s; }
+.state path:nth-child(36) { animation-delay: 0.72s; }
+.state path:nth-child(37) { animation-delay: 0.74s; }
+.state path:nth-child(38) { animation-delay: 0.76s; }
+.state path:nth-child(39) { animation-delay: 0.78s; }
+.state path:nth-child(40) { animation-delay: 0.80s; }
+.state path:nth-child(41) { animation-delay: 0.82s; }
+.state path:nth-child(42) { animation-delay: 0.84s; }
+.state path:nth-child(43) { animation-delay: 0.86s; }
+.state path:nth-child(44) { animation-delay: 0.88s; }
+.state path:nth-child(45) { animation-delay: 0.90s; }
+.state path:nth-child(46) { animation-delay: 0.92s; }
+.state path:nth-child(47) { animation-delay: 0.94s; }
+.state path:nth-child(48) { animation-delay: 0.96s; }
+.state path:nth-child(49) { animation-delay: 0.98s; }
+.state path:nth-child(50) { animation-delay: 1.00s; }
+</style>!}
+
 {!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
   <title>hi, is this mod good?</title>
 <defs>

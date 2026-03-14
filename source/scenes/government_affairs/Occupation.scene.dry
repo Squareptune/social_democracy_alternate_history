@@ -38,12 +38,7 @@ on-arrival: Union_League_strength += 20; Union_League_militancy += 0.05; freedme
 We direct new resources into expanding the Union League, organizing freedmen, loyal whites, and veterans into pro-Republican grassroots defense groups.
 
 @deploy_federal_troops
-title: Send more troops down south to enforce reconstruction
-choose-if: occupation >= 2 and army_loyalty >= 0.6 and army_strength > 50
-unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?][? if army_strength < 50: The army is too small to redirect south. ?]
-on-arrival: army_strength -= 10; army_militancy += 0.2; kkk_strength *= 0.8; kkk_militancy -= 0.02; Union_League_strength += 3; Union_League_militancy += 0.02; rural_dem += 2; unemployed_dem += 2; dem_relation -= 7; freedmen_rep += 1
-
-We deploy federal troops into restive southern districts. The show of force disrupts white supremacist mobilization, though it heightens political tensions.
+go-to: Deploy
 
 @crackdown_kkk
 title: Crackdown on the KKK
@@ -78,3 +73,35 @@ unavailable-subtitle: [? if occupation < 1: There is no federal presence to cont
 on-arrival: state_militia_formed = 0; state_militia_strength = 0; Union_League_strength -= 10; Us_police_strength -= 5; moderate_support += 1; dem_relation += 3; rural_dem -= 1; resource += 1
 
 To avoid further escalation, we order the demobilization of Republican-aligned militias in the South. This eases tensions — but leaves our allies more vulnerable.
+
+@Deploy
+
+The Freedmen's Bureau reports mounting violence across the former Confederate states. Militias and night riders terrorize Black voters and Republican officeholders alike. General Sherman warns that without a stronger federal presence, the new Southern governments cannot survive. As President, how many troops will you commit to the occupation?
+
+- @One
+- @Ten
+- @Fifty
+
+@One
+title: Send 1,000 soldiers to the South
+choose-if: occupation >= 2 and army_loyalty >= 0.6 and army_strength >= 1
+unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?][? if army_strength < 1: The federal army is too depleted for any redeployment ?]
+on-arrival: army_strength -= 1; South_army_strength += 1; army_militancy += 0.1; kkk_strength *= 0.95; kkk_militancy -= 0.01; Union_League_strength += 1; Union_League_militancy += 0.01; rural_dem += 1; unemployed_dem += 1; dem_relation -= 1; freedmen_rep += 1
+
+A modest contingent of federal soldiers boards the southbound trains. Whether a single regiment can make a meaningful difference across the vast interior remains to be seen — but the orders are cut, and the men are moving.
+
+@Ten
+title: Send 10,000 soldiers to the South
+choose-if: occupation >= 2 and army_loyalty >= 0.6 and army_strength >= 10
+unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?][? if army_strength < 10: The federal army is too depleted for a deployment of this size ?]
+on-arrival: army_strength -= 10; South_army_strength += 10; army_militancy += 0.25; kkk_strength *= 0.85; kkk_militancy -= 0.02; Union_League_strength += 3; Union_League_militancy += 0.02; rural_dem += 2; unemployed_dem += 2; dem_relation -= 4; freedmen_rep += 3
+
+Ten thousand soldiers are ordered south by rail and river. Republican governors have been notified; the Freedmen's Bureau is coordinating with local commanders on where the need is greatest. In Washington, Democrats are already sharpening their rhetoric. What this deployment will actually change on the ground, only time will tell.
+
+@Fifty
+title: Send 50,000 soldiers to the South
+choose-if: occupation >= 2 and army_loyalty >= 0.6 and army_strength >= 50
+unavailable-subtitle: [? if occupation < 2: This action requires full federal occupation ?][? if army_loyalty < 0.6: The army is too unreliable ?][? if army_strength < 50: The federal army is too depleted for a deployment of this scale ?]
+on-arrival: army_strength -= 50; South_army_strength += 50; army_militancy += 0.5; kkk_strength *= 0.75; kkk_militancy -= 0.15; Union_League_strength += 6; Union_League_militancy += 0.04; rural_dem += 4; unemployed_dem += 4; dem_relation -= 10; freedmen_rep += 6
+
+Fifty thousand soldiers are mobilized for the South — the largest federal deployment since the war's end. Troop movements of this scale take weeks to complete, and how the occupied states will receive them is not yet known. The order is given. The army moves.
