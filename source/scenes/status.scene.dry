@@ -99,7 +99,7 @@ U.S Army: [+ army_strength +] thousand troops.
 
 Army Loyalty: [+ army_loyalty : loyalty +]
 
-South Army: [+ South_army strength +]
+South Army: [+ South_army_strength +]
 
 U.S Navy: [+ navy_strength +]
 
