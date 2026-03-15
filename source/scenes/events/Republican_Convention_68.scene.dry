@@ -2,7 +2,6 @@ title: 1868 Republican National Convention
 subtitle: Republican Candidate for President
 tags: event
 view-if: year = 1868 and month = 5
-max-visits: 1
 
 = Republican National Convention
 
@@ -65,7 +64,7 @@ Benjamin Wade is chosen as our candidate for President. [? if president == "Wade
 @Chase
 subtitle: A rational option
 choose-if: resources >= 2 and radical_strength < 50
-unavailable-subtitle: [? if resources < 2: ou're broke ?][? if radical_strength >= 50: The Radicals have a chokehold on the party and do not support Chase ?]
+unavailable-subtitle: [? if resources < 2: You're broke ?][? if radical_strength >= 50: The Radicals have a chokehold on the party and do not support Chase ?]
 on-arrival: {! 
     Q.resources -= 2; 
     Q.Candidate = "Chase";
