@@ -186,7 +186,7 @@ var ElectoralMap = {
         <title>Wisconsin</title></path>
 
         <path class="path dc" style="fill: ${opts.winners.dc};" d="m 803.5,252 -2.6,-1.8 -1,1.7 .5,.4 .4,.1 .6,.5 .3,.7 -.1,.5 .2,.5 z">
-        <title>District of Columbia</title></path>
+        <title>Capital Place</title></path>
 
         </g>
 
