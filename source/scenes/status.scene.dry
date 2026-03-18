@@ -36,11 +36,11 @@ Congress composition:
 
 House of Representatives:
 
-Republicans: [+ rep_r +] seats, Democrats: [+ dem_r +] seats, Others: [+ other_r +] seats, Vacant seats: [+ vacant_r +] seats
+Republicans: [+ rep_r +] seats, Democrats: [+ dem_r +] seats, [? if liberal_split = 1 : Liberal Republicans: [+ lib_r +] seats, ?]Others: [+ other_r +] seats, Vacant seats: [+ vacant_r +] seats
 
 Senate Seats:
 
-Republicans: [+ rep_senate_r +] seats, Democrats: [+ dem_senate_r +] seats, Others: [+ other_senate_r +] seats, Vacant seats: [+ vacant_senate_r +] seats
+Republicans: [+ rep_senate_r +] seats, Democrats: [+ dem_senate_r +] seats, [? if liberal_split = 1 : Liberal Republicans: [+ lib_senate_r +] seats, ?]Others: [+ other_senate_r +] seats, Vacant seats: [+ vacant_senate_r +] seats
 
 [? if rep_majority = 1 : Budget: [+ budget +] ?]
 
@@ -67,6 +67,8 @@ Tariff rate: [+ tariffs +]
 
 {!<span class="tooltip-text" title="Democratic Party">Dem</span>!}: [+ dem_relation : relationships +]
 
+[? if liberal_split = 1 : {!<span class="tooltip-text" title="Liberal Republican Party">Lib. Rep.</span>!}: [+ liberal_relation : relationships +] ?]
+
 = Internal Factions of the Party
 
 {!<span class="tooltip-text" title="The Radicals support total equality for the freedmen and believe in retribution">Radical</span>!} strength: [+ radical_strength : strength +], dissent: [+ radical_dissent : dissent +]
@@ -75,7 +77,9 @@ Tariff rate: [+ tariffs +]
 
 {!<span class="tooltip-text" title="Oppose the more ideas of the Radical Republicans and sought a less extreme path for southern reintegration">Conservative</span>!} strength: [+ conservative_strength : strength +], dissent: [+ conservative_dissent : dissent +]
 
-{!<span class="tooltip-text" title="Support civil liberties and free markets, but are skeptical of strong federal enforcement of racial equality or occupation policies">Liberal</span>!} strength: [+ liberal_strength : strength +], dissent: [+ liberal_dissent : dissent +]
+[? if liberal_split = 0 : {!<span class="tooltip-text" title="Support civil liberties and free markets, but are skeptical of strong federal enforcement of racial equality or occupation policies">Liberal</span>!} strength: [+ liberal_strength : strength +], dissent: [+ liberal_dissent : dissent +] ?]
+
+[? if liberal_split = 1 : The Liberal faction has broken away to form the Liberal Republican Party. ?]
 
 @paramilitaries
 
@@ -121,6 +125,8 @@ Republicans: [+ rep_senate_pro +] seats
 
 Democrats: [+ dem_senate_pro +] seats
 
+[? if liberal_split = 1 : Liberal Republicans: [+ lib_senate_pro +] seats ?]
+
 Others: [+ other_senate_pro +] seats
 
 House:
@@ -129,19 +135,21 @@ Republicans: [+ rep_r_pro +] seats
 
 Democrats: [+ dem_r_pro +] seats
 
+[? if liberal_split = 1 : Liberal Republicans: [+ lib_r_pro +] seats ?]
+
 Others: [+ other_r_pro +] seats
 
 **Detailed results for each demographic**
 
-Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ workers_other +]%
+Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ workers_lib +]% ?], Other: [+ workers_other +]%
 
-Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ middle_class_other +]%
+Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ middle_class_lib +]% ?], Other: [+ middle_class_other +]%
 
-Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ freemen_other +]%
+Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ freemen_lib +]% ?], Other: [+ freemen_other +]%
 
-Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ immigrant_laborers_other +]%
+Immigrant Laborers: Republican: [+ immigrant_laborers_rep +]%, Democrat: [+ immigrant_laborers_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ immigrant_laborers_lib +]% ?], Other: [+ immigrant_laborers_other +]%
 
-Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%, Other [? if other_name != 0 : [+ other_name +]?]: [+ unemployed_other +]%
+Unemployed: Republican: [+ unemployed_rep +]%, Democrat: [+ unemployed_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ unemployed_lib +]% ?], Other: [+ unemployed_other +]%
 
 @cabinet
 
@@ -202,7 +210,7 @@ Reconstruction Score: [+ FL_reconstructionScore +]%,
 Readmission Score: [+ FL_percentOfThreshold +]
 Admission Status: [? if FL_admitted = 1: True ?][? if FL_admitted = 0: False ?]
 
-Missisippi:
+Mississippi:
 Reconstruction Score: [+ MS_reconstructionScore +]%, 
 Readmission Score: [+ MS_percentOfThreshold +]
 Admission Status: [? if MS_admitted = 1: True ?][? if MS_admitted = 0: False ?]

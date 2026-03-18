@@ -1,0 +1,202 @@
+title: The Liberal Republican Split
+subtitle: Reformers break from the party.
+tags: event
+new-page: true
+view-if: liberal_strength >= 15 and liberal_dissent >= 25 and liberal_split = 0
+max-visits: 1
+on-arrival: liberal_split = 1; liberal_split_timer = 0;
+
+= The Liberal Republican Split
+
+The tensions within the Republican Party have finally reached a breaking point. Led by figures such as Carl Schurz and Charles Francis Adams, a faction of reformers and anti-Reconstruction voices have grown increasingly frustrated with the party's direction.
+
+[? if radical_strength >= 40 : The Radical wing's dominance of the party has been the final straw. Liberals see the continued military occupation of the South as a dangerous overreach of federal power and a betrayal of constitutional principles. ?]
+
+[? if radical_strength < 40 : Despite the party's moderate course, the Liberal faction remains deeply dissatisfied — particularly with the spoils system, the corruption of the Grant administration, and what they see as endless Reconstruction with no clear endpoint. ?]
+
+They have broken away to form the **Liberal Republican Party**, advocating for civil service reform, reconciliation with the South, and a return to limited government. Many of their sympathizers in the press, particularly at the *New York Tribune* under Horace Greeley, have already begun endorsing their cause.
+
+- @accept_split: Accept the split and focus on consolidating the remaining party.
+- @reach_out: Attempt to bring the liberals back into the fold.
+- @condemn: Condemn the splitters publicly.
+
+@accept_split
+on-arrival: on-arrival: {!
+
+    // Transfer national support from rep to lib
+    let classes = Q.classes;
+    let nationalBleed = {
+        workers: 0.15,
+        middle_class: 0.25,
+        rural: 0.10,
+        freemen: 0.03,
+        immigrant_laborers: 0.12,
+        unemployed: 0.08
+    };
+
+    for (let cls of classes) {
+        let bleed = nationalBleed[cls] || 0.10;
+        let transfer = Math.round(Q[cls + '_rep'] * bleed);
+        Q[cls + '_rep'] -= transfer;
+        Q[cls + '_lib'] = (Q[cls + '_lib'] || 0) + transfer;
+    }
+
+    // Transfer per-state support from rep to lib
+    for (let state of Q.states) {
+        for (let cls of classes) {
+            let bleed = nationalBleed[cls] || 0.10;
+            let stateKey = state + '_' + cls + '_rep';
+            let libKey = state + '_' + cls + '_lib';
+            let transfer = Math.round((Q[stateKey] || 0) * bleed);
+            Q[stateKey] -= transfer;
+            Q[libKey] = (Q[libKey] || 0) + transfer;
+        }
+    }
+
+    // House and Senate seat transfer
+    Q.lib_r = Math.round(Q.rep_r * (Q.liberal_strength / 100) * 0.6);
+    Q.rep_r -= Q.lib_r;
+    Q.lib_senate_r = Math.round(Q.rep_senate_r * (Q.liberal_strength / 100) * 0.6);
+    Q.rep_senate_r -= Q.lib_senate_r;
+
+    // Faction consequences
+    Q.liberal_strength = 0;
+    Q.liberal_dissent = 0;
+    Q.moderate_dissent -= 5;
+    Q.radical_strength += 5;
+    Q.conservative_dissent += 3;
+
+    // Majority check
+    let totalHouse = Q.rep_r + Q.dem_r + Q.lib_r + Q.other_r;
+    let repPct = (Q.rep_r / totalHouse) * 100;
+    if (repPct >= 66.7) {
+        Q.house_majority = 3;
+    } else if (repPct >= 50) {
+        Q.house_majority = 2;
+    } else {
+        Q.house_majority = 0;
+    }
+!}
+
+A painful but perhaps inevitable rupture. The Liberal Republicans depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats. Their appeal is strongest among the educated middle class and reformist press.
+
+Without them, the party is more ideologically coherent — but potentially weaker in key Northern states where liberal sentiment runs high.
+
+@reach_out
+subtitle: -2 resources
+choose-if: resources >= 2
+unavailable-subtitle: Not enough resources.
+on-arrival: on-arrival: {!
+
+    let classes = Q.classes;
+    let nationalBleed = {
+        workers: 0.07,
+        middle_class: 0.12,
+        rural: 0.05,
+        freemen: 0.01,
+        immigrant_laborers: 0.06,
+        unemployed: 0.04
+    };
+
+    for (let cls of classes) {
+        let bleed = nationalBleed[cls] || 0.05;
+        let transfer = Math.round(Q[cls + '_rep'] * bleed);
+        Q[cls + '_rep'] -= transfer;
+        Q[cls + '_lib'] = (Q[cls + '_lib'] || 0) + transfer;
+    }
+
+    for (let state of Q.states) {
+        for (let cls of classes) {
+            let bleed = nationalBleed[cls] || 0.05;
+            let stateKey = state + '_' + cls + '_rep';
+            let libKey = state + '_' + cls + '_lib';
+            let transfer = Math.round((Q[stateKey] || 0) * bleed);
+            Q[stateKey] -= transfer;
+            Q[libKey] = (Q[libKey] || 0) + transfer;
+        }
+    }
+
+    Q.lib_r = Math.round(Q.rep_r * (Q.liberal_strength / 100) * 0.3);
+    Q.rep_r -= Q.lib_r;
+    Q.lib_senate_r = Math.round(Q.rep_senate_r * (Q.liberal_strength / 100) * 0.3);
+    Q.rep_senate_r -= Q.lib_senate_r;
+
+    Q.resources -= 2;
+    Q.liberal_strength = Math.round(Q.liberal_strength * 0.4);
+    Q.liberal_dissent -= 10;
+    Q.moderate_dissent += 3;
+    Q.radical_dissent += 5;
+    Q.conservative_dissent += 2;
+
+    let totalHouse = Q.rep_r + Q.dem_r + Q.lib_r + Q.other_r;
+    let repPct = (Q.rep_r / totalHouse) * 100;
+    if (repPct >= 66.7) {
+        Q.house_majority = 3;
+    } else if (repPct >= 50) {
+        Q.house_majority = 2;
+    } else {
+        Q.house_majority = 0;
+    }
+!}
+
+Our outreach keeps some liberals in the fold, but the split still happens. A smaller Liberal Republican faction departs with [+ lib_r +] House seats, taking some of our most reform-minded members with them.
+
+The remaining liberals within our party are mollified for now, but their loyalty remains uncertain.
+
+@condemn
+on-arrival: on-arrival: {!
+
+    let classes = Q.classes;
+    let nationalBleed = {
+        workers: 0.20,
+        middle_class: 0.30,
+        rural: 0.12,
+        freemen: 0.04,
+        immigrant_laborers: 0.15,
+        unemployed: 0.10
+    };
+
+    for (let cls of classes) {
+        let bleed = nationalBleed[cls] || 0.12;
+        let transfer = Math.round(Q[cls + '_rep'] * bleed);
+        Q[cls + '_rep'] -= transfer;
+        Q[cls + '_lib'] = (Q[cls + '_lib'] || 0) + transfer;
+    }
+
+    for (let state of Q.states) {
+        for (let cls of classes) {
+            let bleed = nationalBleed[cls] || 0.12;
+            let stateKey = state + '_' + cls + '_rep';
+            let libKey = state + '_' + cls + '_lib';
+            let transfer = Math.round((Q[stateKey] || 0) * bleed);
+            Q[stateKey] -= transfer;
+            Q[libKey] = (Q[libKey] || 0) + transfer;
+        }
+    }
+
+    Q.lib_r = Math.round(Q.rep_r * (Q.liberal_strength / 100) * 0.8);
+    Q.rep_r -= Q.lib_r;
+    Q.lib_senate_r = Math.round(Q.rep_senate_r * (Q.liberal_strength / 100) * 0.8);
+    Q.rep_senate_r -= Q.lib_senate_r;
+
+    Q.liberal_strength = 0;
+    Q.liberal_dissent = 0;
+    Q.moderate_dissent += 8;
+    Q.radical_strength += 8;
+    Q.conservative_dissent += 5;
+    Q.dem_relation -= 5;
+
+    let totalHouse = Q.rep_r + Q.dem_r + Q.lib_r + Q.other_r;
+    let repPct = (Q.rep_r / totalHouse) * 100;
+    if (repPct >= 66.7) {
+        Q.house_majority = 3;
+    } else if (repPct >= 50) {
+        Q.house_majority = 2;
+    } else {
+        Q.house_majority = 0;
+    }
+!}
+
+Our condemnation only hardens their resolve. The Liberal Republicans depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats — more than they might have taken otherwise. The reformist press brands us as the party of military despotism and corruption.
+
+Radicals are pleased. But we have made enemies of men who were recently our allies.

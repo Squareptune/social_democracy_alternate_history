@@ -1,5 +1,5 @@
 title: 1868 Presidential Election
-subtitle: [+ Candidate +] vs Seymour
+subtitle: [+ Candidate +] vs. Seymour[? if liberal_split = 1 : vs. Greeley ?]
 tags: event
 view-if: year = 1868 and month = 11
 max-visits: 1
@@ -8,6 +8,8 @@ max-visits: 1
 
 The Presidential election are to be held now.
 
+[? if liberal_split = 1 : The Liberal Republicans have fielded their own candidate, threatening to split the anti-Democrat vote. ?]
+
 - @POTUS_election_algorithm: May we do our best...
 
 @POTUS_election_algorithm
@@ -15,6 +17,7 @@ on-arrival:{!
 // Reset EV totals
 Q.repEVTotal = 0;
 Q.demEVTotal = 0;
+Q.libEVTotal = 0;
 
 // Define close states with target margin in percent (Republican margin)
 let closeStates = {
@@ -38,73 +41,90 @@ function randomNoise() {
 
 // Run election per state
 for (let state of Q.states) {
-  let votes = { rep: 0, dem: 0 };
+  let votes = { rep: 0, dem: 0, lib: 0 };
 
   for (let cls of Q.classes) {
 
     if (cls === "freemen" && Q.fifthteen == 0){
       // skip freemen if 15th amendment not passed
     }
-    else{
+    else {
       let pop = Q[state + "_" + cls] || 0;
 
       let raw = {
         rep: Q[state + "_" + cls + "_rep"] || 0,
-        dem: Q[state + "_" + cls + "_dem"] || 0
+        dem: Q[state + "_" + cls + "_dem"] || 0,
+        lib: Q[state + "_" + cls + "_lib"] || 0
       };
 
       let mod = {
         rep: Q[cls + "_rep"] || 0,
-        dem: Q[cls + "_dem"] || 0
+        dem: Q[cls + "_dem"] || 0,
+        lib: Q[cls + "_lib"] || 0
       };
 
       let adj = {
         rep: 0.2 * raw.rep + 0.8 * mod.rep,
-        dem: 0.2 * raw.dem + 0.8 * mod.dem
+        dem: 0.2 * raw.dem + 0.8 * mod.dem,
+        lib: Q.liberal_split ? (0.2 * raw.lib + 0.8 * mod.lib) : 0
       };
 
-      let total = adj.rep + adj.dem;
+      let total = adj.rep + adj.dem + adj.lib;
       if (!total) continue;
 
       adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
       adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
+      if (Q.liberal_split) {
+        adj.lib = Math.min(100, Math.max(0, adj.lib * (1 + randomNoise())));
+      }
 
-      total = adj.rep + adj.dem;
+      total = adj.rep + adj.dem + adj.lib;
 
       votes.rep += pop * adj.rep / total;
       votes.dem += pop * adj.dem / total;
+      if (Q.liberal_split) {
+        votes.lib += pop * adj.lib / total;
+      }
     }
   }
 
   // Apply close state adjustment with randomness
+  // Only adjust rep vs dem margin; lib votes stay as calculated
   if (closeStates[state] !== undefined) {
     let baseTarget = closeStates[state];
-    let randomJitter = (Math.random() * 0.6) - 0.3; // ±0.3%
+    let randomJitter = (Math.random() * 0.6) - 0.3;
     let marginTarget = baseTarget + randomJitter;
 
-    let totalVotes = votes.rep + votes.dem;
-    let currentMargin = ((votes.rep - votes.dem) / totalVotes) * 100;
-    let marginDiff = marginTarget - currentMargin;
+    let twoPartyTotal = votes.rep + votes.dem;
+    if (twoPartyTotal > 0) {
+      let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
+      let marginDiff = marginTarget - currentMargin;
 
-    votes.rep += totalVotes * (marginDiff / 200);
-    votes.dem -= totalVotes * (marginDiff / 200);
+      votes.rep += twoPartyTotal * (marginDiff / 200);
+      votes.dem -= twoPartyTotal * (marginDiff / 200);
 
-    // Clamp to prevent negatives
-    votes.rep = Math.max(0, votes.rep);
-    votes.dem = Math.max(0, votes.dem);
+      votes.rep = Math.max(0, votes.rep);
+      votes.dem = Math.max(0, votes.dem);
+    }
   }
 
-  let winner = votes.rep >= votes.dem ? "rep" : "dem";
+  // Determine state winner
+  let winner = "rep";
+  if (votes.dem >= votes.rep && votes.dem >= votes.lib) winner = "dem";
+  if (Q.liberal_split && votes.lib >= votes.rep && votes.lib >= votes.dem) winner = "lib";
+
   Q[state + "_winner"] = winner;
 
-  let color = winner === "rep" ? "#d73027" : "#4575b4";
+  let color = "#d73027"; // rep default
+  if (winner === "dem") color = "#4575b4";
+  if (winner === "lib") color = "#DAA520";
   Q[state.toLowerCase() + "_winner_color"] = color;
 
   let margin = votes.rep - votes.dem;
-  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem)) * 100).toFixed(2);
+  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem + votes.lib)) * 100).toFixed(2);
 
   console.log(
-    `${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`
+    `${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`
   );
 }
 
@@ -115,13 +135,26 @@ for (let state of Q.states) {
 
   let w = Q[state + "_winner"];
   if (w === "rep") Q.repEVTotal += ev;
-  else Q.demEVTotal += ev;
+  else if (w === "dem") Q.demEVTotal += ev;
+  else if (w === "lib") Q.libEVTotal += ev;
 }
 
-// POTUS winner
-Q.potus_winner = Q.demEVTotal >= Q.repEVTotal ? "dem" : "rep";
+// POTUS winner — needs majority of all EVs
+let totalEV = Q.repEVTotal + Q.demEVTotal + Q.libEVTotal;
+let majority = Math.floor(totalEV / 2) + 1;
 
-console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}`);
+if (Q.repEVTotal >= majority) {
+  Q.potus_winner = "rep";
+} else if (Q.demEVTotal >= majority) {
+  Q.potus_winner = "dem";
+} else if (Q.libEVTotal >= majority) {
+  Q.potus_winner = "lib";
+} else {
+  // No majority — goes to House of Representatives
+  Q.potus_winner = "house";
+}
+
+console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, LIB=${Q.libEVTotal}`);
 console.log(`POTUS winner: ${Q.potus_winner}`);
 
 !}
@@ -156,7 +189,6 @@ on-display: {!
     nc: Q.nc_winner_color,
     oh: Q.oh_winner_color,
     or: Q.or_winner_color,
-    oh: Q.oh_winner_color,
     pa: Q.pa_winner_color,
     ri: Q.ri_winner_color,
     sc: Q.sc_winner_color,
@@ -193,37 +225,75 @@ go-to: potus_menu
 
 {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}Democrats{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
 
+[? if liberal_split = 1 :
+{!<tr><td><div class="box" style="background-color:#DAA520; outline:2px solid;"></div> !}Liberal Republicans{!</td><td>!}[+ libEVTotal +] votes{!</td></tr>!}
+?]
+
 {!</table>!}
 
 @potus_menu
 
 - @victory
 - @defeat_dem
+- @defeat_lib
+- @house_decides
 - @defeat_O
 
 @victory
 title: Republicans won the election!
-subtitle: Republicans: [+ repEVTotal +] votes
+subtitle: Republicans: [+ repEVTotal +] electoral votes
 view-if: potus_winner = "rep"
 on-arrival: president = Candidate; president_party = "rep";
 
-The Republicans have managed to get a majority of the electors in this election. [? if president == "Wade": The American people have signaled their mandate for Benjamin Wade to serve as President and work with congress?][? if president == "Grant": Grant's war career of saving the Union as made an impression on voters as the past has suggested. Hopefully he will lead us into a brighter future.?][? if president == "Chase": Chase somehow is elected president, the radical republicans despise him and this could lead to a crisis within the party. But the Moderates and Conservatives are cheering with this return to normalcy in the Executive Mansion ?]
+The Republicans have managed to get a majority of the electors in this election. [? if president == "Wade": The American people have signaled their mandate for Benjamin Wade to serve as President and work with congress. ?][? if president == "Grant": Grant's war career of saving the Union has made an impression on voters. Hopefully he will lead us into a brighter future. ?][? if president == "Chase": Chase is elected president — the Radical Republicans despise him and this could lead to a crisis within the party, but the Moderates and Conservatives are cheering with this return to normalcy in the Executive Mansion. ?]
 
 @defeat_dem
-title: Republicans lost?????
-subtitle: Democrats: [+ demEVTotal +] votes
+title: The Democrats have won the presidency.
+subtitle: Democrats: [+ demEVTotal +] electoral votes
 view-if: potus_winner = "dem"
 on-arrival: president = "Seymour"; president_party = "dem";
 
-Bruh, how the hell did you lose this election? I programmed it to make it basically **impossible** to lose this election!!!!
+[? if liberal_split = 1 : The Liberal Republican split has handed the election to the Democrats. Horatio Seymour will be the next President of the United States. The damage wrought by the party's division may haunt Reconstruction for years to come. ?][? if liberal_split = 0 : How did you lose this election? It was programmed to be basically impossible to lose! ?]
+
+@defeat_lib
+title: The Liberal Republicans have won the presidency!
+subtitle: Liberal Republicans: [+ libEVTotal +] electoral votes
+view-if: potus_winner = "lib"
+on-arrival: president = "Greeley"; president_party = "lib";
+
+In a stunning upset, the Liberal Republican candidate has won a majority of electoral votes. Their platform of reconciliation, civil service reform, and an end to military occupation has resonated with voters weary of Reconstruction's costs and controversies.
+
+@house_decides
+title: No majority — the election goes to the House!
+subtitle: Rep: [+ repEVTotal +] | Dem: [+ demEVTotal +][? if liberal_split = 1 : | Lib: [+ libEVTotal +] ?]
+view-if: potus_winner = "house"
+on-arrival: {!
+  // House decides — Republican House majority means Republican wins
+  if (Q.house_majority >= 2) {
+    Q.potus_winner = "rep";
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+  } else if (Q.dem_r > Q.rep_r) {
+    Q.potus_winner = "dem";
+    Q.president = "Seymour";
+    Q.president_party = "dem";
+  } else {
+    Q.potus_winner = "rep";
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+  }
+!}
+
+No candidate has secured a majority of electoral votes. Under the Constitution, the election is thrown to the House of Representatives, where each state delegation casts a single vote.
+
+[? if house_majority >= 2 : With Republicans controlling a majority of state delegations, the House elects our candidate as President. ?][? if house_majority < 2 : The Democratic-leaning delegations carry the day, and Seymour is elected President by the House. ?]
 
 @defeat_O
-title: Republicans lost?????
+title: Something has gone very wrong.
 subtitle: Other: [+ otherEVTotal +] votes
 view-if: potus_winner = "other"
 on-arrival: president = "???"; president_party = "???";
 
-Bruh, how the hell did you lose this election? I programmed it to make it basically **impossible** to lose this election!!!!
+This outcome was not supposed to be possible. Someone has been tampering with the console.
 
-**CHEATER!!!!!!!!!!!!!!**, I know that you entered the console.
-
+**CHEATER!!!!!!!!!!!!!!**

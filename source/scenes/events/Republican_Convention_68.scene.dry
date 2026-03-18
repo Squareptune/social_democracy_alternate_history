@@ -2,6 +2,7 @@ title: 1868 Republican National Convention
 subtitle: Republican Candidate for President
 tags: event
 view-if: year = 1868 and month = 5
+max-visits: 1
 
 = Republican National Convention
 
