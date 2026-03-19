@@ -82,7 +82,7 @@ Without them, the party is more ideologically coherent — but potentially weake
 subtitle: -2 resources
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
-on-arrival: on-arrival: {!
+on-arrival: {!
 
     let classes = Q.classes;
     let nationalBleed = {
