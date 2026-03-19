@@ -21,9 +21,8 @@ They have broken away to form the **Liberal Republican Party**, advocating for c
 - @condemn: Condemn the splitters publicly.
 
 @accept_split
-on-arrival: on-arrival: {!
+on-arrival: {!
 
-    // Transfer national support from rep to lib
     let classes = Q.classes;
     let nationalBleed = {
         workers: 0.15,
@@ -41,7 +40,6 @@ on-arrival: on-arrival: {!
         Q[cls + '_lib'] = (Q[cls + '_lib'] || 0) + transfer;
     }
 
-    // Transfer per-state support from rep to lib
     for (let state of Q.states) {
         for (let cls of classes) {
             let bleed = nationalBleed[cls] || 0.10;
@@ -53,20 +51,17 @@ on-arrival: on-arrival: {!
         }
     }
 
-    // House and Senate seat transfer
     Q.lib_r = Math.round(Q.rep_r * (Q.liberal_strength / 100) * 0.6);
     Q.rep_r -= Q.lib_r;
     Q.lib_senate_r = Math.round(Q.rep_senate_r * (Q.liberal_strength / 100) * 0.6);
     Q.rep_senate_r -= Q.lib_senate_r;
 
-    // Faction consequences
     Q.liberal_strength = 0;
     Q.liberal_dissent = 0;
     Q.moderate_dissent -= 5;
     Q.radical_strength += 5;
     Q.conservative_dissent += 3;
 
-    // Majority check
     let totalHouse = Q.rep_r + Q.dem_r + Q.lib_r + Q.other_r;
     let repPct = (Q.rep_r / totalHouse) * 100;
     if (repPct >= 66.7) {
@@ -76,6 +71,7 @@ on-arrival: on-arrival: {!
     } else {
         Q.house_majority = 0;
     }
+
 !}
 
 A painful but perhaps inevitable rupture. The Liberal Republicans depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats. Their appeal is strongest among the educated middle class and reformist press.

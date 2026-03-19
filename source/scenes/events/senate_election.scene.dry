@@ -255,9 +255,7 @@ go-to: house_makeup
 
 {!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem_senate_r +] {!</td></tr>!}
 
-[? if liberal_split = 1 :
-{!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ display_lib_senate +] seats {!</td><td>!} [+ str_change_lib_senate_r +] {!</td></tr>!}
-?]
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ display_lib_senate +] seats {!</td><td>!} [+ str_change_lib_senate_r +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other_senate_r +] {!</td></tr>!}
 {!</table>!}

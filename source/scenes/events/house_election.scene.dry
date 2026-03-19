@@ -226,9 +226,7 @@ go-to: house_menu
 
 {!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ dem_r_disp +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
 
-[? if liberal_split = 1 :
-{!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ lib_r_disp +] seats {!</td><td>!} [+ str_change_lib_r +] {!</td></tr>!}
-?]
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ lib_r_disp +] seats {!</td><td>!} [+ str_change_lib_r +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r_disp +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
 {!</table>!}

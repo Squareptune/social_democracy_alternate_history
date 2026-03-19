@@ -225,9 +225,7 @@ go-to: potus_menu
 
 {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}Democrats{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
 
-[? if liberal_split = 1 :
-{!<tr><td><div class="box" style="background-color:#DAA520; outline:2px solid;"></div> !}Liberal Republicans{!</td><td>!}[+ libEVTotal +] votes{!</td></tr>!}
-?]
+[? if liberal_split = 1 : {!<tr><td><div class="box" style="background-color:#DAA520; outline:2px solid;"></div> !}Liberal Republicans{!</td><td>!}[+ libEVTotal +] votes{!</td></tr>!} ?]
 
 {!</table>!}
 
