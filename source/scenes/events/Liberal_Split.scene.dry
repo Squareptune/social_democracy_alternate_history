@@ -140,7 +140,7 @@ Our outreach keeps some liberals in the fold, but the split still happens. A sma
 The remaining liberals within our party are mollified for now, but their loyalty remains uncertain.
 
 @condemn
-on-arrival: on-arrival: {!
+on-arrival: {!
 
     let classes = Q.classes;
     let nationalBleed = {
