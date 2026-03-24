@@ -182,9 +182,7 @@ Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate
 
 = State Reconstruction Level
 
-[? if reconstructionPlanActive = 0 :
-No Reconstruction plan has been enacted yet. State readmission scores will appear once a plan is in place.
-?]
+[? if reconstructionPlanActive = 0 : No Reconstruction plan has been enacted yet. State readmission scores will appear once a plan is in place. ?]
 
 [? if reconstructionPlanActive = 1 :
 
