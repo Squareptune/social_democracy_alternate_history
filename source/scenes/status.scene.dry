@@ -143,6 +143,8 @@ Others: [+ other_r_pro +] seats
 
 Workers: Republican: [+ workers_rep +]%, Democrat: [+ workers_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ workers_lib +]% ?], Other: [+ workers_other +]%
 
+Rural: Republican: [+ rural_rep +]%, Democrat: [+ rural_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ rural_lib +]% ?], Other: [+ rural_other +]%
+
 Middle Class: Republican: [+ middle_class_rep +]%, Democrat: [+ middle_class_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ middle_class_lib +]% ?], Other: [+ middle_class_other +]%
 
 Freemen: Republican: [+ freemen_rep +]%, Democrat: [+ freemen_dem +]%[? if liberal_split = 1 : , Liberal Republican: [+ freemen_lib +]% ?], Other: [+ freemen_other +]%
@@ -176,56 +178,54 @@ Postmaster General: [+ sect_postmaster +] ([+ sect_postmaster_party +])
 
 Support for Reconstruction: [+ reconstruction_support +]%
 
-Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate Plan ?][? if Radical_plan = 1: Radical Plan ?]
+Plan: [? if Johnson_plan = 1: Johnson's Plan ?][? if Moderate_plan = 1: Moderate Plan ?][? if Radical_plan = 1: Radical Plan ?][? if Johnson_plan = 0 and Moderate_plan = 0 and Radical_plan = 0: No plan active yet ?]
 
 = State Reconstruction Level
 
-Virginia: 
-Reconstruction Score: [+ VA_reconstructionScore +]%, 
-Readmission Score: [+ VA_percentOfThreshold +]
-Admission Status: [? if VA_admitted = 1: True ?][? if VA_admitted = 0: False ?]
+[? if reconstructionPlanActive = 0 :
+No Reconstruction plan has been enacted yet. State readmission scores will appear once a plan is in place.
+?]
 
-North Carolina: 
-Reconstruction Score: [+ NC_reconstructionScore +]%, 
-Readmission Score: [+ NC_percentOfThreshold +]
-Admission Status: [? if NC_admitted = 1: True ?][? if NC_admitted = 0: False ?]
+[? if reconstructionPlanActive = 1 :
+
+Virginia:
+Reconstruction Score: [+ VA_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if VA_admitted = 1 : Admitted ?][? if VA_canReadmit = 1 and VA_admitted = 0 : Ready for readmission ?][? if VA_canReadmit = 0 : Not yet eligible ?]
+
+North Carolina:
+Reconstruction Score: [+ NC_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if NC_admitted = 1 : Admitted ?][? if NC_canReadmit = 1 and NC_admitted = 0 : Ready for readmission ?][? if NC_canReadmit = 0 : Not yet eligible ?]
 
 South Carolina:
-Reconstruction Score: [+ SC_reconstructionScore +]%, 
-Readmission Score: [+ SC_percentOfThreshold +]
-Admission Status: [? if SC_admitted = 1: True ?][? if SC_admitted = 0: False ?]
+Reconstruction Score: [+ SC_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if SC_admitted = 1 : Admitted ?][? if SC_canReadmit = 1 and SC_admitted = 0 : Ready for readmission ?][? if SC_canReadmit = 0 : Not yet eligible ?]
 
 Georgia:
-Reconstruction Score: [+ GA_reconstructionScore +]%, 
-Readmission Score: [+ GA_percentOfThreshold +]
-Admission Status: [? if GA_admitted = 1: True ?][? if GA_admitted = 0: False ?]
+Reconstruction Score: [+ GA_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if GA_admitted = 1 : Admitted ?][? if GA_canReadmit = 1 and GA_admitted = 0 : Ready for readmission ?][? if GA_canReadmit = 0 : Not yet eligible ?]
 
 Alabama:
-Reconstruction Score: [+ AL_reconstructionScore +]%, 
-Readmission Score: [+ AL_percentOfThreshold +]
-Admission Status: [? if AL_admitted = 1: True ?][? if AL_admitted = 0: False ?]
+Reconstruction Score: [+ AL_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if AL_admitted = 1 : Admitted ?][? if AL_canReadmit = 1 and AL_admitted = 0 : Ready for readmission ?][? if AL_canReadmit = 0 : Not yet eligible ?]
 
 Florida:
-Reconstruction Score: [+ FL_reconstructionScore +]%, 
-Readmission Score: [+ FL_percentOfThreshold +]
-Admission Status: [? if FL_admitted = 1: True ?][? if FL_admitted = 0: False ?]
+Reconstruction Score: [+ FL_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if FL_admitted = 1 : Admitted ?][? if FL_canReadmit = 1 and FL_admitted = 0 : Ready for readmission ?][? if FL_canReadmit = 0 : Not yet eligible ?]
 
 Mississippi:
-Reconstruction Score: [+ MS_reconstructionScore +]%, 
-Readmission Score: [+ MS_percentOfThreshold +]
-Admission Status: [? if MS_admitted = 1: True ?][? if MS_admitted = 0: False ?]
+Reconstruction Score: [+ MS_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if MS_admitted = 1 : Admitted ?][? if MS_canReadmit = 1 and MS_admitted = 0 : Ready for readmission ?][? if MS_canReadmit = 0 : Not yet eligible ?]
 
 Arkansas:
-Reconstruction Score: [+ AK_reconstructionScore +]%, 
-Readmission Score: [+ AK_percentOfThreshold +]
-Admission Status: [? if AK_admitted = 1: True ?][? if AK_admitted = 0: False ?]
+Reconstruction Score: [+ AK_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if AK_admitted = 1 : Admitted ?][? if AK_canReadmit = 1 and AK_admitted = 0 : Ready for readmission ?][? if AK_canReadmit = 0 : Not yet eligible ?]
 
 Texas:
-Reconstruction Score: [+ TX_reconstructionScore +]%, 
-Readmission Score: [+ TX_percentOfThreshold +]
-Admission Status: [? if TX_admitted = 1: True ?][? if TX_admitted = 0: False ?]
+Reconstruction Score: [+ TX_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if TX_admitted = 1 : Admitted ?][? if TX_canReadmit = 1 and TX_admitted = 0 : Ready for readmission ?][? if TX_canReadmit = 0 : Not yet eligible ?]
 
 Louisiana:
-Reconstruction Score: [+ LA_reconstructionScore +]%, 
-Readmission Score: [+ LA_percentOfThreshold +]
-Admission Status: [? if LA_admitted = 1: True ?][? if LA_admitted = 0: False ?]
+Reconstruction Score: [+ LA_reconstructionScore +] / [? if Radical_plan = 1 : 75 ?][? if Moderate_plan = 1 : 55 ?][? if Johnson_plan = 1 : 30 ?]
+Admission Status: [? if LA_admitted = 1 : Admitted ?][? if LA_canReadmit = 1 and LA_admitted = 0 : Ready for readmission ?][? if LA_canReadmit = 0 : Not yet eligible ?]
+
+?]

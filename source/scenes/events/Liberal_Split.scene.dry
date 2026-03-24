@@ -4,7 +4,7 @@ tags: event
 new-page: true
 view-if: liberal_strength >= 15 and liberal_dissent >= 25 and liberal_split = 0
 max-visits: 1
-on-arrival: liberal_split = 1; liberal_split_timer = 0;
+on-arrival: liberal_split = 1;
 
 = The Liberal Republican Split
 

@@ -34,9 +34,9 @@ We seize rebel estates under the Confiscation Acts, granting land to freedmen’
 title: 40 Acres and a Mule
 subtitle: Break up Confederate plantations for freedmen’s homesteads without compensation
 unavailable-subtitle: [? if judicial_reform < 2 : The courts wouldn't support such action ?]
-choose-if: judicial_reform = 2
+choose-if: judicial_reform >= 2
 view-if: fifth_A = 1
-on-arrival: budget -= 1; freemen_rep += 4; land_reform += 2; rural_dem -= 9*(1-dissent); radical_strength += 9; moderate_dissent += 6; kkk_militancy += 0.2; agriculture_goal_completed += 1; liberal_strength += 4; liberal_dissent -= 3
+on-arrival: freemen_rep += 4; land_reform += 2; rural_dem -= 9*(1-dissent); radical_strength += 9; moderate_dissent += 6; kkk_militancy += 0.2; agriculture_goal_completed += 1; liberal_strength += 4; liberal_dissent -= 3
 
 The Reconstruction government has authorized a bold land redistribution effort: seizing and subdividing former Confederate plantations for freedmen, without compensating their former owners. Thanks to judicial reform and a revised Fifth Amendment, the courts now allow such a radical move.
 
