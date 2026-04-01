@@ -1,4 +1,4 @@
-# Social Democracy: An Alternate History
+# Washington 1865: An Alternate History
 
 ## Included Libraries
 
