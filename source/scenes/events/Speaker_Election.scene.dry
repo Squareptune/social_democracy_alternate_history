@@ -48,6 +48,7 @@ on-arrival: {!
     Q.speaker_unlocks_tariff_committee = 1;
     Q.speaker_unlocks_reconstruction_committee = 0;
 !}
+go-to: speaker_end
 
 Schuyler Colfax, the "Smiler," is elected Speaker. Known for his warm personality and skill at building consensus, he is popular across the party's moderate and conservative wings. Radicals tolerate him, if not love him.
 
@@ -78,6 +79,7 @@ on-arrival: {!
     Q.freemen_rep += 4;
     Q.rural_dem -= 2;
 !}
+go-to: speaker_end
 
 Thaddeus Stevens storms into the Speaker's chair like a force of nature. His iron control of the House floor and committee assignments transforms the chamber into an engine of Radical Reconstruction. Democrats are apoplectic. Conservative Republicans are alarmed. Radicals are finally satisfied.
 
@@ -85,7 +87,6 @@ His dual role as Speaker and party advisor means he cannot devote his full atten
 
 [? if impeachment_unlocked = 1 : Stevens, as Speaker, will drive the impeachment process with particular ferocity. ?]
 
-- @speaker_end
 
 @Blaine
 title: James Blaine (Maine)
@@ -110,12 +111,12 @@ on-arrival: {!
     Q.speaker_unlocks_foreign_affairs = 1; // Blaine loves foreign policy
     Q.speaker_unlocks_reconstruction_committee = 0;
 !}
+go-to: speaker_end
 
 James Blaine of Maine takes the gavel. Energetic, politically cunning, and already cultivating a national profile, Blaine is a skilled legislative operator. He consolidates support from the moderate and conservative wings and proves adept at managing the floor.
 
 His ambitions, however, extend beyond the speakership. Keep an eye on him.
 
-- @speaker_end
 
 @Dawes
 title: Henry Dawes (Massachusetts)
@@ -139,6 +140,7 @@ on-arrival: {!
     Q.speaker_unlocks_reconstruction_committee = 0;
     Q.speaker_unlocks_fiscal_committee = 1;
 !}
+go-to: speaker_end
 
 Henry Dawes brings a reputation for financial integrity and reform sympathies to the speakership. His selection satisfies the conservative and liberal factions, who see him as a counterweight to Radical excess.
 
@@ -146,7 +148,6 @@ Radicals distrust him. The working class, sensing he will not be their champion,
 
 His speakership accelerates civil service reform discussions and strengthens fiscal oversight committees.
 
-- @speaker_end
 
 @Garfield
 title: James A. Garfield (Ohio)
@@ -170,12 +171,12 @@ on-arrival: {!
     Q.speaker_unlocks_reconstruction_committee = 1;
     Q.speaker_unlocks_labor_committee = 1;
 !}
+go-to: speaker_end
 
 James Garfield, the self-made man from Ohio and celebrated Union general, brings credibility with both Radical and moderate wings. A gifted orator, he commands the floor with natural authority.
 
 His broad appeal reduces factional friction and opens up both reconstruction and labor legislation avenues.
 
-- @speaker_end
 
 @Washburne
 title: Elihu Washburne (Illinois)
@@ -197,21 +198,20 @@ on-arrival: {!
     Q.speaker_unlocks_foreign_affairs = 1;
     Q.speaker_unlocks_reconstruction_committee = 0;
 !}
+go-to: speaker_end
 
 Elihu Washburne, Grant's close political ally from Illinois, takes the gavel. Reliable, unflashy, and content to serve the party rather than himself, he keeps the caucus orderly and the Grant White House happy.
 
 His deep interest in foreign affairs — he will later serve as minister to France — opens new diplomatic avenues.
 
-- @speaker_end
 
 @keep_speaker
 title: Retain [+ speaker +] as Speaker.
 view-if: speaker != "" and rep_majority >= 2
 on-arrival: moderate_dissent -= 1; conservative_dissent -= 1
+go-to: speaker_end
 
 The House re-elects [+ speaker +] without controversy. Continuity has its value.
-
-- @speaker_end
 
 @dem_speaker_note
 title: (Democrats hold the House — we cannot elect a Speaker.)
@@ -243,14 +243,15 @@ on-arrival: {!
     Q.speaker_unlocks_fiscal_committee = 0;
     Q.speaker_unlocks_labor_committee = 0;
 !}
-
+go-to: speaker_end
 With the Democrats in control of the House, [+ speaker +] takes the gavel as Speaker. Our legislative agenda is now effectively blocked. Bills that reach the floor will be shaped by Democratic priorities, not ours.
 
 This is the consequence of losing the House. Reconstruction stalls. Our chairmanships are stripped. We can oppose, but we cannot govern.
 
-- @speaker_end
+
 
 @speaker_end
+title: Finish Voting
 on-arrival: speaker_election_needed = 0
 
 The election of [+ speaker +] as Speaker is complete.
