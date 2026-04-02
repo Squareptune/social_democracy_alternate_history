@@ -1,0 +1,266 @@
+title: Election of the Speaker of the House
+new-page: true
+tags: event
+view-if: speaker_election_needed = 1
+on-arrival: speaker_election_needed = 0;
+
+= Election of the Speaker
+
+With our majority in the House of Representatives, we must choose a Speaker to preside over the chamber. The Speaker sets the legislative agenda, assigns committee chairmanships, and is second in line to the presidency. This is not a ceremonial choice.
+
+[? if speaker != "" : The current Speaker is [+ speaker +]. ?]
+
+- @Colfax
+- @Stevens
+- @Blaine
+- @Dawes
+- @Garfield
+- @Washburne
+- @keep_speaker: Keep the current Speaker.
+- @dem_speaker_note
+
+@Colfax
+title: Schuyler Colfax (Indiana)
+subtitle: [? if speaker = "Colfax" : ★ Currently serving — retain him ?][? if speaker != "Colfax" : Moderate Republican. Affable, well-liked across factions. ?]
+view-if: year <= 1869
+on-arrival: {!
+    let wasSpeaker = (Q.speaker === "Colfax");
+    Q.speaker = "Colfax";
+    Q.speaker_party = "R";
+
+    // One-time effects on selection
+    if (!wasSpeaker) {
+        Q.moderate_strength += 4;
+        Q.moderate_dissent -= 3;
+        Q.radical_dissent += 2; // radicals wanted Stevens
+        Q.conservative_dissent -= 2;
+        Q.liberal_dissent -= 2;
+        Q.middle_class_rep += 2;
+    } else {
+        // Re-electing: stability bonus
+        Q.moderate_dissent -= 2;
+        Q.conservative_dissent -= 1;
+    }
+
+    // Colfax unlocks: smooth legislative operations
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_impeachment_boost = 0;
+    Q.speaker_unlocks_tariff_committee = 1;
+    Q.speaker_unlocks_reconstruction_committee = 0;
+!}
+
+Schuyler Colfax, the "Smiler," is elected Speaker. Known for his warm personality and skill at building consensus, he is popular across the party's moderate and conservative wings. Radicals tolerate him, if not love him.
+
+[? if speaker = "Colfax" : Colfax continues his tenure. The House settles into its familiar rhythms under his steady hand. ?]
+
+His speakership opens channels to Ways & Means, strengthening our hand on tariff legislation.
+
+- @speaker_end
+
+@Stevens
+title: Thaddeus Stevens (Pennsylvania)
+subtitle: [? if speaker = "Stevens" : ★ Currently serving ?][? if speaker != "Stevens" : Radical choice. Transforms the speakership into a weapon for Reconstruction. ?]
+view-if: year <= 1868 and stevens_advisor = 1
+on-arrival: {!
+    Q.speaker = "Stevens";
+    Q.speaker_party = "R";
+
+    Q.moderate_dissent += 5;
+    Q.conservative_dissent += 8;
+    Q.radical_strength += 8;
+    Q.radical_dissent -= 6;
+    Q.liberal_dissent += 4;
+
+    // Unlocks
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_impeachment_boost = 1; // Stevens drives impeachment hard
+    Q.speaker_unlocks_reconstruction_committee = 1;
+    Q.speaker_unlocks_tariff_committee = 0;
+
+    Q.freemen_rep += 4;
+    Q.rural_dem -= 2;
+!}
+
+Thaddeus Stevens storms into the Speaker's chair like a force of nature. His iron control of the House floor and committee assignments transforms the chamber into an engine of Radical Reconstruction. Democrats are apoplectic. Conservative Republicans are alarmed. Radicals are finally satisfied.
+
+His dual role as Speaker and party advisor means he cannot devote his full attention to either — his advisor actions will come more slowly.
+
+[? if impeachment_unlocked = 1 : Stevens, as Speaker, will drive the impeachment process with particular ferocity. ?]
+
+- @speaker_end
+
+@Blaine
+title: James Blaine (Maine)
+subtitle: [? if speaker = "Blaine" : ★ Currently serving ?][? if speaker != "Blaine" : Ambitious moderate. Strong legislator, eye on the presidency. ?]
+view-if: year >= 1868
+on-arrival: {!
+    let wasSpeaker = (Q.speaker === "Blaine");
+    Q.speaker = "Blaine";
+    Q.speaker_party = "R";
+
+    if (!wasSpeaker) {
+        Q.moderate_strength += 5;
+        Q.conservative_strength += 3;
+        Q.radical_dissent += 4;
+        Q.liberal_dissent -= 2;
+        Q.middle_class_rep += 3;
+    }
+
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_impeachment_boost = 0;
+    Q.speaker_unlocks_tariff_committee = 1;
+    Q.speaker_unlocks_foreign_affairs = 1; // Blaine loves foreign policy
+    Q.speaker_unlocks_reconstruction_committee = 0;
+!}
+
+James Blaine of Maine takes the gavel. Energetic, politically cunning, and already cultivating a national profile, Blaine is a skilled legislative operator. He consolidates support from the moderate and conservative wings and proves adept at managing the floor.
+
+His ambitions, however, extend beyond the speakership. Keep an eye on him.
+
+- @speaker_end
+
+@Dawes
+title: Henry Dawes (Massachusetts)
+subtitle: Fiscal conservative, known for probity and reform sympathies.
+view-if: year >= 1867
+on-arrival: {!
+    Q.speaker = "Dawes";
+    Q.speaker_party = "R";
+
+    Q.conservative_strength += 5;
+    Q.conservative_dissent -= 4;
+    Q.radical_dissent += 5;
+    Q.liberal_dissent -= 3;
+    Q.moderate_dissent += 2;
+
+    Q.middle_class_rep += 4;
+    Q.workers_rep -= 2;
+
+    Q.speaker_unlocks_civil_service = 1; // Dawes champions reform
+    Q.speaker_unlocks_tariff_committee = 0;
+    Q.speaker_unlocks_reconstruction_committee = 0;
+    Q.speaker_unlocks_fiscal_committee = 1;
+!}
+
+Henry Dawes brings a reputation for financial integrity and reform sympathies to the speakership. His selection satisfies the conservative and liberal factions, who see him as a counterweight to Radical excess.
+
+Radicals distrust him. The working class, sensing he will not be their champion, shift slightly.
+
+His speakership accelerates civil service reform discussions and strengthens fiscal oversight committees.
+
+- @speaker_end
+
+@Garfield
+title: James A. Garfield (Ohio)
+subtitle: Rising star. War hero, moderate Radical, skilled debater.
+view-if: year >= 1869
+on-arrival: {!
+    Q.speaker = "Garfield";
+    Q.speaker_party = "R";
+
+    Q.moderate_strength += 4;
+    Q.radical_dissent -= 2;
+    Q.conservative_dissent += 1;
+    Q.liberal_dissent -= 1;
+
+    Q.workers_rep += 2;
+    Q.rural_rep += 2;
+    Q.freemen_rep += 2;
+
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_tariff_committee = 1;
+    Q.speaker_unlocks_reconstruction_committee = 1;
+    Q.speaker_unlocks_labor_committee = 1;
+!}
+
+James Garfield, the self-made man from Ohio and celebrated Union general, brings credibility with both Radical and moderate wings. A gifted orator, he commands the floor with natural authority.
+
+His broad appeal reduces factional friction and opens up both reconstruction and labor legislation avenues.
+
+- @speaker_end
+
+@Washburne
+title: Elihu Washburne (Illinois)
+subtitle: Grant ally. Reliably loyal, limited ambition, strong in foreign affairs.
+view-if: year >= 1866 and year <= 1872
+on-arrival: {!
+    Q.speaker = "Washburne";
+    Q.speaker_party = "R";
+
+    Q.moderate_strength += 3;
+    Q.conservative_strength += 2;
+    Q.radical_dissent += 1;
+    Q.liberal_dissent += 2;
+
+    Q.europe_relation += 2;
+
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_tariff_committee = 0;
+    Q.speaker_unlocks_foreign_affairs = 1;
+    Q.speaker_unlocks_reconstruction_committee = 0;
+!}
+
+Elihu Washburne, Grant's close political ally from Illinois, takes the gavel. Reliable, unflashy, and content to serve the party rather than himself, he keeps the caucus orderly and the Grant White House happy.
+
+His deep interest in foreign affairs — he will later serve as minister to France — opens new diplomatic avenues.
+
+- @speaker_end
+
+@keep_speaker
+title: Retain [+ speaker +] as Speaker.
+view-if: speaker != "" and rep_majority >= 2
+on-arrival: moderate_dissent -= 1; conservative_dissent -= 1
+
+The House re-elects [+ speaker +] without controversy. Continuity has its value.
+
+- @speaker_end
+
+@dem_speaker_note
+title: (Democrats hold the House — we cannot elect a Speaker.)
+view-if: rep_majority = 0
+go-to: dem_speaker
+
+@dem_speaker
+on-arrival: {!
+    // If Democrats hold the house, they elect their own speaker
+    // Michael Kerr (1875) or Samuel Randall (1876)
+    if (Q.year >= 1875) {
+        Q.speaker = "Randall";
+        Q.speaker_party = "D";
+    } else {
+        Q.speaker = "Kerr";
+        Q.speaker_party = "D";
+    }
+
+    // Democratic speaker actively hurts our legislative agenda
+    Q.dem_speaker_active = 1;
+    Q.radical_dissent += 5;
+    Q.moderate_dissent += 3;
+    Q.reconstruction_support -= 5;
+    Q.speaker_unlocks_reconstruction_committee = 0;
+    Q.speaker_unlocks_civil_service = 0;
+    Q.speaker_unlocks_tariff_committee = 0;
+    Q.speaker_unlocks_foreign_affairs = 0;
+    Q.speaker_unlocks_impeachment_boost = 0;
+    Q.speaker_unlocks_fiscal_committee = 0;
+    Q.speaker_unlocks_labor_committee = 0;
+!}
+
+With the Democrats in control of the House, [+ speaker +] takes the gavel as Speaker. Our legislative agenda is now effectively blocked. Bills that reach the floor will be shaped by Democratic priorities, not ours.
+
+This is the consequence of losing the House. Reconstruction stalls. Our chairmanships are stripped. We can oppose, but we cannot govern.
+
+- @speaker_end
+
+@speaker_end
+on-arrival: speaker_election_needed = 0
+
+The election of [+ speaker +] as Speaker is complete.
+
+[? if speaker_unlocks_reconstruction_committee = 1 : The new Speaker assigns a Reconstruction Committee favorable to our agenda, opening new legislative avenues in the South. ?]
+[? if speaker_unlocks_tariff_committee = 1 : The new Speaker's allies on Ways & Means will smooth the path for tariff legislation. ?]
+[? if speaker_unlocks_civil_service = 1 : The new Speaker signals genuine openness to civil service reform, strengthening that faction within the party. ?]
+[? if speaker_unlocks_impeachment_boost = 1 : The new Speaker will ensure impeachment proceedings move swiftly if the opportunity arises. ?]
+[? if speaker_unlocks_foreign_affairs = 1 : The new Speaker prioritizes the Foreign Affairs committee, opening new diplomatic options. ?]
+[? if speaker_unlocks_fiscal_committee = 1 : The new Speaker places fiscal conservatives on key budget committees, tightening government spending. ?]
+[? if speaker_unlocks_labor_committee = 1 : The new Speaker creates space for labor legislation to reach the floor. ?]

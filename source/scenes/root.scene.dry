@@ -115,6 +115,8 @@ Q.army_loyalty = 0.8;
 Q.navy_strength = 200;
 Q.navy_loyalty = 0.8;
 
+Q.speaker_election_needed = 0;
+
 Q.constitutional_reform = 0;
 Q.fifth_A = 0;
 Q.fortheen_A = 0;

@@ -178,7 +178,7 @@ on-display: {!
       {
         id: "democrats",
         seats: Math.round(Q.dem_r),
-        color: "#0015BC",
+        color: "#0015bc",
         outline: "#0015BC"
       },
       {
@@ -259,6 +259,7 @@ go-to: house_menu
 title: Republicans gain a majority in the House
 subtitle: Republicans: [+ rep_r +] seats
 view-if: house_majority = 2
+on-arrival: speaker_election_needed = 1
 
 The Republicans have secured a majority in the House of Representatives.
 
@@ -266,6 +267,7 @@ The Republicans have secured a majority in the House of Representatives.
 title: Republicans secure a supermajority
 subtitle: Republicans: [+ rep_r +] seats
 view-if: house_majority = 3
+on-arrival: speaker_election_needed = 1
 
 With two-thirds of the House, Republicans now wield veto-proof power.
 
@@ -273,6 +275,7 @@ With two-thirds of the House, Republicans now wield veto-proof power.
 title: Republicans and Liberal Republicans hold a working majority
 subtitle: Republicans: [+ rep_r +] seats, Liberal Republicans: [+ lib_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 1 and liberal_split = 1
+on-arrival: speaker_election_needed = 1
 
 Neither party holds an outright majority, but Republicans and Liberal Republicans together command enough seats to pass legislation if they can find common ground. Their cooperation will not come without a price.
 
@@ -280,6 +283,7 @@ Neither party holds an outright majority, but Republicans and Liberal Republican
 title: Republicans lose the House
 subtitle: Republicans: [+ rep_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 0 and dem_r > rep_r
+on-arrival: speaker_election_needed = 1
 
 The Democrats have taken control of the House of Representatives.
 
@@ -287,6 +291,7 @@ The Democrats have taken control of the House of Representatives.
 title: Liberal Republicans hold the balance of power
 subtitle: Liberal Republicans: [+ lib_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 0 and dem_r <= rep_r and liberal_split = 1
+on-arrival: speaker_election_needed = 1
 
 No party commands a majority. The Liberal Republicans find themselves in the position of kingmakers — their votes will determine whether Reconstruction legislation advances or stalls.
 
@@ -294,5 +299,6 @@ No party commands a majority. The Liberal Republicans find themselves in the pos
 title: The House is tied!
 subtitle: Both parties are neck and neck
 view-if: rep_r = dem_r and house_majority = 0 and rep_lib_working_majority = 0
+on-arrival: speaker_election_needed = 1
 
 A tied House will cause major legislative deadlock in the months ahead.
