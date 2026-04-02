@@ -244,6 +244,7 @@ on-arrival: {!
     Q.speaker_unlocks_labor_committee = 0;
 !}
 go-to: speaker_end
+
 With the Democrats in control of the House, [+ speaker +] takes the gavel as Speaker. Our legislative agenda is now effectively blocked. Bills that reach the floor will be shaped by Democratic priorities, not ours.
 
 This is the consequence of losing the House. Reconstruction stalls. Our chairmanships are stripped. We can oppose, but we cannot govern.
