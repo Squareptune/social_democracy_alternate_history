@@ -55,8 +55,6 @@ Schuyler Colfax, the "Smiler," is elected Speaker. Known for his warm personalit
 
 His speakership opens channels to Ways & Means, strengthening our hand on tariff legislation.
 
-- @speaker_end
-
 @Stevens
 title: Thaddeus Stevens (Pennsylvania)
 subtitle: [? if speaker = "Stevens" : ★ Currently serving ?][? if speaker != "Stevens" : Radical choice. Transforms the speakership into a weapon for Reconstruction. ?]
