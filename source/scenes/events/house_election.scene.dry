@@ -119,6 +119,21 @@ if (Q.dem_r >= Q.rep_r && Q.dem_r >= Q.other_r && Q.dem_r >= Q.lib_r) Q.largest_
 if (Q.lib_r >= Q.rep_r && Q.lib_r >= Q.dem_r && Q.lib_r >= Q.other_r) Q.largest_party_r = "lib";
 if (Q.other_r >= Q.rep_r && Q.other_r >= Q.dem_r && Q.other_r >= Q.lib_r) Q.largest_party_r = "other";
 
+if (Q.liberal_split === 1 && Q.liberal_reunion_seen !== 1) {
+    let libSeats = Q.lib_r || 0;
+    let totalHouse = Q.rep_r + Q.dem_r + Q.lib_r + Q.other_r;
+    let libPct = (libSeats / totalHouse) * 100;
+ 
+    // They've lost balance of power (can't kingmake) AND dropped below 8% of seats
+    // Adjust 8% threshold to taste — lower = harder to trigger reunion
+    let libCanKingmake = Q.rep_lib_working_majority === 0 && libSeats > 0;
+    let libCollapsed = libPct < 8;
+ 
+    if (libCollapsed && !libCanKingmake) {
+        Q.liberal_reunion_triggered = 1;
+    }
+}
+
 // === 6. Majority display vars ===
 Q.republican_majority_r = Q.rep_r;
 Q.democrat_majority_r = Q.dem_r;

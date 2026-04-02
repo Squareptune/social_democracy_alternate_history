@@ -1,0 +1,358 @@
+title: The Liberal Republicans Return
+new-page: true
+tags: event
+view-if: liberal_split = 1 and liberal_reunion_triggered = 1 and liberal_reunion_seen = 0
+max-visits: 1
+on-arrival: liberal_reunion_seen = 1
+
+= A Reluctant Homecoming
+
+The Liberal Republican experiment has, by any measure, failed. Their seats in Congress have dwindled, their presidential ambitions collapsed, and the Democratic Party for all their overtures has proven an uncomfortable home for men who, at heart, still believe in the Union cause.
+
+Quietly, in caucus rooms and editorial offices, former allies are beginning to ask the same question: *was it worth it?*
+
+The answer, for most of them, is an embittered no. Not because the Republicans were right — many still nurse deep grievances against the party — but because the alternative proved worse.
+
+[? if liberal_relation >= 50 : Our ongoing communications with Liberal Republican leaders have kept the door open. Some of them speak of our party almost warmly, compared to how they speak of the Democrats. ?]
+[? if liberal_relation < 50 and liberal_relation >= 25 : Relations between our parties have been cold but not poisonous. A reunion is possible, though it will require genuine concessions. ?]
+[? if liberal_relation < 25 : Our relations with the Liberal Republicans have been openly hostile. Any reunion will be painful and incomplete — many of them would sooner burn their membership cards than shake hands with us again. ?]
+
+A delegation of Liberal Republican leaders has approached our party leadership. They are not asking for a triumphant return. They are asking for terms.
+
+- @welcome_back: Welcome them back with open arms and promises of reform.
+- @civil_service_deal: Offer concrete civil service reform concessions.
+- @patronage_deal: Offer patronage positions to key Liberal leaders.
+- @cold_welcome: Accept their return, but offer nothing.
+
+@welcome_back
+on-arrival: {!
+
+// How many libs come back based on liberal_relation
+let relationScore = Q.liberal_relation || 30;
+
+// Base return rate: 60-75% depending on relations
+let returnRate = 0.60 + (relationScore / 100) * 0.15;
+// Dem defection rate: 15-25% (worse relations = more go to dems)
+let demRate = 0.25 - (relationScore / 100) * 0.10;
+// Other/straggler rate: remainder
+let otherRate = 1 - returnRate - demRate;
+
+// Calculate seat redistributions
+let libHouseSeats = Q.lib_r || 0;
+let libSenateSeats = Q.lib_senate_r || 0;
+
+let houseReturn = Math.round(libHouseSeats * returnRate);
+let houseDem = Math.round(libHouseSeats * demRate);
+let houseOther = libHouseSeats - houseReturn - houseDem;
+
+let senateReturn = Math.round(libSenateSeats * returnRate);
+let senateDem = Math.round(libSenateSeats * demRate);
+let senateOther = libSenateSeats - senateReturn - senateDem;
+
+// Apply seat changes
+Q.rep_r += houseReturn;
+Q.dem_r += houseDem;
+Q.other_r += houseOther;
+Q.lib_r = 0;
+
+Q.rep_senate_r += senateReturn;
+Q.dem_senate_r += senateDem;
+Q.other_senate_r += senateOther;
+Q.lib_senate_r = 0;
+
+// Store for display
+Q.lib_house_returned = houseReturn;
+Q.lib_house_dem = houseDem;
+Q.lib_house_other = houseOther;
+Q.lib_senate_returned = senateReturn;
+
+// Faction effects - returning liberals bring dissent with them
+// They skew toward moderate and liberal factions
+Q.moderate_strength += 6;
+Q.moderate_dissent += 8;
+Q.liberal_strength += 4;
+Q.liberal_dissent += 12; // they are NOT happy about coming back
+Q.conservative_dissent += 5; // conservatives hate having them back
+Q.radical_dissent += 4;
+
+// Voter support effects - lib voters partially return
+Q.middle_class_rep += 4;
+Q.middle_class_lib = 0;
+Q.workers_rep += 1;
+Q.workers_lib = 0;
+Q.rural_rep += 2;
+Q.rural_lib = 0;
+Q.immigrant_laborers_rep += 1;
+Q.immigrant_laborers_lib = 0;
+Q.unemployed_lib = 0;
+
+// Some voter support bleeds to dems permanently
+Q.middle_class_dem += 2;
+Q.workers_dem += 1;
+
+// Reset liberal split
+Q.liberal_split = 0;
+Q.liberal_relation = 40; // still resentful
+
+// Update house majority
+let totalHouse = Q.rep_r + Q.dem_r + Q.other_r;
+let repPct = (Q.rep_r / totalHouse) * 100;
+if (repPct >= 66.7) { Q.house_majority = 3; }
+else if (repPct >= 50) { Q.house_majority = 2; }
+else { Q.house_majority = 0; }
+
+!}
+
+We extend an open hand. The response is... muted.
+
+[+ lib_house_returned +] Liberal Republican House members and [+ lib_senate_returned +] senators return to our caucus. They file in without fanfare, taking their old seats with the air of men who have swallowed something unpleasant.
+
+[+ lib_house_dem +] of their colleagues, however, decline. Some cross the aisle to the Democrats. Others drift toward independent status. These men are gone, and they will not return.
+
+The reunion is real, but it is not warm. Our moderate and liberal factions absorb the returnees, though both sides eye each other with lingering suspicion. Conservative members mutter that we have let in a Trojan horse.
+
+- @reform_promise: Promise genuine civil service reform to ease the tension.
+- @move_on: Accept the awkwardness and move forward.
+
+@civil_service_deal
+on-arrival: {!
+
+let relationScore = Q.liberal_relation || 30;
+// Civil service deal brings back slightly more
+let returnRate = 0.65 + (relationScore / 100) * 0.15;
+let demRate = 0.20 - (relationScore / 100) * 0.08;
+let otherRate = 1 - returnRate - demRate;
+
+let libHouseSeats = Q.lib_r || 0;
+let libSenateSeats = Q.lib_senate_r || 0;
+
+let houseReturn = Math.round(libHouseSeats * returnRate);
+let houseDem = Math.round(libHouseSeats * demRate);
+let houseOther = libHouseSeats - houseReturn - houseDem;
+
+let senateReturn = Math.round(libSenateSeats * returnRate);
+let senateDem = Math.round(libSenateSeats * demRate);
+let senateOther = libSenateSeats - senateReturn - senateDem;
+
+Q.rep_r += houseReturn;
+Q.dem_r += houseDem;
+Q.other_r += houseOther;
+Q.lib_r = 0;
+
+Q.rep_senate_r += senateReturn;
+Q.dem_senate_r += senateDem;
+Q.other_senate_r += senateOther;
+Q.lib_senate_r = 0;
+
+Q.lib_house_returned = houseReturn;
+Q.lib_house_dem = houseDem;
+Q.lib_house_other = houseOther;
+Q.lib_senate_returned = senateReturn;
+
+Q.moderate_strength += 5;
+Q.moderate_dissent += 6;
+Q.liberal_strength += 6;
+Q.liberal_dissent += 8;
+Q.conservative_dissent += 8; // conservatives hate the civil service concession
+Q.radical_dissent += 3;
+
+// Civil service reform moves the needle on corruption
+Q.civil_service_reform += 1;
+
+Q.middle_class_rep += 6; // civil service reform appeals to middle class
+Q.middle_class_lib = 0;
+Q.rural_rep += 2;
+Q.rural_lib = 0;
+Q.workers_lib = 0;
+Q.immigrant_laborers_lib = 0;
+Q.unemployed_lib = 0;
+Q.middle_class_dem += 1;
+
+Q.liberal_split = 0;
+Q.liberal_relation = 50;
+
+let totalHouse = Q.rep_r + Q.dem_r + Q.other_r;
+let repPct = (Q.rep_r / totalHouse) * 100;
+if (repPct >= 66.7) { Q.house_majority = 3; }
+else if (repPct >= 50) { Q.house_majority = 2; }
+else { Q.house_majority = 0; }
+
+!}
+
+We pledge concrete movement on civil service reform — merit-based hiring, an end to the worst patronage abuses, and a commission to study the spoils system. It is exactly what the Liberal Republicans broke away over.
+
+The concession works better than a handshake. [+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return. They come back with less resentment than we might have expected, though they make clear this promise must be kept.
+
+[+ lib_house_dem +] still refuse. Some join the Democrats. Their grievances run too deep for any platform pledge to fix.
+
+Conservative Republicans are furious. They see the civil service promise as a capitulation to men who betrayed the party. The tension will need managing.
+
+- @move_on: Accept the new arrangement and move forward.
+
+@patronage_deal
+subtitle: -2 resources
+choose-if: resources >= 2
+unavailable-subtitle: Not enough resources to offer meaningful patronage positions.
+on-arrival: {!
+
+let relationScore = Q.liberal_relation || 30;
+// Patronage works well if relations aren't rock bottom
+let returnRate = 0.62 + (relationScore / 100) * 0.10;
+let demRate = 0.22 - (relationScore / 100) * 0.08;
+let otherRate = 1 - returnRate - demRate;
+
+let libHouseSeats = Q.lib_r || 0;
+let libSenateSeats = Q.lib_senate_r || 0;
+
+let houseReturn = Math.round(libHouseSeats * returnRate);
+let houseDem = Math.round(libHouseSeats * demRate);
+let houseOther = libHouseSeats - houseReturn - houseDem;
+
+let senateReturn = Math.round(libSenateSeats * returnRate);
+let senateDem = Math.round(libSenateSeats * demRate);
+let senateOther = libSenateSeats - senateReturn - senateDem;
+
+Q.rep_r += houseReturn;
+Q.dem_r += houseDem;
+Q.other_r += houseOther;
+Q.lib_r = 0;
+
+Q.rep_senate_r += senateReturn;
+Q.dem_senate_r += senateDem;
+Q.other_senate_r += senateOther;
+Q.lib_senate_r = 0;
+
+Q.lib_house_returned = houseReturn;
+Q.lib_house_dem = houseDem;
+Q.lib_house_other = houseOther;
+Q.lib_senate_returned = senateReturn;
+
+Q.resources -= 2;
+
+Q.moderate_strength += 7;
+Q.moderate_dissent += 5;
+Q.liberal_strength += 3;
+Q.liberal_dissent += 10;
+Q.conservative_dissent += 3;
+Q.radical_dissent += 6; // radicals hate that we rewarded the "traitors"
+
+Q.middle_class_rep += 3;
+Q.middle_class_lib = 0;
+Q.rural_rep += 2;
+Q.rural_lib = 0;
+Q.workers_lib = 0;
+Q.immigrant_laborers_lib = 0;
+Q.unemployed_lib = 0;
+Q.middle_class_dem += 2;
+
+Q.liberal_split = 0;
+Q.liberal_relation = 45;
+
+let totalHouse = Q.rep_r + Q.dem_r + Q.other_r;
+let repPct = (Q.rep_r / totalHouse) * 100;
+if (repPct >= 66.7) { Q.house_majority = 3; }
+else if (repPct >= 50) { Q.house_majority = 2; }
+else { Q.house_majority = 0; }
+
+!}
+
+Money talks. We offer key Liberal leaders federal appointments, customs house positions, and diplomatic posts. It is transactional and everyone knows it — but it gets results.
+
+[+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return to the fold, motivated by the practical benefits of being on the winning side of patronage.
+
+[+ lib_house_dem +] cannot be bought. They go to the Democrats or drift away entirely.
+
+Radical Republicans are scathing in private. Rewarding the men who split the party feels like an insult to those who stayed loyal. The resentment will simmer.
+
+- @move_on: Accept the new arrangement and move forward.
+
+@cold_welcome
+on-arrival: {!
+
+let relationScore = Q.liberal_relation || 30;
+// Cold welcome: lowest return rate
+let returnRate = 0.50 + (relationScore / 100) * 0.10;
+let demRate = 0.30 - (relationScore / 100) * 0.08;
+let otherRate = 1 - returnRate - demRate;
+
+let libHouseSeats = Q.lib_r || 0;
+let libSenateSeats = Q.lib_senate_r || 0;
+
+let houseReturn = Math.round(libHouseSeats * returnRate);
+let houseDem = Math.round(libHouseSeats * demRate);
+let houseOther = libHouseSeats - houseReturn - houseDem;
+
+let senateReturn = Math.round(libSenateSeats * returnRate);
+let senateDem = Math.round(libSenateSeats * demRate);
+let senateOther = libSenateSeats - senateReturn - senateDem;
+
+Q.rep_r += houseReturn;
+Q.dem_r += houseDem;
+Q.other_r += houseOther;
+Q.lib_r = 0;
+
+Q.rep_senate_r += senateReturn;
+Q.dem_senate_r += senateDem;
+Q.other_senate_r += senateOther;
+Q.lib_senate_r = 0;
+
+Q.lib_house_returned = houseReturn;
+Q.lib_house_dem = houseDem;
+Q.lib_house_other = houseOther;
+Q.lib_senate_returned = senateReturn;
+
+Q.moderate_strength += 3;
+Q.moderate_dissent += 4;
+Q.liberal_strength += 2;
+Q.liberal_dissent += 18; // very high — they feel humiliated
+Q.conservative_dissent -= 2; // conservatives actually appreciate the cold shoulder
+Q.radical_dissent += 2;
+
+Q.middle_class_rep += 2;
+Q.middle_class_lib = 0;
+Q.rural_rep += 1;
+Q.rural_lib = 0;
+Q.workers_lib = 0;
+Q.immigrant_laborers_lib = 0;
+Q.unemployed_lib = 0;
+Q.middle_class_dem += 4; // more flee to dems after being snubbed
+
+Q.liberal_split = 0;
+Q.liberal_relation = 25; // they resent us
+
+let totalHouse = Q.rep_r + Q.dem_r + Q.other_r;
+let repPct = (Q.rep_r / totalHouse) * 100;
+if (repPct >= 66.7) { Q.house_majority = 3; }
+else if (repPct >= 50) { Q.house_majority = 2; }
+else { Q.house_majority = 0; }
+
+!}
+
+We open the door but offer nothing. No promises, no positions, no acknowledgment that their grievances had any merit whatsoever. The message is clear: *you left, you lost, you may return.*
+
+[+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return — not out of goodwill, but out of pragmatic surrender. They take their seats with the quiet fury of people who have no better option.
+
+[+ lib_house_dem +] refuse outright. The cold reception is the final insult. They cross to the Democrats or leave politics entirely.
+
+The returning liberals are a sullen presence in our caucus. Their dissent will need watching.
+
+- @move_on: Accept the new arrangement and move forward.
+
+@reform_promise
+on-arrival: civil_service_reform += 1; liberal_dissent -= 4; moderate_dissent -= 2; conservative_dissent += 3
+go-to: reunion_end
+
+We promise to take civil service reform seriously. It costs us nothing today — but the reformers will hold us to it.
+
+@move_on
+go-to: reunion_end
+
+@reunion_end
+
+The Liberal Republican Party is, for all practical purposes, finished. Their banner comes down. Their newspapers slowly drift back into the Republican orbit, or fold entirely.
+
+What remains is a party changed by the experience. The men who stayed were tested. The men who returned carry resentments that will not quickly fade. And some — the true believers, the ones who could not stomach either choice — are simply gone from politics.
+
+[? if lib_house_dem > 2 : [+ lib_house_dem +] former Liberal Republicans now sit with the Democrats. They will be adversaries for years to come, carrying institutional knowledge of our party's weaknesses. ?]
+
+Whether this reunion strengthens us or merely adds new fault lines to the old ones remains to be seen.

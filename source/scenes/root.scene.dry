@@ -1765,6 +1765,9 @@ Q.reconstructionPlanActive = 0;
 Q.Candidate = "";
 Q.VPCandidate = "";
 
+Q.liberal_reunion_triggered = 0;
+Q.liberal_reunion_seen = 0;
+
 Q.sect_state = 'William H. Seward';
 Q.sect_state_party = 'R';
 Q.sect_interior = 'John P. Usher';

@@ -367,12 +367,6 @@ for (let state of Q.southern_states) {
 
   Q[state + "_planName"] = planName;
 
-  // --- Optional: print important info per state ---
-  console.log(`${state} (${planName} Plan)`);
-  console.log("Reconstruction Score:", score);
-  console.log("Percent of Plan Threshold:", Q[state + "_percentOfThreshold"] + "%");
-  console.log("Eligible for Readmission:", Q[state + "_canReadmit"] ? "YES" : "NO");
-  console.log("-------------------------");
 }
 
 // 1. update dates
