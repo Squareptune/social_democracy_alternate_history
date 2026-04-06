@@ -6,7 +6,7 @@ on-arrival: speaker_election_needed = 0;
 
 = Election of the Speaker
 
-With our majority in the House of Representatives, we must choose a Speaker to preside over the chamber. The Speaker sets the legislative agenda, assigns committee chairmanships, and is second in line to the presidency. This is not a ceremonial choice.
+With our majority in the House of Representatives, we must choose a Speaker to preside over the chamber. The Speaker sets the legislative agenda, assigns committee chairmanships. This is not a ceremonial choice.
 
 [? if speaker != "" : The current Speaker is [+ speaker +]. ?]
 

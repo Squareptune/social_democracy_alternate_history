@@ -38,7 +38,14 @@ on-arrival: {!
     Q.civil_rights_act_passed = 1
   }
   if (veto_reason === "Military Reconstruction Act") {
-    Q.occupation = 2
+    if (Moderate_plan == 1)
+    {
+      Q.occupation = 2
+    }
+    else
+    {
+      Q.occupation = 1
+    }
   }
   if (veto_reason === "Tenure of Office Act") {
     Q.tenure_act = 2
@@ -49,6 +56,16 @@ We move swiftly to override the President’s veto. With overwhelming support in
 
 @stand_down
 subtitle: Political caution.
-on-arrival: veto -= 1; moderate_strength += 2; radical_dissent += 4; freedmen_rep -= 2;
+on-arrival: {! 
+  Q.veto -= 1; 
+  Q.moderate_strength += 2; 
+  Q.radical_dissent += 4; 
+  Q.freedmen_rep -= 2;
+  if (Moderates == 1 || Radical_plan == 1){
+    Q.Johnson_plan = 1
+    Q.Moderate_plan = 0
+    Q.Radical_plan = 0
+  }
+!}
 
 We are force to back down as Johnson has won this time. Moderates defend our decision as strategic—but to many, it looks like cowardice. The veto holds.
