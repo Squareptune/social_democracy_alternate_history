@@ -118,7 +118,7 @@ choose-if: budget >= 1
 unavailable-subtitle: We do not have the budget.
 on-arrival: budget -= 1; Us_police_strength += 5; economic_growth += 0.1; Us_police_militancy += 0.01; democrat_support -= 1; radical_dissent += 2
 
-With a stronger force, we can better enforce law and order, assert American influence in the Caribbean, and protect freedmen's emigration routes. However, critics argue that this diverts resources from urgent domestic needs.
+With a stronger force, we can better enforce law and order, and protect freedmen from attacks. However, critics argue that this is an invitations to tyranny.
 
 @decrease_funding3
 subtitle: +1 budget

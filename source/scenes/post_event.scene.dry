@@ -470,8 +470,27 @@ if (Q.month_actions >= 1) {
             Q.pro_republic += 0.3;
         } 
     }
-    // science bonus to economic growth
-    // education bonus
+    for (let state of Q.states) {
+        let total_pop = 0;
+
+        // Calculate total population (excluding unemployed)
+        for (let cls of Q.classes) {
+            if (cls === "unemployed") continue;
+            total_pop += Q[state + "_" + cls] || 0;
+        }
+
+        if (total_pop <= 0) continue;
+
+        // Target unemployed based on national unemployment %
+        let target_unemployed = Math.round(total_pop * (Q.unemployed / 100));
+
+        let current_unemployed = Q[state + "_unemployed"] || 0;
+
+        // Smooth adjustment (prevents wild jumps)
+        let change = (target_unemployed - current_unemployed) * 0.25;
+
+        Q[state + "_unemployed"] = Math.max(0, Math.round(current_unemployed + change));
+    }
     Q.science_bonus = 0;
     if (Q.education_science) {
         Q.science_bonus += Q.education_science;
@@ -569,11 +588,11 @@ if (Q.month_actions >= 1) {
     }
     // BASELINE GROWTH / SUPPRESSION (monthly)
     if (Q.occupation == 0) {
-        Q.kkk_strength += 0.06;   // +720 per year
+        Q.kkk_strength += 500;
     } else if (Q.occupation == 1) {
-        Q.kkk_strength += 0.02;   // +240 per year
+        Q.kkk_strength += 300;
     } else if (Q.occupation == 2) {
-        Q.kkk_strength -= 0.05;   // -600 per year
+        Q.kkk_strength -= 150;
     }
     
     // POLICE LOYALTY EFFECT

@@ -129,6 +129,7 @@ Q.inflation = 3.82;
 Q.GreenBacks = 1;
 Q.economic_growth = 2.9;
 Q.economic_expansion = 0;
+Q.Panic_seen = 0;
 
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
 Q.parties = ['rep', 'dem', 'lib', 'other'];

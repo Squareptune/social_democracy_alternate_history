@@ -1,0 +1,232 @@
+title: Economic Collapse
+subtitle: The stock market crashes...
+new-page: true
+on-arrival: {!
+    Q.Panic_seen = 1;
+
+    // Immediate economic shock
+    Q.workers_dem += 5;
+    Q.immigrant_laborers_dem += 4;
+    Q.middle_class_dem += 5;
+    Q.rural_dem += 5;
+    Q.unemployed_dem += 5;
+    Q.unemployed += 2;
+    if (Q.budget > 0) Q.budget -= 1;
+    if (Q.dues > 2) Q.dues -= 1;
+    Q.inflation -= 1.2;       // deflationary crash
+    Q.economic_growth -= 2.5;
+
+    // Political fallout
+    Q.radical_dissent += 4;
+    Q.liberal_dissent += 5;   // liberals blame Radical spending
+    Q.conservative_dissent += 3;
+    Q.moderate_dissent += 3;
+    Q.dem_relation -= 5;      // Democrats smell blood
+    Q.reconstruction_support -= 2;
+!}
+tags: event
+view-if: year = 1873 and month >= 9
+max-visits: 1
+
+= The Panic of 1873
+
+On September 18th, Jay Cooke & Company — the most prestigious banking house in the United States, the firm that financed the Union war effort itself — closes its doors.
+
+The news hits Wall Street like a cannon shot. Cooke's bank had poured millions into the Northern Pacific Railroad, one of dozens of rail ventures that had consumed the easy credit of the postwar boom years. When the loans came due and the collateral proved worthless, the whole edifice collapsed. Within days, the New York Stock Exchange suspends trading for ten days — an event without precedent in American history.
+
+The crisis spreads outward from the counting houses into the streets. Factories cut shifts. Wages fall. Men who were employed last month queue at labor offices this month. The freedmen of the South, who had only just begun to taste economic independence, find themselves the first dismissed and the last rehired.
+
+The Democrats, who have spent years pointing at Republican financial stewardship with suspicion, now have everything they need.
+
+Our party is divided over what, if anything, the federal government should do.
+
+- @response
+
+@response
+
+The factions of the party are pulling in different directions. The Radicals see an opportunity to champion the working man. The Liberals blame reckless railroad subsidies and demand retrenchment. The Conservatives want the government to do nothing and let the market correct itself. The Moderates are trying to hold everyone together.
+
+What course do we take?
+
+- @laissez_faire: The market must correct itself. Government interference will only prolong the pain.
+- @greenback_expansion: Issue more Greenbacks to relieve the credit squeeze.
+- @austerity: Cut government spending to restore confidence in federal finances.
+- @relief_works: Fund emergency public works to keep men employed.
+- @railroad_investigation: Investigate the railroad speculation that caused this crisis.
+
+@laissez_faire
+on-arrival: {!
+    // Conservative/Liberal approval, worker anger
+    Q.conservative_dissent -= 5;
+    Q.conservative_strength += 3;
+    Q.liberal_dissent -= 3;
+    Q.liberal_strength += 2;
+    Q.radical_dissent += 6;
+    Q.moderate_dissent += 3;
+
+    // Economy slowly corrects but workers suffer longer
+    Q.unemployed += 1.5;
+    Q.economic_growth -= 0.5;
+    Q.workers_dem += 4;
+    Q.immigrant_laborers_dem += 3;
+    Q.unemployed_dem += 4;
+    Q.middle_class_dem += 2;
+
+    // Middle class and rural appreciate restraint
+    Q.middle_class_rep += 3;
+    Q.rural_rep += 2;
+
+    // Budget improves slightly from reduced spending pressure
+    Q.budget += 1;
+!}
+
+We issue a statement affirming our faith in the self-correcting nature of free markets. The government did not cause this panic — railroad speculators and reckless bankers did — and it is not the government's place to paper over the consequences of private greed with public money.
+
+The conservative and liberal press applaud our restraint. The labor newspapers are savage. In the tenements of New York and the mining towns of Pennsylvania, men curse the party that offers philosophy while their children go hungry.
+
+The economy will recover, eventually. Whether the working class forgives us before the next election is another question.
+
+@greenback_expansion
+view-if: GreenBacks = 1
+on-arrival: {!
+    // Radical/worker approval, conservative/liberal fury
+    Q.radical_dissent -= 4;
+    Q.radical_strength += 3;
+    Q.liberal_dissent += 7;
+    Q.liberal_strength -= 2;
+    Q.conservative_dissent += 6;
+    Q.moderate_dissent += 2;
+
+    // Inflation rises, unemployment eases somewhat
+    Q.inflation += 1.5;
+    Q.unemployed -= 0.8;
+    Q.economic_growth += 0.8;
+
+    Q.workers_rep += 3;
+    Q.immigrant_laborers_rep += 2;
+    Q.unemployed_rep += 3;
+    Q.rural_rep += 2;       // debtors benefit from inflation
+
+    Q.middle_class_dem += 3;  // creditors and savers hurt
+    Q.europe_relation -= 2;   // foreign creditors alarmed
+!}
+
+We authorize an expansion of Greenback currency — paper money not backed by gold — to relieve the credit squeeze strangling commerce. The theory is straightforward: tight money caused the crash, and loose money will ease the recovery.
+
+The effect is immediate and polarizing. Workers and debtors, who benefit from mild inflation, return some of their support to us. Creditors, bankers, and the Liberal Republican press react with alarm, warning of ruin and depreciation. European investors begin to look at American bonds with fresh suspicion.
+
+The Conservatives call it financial heresy. Perhaps. But men are going back to work.
+
+@greenback_expansion
+view-if: GreenBacks = 0
+on-arrival: {!
+    Q.radical_dissent -= 3;
+    Q.liberal_dissent += 5;
+    Q.conservative_dissent += 8;
+    Q.moderate_dissent += 3;
+
+    Q.inflation += 1.2;
+    Q.unemployed -= 0.5;
+    Q.economic_growth += 0.5;
+
+    Q.workers_rep += 2;
+    Q.middle_class_dem += 4;
+    Q.europe_relation -= 3;
+!}
+
+We propose returning to a Greenback-style paper currency to relieve the credit squeeze. This means abandoning the gold standard we worked so hard to restore — a reversal that sets off a firestorm in financial circles.
+
+The conservative press calls it madness. The banking houses threaten to withhold credit from the government entirely. But in the mills and factories, men nod approvingly. The people who owe money always prefer cheaper money.
+
+@austerity
+on-arrival: {!
+    Q.conservative_dissent -= 6;
+    Q.conservative_strength += 4;
+    Q.liberal_dissent -= 4;
+    Q.liberal_strength += 3;
+    Q.radical_dissent += 8;
+    Q.moderate_dissent += 5;
+
+    Q.budget += 2;
+    Q.inflation -= 0.5;
+    Q.economic_growth -= 1;
+    Q.unemployed += 1;
+
+    Q.middle_class_rep += 2;
+    Q.workers_dem += 5;
+    Q.unemployed_dem += 6;
+    Q.immigrant_laborers_dem += 4;
+
+    // Reconstruction programs starved of funds
+    Q.reconstruction_support -= 5;
+!}
+
+We announce significant cuts to federal spending — Reconstruction programs, public works, federal employment rolls. The goal is to balance the books, restore confidence in the government's finances, and signal to markets that the era of loose spending is over.
+
+The financial press approves. Conservative Republicans finally feel the party is speaking their language.
+
+The cost is severe. Reconstruction agencies, already underfunded, are gutted. Freedmen who relied on federal programs find their support withdrawn at the worst possible moment. The Radicals are furious. In the North, workers who were just beginning to organize confront a federal government that has openly chosen capital over labor.
+
+We have balanced the ledger. We may have lost the people.
+
+@relief_works
+subtitle: -2 budget
+choose-if: budget >= 2
+unavailable-subtitle: [? if budget < 2 : We do not have the funds for a relief program. ?]
+on-arrival: {!
+    Q.budget -= 2;
+
+    Q.radical_dissent -= 5;
+    Q.radical_strength += 3;
+    Q.moderate_dissent -= 2;
+    Q.conservative_dissent += 7;
+    Q.liberal_dissent += 5;
+
+    Q.unemployed -= 1;
+    Q.economic_growth += 0.5;
+    Q.inflation += 0.3;
+
+    Q.workers_rep += 5;
+    Q.immigrant_laborers_rep += 4;
+    Q.unemployed_rep += 5;
+    Q.freemen_rep += 3;
+
+    Q.middle_class_dem += 2;
+    Q.rural_rep += 1;
+!}
+
+We appropriate emergency funds for public works — road construction, harbor improvement, federal building projects in the cities hardest hit by unemployment. The goal is simple: put men to work, put wages in their pockets, and put food on their tables while the economy finds its footing.
+
+The response from working people is immediate and warm. Republicans who had been drifting toward the Democrats return to our fold. Freedmen, who have suffered worst, see the government acting on their behalf for the first time since the early days of Reconstruction.
+
+Conservatives denounce it as a raid on the Treasury. Liberals call it economic incompetence. But on the streets, the party that is building things is the party people are talking about.
+
+@railroad_investigation
+on-arrival: {!
+    Q.liberal_dissent -= 4;
+    Q.liberal_strength += 3;
+    Q.radical_dissent -= 2;
+    Q.radical_strength += 2;
+
+    Q.middle_class_rep += 4;
+    Q.rural_rep += 3;
+    Q.workers_rep += 2;
+
+    // Slight economic benefit from restoring investor confidence long term
+    Q.economic_growth += 0.3;
+
+    // But the investigation reveals Credit Mobilier connections - damages us too
+    Q.moderate_dissent += 3;
+    Q.conservative_dissent += 2;
+    Q.dem_relation -= 3;
+!}
+
+We call for a Congressional investigation into the railroad speculation that triggered the collapse — the land grants, the bond guarantees, the inflated stock schemes that enriched insiders while leaving ordinary investors holding worthless paper.
+
+The public approves. The image of Republican reformers holding the railroad barons accountable appeals across class lines — workers, farmers, small businessmen all want to see the men who caused this panic answer for it.
+
+Then the investigation turns up Credit Mobilier.
+
+The construction company scandal — in which Republican congressmen received discounted shares in exchange for favorable legislation — lands like a second shock. The Democrats trumpet it from every platform. Several of our own members are implicated. The reformist investigation we launched to save our reputation has become a source of fresh embarrassment.
+
+The truth, it turns out, has a cost as well.
