@@ -647,6 +647,7 @@ if (Q.month_actions >= 1) {
     if (Q.year == 1869) {
         if (Q.radical_strength > 30) {
             Q.liberal_strength += 5/12;
+            Q.liberal_dissent += 5/12;
         }
         Q.workers_dem += 5/12;
         Q.middle_class_dem += 5/12;
@@ -657,6 +658,7 @@ if (Q.month_actions >= 1) {
     if (Q.year == 1870) {
         if (Q.radical_strength > 30) {
             Q.liberal_strength += 6/12;
+            Q.liberal_dissent += 6/12;
         }
         Q.workers_dem += 3/12;
         Q.middle_class_dem += 3/12;
@@ -667,6 +669,7 @@ if (Q.month_actions >= 1) {
     if (Q.year == 1871) {
         if (Q.radical_strength > 30) {
             Q.liberal_strength += 4/12;
+            Q.liberal_dissent += 4/12;
         }
         Q.workers_dem += 2/12;
         Q.middle_class_dem += 2/12;
@@ -677,6 +680,7 @@ if (Q.month_actions >= 1) {
     if (Q.year == 1872) {
         if (Q.radical_strength > 30) {
             Q.liberal_strength += 3/12;
+            Q.liberal_dissent += 3/12;
         }
         Q.workers_dem += 2/12;
         Q.middle_class_dem += 2/12;
