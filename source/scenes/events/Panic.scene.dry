@@ -117,28 +117,9 @@ The effect is immediate and polarizing. Workers and debtors, who benefit from mi
 
 The Conservatives call it financial heresy. Perhaps. But men are going back to work.
 
-@greenback_expansion
-view-if: GreenBacks = 0
-on-arrival: {!
-    Q.radical_dissent -= 3;
-    Q.liberal_dissent += 5;
-    Q.conservative_dissent += 8;
-    Q.moderate_dissent += 3;
-
-    Q.inflation += 1.2;
-    Q.unemployed -= 0.5;
-    Q.economic_growth += 0.5;
-
-    Q.workers_rep += 2;
-    Q.middle_class_dem += 4;
-    Q.europe_relation -= 3;
-!}
-
-We propose returning to a Greenback-style paper currency to relieve the credit squeeze. This means abandoning the gold standard we worked so hard to restore — a reversal that sets off a firestorm in financial circles.
-
-The conservative press calls it madness. The banking houses threaten to withhold credit from the government entirely. But in the mills and factories, men nod approvingly. The people who owe money always prefer cheaper money.
 
 @austerity
+subtitle: Congress's Answer is always more Austerity
 on-arrival: {!
     Q.conservative_dissent -= 6;
     Q.conservative_strength += 4;
