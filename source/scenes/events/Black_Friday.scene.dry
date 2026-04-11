@@ -1,0 +1,247 @@
+title: Gold Panic
+subtitle: Grant embroiled in scandal
+new-page: true
+on-arrival: {!
+    Q.economic_growth *= 0.8;
+    Q.inflation *= 1.12;
+    Q.rural_rep -= 5;
+    Q.rural_dem += 5;
+    Q.reconstruction_support -= 2;
+
+    // Political shockwave
+    Q.moderate_dissent += 4;
+    Q.conservative_dissent += 3;
+    Q.liberal_dissent += 6;    // liberals were already suspicious of Grant
+    Q.radical_dissent += 3;
+    Q.dem_relation -= 6;       // Democrats smell corruption
+    Q.middle_class_dem += 3;
+    Q.workers_dem += 2;
+!}
+tags: event
+view-if: year = 1869 and month >= 9 and president = "Grant"
+max-visits: 1
+
+= Black Friday
+
+On September 24th, 1869, the gold market collapses.
+
+For months, financiers Jay Gould and James Fisk had been quietly buying up gold, driving the price skyward. Their scheme required one thing above all else: that the federal Treasury not release its gold reserves to break the corner. To ensure this, they cultivated a relationship with Abel Corbin, a New York speculator who had recently married Virginia Grant, the younger sister of President Ulysses S. Grant.
+
+Whether Grant himself knew of the scheme is the question now on every lip in Washington.
+
+When Treasury Secretary Boutwell finally acts and releases $4 million in gold, the price collapses in minutes. Fortunes evaporate. Merchants who had bought on credit to meet harvest contracts find themselves ruined. Across the agricultural Midwest and South, farmers who needed gold to pay debts watch the price swing wildly and settle in disaster.
+
+The stock market drops twenty percent in a single day. The streets outside the Gold Room on Broad Street descend into something close to riot.
+
+Grant was in Pennsylvania when it happened. He has returned to Washington pale and furious, insisting he had no knowledge of the scheme. His brother-in-law Corbin is less convincing.
+
+We must respond — both to the immediate financial crisis and to the political one gathering around the President.
+
+- @treasury_intervention: Support Treasury intervention to stabilize the gold market.
+- @demand_resignation: Demand Corbin's immediate removal from any government influence.
+- @protect_grant: Publicly defend Grant and insist the President was deceived.
+- @wait_and_see: Say nothing until the facts are clearer.
+
+@treasury_intervention
+on-arrival: {!
+    // Boutwell's gold release already happened — we endorse and expand it
+    Q.economic_growth += 0.4;
+    Q.inflation -= 0.4;
+    Q.budget -= 1;
+
+    Q.moderate_dissent -= 3;
+    Q.conservative_dissent -= 2;
+    Q.liberal_dissent -= 2;
+
+    Q.middle_class_rep += 3;
+    Q.rural_rep += 2;
+    Q.workers_rep += 1;
+!}
+go-to: investigate_question
+
+We publicly endorse Secretary Boutwell's decision to flood the market with Treasury gold and call for further stabilizing measures. The intervention was correct, and we say so plainly.
+
+Markets begin to settle. Farmers and merchants who had feared total ruin find themselves merely damaged rather than destroyed. Our swift endorsement of action gives the impression of competent governance in a moment of crisis.
+
+But questions linger. If the Treasury intervention was the right move, why did it take so long? Who was advising the President to hold back? The Democrats are already sharpening their pens.
+
+@demand_resignation
+on-arrival: {!
+    Q.liberal_dissent -= 5;
+    Q.liberal_strength += 3;
+    Q.radical_dissent -= 2;
+    Q.moderate_dissent += 4;   // moderates uncomfortable attacking Grant's family
+    Q.conservative_dissent += 3;
+
+    Q.middle_class_rep += 4;
+    Q.rural_rep += 2;
+
+    // Signals willingness to hold our own accountable
+    Q.dem_relation += 3;       // even Dems respect the move briefly
+!}
+go-to: investigate_question
+
+We issue a public statement calling for Abel Corbin to sever all connections to any government business and demanding a full accounting of his communications with Treasury officials. We do not name the President — but we make clear that proximity to corruption is itself a problem, regardless of intent.
+
+The reformist press applauds. The Liberal Republicans, who have been looking for reasons to stay in the party, find this mildly encouraging. Grant's personal allies are furious, seeing it as a betrayal — washing the President in public to save ourselves.
+
+The statement draws a line. Whether it is enough depends on what the investigation finds.
+
+@protect_grant
+on-arrival: {!
+    Q.conservative_dissent -= 4;
+    Q.conservative_strength += 3;
+    Q.moderate_dissent -= 2;
+    Q.liberal_dissent += 8;    // liberals see this as rank tribalism
+    Q.radical_dissent += 2;
+
+    Q.middle_class_dem += 3;  // middle class doesn't believe us
+    Q.rural_dem += 2;
+
+    // Betting on Grant's innocence — if investigation clears him, pays off
+    Q.protect_grant_chosen = 1;
+!}
+go-to: investigate_question
+
+We issue a full-throated defense of the President. Grant was deceived by scheming men who exploited his trust and his family connections. He acted decisively the moment he understood what was happening — ordering the Treasury release that broke the conspiracy. He is the victim here, not the villain.
+
+Conservative Republicans rally around the flag. The party faithful, who want to believe the best of their President, are reassured.
+
+The reformist press is contemptuous. The Democrats call it a whitewash. We have staked our credibility on Grant's innocence. We had better be right.
+
+@wait_and_see
+on-arrival: {!
+    Q.moderate_dissent += 2;
+    Q.liberal_dissent += 4;
+    Q.radical_dissent += 2;
+    Q.conservative_dissent += 1;
+
+    // Silence is cowardice in a crisis
+    Q.middle_class_dem += 2;
+    Q.workers_dem += 1;
+    Q.reconstruction_support -= 1;
+!}
+go-to: investigate_question
+
+We say nothing. We wait. We allow the facts to emerge before committing to any position.
+
+It is the cautious choice and it satisfies no one. The Democrats fill the silence with accusations. The reformers see cowardice. Even Grant's allies wonder why the party is not defending him.
+
+In politics, silence in a scandal is rarely interpreted as wisdom. It is interpreted as guilt.
+
+@investigate_question
+= What Do We Do About the Investigation?
+
+The immediate financial crisis is being managed. But the political crisis has only deepened.
+
+A congressional investigation into the gold conspiracy is now inevitable. The question is whether we shape it — or let the Democrats shape it for us. A committee will be formed. Its membership, its mandate, and its conclusions are still undecided.
+
+Abel Corbin has gone quiet. James Fisk is already telling anyone who will listen that he was acting alone, that Grant knew nothing, that Gould was the real mastermind. Gould is saying nothing at all.
+
+What role do we play in the investigation?
+
+- @lead_investigation: Push for a Republican-led investigation that controls the narrative.
+- @support_independent: Support an independent bipartisan committee to demonstrate good faith.
+- @block_investigation: Work to limit the investigation's scope and protect the administration.
+- @let_it_burn: Let the investigation proceed without interference and distance ourselves from Grant.
+
+@lead_investigation
+on-arrival: {!
+    Q.conservative_dissent -= 3;
+    Q.moderate_dissent -= 2;
+    Q.liberal_dissent += 5;   // liberals see it as a cover-up attempt
+    Q.radical_dissent += 2;
+
+    Q.middle_class_rep += 2;
+
+    // We control the outcome but it looks partisan
+    Q.dem_relation -= 4;
+    Q.reconstruction_support -= 1;
+
+    // If we protected Grant earlier, the investigation is more effective cover
+    if (Q.protect_grant_chosen) {
+        Q.conservative_dissent -= 2;
+    }
+!}
+
+We move quickly to ensure Republicans chair the investigating committee and set its terms of reference. The investigation will be thorough — we will say that loudly and often — but it will be conducted by men who understand the difference between legitimate inquiry and a partisan witch hunt.
+
+The committee does its work. It finds that Gould and Fisk acted largely alone. Corbin is embarrassed but not criminally implicated. The President is cleared of direct knowledge.
+
+The Democrats call it a whitewash from the first day to the last. The Liberal Republican press publishes long, skeptical editorials about the reliability of investigations run by the party being investigated.
+
+We have protected Grant. Whether we have protected the party's reputation for integrity is less certain.
+
+@support_independent
+on-arrival: {!
+    Q.liberal_dissent -= 6;
+    Q.liberal_strength += 4;
+    Q.moderate_dissent -= 3;
+    Q.conservative_dissent += 5;  // conservatives see it as throwing Grant to the wolves
+    Q.radical_dissent += 1;
+
+    Q.middle_class_rep += 5;
+    Q.rural_rep += 2;
+    Q.dem_relation += 2;
+
+    // Independent investigation is more credible but less controllable
+    Q.moderate_dissent += 3;    // findings may hurt us
+!}
+
+We call for a bipartisan investigating committee — not because we have anything to hide, but because the public will only believe findings that come from a body it trusts. If Grant is innocent, an independent investigation will establish that more conclusively than any party-controlled committee ever could.
+
+Liberal Republicans are quietly impressed. The reform press calls it statesmanlike. Even some Democrats grant us grudging credit for the gesture.
+
+The investigation is slower and less predictable than we would like. Its findings implicate several figures closer to the administration than we had hoped. But when it concludes, its conclusions carry genuine weight — weight that a partisan committee could never have provided.
+
+@block_investigation
+on-arrival: {!
+    Q.conservative_dissent -= 5;
+    Q.conservative_strength += 2;
+    Q.liberal_dissent += 10;
+    Q.liberal_strength -= 3;
+    Q.moderate_dissent += 4;
+    Q.radical_dissent += 3;
+
+    Q.middle_class_dem += 5;
+    Q.rural_dem += 3;
+    Q.workers_dem += 2;
+
+    // Liberal split becomes more likely if already teetering
+    if (Q.liberal_dissent > 25) {
+        Q.liberal_dissent += 5;
+    }
+!}
+
+We move procedurally to limit the committee's mandate — restricting its subpoena power, narrowing its focus to Gould and Fisk and away from Treasury communications, ensuring that the most damaging lines of inquiry are ruled out of scope before they begin.
+
+Conservative Republicans are relieved. The Grant circle is grateful.
+
+Everyone else sees exactly what we are doing.
+
+The Liberal Republican press publishes a series of thundering editorials. The moderate newspapers that had been our friends begin to cool. On the streets and in the counting houses, the perception hardens: the Republican Party protects its own, and the public interest be damned.
+
+The seeds of the Liberal Republican split, if they have not already sprouted, are now well watered.
+
+@let_it_burn
+on-arrival: {!
+    Q.liberal_dissent -= 4;
+    Q.liberal_strength += 2;
+    Q.moderate_dissent += 3;
+    Q.conservative_dissent += 6;  // Grant loyalists furious at abandonment
+    Q.radical_dissent += 2;
+
+    Q.middle_class_rep += 3;
+
+    // Distancing from Grant has long-term cost to party unity
+    Q.moderate_dissent += 2;
+    Q.dem_relation -= 2;   // Dems don't trust our sudden principle either
+!}
+
+We step back. We make clear, in private if not in public, that the party will not be spending political capital to protect the President from a legitimate investigation. If Grant is innocent, the investigation will say so. If he is not, the party should not be implicated in the cover-up.
+
+Conservative Republicans are appalled. Grant's allies see it as cold-blooded abandonment. Several prominent party figures let it be known they will have long memories.
+
+Reformers and independents, however, take note. The Republican Party is capable of holding its own President accountable. That is not nothing, in a season of scandals.
+
+The investigation runs its course. The findings are mixed — damaging to the administration's reputation, but short of criminal. We emerge with our integrity somewhat intact and our relations with the Grant wing of the party in ruins.

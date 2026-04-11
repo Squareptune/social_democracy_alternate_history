@@ -1,0 +1,243 @@
+title: The Dominican Annexation
+subtitle: Babcock returns with a treaty.
+tags: event
+new-page: true
+view-if: year = 1869 and month >= 9 and (president = "Grant" or president = "Wade") and dominican_seen != 1
+max-visits: 1
+on-arrival: dominican_seen = 1
+
+= A Treaty from the Tropics
+
+Orville Babcock, personal secretary to President [+ president +], has returned from Santo Domingo with a draft annexation treaty. The Dominican Republic, wracked by debt and political instability, is willing — even eager — to become part of the United States.
+
+The terms are generous to the Dominicans: the United States would assume $1,500,000 of Dominican national debt, offer the Dominican Republic the right to eventual statehood, and separately lease the strategic harbor of **Samaná Bay** at $150,000 per year for 50 years. In exchange, the United States gains a Caribbean foothold, a potential new state, and a naval base that could enforce the Monroe Doctrine across the hemisphere.
+
+The proposal has powerful enemies. Senator Charles Sumner, chairman of the Foreign Relations Committee, regards it as a scheme to drag the country into Caribbean adventurism and burden the freedmen of the South with yet another distraction. Many Radical Republicans share his skepticism. Democrats are uniformly opposed.
+
+[? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with Republican ambitions. But his radical base is divided — some see Caribbean annexation as imperialism dressed up in republican clothing. ?]
+
+[? if president = "Grant" : President Grant is personally committed to the treaty and has dispatched Babcock precisely because he wanted a favorable result. His reputation is now somewhat tied to its passage. ?]
+
+- @push_hard: Push hard for ratification — use political capital to bring wavering Republicans on board.
+- @moderate_push: Support the treaty but leave the Senate to its own deliberations.
+- @oppose: Come out against the treaty and side with Sumner.
+- @samanabay_only: Abandon full annexation but pursue the Samaná Bay lease alone.
+
+@push_hard
+subtitle: -2 resources. Requires Senate majority.
+choose-if: resources >= 2 and sen_majority >= 2
+unavailable-subtitle: [? if resources < 2: Not enough resources. ?][? if sen_majority < 2: We do not control the Senate. ?]
+on-arrival: {!
+
+Q.resources -= 2;
+
+// Historical vote was 28-28. We're pushing hard, which flips some votes.
+// Base: 28 yea from Republicans, 0 from Democrats, 0 from others
+// Pushing hard pulls 2-4 more Republican votes
+let extraVotes = Math.floor(Math.random() * 3) + 2;
+let yeaVotes = 28 + extraVotes;
+let nahVotes = 56 - yeaVotes; // 56 total senators at the time
+
+// Two-thirds required for treaty ratification
+let requiredVotes = Math.ceil(56 * (2/3));
+Q.dominican_yea = yeaVotes;
+Q.dominican_nah = nahVotes;
+Q.dominican_required = requiredVotes;
+Q.dominican_passes = (yeaVotes >= requiredVotes) ? 1 : 0;
+
+!}
+go-to: treaty_result
+
+We throw the party's weight behind ratification. Patronage is offered, arm-twisting is done behind closed doors, and the President makes clear that this is a matter of personal priority. Whether it will be enough to break the two-thirds barrier is another question.
+
+@moderate_push
+on-arrival: {!
+
+// Historical vote was 28-28. Moderate support — no extra votes pulled.
+// 19 Republicans defected; 28 yea Republicans.
+// With moderate support, maybe 1-2 additional votes
+let extraVotes = Math.floor(Math.random() * 2);
+let yeaVotes = 28 + extraVotes;
+let nahVotes = 56 - yeaVotes;
+let requiredVotes = Math.ceil(56 * (2/3));
+
+Q.dominican_yea = yeaVotes;
+Q.dominican_nah = nahVotes;
+Q.dominican_required = requiredVotes;
+Q.dominican_passes = (yeaVotes >= requiredVotes) ? 1 : 0;
+
+!}
+go-to: treaty_result
+
+We endorse the treaty publicly but leave the Senate to debate on its merits. Whether Republican moderates and skeptics can be persuaded by the treaty's case alone remains to be seen.
+
+@oppose
+on-arrival: {!
+
+// Opposing kills the treaty.
+Q.dominican_yea = 21;
+Q.dominican_nah = 35;
+Q.dominican_required = Math.ceil(56 * (2/3));
+Q.dominican_passes = 0;
+
+Q.radical_strength += 5;
+Q.radical_dissent -= 3;
+Q.moderate_dissent += 3;
+Q.liberal_strength += 2;
+Q.dem_relation += 3;
+Q.europe_relation += 1;
+
+!}
+go-to: treaty_result
+
+We side with Sumner and the skeptics. Annexing an indebted Caribbean republic would stretch federal resources at a moment when Reconstruction demands every dollar and every ounce of political will. The treaty dies in committee before it can even reach a full Senate vote.
+
+@samanabay_only
+subtitle: Pursue the lease, not the annexation
+on-arrival: {!
+
+// The lease is less controversial — passes on a simple majority
+let repYea = 32;
+let demYea = 2;
+let totalYea = repYea + demYea;
+
+Q.dominican_yea = totalYea;
+Q.dominican_nah = 56 - totalYea;
+Q.dominican_passes = 0; // full annexation does not pass
+Q.samanabay_lease = 1;
+
+Q.budget += 1; // lease payments begin
+Q.navy_strength += 10;
+Q.europe_relation -= 1;
+Q.moderate_strength += 2;
+Q.liberal_strength += 2;
+Q.radical_dissent += 2;
+
+!}
+go-to: samana_result
+
+We quietly signal to Dominican negotiators that full annexation faces insurmountable opposition, but that a lease arrangement for Samaná Bay may be achievable. The strategic harbor is the real prize in any case.
+
+@treaty_result
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      { id: "yea", seats: Q.dominican_yea, color: "#228B22", outline: "#228B22" },
+      { id: "nay", seats: Q.dominican_nah, color: "#8B0000", outline: "#8B0000" }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById("content").offsetWidth - 50);
+
+    var container = d3.select("#dominicanChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "dominicanChart");
+    }
+
+    container.attr("width", width).attr("height", width / 2).html("");
+
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var s = document.createElement("script");
+    s.src = "https://d3js.org/d3.v7.min.js";
+    s.onload = function() {
+      var p = document.createElement("script");
+      p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+      p.onload = drawChart;
+      document.head.appendChild(p);
+    };
+    document.head.appendChild(s);
+  } else if (!window.d3.parliament) {
+    var p = document.createElement("script");
+    p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+    p.onload = drawChart;
+    document.head.appendChild(p);
+  } else {
+    drawChart();
+  }
+!}
+go-to: treaty_passes if dominican_passes = 1; treaty_fails if dominican_passes = 0
+
+= Senate Vote on Dominican Annexation
+
+{!<svg id="dominicanChart" style="width: 500px; height: 250px;"></svg>!}
+
+{!<table>!}
+{!<tr><td>Vote</td><td>Count</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#228B22; outline:2px solid;"></div> Yea</td><td>!}[+ dominican_yea +]{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#8B0000; outline:2px solid;"></div> Nay</td><td>!}[+ dominican_nah +]{!</td></tr>!}
+{!<tr><td colspan="2">Two-thirds required: [+ dominican_required +]</td></tr>!}
+{!</table>!}
+
+@treaty_passes
+on-arrival: {!
+
+Q.dominican_annexed = 1;
+Q.budget -= 2; // debt assumption and initial costs
+Q.navy_strength += 20;
+Q.samanabay_lease = 1;
+Q.europe_relation -= 2;
+
+// Political fallout
+Q.moderate_strength += 4;
+Q.liberal_strength += 3;
+Q.radical_dissent += 6; // Sumner wing furious
+Q.conservative_dissent -= 2;
+
+// Voter reactions
+Q.middle_class_rep += 3;
+Q.workers_dem += 2; // workers skeptical of Caribbean expansion
+Q.freemen_rep -= 2; // some freedmen leaders see it as a distraction from civil rights
+Q.immigrant_laborers_other += 1;
+
+!}
+
+The Senate ratifies the annexation treaty. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
+
+Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. Radical newspapers echo his concern. But moderate and conservative Republicans celebrate a triumph of Manifest Destiny.
+
+The Dominican people, for their part, await their future as citizens of a republic that emancipated four million of its own enslaved people just four years ago.
+
+- @dominican_statehood_note: What becomes of Dominican statehood?
+
+@dominican_statehood_note
+on-arrival: dominican_statehood_debate = 1
+
+The treaty grants the Dominican Republic the right to apply for statehood, but does not guarantee it. That debate will come later — and it will be fierce. For now, we have the territory, the harbor, and the debt.
+
+@treaty_fails
+on-arrival: {!
+
+// Historical result: 28-28, failed to reach two-thirds
+Q.dominican_fails = 1;
+
+// Political reactions to failure
+if (Q.dominican_pushed_hard) {
+    // embarrassing for the president
+    Q.moderate_dissent += 3;
+    Q.conservative_dissent += 2;
+} else {
+    Q.moderate_dissent += 1;
+}
+
+Q.radical_strength += 2;
+Q.radical_dissent -= 2;
+Q.liberal_strength += 1;
+Q.dem_relation += 2; // Democrats pleased
+Q.europe_relation += 1; // Europeans relieved
+
+!}
+
+The treaty falls short of the two-thirds majority required for ratification. [? if dominican_yea = 28 and dominican_nah = 28 : The vote is a stark 28 to 28 — every Democrat voting no, joined by 19 Republicans who sided with Senator Sumner's opposition. The tie is, constitutionally, a defeat. ?][? if dominican_yea < 28 : The vote fails by a wider margin than expected. ?][? if dominican_yea > 28 : The vote is closer than the historical record might suggest, but still falls short. ?]
+
+Sumner emerges from the chamber with the look of a man who has saved the Republic from folly. Whether he is right will be debated for years.
+
+The Dominican Republic will remain independent — for now. Its debt, its instability, and the harbor at Samaná Bay will remain someone else's problem.
+
+@samana_result
+
+The Senate approves the Samaná Bay lease by a comfortable majority. American warships will have access to one of the finest natural harbors in the Caribbean, giving the Monroe Doctrine real teeth at a fraction of the political cost of annexation.
+
+Senator Sumner is displeased but mollified. The Dominican Republic receives $150,000 per year and keeps its sovereignty. The Navy begins surveying the harbor immediately.

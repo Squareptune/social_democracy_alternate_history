@@ -1803,6 +1803,16 @@ Q.fenian = 0;
 Q.caribbean_patrol = 0;
 Q.native_relations = 3;
 Q.Sioux_Treaty = 0;
+Q.dominican_seen = 0;
+Q.dominican_annexed = 0;
+Q.dominican_fails = 0;
+Q.dominican_yea = 0;
+Q.dominican_nah = 0;
+Q.dominican_required = 0;
+Q.dominican_passes = 0;
+Q.dominican_pushed_hard = 0;
+Q.dominican_statehood_debate = 0;
+Q.samanabay_lease = 0;
 
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
@@ -1935,7 +1945,7 @@ this.state.disableSaves = true;
 go-to: 1928_main
 
 @1928_main
-audio: shuffle music/BattleCryofFreedom.mp3 music/BattleHymnoftheRepublic-RareInstrumental.mp3 music/GoodOldRebel.mp3 music/WeAreComing,FatherAbr'am!.mp3
+audio: shuffle music/BattleCryofFreedom.mp3 music/BattleHymnoftheRepublic-RareInstrumental.mp3 music/GoodOldRebel.mp3 music/WeAreComing,FatherAbr'am!.mp3 music/Union_Dixie.mp3
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
