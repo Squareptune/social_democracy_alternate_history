@@ -223,7 +223,7 @@ if (Q.dissent < 0) {
 
 Q.Base_Support = 0.35 * Q.freemen_rep + 0.20 * Q.workers_rep + 0.20* Q.middle_class_rep + 0.15 * Q.immigrant_laborers_rep + 0.10 * Q.unemployed_rep;
 
-Q.ViolencePenalty = (Q.kkk_strength * Q.kkk_militancy * 0.4) + (Q.whiteL_strength * Q.whiteL_militancy * 0.6);
+Q.ViolencePenalty = Math.min(30, (Q.kkk_strength / 1000) * Q.kkk_militancy * 20  + (Q.whiteL_strength / 1000) * Q.whiteL_militancy * 30);
 
 Q.FatiguePenalty = Math.min(Q.year - 1865, 10);
 
@@ -250,21 +250,25 @@ for (let state of Q.states) {
 
         let rep = Q[state + "_" + cls + "_rep"] || 0;
         let dem = Q[state + "_" + cls + "_dem"] || 0;
+        let lib   = Q[state + "_" + cls + "_lib"]   || 0;
         let other = Q[state + "_" + cls + "_other"] || 0;
 
         let repMod = Q[cls + "_rep"] || 0;
         let demMod = Q[cls + "_dem"] || 0;
+        let libMod   = Q[cls + "_lib"]   || 0;
         let otherMod = Q[cls + "_other"] || 0;
 
         let adjRep = 0.2 * rep + 0.8 * repMod;
         let adjDem = 0.2 * dem + 0.8 * demMod;
+        let adjLib   = Q.liberal_split ? (0.2 * lib + 0.8 * libMod) : 0;
         let adjOther = 0.2 * other + 0.8 * otherMod;
 
-        let totalAdj = adjRep + adjDem + adjOther;
+        let totalAdj = adjRep + adjDem + adjLib + adjOther;
         if (!totalAdj) continue;
 
         repVotes += pop * (adjRep / totalAdj);
         demVotes += pop * (adjDem / totalAdj);
+        demVotes  += pop * (adjLib   / totalAdj);
         otherVotes += pop * (adjOther / totalAdj);
     }
   }
@@ -309,29 +313,29 @@ for (let state of Q.southern_states) {
   let unionLeague = Q.Union_League_strength || 0;
 
   // --- Resistance Suppression Logic ---
-  let resistance = (kkk + whiteL) / 2;
-  let suppression_modifier = Math.max(0, resistance * (1 - (white_loyalty / 100)));
-
+  let normalizedResistance = ((kkk + whiteL) / 2) / 1000;
+  let suppression_modifier = Math.max(0, normalizedResistance * (1 - (white_loyalty / 100)) * 20);
+  
   // --- State loyalty ---
-  let state_loyalty =
-      white_loyalty
-    + (occupation * 5)
-    + (judicial)
-    - (resistance * 0.25);
-
+  let state_loyalty = white_loyalty + (occupation * 5) + judicial - (resistance * 5);
+ 
   state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
   Q[state + "_loyalty"] = state_loyalty;
 
   // --- Race equality support ---
   let freedmen_rep = Q[state + "_freemen_rep"] || 0;
 
+  let unionLeagueEffect = Math.min(100, (unionLeague / 500) * 100);
+
   let raceEqualitySupport =
-      (freedmen_rep * 0.5)
-    + (unionLeague * 0.5)
-    + (occupation * 8)
+      (freedmen_rep * 0.40)
+    + (unionLeagueEffect * 0.30)
+    + (occupation * 10)
+    + (judicial * 2)
     - suppression_modifier;
 
   raceEqualitySupport = Math.max(0, Math.min(100, Math.round(raceEqualitySupport)));
+
   Q[state + "_raceEqualitySupport"] = raceEqualitySupport;
 
   // --- Reconstruction score ---
@@ -351,10 +355,14 @@ for (let state of Q.southern_states) {
     threshold = 75;
     planName = "Radical";
   }
+  
+  let loyaltyWeight  = Q.Radical_plan ? 0.40 : 0.55;
 
-  score = (state_loyalty * 0.5) + (white_loyalty * 0.25) + (raceEqualitySupport * 0.25);
+  let equalityWeight = Q.Radical_plan ? 0.60 : 0.45;
 
-  score = Math.max(0, Math.round(score));
+  score = (state_loyalty * loyaltyWeight) + (raceEqualitySupport * equalityWeight);
+
+  score = Math.max(0, Math.min(100, Math.round(score)));
   Q[state + "_reconstructionScore"] = score;
   Q[state + "_canReadmit"] = score >= threshold ? 1 : 0;
 
@@ -588,11 +596,11 @@ if (Q.month_actions >= 1) {
     }
     // BASELINE GROWTH / SUPPRESSION (monthly)
     if (Q.occupation == 0) {
-        Q.kkk_strength += 500;
+        Q.kkk_strength += 5;
     } else if (Q.occupation == 1) {
-        Q.kkk_strength += 300;
+        Q.kkk_strength += 3;
     } else if (Q.occupation == 2) {
-        Q.kkk_strength -= 150;
+        Q.kkk_strength -= 1;
     }
     
     // POLICE LOYALTY EFFECT

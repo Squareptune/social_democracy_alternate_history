@@ -30,93 +30,267 @@ unavailable-subtitle: [? if resources < 2: Not enough resources. ?][? if sen_maj
 on-arrival: {!
 
 Q.resources -= 2;
+Q.dominican_pushed_hard = 1;
 
-// Historical vote was 28-28. We're pushing hard, which flips some votes.
-// Base: 28 yea from Republicans, 0 from Democrats, 0 from others
-// Pushing hard pulls 2-4 more Republican votes
-let extraVotes = Math.floor(Math.random() * 3) + 2;
-let yeaVotes = 28 + extraVotes;
-let nahVotes = 56 - yeaVotes; // 56 total senators at the time
+// --- Step 1: Total Senate seats from current state list ---
+// Each admitted state sends 2 senators.
+let totalSenate = Q.states.length * 2;
+Q.dominican_total_senate = totalSenate;
 
 // Two-thirds required for treaty ratification
-let requiredVotes = Math.ceil(56 * (2/3));
-Q.dominican_yea = yeaVotes;
-Q.dominican_nah = nahVotes;
+let requiredVotes = Math.ceil(totalSenate * (2/3));
 Q.dominican_required = requiredVotes;
-Q.dominican_passes = (yeaVotes >= requiredVotes) ? 1 : 0;
+
+// --- Step 2: Republican yea votes via faction math ---
+// Base support rates per faction for this treaty:
+//   Conservative: 0.85 - strongly pro-expansion
+//   Moderate:     0.65 - generally supportive
+//   Liberal:      0.45 - skeptical of federal overreach
+//   Radical:      0.25 - Sumner wing, mostly opposed
+// Pushing hard adds a flat bonus to each rate.
+// High dissent within a faction reduces their yea rate —
+// dissentful senators vote their conscience against the party line.
+
+let repSeats = Q.rep_senate_r || 0;
+
+let conYea  = 0.85 + 0.10; // push hard bonus
+let modYea  = 0.65 + 0.10;
+let libYea  = 0.45 + 0.08;
+let radYea  = 0.25 + 0.06;
+
+let conDis = (Q.conservative_dissent || 0) / 100;
+let modDis = (Q.moderate_dissent     || 0) / 100;
+let libDis = (Q.liberal_dissent      || 0) / 100;
+let radDis = (Q.radical_dissent      || 0) / 100;
+
+conYea = Math.max(0, Math.min(1, conYea - conDis * 0.4));
+modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
+libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
+radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
+
+// Faction strength is normalized 0-100, summing to ~100 across all four
+let conStr = (Q.conservative_strength || 0) / 100;
+let modStr = (Q.moderate_strength     || 0) / 100;
+let libStr = (Q.liberal_strength      || 0) / 100;
+let radStr = (Q.radical_strength      || 0) / 100;
+
+let repYea = Math.round(repSeats * (
+    conStr * conYea +
+    modStr * modYea +
+    libStr * libYea +
+    radStr * radYea
+));
+
+// --- Step 3: Democrat, Liberal Republican, and other yea votes ---
+// Democrats almost uniformly opposed; lib reps mixed; others lean no
+let demSeats   = Q.dem_senate_r   || 0;
+let libRepSeats = Q.lib_senate_r  || 0;
+let otherSeats = Q.other_senate_r || 0;
+
+let demYeaVotes   = Math.round(demSeats    * 0.05);
+let libRepYeaVotes = Math.round(libRepSeats * 0.40);
+let otherYeaVotes = Math.round(otherSeats  * 0.30);
+
+let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
+Q.dominican_nah = totalSenate - Q.dominican_yea;
+Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
 
 !}
 go-to: treaty_result
 
-We throw the party's weight behind ratification. Patronage is offered, arm-twisting is done behind closed doors, and the President makes clear that this is a matter of personal priority. Whether it will be enough to break the two-thirds barrier is another question.
+We throw the party's weight behind ratification. Patronage is offered, arm-twisting is done behind closed doors, and the President makes clear that this is a matter of personal priority.
 
 @moderate_push
 on-arrival: {!
 
-// Historical vote was 28-28. Moderate support — no extra votes pulled.
-// 19 Republicans defected; 28 yea Republicans.
-// With moderate support, maybe 1-2 additional votes
-let extraVotes = Math.floor(Math.random() * 2);
-let yeaVotes = 28 + extraVotes;
-let nahVotes = 56 - yeaVotes;
-let requiredVotes = Math.ceil(56 * (2/3));
+Q.dominican_pushed_hard = 0;
 
-Q.dominican_yea = yeaVotes;
-Q.dominican_nah = nahVotes;
+let totalSenate = Q.states.length * 2;
+Q.dominican_total_senate = totalSenate;
+let requiredVotes = Math.ceil(totalSenate * (2/3));
 Q.dominican_required = requiredVotes;
-Q.dominican_passes = (yeaVotes >= requiredVotes) ? 1 : 0;
+
+let repSeats = Q.rep_senate_r || 0;
+
+// No push hard bonus — base rates only
+let conYea = 0.85;
+let modYea = 0.65;
+let libYea = 0.45;
+let radYea = 0.25;
+
+let conDis = (Q.conservative_dissent || 0) / 100;
+let modDis = (Q.moderate_dissent     || 0) / 100;
+let libDis = (Q.liberal_dissent      || 0) / 100;
+let radDis = (Q.radical_dissent      || 0) / 100;
+
+conYea = Math.max(0, Math.min(1, conYea - conDis * 0.4));
+modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
+libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
+radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
+
+let conStr = (Q.conservative_strength || 0) / 100;
+let modStr = (Q.moderate_strength     || 0) / 100;
+let libStr = (Q.liberal_strength      || 0) / 100;
+let radStr = (Q.radical_strength      || 0) / 100;
+
+let repYea = Math.round(repSeats * (
+    conStr * conYea +
+    modStr * modYea +
+    libStr * libYea +
+    radStr * radYea
+));
+
+let demSeats    = Q.dem_senate_r   || 0;
+let libRepSeats = Q.lib_senate_r   || 0;
+let otherSeats  = Q.other_senate_r || 0;
+
+let demYeaVotes    = Math.round(demSeats    * 0.05);
+let libRepYeaVotes = Math.round(libRepSeats * 0.40);
+let otherYeaVotes  = Math.round(otherSeats  * 0.30);
+
+let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
+Q.dominican_nah = totalSenate - Q.dominican_yea;
+Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
 
 !}
 go-to: treaty_result
 
-We endorse the treaty publicly but leave the Senate to debate on its merits. Whether Republican moderates and skeptics can be persuaded by the treaty's case alone remains to be seen.
+We endorse the treaty publicly but leave the Senate to debate on its merits.
 
 @oppose
 on-arrival: {!
 
-// Opposing kills the treaty.
-Q.dominican_yea = 21;
-Q.dominican_nah = 35;
-Q.dominican_required = Math.ceil(56 * (2/3));
-Q.dominican_passes = 0;
+Q.dominican_pushed_hard = 0;
 
-Q.radical_strength += 5;
-Q.radical_dissent -= 3;
-Q.moderate_dissent += 3;
-Q.liberal_strength += 2;
-Q.dem_relation += 3;
-Q.europe_relation += 1;
+let totalSenate = Q.states.length * 2;
+Q.dominican_total_senate = totalSenate;
+let requiredVotes = Math.ceil(totalSenate * (2/3));
+Q.dominican_required = requiredVotes;
+
+let repSeats = Q.rep_senate_r || 0;
+
+// Opposing reduces yea rates across the board — the executive
+// signal matters. However, if conservative and moderate factions
+// are dominant AND have low dissent, they may defy us and pass it
+// anyway on their own conviction. This models the historical
+// reality that a strong congressional wing can act independently.
+
+let oppositionPenalty = 0.20;
+
+let conYea = Math.max(0, 0.85 - oppositionPenalty);
+let modYea = Math.max(0, 0.65 - oppositionPenalty);
+let libYea = Math.max(0, 0.45 - oppositionPenalty);
+let radYea = Math.max(0, 0.25 - oppositionPenalty);
+
+let conDis = (Q.conservative_dissent || 0) / 100;
+let modDis = (Q.moderate_dissent     || 0) / 100;
+let libDis = (Q.liberal_dissent      || 0) / 100;
+let radDis = (Q.radical_dissent      || 0) / 100;
+
+// Low-dissent, high-strength factions partially resist executive opposition:
+// they vote their own convictions. The stronger and more cohesive the faction,
+// the more it can push back against being whipped against a bill it supports.
+let conResist = Math.max(0, ((Q.conservative_strength || 0) - 30) / 100) * (1 - conDis);
+let modResist = Math.max(0, ((Q.moderate_strength     || 0) - 40) / 100) * (1 - modDis);
+
+conYea = Math.min(0.85, conYea + conResist * 0.30);
+modYea = Math.min(0.65, modYea + modResist * 0.20);
+
+conYea = Math.max(0, Math.min(1, conYea - conDis * 0.3));
+modYea = Math.max(0, Math.min(1, modYea - modDis * 0.3));
+libYea = Math.max(0, Math.min(1, libYea - libDis * 0.3));
+radYea = Math.max(0, Math.min(1, radYea - radDis * 0.3));
+
+let conStr = (Q.conservative_strength || 0) / 100;
+let modStr = (Q.moderate_strength     || 0) / 100;
+let libStr = (Q.liberal_strength      || 0) / 100;
+let radStr = (Q.radical_strength      || 0) / 100;
+
+let repYea = Math.round(repSeats * (
+    conStr * conYea +
+    modStr * modYea +
+    libStr * libYea +
+    radStr * radYea
+));
+
+let demSeats    = Q.dem_senate_r   || 0;
+let libRepSeats = Q.lib_senate_r   || 0;
+let otherSeats  = Q.other_senate_r || 0;
+
+// Democrats barely move; lib reps and others unaffected by our stance
+let demYeaVotes    = Math.round(demSeats    * 0.03);
+let libRepYeaVotes = Math.round(libRepSeats * 0.35);
+let otherYeaVotes  = Math.round(otherSeats  * 0.25);
+
+let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
+Q.dominican_nah = totalSenate - Q.dominican_yea;
+Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
+
+// Political effects of public opposition regardless of outcome
+Q.radical_strength  += 4;
+Q.radical_dissent   -= 3;
+Q.moderate_dissent  += 3;
+Q.liberal_strength  += 2;
+Q.dem_relation      += 3;
+Q.europe_relation   += 1;
 
 !}
 go-to: treaty_result
 
-We side with Sumner and the skeptics. Annexing an indebted Caribbean republic would stretch federal resources at a moment when Reconstruction demands every dollar and every ounce of political will. The treaty dies in committee before it can even reach a full Senate vote.
+We side with Sumner and the skeptics. The Senate will now vote without executive backing — though whether the pro-annexation factions are strong and cohesive enough to carry it on their own is another matter.
 
 @samanabay_only
 subtitle: Pursue the lease, not the annexation
 on-arrival: {!
 
-// The lease is less controversial — passes on a simple majority
-let repYea = 32;
-let demYea = 2;
-let totalYea = repYea + demYea;
+let totalSenate = Q.states.length * 2;
+Q.dominican_total_senate = totalSenate;
 
-Q.dominican_yea = totalYea;
-Q.dominican_nah = 56 - totalYea;
-Q.dominican_passes = 0; // full annexation does not pass
-Q.samanabay_lease = 1;
+// Lease only requires simple majority, not two-thirds
+let requiredVotes = Math.floor(totalSenate / 2) + 1;
+Q.dominican_required = requiredVotes;
 
-Q.budget += 1; // lease payments begin
-Q.navy_strength += 10;
-Q.europe_relation -= 1;
-Q.moderate_strength += 2;
-Q.liberal_strength += 2;
-Q.radical_dissent += 2;
+let repSeats    = Q.rep_senate_r   || 0;
+let demSeats    = Q.dem_senate_r   || 0;
+let libRepSeats = Q.lib_senate_r   || 0;
+let otherSeats  = Q.other_senate_r || 0;
+
+// Lease is far less controversial — higher base rates, dissent matters less
+let conDis = (Q.conservative_dissent || 0) / 100;
+let modDis = (Q.moderate_dissent     || 0) / 100;
+
+let repYeaRate   = Math.max(0, Math.min(1, 0.80 - conDis * 0.15 - modDis * 0.15));
+let demYeaRate   = 0.20;
+let libRepYeaRate = 0.55;
+let otherYeaRate = 0.45;
+
+let totalYea =
+    Math.round(repSeats    * repYeaRate)    +
+    Math.round(demSeats    * demYeaRate)    +
+    Math.round(libRepSeats * libRepYeaRate) +
+    Math.round(otherSeats  * otherYeaRate);
+
+Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
+Q.dominican_nah = totalSenate - Q.dominican_yea;
+Q.dominican_passes = 0; // full annexation never comes to vote
+Q.samanabay_lease = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
+
+if (Q.samanabay_lease) {
+    Q.budget         += 1;
+    Q.navy_strength  += 10;
+    Q.europe_relation -= 1;
+    Q.moderate_strength += 2;
+    Q.liberal_strength  += 2;
+    Q.radical_dissent   += 1;
+}
 
 !}
 go-to: samana_result
 
-We quietly signal to Dominican negotiators that full annexation faces insurmountable opposition, but that a lease arrangement for Samaná Bay may be achievable. The strategic harbor is the real prize in any case.
+We quietly signal to Dominican negotiators that full annexation faces insurmountable opposition, but that a lease arrangement for Samaná Bay may be achievable.
 
 @treaty_result
 on-display: {!
@@ -127,14 +301,11 @@ on-display: {!
     ].filter(d => d.seats > 0);
 
     var width = Math.min(500, document.getElementById("content").offsetWidth - 50);
-
     var container = d3.select("#dominicanChart");
     if (container.empty()) {
       container = d3.select("#content").append("svg").attr("id", "dominicanChart");
     }
-
     container.attr("width", width).attr("height", width / 2).html("");
-
     var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
     container.data([chartData]).call(parliament);
   }
@@ -168,37 +339,39 @@ go-to: treaty_passes if dominican_passes = 1; treaty_fails if dominican_passes =
 {!<tr><td>Vote</td><td>Count</td></tr>!}
 {!<tr><td><div class="box" style="background-color:#228B22; outline:2px solid;"></div> Yea</td><td>!}[+ dominican_yea +]{!</td></tr>!}
 {!<tr><td><div class="box" style="background-color:#8B0000; outline:2px solid;"></div> Nay</td><td>!}[+ dominican_nah +]{!</td></tr>!}
-{!<tr><td colspan="2">Two-thirds required: [+ dominican_required +]</td></tr>!}
+{!<tr><td colspan="2">Two-thirds required: [+ dominican_required +] of [+ dominican_total_senate +]</td></tr>!}
 {!</table>!}
 
 @treaty_passes
 on-arrival: {!
 
 Q.dominican_annexed = 1;
-Q.budget -= 2; // debt assumption and initial costs
-Q.navy_strength += 20;
+Q.budget         -= 2;
+Q.navy_strength  += 20;
 Q.samanabay_lease = 1;
 Q.europe_relation -= 2;
 
-// Political fallout
-Q.moderate_strength += 4;
-Q.liberal_strength += 3;
-Q.radical_dissent += 6; // Sumner wing furious
+Q.moderate_strength  += 4;
+Q.liberal_strength   += 3;
+Q.radical_dissent    += 6;
 Q.conservative_dissent -= 2;
 
-// Voter reactions
-Q.middle_class_rep += 3;
-Q.workers_dem += 2; // workers skeptical of Caribbean expansion
-Q.freemen_rep -= 2; // some freedmen leaders see it as a distraction from civil rights
+Q.middle_class_rep        += 3;
+Q.workers_dem             += 2;
+Q.freemen_rep             -= 2;
 Q.immigrant_laborers_other += 1;
+
+// Passed despite our opposition — conservative/moderate wing feels emboldened
+if (!Q.dominican_pushed_hard) {
+    Q.conservative_strength += 3;
+    Q.moderate_dissent      += 2;
+}
 
 !}
 
-The Senate ratifies the annexation treaty. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
+The Senate ratifies the annexation treaty[? if dominican_pushed_hard = 0 : , passing it without — or even against — executive support, a remarkable show of Congressional independence?]. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
 
-Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. Radical newspapers echo his concern. But moderate and conservative Republicans celebrate a triumph of Manifest Destiny.
-
-The Dominican people, for their part, await their future as citizens of a republic that emancipated four million of its own enslaved people just four years ago.
+Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. Radical newspapers echo his concern. But the moderate and conservative wings of the party celebrate a triumph of Manifest Destiny.
 
 - @dominican_statehood_note: What becomes of Dominican statehood?
 
@@ -210,34 +383,79 @@ The treaty grants the Dominican Republic the right to apply for statehood, but d
 @treaty_fails
 on-arrival: {!
 
-// Historical result: 28-28, failed to reach two-thirds
 Q.dominican_fails = 1;
 
-// Political reactions to failure
 if (Q.dominican_pushed_hard) {
-    // embarrassing for the president
-    Q.moderate_dissent += 3;
+    Q.moderate_dissent   += 3;
     Q.conservative_dissent += 2;
 } else {
     Q.moderate_dissent += 1;
 }
 
 Q.radical_strength += 2;
-Q.radical_dissent -= 2;
+Q.radical_dissent  -= 2;
 Q.liberal_strength += 1;
-Q.dem_relation += 2; // Democrats pleased
-Q.europe_relation += 1; // Europeans relieved
+Q.dem_relation     += 2;
+Q.europe_relation  += 1;
 
 !}
 
-The treaty falls short of the two-thirds majority required for ratification. [? if dominican_yea = 28 and dominican_nah = 28 : The vote is a stark 28 to 28 — every Democrat voting no, joined by 19 Republicans who sided with Senator Sumner's opposition. The tie is, constitutionally, a defeat. ?][? if dominican_yea < 28 : The vote fails by a wider margin than expected. ?][? if dominican_yea > 28 : The vote is closer than the historical record might suggest, but still falls short. ?]
+The treaty falls short of the [+ dominican_required +] votes required for ratification, with only [+ dominican_yea +] senators in favor.
 
-Sumner emerges from the chamber with the look of a man who has saved the Republic from folly. Whether he is right will be debated for years.
+[? if dominican_pushed_hard = 1 : Despite our best efforts to bring wavering Republicans into line, too many sided with Sumner's wing of the party. The expenditure of political capital stings. ?]
+[? if dominican_pushed_hard = 0 : Without executive pressure, the pro-annexation senators could not organize enough votes to clear the two-thirds bar. ?]
 
-The Dominican Republic will remain independent — for now. Its debt, its instability, and the harbor at Samaná Bay will remain someone else's problem.
+Sumner emerges from the chamber with the look of a man who has saved the Republic from folly. The Dominican Republic will remain independent — for now.
 
 @samana_result
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      { id: "yea", seats: Q.dominican_yea, color: "#228B22", outline: "#228B22" },
+      { id: "nay", seats: Q.dominican_nah, color: "#8B0000", outline: "#8B0000" }
+    ].filter(d => d.seats > 0);
 
-The Senate approves the Samaná Bay lease by a comfortable majority. American warships will have access to one of the finest natural harbors in the Caribbean, giving the Monroe Doctrine real teeth at a fraction of the political cost of annexation.
+    var width = Math.min(500, document.getElementById("content").offsetWidth - 50);
+    var container = d3.select("#samanaChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "samanaChart");
+    }
+    container.attr("width", width).attr("height", width / 2).html("");
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
 
-Senator Sumner is displeased but mollified. The Dominican Republic receives $150,000 per year and keeps its sovereignty. The Navy begins surveying the harbor immediately.
+  if (!window.d3) {
+    var s = document.createElement("script");
+    s.src = "https://d3js.org/d3.v7.min.js";
+    s.onload = function() {
+      var p = document.createElement("script");
+      p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+      p.onload = drawChart;
+      document.head.appendChild(p);
+    };
+    document.head.appendChild(s);
+  } else if (!window.d3.parliament) {
+    var p = document.createElement("script");
+    p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+    p.onload = drawChart;
+    document.head.appendChild(p);
+  } else {
+    drawChart();
+  }
+!}
+
+= Senate Vote on Samaná Bay Lease
+
+{!<svg id="samanaChart" style="width: 500px; height: 250px;"></svg>!}
+
+{!<table>!}
+{!<tr><td>Vote</td><td>Count</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#228B22; outline:2px solid;"></div> Yea</td><td>!}[+ dominican_yea +]{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#8B0000; outline:2px solid;"></div> Nay</td><td>!}[+ dominican_nah +]{!</td></tr>!}
+{!<tr><td colspan="2">Simple majority required: [+ dominican_required +] of [+ dominican_total_senate +]</td></tr>!}
+{!</table>!}
+
+[? if samanabay_lease = 1 : The Senate approves the Samaná Bay lease by a comfortable majority. American warships will have access to one of the finest natural harbors in the Caribbean, giving the Monroe Doctrine real teeth at a fraction of the political cost of annexation. Senator Sumner is displeased but mollified. The Dominican Republic receives $150,000 per year and keeps its sovereignty. ?]
+
+[? if samanabay_lease = 0 : Even the more modest lease proposal fails to clear a simple majority. The Dominican question is closed for now — the Republic remains independent, its harbors beyond American reach. ?]
