@@ -317,7 +317,7 @@ for (let state of Q.southern_states) {
   let suppression_modifier = Math.max(0, normalizedResistance * (1 - (white_loyalty / 100)) * 20);
   
   // --- State loyalty ---
-  let state_loyalty = white_loyalty + (occupation * 5) + judicial - (resistance * 5);
+  let state_loyalty = white_loyalty + (occupation * 5) + judicial - (normalizedResistance * 5);
  
   state_loyalty = Math.max(0, Math.min(100, Math.round(state_loyalty)));
   Q[state + "_loyalty"] = state_loyalty;
