@@ -121,7 +121,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
       const z = d3.scaleOrdinal(d3.schemeCategory10);
       if (!noDots) {
           svg.selectAll(".series")
-              .data(series)
+              .data(series.filter(s => s.length > 0))
             .enter().append("g")
             .selectAll(".point")
               .data(d => d)
@@ -151,7 +151,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
 
       // draw right-hand labels
       svg.selectAll(".labels")
-        .data(series)
+        .data(series.filter(s => s.length > 0))
         .enter().append("text")
         .text(s => partyNames[s[0].series])
         .attr("series", s => s[0].series)

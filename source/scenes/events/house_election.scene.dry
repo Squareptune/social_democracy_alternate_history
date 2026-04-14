@@ -33,6 +33,11 @@ for (let state of Q.states) {
     else {
       let pop = Q[state + "_" + cls] || 0;
 
+      if (cls === "freemen") {
+        let suppressionRate = Math.min((Q.ViolencePenalty || 0) / 30, 1);
+        pop = pop * (1 - suppressionRate);
+      }
+
       let rep = Q[state + "_" + cls + "_rep"] || 0;
       let dem = Q[state + "_" + cls + "_dem"] || 0;
       let lib = Q[state + "_" + cls + "_lib"] || 0;

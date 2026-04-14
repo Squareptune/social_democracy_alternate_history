@@ -277,6 +277,14 @@ let houseData = [
         color: "#AAAAAA",
         outline: "#666666",
         seats: Math.floor(Q.other_r),
+    },
+    {
+        id: "lib",
+        legend: "Liberal Republicans",
+        name: "Liberal Republican",
+        color: "#DAA520",
+        outline: "#866614",
+        seats: Math.floor(Q.lib_r),
     }
 ];
 
@@ -304,6 +312,14 @@ let senateData = [
         color: "#AAAAAA",
         outline: "#666666",
         seats: Q.other_senate_r,
+    },
+    {
+        id: "lib",
+        legend: "Liberal Republicans",
+        name: "Liberal Republican",
+        color: "#DAA520",
+        outline: "#866614",
+        seats: Math.floor(Q.lib_senate_r),
     }
 ];
 
@@ -333,9 +349,9 @@ if (d3 && window) {
     d3.select("#senate_chart").datum(senateData).call(parliament);
 
     var lines = d3.linegraph(false, false,
-        Q.parties,
-        {"rep": "#B22222", "dem": "#003366", "other": "#AAAAAA"},
-        {"rep": "Republican", "dem": "Democrat", "other": "Other"}
+        ["rep", "dem", "lib", "other"].filter(p => Q.election_records.some(r => r[p] > 0)),
+        {"rep": "#B22222", "dem": "#003366", "lib": "#DAA520", "other": "#AAAAAA"},
+        {"rep": "Republican", "dem": "Democrat", "lib": "Liberal Republican", "other": "Other"}
     );
     lines.width(width).height(400);
     if (Q.election_records.length > 0) {
@@ -344,9 +360,9 @@ if (d3 && window) {
 
     if (!Q.historical_mode || Q.game_over) {
         var lines_2 = d3.linegraph(true, true,
-            Q.parties,
-            {"rep": "#B22222", "dem": "#003366", "other": "#AAAAAA"},
-            {"rep": "Republican", "dem": "Democrat", "other": "Other"}
+            ["rep", "dem", "lib", "other"].filter(p => Q.party_support_records.some(r => r[p] > 0)),
+            {"rep": "#B22222", "dem": "#003366", "lib": "#DAA520", "other": "#AAAAAA"},
+            {"rep": "Republican", "dem": "Democrat", "lib": "Liberal Republican", "other": "Other"}
         );
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
@@ -371,6 +387,7 @@ if (d3 && window) {
 {!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_r +] seats** {!</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_r +] seats** {!</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_r +] seats** {!</td></tr>!}
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div></td><td>!} **Liberal Republican:** {!</td><td>!} **[+ lib_r +] seats** {!</td></tr>!} ?]
 {!</table>!}
 
 = Senate Composition
@@ -381,6 +398,7 @@ if (d3 && window) {
 {!<tr><td><div class="box" style='background-color:#B22222'> </div></td><td>!} **Republican:** {!</td><td>!} **[+ rep_senate_r +] seats** {!</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#003366'> </div></td><td>!} **Democrat:** {!</td><td>!} **[+ dem_senate_r +] seats** {!</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#AAAAAA'> </div></td><td>!} **Other:** {!</td><td>!} **[+ other_senate_r +] seats** {!</td></tr>!}
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div></td><td>!} **Liberal Republican:** {!</td><td>!} **[+ lib_senate_r +] seats** {!</td></tr>!} ?]
 {!</table>!}
 
 = Election History
