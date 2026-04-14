@@ -44,7 +44,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
 
       // Declare the x (horizontal position) scale.
       const maxDate = d3.max(dates);
-      const xScale = d3.scaleUtc([new Date(1928, 0), addMonths(maxDate, additionalMonths)], [marginLeft, width - marginRight]);
+      const xScale = d3.scaleUtc([new Date(1865, 0), addMonths(maxDate, additionalMonths)], [marginLeft, width - marginRight]);
 
       var xaxis = d3.axisBottom()
         .tickFormat(d3.timeFormat('%b %Y'))
