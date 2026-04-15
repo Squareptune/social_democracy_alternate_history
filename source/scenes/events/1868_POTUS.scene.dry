@@ -46,14 +46,14 @@ let closeStates = {
   "IN": 2.78,
   "AL": 2.50,
   "CA": 0.47,
-  "OR": −0.74,
-  "NY": −1.18,
-  "NJ": −1.76,
-  "DE": −18.00,
-  "GA": −28.54,
-  "MD": −34.40,
-  "LA": −41.38,
-  "KY": −49.10
+  "OR": -0.74,
+  "NY": -1.18,
+  "NJ": -1.76,
+  "DE": -18.00,
+  "GA": -28.54,
+  "MD": -34.40,
+  "LA": -41.38,
+  "KY": -49.10
 };
 
 // National swing: how far each party's national support deviates from baseline
