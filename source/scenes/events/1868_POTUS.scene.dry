@@ -14,91 +14,105 @@ The Presidential election are to be held now.
 
 @POTUS_election_algorithm
 on-arrival:{!
-// Reset EV totals
 Q.repEVTotal = 0;
 Q.demEVTotal = 0;
 Q.libEVTotal = 0;
 
-// Define close states with target margin in percent (Republican margin)
+// Close states add a small nudge toward historical margins, but
+// player actions can fully override them
 let closeStates = {
-  "CA": 0.48,
-  "OR": -0.74,
-  "NY": -1.18,
-  "NJ": -1.76,
-  "AL": 2.50,
-  "IN": 2.79,
-  "CT": 2.98,
-  "PA": 4.41,
+  "VT": 57.14,
+  "MA": 39.53,
+  "KS": 37.65,
+  "TN": 36.86,
+  "RI": 32.98,
+  "NE": 27.82,
+  "ME": 24.82,
+  "IA": 23.84,
+  "MN": 21.76,
+  "WV": 17.66,
+  "SC": 15.86,
+  "MI": 13.96,
+  "MO": 13.92,
+  "WI": 12.50,
+  "IL": 11.38,
+  "NV": 10.78,
+  "NH": 10.46,
+  "OH": 8.00,
+  "AR": 7.36,
   "NC": 6.82,
-  "AR": 7.37,
-  "OH": 8.01
+  "PA": 4.40,
+  "CT": 2.98,
+  "IN": 2.78,
+  "AL": 2.50,
+  "CA": 0.47,
+  "OR": −0.74,
+  "NY": −1.18,
+  "NJ": −1.76,
+  "DE": −18.00,
+  "GA": −28.54,
+  "MD": −34.40,
+  "LA": −41.38,
+  "KY": −49.10
 };
 
-function randomNoise() {
-  const sign = Math.random() < 0.5 ? -1 : 1;
-  return sign * (Math.random() * 0.1 + 0.05);
-}
+// National swing: how far each party's national support deviates from baseline
+// This means campaigning and events actually move the needle
+let baselineRep = 52;
+let baselinedem = 45;
+let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.freemen_rep + Q.immigrant_laborers_rep + Q.unemployed_rep) / 6 - baselineRep;
+let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselinedem;
 
-// Run election per state
 for (let state of Q.states) {
   let votes = { rep: 0, dem: 0, lib: 0 };
 
   for (let cls of Q.classes) {
+    if (cls === "freemen" && Q.fifthteen == 0) continue;
 
-    if (cls === "freemen" && Q.fifthteen == 0){
-      // skip freemen if 15th amendment not passed
+    let pop = Q[state + "_" + cls] || 0;
+
+    if (cls === "freemen") {
+      let suppressionRate = Math.min((Q.ViolencePenalty || 0) / 30, 1);
+      pop = pop * (1 - suppressionRate);
     }
-    else {
-      let pop = Q[state + "_" + cls] || 0;
 
-      if (cls === "freemen") {
-        let suppressionRate = Math.min((Q.ViolencePenalty || 0) / 30, 1);
-        pop = pop * (1 - suppressionRate);
-      }
+    if (pop <= 0) continue;
 
-      let raw = {
-        rep: Q[state + "_" + cls + "_rep"] || 0,
-        dem: Q[state + "_" + cls + "_dem"] || 0,
-        lib: Q[state + "_" + cls + "_lib"] || 0
-      };
+    // 50% local, 50% national blend (was 20/80 — too anchored to national)
+    let localRep   = Q[state + "_" + cls + "_rep"] || 0;
+    let localDem   = Q[state + "_" + cls + "_dem"] || 0;
+    let localLib   = Q[state + "_" + cls + "_lib"] || 0;
+    let nationalRep   = Q[cls + "_rep"] || 0;
+    let nationalDem   = Q[cls + "_dem"] || 0;
+    let nationalLib   = Q[cls + "_lib"] || 0;
 
-      let mod = {
-        rep: Q[cls + "_rep"] || 0,
-        dem: Q[cls + "_dem"] || 0,
-        lib: Q[cls + "_lib"] || 0
-      };
+    let adjRep = 0.5 * localRep + 0.5 * nationalRep;
+    let adjDem = 0.5 * localDem + 0.5 * nationalDem;
+    let adjLib = Q.liberal_split ? (0.5 * localLib + 0.5 * nationalLib) : 0;
 
-      let adj = {
-        rep: 0.2 * raw.rep + 0.8 * mod.rep,
-        dem: 0.2 * raw.dem + 0.8 * mod.dem,
-        lib: Q.liberal_split ? (0.2 * raw.lib + 0.8 * mod.lib) : 0
-      };
+    // Apply national swing on top
+    adjRep = Math.max(0, adjRep + nationalRepSwing * 0.3);
+    adjDem = Math.max(0, adjDem + nationalDemSwing * 0.3);
 
-      let total = adj.rep + adj.dem + adj.lib;
-      if (!total) continue;
+    // Apply RNG noise BEFORE normalizing so it actually affects the outcome
+    adjRep *= (0.92 + Math.random() * 0.16);
+    adjDem *= (0.92 + Math.random() * 0.16);
+    if (Q.liberal_split) adjLib *= (0.92 + Math.random() * 0.16);
 
-      adj.rep = Math.min(100, Math.max(0, adj.rep * (1 + randomNoise())));
-      adj.dem = Math.min(100, Math.max(0, adj.dem * (1 + randomNoise())));
-      if (Q.liberal_split) {
-        adj.lib = Math.min(100, Math.max(0, adj.lib * (1 + randomNoise())));
-      }
+    let total = adjRep + adjDem + adjLib;
+    if (!total) continue;
 
-      total = adj.rep + adj.dem + adj.lib;
-
-      votes.rep += pop * adj.rep / total;
-      votes.dem += pop * adj.dem / total;
-      if (Q.liberal_split) {
-        votes.lib += pop * adj.lib / total;
-      }
-    }
+    votes.rep += pop * (adjRep / total);
+    votes.dem += pop * (adjDem / total);
+    if (Q.liberal_split) votes.lib += pop * (adjLib / total);
   }
 
-  // Apply close state adjustment with randomness
-  // Only adjust rep vs dem margin; lib votes stay as calculated
+  // Close state nudge — weaker now, just a small thumb on the scale
+  // Player actions can still fully override this
   if (closeStates[state] !== undefined) {
-    let baseTarget = closeStates[state];
-    let randomJitter = (Math.random() * 0.6) - 0.3;
-    let marginTarget = baseTarget + randomJitter;
+    let nudge = closeStates[state] * 0.3; // only 30% as strong as before
+    let randomJitter = (Math.random() * 0.8) - 0.4; // wider jitter
+    let marginTarget = nudge + randomJitter;
 
     let twoPartyTotal = votes.rep + votes.dem;
     if (twoPartyTotal > 0) {
@@ -120,17 +134,14 @@ for (let state of Q.states) {
 
   Q[state + "_winner"] = winner;
 
-  let color = "#d73027"; // rep default
+  let color = "#d73027";
   if (winner === "dem") color = "#4575b4";
   if (winner === "lib") color = "#DAA520";
   Q[state.toLowerCase() + "_winner_color"] = color;
 
   let margin = votes.rep - votes.dem;
-  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem + votes.lib)) * 100).toFixed(2);
-
-  console.log(
-    `${state} winner: ${winner}, votes: rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${margin.toFixed(0)} (${marginPct}%)`
-  );
+  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem + (votes.lib || 0))) * 100).toFixed(2);
+  console.log(`${state} winner: ${winner}, rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${marginPct}%`);
 }
 
 // Allocate EVs
@@ -144,24 +155,16 @@ for (let state of Q.states) {
   else if (w === "lib") Q.libEVTotal += ev;
 }
 
-// POTUS winner — needs majority of all EVs
 let totalEV = Q.repEVTotal + Q.demEVTotal + Q.libEVTotal;
 let majority = Math.floor(totalEV / 2) + 1;
 
-if (Q.repEVTotal >= majority) {
-  Q.potus_winner = "rep";
-} else if (Q.demEVTotal >= majority) {
-  Q.potus_winner = "dem";
-} else if (Q.libEVTotal >= majority) {
-  Q.potus_winner = "lib";
-} else {
-  // No majority — goes to House of Representatives
-  Q.potus_winner = "house";
-}
+if (Q.repEVTotal >= majority) Q.potus_winner = "rep";
+else if (Q.demEVTotal >= majority) Q.potus_winner = "dem";
+else if (Q.libEVTotal >= majority) Q.potus_winner = "lib";
+else Q.potus_winner = "house";
 
 console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, LIB=${Q.libEVTotal}`);
 console.log(`POTUS winner: ${Q.potus_winner}`);
-
 !}
 on-display: {!
   var winners = {
