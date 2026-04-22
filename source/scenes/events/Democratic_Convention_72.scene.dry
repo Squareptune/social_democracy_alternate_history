@@ -172,13 +172,9 @@ go-to: dem_convention_end
 
 = The Democrats Have Chosen
 
-[? if greeley_fusion = 1 :
-After bitter debate, the convention votes to endorse the Liberal Republican ticket. **Horace Greeley** and **B. Gratz Brown** will carry the Democratic banner as well as the Liberal Republican one. Irish Democrats in the gallery boo loudly. Several Southern delegates walk out. The party chairman calls it a "coalition of necessity."
-?]
+[? if greeley_fusion = 1 : After bitter debate, the convention votes to endorse the Liberal Republican ticket. **Horace Greeley** and **B. Gratz Brown** will carry the Democratic banner as well as the Liberal Republican one. Irish Democrats in the gallery boo loudly. Several Southern delegates walk out. The party chairman calls it a "coalition of necessity."?]
 
-[? if greeley_fusion = 0 :
-The old guard prevails. The convention rejects fusion and nominates its own ticket: **[+ dem_candidate_1872 +]** for President and **[+ dem_vp_candidate_1872 +]** for Vice President.
-?]
+[? if greeley_fusion = 0 : The old guard prevails. The convention rejects fusion and nominates its own ticket: **[+ dem_candidate_1872 +]** for President and **[+ dem_vp_candidate_1872 +]** for Vice President.?]
 
 [? if dem_candidate_1872 = "Hancock" : General Hancock's nomination is widely regarded as the Democrats' strongest possible play. Republicans are taking this race seriously. ?]
 
