@@ -2,7 +2,7 @@ title: The Liberal Republican Split
 subtitle: Reformers break from the party.
 tags: event
 new-page: true
-view-if: liberal_strength >= 15 and liberal_dissent >= 25 and liberal_split = 0
+view-if: liberal_strength >= 15 and liberal_dissent >= 25 and liberal_split = 0 and year >= 1871
 max-visits: 1
 on-arrival: liberal_split = 1;
 

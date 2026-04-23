@@ -1,0 +1,380 @@
+title: 1872 Presidential Election
+subtitle: [+ Candidate +] vs. [+ dem_candidate_1872 +][? if liberal_split = 1 and greeley_fusion = 0 : vs. Greeley ?]
+tags: event
+view-if: year = 1872 and month = 11
+max-visits: 1
+
+= Elections, [+ month +] [+ year +]
+
+The Presidential election is to be held now.
+
+[? if greeley_fusion = 1 : The Democrats have endorsed the Liberal Republican ticket of Greeley and Brown, uniting the opposition behind a single anti-Grant candidate. ?]
+[? if liberal_split = 1 and greeley_fusion = 0 : The Liberal Republicans have fielded Greeley independently while the Democrats run their own candidate, splitting the opposition vote. ?]
+[? if liberal_split = 0 : The Democrats are running their own candidate against the Republicans in a straight two-party contest. ?]
+
+- @POTUS_election_algorithm_1872: May we do our best...
+
+@POTUS_election_algorithm_1872
+on-arrival:{!
+Q.repEVTotal = 0;
+Q.demEVTotal = 0;
+Q.libEVTotal = 0;
+
+// Historical 1872 margins (Republican margin in percentage points)
+// Greeley ran as both Liberal Republican and Democrat in real history
+let closeStates = {
+  "VT":  78.97,
+  "MA":  69.30,
+  "RI":  71.97,
+  "KS":  66.88,
+  "NE":  63.51,
+  "ME":  60.39,
+  "NH":  52.56,
+  "MN":  60.05,
+  "MI":  62.70,
+  "IA":  59.80,
+  "IL":  56.30,
+  "WI":  54.00,
+  "OH":  53.23,
+  "IN":  53.41,
+  "PA":  63.14,
+  "NV":  56.21,
+  "CA":  56.38,
+  "OR":  58.84,
+  "CT":  52.63,
+  "NJ":  54.03,
+  "NY":  53.00,
+  "WV":  56.67,
+  "NC":  -0.87,
+  "TN":  -9.46,
+  "AL":  -3.67,
+  "SC":  75.72,
+  "MS":  63.07,
+  "FL":  53.53,
+  "AR":  -0.14,
+  "LA":  -0.62,
+  "VA":  -8.83,
+  "GA":  -28.06,
+  "KY":  -34.66,
+  "MD":  -38.00,
+  "DE":  -29.00,
+  "MO":  -35.00,
+  "TX":  -26.00
+};
+
+// If Greeley fusion occurred, the combined Dem+Lib vote is much stronger
+// so we tighten all margins significantly
+let fusionModifier = Q.greeley_fusion ? 0.5 : 1.0;
+
+// National swing calculation
+let baselineRep = 55;
+let baselineDem = 42;
+let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.freemen_rep + Q.immigrant_laborers_rep + Q.unemployed_rep) / 6 - baselineRep;
+let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
+
+// If fusion occurred, dem and lib vote combine against republicans
+// We need to track the fusion candidate separately
+let fusionCandidate = Q.greeley_fusion ? "lib" : "dem";
+
+for (let state of Q.states) {
+  let votes = { rep: 0, dem: 0, lib: 0 };
+
+  for (let cls of Q.classes) {
+    if (cls === "freemen" && Q.fifthteen == 0) continue;
+
+    let pop = Q[state + "_" + cls] || 0;
+
+    if (cls === "freemen") {
+      let suppressionRate = Math.min((Q.ViolencePenalty || 0) / 30, 1);
+      pop = pop * (1 - suppressionRate);
+    }
+
+    if (pop <= 0) continue;
+
+    let localRep = Q[state + "_" + cls + "_rep"] || 0;
+    let localDem = Q[state + "_" + cls + "_dem"] || 0;
+    let localLib = Q[state + "_" + cls + "_lib"] || 0;
+    let nationalRep = Q[cls + "_rep"] || 0;
+    let nationalDem = Q[cls + "_dem"] || 0;
+    let nationalLib = Q[cls + "_lib"] || 0;
+
+    let adjRep = 0.5 * localRep + 0.5 * nationalRep;
+    let adjDem = 0.5 * localDem + 0.5 * nationalDem;
+    let adjLib = Q.liberal_split ? (0.5 * localLib + 0.5 * nationalLib) : 0;
+
+    // Apply national swing
+    adjRep = Math.max(0, adjRep + nationalRepSwing * 0.3);
+    adjDem = Math.max(0, adjDem + nationalDemSwing * 0.3);
+
+    // If fusion occurred, Democratic voters fold into the Greeley/lib vote
+    // Irish Democrats and old guard are reluctant — only 70% transfer
+    if (Q.greeley_fusion) {
+      adjLib += adjDem * 0.70;
+      adjDem = adjDem * 0.30; // residual protest vote / abstentions modeled as reduced dem
+    }
+
+    // If Hancock or another strong Dem is running independently alongside Greeley,
+    // split the opposition more severely
+    if (Q.liberal_split && !Q.greeley_fusion) {
+      // Greeley and Dem candidate split the anti-Rep vote
+      // Lib gets reform-minded voters, Dem gets loyalists
+      adjLib = adjLib * 1.2;
+      adjDem = adjDem * 0.85;
+    }
+
+    // RNG noise before normalizing
+    adjRep *= (0.92 + Math.random() * 0.16);
+    adjDem *= (0.92 + Math.random() * 0.16);
+    if (Q.liberal_split || Q.greeley_fusion) adjLib *= (0.92 + Math.random() * 0.16);
+
+    let total = adjRep + adjDem + adjLib;
+    if (!total) continue;
+
+    votes.rep += pop * (adjRep / total);
+    votes.dem += pop * (adjDem / total);
+    if (Q.liberal_split || Q.greeley_fusion) votes.lib += pop * (adjLib / total);
+  }
+
+  // Close state nudge, weakened by fusion modifier
+  if (closeStates[state] !== undefined) {
+    let nudge = closeStates[state] * 0.3 * fusionModifier;
+    let randomJitter = (Math.random() * 0.8) - 0.4;
+    let marginTarget = nudge + randomJitter;
+
+    let twoPartyTotal = votes.rep + votes.dem + votes.lib;
+    let oppTotal = votes.dem + votes.lib; // combined opposition
+    if (twoPartyTotal > 0) {
+      let currentMargin = ((votes.rep - oppTotal) / twoPartyTotal) * 100;
+      let marginDiff = marginTarget - currentMargin;
+
+      votes.rep += twoPartyTotal * (marginDiff / 200);
+      if (Q.greeley_fusion) {
+        votes.lib -= twoPartyTotal * (marginDiff / 200);
+      } else {
+        votes.dem -= twoPartyTotal * (marginDiff / 200);
+      }
+
+      votes.rep = Math.max(0, votes.rep);
+      votes.dem = Math.max(0, votes.dem);
+      votes.lib = Math.max(0, votes.lib);
+    }
+  }
+
+  // Determine state winner
+  let winner = "rep";
+  if (Q.greeley_fusion) {
+    // Fusion: lib is the main opposition candidate
+    if (votes.lib >= votes.rep) winner = "lib";
+  } else if (Q.liberal_split) {
+    // Three-way race
+    if (votes.dem >= votes.rep && votes.dem >= votes.lib) winner = "dem";
+    if (votes.lib >= votes.rep && votes.lib >= votes.dem) winner = "lib";
+  } else {
+    // Straight two-party
+    if (votes.dem >= votes.rep) winner = "dem";
+  }
+
+  Q[state + "_winner"] = winner;
+
+  let color = "#d73027";
+  if (winner === "dem") color = "#4575b4";
+  if (winner === "lib") color = "#DAA520";
+  Q[state.toLowerCase() + "_winner_color"] = color;
+
+  let margin = votes.rep - (votes.dem + votes.lib);
+  let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem + (votes.lib || 0))) * 100).toFixed(2);
+  console.log(`${state} winner: ${winner}, rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${marginPct}%`);
+}
+
+// Allocate EVs
+for (let state of Q.states) {
+  let ev = Q[state + "_EV_" + Q.year];
+  if (!ev) continue;
+
+  let w = Q[state + "_winner"];
+  if (w === "rep") Q.repEVTotal += ev;
+  else if (w === "dem") Q.demEVTotal += ev;
+  else if (w === "lib") Q.libEVTotal += ev;
+}
+
+let totalEV = Q.repEVTotal + Q.demEVTotal + Q.libEVTotal;
+let majority = Math.floor(totalEV / 2) + 1;
+
+if (Q.repEVTotal >= majority) Q.potus_winner = "rep";
+else if (Q.demEVTotal >= majority) Q.potus_winner = "dem";
+else if (Q.libEVTotal >= majority) Q.potus_winner = "lib";
+else Q.potus_winner = "house";
+
+console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, LIB=${Q.libEVTotal}`);
+console.log(`POTUS winner: ${Q.potus_winner}`);
+!}
+on-display: {!
+  var winners = {
+    al: Q.al_winner_color,
+    ar: Q.ar_winner_color,
+    ca: Q.ca_winner_color,
+    co: Q.co_winner_color,
+    ct: Q.ct_winner_color,
+    de: Q.de_winner_color,
+    fl: Q.fl_winner_color,
+    ga: Q.ga_winner_color,
+    il: Q.il_winner_color,
+    in: Q.in_winner_color,
+    ia: Q.ia_winner_color,
+    ks: Q.ks_winner_color,
+    ky: Q.ky_winner_color,
+    la: Q.la_winner_color,
+    me: Q.me_winner_color,
+    md: Q.md_winner_color,
+    ma: Q.ma_winner_color,
+    mi: Q.mi_winner_color,
+    mn: Q.mn_winner_color,
+    ms: Q.ms_winner_color,
+    mo: Q.mo_winner_color,
+    ne: Q.ne_winner_color,
+    nv: Q.nv_winner_color,
+    nh: Q.nh_winner_color,
+    nj: Q.nj_winner_color,
+    ny: Q.ny_winner_color,
+    nc: Q.nc_winner_color,
+    oh: Q.oh_winner_color,
+    or: Q.or_winner_color,
+    pa: Q.pa_winner_color,
+    ri: Q.ri_winner_color,
+    sc: Q.sc_winner_color,
+    tn: Q.tn_winner_color,
+    tx: Q.tx_winner_color,
+    vt: Q.vt_winner_color,
+    va: Q.va_winner_color,
+    wv: Q.wv_winner_color,
+    wi: Q.wi_winner_color,
+    dc: Q.dc_winner_color,
+  };
+
+  function drawMap() {
+    ElectoralMap.draw({ container: "#electoral-map", winners: winners });
+  }
+
+  if (typeof ElectoralMap !== 'undefined') {
+    drawMap();
+  } else {
+    var script = document.createElement('script');
+    script.src = 'electoral-map.js';
+    script.onload = drawMap;
+    document.head.appendChild(script);
+  }
+!}
+go-to: potus_menu_1872
+
+{!<div id="electoral-map"></div>!}
+
+{!<table>!}
+{!<tr><td>Party</td><td>Electoral votes</td></tr>!}
+
+{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}**Republicans ([+ Candidate +])**{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
+
+[? if greeley_fusion = 0 : {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}Democrats ([+ dem_candidate_1872 +]){!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!} ?]
+
+[? if liberal_split = 1 or greeley_fusion = 1 : {!<tr><td><div class="box" style="background-color:#DAA520; outline:2px solid;"></div> !}[? if greeley_fusion = 1 : Liberal Republican/Democrat (Greeley) ?][? if greeley_fusion = 0 : Liberal Republicans (Greeley) ?]{!</td><td>!}[+ libEVTotal +] votes{!</td></tr>!} ?]
+
+{!</table>!}
+
+@potus_menu_1872
+
+- @victory_1872
+- @defeat_dem_1872
+- @defeat_greeley_fusion
+- @defeat_greeley_independent
+- @house_decides_1872
+- @defeat_O_1872
+
+@victory_1872
+title: Republicans win the 1872 election!
+subtitle: Republicans: [+ repEVTotal +] electoral votes
+view-if: potus_winner = "rep"
+on-arrival: {!
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+    Q.liberal_split = 0; // Liberal Republicans largely return to fold after defeat
+    Q.liberal_reunion_triggered = 1;
+!}
+
+The Republicans have won the election. 
+
+[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. The Liberal Republican revolt has been crushed at the polls. Greeley, humiliated by his catastrophic defeat, will not long survive it — he dies within weeks of the election, a broken man. ?]
+
+[? if Candidate = "Wade" : Wade's Radical coalition has held together long enough to win. The Liberal Republicans are routed. Reconstruction enters a new, more forceful phase. ?]
+
+[? if Candidate = "Chase" : Chase wins a second term, vindicating his moderate course. The Radicals are displeased but powerless. The Liberal Republican challenge has collapsed. ?]
+
+[? if Candidate = "Blaine" : James Blaine carries the Republican banner to victory. The new president will chart his own course, distinct from the Radical era. ?]
+
+[? if Candidate = "Conkling" : Roscoe Conkling, the New York machine boss, has won the presidency. The spoils system is safe for another four years. ?]
+
+[? if greeley_fusion = 1 : Despite the unified opposition of Democrats and Liberal Republicans, the Republican machine proved too strong. The fusion experiment has failed. ?]
+
+@defeat_dem_1872
+title: The Democrats have won the presidency.
+subtitle: Democrats: [+ demEVTotal +] electoral votes
+view-if: potus_winner = "dem" and greeley_fusion = 0
+on-arrival: president = dem_candidate_1872; president_party = "dem";
+
+[? if dem_candidate_1872 = "Hancock" : General Hancock's formidable coalition of Democrats and disaffected Republicans has carried enough states to deny the Republicans an electoral majority. The soldier who held the line at Gettysburg now takes the White House. Reconstruction faces an uncertain future under a Democratic president. ?]
+
+[? if dem_candidate_1872 = "Thurman" : The "Old Roman" has pulled off a stunning upset. Thurman's Ohio base proved decisive, and the Democrats have reclaimed the White House for the first time since Buchanan. ?]
+
+[? if dem_candidate_1872 = "Bayard" : Bayard's conservative coalition has won enough Southern and border states to reach the presidency. It is the end of the Radical Reconstruction era. ?]
+
+[? if dem_candidate_1872 = "Pendleton" : Pendleton's Greenback platform has mobilized an unlikely coalition of debtors, farmers, and workers sufficient to reach the White House. The financial establishment is in a panic. ?]
+
+@defeat_greeley_fusion
+title: The Greeley fusion ticket has won!
+subtitle: Liberal Republicans/Democrats: [+ libEVTotal +] electoral votes
+view-if: potus_winner = "lib" and greeley_fusion = 1
+on-arrival: president = "Greeley"; president_party = "lib"; liberal_split = 0;
+
+The impossible has happened. The combined Democratic and Liberal Republican coalition has carried enough states to deny the Republicans an electoral majority. Horace Greeley — the eccentric editor who spent decades denouncing the Democratic Party — will be the next President of the United States, carried there on Democratic votes.
+
+The victory is bittersweet for everyone. Democrats feel they have swallowed a bitter pill. Liberal Republicans are triumphant but uncertain whether Greeley can govern. The Republican Party, for the first time since the war, finds itself locked out of the White House. Reconstruction's future hangs in the balance.
+
+@defeat_greeley_independent
+title: The Liberal Republicans have won!
+subtitle: Liberal Republicans: [+ libEVTotal +] electoral votes
+view-if: potus_winner = "lib" and greeley_fusion = 0
+on-arrival: president = "Greeley"; president_party = "lib"; liberal_split = 0;
+
+In a stunning three-way upset, Horace Greeley and the Liberal Republicans have won an electoral majority without Democratic fusion. The split opposition vote has somehow broken in Greeley's favor. The Republican Party is shattered, and Reconstruction faces an uncertain future under a president who campaigned on ending military occupation of the South.
+
+@house_decides_1872
+title: No majority — the election goes to the House!
+subtitle: Rep: [+ repEVTotal +] | Dem: [+ demEVTotal +] | Lib: [+ libEVTotal +]
+view-if: potus_winner = "house"
+on-arrival: {!
+  if (Q.house_majority >= 2) {
+    Q.potus_winner = "rep";
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+  } else if (Q.dem_r > Q.rep_r) {
+    Q.potus_winner = "dem";
+    Q.president = Q.dem_candidate_1872;
+    Q.president_party = "dem";
+  } else {
+    Q.potus_winner = "rep";
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+  }
+!}
+
+No candidate has secured a majority of electoral votes. Under the Constitution, the election is thrown to the House of Representatives, where each state delegation casts a single vote.
+
+[? if house_majority >= 2 : With Republicans controlling a majority of state delegations, the House elects [+ Candidate +] as President. ?]
+[? if house_majority < 2 : The Democratic-leaning delegations carry the day. [+ dem_candidate_1872 +] is elected President by the House. ?]
+
+@defeat_O_1872
+title: Something has gone very wrong.
+view-if: potus_winner = "other"
+on-arrival: president = "???"; president_party = "???";
+
+This outcome was not supposed to be possible. Someone has been tampering with the console.
+
+**CHEATER!!!!!!!!!!!!!!**
