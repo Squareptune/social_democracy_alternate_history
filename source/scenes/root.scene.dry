@@ -1899,6 +1899,23 @@ Q.march_on_berlin_timer = 0;
 
 Q.stevens_advisor = 1;
 Q.stevens_dead = 0;
+Q.sumner_advisor = 0;
+Q.wade_advisor = 0;
+Q.chandler_advisor = 0;
+Q.morton_advisor = 0;
+Q.butler_advisor = 0;
+Q.garfield_advisor = 0;
+Q.sherman_advisor = 0;
+Q.blaine_advisor = 0;
+Q.hayes_advisor = 0;
+Q.fish_advisor = 0;
+Q.conkling_advisor = 0;
+Q.cameron_advisor = 0;
+Q.seward_advisor = 0;
+Q.schurz_advisor = 0;
+Q.trumbull_advisor = 0;
+Q.cox_advisor = 0;
+Q.douglass_advisor = 0;
 
 !}
 set-bg: img/Background.jpg

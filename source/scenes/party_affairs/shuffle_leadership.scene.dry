@@ -32,7 +32,6 @@ title: Stop changing advisors.
 go-to: root
 tags: remove_advisor
 
-
 @remove_stevens
 title: Remove Stevens
 view-if: stevens_advisor = 1 and stevens_dead = 0
@@ -42,6 +41,161 @@ go-to: rm_main
 
 Stevens has been removed as an advisor. The Radical faction disapproves.
 
+@remove_sumner
+title: Remove Sumner
+view-if: sumner_advisor = 1
+on-arrival: sumner_advisor = 0; radical_dissent += 4; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Sumner has been removed as an advisor. The Radical faction disapproves.
+
+@remove_wade
+title: Remove Wade
+view-if: wade_advisor = 1 and president != "Wade"
+on-arrival: wade_advisor = 0; radical_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Wade has been removed as an advisor. The Radical faction disapproves.
+
+@remove_chandler
+title: Remove Chandler
+view-if: chandler_advisor = 1
+on-arrival: chandler_advisor = 0; radical_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Chandler has been removed as an advisor. The Radical faction disapproves.
+
+@remove_morton
+title: Remove Morton
+view-if: morton_advisor = 1
+on-arrival: morton_advisor = 0; radical_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Morton has been removed as an advisor. The Radical faction disapproves.
+
+@remove_butler
+title: Remove Butler
+view-if: butler_advisor = 1
+on-arrival: butler_advisor = 0; radical_dissent += 4; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Butler has been removed as an advisor. The Radical faction disapproves.
+
+@remove_garfield
+title: Remove Garfield
+view-if: garfield_advisor = 1
+on-arrival: garfield_advisor = 0; moderate_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Garfield has been removed as an advisor. The moderate faction disapproves.
+
+@remove_sherman
+title: Remove Sherman
+view-if: sherman_advisor = 1
+on-arrival: sherman_advisor = 0; moderate_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Sherman has been removed as an advisor. The moderate faction disapproves.
+
+@remove_blaine
+title: Remove Blaine
+view-if: blaine_advisor = 1
+on-arrival: blaine_advisor = 0; moderate_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Blaine has been removed as an advisor. The moderate faction disapproves.
+
+@remove_hayes
+title: Remove Hayes
+view-if: hayes_advisor = 1
+on-arrival: hayes_advisor = 0; moderate_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Hayes has been removed as an advisor. The moderate faction disapproves.
+
+@remove_fish
+title: Remove Fish
+view-if: fish_advisor = 1
+on-arrival: fish_advisor = 0; moderate_dissent += 2; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Fish has been removed as an advisor. The moderate faction disapproves.
+
+@remove_conkling
+title: Remove Conkling
+view-if: conkling_advisor = 1
+on-arrival: conkling_advisor = 0; conservative_dissent += 4; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Conkling has been removed as an advisor. The conservative faction disapproves.
+
+@remove_cameron
+title: Remove Cameron
+view-if: cameron_advisor = 1
+on-arrival: cameron_advisor = 0; conservative_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Cameron has been removed as an advisor. The conservative faction disapproves.
+
+@remove_seward
+title: Remove Seward
+view-if: seward_advisor = 1
+on-arrival: seward_advisor = 0; conservative_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Seward has been removed as an advisor. The conservative faction disapproves.
+
+@remove_schurz
+title: Remove Schurz
+view-if: schurz_advisor = 1
+on-arrival: schurz_advisor = 0; liberal_dissent += 4; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Schurz has been removed as an advisor. The liberal faction disapproves.
+
+@remove_trumbull
+title: Remove Trumbull
+view-if: trumbull_advisor = 1
+on-arrival: trumbull_advisor = 0; liberal_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Trumbull has been removed as an advisor. The liberal faction disapproves.
+
+@remove_cox
+title: Remove Cox
+view-if: cox_advisor = 1
+on-arrival: cox_advisor = 0; liberal_dissent += 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Cox has been removed as an advisor. The liberal faction disapproves.
+
+@remove_douglass
+title: Remove Douglass
+view-if: douglass_advisor = 1
+on-arrival: douglass_advisor = 0; radical_dissent += 5; freemen_rep -= 3; n_advisors -= 1
+tags: remove_advisor
+go-to: rm_main
+
+Douglass has been removed as an advisor. The Radical faction and the freedmen community disapprove strongly.
+
+
+###################### adding leaders
 
 @add_advisors
 title: Add advisors
@@ -54,48 +208,256 @@ title: Add other advisors.
 tags: radical_advisor, moderate_advisor, conservative_advisor, liberal_advisor, nonfactional_advisor
 frequency: 1
 
-
-- @Radical: Add Radical
-- @Moderate: Add Moderate
-- @Conservative: Add Conservative
-- @liberal: Add Liberal
-- @nonfactional: Add non-factional advisors
+- @Radical: Add Radical advisor
+- @Moderate: Add Moderate advisor
+- @Conservative: Add Conservative advisor
+- @Liberal: Add Liberal advisor
+- @Nonfactional: Add non-factional advisor
 - @rm_main: Remove advisors instead.
 - @remove_none: Stop changing advisors.
 
 @Radical
 view-if: n_advisors < 3
-
 - #radical_advisor
 
 @Moderate
 view-if: n_advisors < 3
-
 - #moderate_advisor
 
 @Conservative
 view-if: n_advisors < 3
-
 - #conservative_advisor
 
-@liberal
-view-if: socialism = 1 and n_advisors < 3
-
+@Liberal
+view-if: n_advisors < 3
 - #liberal_advisor
 
-@nonfactional
+@Nonfactional
 view-if: n_advisors < 3
-
 - #nonfactional_advisor
+
+###################### RADICAL ADVISORS
 
 @add_stevens
 title: Thaddeus Stevens
-subtitle: Thaddeus Stevens is the leader of the Radical Republicans in the House {!<br><br>!}[? if difficulty < 0 : Actions - Clear the Agenda, Constitutional Reform, Emergency Fundraising, Radicalization ?]
+subtitle: Leader of the Radical Republicans in the House. Uncompromising champion of equality.
 is-card: true
 card-image: img/portraits/Thaddeus_Stevens.jpg
 tags: radical_advisor
-view-if: stevens_advisor = 0 and n_advisors < 3
-on-arrival: stevens_advisor = 1; n_advisors += 1
+view-if: stevens_advisor = 0 and stevens_dead = 0 and n_advisors < 3
+on-arrival: stevens_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3
 go-to: advisor_menu
 
 Thaddeus Stevens is now an advisor.
+
+@add_sumner
+title: Charles Sumner
+subtitle: Senate leader of the Radical Republicans. Passionate abolitionist and champion of Black civil rights.
+is-card: true
+card-image: img/portraits/Charles_Sumner.jpg
+tags: radical_advisor
+view-if: sumner_advisor = 0 and n_advisors < 3 and liberal_split = 0
+on-arrival: sumner_advisor = 1; n_advisors += 1; radical_strength += 4; radical_dissent -= 4; freemen_rep += 2
+go-to: advisor_menu
+
+Charles Sumner is now an advisor. His moral authority on questions of equality is unmatched in the Senate.
+
+@add_wade
+title: Benjamin Wade
+subtitle: Senate President Pro Tempore. Radical firebrand and potential president.
+is-card: true
+card-image: img/portraits/Benjamin_F_Wade.jpg
+tags: radical_advisor
+view-if: wade_advisor = 0 and n_advisors < 3 and president != "Wade"
+on-arrival: wade_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3; conservative_dissent += 2
+go-to: advisor_menu
+
+Benjamin Wade is now an advisor. His blunt radicalism energizes the party's left wing.
+
+@add_chandler
+title: Zachariah Chandler
+subtitle: Michigan senator and aggressive Radical party organizer. Stepped into the vacuum left by Stevens.
+is-card: true
+card-image: img/portraits/Zachariah_Chandler.jpg
+tags: radical_advisor
+view-if: chandler_advisor = 0 and n_advisors < 3 and stevens_dead = 1
+on-arrival: chandler_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3
+go-to: advisor_menu
+
+Zachariah Chandler is now an advisor. He lacks Stevens's philosophical depth but more than compensates with organizational ferocity.
+
+@add_morton
+title: Oliver Morton
+subtitle: Indiana governor and senator. One of the most powerful Radical party bosses in the country.
+is-card: true
+card-image: img/portraits/Oliver_Hazard_Perry_Morton.jpg
+tags: radical_advisor
+view-if: morton_advisor = 0 and n_advisors < 3 and year >= 1867
+on-arrival: morton_advisor = 1; n_advisors += 1; radical_strength += 4; radical_dissent -= 3; IN_workers_rep += 3; IN_rural_rep += 2
+go-to: advisor_menu
+
+Oliver Morton is now an advisor. His iron grip on Indiana Republican politics is a significant asset.
+
+@add_butler
+title: Benjamin Butler
+subtitle: Controversial Massachusetts Radical. Led the impeachment managers against Johnson. Ruthless and effective.
+is-card: true
+card-image: img/portraits/Benjamin_Butler.jpg
+tags: radical_advisor
+view-if: butler_advisor = 0 and n_advisors < 3 and year >= 1868
+on-arrival: butler_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 4; moderate_dissent += 3; liberal_dissent += 3
+go-to: advisor_menu
+
+Benjamin Butler is now an advisor. His methods are controversial but his results are hard to argue with.
+
+###################### MODERATE ADVISORS
+
+@add_garfield
+title: James Garfield
+subtitle: Ohio war hero and rising moderate star. Skilled debater and future president.
+is-card: true
+card-image: img/portraits/James_Abram_Garfield.jpg
+tags: moderate_advisor
+view-if: garfield_advisor = 0 and n_advisors < 3 and year >= 1868
+on-arrival: garfield_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 3; workers_rep += 2; rural_rep += 2
+go-to: advisor_menu
+
+James Garfield is now an advisor. His broad appeal across factions makes him a valuable unifying figure.
+
+@add_sherman
+title: John Sherman
+subtitle: Ohio senator and fiscal moderate. Brother of the general. The party's leading voice on economic policy.
+is-card: true
+card-image: img/portraits/John-Sherman.jpg
+tags: moderate_advisor
+view-if: sherman_advisor = 0 and n_advisors < 3
+on-arrival: sherman_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 2; middle_class_rep += 3; conservative_dissent -= 2
+go-to: advisor_menu
+
+John Sherman is now an advisor. His command of financial policy gives us credibility with the business community.
+
+@add_blaine
+title: James Blaine
+subtitle: Maine congressman and dominant moderate figure of the 1870s. Ambitious, skilled, and broadly popular.
+is-card: true
+card-image: img/portraits/James_G._Blaine.jpg
+tags: moderate_advisor
+view-if: blaine_advisor = 0 and n_advisors < 3 and year >= 1868
+on-arrival: blaine_advisor = 1; n_advisors += 1; moderate_strength += 4; moderate_dissent -= 3; middle_class_rep += 2; rural_rep += 1
+go-to: advisor_menu
+
+James Blaine is now an advisor. His national profile and political skill are considerable assets — though his ambition bears watching.
+
+@add_hayes
+title: Rutherford Hayes
+subtitle: Ohio governor and future presidential candidate. Moderate, honest, and broadly trusted.
+is-card: true
+card-image: img/portraits/Rutherford_Hayes.jpg
+tags: moderate_advisor
+view-if: hayes_advisor = 0 and n_advisors < 3 and year >= 1868
+on-arrival: hayes_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 2; OH_rural_rep += 3; OH_workers_rep += 2
+go-to: advisor_menu
+
+Rutherford Hayes is now an advisor. His reputation for integrity is a useful counterweight to charges of Republican corruption.
+
+@add_fish
+title: Hamilton Fish
+subtitle: New York moderate and Grant's Secretary of State. A steady hand on foreign policy.
+is-card: true
+card-image: img/portraits/Hamilton_Fish.jpg
+tags: moderate_advisor
+view-if: fish_advisor = 0 and n_advisors < 3 and year >= 1869 and president = "Grant"
+on-arrival: fish_advisor = 1; n_advisors += 1; moderate_strength += 2; moderate_dissent -= 2; europe_relation += 3
+go-to: advisor_menu
+
+Hamilton Fish is now an advisor. His diplomatic experience opens doors abroad that would otherwise remain closed.
+
+###################### CONSERVATIVE ADVISORS
+
+@add_conkling
+title: Roscoe Conkling
+subtitle: New York machine boss and dominant conservative figure. Bitter rival of Blaine. Controls the Custom House.
+is-card: true
+card-image: img/portraits/Roscoe_Conkling.jpg
+tags: conservative_advisor
+view-if: conkling_advisor = 0 and n_advisors < 3 and year >= 1867
+on-arrival: conkling_advisor = 1; n_advisors += 1; conservative_strength += 5; conservative_dissent -= 4; resources += 1; liberal_dissent += 3
+go-to: advisor_menu
+
+Roscoe Conkling is now an advisor. His machine delivers votes and money — at a price.
+
+@add_cameron
+title: Simon Cameron
+subtitle: Pennsylvania party boss and former Secretary of War. Old-guard patronage politician.
+is-card: true
+card-image: img/portraits/Smn_Cameron.jpg
+tags: conservative_advisor
+view-if: cameron_advisor = 0 and n_advisors < 3
+on-arrival: cameron_advisor = 1; n_advisors += 1; conservative_strength += 4; conservative_dissent -= 3; resources += 1; liberal_dissent += 2
+go-to: advisor_menu
+
+Simon Cameron is now an advisor. His Pennsylvania machine is a formidable asset, though reformers will complain.
+
+@add_seward
+title: William Seward
+subtitle: Secretary of State and former Whig leader. Pragmatic conservative and Johnson ally.
+is-card: true
+card-image: img/portraits/Seward.jpg
+tags: conservative_advisor
+view-if: seward_advisor = 0 and n_advisors < 3 and sect_state = "William H. Seward"
+on-arrival: seward_advisor = 1; n_advisors += 1; conservative_strength += 3; conservative_dissent -= 3; europe_relation += 2; radical_dissent += 3
+go-to: advisor_menu
+
+William Seward is now an advisor. His long experience in government is valuable, though the Radicals deeply distrust him.
+
+###################### LIBERAL ADVISORS
+
+@add_schurz
+title: Carl Schurz
+subtitle: Missouri senator and intellectual leader of the Liberal Republican movement. Champion of civil service reform.
+is-card: true
+card-image: img/portraits/Schurz,_Hon._Carl.jpg
+tags: liberal_advisor
+view-if: schurz_advisor = 0 and n_advisors < 3 and liberal_split = 0 and year >= 1869
+on-arrival: schurz_advisor = 1; n_advisors += 1; liberal_strength += 5; liberal_dissent -= 4; civil_service_reform += 1; middle_class_rep += 2
+go-to: advisor_menu
+
+Carl Schurz is now an advisor. His reform credentials and German-American connections are significant assets — but his loyalty to the party is conditional on genuine reform.
+
+@add_trumbull
+title: Lyman Trumbull
+subtitle: Illinois senator. Voted to acquit Johnson. Drifting steadily toward the Liberal Republicans.
+is-card: true
+card-image: img/portraits/Lyman_Trumbull.jpg
+tags: liberal_advisor
+view-if: trumbull_advisor = 0 and n_advisors < 3 and liberal_split = 0
+on-arrival: trumbull_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; radical_dissent += 4; moderate_dissent += 2
+go-to: advisor_menu
+
+Lyman Trumbull is now an advisor. His legal expertise is valuable, though his vote to acquit Johnson still rankles the Radicals.
+
+@add_cox
+title: Jacob Cox
+subtitle: Ohio politician and Grant's Interior Secretary. Resigned over civil service disputes. Committed reformer.
+is-card: true
+card-image: img/portraits/Jacob_Cox.jpg
+tags: liberal_advisor
+view-if: cox_advisor = 0 and n_advisors < 3 and year >= 1869 and liberal_split = 0
+on-arrival: cox_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; civil_service_reform += 1; conservative_dissent += 2
+go-to: advisor_menu
+
+Jacob Cox is now an advisor. His reform credentials are genuine, and his Ohio connections are useful — but he has made enemies within the Grant administration.
+
+###################### NONFACTIONAL ADVISORS
+
+@add_douglass
+title: Frederick Douglass
+subtitle: The most prominent Black leader in America. His endorsement carries enormous weight with the freedmen community.
+is-card: true
+card-image: img/portraits/Frederick_Douglass.jpg
+tags: nonfactional_advisor
+view-if: douglass_advisor = 0 and n_advisors < 3
+on-arrival: douglass_advisor = 1; n_advisors += 1; freemen_rep += 5; workers_rep += 2; radical_dissent -= 3; liberal_dissent += 2
+go-to: advisor_menu
+
+Frederick Douglass is now an advisor. His moral authority transcends faction — and his connection to the freedmen community is invaluable.

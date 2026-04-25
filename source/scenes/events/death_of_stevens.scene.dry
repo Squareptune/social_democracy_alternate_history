@@ -2,7 +2,7 @@ title: The Death of Thaddeus Stevens
 view-if: year == 1868 and month >= 8
 frequency: 1000
 max-visits: 1
-on-arrival: stevens_dead = 1; n_advisors -= 1 if stevens_advisor == 1; stevens_advisor = 0
+on-arrival: stevens_dead = 1; n_advisors -= 1 if stevens_advisor == 1; stevens_advisor = 0; radical_strength -= 3; speaker = "" if speaker = "Stevens"; speaker_election_needed = 1 if speaker = "Stevens";
 tags: event
 new-page: true
 on-display: {!  
