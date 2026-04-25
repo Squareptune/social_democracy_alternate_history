@@ -1,0 +1,23 @@
+title: The Death of Thaddeus Stevens
+view-if: year == 1868 and month >= 8
+frequency: 1000
+max-visits: 1
+on-arrival: stevens_dead = 1; n_advisors -= 1 if stevens_advisor == 1; stevens_advisor = 0
+tags: event
+new-page: true
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/Thaedus_Death.png";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The Death of Thaddeus Stevens
+
+Thaddeus Stevens, a leader of the radical wing of our party, has died due to complications from a stomach infection(or some say). He will be missed.
