@@ -35,7 +35,7 @@ tags: remove_advisor
 
 @remove_stevens
 title: Remove Stevens
-view-if: stevens_advisor = 1 and steven_dead = 0;
+view-if: stevens_advisor = 1; stevens_dead = 0;
 on-arrival: stevens_advisor = 0; radical_dissent += 5; n_advisors -= 1
 tags: remove_advisor
 go-to: rm_main
