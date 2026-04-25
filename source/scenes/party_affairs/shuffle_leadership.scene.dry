@@ -218,22 +218,27 @@ frequency: 1
 
 @Radical
 view-if: n_advisors < 3
+
 - #radical_advisor
 
 @Moderate
 view-if: n_advisors < 3
+
 - #moderate_advisor
 
 @Conservative
 view-if: n_advisors < 3
+
 - #conservative_advisor
 
 @Liberal
 view-if: n_advisors < 3
+
 - #liberal_advisor
 
 @Nonfactional
 view-if: n_advisors < 3
+
 - #nonfactional_advisor
 
 ###################### RADICAL ADVISORS
