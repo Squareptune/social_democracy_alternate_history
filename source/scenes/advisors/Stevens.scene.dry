@@ -40,16 +40,6 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; constitutional_reform_timer -= 12
 go-to: constitutional_reform
                                                                                                                         
-@emergency_fundraising
-title: Emergency Fundraising
-view-if: difficulty < 1
-subtitle: An emergency infusion of resources.
-choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; resources += dues
-
-We have gained +[+ dues +] resources.
-
 @radicalization
 title: Radicalizing the Party
 subtitle: Push the party to progressivism.

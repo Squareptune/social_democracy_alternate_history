@@ -1,0 +1,33 @@
+title: Benjamin Wade
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Benjamin_F_Wade.jpg
+view-if: wade_advisor = 1 and president != "Wade"
+new-page: true
+
+= Benjamin Wade
+
+Benjamin Wade of Ohio is one of the most combative figures in the Republican Party. His blunt, unpolished manner conceals a razor-sharp political mind.
+
+- @wade_ohio_machine: Mobilize the Ohio Machine
+- @wade_worker_outreach: Reach Out to Workers
+- @root: Return to main
+
+@wade_ohio_machine
+title: Mobilize the Ohio Machine
+subtitle: Campaign in Ohio
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; OH_workers_rep += 3; OH_rural_rep += 3; OH_middle_class_rep += 3; OH_immigrant_laborers_rep += 3;
+
+Wade's network of loyal Ohio Republicans springs into action. Ward bosses, veterans' lodges, and union halls all receive the word. Ohio, always competitive, swings a few degrees toward us.
+
+@wade_worker_outreach
+title: Reach Out to Workers
+subtitle: Wade's blunt working-class style resonates with Northern labor.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; workers_rep += 5; immigrant_laborers_rep += 3;
+
+Wade speaks the language of working men: unvarnished, direct, and angry on their behalf. His tour of Northern factories and labor halls draws crowds and reminds workers that the Republican Party was built on free labor principles.
+

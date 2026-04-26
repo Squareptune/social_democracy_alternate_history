@@ -1,0 +1,42 @@
+title: Frederick Douglass
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Frederick_Douglass.jpg
+view-if: douglass_advisor = 1
+new-page: true
+
+= Frederick Douglass
+
+Frederick Douglass is the most prominent Black leader in America, a former enslaved man who became the nation's most powerful abolitionist voice, a celebrated author, and a tireless advocate for Black civil and political rights. His support for the Republican Party is genuine but not unconditional: he watches carefully to see whether the party's actions match its rhetoric. His moral authority among the freedmen community is without parallel.
+
+- @douglass_freedmen_mobilization: Mobilize the Freedmen
+- @douglass_northern_moral_appeal: Northern Moral Appeal
+- @douglass_international_reputation: Leverage International Reputation
+- @root: Return to main
+
+@douglass_freedmen_mobilization
+title: Mobilize the Freedmen
+subtitle: Douglass travels through the South organizing freedmen communities and Union Leagues.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; freemen_rep += 5; Union_League_strength += 15;
+
+Douglass travels through the South at considerable personal risk, speaking to freedmen's communities and building up Union League organization. His presence electrifies Black audiences.
+
+@douglass_northern_moral_appeal
+title: Northern Moral Appeal
+subtitle: Douglass speaks to Northern audiences, building moral pressure for Reconstruction.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; middle_class_rep += 2; workers_rep += 3; radical_dissent -= 4;
+
+Douglass's speaking tours of Northern cities draw enormous crowds.
+
+@douglass_international_reputation
+title: Leverage International Reputation
+subtitle: Douglass's international fame is used to build support for Reconstruction abroad.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; europe_relation += 4;
+
+Douglass corresponds with European abolitionists, reform movements, and liberal politicians, framing American Reconstruction as part of a global struggle for human freedom. European liberal opinion, already sympathetic, shifts further in our favor — making it harder for foreign governments to treat the former Confederacy as a legitimate grievance.

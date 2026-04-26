@@ -1,0 +1,42 @@
+title: Zachariah Chandler
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Zachariah_Chandler.jpg
+view-if: chandler_advisor = 1
+new-page: true
+
+= Zachariah Chandler
+
+Zachariah Chandler of Michigan is a party organizer of ferocious energy. Chandler is a wealthy Detroit merchant turned political boss who uses patronage, pressure, and personal loyalty to keep the Radical coalition together.
+
+- @chandler_party_discipline: Enforce Party Discipline
+- @chandler_michigan_base: Strengthen the Michigan Base
+- @chandler_fundraising: Emergency Party Fundraising
+- @root: Return to main
+
+@chandler_party_discipline
+title: Enforce Party Discipline
+subtitle: Chandler cracks down on dissent and brings wavering members back into line.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 5; moderate_dissent -= 3; conservative_dissent -= 2; liberal_dissent -= 2
+
+Chandler works the back rooms with characteristic bluntness, reminding members of favors owed, patronage pending, and the consequences of disloyalty. The methods are not pretty but the results are undeniable.
+
+@chandler_michigan_base
+title: Strengthen the Michigan Base
+subtitle: Chandler shores up Republican support across Michigan.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; MI_workers_rep += 3; MI_rural_rep += 3; MI_middle_class_rep += 3; MI_immigrant_laborers_rep += 3;
+
+Michigan is Chandler's personal domain and he treats it accordingly. Republican organizations across the state receive resources, instruction, and the not-so-subtle reminder that the senator is watching.
+
+@chandler_fundraising
+title: Emergency Party Fundraising
+subtitle: Chandler leverages his business connections to raise emergency funds.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; resources += dues;
+
+Chandler calls in favors from the Detroit business community and beyond. The money arrives without ceremony or public acknowledgment, as Chandler prefers.

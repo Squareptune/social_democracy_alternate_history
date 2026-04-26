@@ -1,0 +1,41 @@
+title: Oliver Morton
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Oliver_Hazard_Perry_Morton.jpg
+view-if: morton_advisor = 1
+new-page: true
+
+= Oliver Morton
+
+- @morton_indiana_machine: Activate the Indiana Machine
+- @morton_veteran_outreach: Rally the Veterans
+- @morton_southern_republicans: Support Southern Republicans
+- @root: Return to main
+
+@morton_indiana_machine
+title: Activate the Indiana Machine
+subtitle: Morton mobilizes his formidable Indiana political organization.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; IN_workers_rep += 3; IN_rural_rep += 3; IN_middle_class_rep += 3; IN_immigrant_laborers_rep += 3; IN_unemployed_rep += 3;
+
+Morton's Indiana machine is one of the most efficient political organizations in the country. When he gives the word, Republican clubs, veterans' lodges, and party newspapers across the state spring into coordinated action.
+
+@morton_veteran_outreach
+title: Rally the Veterans
+subtitle: Morton's wartime record gives him unique credibility with Union veterans nationwide.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; workers_rep += 5; rural_rep += 4; middle_class_rep += 3;
+
+Morton speaks to veterans' groups across the Midwest, invoking the sacrifices of the war to demand that Reconstruction be seen through to completion. Men who bled for the Union are not ready to let it be stolen back by former rebels.
+
+@morton_southern_republicans
+title: Support Southern Republicans
+subtitle: Morton directs resources and attention toward beleaguered Republican governments in the South.
+choose-if: advisor_action_timer = 0 and occupation >= 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if occupation < 1 : Federal occupation is required to make this effective. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: Occupation
+
+Morton coordinates with Republican governors and federal officials across the South, funneling resources to Union Leagues and loyal organizations. His message to Southern Republicans is simple: Washington has not forgotten you.

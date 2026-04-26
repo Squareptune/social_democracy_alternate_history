@@ -1,0 +1,43 @@
+title: Charles Sumner
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Charles_Sumner.jpg
+view-if: sumner_advisor_advisor = 1
+new-page: true
+
+= Charles Sumner
+
+Charles Sumner is the senior Senator from Massachusetts and the moral conscience of the Radical Republican movement. His passionate oratory on behalf of Black civil rights has made him the most recognizable abolitionist voice in the Senate and the most hated man in the South.
+
+- @sumner_freedmen_campaign: Champion the Freedmen
+- @sumner_civil_rights_push: Push for Civil Rights Legislation
+- @sumner_senate_pressure: Apply Pressure in the Senate
+- @root: Return to main
+
+@sumner_freedmen_campaign
+title: Champion the Freedmen
+subtitle: Sumner rallies Black communities and White supporters of equality behind the party.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; freemen_rep += 5; workers_rep += 1; immigrant_laborers_rep += 1;
+
+Sumner undertakes a speaking tour across the North, delivering thunderous addresses on the moral necessity of Black equality.
+
+@sumner_civil_rights_push
+title: Push for Civil Rights Legislation
+subtitle: Sumner leverages his Senate position to advance civil rights bills.
+choose-if: advisor_action_timer = 0 and sen_majority >= 2
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if sen_majority < 2 : We do not control the Senate. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: Civil_Rights
+
+Sumner marshals his Senate allies and pushes a civil rights measure through committee and onto the floor.
+
+@sumner_senate_pressure
+title: Apply Pressure in the Senate
+subtitle: Reduce dissent and tighten the Radical coalition.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 5;
+
+Sumner reduced tensions between the Radical Republicans and the rest of the party
