@@ -2,7 +2,7 @@ title: Charles Sumner
 is-pinned-card: true
 tags: advisor
 card-image: img/portraits/Charles_Sumner.jpg
-view-if: sumner_advisor_advisor = 1
+view-if: sumner_advisor = 1
 new-page: true
 
 = Charles Sumner
