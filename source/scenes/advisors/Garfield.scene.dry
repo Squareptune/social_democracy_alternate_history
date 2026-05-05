@@ -1,0 +1,43 @@
+title: James Garfield
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/James_Abram_Garfield.jpg
+view-if: garfield_advisor = 1
+new-page: true
+
+= James Garfield
+
+James Garfield of Ohio is a thoughtful and pragmatic Republican, respected across factions for his intelligence and willingness to compromise. Though aligned with the moderates, Garfield believes in steady progress and national unity over ideological confrontation.
+
+- @garfield_party_bridge: Bridge Party Divisions
+- @garfield_middle_class_appeal: Appeal to the Middle Class
+- @garfield_policy_focus: Focus on Policy Reform
+- @root: Return to main
+
+@garfield_party_bridge
+title: Bridge Party Divisions
+subtitle: Garfield works behind the scenes to ease tensions between factions.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 2; moderate_dissent -= 3; liberal_dissent -= 2; conservative_dissent -= 1;
+
+Garfield quietly negotiates compromises, smoothing over disputes that might otherwise fracture the party.
+
+@garfield_middle_class_appeal
+title: Appeal to the Middle Class
+subtitle: Garfield’s moderate tone reassures professionals and small proprietors.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; middle_class_rep += 4;
+
+Garfield’s speeches emphasize stability, opportunity, and competent governance, resonating with the growing middle class.
+
+@garfield_policy_focus
+title: Focus on Economic Policy
+subtitle: Garfield prioritizes practical legislation over political grandstanding.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; moderate_dissent -= 2;
+go-to: economic_policy
+
+Garfield pushes for concrete reforms in taxation and budgeting, avoiding ideological fights in favor of workable solutions.

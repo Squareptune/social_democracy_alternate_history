@@ -19,7 +19,7 @@ title: Enforce Party Discipline
 subtitle: Chandler cracks down on dissent and brings wavering members back into line.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 5; moderate_dissent -= 3; conservative_dissent -= 2; liberal_dissent -= 2
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 4; moderate_dissent -= 2; conservative_dissent -= 1; liberal_dissent -= 2;
 
 Chandler works the back rooms with characteristic bluntness, reminding members of favors owed, patronage pending, and the consequences of disloyalty. The methods are not pretty but the results are undeniable.
 
@@ -28,7 +28,7 @@ title: Strengthen the Michigan Base
 subtitle: Chandler shores up Republican support across Michigan.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; MI_workers_rep += 3; MI_rural_rep += 3; MI_middle_class_rep += 3; MI_immigrant_laborers_rep += 3;
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; MI_workers_rep += 2; MI_rural_rep += 2; MI_middle_class_rep += 4; MI_immigrant_laborers_rep += 1;
 
 Michigan is Chandler's personal domain and he treats it accordingly. Republican organizations across the state receive resources, instruction, and the not-so-subtle reminder that the senator is watching.
 

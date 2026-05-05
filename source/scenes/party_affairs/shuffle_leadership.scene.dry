@@ -4,7 +4,7 @@ is-card: true
 tags: party_affairs
 view-if: shuffle_leadership_timer = 0 and difficulty >= 0
 on-arrival: month_activities += 1; shuffle_leadership_timer = 8;
-card-image: img/vorwarts_2.jpg
+card-image: img/advisors.jpg
 go-to: rm_main
 
 Changing the leadership of the party is painful, but perhaps it is necessary to adapt to changing circumstances.
@@ -281,7 +281,7 @@ Benjamin Wade is now an advisor. His blunt radicalism energizes the party's left
 
 @add_chandler
 title: Zachariah Chandler
-subtitle: Michigan senator and aggressive Radical party organizer. Stepped into the vacuum left by Stevens.
+subtitle: Michigan senator and aggressive Radical party organizer.
 is-card: true
 card-image: img/portraits/Zachariah_Chandler.jpg
 tags: radical_advisor
@@ -305,7 +305,7 @@ Oliver Morton is now an advisor. His iron grip on Indiana Republican politics is
 
 @add_butler
 title: Benjamin Butler
-subtitle: Controversial Massachusetts Radical. Led the impeachment managers against Johnson. Ruthless and effective.
+subtitle: Controversial Massachusetts Radical. Ruthless and effective.
 is-card: true
 card-image: img/portraits/Benjamin_Butler.jpg
 tags: radical_advisor
@@ -319,7 +319,7 @@ Benjamin Butler is now an advisor. His methods are controversial but his results
 
 @add_garfield
 title: James Garfield
-subtitle: Ohio war hero and rising moderate star. Skilled debater and future president.
+subtitle: Ohio war hero and rising moderate star. Skilled master debater.
 is-card: true
 card-image: img/portraits/James_Abram_Garfield.jpg
 tags: moderate_advisor
@@ -343,7 +343,7 @@ John Sherman is now an advisor. His command of financial policy gives us credibi
 
 @add_blaine
 title: James Blaine
-subtitle: Maine congressman and dominant moderate figure of the 1870s. Ambitious, skilled, and broadly popular.
+subtitle: Maine congressman. Ambitious, skilled, and broadly popular.
 is-card: true
 card-image: img/portraits/James_G._Blaine.jpg
 tags: moderate_advisor
@@ -355,7 +355,7 @@ James Blaine is now an advisor. His national profile and political skill are con
 
 @add_hayes
 title: Rutherford Hayes
-subtitle: Ohio governor and future presidential candidate. Moderate, honest, and broadly trusted.
+subtitle: Ohio governor. Moderate, honest, and broadly trusted.
 is-card: true
 card-image: img/portraits/Rutherford_Hayes.jpg
 tags: moderate_advisor
@@ -367,7 +367,7 @@ Rutherford Hayes is now an advisor. His reputation for integrity is a useful cou
 
 @add_fish
 title: Hamilton Fish
-subtitle: New York moderate and Grant's Secretary of State. A steady hand on foreign policy.
+subtitle: New York moderate. A steady hand on foreign policy.
 is-card: true
 card-image: img/portraits/Hamilton_Fish.jpg
 tags: moderate_advisor

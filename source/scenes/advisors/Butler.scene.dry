@@ -20,7 +20,7 @@ subtitle: Butler uses the threat of impeachment proceedings to force compliance 
 view-if: president = "Johnson"
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; impeachment_unlocked = 1; radical_strength += 5; radical_dissent -= 6; moderate_dissent += 4; conservative_dissent += 4
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; impeachment_unlocked = 1; radical_strength += 5; radical_dissent -= 4; moderate_dissent += 4; conservative_dissent += 4;
 
 Butler begins laying the groundwork for impeachment proceedings, gathering evidence, lining up witnesses, and making very public statements about what the evidence shows. Johnson's allies scramble. The moderates are horrified. Butler is satisfied.
 
@@ -29,7 +29,7 @@ title: Appeal to Labor
 subtitle: Butler's working-class rhetoric and support for labor issues wins over Northern workers.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; workers_rep += 4; unemployed_rep += 3; immigrant_laborers_rep += 3;
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; workers_rep += 4; unemployed_rep += 3; immigrant_laborers_rep += 2;
 
 Butler speaks the language of the factory floor with genuine conviction. His attacks on capital and his championing of the eight-hour day draw working men to the Republican Party who might otherwise drift toward the Democrats or independent labor candidates.
 
@@ -38,6 +38,6 @@ title: Dig Up Opposition Research
 subtitle: Butler investigates Democratic leaders and finds dirt to use against them.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; dem_relation -= 8; workers_dem -= 4; middle_class_dem -= 3; rural_dem -= 2;
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; dem_relation -= 6; workers_dem -= 3; middle_class_dem -= 2; rural_dem -= 1; moderate_dissent += 2;
 
 Butler sets his investigators to work on Democratic leaders, and as usual they find something worth using. The resulting exposés damage Democratic standing with key constituencies. Butler does not believe in clean fights.
