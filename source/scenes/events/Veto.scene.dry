@@ -8,14 +8,14 @@ on-arrival: civil_rights_timer += 6;
 
 = Radicals Demand a Civil Rights Act
 
-Radical Republicans are pushing for sweeping civil rights legislation to protect freedmen from the Black Codes spreading across the South and establish federal guarantees of citizenship, due process, and equal protection under the law.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> are pushing for sweeping civil rights legislation to protect freedmen from the Black Codes spreading across the South and establish federal guarantees of citizenship, due process, and equal protection under the law.
 
 [? if amnesty_civil_rights_bonus = 1 : The groundwork laid during the amnesty debate has left some members more receptive to this than they might otherwise have been. ?]
 
-Moderates are divided. Some warn it will provoke a confrontation with the executive and alienate conservative allies. Others say the time for half-measures has passed.
+<span style="color: #9D2933;">**Moderates**</span> are divided. Some warn it will provoke a confrontation with the executive and alienate conservative allies. Others say the time for half-measures has passed.
 
 [? if president = "Johnson" : President Johnson has made clear he will veto any legislation of this kind. The question is whether we have the votes to override him. ?]
-[? if president != "Johnson" : With a Republican in the White House, a veto is not the obstacle it once was. The fight is in Congress, not the executive mansion. ?]
+[? if president != "Johnson" : With a <span style="color: #c00000;">**Republican**</span> in the White House, a veto is not the obstacle it once was. The fight is in Congress, not the executive mansion. ?]
 
 - @pass_civil_rights: Back the Radical push and pass the Act.
 - @stall_civil_rights: Delay action for now.
@@ -51,7 +51,7 @@ on-arrival: {!
 !}
 
 [? if president = "Johnson" : Congress passes the Civil Rights Act. Johnson's veto is expected and the override fight begins immediately. ?]
-[? if president != "Johnson" : Congress passes the Civil Rights Act. With a Republican president, it moves quickly to signature. For the first time, citizenship and equal protection are federal law. ?]
+[? if president != "Johnson" : Congress passes the Civil Rights Act. With a <span style="color: #c00000;">**Republican**</span> president, it moves quickly to signature. For the first time, citizenship and equal protection are federal law. ?]
 
 [? if amnesty_civil_rights_bonus = 1 : The civil rights provisions negotiated during the amnesty debate gave this bill a foundation to build on. The final legislation is stronger for it. ?]
 
@@ -71,4 +71,4 @@ on-arrival: {!
     }
 !}
 
-We hold back. Moderates appreciate the restraint, but Radical members and freedmen communities grow increasingly impatient.[? if amnesty_civil_rights_bonus = 1 : The civil rights protections that were promised as part of the amnesty debate have not materialized. That is being noticed. ?]
+We hold back. <span style="color: #9D2933;">**Moderates**</span> appreciate the restraint, but <span style="color: #7A1F5C;">**Radical**</span> members and freedmen communities grow increasingly impatient.[? if amnesty_civil_rights_bonus = 1 : The civil rights protections that were promised as part of the amnesty debate have not materialized. That is being noticed. ?]

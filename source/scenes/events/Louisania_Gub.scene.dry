@@ -8,7 +8,7 @@ on-arrival: louisiana_crisis = 1;
 
 = The Louisiana Question
 
-Louisiana's gubernatorial election has produced not a winner, but two of them. Incumbent Governor Warmoth's Returning Board has certified a fusion Democratic-Republican ticket under John McEnery. A rival board, backed by a federal court ruling, has certified the Radical Republican candidate, William Pitt Kellogg as the new Governor. Both men have been sworn in and work with there own legislature. Now Louisiana now has two governments, each insisting the other is illegitimate.
+Louisiana's gubernatorial election has produced not a winner, but two of them. Incumbent Governor Warmoth's Returning Board has certified a fusion <span style="color: #0015bc;">**Democratic**</span>-<span style="color: #c00000;">**Republican**</span> ticket under John McEnery. A rival board, backed by a federal court ruling, has certified the <span style="color: #7A1F5C;">**Radical Republican**</span> candidate, William Pitt Kellogg as the new Governor. Both men have been sworn in and work with there own legislature. Now Louisiana now has two governments, each insisting the other is illegitimate.
 
 Armed men are gathering on both sides. Every day this goes unanswered, it grows harder to resolve without bloodshed.
 
@@ -34,7 +34,7 @@ on-arrival: {!
     Q.colfax_pending = 1;
 !}
 
-Federal troops move to secure the statehouse in New Orleans, and Kellogg's government is installed by force of arms rather than force of argument. Radicals call it a necessary defense of the ballot. Democrats across the South call it a military occupation of a duly elected government, and the White Leagues take the deployment as proof they were right to organize. Tensions in Grant Parish and across rural Louisiana are rising fast.
+Federal troops move to secure the statehouse in New Orleans, and Kellogg's government is installed by force of arms rather than force of argument. <span style="color: #7A1F5C;">**Radicals**</span> call it a necessary defense of the ballot. <span style="color: #0015bc;">**Democrats**</span> across the South call it a military occupation of a duly elected government, and the White Leagues take the deployment as proof they were right to organize. Tensions in Grant Parish and across rural Louisiana are rising fast.
 
 @recognize_no_troops
 on-arrival: {!
@@ -47,7 +47,7 @@ on-arrival: {!
     Q.colfax_pending = 1;
 !}
 
-Washington recognizes Kellogg's government but stops short of sending troops to enforce it. Radicals call this recognition without teeth, a half-measure that leaves Kellogg's government to fend for itself against a well-armed and organized opposition. In Louisiana, the White Leagues read federal hesitation as federal weakness.
+Washington recognizes Kellogg's government but stops short of sending troops to enforce it. <span style="color: #7A1F5C;">**Radicals**</span> call this recognition without teeth, a half-measure that leaves Kellogg's government to fend for itself against a well-armed and organized opposition. In Louisiana, the White Leagues read federal hesitation as federal weakness.
 
 @broker_investigation
 choose-if: radical_strength + moderate_strength >= 40
@@ -85,4 +85,4 @@ on-arrival: {!
     Q.LA_freemen_rep -= 3;
 !}
 
-Washington declines to back Kellogg and recognizes the McEnery fusion government instead. It defuses the immediate crisis, and the White Leagues take it as total vindication rather than a reason to stand down, emboldened rather than satisfied. Across the state, white voters who had drifted toward the Republicans over Reconstruction's practical benefits see a government that folded the moment it was tested, and shift back toward the Democracy in response. Freedmen who had counted on federal protection find themselves newly unsure it exists at all. Radicals call it the beginning of the end for Reconstruction in the Gulf states.
+Washington declines to back Kellogg and recognizes the McEnery fusion government instead. It defuses the immediate crisis, and the White Leagues take it as total vindication rather than a reason to stand down, emboldened rather than satisfied. Across the state, white voters who had drifted toward the Republicans over Reconstruction's practical benefits see a government that folded the moment it was tested, and shift back toward the Democracy in response. Freedmen who had counted on federal protection find themselves newly unsure it exists at all. <span style="color: #7A1F5C;">**Radicals**</span> call it the beginning of the end for Reconstruction in the Gulf states.

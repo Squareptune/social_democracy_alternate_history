@@ -16,7 +16,7 @@ on-arrival: {!
 
 On Easter Sunday, a force of armed white Democrats and White League militants surrounded the courthouse at Colfax, Louisiana, where a company of Black militia had gathered to defend Kellogg's government against a rumored takeover by supporters of McEnery. After a day-long siege, the building was set ablaze. Those inside who surrendered were shot. Estimates of the dead run from sixty to over a hundred and fifty men, making it the deadliest single act of racial violence of the Reconstruction era.
 
-Word reaches Washington within days. Northern newspapers are calling it a massacre. Southern Democratic papers are calling it the suppression of an armed insurrection. Congress wants to know what the federal government intends to do about it.
+Word reaches Washington within days. Northern newspapers are calling it a massacre. Southern <span style="color: #0015bc;">**Democratic**</span> papers are calling it the suppression of an armed insurrection. Congress wants to know what the federal government intends to do about it.
 
 - @full_prosecution: Prosecute the perpetrators under the Enforcement Acts
 - @troop_deployment: Deploy federal troops to occupy Grant Parish
@@ -37,7 +37,7 @@ on-arrival: {!
     Q.cruikshank_pending = 1;
 !}
 
-Federal marshals arrest dozens of participants and bring charges under the Enforcement Acts, the first real test of the law's reach into a mass atrocity rather than isolated Klan violence. [? if WhiteL_formed = 1: White Leagues and ?] Democratics call it federal tyranny reaching into a local dispute, and vow to fight the prosecutions in every court they can reach.
+Federal marshals arrest dozens of participants and bring charges under the Enforcement Acts, the first real test of the law's reach into a mass atrocity rather than isolated Klan violence. [? if WhiteL_formed = 1: White Leagues and ?] <span style="color: #0015bc;">**Democratics**</span> call it federal tyranny reaching into a local dispute, and vow to fight the prosecutions in every court they can reach.
 
 @troop_deployment
 choose-if: occupation >= 1 and army_loyalty >= 0.5
@@ -87,7 +87,7 @@ on-arrival: {!
 
 Washington leaves prosecution to Louisiana's own courts.
 
-[? if colfax_local_outcome = "convictions" : With Reconstruction institutions still holding real strength in the state and a Republican-leaning electorate to draw juries from, prosecutors actually secure convictions against several of the men involved. It is not the whole reckoning Radicals wanted, but it is more than Grant Parish expected, and it sends its own message to the White Leagues. ?]
+[? if colfax_local_outcome = "convictions" : With Reconstruction institutions still holding real strength in the state and a <span style="color: #c00000;">**Republican**</span>-leaning electorate to draw juries from, prosecutors actually secure convictions against several of the men involved. It is not the whole reckoning <span style="color: #7A1F5C;">**Radicals**</span> wanted, but it is more than Grant Parish expected, and it sends its own message to the White Leagues. ?]
 
 [? if colfax_local_outcome = "mixed" : Grand juries in Grant Parish and the surrounding countryside are split. A handful of indictments go forward; most are quietly dropped or end in acquittal, as intimidated witnesses recant or fail to appear. It is a half-measure that satisfies no one, and paramilitary organizations note exactly which counties they can still operate in freely. ?]
 

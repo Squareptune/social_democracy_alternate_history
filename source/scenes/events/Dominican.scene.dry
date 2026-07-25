@@ -12,9 +12,9 @@ Orville Babcock, personal secretary to President [+ president +], has returned f
 
 The terms are generous to the Dominicans: the United States would assume $1,500,000 of Dominican national debt, offer the Dominican Republic the right to eventual statehood, and separately lease the strategic harbor of **Samaná Bay** at $150,000 per year for 50 years. In exchange, the United States gains a Caribbean foothold, a potential new state, and a naval base that could enforce the Monroe Doctrine across the hemisphere.
 
-The proposal has powerful enemies. Senator Charles Sumner, chairman of the Foreign Relations Committee, regards it as a scheme to drag the country into Caribbean adventurism and burden the freedmen of the South with yet another distraction. Many Radical Republicans share his skepticism. Democrats are uniformly opposed.
+The proposal has powerful enemies. Senator Charles Sumner, chairman of the Foreign Relations Committee, regards it as a scheme to drag the country into Caribbean adventurism and burden the freedmen of the South with yet another distraction. Many <span style="color: #7A1F5C;">**Radical Republicans**</span> share his skepticism. <span style="color: #0015bc;">**Democrats**</span> are uniformly opposed.
 
-[? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with Republican ambitions. But his radical base is divided — some see Caribbean annexation as imperialism dressed up in republican clothing. ?]
+[? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with <span style="color: #c00000;">**Republican**</span> ambitions. But his radical base is divided — some see Caribbean annexation as imperialism dressed up in republican clothing. ?]
 
 [? if president = "Grant" : President Grant is personally committed to the treaty and has dispatched Babcock precisely because he wanted a favorable result. His reputation is now somewhat tied to its passage. ?]
 
@@ -370,7 +370,7 @@ if (!Q.dominican_pushed_hard) {
 
 The Senate ratifies the annexation treaty[? if dominican_pushed_hard = 0 : , passing it without — or even against — executive support, a remarkable show of Congressional independence?]. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
 
-Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. Radical newspapers echo his concern. But the moderate and conservative wings of the party celebrate a triumph of Manifest Destiny.
+Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. <span style="color: #7A1F5C;">**Radical**</span> newspapers echo his concern. But the <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings of the party celebrate a triumph of Manifest Destiny.
 
 - @dominican_statehood_note: What becomes of Dominican statehood?
 

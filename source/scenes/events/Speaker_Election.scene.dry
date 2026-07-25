@@ -45,7 +45,7 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-Schuyler Colfax, the "Smiler," is elected Speaker. Known for his warm personality and skill at building consensus, he is popular across the party's moderate and conservative wings. Radicals tolerate him, if not love him.
+Schuyler Colfax, the "Smiler," is elected Speaker. Known for his warm personality and skill at building consensus, he is popular across the party's <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings. <span style="color: #7A1F5C;">**Radicals**</span> tolerate him, if not love him.
 
 [? if speaker = "Colfax" : Colfax continues his tenure. The House settles into its familiar rhythms under his steady hand. ?]
 
@@ -70,7 +70,7 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-Thaddeus Stevens storms into the Speaker's chair like a force of nature. His iron control of the House floor and committee assignments transforms the chamber into an engine of Radical Reconstruction. Democrats are apoplectic. Conservative Republicans are alarmed. Radicals are finally satisfied.
+Thaddeus Stevens storms into the Speaker's chair like a force of nature. His iron control of the House floor and committee assignments transforms the chamber into an engine of Radical Reconstruction. <span style="color: #0015bc;">**Democrats**</span> are apoplectic. <span style="color: #B5651D;">**Conservative Republicans**</span> are alarmed. <span style="color: #7A1F5C;">**Radicals**</span> are finally satisfied.
 
 His dual role as Speaker and party advisor means he cannot devote his full attention to either — his advisor actions will come more slowly.
 
@@ -97,7 +97,7 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-James Blaine of Maine takes the gavel. Energetic, politically cunning, and already cultivating a national profile, Blaine is a skilled legislative operator. He consolidates support from the moderate and conservative wings and proves adept at managing the floor.
+James Blaine of Maine takes the gavel. Energetic, politically cunning, and already cultivating a national profile, Blaine is a skilled legislative operator. He consolidates support from the <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings and proves adept at managing the floor.
 
 His ambitions, however, extend beyond the speakership. Keep an eye on him.
 
@@ -124,9 +124,9 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-Henry Dawes brings a reputation for financial integrity and reform sympathies to the speakership. His selection satisfies the conservative and liberal factions, who see him as a counterweight to Radical excess.
+Henry Dawes brings a reputation for financial integrity and reform sympathies to the speakership. His selection satisfies the <span style="color: #B5651D;">**conservative**</span> and <span style="color: #DAA520;">**liberal**</span> factions, who see him as a counterweight to Radical excess.
 
-Radicals distrust him. The working class, sensing he will not be their champion, shift slightly.
+<span style="color: #7A1F5C;">**Radicals**</span> distrust him. The working class, sensing he will not be their champion, shift slightly.
 
 His speakership strengthens fiscal oversight and accelerates currency legislation.
 
@@ -153,7 +153,7 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-James Garfield, the self-made man from Ohio and celebrated Union general, brings credibility with both Radical and moderate wings. A gifted orator, he commands the floor with natural authority.
+James Garfield, the self-made man from Ohio and celebrated Union general, brings credibility with both <span style="color: #7A1F5C;">**Radical**</span> and <span style="color: #9D2933;">**moderate**</span> wings. A gifted orator, he commands the floor with natural authority.
 
 His broad appeal reduces factional friction and opens up Reconstruction-minded legislation.
 
@@ -216,7 +216,7 @@ on-arrival: {!
 !}
 go-to: speaker_end
 
-With the Democrats in control of the House, [+ speaker +] takes the gavel as Speaker. Our legislative agenda is now effectively blocked. Bills that reach the floor will be shaped by Democratic priorities, not ours.
+With the <span style="color: #0015bc;">**Democrats**</span> in control of the House, [+ speaker +] takes the gavel as Speaker. Our legislative agenda is now effectively blocked. Bills that reach the floor will be shaped by <span style="color: #0015bc;">**Democratic**</span> priorities, not ours.
 
 This is the consequence of losing the House. Reconstruction stalls. Our chairmanships are stripped. We can oppose, but we cannot govern.
 
@@ -231,4 +231,4 @@ The election of [+ speaker +] as Speaker is complete.
 [? if speaker_boosted_committee = "monetary_policy" : The new Speaker prioritizes currency and banking legislation, speeding it through committee. ?]
 [? if speaker_boosted_committee = "civil_rights" : The new Speaker assigns a Reconstruction Committee favorable to our agenda, speeding civil rights legislation through the House. ?]
 [? if speaker_boosted_committee = "judiciary" : The new Speaker keeps pressure on the courts, speeding judiciary reform through committee. ?]
-[? if speaker_boosted_committee = "" : With Democrats controlling the chamber, no committee favors our agenda. ?]
+[? if speaker_boosted_committee = "" : <span style="color: #0015bc;">**Democrats**</span> controlling the chamber ?]

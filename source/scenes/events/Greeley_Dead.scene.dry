@@ -24,7 +24,7 @@ We may have won the election but we aren't monsters. We should pay our respect t
 @Prayers
 on-arrival: radical_dissent -= 1; moderate_dissent -= 1; conservative_dissent -= 1; liberal_dissent -= 3;
 
-The papers run respectful obituaries. Our editors recall his decades crusading against slavery and his dedication to the republican party (before his betrayal). R.I.P Horace Greeley.
+The papers run respectful obituaries. Our editors recall his decades crusading against slavery and his dedication to the <span style="color: #c00000;">**republican party**</span> (before his betrayal). R.I.P Horace Greeley.
 
 @crisis_menu
 
@@ -61,7 +61,7 @@ go-to: greeley_end
 
 The Court, stacked over years with justices who owe their seats to this administration, rules swiftly: electoral votes cast for a deceased candidate cannot be lawfully certified, and with no surviving candidate able to claim a majority of valid votes, the Constitution's remedy is to install the candidate who *did* receive a lawful plurality. [+ Candidate +] will be President.
 
-The ruling is legally creative, to put it gently that even some Republicans wince. But the Court has spoken, and the country exhausted by four months of scandal and a dead president-elect largely accepts it rather than face a second crisis on top of the first.
+The ruling is legally creative, to put it gently that even some <span style="color: #c00000;">**Republicans**</span> wince. But the Court has spoken, and the country exhausted by four months of scandal and a dead president-elect largely accepts it rather than face a second crisis on top of the first.
 
 The years of careful judicial appointments have paid off in the only currency that mattered.
 
@@ -79,7 +79,7 @@ go-to: greeley_end
 
 The Court will not be rushed into rewriting the Constitution on the administration's behalf. The bench still thick with holdovers unmoved by reform rules that the electors are bound by their state's popular result and free to cast their ballots for whichever living man they judge their pledge most honors. In state after state, the opposing electors coalesce behind B. Gratz Brown.
 
-The attempt to intervene is now part of the story. Democratic papers brand it an attempted judicial coup, and the charge sticks. Brown will be inaugurated in March.
+The attempt to intervene is now part of the story. <span style="color: #0015bc;">**Democratic**</span> papers brand it an attempted judicial coup, and the charge sticks. Brown will be inaugurated in March.
 
 @push_congress
 on-arrival: {!
@@ -99,7 +99,7 @@ on-arrival: {!
 !}
 go-to: greeley_end
 
-We argue that with no living candidate holding a certifiable majority, the contingent election procedure of the Twelfth Amendment applies, and the question falls to the House, voting by state delegation. With a Republican majority of delegations, the outcome is not seriously in doubt. [+ Candidate +] is elected President by the House.
+We argue that with no living candidate holding a certifiable majority, the contingent election procedure of the Twelfth Amendment applies, and the question falls to the House, voting by state delegation. With a <span style="color: #c00000;">**Republican**</span> majority of delegations, the outcome is not seriously in doubt. [+ Candidate +] is elected President by the House.
 
 It is a narrower, less dramatic path than a court ruling, and it draws correspondingly less outrage — Congress settling a presidential election is, after all, a remedy the Constitution explicitly provides for.
 
@@ -113,7 +113,7 @@ on-arrival: {!
 !}
 go-to: greeley_end
 
-The argument goes nowhere. Without a Republican majority of state delegations behind us, pushing the question to the House only hands the opposition a forum to ratify what was already happening in the states. The electors cast their ballots for B. Gratz Brown, and Congress, when it counts them in February, raises no objection.
+The argument goes nowhere. Without a <span style="color: #c00000;">**Republican**</span> majority of state delegations behind us, pushing the question to the House only hands the opposition a forum to ratify what was already happening in the states. The electors cast their ballots for B. Gratz Brown, and Congress, when it counts them in February, raises no objection.
 
 @let_electors_decide
 on-arrival: {!

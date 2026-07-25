@@ -241,11 +241,11 @@ go-to: house_menu
 {!<table>!}
 {!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ rep_r_disp +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ rep_r_disp +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ dem_r_disp +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} <span style="color: #0015bc;">**Democrats**</span>: {!</td><td>!} [+ dem_r_disp +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
 
-[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ lib_r_disp +] seats {!</td><td>!} [+ str_change_lib_r +] {!</td></tr>!} ?]
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} <span style="color: #DAA520;">**Liberal Republicans**</span>: {!</td><td>!} [+ lib_r_disp +] seats {!</td><td>!} [+ str_change_lib_r +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r_disp +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
 {!</table>!}
@@ -260,44 +260,44 @@ go-to: house_menu
 - @house_tie
 
 @house_simple_majority
-title: Republicans gain a majority in the House
-subtitle: Republicans: [+ rep_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> gain a majority in the House
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats
 view-if: house_majority = 2
 on-arrival: speaker_election_needed = 1
 
-The Republicans have secured a majority in the House of Representatives.
+The <span style="color: #c00000;">**Republicans**</span> have secured a majority in the House of Representatives.
 
 @house_super_majority
-title: Republicans secure a supermajority
-subtitle: Republicans: [+ rep_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> secure a supermajority
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats
 view-if: house_majority = 3
 on-arrival: speaker_election_needed = 1
 
-With two-thirds of the House, Republicans now wield veto-proof power.
+With two-thirds of the House, <span style="color: #c00000;">**Republicans**</span> now wield veto-proof power.
 
 @house_rep_lib_majority
-title: Republicans and Liberal Republicans hold a working majority
-subtitle: Republicans: [+ rep_r +] seats, Liberal Republicans: [+ lib_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> hold a working majority
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats, <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 1 and liberal_split = 1
 on-arrival: speaker_election_needed = 1
 
-Neither party holds an outright majority, but Republicans and Liberal Republicans together command enough seats to pass legislation if they can find common ground. Their cooperation will not come without a price.
+Neither party holds an outright majority, but <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> together command enough seats to pass legislation if they can find common ground. Their cooperation will not come without a price.
 
 @house_defeat
-title: Republicans lose the House
-subtitle: Republicans: [+ rep_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> lose the House
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 0 and dem_r > rep_r
 on-arrival: speaker_election_needed = 1
 
-The Democrats have taken control of the House of Representatives.
+The <span style="color: #0015bc;">**Democrats**</span> have taken control of the House of Representatives.
 
 @house_lib_kingmaker
-title: Liberal Republicans hold the balance of power
-subtitle: Liberal Republicans: [+ lib_r +] seats
+title: <span style="color: #DAA520;">**Liberal Republicans**</span> hold the balance of power
+subtitle: <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_r +] seats
 view-if: house_majority = 0 and rep_lib_working_majority = 0 and dem_r <= rep_r and liberal_split = 1
 on-arrival: speaker_election_needed = 1
 
-No party commands a majority. The Liberal Republicans find themselves in the position of kingmakers — their votes will determine whether Reconstruction legislation advances or stalls.
+No party commands a majority. The <span style="color: #DAA520;">**Liberal Republicans**</span> find themselves in the position of kingmakers — their votes will determine whether Reconstruction legislation advances or stalls.
 
 @house_tie
 title: The House is tied!

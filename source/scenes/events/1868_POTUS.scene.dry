@@ -8,7 +8,7 @@ max-visits: 1
 
 The Presidential election are to be held now.
 
-[? if liberal_split = 1 : The Liberal Republicans have fielded their own candidate, threatening to split the anti-Democrat vote. ?]
+[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> have fielded their own candidate, threatening to split the anti-<span style="color: #0015bc;">**Democrat**</span> vote. ?]
 
 - @POTUS_election_algorithm: May we do our best...
 
@@ -228,9 +228,9 @@ go-to: potus_menu
 {!<table>!}
 {!<tr><td>Party</td><td>Electoral votes</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}**Republicans**{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}<span style="color: #c00000;">**Republicans**</span>{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
 
-{!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}Democrats{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #0015bc;">**Democrats**</span>{!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
 
 {!</table>!}
 
@@ -242,8 +242,8 @@ go-to: potus_menu
 - @defeat_O
 
 @victory
-title: Republicans won the election!
-subtitle: Republicans: [+ repEVTotal +] electoral votes
+title: <span style="color: #c00000;">**Republicans**</span> won the election!
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ repEVTotal +] electoral votes
 view-if: potus_winner = "rep"
 on-arrival: {!
     Q.president = Candidate;
@@ -305,11 +305,11 @@ on-arrival: {!
     }
 !}
 
-The Republicans have managed to get a majority of the electors in this election. [? if president == "Wade": The American people have signaled their mandate for Benjamin Wade to serve as President and work with congress. ?][? if president == "Grant": Grant's war career of saving the Union has made an impression on voters. Hopefully he will lead us into a brighter future. ?][? if president == "Chase": Chase is elected president — the Radical Republicans despise him and this could lead to a crisis within the party, but the Moderates and Conservatives are cheering with this return to normalcy in the Executive Mansion. ?]
+The <span style="color: #c00000;">**Republicans**</span> have managed to get a majority of the electors in this election. [? if president == "Wade": The American people have signaled their mandate for Benjamin Wade to serve as President and work with congress. ?][? if president == "Grant": Grant's war career of saving the Union has made an impression on voters. Hopefully he will lead us into a brighter future. ?][? if president == "Chase": Chase is elected president — the <span style="color: #7A1F5C;">**Radical Republicans**</span> despise him and this could lead to a crisis within the party, but the <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> are cheering with this return to normalcy in the Executive Mansion. ?]
 
 @defeat_dem
-title: The Democrats have won the presidency.
-subtitle: Democrats: [+ demEVTotal +] electoral votes
+title: The <span style="color: #0015bc;">**Democrats**</span> have won the presidency.
+subtitle: <span style="color: #0015bc;">**Democrats**</span>: [+ demEVTotal +] electoral votes
 view-if: potus_winner = "dem"
 on-arrival: {!
     Q.president = "Horatio Seymour";
@@ -424,7 +424,7 @@ on-arrival: {!
 
 No candidate has secured a majority of electoral votes. Under the Constitution, the election is thrown to the House of Representatives, where each state delegation casts a single vote.
 
-[? if house_majority >= 2 : With Republicans controlling a majority of state delegations, the House elects our candidate as President. ?][? if house_majority < 2 : The Democratic-leaning delegations carry the day, and Seymour is elected President by the House. ?]
+[? if house_majority >= 2 : With <span style="color: #c00000;">**Republicans**</span> controlling a majority of state delegations, the House elects our candidate as President. ?][? if house_majority < 2 : The <span style="color: #0015bc;">**Democratic**</span>-leaning delegations carry the day, and Seymour is elected President by the House. ?]
 
 @defeat_O
 title: Something has gone very wrong.

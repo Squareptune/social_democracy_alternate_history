@@ -7,7 +7,7 @@ tags: event
 view-if: year = 1867 and month = 3 
 max-visits: 1 
 
-Nebraska has officially joined the Union as the 37th state. With a predominantly rural and pro-Republican population, its admission strengthens the Radical Republican coalition in Congress.  
+Nebraska has officially joined the Union as the 37th state. With a predominantly rural and pro-<span style="color: #c00000;">**Republican**</span> population, its admission strengthens the <span style="color: #7A1F5C;">**Radical Republican**</span> coalition in Congress.  
 
 The territory had previously passed a constitution excluding Black suffrage, but Congress demanded its revision—marking a small victory for equality.
 

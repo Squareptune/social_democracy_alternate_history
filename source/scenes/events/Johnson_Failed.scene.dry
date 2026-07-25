@@ -7,7 +7,7 @@ max-visits: 1
 
 = The South Resists Reform
 
-The 1866 elections have delivered a verdict the Radical Republicans refuse to accept. Across the former Confederate states, voters have sent former rebels, Confederate officers, and open opponents of Reconstruction to Washington. Several of the men elected to the House and Senate served in the Confederate army or government. One was the Confederate Vice President himself.
+The 1866 elections have delivered a verdict the <span style="color: #7A1F5C;">**Radical Republicans**</span> refuse to accept. Across the former Confederate states, voters have sent former rebels, Confederate officers, and open opponents of Reconstruction to Washington. Several of the men elected to the House and Senate served in the Confederate army or government. One was the Confederate Vice President himself.
 
 Under Johnson's plan, these men are entitled to their seats. Under any standard of loyalty to the Union, they are not.
 
@@ -83,7 +83,7 @@ go-to: Occupation
 
 The Joint Committee moves immediately. The clerk of the House is instructed not to call the names of Southern members when the roll is taken. They are not recognized. They are not given the oath. They stand in the gallery and watch as Congress organizes without them.
 
-The Democrats and President Johnson calls it unconstitutional but we don't give a shit about them.
+The <span style="color: #0015bc;">**Democrats**</span> and President Johnson calls it unconstitutional but we don't give a shit about them.
 
 With [+ seats_removed +] House seats and [+ senate_seats_removed +] Senate seats set aside, the arithmetic of Congress shifts dramatically in our favor.
 
@@ -97,13 +97,13 @@ on-arrival: {!
 !}
 go-to: Occupation
 
-The Southern delegations are sworn in. Former Confederates take their seats alongside the men who fought to preserve the Union. Radical Republicans are furious. Several walk out of the chamber in protest.
+The Southern delegations are sworn in. Former Confederates take their seats alongside the men who fought to preserve the Union. <span style="color: #7A1F5C;">**Radical Republicans**</span> are furious. Several walk out of the chamber in protest.
 
-Johnson's allies celebrate. The Democratic caucus, suddenly swelled with Southern members, becomes a far more formidable opposition.
+Johnson's allies celebrate. The <span style="color: #0015bc;">**Democratic**</span> caucus, suddenly swelled with Southern members, becomes a far more formidable opposition.
 
 @Occupation
 
-Faced with this reactionary resurgence, Congressional Republicans are now forced to act. Will the federal government take control of Reconstruction and the South itself?
+Faced with this reactionary resurgence, Congressional <span style="color: #c00000;">**Republicans**</span> are now forced to act. Will the federal government take control of Reconstruction and the South itself?
 
 - @full_plan: Enact full military occupation of the south!
 - @limited_plan: Enact limited federal oversight
@@ -132,7 +132,7 @@ on-arrival: {!
 
 Congress passes the **Military Reconstruction Act** of 1867. The South is divided into five military districts under Union command. Confederate officials are removed, and new governments must guarantee Black suffrage.  
 
-Radical Republicans celebrate. But resistance mounts. The Klan stirs in the shadows.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> celebrate. But resistance mounts. The Klan stirs in the shadows.
 
 @limited_plan
 on-arrival: {!
@@ -155,12 +155,12 @@ on-arrival: {!
 
 Congress compromises on a **moderate Reconstruction plan**: military governors oversee Southern elections, but states retain some autonomy.  
 
-Freedmen gain some protections, but Redeemer influence lingers—and violence persists under the surface.
+Freedmen gain some protections, but <span style="color: #002765;">**Redeemer**</span> influence lingers—and violence persists under the surface.
 
 @Johnson_plan
 subtitle: Stay the Course
 on-arrival: radical_strength += 5;  radical_dissent += 2; moderate_strength += 1;  moderate_dissent += 1; liberal_dissent +=1
 
-Congress hesitates, and President Johnson’s plan remains in place. Southern states reintegrate quickly, but at a terrible cost.  
+Congress hesitates, and President Johnson's plan remains in place. Southern states reintegrate quickly, but at a terrible cost.  
 
-Black codes tighten. Freedmen are brutalized. The Radical wing explodes in fury—accusing Johnson of betraying the Union’s victory.
+Black codes tighten. Freedmen are brutalized. The <span style="color: #7A1F5C;">**Radical**</span> wing explodes in fury—accusing Johnson of betraying the Union's victory.

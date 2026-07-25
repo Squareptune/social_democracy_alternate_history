@@ -7,7 +7,7 @@ max-visits: 1
 
 = The Courts Push Back
 
-The mass prosecutions and military tribunals have drawn a legal counterattack. Democratic lawyers, joined by several conservative legal figures and at least one former Republican judge, have filed suits in federal circuit courts challenging the constitutionality of the military tribunals and the suspension of habeas corpus.
+The mass prosecutions and military tribunals have drawn a legal counterattack. <span style="color: #0015bc;">**Democratic**</span> lawyers, joined by several conservative legal figures and at least one former Republican judge, have filed suits in federal circuit courts challenging the constitutionality of the military tribunals and the suspension of habeas corpus.
 
 Their argument is straightforward: the Constitution permits suspension only in cases of rebellion or invasion, and the war has been over for years. What is happening in the south is not a rebellion. It is, they argue, a peacetime military occupation of American citizens with no legal basis.
 
@@ -64,9 +64,9 @@ on-arrival: {!
 !}
 go-to: court_outcome
 
-We quietly restore civilian legal procedures in several of the less volatile counties, reducing the number of active suspensions and narrowing the legal target the Democrats are shooting at. It is a tactical retreat dressed as a policy refinement.
+We quietly restore civilian legal procedures in several of the less volatile counties, reducing the number of active suspensions and narrowing the legal target the <span style="color: #0015bc;">**Democrats**</span> are shooting at. It is a tactical retreat dressed as a policy refinement.
 
-Radicals are unhappy. But the legal exposure shrinks considerably.
+<span style="color: #7A1F5C;">**Radicals**</span> are unhappy. But the legal exposure shrinks considerably.
 
 @lift_habeas
 on-arrival: {!
@@ -84,11 +84,11 @@ on-arrival: {!
 !}
 go-to: court_outcome
 
-We restore full civilian legal procedures and transfer the military tribunal cases to federal district courts. The legal challenge largely collapses without its target. Democrats claim a victory. Radicals call it a surrender. On the ground in the South, the Klan begins reorganizing in the counties where military pressure has lifted.
+We restore full civilian legal procedures and transfer the military tribunal cases to federal district courts. The legal challenge largely collapses without its target. <span style="color: #0015bc;">**Democrats**</span> claim a victory. <span style="color: #7A1F5C;">**Radicals**</span> call it a surrender. On the ground in the South, the Klan begins reorganizing in the counties where military pressure has lifted.
 
 @pack_the_argument
 choose-if: rep_majority >= 1 and radical_strength >= 35
-unavailable-subtitle: [? if rep_majority < 1: We do not control Congress. ?][? if radical_strength < 35: The Radical faction is not strong enough to push this through. ?]
+unavailable-subtitle: [? if rep_majority < 1: We do not control Congress. ?][? if radical_strength < 35: The <span style="color: #7A1F5C;">**Radical**</span> faction is not strong enough to push this through. ?]
 on-arrival: {!
     Q.court_ruling = "stripped";
     Q.court_jurisdiction_stripped = 1;
@@ -107,7 +107,7 @@ go-to: court_outcome
 
 Congress passes legislation stripping the Supreme Court of jurisdiction over habeas corpus challenges arising from the Southern districts. The Court cannot rule on what it has no authority to hear. It is a constitutionally available move, if an aggressive one, and Congress has used it before.
 
-The reaction is fierce. The liberal press calls it the death of judicial independence. Conservative Republicans who might have tolerated the original suspensions draw the line here. But the prosecutions continue uninterrupted.
+The reaction is fierce. The liberal press calls it the death of judicial independence. <span style="color: #B5651D;">**Conservative Republicans**</span> who might have tolerated the original suspensions draw the line here. But the prosecutions continue uninterrupted.
 
 @court_outcome
 
@@ -115,6 +115,6 @@ The reaction is fierce. The liberal press calls it the death of judicial indepen
 
 [? if court_ruling = "partial" : The courts issue a mixed ruling. Some of the military tribunal convictions are upheld, others are referred to civilian courts. The suspension itself is effectively ended by the litigation, but the prosecutions that already occurred largely stand. It is not a defeat, but it is not a victory either. ?]
 
-[? if court_ruling = "drop" : With the suspensions lifted, the legal challenge loses most of its force. The Democratic lawyers declare a political victory. On the ground, the effect of the prosecutions that already occurred remains, but the window for this kind of federal action has closed. ?]
+[? if court_ruling = "drop" : With the suspensions lifted, the legal challenge loses most of its force. The <span style="color: #0015bc;">**Democratic**</span> lawyers declare a political victory. On the ground, the effect of the prosecutions that already occurred remains, but the window for this kind of federal action has closed. ?]
 
 [? if court_ruling = "stripped" : The cases never reach a final ruling. Congress has removed the Court's authority to hear them. The prosecutions stand. But the political cost of stripping the Court's jurisdiction will linger. ?]

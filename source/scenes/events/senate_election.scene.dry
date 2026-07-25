@@ -255,11 +255,11 @@ go-to: house_makeup
 {!<table>!}
 {!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} **Republicans:** {!</td><td>!} [+ display_rep_senate +] seats {!</td><td>!} [+ str_change_rep_senate_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ display_rep_senate +] seats {!</td><td>!} [+ str_change_rep_senate_r +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} Democrats: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem_senate_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} <span style="color: #0015bc;">**Democrats**</span>: {!</td><td>!} [+ display_dem_senate +] seats {!</td><td>!} [+ str_change_dem_senate_r +] {!</td></tr>!}
 
-[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} Liberal Republicans: {!</td><td>!} [+ display_lib_senate +] seats {!</td><td>!} [+ str_change_lib_senate_r +] {!</td></tr>!} ?]
+[? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} <span style="color: #DAA520;">**Liberal Republicans**</span>: {!</td><td>!} [+ display_lib_senate +] seats {!</td><td>!} [+ str_change_lib_senate_r +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ display_other_senate +] seats {!</td><td>!} [+ str_change_other_senate_r +] {!</td></tr>!}
 {!</table>!}
@@ -274,47 +274,47 @@ go-to: house_makeup
 - @tie
 
 @simple_majority
-title: Republicans gain a simple majority in the Senate
-subtitle: Republicans: [+ rep_senate_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> gain a simple majority in the Senate
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats
 view-if: sen_majority = 2
 
-The Republicans have gained a simple majority in the Senate.
+The <span style="color: #c00000;">**Republicans**</span> have gained a simple majority in the Senate.
 
 @super_majority
-title: Republicans secure a supermajority in the Senate
-subtitle: Republicans: [+ rep_senate_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> secure a supermajority in the Senate
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats
 view-if: sen_majority = 3
 
-The Republicans have gained a supermajority in the Senate. Now they can override any presidential veto.
+The <span style="color: #c00000;">**Republicans**</span> have gained a supermajority in the Senate. Now they can override any presidential veto.
 
 @rep_lib_senate_majority
-title: Republicans and Liberal Republicans hold a working Senate majority
-subtitle: Republicans: [+ rep_senate_r +] seats, Liberal Republicans: [+ lib_senate_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> hold a working Senate majority
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats, <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 1 and liberal_split = 1
 
-Neither party holds an outright Senate majority, but Republicans and Liberal Republicans together command enough seats to organize the chamber if they can find common ground. Their cooperation on legislation will not come without concessions.
+Neither party holds an outright Senate majority, but <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> together command enough seats to organize the chamber if they can find common ground. Their cooperation on legislation will not come without concessions.
 
 @defeat
-title: Republicans have lost the Senate
-subtitle: Republicans: [+ rep_senate_r +] seats
+title: <span style="color: #c00000;">**Republicans**</span> have lost the Senate
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 0 and dem_senate_r > rep_senate_r
 
-The Republicans have lost control of the Senate to the Democrats.
+The <span style="color: #c00000;">**Republicans**</span> have lost control of the Senate to the <span style="color: #0015bc;">**Democrats**</span>.
 
 @lib_senate_kingmaker
-title: Liberal Republicans hold the balance of power in the Senate
-subtitle: Liberal Republicans: [+ lib_senate_r +] seats
+title: <span style="color: #DAA520;">**Liberal Republicans**</span> hold the balance of power in the Senate
+subtitle: <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 0 and dem_senate_r <= rep_senate_r and liberal_split = 1
 
-No party commands a Senate majority. The Liberal Republicans find themselves holding the balance of power. Every major vote will require negotiating their support.
+No party commands a Senate majority. The <span style="color: #DAA520;">**Liberal Republicans**</span> find themselves holding the balance of power. Every major vote will require negotiating their support.
 
 @tie
 title: A tied Senate!
-subtitle: Republicans and Democrats: [+ rep_senate_r +] – [+ dem_senate_r +]
+subtitle: <span style="color: #c00000;">**Republicans**</span> and <span style="color: #0015bc;">**Democrats**</span>: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r and sen_majority = 0 and rep_lib_working_majority_senate = 0
 
 In a stunning turn of events, the Senate election has ended in a tie.
 
-[? if president_party = "rep" : The Vice President can cast the deciding vote in favor of the Republicans. ?]
-[? if president_party = "dem" : The Vice President can cast the deciding vote in favor of the Democrats. ?]
-[? if president_party = "lib" : With a Liberal Republican president, the Vice President's tie-breaking votes may not favor either major party. ?]
+[? if president_party = "rep" : The Vice President can cast the deciding vote in favor of the <span style="color: #c00000;">**Republicans**</span>. ?]
+[? if president_party = "dem" : The Vice President can cast the deciding vote in favor of the <span style="color: #0015bc;">**Democrats**</span>. ?]
+[? if president_party = "lib" : With a <span style="color: #DAA520;">**Liberal Republican**</span> president, the Vice President's tie-breaking votes may not favor either major party. ?]

@@ -11,7 +11,7 @@ Federal crackdowns and declining Klan activity have not ended Southern resistanc
 
 Unlike the secretive Klan, these groups operate openly. Their members march in daylight, drill like soldiers, and receive open support from wealthy Redeemers and former Confederate officers. Newspapers sympathetic to the Southern cause portray them as patriotic defenders of local government.
 
-In truth, their purpose is clear: to restore white Democratic rule and destroy Reconstruction governments by force if necessary.
+In truth, their purpose is clear: to restore white <span style="color: #0015bc;">**Democratic**</span> rule and destroy Reconstruction governments by force if necessary.
 
 - @crackdown: Confront the White Leagues directly.
 - @ignore: Avoid provoking another Southern backlash.
@@ -27,9 +27,9 @@ Though the government wins some victories, the new paramilitaries are discipline
 
 @ignore
 choose-if: conservative_strength + liberal_strength >= 50
-unavailable-subtitle: [? if conservative_strength + liberal_strength < 50: Too many Republicans demand action. ?]
+unavailable-subtitle: [? if conservative_strength + liberal_strength < 50: Too many <span style="color: #c00000;">**Republicans**</span> demand action. ?]
 on-arrival: whiteL_strength += 3; whiteL_militancy += 0.05; radical_dissent += 4; moderate_dissent += 2
 
 The administration chooses not to escalate the situation. Many newspapers portray the White Leagues as harmless veterans' associations, and confronting them could inflame tensions in the South.
 
-Radicals are furious, warning that ignoring the threat will only embolden Reconstruction’s enemies.
+<span style="color: #7A1F5C;">**Radicals**</span> are furious, warning that ignoring the threat will only embolden Reconstruction's enemies.

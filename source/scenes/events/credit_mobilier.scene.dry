@@ -19,13 +19,13 @@ on-arrival: {!
 
 The morning papers hit Washington like a cannonball. A major newspaper has obtained documents exposing a web of corruption tied to a construction company contracted to build the transcontinental railroad. The company had been wildly overcharging the federal government for years, funneling the surplus into the pockets of its executives.
 
-To keep Congress from investigating, discounted shares of stock were quietly distributed to key politicians. The list of implicated figures is long and cuts across the party's factions. Several prominent members of both the Radical and Moderate wings are named. So is the Vice Presidential nominee.
+To keep Congress from investigating, discounted shares of stock were quietly distributed to key politicians. The list of implicated figures is long and cuts across the party's factions. Several prominent members of both the <span style="color: #7A1F5C;">**Radical**</span> and <span style="color: #9D2933;">**Moderate**</span> wings are named. So is the Vice Presidential nominee.
 
 [? if vice_president = "Colfax" : Worse still, the sitting Vice President himself is implicated. Schuyler Colfax is alleged to have received shares while serving as Speaker of the House. He denies it, but his denial is not convincing. ?]
 
 With the election weeks away, the timing could not be worse.
 
-[? if liberal_split = 1 : The Liberal Republicans are calling it proof of everything they have argued for years. The Democrats are not far behind. Both are treating this as a gift. ?]
+[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> are calling it proof of everything they have argued for years. The <span style="color: #0015bc;">**Democrats**</span> are not far behind. Both are treating this as a gift. ?]
 
 [? if liberal_split = 0 : Within the party, the reformist wing that has been quietly building dissent now has exactly the ammunition it needed. ?]
 
@@ -52,9 +52,9 @@ We instruct party organs to treat the story as a partisan fabrication timed to d
 
 In the short term it holds. Our core voters are not deserting us over a newspaper story. The campaign machinery keeps running.
 
-But the reformist wing of the party is furious. They did not leave their old affiliations to become the party of railroad swindlers. Liberal-leaning members who had been wavering now have a reason to move. And the Democrats, whatever we say about their motives, have a story that is true. It will not go away.
+But the reformist wing of the party is furious. They did not leave their old affiliations to become the party of railroad swindlers. Liberal-leaning members who had been wavering now have a reason to move. And the <span style="color: #0015bc;">**Democrats**</span>, whatever we say about their motives, have a story that is true. It will not go away.
 
-[? if liberal_split = 1 : The Liberal Republicans are using this in every speech and pamphlet between now and November. ?]
+[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> are using this in every speech and pamphlet between now and November. ?]
 
 @sacrifice
 on-arrival: {!
@@ -68,11 +68,11 @@ on-arrival: {!
     Q.resources -= 1;
 !}
 
-We move quickly. Several of the more visibly implicated figures are quietly encouraged to step back from public roles or decline to seek reelection. The administration issues a statement expressing concern and calling for a full accounting. We do not wait for the Democrats to define the story.
+We move quickly. Several of the more visibly implicated figures are quietly encouraged to step back from public roles or decline to seek reelection. The administration issues a statement expressing concern and calling for a full accounting. We do not wait for the <span style="color: #0015bc;">**Democrats**</span> to define the story.
 
-The response draws mixed reactions. Reformers give us partial credit for acting rather than stonewalling. The implicated members and their allies feel betrayed, and they are not quiet about it. Conservative and Radical factions who were counting on those figures take the hit personally.
+The response draws mixed reactions. Reformers give us partial credit for acting rather than stonewalling. The implicated members and their allies feel betrayed, and they are not quiet about it. <span style="color: #B5651D;">**Conservative**</span> and <span style="color: #7A1F5C;">**Radical**</span> factions who were counting on those figures take the hit personally.
 
-The political damage is real but bounded. We have shown some willingness to hold our own accountable, which takes some of the edge off the Democratic messaging. The story is not over, but we are no longer entirely on the defensive.
+The political damage is real but bounded. We have shown some willingness to hold our own accountable, which takes some of the edge off the <span style="color: #0015bc;">**Democratic**</span> messaging. The story is not over, but we are no longer entirely on the defensive.
 
 @sacrifice_vp
 view-if: vice_president = "Colfax"
@@ -107,9 +107,9 @@ on-arrival: {!
 
 We get in front of it. The administration calls for an immediate independent congressional investigation with full subpoena power and no limits on where it can look. We acknowledge publicly that the reporting appears credible and that the party has a responsibility to the public trust.
 
-The reformist wing responds warmly. This is what they have been arguing the party should look like. Liberal-leaning members who were drifting stop drifting. The Democratic message that we are unreformable is harder to land against a party that has voluntarily opened itself to scrutiny.
+The reformist wing responds warmly. This is what they have been arguing the party should look like. Liberal-leaning members who were drifting stop drifting. The <span style="color: #0015bc;">**Democratic**</span> message that we are unreformable is harder to land against a party that has voluntarily opened itself to scrutiny.
 
-The cost is real. The investigation will find things. Several prominent members will be implicated by their own party's committee. Conservative and Radical members who benefited from the old arrangements feel exposed and betrayed. The proceedings will drag into the new year regardless of what happens in November.
+The cost is real. The investigation will find things. Several prominent members will be implicated by their own party's committee. <span style="color: #B5651D;">**Conservative**</span> and <span style="color: #7A1F5C;">**Radical**</span> members who benefited from the old arrangements feel exposed and betrayed. The proceedings will drag into the new year regardless of what happens in November.
 
 But we have staked out the position that the party is bigger than any individual's corruption. Whether the voters believe it will depend on what the investigation actually turns up.
 
@@ -136,7 +136,7 @@ The President makes clear, through intermediaries, that Colfax's continued prese
 
 The scandal's most visible symbol is gone, and we can at least argue we acted when it counted. The reformist wing takes this as a sign that the party is still capable of self-correction.
 
-Conservative allies of Colfax are enraged. They call it a public execution of a loyal party man to save the administration's skin. They are not entirely wrong.
+<span style="color: #B5651D;">**Conservative**</span> allies of Colfax are enraged. They call it a public execution of a loyal party man to save the administration's skin. They are not entirely wrong.
 
 @Slap
 on-arrival: {!
@@ -150,9 +150,6 @@ on-arrival: {!
 
 We issue a formal statement expressing disappointment in Colfax's conduct while making clear he remains in office. He is advised to make a public apology and to limit his campaign appearances. It is the minimum response, and it shows.
 
-Reformers see it as protecting a corrupt official because he is politically useful. The Democratic press treats it as confirmation that we care more about winning than about accountability. The story stays alive longer than it needed to.
+Reformers see it as protecting a corrupt official because he is politically useful. The <span style="color: #0015bc;">**Democratic**</span> press treats it as confirmation that we care more about winning than about accountability. The story stays alive longer than it needed to.
 
 Colfax limps through the campaign as a liability we have chosen not to cut.
-
-
-

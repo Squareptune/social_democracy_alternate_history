@@ -10,13 +10,13 @@ on-arrival: amnesty_act_seen = 1
 
 Congress is debating a bill that would restore full political rights to most former Confederates, allowing them to hold federal and state office once again. The push comes from members who argue that a decade after the war, continued political exclusion only breeds resentment and keeps the South ungovernable.
 
-The numbers are not small. Around 150,000 men currently barred from office would regain their rights. Most of them are prominent figures in their communities. Most of them are Democrats.
+The numbers are not small. Around 150,000 men currently barred from office would regain their rights. Most of them are prominent figures in their communities. Most of them are <span style="color: #0015bc;">**Democrats**</span>.
 
-The Radical wing is opposed. Their position is that any amnesty must come paired with new civil rights guarantees, or it amounts to handing political power back to the same men who enforced the Black Codes and rode with paramilitary organizations. The moderates want the amnesty clean and simple, arguing that conditions will kill the bill entirely.
+The <span style="color: #7A1F5C;">**Radical**</span> wing is opposed. Their position is that any amnesty must come paired with new civil rights guarantees, or it amounts to handing political power back to the same men who enforced the Black Codes and rode with paramilitary organizations. The <span style="color: #9D2933;">**moderates**</span> want the amnesty clean and simple, arguing that conditions will kill the bill entirely.
 
-[? if liberal_split = 1 : The Liberal Republicans have made this a centerpiece of their platform, calling continued political exclusion an obstacle to genuine national reconciliation. ?]
+[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> have made this a centerpiece of their platform, calling continued political exclusion an obstacle to genuine national reconciliation. ?]
 [? if reconstruction_support < 30 : Enthusiasm for Reconstruction has been fading in the North for some time. The amnesty bill has genuine popular support, and the political winds are not in our favor. ?]
-[? if radical_strength >= 40 : The Radical wing is strong enough that attaching conditions to the bill is a real possibility, not just a gesture. ?]
+[? if radical_strength >= 40 : The <span style="color: #7A1F5C;">**Radical**</span> wing is strong enough that attaching conditions to the bill is a real possibility, not just a gesture. ?]
 
 - @support_clean: Back the bill as written, no conditions.
 - @support_conditions: Back amnesty only if paired with civil rights protections.
@@ -54,9 +54,9 @@ on-arrival: {!
 
 We back the bill without conditions. The amnesty passes.
 
-The moderate and conservative wings are relieved. The Liberal Republican press calls it overdue.
+The <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings are relieved. The <span style="color: #DAA520;">**Liberal Republican**</span> press calls it overdue.
 
-The Radical wing does not take it quietly. Freedmen communities across the South receive the news with dread, and they are not wrong to. The men returning to political eligibility are not reformed. They are simply patient. They will run for office, win, and use that office the same way they used it before the war. The South will feel this before the North does.
+The <span style="color: #7A1F5C;">**Radical**</span> wing does not take it quietly. Freedmen communities across the South receive the news with dread, and they are not wrong to. The men returning to political eligibility are not reformed. They are simply patient. They will run for office, win, and use that office the same way they used it before the war. The South will feel this before the North does.
 
 @support_conditions
 on-arrival: {!
@@ -110,7 +110,7 @@ We make our position clear. Amnesty can pass, but only alongside meaningful civi
 
 [? if amnesty_conditions = 1 : The paired bill holds together. Former Confederates regain political eligibility, but the civil rights provisions that accompany the amnesty give freedmen new legal standing to defend themselves. Neither side is satisfied, which may mean the compromise is about as fair as these things get. ?]
 
-[? if amnesty_conditions = 0 : The conditions are stripped out before the bill reaches the floor. Conservative and Liberal members gut the civil rights provisions in committee and the amnesty passes clean. We tried for something better and came away with nothing to show for it. The Radical wing blames the attempt. They are not entirely wrong, but the votes were never there. ?]
+[? if amnesty_conditions = 0 : The conditions are stripped out before the bill reaches the floor. <span style="color: #B5651D;">**Conservative**</span> and <span style="color: #DAA520;">**Liberal**</span> members gut the civil rights provisions in committee and the amnesty passes clean. We tried for something better and came away with nothing to show for it. The <span style="color: #7A1F5C;">**Radical**</span> wing blames the attempt. They are not entirely wrong, but the votes were never there. ?]
 
 @oppose
 on-arrival: {!
@@ -138,9 +138,9 @@ on-arrival: {!
 
 We come out against the bill. A decade is not long enough. The men who led secession, commanded Confederate forces, and returned home to build paramilitary organizations and enforce racial terror through law have not demonstrated the kind of loyalty that earns back political power.
 
-The Radical wing is relieved. Freedmen communities take note.
+The <span style="color: #7A1F5C;">**Radical**</span> wing is relieved. Freedmen communities take note.
 
-The Liberal Republicans treat this as confirmation of everything they have been arguing. Conservative members are quietly frustrated. In the South, paramilitary organizations that had been watching Congress grow angrier.
+The <span style="color: #DAA520;">**Liberal Republicans**</span> treat this as confirmation of everything they have been arguing. <span style="color: #B5651D;">**Conservative**</span> members are quietly frustrated. In the South, paramilitary organizations that had been watching Congress grow angrier.
 
 @let_it_pass
 on-arrival: {!

@@ -9,13 +9,13 @@ on-arrival: sect_interior = "Orville H. Browning"; sect_interior_party = "R"; se
 
 = Johnson sacks Cabinet
 
-In a dramatic shakeup, President Andrew Johnson removes several key members of Abraham Lincoln’s Cabinet, signaling a definitive break with the late president’s legacy.
+In a dramatic shakeup, President Andrew Johnson removes several key members of Abraham Lincoln's Cabinet, signaling a definitive break with the late president's legacy.
 
-Secretary of the Interior **James Harlan** resigns under pressure, citing irreconcilable differences with Johnson’s Reconstruction policies. **Attorney General James Speed** also steps down, objecting to the president’s attempts to undermine civil rights legislation. **Postmaster General William Dennison** follows suit, expressing frustration with the administration’s direction.
+Secretary of the Interior **James Harlan** resigns under pressure, citing irreconcilable differences with Johnson's Reconstruction policies. **Attorney General James Speed** also steps down, objecting to the president's attempts to undermine civil rights legislation. **Postmaster General William Dennison** follows suit, expressing frustration with the administration's direction.
 
-In their place, Johnson appoints loyalists: **Orville H. Browning** takes over Interior, **Henry Stanbery** becomes Attorney General, and **Alexander Randall** assumes the post of Postmaster General. All are seen as aligned with Johnson’s lenient stance toward the former Confederacy.
+In their place, Johnson appoints loyalists: **Orville H. Browning** takes over Interior, **Henry Stanbery** becomes Attorney General, and **Alexander Randall** assumes the post of Postmaster General. All are seen as aligned with Johnson's lenient stance toward the former Confederacy.
 
-The reshuffle deepens tensions between the president and congressional Republicans, who view the dismissals as a hostile power grab by an increasingly isolated executive. Members of the Radicals begins rallying in the shadows to aim to remove Johnson from office, they begin drafting the ideas of a bill that will limit the president's power that Johnson will surely violate which will give Congress the perfect reason for his removal.
+The reshuffle deepens tensions between the president and congressional <span style="color: #c00000;">**Republicans**</span>, who view the dismissals as a hostile power grab by an increasingly isolated executive. Members of the <span style="color: #7A1F5C;">**Radicals**</span> begins rallying in the shadows to aim to remove Johnson from office, they begin drafting the ideas of a bill that will limit the president's power that Johnson will surely violate which will give Congress the perfect reason for his removal.
 
 @Response
 
@@ -25,11 +25,11 @@ The reshuffle deepens tensions between the president and congressional Republica
 on-arrival: radical_strength += 1; moderate_strength += 1; conservative_dissent += 1;
 go-to: Tenure
 
-The nation is stunned as President Johnson abruptly removes several key members of Lincoln’s wartime Cabinet. Newspapers buzz with accusations of political vendetta and fears that Reconstruction policy will be gutted. On Capitol Hill, tempers flare as legislators debate how far a president’s power to fire his own appointees should go.
+The nation is stunned as President Johnson abruptly removes several key members of Lincoln's wartime Cabinet. Newspapers buzz with accusations of political vendetta and fears that Reconstruction policy will be gutted. On Capitol Hill, tempers flare as legislators debate how far a president's power to fire his own appointees should go.
 
 @Tenure
 
-Radical Republicans in Congress, joined by many moderates, argue that Johnson’s sudden Cabinet purge proves the need for new legal restraints on presidential power. They push for the **Tenure of Office Act**, a law that would require Senate approval before the president can remove officials confirmed by that same Senate. Conservatives call it an unconstitutional overreach, while radicals see it as essential to protecting Reconstruction from sabotage.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> in Congress, joined by many moderates, argue that Johnson's sudden Cabinet purge proves the need for new legal restraints on presidential power. They push for the **Tenure of Office Act**, a law that would require Senate approval before the president can remove officials confirmed by that same Senate. <span style="color: #B5651D;">**Conservatives**</span> call it an unconstitutional overreach, while radicals see it as essential to protecting Reconstruction from sabotage.
 
 - @yes: Introduce the Tenure of Office Act into Congress
 - @no: Reject the proposal and allow the president to continue unchecked
@@ -37,7 +37,7 @@ Radical Republicans in Congress, joined by many moderates, argue that Johnson’
 @yes
 on-arrival: tenure_act = 1;
 choose-if: radical_strength + moderate_strength >= 50
-unavailable-subtitle: [? if radical_strength < 25 and moderate_strength < 25: The Radicals and Moderates are overwhelmed by the Converatives ?]
+unavailable-subtitle: [? if radical_strength < 25 and moderate_strength < 25: The <span style="color: #7A1F5C;">**Radicals**</span> and Moderates are overwhelmed by the Converatives ?]
 
 The Act is introduced into Congress for debate and many in congress support the bill seeing Johnson overreaching his executive powers.
 

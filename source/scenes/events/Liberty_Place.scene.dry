@@ -143,7 +143,7 @@ on-arrival: {!
 !}
 go-to: lp_end
 
-Federal troops and naval gunboats arrive within days, and the White League withdraws rather than face the U.S. Army directly. Kellogg's government is restored, propped up openly now by federal bayonets rather than any claim to have defended itself. Democrats across the country point to it as proof that Reconstruction survives only by military occupation, not by popular consent.
+Federal troops and naval gunboats arrive within days, and the White League withdraws rather than face the U.S. Army directly. Kellogg's government is restored, propped up openly now by federal bayonets rather than any claim to have defended itself. <span style="color: #0015bc;">**Democrats**</span> across the country point to it as proof that Reconstruction survives only by military occupation, not by popular consent.
 
 @accept_status_quo
 on-arrival: {!
@@ -154,7 +154,7 @@ on-arrival: {!
 !}
 go-to: lp_end
 
-Washington declines to intervene. The arrangement in New Orleans is left to stand for now, an open admission that an armed paramilitary force can topple a Reconstruction government and face no federal response at all. Radicals call it the death of Reconstruction in Louisiana in all but name.
+Washington declines to intervene. The arrangement in New Orleans is left to stand for now, an open admission that an armed paramilitary force can topple a Reconstruction government and face no federal response at all. <span style="color: #7A1F5C;">**Radicals**</span> call it the death of Reconstruction in Louisiana in all but name.
 
 @lp_end
 
