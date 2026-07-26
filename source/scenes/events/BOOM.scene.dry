@@ -1,0 +1,11 @@
+title: Economic Boom
+tags: event
+view-if: flag_boom = 1
+max-visits: 1
+on-arrival: flag_boom = 0; boom_ticker_timer = 12; middle_class_rep += 3; workers_rep += 2; rural_rep += 2
+
+= An Expanding Market
+
+The country has entered a genuine bull market. Railroad shares climb, factory orders pile up, and credit flows freely. It is welcome news for Northern industrialists and investors, even as the boom's foundations remain untested.
+
+- @acknowledge: Continue.

@@ -1,0 +1,11 @@
+title: A Deepening Slump
+tags: event
+view-if: flag_unemployment_rising = 1
+max-visits: 1
+on-arrival: flag_unemployment_rising = 0; unemployment_ticker_timer = 12; workers_rep -= 3; workers_dem += 3; unemployed_rep -= 3; unemployed_dem += 3; radical_dissent += 2; moderate_dissent += 2; reconstruction_support -= 2
+
+= Men Out of Work
+
+Idle factories, shuttered shops, and farms sold at auction have become common sights. More Americans than at any point since the war find themselves without steady work, and the political mood is turning ugly. Whoever holds power in Washington will be blamed for it.
+
+- @acknowledge: Continue.

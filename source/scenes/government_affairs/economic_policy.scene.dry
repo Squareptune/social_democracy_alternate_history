@@ -25,7 +25,7 @@ The choice before us will shape the financial future of the Republic.
 - @cancel_advisor_action
 
 @return_gold
-subtitle: Return to specie payments and sound money.
+subtitle: Pleases bankers and foreign investors, but squeezes farmers and workers who rely on cheap credit.
 view-if: GreenBacks = 1
 on-arrival: {!
     Q.GreenBacks = 0;
@@ -52,7 +52,7 @@ But the effects on ordinary Americans are severe. Deflation spreads as the money
 The <span style="color: #7A1F5C;">**Radical**</span> press denounces this as betrayal of the working man. Yet the financial establishment applauds our "responsibility."
 
 @maintain_greenbacks
-subtitle: Keep Greenbacks in circulation; balanced approach.
+subtitle: A middle path. Keeps credit flowing without fully satisfying either creditors or debtors.
 View-if: GreenBacks = 1
 on-arrival: {!
     Q.inflation += 0.05;
@@ -72,7 +72,7 @@ We maintain Greenback circulation at current levels, balancing economic growth w
 This middle path satisfies few completely. <span style="color: #B5651D;">**Conservatives**</span> grumble that we're not fully committed to hard money. <span style="color: #7A1F5C;">**Radicals**</span> complain we're not doing enough to relieve debtors. But the economy hums along at a sustainable pace.
 
 @inflate_currency
-subtitle: Issue aggressively to stimulate growth and relieve debtors.
+subtitle: Cheap credit for farmers and workers, but it comes at the cost of rising prices and angry creditors.
 view-if: GreenBacks = 1
 on-arrival: {!
     Q.inflation += 0.4;
@@ -98,7 +98,7 @@ But the cost is inflation. Prices rise. Savers and creditors watch their holding
 Bankers warn of ruin. Reformers and <span style="color: #B5651D;">**Conservatives**</span> desert us. Yet the common people—laborers, farmers, freedmen—see opportunity and relief for the first time since the war's end.
 
 @debt_repayment
-subtitle: -1 budget. Reduce the national debt to stabilize finances.
+subtitle: -1 budget. Pays down war debt to reassure bankers, at the cost of Reconstruction funding.
 choose-if: budget >= 1
 unavailable-subtitle: [? if budget < 1 : We cannot afford to allocate funds to debt repayment. ?]
 on-arrival: {!
@@ -123,7 +123,7 @@ The down side: funds that might have gone to Reconstruction programs, education,
 Yet markets are reassured, and the long-term fiscal position of the government improves.
 
 @banking_expansion
-subtitle: +0.5 budget. Charter new national banks across the South.
+subtitle: +0.5 budget. Extends Northern banks into the South, though planters and Democrats resent it.
 on-arrival: {!
     Q.inflation += 0.08;
     Q.economic_growth += 0.25;
@@ -143,7 +143,7 @@ The policy works. Capital flows southward. New towns sprout. The Southern econom
 But the banks also concentrate economic power in <span style="color: #c00000;">**Republican**</span> hands—a political asset now, but potentially dangerous. <span style="color: #0015bc;">**Democrats**</span> cry foul about carpetbagger finance. Traditional Southern planters resent Northern bankers' control. Still, growth is real, and <span style="color: #c00000;">**Republican**</span> business allies are satisfied.
 
 @contraction
-subtitle: Contract the money supply to fight inflation and stabilize the currency.
+subtitle: Tightens the money supply to fight inflation, causing a short but real economic pinch.
 view-if: inflation >= 2 and GreenBacks = 1
 choose-if: inflation >= 2
 unavailable-subtitle: [? if inflation < 2 : Inflation is not yet high enough to justify contraction. ?]

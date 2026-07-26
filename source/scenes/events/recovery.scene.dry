@@ -1,0 +1,11 @@
+title: Signs of Recovery
+tags: event
+view-if: flag_unemployment_recovering = 1
+max-visits: 1
+on-arrival: flag_unemployment_recovering = 0; recovery_ticker_timer = 12; workers_rep += 2; middle_class_rep += 2; moderate_dissent -= 2; radical_dissent -= 1
+
+= The Corner Is Turned
+
+For the first time in some while, hiring is picking back up. It is slow, and far from complete, but the worst of the slump appears to be behind us.
+
+- @acknowledge: Continue.

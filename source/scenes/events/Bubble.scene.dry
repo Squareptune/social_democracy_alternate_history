@@ -1,0 +1,11 @@
+title: Increased Speculation
+tags: event
+view-if: flag_credit_bubble = 1
+max-visits: 1
+on-arrival: flag_credit_bubble = 0; bubble_ticker_timer = 12; middle_class_rep += 1; conservative_dissent += 2; liberal_dissent += 2
+
+= A Growing Bubble
+
+The economy continues to expand, but some bankers and economists are growing uneasy. Railroad securities and other speculative ventures have been bid up well past what their actual earnings justify, financed by credit that assumes the good times will never end. For now the money keeps flowing. Whether it can last is another question.
+
+- @acknowledge: Continue.

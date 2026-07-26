@@ -454,68 +454,164 @@ if (Q.month_actions >= 1) {
         party_support_results[party] = Q[party + '_normalized']*100;
     }
     Q.party_support_records.push(party_support_results);
-    Q.economic_records.push({'date': new Date(Q.year, Q.month - 1),
-                             'inflation': Q.inflation,
-                             'unemployment': Q.unemployed});
-    // change economic stats...
-    // we're basically implicity drawing a Philips curve
-    // budget deficits lead to some inflation
-    if (Q.budget <= 0 && Q.budget > -2 && Q.inflation < 2.5) {
-        Q.inflation += 0.1;
-    }
-    if (Q.budget <= -2 && Q.budget > -5 && Q.inflation < 5) {
-        Q.inflation += 0.2;
-        if (Q.unemployed >= 12) {
-            Q.inflation -= 0.1;
+    if (Q.unemployment_rate === undefined) Q.unemployment_rate = 6;
+    if (Q.unemployed_baseline === undefined) Q.unemployed_baseline = Q.unemployed;
+    for (let state of Q.states) {
+        if (Q[state + "_unemployed_baseline"] === undefined) {
+            Q[state + "_unemployed_baseline"] = Q[state + "_unemployed"] || 0;
         }
     }
-    if (Q.budget <= -5 && Q.inflation < 10) {
-        Q.inflation += 0.3;
-        if (Q.unemployed >= 15) {
-            Q.inflation -= 0.1;
+    Q.economic_records.push({date: new Date(Q.year, Q.month - 1),inflation: Q.inflation,unemployment: Q.unemployment_rate, growth: Q.economic_growth});
+
+    // === 1. INFLATION — driven by money supply, not budget ===
+    let inflationDrift = 0;
+    if (Q.GreenBacks == 1) {
+        inflationDrift += 0.03;
+        inflationDrift += (Q.economic_expansion / 100) * 0.08; // credit bubble accelerates it
+    } else {
+        inflationDrift -= 0.05; // gold standard drifts toward deflation on its own
+    }
+    inflationDrift += (Q.tariffs || 0) * 0.01; // small secondary effect from consumer prices
+    Q.inflation = Math.max(-8, Math.min(12, Q.inflation + inflationDrift));
+
+    // === 2. ECONOMIC_EXPANSION — hidden speculative/credit accumulator ===
+    let expansionDrift = 0;
+    if (Q.economic_growth >= 2) expansionDrift += 0.4;
+    if (Q.GreenBacks == 1) expansionDrift += 0.2;
+    if ((Q.tariffs || 0) <= 0) expansionDrift += 0.1;
+    if (Q.GreenBacks == 0) expansionDrift -= 0.3; // hard money bleeds off speculation
+    Q.economic_expansion = Math.max(0, Q.economic_expansion + expansionDrift);
+
+    // Organic panic trigger — a rising chance once exposure crosses a threshold,
+    // rather than a hard date-based tripwire
+    if (Q.economic_expansion >= 60 && Q.panic_triggered != 1) {
+        let panicChance = (Q.economic_expansion - 60) * 0.015;
+        if (Math.random() < panicChance) {
+            Q.panic_triggered = 1;
+            Q.panic_pending = 1; // consumed by your Panic scene's view-if
         }
     }
-    // deflation is bad
-    if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
-        Q.unemployed += 0.2;
+
+    // === 3. ECONOMIC GROWTH — self-correcting, symmetric ceiling and floor ===
+    if (Q.economic_growth >= 4 && Q.inflation >= 7.5) Q.economic_growth -= 0.15;
+    if (Q.economic_growth >= -2.5 && Q.inflation <= -5) Q.economic_growth -= 0.15;
+    if (Q.economic_growth >= 7) Q.economic_growth -= 0.1;
+    if (Q.economic_growth >= 10) Q.economic_growth -= 0.2;
+    if (Q.economic_growth <= -7) Q.economic_growth += 0.1;
+    if (Q.economic_growth <= -10) Q.economic_growth += 0.2;
+    Q.economic_growth = Math.max(-15, Math.min(15, Q.economic_growth));
+
+    // === 4. UNEMPLOYMENT RATE (macro indicator, not the demographic class) ===
+    let unemploymentDrift = 0;
+    if (Q.economic_growth < -0.5) unemploymentDrift += 0.15;
+    if (Q.economic_growth < -5) unemploymentDrift += 0.15;
+    if (Q.economic_growth >= 2) unemploymentDrift -= 0.1;
+    if (Q.economic_growth >= 4) unemploymentDrift -= 0.1;
+    if (Q.economic_growth >= 6) unemploymentDrift -= 0.1;
+    if (Q.inflation < -0.5) unemploymentDrift += 0.1;
+    if (Q.inflation <= -5) unemploymentDrift += 0.15;
+    if (Q.inflation >= 8) unemploymentDrift += 0.05;
+    Q.unemployment_rate = Math.max(2, Math.min(35, Q.unemployment_rate + unemploymentDrift));
+
+    // === 5. CLASS DRIFT — one-way trigger, slow reversible recovery ===
+    let CRISIS_THRESHOLD = 10;
+
+    if (Q.unemployment_rate > CRISIS_THRESHOLD) {
+        let severity = (Q.unemployment_rate - CRISIS_THRESHOLD) * 0.008;
+
+        for (let state of Q.states) {
+            let fromWorkers = (Q[state + "_workers"] || 0) * severity * 0.4;
+            let fromRural   = (Q[state + "_rural"]   || 0) * severity * 0.4;
+            let fromImm     = (Q[state + "_immigrant_laborers"] || 0) * severity * 0.2;
+            let shift = fromWorkers + fromRural + fromImm;
+            if (shift <= 0) continue;
+
+            Q[state + "_workers"] -= fromWorkers;
+            Q[state + "_rural"] -= fromRural;
+            Q[state + "_immigrant_laborers"] -= fromImm;
+
+            let oldPool = Q[state + "_unemployed"] || 0;
+            Q[state + "_unemployed"] = oldPool + shift;
+
+            // New arrivals blame the incumbent — Republican presidents lose more
+            // of this cohort to the Democrats than Democratic presidents do
+            let incumbentPenalty = (Q.president_party === "rep") ? 1 : (Q.president_party === "dem" ? -0.5 : 0.25);
+            let demLean = 55 + (10 * incumbentPenalty);
+            let repLean = 100 - demLean;
+
+            let oldDemShare = Q[state + "_unemployed_dem"] || 50;
+            let oldRepShare = Q[state + "_unemployed_rep"] || 40;
+            Q[state + "_unemployed_dem"] = ((oldPool * oldDemShare) + (shift * demLean)) / Q[state + "_unemployed"];
+            Q[state + "_unemployed_rep"] = ((oldPool * oldRepShare) + (shift * repLean)) / Q[state + "_unemployed"];
+        }
+
+        // Mirror at the national level
+        let nWorkers = Q.workers * severity * 0.4;
+        let nRural = Q.rural * severity * 0.4;
+        let nImm = Q.immigrant_laborers * severity * 0.2;
+        Q.workers -= nWorkers;
+        Q.rural -= nRural;
+        Q.immigrant_laborers -= nImm;
+        Q.unemployed += (nWorkers + nRural + nImm);
+
+    } else {
+        // Recovery — only once the macro rate is back under the threshold, at
+        // roughly half the speed of the crisis drift, and only pulling down the
+        // *excess* over the original baseline, never below it
+        let recoveryRate = 0.004;
+
+        for (let state of Q.states) {
+            let excess = (Q[state + "_unemployed"] || 0) - (Q[state + "_unemployed_baseline"] || 0);
+            if (excess <= 0.01) continue;
+            let reabsorbed = excess * recoveryRate;
+            Q[state + "_unemployed"] -= reabsorbed;
+            Q[state + "_workers"] = (Q[state + "_workers"] || 0) + reabsorbed * 0.5;
+            Q[state + "_rural"] = (Q[state + "_rural"] || 0) + reabsorbed * 0.35;
+            Q[state + "_immigrant_laborers"] = (Q[state + "_immigrant_laborers"] || 0) + reabsorbed * 0.15;
+        }
+
+        let nExcess = Q.unemployed - Q.unemployed_baseline;
+        if (nExcess > 0.01) {
+            let nReabsorbed = nExcess * recoveryRate;
+            Q.unemployed -= nReabsorbed;
+            Q.workers += nReabsorbed * 0.5;
+            Q.rural += nReabsorbed * 0.35;
+            Q.immigrant_laborers += nReabsorbed * 0.15;
+        }
     }
-    if (Q.inflation <= -5 && Q.unemployed < 20) {
-        Q.unemployed += 0.3;
+
+    // === 6. PLAYER-FACING ECONOMIC TICKER FLAGS ===
+    // Each flag only fires once per crossing, gated by its own cooldown timer,
+    // so the same headline doesn't spam every month the condition persists.
+
+    if (Q.inflation >= 6 && (Q.high_inflation_ticker_timer || 0) <= 0) {
+        Q.flag_high_inflation = 1;
     }
-    // economic growth
-    if (Q.economic_growth < -0.5 && Q.unemployed <= 18) {
-        Q.unemployed += 0.1;
+    if (Q.inflation <= -3 && (Q.deflation_ticker_timer || 0) <= 0) {
+        Q.flag_deflation = 1;
     }
-    if (Q.economic_growth < -5 && Q.unemployed <= 28) {
-        Q.unemployed += 0.1;
+    if (Q.unemployment_rate > CRISIS_THRESHOLD && (Q.unemployment_ticker_timer || 0) <= 0) {
+        Q.flag_unemployment_rising = 1;
     }
-    if (Q.economic_growth >= 2 && Q.unemployed >= 17) {
-        Q.unemployed -= 0.1;
+    if (Q.unemployment_rate <= CRISIS_THRESHOLD - 2 && Q.was_in_crisis == 1 && (Q.recovery_ticker_timer || 0) <= 0) {
+        Q.flag_unemployment_recovering = 1;
     }
-    if (Q.economic_growth >= 4 && Q.unemployed >= 12) {
-        Q.unemployed -= 0.1;
+    Q.was_in_crisis = (Q.unemployment_rate > CRISIS_THRESHOLD) ? 1 : 0;
+
+    if (Q.economic_expansion >= 50 && (Q.bubble_ticker_timer || 0) <= 0) {
+        Q.flag_credit_bubble = 1;
     }
-    if (Q.economic_growth >= 6 && Q.unemployed >= 7) {
-        Q.unemployed -= 0.1;
+    if (Q.economic_growth >= 6 && (Q.boom_ticker_timer || 0) <= 0) {
+        Q.flag_boom = 1;
     }
-    if (Q.economic_growth >= 8 && Q.unemployed >= 3) {
-        Q.unemployed -= 0.1;
-    }
-    if (Q.economic_growth >= 4 && Q.inflation >= 7.5) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= -2.5 && Q.inflation <= -5) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= 7) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= 10) {
-        Q.economic_growth -= 0.2;
-    }
-    if (Q.economic_growth >= 12) {
-        Q.economic_growth -= 0.3;
-    }
+
+    // Decrement all cooldown timers
+    Q.high_inflation_ticker_timer = Math.max(0, (Q.high_inflation_ticker_timer || 0) - 1);
+    Q.deflation_ticker_timer = Math.max(0, (Q.deflation_ticker_timer || 0) - 1);
+    Q.unemployment_ticker_timer = Math.max(0, (Q.unemployment_ticker_timer || 0) - 1);
+    Q.recovery_ticker_timer = Math.max(0, (Q.recovery_ticker_timer || 0) - 1);
+    Q.bubble_ticker_timer = Math.max(0, (Q.bubble_ticker_timer || 0) - 1);
+    Q.boom_ticker_timer = Math.max(0, (Q.boom_ticker_timer || 0) - 1);
 
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
