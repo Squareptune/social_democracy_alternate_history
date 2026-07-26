@@ -7,5 +7,3 @@ on-arrival: flag_unemployment_rising = 0; unemployment_ticker_timer = 12; worker
 = Men Out of Work
 
 Idle factories, shuttered shops, and farms sold at auction have become common sights. More Americans than at any point since the war find themselves without steady work, and the political mood is turning ugly. Whoever holds power in Washington will be blamed for it.
-
-- @acknowledge: Continue.

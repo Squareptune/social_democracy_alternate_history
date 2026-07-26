@@ -6,5 +6,3 @@ on-arrival: flag_high_inflation = 0; high_inflation_ticker_timer = 12; middle_cl
 = Prices Are Climbing
 
 Newspapers report that prices for basic goods have risen sharply over the past year. Wage earners find their pay buys less than it used to, and merchants complain of constant re-pricing. Bankers and creditors are growing anxious about the value of the currency.
-
-- @acknowledge: Continue.
