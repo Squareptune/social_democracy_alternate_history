@@ -7,5 +7,3 @@ on-arrival: flag_unemployment_recovering = 0; recovery_ticker_timer = 12; worker
 = The Corner Is Turned
 
 For the first time in some while, hiring is picking back up. It is slow, and far from complete, but the worst of the slump appears to be behind us.
-
-- @acknowledge: Continue.
