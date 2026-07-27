@@ -463,7 +463,7 @@ if (Q.month_actions >= 1) {
     }
     Q.economic_records.push({date: new Date(Q.year, Q.month - 1),inflation: Q.inflation,unemployment: Q.unemployment_rate, growth: Q.economic_growth});
 
-    // === 1. INFLATION — driven by money supply, not budget ===
+    // INFLATION — driven by money supply
     let inflationDrift = 0;
     if (Q.GreenBacks == 1) {
         inflationDrift += 0.03;

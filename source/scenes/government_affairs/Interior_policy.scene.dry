@@ -25,7 +25,7 @@ With millions of acres to administer, railroads demanding subsidy, freedmen peti
 
 
 @railroad_subsidies
-on-arrival: middle_class_rep += 5; workers_rep += 3; workers_dem -= 2; rural_dem += 1; freemen_rep -= 2; rural_dem -= 1; economic_growth += 0.3
+on-arrival: middle_class_rep += 5; workers_rep += 3; workers_dem -= 2; rural_dem += 1; freemen_rep -= 2; rural_dem -= 1; economic_growth += 0.3; economic_expansion += 8
 
 Land grants and subsidies will be prioritized for the expansion of major railroad companies. While this accelerates economic growth and connectivity, it risks fostering corporate influence and resentment among rural populations.
 

@@ -3,29 +3,38 @@ subtitle: The stock market crashes...
 new-page: true
 on-arrival: {!
     Q.Panic_seen = 1;
+    Q.panic_triggered = 1;
+    Q.panic_pending = 0;
 
-    Q.workers_dem += 5;
-    Q.immigrant_laborers_dem += 4;
-    Q.middle_class_dem += 5;
-    Q.rural_dem += 5;
-    Q.unemployed_dem += 5;
-    Q.unemployed += 2;
+    // The bubble pops — speculative exposure releases in a single shock
+    Q.economic_expansion = Math.max(0, Q.economic_expansion - 50);
+
+    // Direct hit to growth and the macro unemployment rate
+    Q.economic_growth -= 4.5;
+    Q.unemployment_rate += 6;
+
+    // Inflation moves opposite depending on the money regime —
+    // a credit crunch is deflationary whether or not Greenbacks are still circulating
+    if (Q.GreenBacks == 1) {
+        Q.inflation -= 0.8;
+    } else {
+        Q.inflation -= 1.5;
+    }
+
     if (Q.budget > 0) Q.budget -= 1;
     if (Q.dues > 2) Q.dues -= 1;
-    Q.inflation -= 1.2;
-    Q.economic_growth -= 2.5;
     Q.dem_reform_strength += 2;
 
     // Political fallout
     Q.radical_dissent += 4;
-    Q.liberal_dissent += 5;   // liberals blame Radical spending
+    Q.liberal_dissent += 5;
     Q.conservative_dissent += 3;
     Q.moderate_dissent += 3;
-    Q.dem_relation -= 5;      // Democrats smell blood
+    Q.dem_relation -= 5;
     Q.reconstruction_support -= 2;
 !}
 tags: event
-view-if: year = 1873 and month >= 9
+view-if: (year = 1873 and month >= 9) or panic_pending = 1
 max-visits: 1
 
 = The Panic of 1873
@@ -65,7 +74,7 @@ on-arrival: {!
     Q.moderate_dissent += 3;
 
     // Economy slowly corrects but workers suffer longer
-    Q.unemployed += 1.5;
+    Q.unemployment_rate += 1.5;
     Q.economic_growth -= 0.5;
     Q.workers_dem += 4;
     Q.immigrant_laborers_dem += 3;
@@ -99,7 +108,7 @@ on-arrival: {!
 
     // Inflation rises, unemployment eases somewhat
     Q.inflation += 1.5;
-    Q.unemployed -= 0.8;
+    Q.unemployment_rate -= 0.8;
     Q.economic_growth += 0.8;
 
     Q.workers_rep += 3;
@@ -131,7 +140,7 @@ on-arrival: {!
     Q.budget += 2;
     Q.inflation -= 0.5;
     Q.economic_growth -= 1;
-    Q.unemployed += 1;
+    Q.unemployment_rate += 1;
 
     Q.middle_class_rep += 2;
     Q.workers_dem += 5;
@@ -163,7 +172,7 @@ on-arrival: {!
     Q.conservative_dissent += 7;
     Q.liberal_dissent += 5;
 
-    Q.unemployed -= 1;
+    Q.unemployment_rate -= 1;
     Q.economic_growth += 0.5;
     Q.inflation += 0.3;
 

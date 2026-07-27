@@ -43,6 +43,7 @@ on-arrival: {!
     Q.liberal_strength += 3;
     Q.europe_relation += 2;
     Q.budget += 1;
+    Q.economic_expansion -= 10;
 !}
 
 We announce a gradual resumption of specie payments, signaling commitment to "hard money." Wall Street celebrates, and Northern creditors regain confidence in the dollar. European investors, reassured by our fiscal discipline, increase their holdings of American bonds.
@@ -89,6 +90,7 @@ on-arrival: {!
     Q.radical_strength += 4;
     Q.radical_dissent -= 3;
     Q.europe_relation -= 3;
+    Q.economic_expansion += 5;
 !}
 
 We authorize massive new issues of Greenbacks, flooding the economy with liquidity. Farmers and workers cheer as credit becomes cheap and abundant. Reconstruction projects accelerate. The Southern economy, starved for capital, begins to revive.
@@ -114,6 +116,7 @@ on-arrival: {!
     Q.radical_dissent += 4;
     Q.europe_relation += 1;
     Q.PoliticalCostPenalty += 1;
+    Q.economic_expansion -= 3;
 !}
 
 We commit budgetary surplus to retiring the war debt. This builds credibility with foreign lenders and domestic bondholders. Confidence in federal finances strengthens. Interest rates on government borrowing fall slightly.
@@ -134,6 +137,7 @@ on-arrival: {!
     Q.moderate_strength += 1;
     Q.workers_rep += 1;
     Q.radical_dissent -= 2;
+    Q.economic_expansion += 4;
 !}
 
 We charter a network of national banks throughout the former Confederate states, spreading Northern financial institutions and capital into the South. These banks finance reconstruction projects, help freedmen establish businesses, and integrate Southern commerce into national markets.
@@ -159,6 +163,7 @@ on-arrival: {!
     Q.moderate_dissent += 2;
     Q.budget -= 0.5;
     Q.PoliticalCostPenalty += 0.5;
+    Q.economic_expansion -= 6;
 !}
 
 With inflation rising, we move to contract the money supply. The Treasury begins retiring Greenbacks, reducing liquidity. Interest rates rise. Prices stabilize.

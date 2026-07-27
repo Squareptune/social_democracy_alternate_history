@@ -123,6 +123,6 @@ Higher tariffs protect industry and agriculture but hurt workers and freedmen by
 title: Lower import tariffs
 choose-if: budget >= 2 and tariffs > -5
 subtitle: -2 budget. [? if tariffs <= -5 : Already at free-trade baseline. ?]
-on-arrival: tariffs -= 1; budget -= 2; inflation -= 0.5; workers_rep += 4*(1-dissent); freemen_rep += 4*(1-dissent); rural_rep -= 5; middle_class_rep -= 3; economic_growth += 0.4
+on-arrival: tariffs -= 1; budget -= 2; inflation -= 0.5; workers_rep += 4*(1-dissent); freemen_rep += 4*(1-dissent); rural_rep -= 5; middle_class_rep -= 3; economic_growth += 0.4; economic_expansion += 2
 
 Lower tariffs help urban laborers but hurt domestic agriculture and industry, especially in the Midwest and Upper South.
