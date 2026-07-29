@@ -38,6 +38,6 @@ subtitle: Draw upon Schurz's reform-minded approach to public administration.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
-go-to: interior_policy
+go-to: Interior_policy
 
 Schurz lends his experience and reformist ideals to the administration's domestic agenda, advocating efficient government, responsible stewardship of public lands, and honest administration of the nation's internal affairs.
