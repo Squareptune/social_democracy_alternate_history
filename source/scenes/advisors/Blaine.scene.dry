@@ -27,4 +27,4 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; immigrant_laborers_rep -= 7; immigrant_laborers_dem += 7; middle_class_rep += 5; workers_rep += 5; 
 
-Blaine says unspeakable things to these ani- I mean Irishmen.
+Blaine rallies the nativist sentiments of many people across this nation against the Catholic Irish population mainly in the Northeast

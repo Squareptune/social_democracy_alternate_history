@@ -1,0 +1,53 @@
+title: John Sherman
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/John-Sherman.jpg
+view-if: sherman_advisor = 1
+new-page: true
+
+= John Sherman
+
+John Sherman of Ohio is one of the <span style="color: #c00000;">**Republican**</span> Party's foremost financial minds. A respected senator and chairman of the Senate Finance Committee, Sherman combines <span style="color: #9D2933;">**Moderate**</span> principles with a reputation for fiscal discipline and practical governance. Though often overshadowed by his brother, General William Tecumseh Sherman, John remains one of the most influential legislators in Washington.
+
+- @Sherman_Agri: Improve Agricultural policy
+- @Sherman_Fiscal: Advance Fiscal Reform
+- @Brother: Invoke the Legacy of **William Tecumseh Sherman**
+- @root: Return to main
+
+@Sherman_Agri
+subtitle: Draw on Sherman's experience with agricultural legislation.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; rural_rep += 1;
+go-to: agricultural_policy
+
+Sherman works closely with senators, agricultural interests, and state leaders to refine legislation affecting farmers, western settlement, and rural development.
+
+@Sherman_Fiscal
+subtitle: Sherman uses his influence on the Senate Finance Committee.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: fiscal_policy
+
+Sherman marshals support within the Senate Finance Committee, using his expertise to guide new fiscal legislation through Congress.
+
+@Brother
+subtitle: Have the Shermans campaign across the South, emphasizing moderation and national reconciliation.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: {!
+
+    Q.advisor_action_timer = 6;
+    Q.last_advisor_action = 1;
+
+    for (let state of Q.southern_states) {
+        Q[state + "_middle_class_rep"] += 2;
+    }
+
+    Q.conservative_dissent -= 2;
+    Q.radical_dissent += 2;
+
+!}
+
+John Sherman embarks on a speaking tour of the South alongside his brother, General William Tecumseh Sherman. While the General remains a controversial figure, John's <span style="color: #9D2933;">**Moderate**</span> reputation and calls for national reconciliation resonate with Southern Unionists and business leaders. Members of the <span style="color: #B5651D;">**Conservative**</span> wing of the <span style="color: #c00000;">**Republican**</span> Party applaud the outreach, while the <span style="color: #7A1F5C;">**Radical Republicans**</span> question whether the administration is becoming too conciliatory toward the former Confederacy.

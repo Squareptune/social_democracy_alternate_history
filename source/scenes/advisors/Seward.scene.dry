@@ -1,0 +1,43 @@
+title: William H. Seward
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Seward.jpg
+view-if: seward_advisor = 1
+new-page: true
+
+= William H. Seward
+
+William H. Seward of New York is one of America's most accomplished diplomats and statesmen. As Secretary of State, he skillfully preserved American interests throughout the Civil War and now seeks to expand the nation's influence abroad. A leading <span style="color: #B5651D;">**Conservative**</span> within the <span style="color: #c00000;">**Republican**</span> Party, Seward believes the country's future lies in commerce, diplomacy, and peaceful expansion rather than ideological confrontation.
+
+- @seward_foreign: Shape American Foreign Policy
+- @seward_commerce: Expand American Commerce
+- @seward_expansion: Promote American Expansion
+- @root: Return to main
+
+@seward_foreign
+title: Shape American Foreign Policy
+subtitle: Draw upon Seward's decades of diplomatic experience.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: foreign_policy
+
+Seward places the full prestige of the State Department behind the administration's diplomatic agenda, strengthening America's position abroad while carefully avoiding unnecessary conflicts.
+
+@seward_commerce
+title: Expand American Commerce
+subtitle: Negotiate new commercial agreements to strengthen American trade (+ 1 budget)
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; budget += 1; middle_class_rep += 2; workers_rep += 1;
+
+Seward negotiates favorable commercial agreements with foreign nations, opening new markets for American manufacturers and merchants. The growing prosperity strengthens support for the administration among the nation's business community.
+
+@seward_expansion
+title: Promote American Expansion
+subtitle: Advance Seward's vision of an expanding American republic.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; europe_relation += 3; resources += 2; moderate_dissent -= 2; liberal_dissent += 2;
+
+Seward champions an ambitious vision of American expansion, encouraging overseas commerce, strategic acquisitions, and a stronger international presence. While many <span style="color: #9D2933;">**Moderates**</span> admire his forward-looking diplomacy, members of the <span style="color: #DAA520;">**Liberal Republicans**</span> question whether the administration's attention is drifting too far from Reconstruction.

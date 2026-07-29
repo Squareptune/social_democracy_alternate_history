@@ -37,11 +37,11 @@ tags: event
 view-if: (year = 1873 and month >= 9) or panic_pending = 1
 max-visits: 1
 
-= The Panic of 1873
+= The Panic of [+ year +]
 
-On September 18th, Jay Cooke & Company — the most prestigious banking house in the United States, the firm that financed the Union war effort itself — closes its doors.
+As the month of [+ month +] hits, the Jay Cooke & Company one of the most prestigious banking house in the United States, the firm that financed the Union war effort itself closes its doors.
 
-The news hits Wall Street like a cannon shot. Cooke's bank had poured millions into the Northern Pacific Railroad, one of dozens of rail ventures that had consumed the easy credit of the postwar boom years. When the loans came due and the collateral proved worthless, the whole edifice collapsed. Within days, the New York Stock Exchange suspends trading for ten days — an event without precedent in American history.
+The news hits Wall Street like a cannon shot. Cooke's bank had poured millions into the Northern Pacific Railroad, one of dozens of rail ventures that had consumed the easy credit of the postwar boom years. When the loans came due and the collateral proved worthless, the whole edifice collapsed. Within days, the New York Stock Exchange suspends trading for ten days an event without precedent in American history.
 
 The crisis spreads outward from the counting houses into the streets. Factories cut shifts. Wages fall. Men who were employed last month queue at labor offices this month. The freedmen of the South, who had only just begun to taste economic independence, find themselves the first dismissed and the last rehired.
 

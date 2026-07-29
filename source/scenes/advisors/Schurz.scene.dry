@@ -1,0 +1,43 @@
+title: Carl Schurz
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Schurz,_Hon._Carl.jpg
+view-if: schurz_advisor = 1
+new-page: true
+
+= Carl Schurz
+
+Carl Schurz is one of the nation's most prominent German Americans. A veteran of the European revolutions, Union general, journalist, and statesman, Schurz has long championed civil service reform, honest government, and the rights of immigrants. As a leading <span style="color: #DAA520;">**Liberal Republican**</span>, he believes the nation can only prosper through capable administration and equal opportunity.
+
+- @schurz_immigrants: Rally German Immigrant Communities
+- @schurz_missouri: Strengthen Missouri Republicans
+- @schurz_interior: Advise on Interior Policy
+- @root: Return to main
+
+@schurz_immigrants
+title: Rally German Immigrant Communities
+subtitle: Draw upon Schurz's standing among German Americans.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; immigrant_rep += 3; germany_relation += 2;
+
+Schurz travels among German American communities, promoting the administration's achievements and reaffirming its commitment to opportunity and equal rights. [if year >= 1871: His reputation also strengthens goodwill with the newly unified German Empire.]
+
+@schurz_missouri
+title: Strengthen Missouri Republicans
+subtitle: Call upon Schurz's influence throughout Missouri.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; MO_workers_rep += 2; MO_middle_class_rep += 3; MO_rural_rep += 2; MO_immigrant_laborers_rep += 4;
+
+Schurz rallies the <span style="color: #c00000;">**Republican**</span> organization in Missouri, where his influence among veterans, reformers, and German American voters helps reinforce the party's position.
+
+@schurz_interior
+title: Advise on Interior Policy
+subtitle: Draw upon Schurz's reform-minded approach to public administration.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: interior_policy
+
+Schurz lends his experience and reformist ideals to the administration's domestic agenda, advocating efficient government, responsible stewardship of public lands, and honest administration of the nation's internal affairs.

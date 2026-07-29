@@ -1,0 +1,41 @@
+title: Hamilton Fish
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Hamilton_Fish.jpg
+view-if: fish_advisor = 1
+new-page: true
+
+= Hamilton Fish
+
+Hamilton Fish of New York was governor of New York, Senator, and trustee of The Bank for Savings in the City of New-York. Fish aims to restore stability to American foreign policy following the Civil War through careful negotiation, measured diplomacy, and an unwavering commitment to peace. A leading <span style="color: #9D2933;">**Moderate**</span> within the <span style="color: #c00000;">**Republican**</span> Party, Fish believes America's interests are best served through prudence rather than provocation.
+
+- @fish_relations: Strengthen International Relations
+- @fish_newyork: Consolidate the New York Organization
+- @fish_foreign: Conduct Foreign Policy
+- @root: Return to main
+
+@fish_relations
+subtitle: Use Fish's diplomatic reputation to improve America's standing abroad.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: international_relations
+
+Fish goes abroad to meet and improve the Republican party's standings among the liberal movements in Europe.
+
+@fish_newyork
+subtitle: Fish rallies New York's Republican establishment behind the administration.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; NY_workers_rep += 2; NY_middle_class_rep += 4; NY_rural_rep += 2; NY_immigrant_laborers_rep += 2;
+
+Fish's prestige within New York politics helps unite the state's diverse <span style="color: #c00000;">**Republican**</span> organizations. Party leaders, businessmen, and local activists rally behind the administration, strengthening Republican prospects in the Empire State.
+
+@fish_foreign
+subtitle: Entrust the State Department to one of America's finest diplomats.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: foreign_policy
+
+Fish carefully directs the affairs of the State Department, favoring negotiation over confrontation while ensuring that American interests are firmly protected abroad.

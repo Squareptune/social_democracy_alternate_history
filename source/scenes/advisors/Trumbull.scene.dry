@@ -1,0 +1,43 @@
+title: Lyman Trumbull
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Lyman_Trumbull.jpg
+view-if: trumbull_advisor = 1
+new-page: true
+
+= Lyman Trumbull
+
+Lyman Trumbull of Illinois is one of the nation's foremost constitutional scholars and legislators. A longtime advocate for civil rights, judicial independence, and the rule of law, Trumbull has played a defining role in shaping Reconstruction legislation. As a leading <span style="color: #DAA520;">**Liberal Republican**</span>, he favors principled government and constitutional reform over partisan politics.
+
+- @trumbull_judiciary: Advise on Judicial Affairs
+- @trumbull_illinois: Strengthen Illinois Republicans
+- @trumbull_liberals: Reassure the Liberal Republicans
+- @root: Return to main
+
+@trumbull_judiciary
+title: Advise on Judicial Affairs
+subtitle: Draw upon Trumbull's legal expertise and legislative experience.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: judiciary
+
+Trumbull lends his extensive legal knowledge to the administration, helping shape judicial policy and ensuring new legislation rests upon a firm constitutional foundation.
+
+@trumbull_illinois
+title: Strengthen Illinois Republicans
+subtitle: Rally the <span style="color: #c00000;">**Republican**</span> organization in Illinois.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; IL_workers_rep += 2; IL_middle_class_rep += 3; IL_rural_rep += 2; IL_freemen_rep += 2;
+
+Trumbull's standing throughout Illinois helps unite local <span style="color: #c00000;">**Republican**</span> leaders behind the administration, reinforcing the party's position in one of the Union's most influential states.
+
+@trumbull_liberals
+title: Reassure the Liberal Republicans
+subtitle: Appeal to the party's reform-minded wing.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; liberal_dissent -= 4;
+
+Trumbull meets with prominent reformers and independent-minded legislators, reassuring the <span style="color: #DAA520;">**Liberal Republicans**</span> that the administration remains committed to constitutional government, civil service reform, and honest public administration.

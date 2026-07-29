@@ -29,7 +29,6 @@ British liberals and abolitionist networks have long supported our cause. Sustai
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-audio: shuffle music/communist/workers_of_vienna_normalized.mp3
 on-arrival: resources -= 1; radical_strength += 1; europe_relation += 1; liberal_strength += 1;
 
 The ideals of 1848 live on in the German states. Their exiled leaders now influence American politics, and we may, in turn, encourage their continued push for liberty in Europe.

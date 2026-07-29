@@ -1,0 +1,41 @@
+title: Jacob D. Cox
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/Jacob_Cox.jpg
+view-if: cox_advisor = 1
+new-page: true
+
+= Jacob D. Cox
+
+Jacob D. Cox of Ohio is a respected Union general, lawyer, and reform-minded statesman. Throughout his career, Cox has championed honest government, merit-based appointments, and efficient public administration. A leading <span style="color: #DAA520;">**Liberal Republican**</span>, he believes lasting national unity depends upon integrity in government rather than political patronage.
+
+- @cox_liberal: Strengthen the Liberal Republicans
+- @cox_rally: Host a <span style="color: #c00000;">**Republican**</span> rally
+- @cox_ohio: Strengthen Ohio Republicans
+- @root: Return to main
+
+@cox_liberal
+title: Strengthen the Liberal Republicans
+subtitle: Appeal to the party's reform-minded wing.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; liberal_strength += 3;
+
+Cox meets with prominent reformers and independent-minded leaders, reassuring the <span style="color: #DAA520;">**Liberal Republicans**</span> that the administration remains committed to honest government and meaningful reform.
+
+@cox_rally
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: rally
+
+Cox does a rally! Cool...
+
+@cox_ohio
+title: Strengthen Ohio Republicans
+subtitle: Boost Republican support in the Buckeye state
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; OH_workers_rep += 2; OH_middle_class_rep += 3; OH_rural_rep += 2; OH_freemen_rep += 2;
+
+Cox's reputation for integrity helps unite Ohio's <span style="color: #c00000;">**Republican**</span> leaders, strengthening the party's standing throughout one of the nation's most influential states.
