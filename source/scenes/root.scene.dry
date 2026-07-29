@@ -82,6 +82,7 @@ Q.Radical_plan = 0;
 Q.veto = 0;
 Q.veto_reason = "";
 Q.civil_rights_act = 0;
+Q.civil_rights = 0;
 
 // inter-party relations
 Q.dem_relation = 5;
@@ -1879,6 +1880,7 @@ if (!Array.isArray(Q.timers)) {
 }
 Q.advisor_action_timer = 0;
 Q.recovery_ticker_timer = 0;
+Q.civil_rights_timer = 0;
 Q.crisis_program_timer = 0;
 Q.fundraising_timer = 0;
 Q.ideology_timer = 0;

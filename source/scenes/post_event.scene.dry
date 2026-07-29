@@ -347,6 +347,7 @@ for (let state of Q.southern_states) {
     + (unionLeagueEffect * 0.30)
     + (occupation * 10)
     + (judicial * 2)
+    + (civil_rights * 0.35)
     - suppression_modifier;
 
   // Amendment equality bonus
