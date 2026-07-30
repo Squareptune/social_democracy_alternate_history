@@ -16,8 +16,7 @@ on-arrival: civil_rights_timer += 6;
 
 [? civil_rights_act_passed = 1: With the passage of the Civil Rights acts, {!<span title="Unless your a women. Sorry Ladies">all citizens of the United States are to be treated equal under the law</span>!}. But revanchist southerners aim to ignore the law and continue there racist ways to preserve "White Man's Rule" in the South. ?]
 
-[? civil_rights_act_passed = 1: <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that President exercise his executive powers to properly enforce the law across the south.?]
-
+[? civil_rights_act_passed = 1: <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that President exercise his executive powers to properly enforce the law across the south. ?]
 
 - @pass_civil_rights: Back the <span style="color: #7A1F5C;">**Radical**</span> push and pass the Act.
 - @enforce: Enforce the Civil Rights Acts
