@@ -1,0 +1,64 @@
+title: War Effort
+new-page: true
+is-card: true
+tags: potus_affairs, cabinet
+view-if: spain_war = 1 and war_stage < 4 and war_room_timer <= 0
+card-image: img/CUBA.png
+on-arrival: war_room_timer += 1;
+
+= Prosecuting the War
+
+With Congress and the President committed to the fight, the question now is how to actually wage it. Spain is distracted at home as the Third Carlist War drags on and the Cantonal Rebellion has thrown Madrid into chaos but a war still has to be fought with ships, soldiers, and the men willing to bleed alongside them.
+
+[? if invasion_force_strength >= 1 : Our invasion force stands at [+ invasion_force_strength +] and growing. ?]
+[? if cuban_blockade_strength >= 1 : The blockade of Cuba is tightening, with a strength of [+ cuban_blockade_strength +]. ?]
+[? if mambise_strength >= 1 : Cuban rebels armed by our smuggling now field a strength of [+ mambise_strength +], tying down Spanish garrisons across the south and east. ?]
+
+- @mobilize_invasion_force: Mobilize an invasion force.
+- @enforce_blockade: Enforce a blockade of Cuba.
+- @smuggle_arms_mambises: Smuggle arms to the Mambise rebels.
+- @easy_discard
+- @cancel_advisor_action
+
+@mobilize_invasion_force
+subtitle: -3 budget. (Builds an army for Matanzas and Havana.)
+choose-if: budget >= 3
+unavailable-subtitle: [? if budget < 3: Not enough budget. ?]
+on-arrival: {!
+    Q.budget -= 3;
+    Q.invasion_force_strength = (Q.army_strength * 0.4) + (Q.South_army_strength * 0.25);
+    Q.PoliticalCostPenalty += 2;
+    Q.radical_strength += 2;
+    Q.conservative_dissent += 2;
+    Q.middle_class_dem += 1;
+!}
+
+Regiments muster and transports are chartered up and down the Eastern Seaboard. <span style="color: #7A1F5C;">**Radicals**</span> see it as the arm of liberation for Cuba; <span style="color: #B5651D;">**Conservatives**</span> see another costly foreign adventure so soon after the last war. The middle class, still counting the graves from 1865, watches the muster rolls with real unease.
+
+@enforce_blockade
+subtitle: -2 budget. (Requires sizeable naval strength)
+choose-if: budget >= 2 and navy_strength >= 200
+unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if navy_strength < 200: The Navy isn't strong enough to hold a blockade line. ?]
+on-arrival: {!
+    Q.budget -= 2;
+    Q.cuban_blockade_strength += 15;
+    Q.spain_relation -= 3;
+    Q.radical_strength += 1;
+    Q.middle_class_rep += 1;
+!}
+
+Warships take up station off Havana, Cienfuegos, and Santiago, choking off Spanish resupply by sea. Madrid protests furiously, but with the Cantonal Rebellion still burning through the Spanish treasury, there is little Spain can spare to break the line.
+
+@smuggle_arms_mambises
+subtitle: -0.5 budget. (Requires moderate naval strength)
+choose-if: budget >= 1 and navy_strength >= 80
+unavailable-subtitle: [? if budget < 0.5: Not enough budget. ?][? if navy_strength < 80: We lack the ships to run the arms safely. ?]
+on-arrival: {!
+    Q.budget -= 1;
+    Q.mambise_strength += 12;
+    Q.spain_relation -= 2;
+    Q.radical_strength += 2;
+    Q.freedmen_rep += 1;
+!}
+
+Fast blockade-runners slip rifles, powder, and volunteers to the Mambise columns fighting in Oriente and Camagüey. Spanish garrisons that might otherwise reinforce the coast find themselves pinned down chasing rebels through the countryside instead—every rifle that reaches the Mambises is one less soldier free to defend the capital.

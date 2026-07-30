@@ -1,74 +1,105 @@
-title: Civil Rights
+title: Presidential Veto
+subtitle: [+ president +] vetoes the [+ veto_reason +]
+tags: event
 new-page: true
-is-card: true
-tags: cotus_affairs, cabinet
-view-if: civil_rights_act_passed != 1 and rep_majority = 1
-card-image: img/Freedmen.jpg
-on-arrival: civil_rights_timer += 6;
-
-= Radicals Demand a Civil Rights Act
-
-<span style="color: #7A1F5C;">**Radical Republicans**</span> are pushing for sweeping civil rights legislation to protect freedmen from the Black Codes spreading across the South and establish federal guarantees of citizenship, due process, and equal protection under the law.
-
-[? if amnesty_civil_rights_bonus = 1 : The groundwork laid during the amnesty debate has left some members more receptive to this than they might otherwise have been. ?]
-
-<span style="color: #9D2933;">**Moderates**</span> are divided. Some warn it will provoke a confrontation with the executive and alienate conservative allies. Others say the time for half-measures has passed.
-
-[? if president = "Johnson" : President Johnson has made clear he will veto any legislation of this kind. The question is whether we have the votes to override him. ?]
-[? if president != "Johnson" : With a <span style="color: #c00000;">**Republican**</span> in the White House, a veto is not the obstacle it once was. The fight is in Congress, not the executive mansion. ?]
-
-- @pass_civil_rights: Back the Radical push and pass the Act.
-- @stall_civil_rights: Delay action for now.
-- @easy_discard
-- @cancel_advisor_action
-
-@pass_civil_rights
-subtitle: -2 budget. Requires congressional majority.
-choose-if: budget >= 2 and house_majority > 1 and sen_majority > 1
-unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if house_majority < 2: We lack a House majority. ?][? if sen_majority < 2: We lack a Senate majority. ?]
+view-if: veto > 0
 on-arrival: {!
-    Q.civil_rights_act_passed = 1;
-    Q.budget -= 2;
-    Q.PoliticalCostPenalty += 2;
-    Q.freedmen_rep += Q.amnesty_civil_rights_bonus ? 7 : 5;
-    Q.radical_strength += 5;
-    Q.radical_dissent -= 3;
-    Q.moderate_dissent += 3;
-    Q.conservative_dissent += 4;
-    Q.liberal_dissent += 3;
 
-    // Boost reconstruction scores — the law gives freedmen legal tools
-    for (let state of Q.southern_states) {
-        Q[state + "_raceEqualitySupport"] = Math.min(100,
-            (Q[state + "_raceEqualitySupport"] || 0) + (Q.amnesty_civil_rights_bonus ? 8 : 5));
+    Q.veto = 0;
+
+    if (Q.veto_reason == "Civil Rights Act") {
+        Q.civil_rights_act_passed = 0;
+        Q.freedmen_rep -= 3;
+        Q.radical_strength -= 3;
+        Q.moderate_dissent -= 3;
+        Q.conservative_dissent -= 2;
+        Q.liberal_dissent -= 1;
+        Q.civil_rights -= 5;
     }
+    if (Q.veto_reason == "Tenure of Office Act") {
+        Q.impeachment_ready = 0;
+        Q.tenure_act = 0;
+        Q.radical_strength -= 3;
+        Q.radical_dissent += 1;
+        Q.moderate_dissent -= 1;
+    }
+    if (Q.veto_reason == "Military Reconstruction Act") {
+        Q.Radical_plan = 0;
+        Q.Johnson_plan = 1;
+        Q.occupation = 0;
+        Q.radical_strength -= 3;
+        Q.moderate_strength -= 2;
+        Q.freedmen_rep -= 2;
+        Q.kkk_strength += 5;
+        Q.kkk_militancy += 0.2;
 
-    // Johnson veto path
-    if (Q.president === "Johnson") {
-        Q.veto += 1;
-        Q.veto_reason = "Civil Rights Act";
+        for (let state of Q.southern_states) {
+            let loyalty = Q[state + "_loyalty"] || 0;
+            let equality = Q[state + "_raceEqualitySupport"] || 0;
+            let score = Math.round((loyalty * 0.55) + (equality * 0.45));
+            Q[state + "_reconstructionScore"] = score;
+            Q[state + "_canReadmit"] = score >= 20 ? 1 : 0;
+        }
     }
 !}
 
-[? if president = "Johnson" : Congress passes the Civil Rights Act. Johnson's veto is expected and the override fight begins immediately. ?]
-[? if president != "Johnson" : Congress passes the Civil Rights Act. With a <span style="color: #c00000;">**Republican**</span> president, it moves quickly to signature. For the first time, citizenship and equal protection are federal law. ?]
+= [+ president +] vetoes the [+ veto_reason +]
 
-[? if amnesty_civil_rights_bonus = 1 : The civil rights provisions negotiated during the amnesty debate gave this bill a foundation to build on. The final legislation is stronger for it. ?]
+President [+ president +] has vetoed the [+ veto_reason +], declaring it "an unconstitutional assault on states' rights and an invitation to tyranny."
 
-Freedmen communities across the South receive the news with cautious hope. The law is only as strong as its enforcement, and enforcement depends on everything else we have built or failed to build.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> are outraged. They see this as further proof that [+ president +] is siding with the <span style="color: #002765;">**Redeemers**</span> and obstructing the goals of Reconstruction. <span style="color: #9D2933;">**Moderates**</span> are split—some urge an override, others warn of political overreach.
 
-@stall_civil_rights
-subtitle: Delay action for now.
+With the Radical base demanding action and the President daring Congress to respond, the veto becomes a moment of truth.
+
+- @override: Attempt to override the veto.
+- @stand_down: Let the veto stand, for now.
+
+@override
+subtitle: Requires 2/3 in both chambers.
+choose-if: house_majority = 3 and sen_majority = 3
+unavailable-subtitle: [? if house_majority < 3: We lack the supermajority in the House needed to override. ?][? if sen_majority < 3: We lack the supermajority in the Senate needed to override. ?]
 on-arrival: {!
-    Q.radical_dissent += Q.amnesty_civil_rights_bonus ? 8 : 5;
-    Q.moderate_strength += 3;
-    Q.freedmen_rep -= 3;
-    Q.reconstruction_support -= 1;
-    if (Q.amnesty_civil_rights_bonus) {
-        // Stalling after the amnesty deal feels like a broken promise
-        Q.freemen_rep -= 2;
-        Q.radical_dissent += 3;
+
+    if (Q.veto_reason == "Civil Rights Act") {
+        Q.civil_rights_act_passed = 1;
+        Q.freedmen_rep += 3;
+        Q.radical_strength += 3;
+        Q.moderate_dissent += 3;
+        Q.conservative_dissent += 2;
+        Q.liberal_dissent += 1;
+        Q.civil_rights += 3;
     }
+    if (Q.veto_reason == "Tenure of Office Act") {
+        Q.impeachment_ready = 1;
+        Q.tenure_act = 2;
+        Q.radical_strength += 3;
+        Q.radical_dissent -= 1;
+        Q.moderate_dissent += 1;
+    }
+    if (Q.veto_reason == "Military Reconstruction Act") {
+        Q.Radical_plan = 1;
+        Q.Johnson_plan = 0;
+        Q.occupation = 2;
+        Q.radical_strength += 3;
+        Q.moderate_strength += 2;
+        Q.freedmen_rep += 2;
+        for (let state of Q.southern_states) {
+            Q[state + "_admitted"] = 0;
+        }
+    }
+
+    Q.veto_reason = "";
 !}
 
-We hold back. <span style="color: #9D2933;">**Moderates**</span> appreciate the restraint, but <span style="color: #7A1F5C;">**Radical**</span> members and freedmen communities grow increasingly impatient.[? if amnesty_civil_rights_bonus = 1 : The civil rights protections that were promised as part of the amnesty debate have not materialized. That is being noticed. ?]
+We move swiftly to override the President's veto. With overwhelming support in Congress, the law is enacted anyway. [+ president +]'s influence shrinks—and our <span style="color: #7A1F5C;">**Radical**</span> base cheers.
+
+@stand_down
+subtitle: Political caution.
+on-arrival: {!
+    Q.moderate_strength += 2;
+    Q.radical_dissent += 4;
+    Q.freedmen_rep -= 2;
+    Q.veto_reason = "";
+!}
+
+We are forced to back down as [+ president +] has won this time. <span style="color: #9D2933;">**Moderates**</span> defend our decision as strategic—but to many, it looks like cowardice. The veto holds.
