@@ -16,7 +16,7 @@ Charles Sumner is the senior Senator from Massachusetts and the moral conscience
 
 @sumner_freedmen_campaign
 title: Champion the Freedmen
-subtitle: Sumner rallies Black communities and White supporters of equality behind the party.
+subtitle: Sumner rallies Black communities and White supporters of equality behind the party
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; freemen_rep += 6; workers_rep += 1; middle_class_rep -= 2;
