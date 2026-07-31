@@ -8,15 +8,15 @@ on-arrival: civil_rights_timer += 6;
 
 = Radicals Demand a Civil Rights Act
 
-[? civil_rights_act_passed = 0 : <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that Congress pass sweeping civil rights legislation to protect freedmen from Southern "Black Codes" and ensure equality before the law. ?]
+[? civil_rights_act_passed = 0 : The <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that Congress pass sweeping civil rights legislation to protect freedmen from Southern "Black Codes" and ensure equality before the law. ?]
 
 [? civil_rights_act_passed = 0 : They argue that Reconstruction means nothing without federal guarantees of citizenship, due process, and equal protection.?]
 
-[? civil_rights_act_passed = 0 : <span style="color: #9D2933;">**Moderates**</span> are divided. Some warn it will provoke a presidential veto and alienate <span style="color: #B5651D;">**Conservatives**</span> allies. Others say the time for compromise has passed. ?]
+[? civil_rights_act_passed = 0 : The <span style="color: #9D2933;">**Moderates**</span> are divided. Some warn it will provoke a presidential veto and alienate <span style="color: #B5651D;">**Conservatives**</span> allies. Others say the time for compromise has passed. ?]
 
-[? civil_rights_act_passed = 1 : With the passage of the Civil Rights acts, {!<span title="Unless your a women. Sorry Ladies">all citizens of the United States are to be treated equal under the law</span>!}. But revanchist southerners aim to ignore the law and continue there racist ways to preserve "White Man's Rule" in the South. ?]
+[? civil_rights_act_passed = 1 : With the passage of the Civil Rights acts, all citizens of the United States are to be treated equal under the law. But revanchist southerners aim to ignore the law and continue there racist ways to preserve "White Man's Rule" in the South. ?]
 
-[? civil_rights_act_passed = 1 : <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that President exercise his executive powers to properly enforce the law across the south. ?]
+[? civil_rights_act_passed = 1 : The <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that President exercise his executive powers to properly enforce the law across the south. ?]
 
 What will we do???
 
