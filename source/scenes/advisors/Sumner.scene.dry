@@ -29,7 +29,7 @@ subtitle: Sumner leverages his Senate position to advance civil rights bills.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
-go-to: civil_rights
+go-to: civil_rights_scene
 
 Sumner marshals his Senate allies and pushes a civil rights measure through committee and onto the floor.
 
