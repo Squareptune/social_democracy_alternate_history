@@ -18,6 +18,8 @@ on-arrival: civil_rights_timer += 6;
 
 [? civil_rights_act_passed = 1 : <span style="color: #7A1F5C;">**Radical Republicans**</span> are demanding that President exercise his executive powers to properly enforce the law across the south. ?]
 
+What will we do???
+
 - @pass_civil_rights: Back the <span style="color: #7A1F5C;">**Radical**</span> push and pass the Act.
 - @enforce: Enforce the Civil Rights Acts
 - @stall_civil_rights: Delay action for now.
