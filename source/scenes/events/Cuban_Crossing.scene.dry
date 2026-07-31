@@ -1,0 +1,53 @@
+title: The American Crossing to Cuba
+tags: event
+view-if: war_stage <= 1 and invasion_force_strength > 0
+
+= Crossing the Florida Strait
+
+The American Expeditionary Force has assembled in Florida and now prepares to cross the Florida Strait for the invasion of Cuba. Protected by the United States Navy, thousands of soldiers board their transports as the nation watches with anticipation. God bless the troops!
+
+- @Transport: Begin the Crossing
+
+@Transport
+go-to: Battle
+
+@Battle
+
+The American fleet steams south toward Cuba, escorting the troop transports through the Florida Strait. As the invasion force nears Cuban waters, Spanish gunboats emerge to challenge the crossing, forcing the Navy into battle.
+
+- @Fight: Engage the Spanish Fleet!
+- @Retreat: Order a Retreat
+
+@Fight
+subtitle: Defeat the Spanish Navy and secure the crossing.
+on-arrival: {!
+
+    let american_strength = Q.navy_strength * (1.0 + (Q.navy_loyalty * 0.05));
+
+    if (american_strength > Q.spain_navy_strength) {
+        Q.battle_keys_outcome = "victory";
+        Q.war_stage += 1;
+        Q.navy_strength *= 0.95;
+        Q.navy_loyalty *= 1.05;
+    } else {
+        Q.battle_keys_outcome = "defeat";
+        Q.navy_strength *= 0.75;
+        Q.navy_loyalty *= 0.75;
+    }
+
+!}
+go-to: Victory if battle_keys_outcome = "victory"; Surrender if battle_keys_outcome = "defeat"
+
+@Retreat
+subtitle: Abandon the invasion.
+go-to: Surrender
+
+@Victory
+
+The two fleets clash in what newspapers soon dub the **Battle of the Florida Strait**. Superior training, discipline, and firepower allow the United States Navy to outmaneuver the Spanish squadron, driving it from the field. With the sea lanes secured, the American Expeditionary Force begins its landing on Cuba.
+
+- @Continue: Continue
+
+@Continue
+
+The war rages on...
