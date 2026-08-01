@@ -8,11 +8,11 @@ on-arrival: war_room_timer += 1;
 
 = Prosecuting the War
 
-With Congress and the President committed to the fight, the question now is how to actually wage it. Spain is distracted at home as the Third Carlist War drags on and the Cantonal Rebellion has thrown Madrid into chaos but a war still has to be fought with ships, soldiers, and the men willing to bleed alongside them.
+With Congress and the President now committed to war, attention turns from speeches to strategy. Spain may be weakened by the ongoing Third Carlist War and the chaos of the Cantonal Rebellion, but even a distracted empire will not surrender its richest colony without a fight. Victory will require ships to command the sea, soldiers willing to storm hostile shores, and the resolve to sustain a campaign fought hundreds of miles from home.
 
-[? if invasion_force_strength >= 1 : Our invasion force stands at [+ invasion_force_strength +] thousand and growing. ?]
-[? if cuban_blockade_strength >= 1 : The blockade of Cuba is tightening, with our blockade on the island. ?]
-[? if mambise_strength >= 1 : Cuban rebels armed by our smuggling now supply a guerilla army, tying down Spanish garrisons across the south and east. ?]
+[? if invasion_force_strength >= 1 : Our invasion force now numbers [+ invasion_force_strength +] thousand men and continues to grow as volunteers and regulars assemble in Southern ports. ?]
+[? if cuban_blockade_strength >= 1 : The blockade around Cuba tightens with each passing week, placing increasing pressure on Spanish supply lines and commerce. ?]
+[? if mambise_strength >= 1 : Armed with American weapons and supplies, the Mambise rebels have grown into a formidable guerrilla force, tying down Spanish garrisons across much of the island. ?]
 
 - @mobilize_invasion_force: Mobilize an invasion force.
 - @enforce_blockade: Enforce a blockade of Cuba.
@@ -23,9 +23,9 @@ With Congress and the President committed to the fight, the question now is how 
 @mobilize_invasion_force
 subtitle: -2 budget.
 choose-if: budget >= 2
-view-if: invasion_force_strength >= 1
+view-if: invasion_force_strength < 1
 unavailable-subtitle: [? if budget < 2: Not enough budget. ?]
-on-arrival: {!
+on-arrival: {! 
     Q.budget -= 2;
     Q.invasion_force_strength = (Q.army_strength * 0.4) + (Q.South_army_strength * 0.25);
     Q.PoliticalCostPenalty += 2;
@@ -34,13 +34,13 @@ on-arrival: {!
     Q.middle_class_dem += 1;
 !}
 
-Regiments muster and transports are chartered up and down the Eastern Seaboard. <span style="color: #7A1F5C;">**Radicals**</span> see it as the arm of liberation for Cuba; <span style="color: #B5651D;">**Conservatives**</span> see another costly foreign adventure so soon after the last war. The middle class, still counting the graves from 1865, watches the muster rolls with real unease.
+Recruitment offices fill with volunteers while regular army regiments receive orders to concentrate along the Atlantic coast. Steamships are requisitioned, supply depots established, and military camps spring up from Virginia to Florida in preparation for an expedition unlike any the Republic has attempted. <span style="color: #7A1F5C;">**Radicals**</span> hail the mobilization as the beginning of Cuba's liberation, while <span style="color: #B5651D;">**Conservatives**</span> warn that another costly foreign war may squander the peace so recently won. The nation's middle class, still haunted by the losses of the Civil War, watches the growing columns of marching men with quiet apprehension.
 
 @enforce_blockade
 subtitle: -1 budget. (Requires sizeable naval strength)
 choose-if: budget >= 1 and navy_strength >= 200
 unavailable-subtitle: [? if budget < 1: Not enough budget. ?][? if navy_strength < 200: The Navy isn't strong enough to hold a blockade line. ?]
-on-arrival: {!
+on-arrival: {! 
     Q.budget -= 1;
     Q.cuban_blockade_strength += 15;
     Q.spain_relation -= 3;
@@ -52,13 +52,13 @@ on-arrival: {!
     }
 !}
 
-Warships take up station off Havana, Cienfuegos, and Santiago, choking off Spanish resupply by sea. Madrid protests furiously, but with the Cantonal Rebellion still burning through the Spanish treasury, there is little Spain can spare to break the line.
+Squadrons of American warships take up station off Havana, Cienfuegos, and Santiago, intercepting merchant vessels and sealing Cuba's principal ports. Every ship turned away weakens Spain's ability to reinforce or resupply the island, forcing its commanders to rely on dwindling local stockpiles. Madrid denounces the blockade as an act of piracy, but with the Carlist War and Cantonal Revolt consuming men, money, and political attention at home, Spain can spare little to challenge American naval superiority.
 
 @smuggle_arms_mambises
 subtitle: -0.5 budget. (Requires moderate naval strength)
 choose-if: budget >= 0.5 and navy_strength >= 80
 unavailable-subtitle: [? if budget < 0.5: Not enough budget. ?][? if navy_strength < 80: We lack the ships to run the arms safely. ?]
-on-arrival: {!
+on-arrival: {! 
     Q.budget -= 0.5;
     Q.mambise_strength += 12;
     Q.spain_relation -= 2;
@@ -66,4 +66,4 @@ on-arrival: {!
     Q.freedmen_rep += 1;
 !}
 
-Fast blockade-runners slip rifles, powder, and volunteers to the Mambise columns fighting in Oriente and Camagüey. Spanish garrisons that might otherwise reinforce the coast find themselves pinned down chasing rebels through the countryside instead, every rifle that reaches the Mambises is one less soldier free to defend the island.
+Under cover of darkness, fast steamers and blockade-runners ferry rifles, ammunition, medicine, and volunteers to the Mambise insurgents operating throughout Oriente and Camagüey. Every successful landing strengthens the Cuban resistance and forces Spain to divert valuable troops away from the coast and into an increasingly frustrating guerrilla campaign. Each crate of rifles delivered to the rebels is one fewer Spanish battalion available to oppose an eventual American landing.

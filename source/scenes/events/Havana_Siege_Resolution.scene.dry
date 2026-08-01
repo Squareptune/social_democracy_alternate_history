@@ -1,7 +1,99 @@
-Title: Test
-subtitle: Test
+Title: Continuation of the Havana Siege
+tags: event
+view-if: havana_outcome = "siege"
 
+= Tightening the Noose
 
-= Test
+The siege of Havana drags into another brutal phase. Day and night, American batteries pound the city's defenses while soldiers hold their positions in trenches outside the walls. Morro Castle's guns continue to roar over the harbor, and every assault is met with determined Spanish resistance.
 
-test
+Yet time is not on Spain's side. Supplies inside the city grow scarcer, disease begins to spread among the defenders, and every passing week allows the Mambise rebels to tighten their grip on the countryside. The only hope for Havana is a relief column from the south. The question facing the American command is simple: can the city be forced to surrender before Spain can break through?
+
+- @Continue: Continue the Siege
+
+@Continue
+subtitle: Hope to take the city
+on-arrival: {!
+
+    let siege_speed = (Q.invasion_force_strength)/(Q.mambise_strength);
+
+    if(siege_speed >= Q.spain_relief_speed)
+    {
+        Q.havana_outcome = "Pitched";
+    }
+    else
+    {
+        Q.havana_outcome = "Victory";
+    }
+
+!}
+go-to: Pitched if havana_outcome = "Pitched"; Victory if havana_outcome = "Victory"
+
+@Victory
+
+The full weight of American industry is brought against Havana. For weeks, the city's walls are battered by naval guns and siege artillery while American engineers steadily move their lines closer to the fortifications. The defenders fight stubbornly, but their situation becomes increasingly hopeless.
+
+With Mambise forces still dominating much of Oriente and Camagüey, Spain is unable to organize a meaningful rescue effort. Reinforcements never arrive, ammunition runs low, and the city's garrison realizes that further resistance will only bring unnecessary destruction.
+
+One morning, the guns of Morro Castle fall silent. The Spanish colors are lowered, and Havana surrenders before the relief column can ever reach the city.
+
+- @Continue: Continue
+
+@Continue
+on-arrival: spain_surrendered = 1; spain_war = 0
+
+With Havana fallen, Spain's position in Cuba has collapsed. The colonial government has lost its capital, its main port, and its ability to continue organized resistance. Through European intermediaries, Madrid sends word that it is prepared to negotiate an end to the war.
+
+@Pitched
+
+Against all expectations, Spain refuses to abandon Havana.
+
+A relief column under the command of the experienced General Arsenio Martínez Campos has forced its way north, arriving far sooner than American commanders anticipated. The exhausted defenders of Havana now have a lifeline, and the American expedition finds itself trapped between the city's fortifications and a determined Spanish army.
+
+The American command faces an impossible decision. Continue the fight and risk the destruction of the expedition, or preserve the lives of thousands of soldiers by withdrawing before the situation becomes hopeless.
+
+- @Fight: Engage the Spanish in open battle
+- @Surrender: Surrender
+
+@Fight
+on-arrival: {!
+
+    let rng = Math.floor(Math.random() * (75 - 45 + 1)) + 45;
+
+    let american_strength = Q.invasion_force_strength + (Q.navy_strength * 0.05);
+    let spanish_strength = Math.max(rng - (Q.mambise_strength * 0.5), 60);
+
+    if(american_strength > spanish_strength)
+    {
+        Q.havana_outcome = "Capture";
+    }
+    else
+    {
+        Q.havana_outcome = "Surrender";
+    }
+
+!}
+go-to: Capture if havana_outcome = "Capture"; Surrender if havana_outcome = "Surrender"
+
+The American Expeditionary Force prepares for a desperate battle. With Havana behind them and the Spanish army advancing before them, there is nowhere left to retreat. Officers rally exhausted troops, artillery crews prepare their guns, and soldiers understand that the fate of the entire Cuban campaign may be decided in a single engagement.
+
+The order is given: victory at all costs.
+
+@Capture
+title: Victory and Fall of Havana
+subtitle: Spain surrenders
+on-arrival: spain_surrendered = 1; spain_war = 0
+
+The battle against the Spanish relief column becomes one of the hardest fought engagements of the campaign. Despite being outnumbered and exhausted, American soldiers hold their ground, supported by naval guns firing from the harbor and Cuban fighters striking at Spanish positions from the countryside.
+
+After hours of brutal fighting, the Spanish relief force collapses. Thousands of soldiers surrender, and the last hope of saving Havana disappears with them. Inside the city, the garrison commander recognizes that further resistance is impossible and orders the white flag raised above the fortifications.
+
+The American Expeditionary Force enters Havana alongside the Cuban Liberation Army, welcomed by crowds celebrating the end of Spanish rule. The fall of the city marks the destruction of Spain's remaining authority on the island. With little left to defend, Madrid sends word through European intermediaries that it is ready to discuss peace terms.
+
+@Surrender
+title: Defeat of the American Expeditionary Force
+on-arrival: spain_war = 0
+go-to: Defeat
+
+The arrival of the Spanish relief column shatters American confidence. Exhausted from weeks of siege warfare and cut off from an easy retreat, the expedition begins to lose cohesion as Spanish pressure mounts.
+
+Unable to withstand the combined force of the Havana garrison and the relief army, the American position collapses. What began as a promising campaign ends in disaster as the Expeditionary Force is forced to abandon its advance.

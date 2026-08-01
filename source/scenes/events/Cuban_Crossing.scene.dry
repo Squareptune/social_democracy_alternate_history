@@ -4,7 +4,11 @@ view-if: war_stage = 1 and invasion_force_strength > 0
 
 = Crossing the Florida Strait
 
-The American Expeditionary Force has assembled in Florida and now prepares to cross the Florida Strait for the invasion of Cuba. Protected by the United States Navy, thousands of soldiers board their transports as the nation watches with anticipation. God bless the troops!
+Weeks of preparation have led to this moment. Along Florida's southern coast, thousands of American soldiers file aboard crowded transports while naval officers make their final inspections and supply wagons empty their last crates onto waiting ships. Flags wave from every mast as bands play patriotic marches for the crowds gathered along the docks, each spectator hoping to witness the beginning of a swift and glorious campaign.
+
+Escorted by the warships of the United States Navy, the American Expeditionary Force prepares to cross the Florida Strait and carry the war to Spanish Cuba. For many of the young men aboard, this will be their first taste of combat. Across the nation, families offer prayers for loved ones sailing into uncertain waters.
+
+God bless the troops.
 
 - @Transport: Begin the Crossing
 
@@ -13,7 +17,11 @@ go-to: Battle
 
 @Battle
 
-The American fleet steams south toward Cuba, escorting the troop transports through the Florida Strait. As the invasion force nears Cuban waters, Spanish gunboats emerge to challenge the crossing, forcing the Navy into battle.
+= Spain Vessals Appear
+
+The invasion fleet steams south beneath clear skies, its columns of transports shielded by American cruisers and ironclads. As Cuba's coastline emerges on the horizon, lookouts report smoke rising from the east. Moments later, Spanish warships appear, determined to block the crossing before American soldiers can set foot on the island.
+
+Signal flags race across both fleets as guns are run out and magazines opened. There will be no peaceful landing today. Control of the sea, and perhaps the fate of the campaign itself, will be decided in the coming hours.
 
 - @Fight: Engage the Spanish Fleet!
 - @Retreat: Order a Retreat
@@ -40,11 +48,16 @@ go-to: Victory if battle_keys_outcome = "victory"; Defeat if battle_keys_outcome
 
 @Retreat
 subtitle: Abandon the invasion.
+on-arrival: spain_war = 0
 go-to: Defeat
 
 @Victory
 
-The two fleets clash in what newspapers soon dub the **Battle of the Florida Strait**. Superior training, discipline, and firepower allow the United States Navy to outmaneuver the Spanish squadron, driving it from the field. With the sea lanes secured, the American Expeditionary Force begins its landing on Cuba.
+= VICTORY
+
+The opposing fleets exchange thunderous broadsides in what newspapers would later christen the **Battle of the Florida Strait**. American gunnery proves faster and more accurate, while superior seamanship allows the United States Navy to outflank the Spanish squadron and force it into a disorderly retreat. Several Spanish vessels are sunk or driven ashore, while the remainder scatter toward Havana under relentless pursuit.
+
+With command of the surrounding waters secured, the troop transports continue unmolested toward the Cuban coast. As landing craft are lowered and the first American soldiers step ashore, the invasion of Cuba has truly begun. The success of the landing marks a decisive turning point, but the hardest fighting still lies ahead.
 
 - @Continue: Continue
 

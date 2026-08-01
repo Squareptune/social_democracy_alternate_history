@@ -133,7 +133,6 @@ Q.spain_havana_garrison_strength = 180;
 Q.spain_relief_speed = 3;
 Q.battle_keys_outcome = "";
 Q.matanzas_outcome = "";
-Q.havana_siege_duration = 0;
 Q.havana_outcome = "";
 Q.spain_surrendered = 0;
 Q.cuba_status = "";

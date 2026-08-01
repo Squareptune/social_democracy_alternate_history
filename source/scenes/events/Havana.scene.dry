@@ -1,10 +1,14 @@
 title: The Siege of Havana
 tags: event
-view-if: war_stage = 2
+view-if: war_stage = 3
 
 = Approaching Havana
 
-The column marches west along the coast road, gathering strength as it goes. Ahead lies Havana, the last great prize of Spanish Cuba, and the most heavily fortified city in the Caribbean. Whether its garrison stands alone or is reinforced from the south depends on how badly the Mambise rebels have tied down Spain's remaining regulars. Word from the countryside is that Madrid, buried under the Cantonal Rebellion and the Carlist War at home, has little left to spare Cuba regardless.
+The American army marches steadily west from Matanzas, its supply trains stretching for miles behind the advancing columns. Villages liberated by the Mambises greet the expedition as it passes, while fleeing Spanish detachments fall back toward the island's capital. Every road now leads to Havana, the political and military heart of Spanish Cuba.
+
+Beyond its ancient walls and formidable forts lies the strongest concentration of Spanish troops remaining on the island. Morro Castle commands the harbor, batteries guard every approach, and seasoned regulars prepare to defend the city street by street if necessary. Yet Spain's position grows weaker with every passing day. Mambise guerrillas continue to harass communications across the countryside, while the Carlist War and the Cantonal Rebellion consume Madrid's attention and leave few reinforcements available for Cuba.
+
+The fate of the campaign will be decided before the walls of Havana.
 
 - @Advance: Advance on Havana.
 - @Withdraw: Halt the advance.
@@ -20,38 +24,44 @@ Q.havana_siege_duration = 0;
 
 if (american_strength >= effective_garrison * 1.3) {
 Q.havana_outcome = "decisive_win";
-Q.war_stage = 4;
 } else {
 Q.havana_outcome = "siege";
-Q.war_stage = 3;
 Q.havana_garrison_remaining = effective_garrison;
 }
+Q.war_stage = 4;
 
 !}
 go-to: Decisive_Win if havana_outcome = "decisive_win"; Siege_Begins if havana_outcome = "siege"
 
 @Withdraw
 subtitle: Call off the advance on Havana.
+on-arrival: spain_war = 0
 go-to: Defeat
 
 @Decisive_Win
 
-Word of the American column's strength reaches Havana before the vanguard does. With Mambise columns still rampaging through Oriente and Camagüey, no relief is coming, and the garrison commander knows it. The city's defenses crumble in a matter of days rather than weeks, and Spanish colors come down over Morro Castle almost before the siege guns are unlimbered.
+News of the American advance reaches Havana well before the army itself. Reports of shattered coastal defenses, the loss of Matanzas, and relentless Mambise activity convince the Spanish commander that no meaningful relief force will arrive. With morale collapsing and supplies dwindling, the prospect of resisting a superior American army appears hopeless.
+
+Rather than endure a prolonged bombardment, the city's defenses begin to unravel. American troops occupy the outer fortifications with only scattered resistance, and within days the Stars and Stripes rises above Morro Castle as Spanish forces lay down their arms. What many feared would become a bloody siege instead ends in a remarkably swift victory.
 
 - @Continue: Continue
 
 @Continue
-on-arrival: spain_surrendered = 1;
+on-arrival: spain_surrendered = 1; spain_war = 0
 
-With Havana fallen, there is little left in Cuba for Madrid to defend. Word is sent through European intermediaries: Spain is ready to talk terms.
+With Havana in American hands, organized Spanish resistance on Cuba effectively comes to an end. Deprived of its colonial capital and unable to reinforce the island, Madrid has little choice but to seek peace. Diplomatic messages are dispatched through European intermediaries requesting negotiations to end the war.
 
 @Siege_Begins
 
-The garrison at Havana digs in rather than break. Morro Castle's guns answer every American advance, and the city's defenses hold through the first weeks of the siege. Whether Havana falls on its own or a Spanish relief column fights its way up from the south is now only a matter of time and of how much longer that time can be bought.
+The defenders refuse to yield.
+
+Spanish engineers reinforce barricades throughout the city while artillery crews prepare for a lengthy siege. From the walls of Morro Castle, heavy guns answer every American battery brought into position, filling the harbor with smoke and thunder. Attempts to probe the defenses are driven back by determined volleys, making it clear that Havana will not fall in a single assault.
+
+American soldiers settle into trenches surrounding the city as engineers construct siege works and supply depots. Beyond the lines, Mambise fighters continue to raid Spanish communications in the hope of preventing reinforcements from reaching the capital. Whether Havana ultimately falls through starvation and bombardment or is saved by a desperate relief effort from the south now depends on which side can endure longer.
 
 - @Continue_Siege: Continue
 
 @Continue_Siege
 go-to: Havana_Siege_Resolution
 
-The siege settles into a grinding routine of trenches and shelling. Every week that passes is a week for the city to break — or for Spain to break through.
+The siege settles into an exhausting routine of trenches, bombardments, and constant skirmishing. Every passing week brings the defenders closer to exhaustion, but each delay also grants Spain another opportunity to gather whatever forces it can and attempt one final effort to save Havana.
