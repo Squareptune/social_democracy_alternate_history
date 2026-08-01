@@ -1,5 +1,93 @@
-Title: YOU LOST
-subtitle: Dumbass
+title: Defeat in the Spanish-American War
+tags: event
+view-if: US_lose = 1
+max-visits: 1
+on-arrival: {!
+    Q.radical_strength -= 3;
+    Q.moderate_strength -= 5;
+    Q.conservative_strength -= 2;
 
+    Q.dem_bourbon_strength += 6;
+    Q.dem_reform_strength += 3;
 
-= Poop
+    Q.army_loyalty -= 0.10;
+    Q.navy_loyalty -= 0.05;
+
+    Q.economic_growth -= 0.5;
+    Q.budget -= 2;
+
+    Q.middle_class_dem += 4;
+    Q.rural_dem += 2;
+    Q.workers_dem += 2;
+!}
+
+= Defeat in Cuba
+
+The war is over.
+
+The American expeditionary force has withdrawn from Cuba after failing to force Spain to surrender. Months of fighting, enormous expenditures, and the loss of thousands of American soldiers have ended without achieving the objectives proclaimed by Congress only months before.
+
+The fleet returns to American ports carrying exhausted veterans instead of triumphant heroes. Across the country, church bells remain silent, victory parades are cancelled, and newspaper headlines that once promised a short and glorious campaign now demand to know who is responsible for the disaster.
+
+Spain celebrates the defense of its Caribbean empire as a remarkable national triumph. Though weakened by civil unrest at home, Madrid has preserved its authority over Cuba and emerged with its honor restored. European observers, many of whom doubted Spain could withstand American intervention, now speak of the conflict as a costly lesson in the limits of American power.
+
+The political consequences are immediate. Republican leaders who championed the war find themselves under relentless attack in Congress and throughout the press. Democrats accuse the administration of wasting American lives in an unnecessary foreign adventure, while even many Republicans privately question whether the nation was truly prepared for an overseas war.
+
+The defeat leaves a lasting scar upon the American military. Calls for sweeping reforms echo through the War and Navy Departments as officers study every mistake made during the campaign. Whether the nation chooses to retreat from foreign affairs or prepare for another opportunity remains to be seen.
+
+- @peace_terms: Negotiate Peace
+
+@peace_terms
+
+Spain has agreed to end hostilities, but victory has given Madrid the stronger position at the negotiating table.
+
+American diplomats must now decide how much they are willing to concede in order to secure the return of prisoners, end the conflict, and restore normal relations.
+
+- @pay_indemnity: Pay an indemnity to Spain.
+- @white_peace: Negotiate a white peace.
+
+@pay_indemnity
+subtitle: End the war at any cost.
+choose-if: budget >= 3
+unavailable-subtitle: You're Broke
+on-arrival: {!
+    Q.budget -= 3;
+
+    Q.dem_bourbon_strength += 3;
+    Q.dem_relation += 3;
+
+    Q.radical_dissent += 3;
+    Q.conservative_dissent += 2;
+!}
+
+Spain demands financial compensation for the enormous cost of the conflict.
+
+Reluctantly, the United States agrees to pay an indemnity in exchange for the return of prisoners and a formal end to the war. Newspapers condemn the settlement as one of the greatest diplomatic humiliations in the nation's history, while Democratic politicians hold it up as proof of Republican incompetence.
+
+The Treasury absorbs the financial burden, but the political cost may prove even greater.
+
+- @End: Continue
+
+@white_peace
+subtitle: End the war without compensation.
+on-arrival: {!
+    Q.dem_bourbon_strength += 5;
+    Q.radical_dissent += 2;
+    Q.conservative_dissent += 2;
+!}
+
+After weeks of negotiation, both governments agree to restore the status quo.
+
+Spain retains Cuba and Puerto Rico, while the United States abandons all claims arising from the conflict. Although no indemnity is paid, many Americans still view the treaty as a humiliating failure after so much blood and treasure were spent for no tangible gain.
+
+The Republican administration survives, but its prestige has been severely damaged.
+
+- @End: Continue
+
+@End
+
+The nation now turns inward.
+
+Questions that seemed settled only months before dominate political debate once again. Should the United States abandon dreams of overseas intervention? Can the military be trusted to defend American interests abroad? And above all, who should bear responsibility for the defeat?
+
+The next election will answer those questions.
