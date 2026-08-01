@@ -1,0 +1,57 @@
+title: The Siege of Havana
+tags: event
+view-if: war_stage = 2
+
+= Approaching Havana
+
+The column marches west along the coast road, gathering strength as it goes. Ahead lies Havana, the last great prize of Spanish Cuba, and the most heavily fortified city in the Caribbean. Whether its garrison stands alone or is reinforced from the south depends on how badly the Mambise rebels have tied down Spain's remaining regulars. Word from the countryside is that Madrid, buried under the Cantonal Rebellion and the Carlist War at home, has little left to spare Cuba regardless.
+
+- @Advance: Advance on Havana.
+- @Withdraw: Halt the advance.
+
+@Advance
+subtitle: Commit to taking the city.
+on-arrival: {!
+
+let effective_garrison = Math.max(Q.spain_havana_garrison_strength - (Q.mambise_strength * 0.5), 60);
+let american_strength = Q.invasion_force_strength + (Q.navy_strength * 0.05);
+
+Q.havana_siege_duration = 0;
+
+if (american_strength >= effective_garrison * 1.3) {
+Q.havana_outcome = "decisive_win";
+Q.war_stage = 4;
+} else {
+Q.havana_outcome = "siege";
+Q.war_stage = 3;
+Q.havana_garrison_remaining = effective_garrison;
+}
+
+!}
+go-to: Decisive_Win if havana_outcome = "decisive_win"; Siege_Begins if havana_outcome = "siege"
+
+@Withdraw
+subtitle: Call off the advance on Havana.
+go-to: Defeat
+
+@Decisive_Win
+
+Word of the American column's strength reaches Havana before the vanguard does. With Mambise columns still rampaging through Oriente and Camagüey, no relief is coming, and the garrison commander knows it. The city's defenses crumble in a matter of days rather than weeks, and Spanish colors come down over Morro Castle almost before the siege guns are unlimbered.
+
+- @Continue: Continue
+
+@Continue
+on-arrival: spain_surrendered = 1;
+
+With Havana fallen, there is little left in Cuba for Madrid to defend. Word is sent through European intermediaries: Spain is ready to talk terms.
+
+@Siege_Begins
+
+The garrison at Havana digs in rather than break. Morro Castle's guns answer every American advance, and the city's defenses hold through the first weeks of the siege. Whether Havana falls on its own or a Spanish relief column fights its way up from the south is now only a matter of time and of how much longer that time can be bought.
+
+- @Continue_Siege: Continue
+
+@Continue_Siege
+go-to: Havana_Siege_Resolution
+
+The siege settles into a grinding routine of trenches and shelling. Every week that passes is a week for the city to break — or for Spain to break through.

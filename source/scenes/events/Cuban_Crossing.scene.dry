@@ -1,6 +1,6 @@
 title: The American Crossing to Cuba
 tags: event
-view-if: war_stage <= 1 and invasion_force_strength > 0
+view-if: war_stage = 1 and invasion_force_strength > 0
 
 = Crossing the Florida Strait
 
@@ -36,11 +36,11 @@ on-arrival: {!
     }
 
 !}
-go-to: Victory if battle_keys_outcome = "victory"; Surrender if battle_keys_outcome = "defeat"
+go-to: Victory if battle_keys_outcome = "victory"; Defeat if battle_keys_outcome = "defeat"
 
 @Retreat
 subtitle: Abandon the invasion.
-go-to: Surrender
+go-to: Defeat
 
 @Victory
 

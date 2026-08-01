@@ -1,0 +1,46 @@
+title: The Landing at Matanzas
+tags: event
+view-if: war_stage = 2
+
+= Ashore at Matanzas
+
+With the Florida Strait secured, the American Expeditionary Force turns toward the Cuban coast. Matanzas is chosen for the landing as it is close enough to strike at Havana, far enough that Spanish gunners can't contest the beach from the capital's own defenses. Mambise scouts who slipped through the blockade months ago report the terrain and guide the boats in through the surf. Now it is only a question of whether the landing force can get ashore before Spanish colonial troops arrive to meet them.
+
+- @Land: Order the landing.
+- @Withdraw: Call off the invasion.
+
+@Land
+subtitle: Force a landing and push toward Havana.
+on-arrival: {!
+
+    let american_strength = Q.invasion_force_strength + (Q.navy_strength * 0.1);
+
+    if (american_strength > Q.spain_coastal_defense_strength) {
+        Q.matanzas_outcome = "victory";
+        Q.war_stage += 1;
+        Q.invasion_force_strength *= 0.9;
+        Q.radical_strength += 2;
+        Q.middle_class_rep += 1;
+    } else {
+        Q.matanzas_outcome = "defeat";
+        Q.invasion_force_strength *= 0.5;
+        Q.conservative_dissent += 3;
+        Q.middle_class_dem += 2;
+    }
+
+!}
+go-to: Victory if matanzas_outcome = "victory"; Withdraw if matanzas_outcome = "defeat"
+
+@Withdraw
+subtitle: Abandon the invasion before it lands.
+go-to: Defeat
+
+@Victory
+
+Landing craft grind onto the sand at Matanzas under covering fire from the fleet offshore. Spanish pickets fire a few scattered volleys before falling back toward the interior. By nightfall the beachhead is secure, supply lines are running, and the road to Havana lies open ahead of the American column.
+
+- @Continue: Continue
+
+@Continue
+
+With Matanzas behind them, the army turns west along the coast road. Havana and whatever garrison Spain can still muster to defend it waits at the end of the march.
