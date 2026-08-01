@@ -40,6 +40,8 @@ go-to: Defeat
 
 @Decisive_Win
 
+= Decisive Win
+
 News of the American advance reaches Havana well before the army itself. Reports of shattered coastal defenses, the loss of Matanzas, and relentless Mambise activity convince the Spanish commander that no meaningful relief force will arrive. With morale collapsing and supplies dwindling, the prospect of resisting a superior American army appears hopeless.
 
 Rather than endure a prolonged bombardment, the city's defenses begin to unravel. American troops occupy the outer fortifications with only scattered resistance, and within days the Stars and Stripes rises above Morro Castle as Spanish forces lay down their arms. What many feared would become a bloody siege instead ends in a remarkably swift victory.
@@ -52,6 +54,8 @@ on-arrival: spain_surrendered = 1; spain_war = 0
 With Havana in American hands, organized Spanish resistance on Cuba effectively comes to an end. Deprived of its colonial capital and unable to reinforce the island, Madrid has little choice but to seek peace. Diplomatic messages are dispatched through European intermediaries requesting negotiations to end the war.
 
 @Siege_Begins
+
+= Americans Dig In
 
 The defenders refuse to yield.
 

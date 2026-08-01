@@ -1,0 +1,195 @@
+title: Victory in the Spanish-American War
+tags: event
+view-if: spain_surrendered = 1
+new-page: true
+max-visits: 1
+on-arrival: {!
+    Q.radical_strength += 5;
+    Q.moderate_strength += 5;
+    Q.army_strength += (Q.invasion_force_strength * 0.6);
+    Q.South_army_strength += (Q.invasion_force_strength * 0.4);
+    Q.conservative_strength += 3;
+    Q.army_loyalty += 0.05;
+    Q.navy_loyalty += 0.05;
+    Q.economic_growth += 1;
+    Q.economic_expansion += 1;
+    Q.middle_class_rep += 3;
+    Q.rural_rep += 2;
+!}
+
+= The Peace of Havana
+
+The guns have fallen silent.
+
+After months of fighting across the Caribbean, the Spanish Empire has accepted defeat. From the destruction of the Spanish fleet in the Florida Strait to the capture of Havana, the United States Expeditionary Force has accomplished what many believed impossible: defeating a European colonial power and projecting American military strength beyond the shores of the continent.
+
+Across the United States, victory celebrations fill the streets. Newspapers praise the courage of American soldiers and sailors, veterans return home as heroes, and politicians of every faction claim the war as proof of their own vision for the nation's future.
+
+Yet victory has created new questions.
+
+The United States entered the conflict declaring that it fought for Cuban liberation, not conquest. Now, with Spanish authority removed, Washington must decide what comes next. Should America withdraw and allow Cuba to determine its own destiny? Should the United States maintain influence over the island it liberated? Or has the war proven that America has a greater role to play beyond its own borders?
+
+The Treaty of Havana will define America's place in the world.
+
+- @cuba_settlement: Determine the future of Cuba.
+
+@cuba_settlement
+
+= The Cuban Question
+
+The United States entered the war promising to end Spanish rule in Cuba. With Havana captured and Spanish forces defeated, the promise of liberation must now be fulfilled.
+
+However, the future of Cuba remains uncertain. Some argue that independence is the only honorable conclusion to the war. Others believe that America's sacrifices give Washington the responsibility to guide the island's future.
+
+The decision will shape America's reputation throughout the Western Hemisphere.
+
+- @independent_cuba: Recognize Cuban independence.
+- @cuban_protectorate: Establish a Cuban protectorate.
+- @annex_cuba: Annex Cuba.
+
+@independent_cuba
+on-arrival: {!
+    Q.cuba_status = "Independent";
+    Q.radical_strength += 4;
+    Q.liberal_strength += 4;
+    Q.dem_relation += 2;
+!}
+go-to: puerto_rico_settlement
+
+Cuba is recognized as a fully independent republic.
+
+The American government declares that its soldiers crossed the sea not to replace one empire with another, but to end colonial rule and defend the right of nations to govern themselves. Cuban leaders celebrate the creation of their new nation, while many across Latin America view America's restraint as a sign of genuine friendship.
+
+However, critics in Washington warn that Cuba may struggle to maintain stability without continued American involvement. The question of whether liberation can survive without protection remains unanswered.
+
+
+@cuban_protectorate
+on-arrival: {!
+    Q.cuba_status = "Protectorate";
+    Q.moderate_strength += 5;
+    Q.conservative_strength += 3;
+    Q.liberal_dissent += 4;
+!}
+go-to: puerto_rico_settlement
+
+Cuba is granted independence, but under American protection.
+
+Washington argues that after sacrificing thousands of lives to defeat Spain, the United States cannot simply abandon the island to instability or foreign influence. American officials retain influence over Cuban defense and foreign affairs while promising to preserve Cuban self-government.
+
+Supporters describe the arrangement as a guarantee of Cuban freedom. Critics argue that America has simply replaced Spanish domination with its own.
+
+
+@annex_cuba
+on-arrival: {!
+    Q.cuba_status = "Annexed";
+    Q.conservative_strength += 7;
+    Q.radical_dissent += 5;
+    Q.liberal_dissent += 7;
+    Q.dem_bourbon_strength += 3;
+!}
+go-to: puerto_rico_settlement
+
+Cuba is incorporated into the United States.
+
+Expansionists celebrate the decision as the beginning of a new American era. They argue that the sacrifices of the war created a responsibility to permanently secure Cuba and bring it into the Union.
+
+Yet the decision creates immediate controversy. Many who supported the war as a struggle for Cuban liberation now accuse the government of abandoning its own principles. Questions of citizenship, representation, and the future political rights of Cubans become some of the most divisive issues in the Republic.
+
+
+@puerto_rico_settlement
+
+= The Fate of Puerto Rico
+
+Unlike Cuba, Puerto Rico was captured directly by American forces during the campaign rather than liberated through a large independence movement. Its location makes it one of the most valuable strategic positions in the Caribbean, offering the United States a gateway for naval operations and future influence in the region.
+
+However, victory has placed Washington in a difficult position. Will Puerto Rico become a permanent part of the United States, or will America establish a different relationship with the island?
+
+- @puerto_protectorate: Establish a protectorate.
+- @puerto_annex: Annex Puerto Rico.
+
+@puerto_protectorate
+on-arrival: {!
+    Q.puerto_rico_status = "Protectorate";
+    Q.moderate_strength += 3;
+    Q.liberal_strength += 2;
+!}
+go-to: reparations
+
+Puerto Rico becomes an American protectorate.
+
+The island receives a degree of self-government while remaining under American military protection. Supporters argue that this arrangement preserves Puerto Rican autonomy while securing America's strategic interests.
+
+Critics fear that the United States has begun creating a colonial system of its own.
+
+@puerto_annex
+on-arrival: {!
+    Q.puerto_rico_status = "Annexed";
+    Q.conservative_strength += 4;
+    Q.liberal_dissent += 3;
+!}
+go-to: reparations
+
+Puerto Rico becomes an American possession.
+
+American leaders argue that the island's strategic importance and its role in the war make permanent control necessary. Naval planners celebrate the acquisition of a valuable Caribbean base, while opponents warn that overseas expansion threatens the nation's traditional ideals.
+
+The United States now faces the challenge of governing territories beyond the mainland for the first time.
+
+
+@reparations
+
+= The Cost of Victory
+
+The final question before peace is signed is the cost of the war itself.
+
+The campaign has required enormous expenditures in ships, supplies, and soldiers. While Spain has lost the war, it remains responsible for the conflict that brought destruction to Cuba and forced America into a costly military campaign.
+
+Spanish diplomats offer compensation as part of the final settlement. The United States must decide whether victory should include payment for its sacrifices or whether a more generous peace will better serve its interests.
+
+- @demand_payment: Demand Spanish compensation.
+- @moderate_terms: Accept limited compensation.
+- @forgive_spain: Forgive Spanish debts.
+
+@demand_payment
+subtitle: +4 budget
+on-arrival: {!
+    Q.budget += 4;
+    Q.conservative_strength += 3;
+    Q.dem_relation -= 2;
+!}
+
+Spain agrees to provide financial compensation for the costs of the war.
+
+The funds help replenish the American treasury and reward the sacrifices made by soldiers, sailors, and taxpayers. Supporters argue that Spain must accept responsibility for the conflict it lost.
+
+However, critics warn that demanding payment from a defeated nation risks making America appear less like a liberator and more like another imperial power.
+
+@moderate_terms
+subtitle: +1 budget
+on-arrival: {!
+    Q.budget += 1;
+    Q.moderate_strength += 3;
+    Q.dem_relation += 2;
+!}
+
+The United States accepts a balanced financial settlement.
+
+Spain provides limited compensation while avoiding the harsh demands often imposed upon defeated powers. American diplomats argue that the agreement protects American interests while allowing both nations to move toward future relations.
+
+The settlement is praised as a demonstration that victory does not require humiliation of the defeated.
+
+
+@forgive_spain
+choose-if: budget >= 1
+unavailable-subtitle: We don't have the extra cash to allow this
+on-arrival: {!
+    Q.liberal_strength += 4;
+    Q.moderate_strength += 2;
+    Q.budget -= 1;
+!}
+
+The United States refuses financial compensation.
+
+The administration declares that the war was fought for principle, not profit. By refusing payment, America strengthens its image as a nation fighting for liberation rather than conquest.
+
+Supporters celebrate the decision as a moral victory, but critics question why the American people should bear the full financial burden of a war fought against Spain.

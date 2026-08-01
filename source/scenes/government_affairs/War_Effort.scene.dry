@@ -4,7 +4,7 @@ is-card: true
 tags: potus_affairs, cabinet
 view-if: spain_war = 1 and war_stage < 4 and war_room_timer <= 0
 card-image: img/CUBA.png
-on-arrival: war_room_timer += 1;
+on-arrival: war_room_timer += 2;
 
 = Prosecuting the War
 
@@ -28,6 +28,8 @@ unavailable-subtitle: [? if budget < 2: Not enough budget. ?]
 on-arrival: {! 
     Q.budget -= 2;
     Q.invasion_force_strength = (Q.army_strength * 0.4) + (Q.South_army_strength * 0.25);
+    Q.army_strength *= 0.6;
+    Q.South_army_strength *= 0.75
     Q.PoliticalCostPenalty += 2;
     Q.radical_strength += 2;
     Q.conservative_dissent += 2;

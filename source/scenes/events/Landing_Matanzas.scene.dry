@@ -38,15 +38,17 @@ subtitle: Abandon the invasion before it lands.
 on-arrival: spain_war = 0
 go-to: Defeat
 
-The American High Command decides to give up.
+The American High Command decides to give up. Booho
 
 @lose
 title: Defeat at Matanzas
 subtitle: Oops
-on-arrival: spain_war = 0
+on-arrival: spain_war = 0; invasion_force_strength *= 0.25
 go-to: Defeat
 
 @Victory
+
+= Victory at Matanzas
 
 Before dawn, the first landing craft emerge from the morning mist, covered by the thunder of American warships anchored offshore. Naval shells crash into Spanish positions overlooking the beaches as soldiers leap into the surf, rifles held high above the water. Mambise guides lead the advancing columns inland, steering them around marshes and hidden Spanish outposts while engineers race to unload artillery, horses, and supplies.
 

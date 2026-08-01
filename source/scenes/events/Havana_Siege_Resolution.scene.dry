@@ -30,6 +30,8 @@ go-to: Pitched if havana_outcome = "Pitched"; Victory if havana_outcome = "Victo
 
 @Victory
 
+= Victory
+
 The full weight of American industry is brought against Havana. For weeks, the city's walls are battered by naval guns and siege artillery while American engineers steadily move their lines closer to the fortifications. The defenders fight stubbornly, but their situation becomes increasingly hopeless.
 
 With Mambise forces still dominating much of Oriente and Camagüey, Spain is unable to organize a meaningful rescue effort. Reinforcements never arrive, ammunition runs low, and the city's garrison realizes that further resistance will only bring unnecessary destruction.
@@ -44,6 +46,8 @@ on-arrival: spain_surrendered = 1; spain_war = 0
 With Havana fallen, Spain's position in Cuba has collapsed. The colonial government has lost its capital, its main port, and its ability to continue organized resistance. Through European intermediaries, Madrid sends word that it is prepared to negotiate an end to the war.
 
 @Pitched
+
+= Spainsh Relief Arrives
 
 Against all expectations, Spain refuses to abandon Havana.
 
@@ -83,6 +87,8 @@ title: Victory and Fall of Havana
 subtitle: Spain surrenders
 on-arrival: spain_surrendered = 1; spain_war = 0
 
+= Victory
+
 The battle against the Spanish relief column becomes one of the hardest fought engagements of the campaign. Despite being outnumbered and exhausted, American soldiers hold their ground, supported by naval guns firing from the harbor and Cuban fighters striking at Spanish positions from the countryside.
 
 After hours of brutal fighting, the Spanish relief force collapses. Thousands of soldiers surrender, and the last hope of saving Havana disappears with them. Inside the city, the garrison commander recognizes that further resistance is impossible and orders the white flag raised above the fortifications.
@@ -91,8 +97,10 @@ The American Expeditionary Force enters Havana alongside the Cuban Liberation Ar
 
 @Surrender
 title: Defeat of the American Expeditionary Force
-on-arrival: spain_war = 0
+on-arrival: spain_war = 0; invasion_force_strength *= 0.25
 go-to: Defeat
+
+= Surrender
 
 The arrival of the Spanish relief column shatters American confidence. Exhausted from weeks of siege warfare and cut off from an easy retreat, the expedition begins to lose cohesion as Spanish pressure mounts.
 
