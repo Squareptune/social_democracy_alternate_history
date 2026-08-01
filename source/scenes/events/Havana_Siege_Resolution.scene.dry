@@ -36,9 +36,9 @@ With Mambise forces still dominating much of Oriente and Camagüey, Spain is una
 
 One morning, the guns of Morro Castle fall silent. The Spanish colors are lowered, and Havana surrenders before the relief column can ever reach the city.
 
-- @Continue: Continue
+- @Continues: Continue
 
-@Continue
+@Continues
 on-arrival: spain_surrendered = 1; spain_war = 0
 
 With Havana fallen, Spain's position in Cuba has collapsed. The colonial government has lost its capital, its main port, and its ability to continue organized resistance. Through European intermediaries, Madrid sends word that it is prepared to negotiate an end to the war.
