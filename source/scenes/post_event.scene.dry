@@ -508,10 +508,11 @@ if (Q.month_actions >= 1) {
     }
     // append to historical party support records
     var party_support_results = {'date': new Date(Q.year, Q.month - 1)};
-    for (var party of Q.parties) {
-        party_support_results[party] = Q[party + '_normalized']*100;
-    }
-    Q.party_support_records.push(party_support_results);
+    party_support_results['rep'] = Q.rep_r_pro || 0;
+    party_support_results['dem'] = Q.dem_r_pro || 0;
+    party_support_results['lib'] = Q.lib_r_pro || 0;
+    party_support_results['other'] = Q.other_r_pro || 0;
+    Q.party_support_records.push(party_support_results);;
     if (Q.unemployment_rate === undefined) Q.unemployment_rate = 6;
     if (Q.unemployed_baseline === undefined) Q.unemployed_baseline = Q.unemployed;
     for (let state of Q.states) {
