@@ -1,0 +1,23 @@
+title: Treasury Consultation
+new-page: true
+
+= Treasury Department
+
+Which matter would you like to bring before the Treasury?
+
+- @go_fiscal: Fiscal Policy — taxation, budget, and tariffs.
+- @go_monetary: Monetary Policy
+- @cancel_treasury: Never mind
+
+@go_fiscal
+choose-if: fiscal_policy_timer = 0
+unavailable-subtitle: [? if fiscal_policy_timer > 0 : [+ fiscal_policy_timer +] months remaining. ?]
+go-to: fiscal_policy
+
+@go_monetary
+choose-if: monetary_policy_timer <= 0
+unavailable-subtitle: [? if monetary_policy_timer > 0 : [+ monetary_policy_timer +] months remaining. ?]
+go-to: economic_policy
+
+@cancel_treasury
+go-to: root

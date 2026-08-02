@@ -169,7 +169,7 @@ Attorney General: [+ attorney_general +] ([+ attorney_general_party +]) [? if at
 
 Secretary of War: [+ sect_war +] ([+ sect_war_party +]) [? if sect_war_party = "R" and military_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('military_policy')">Consult</button> ?][? if sect_war_party = "R" and military_policy_timer > 0 : <span class="cabinet_jump_disabled" title="[+ military_policy_timer +] months remaining">Consult</span> ?]
 
-Secretary of Treasury: [+ sect_treasury +] ([+ sect_treasury_party +]) [? if rep_majority = 1 and fiscal_policy_timer = 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('fiscal_policy')">Consult</button> ?][? if rep_majority = 1 and fiscal_policy_timer > 0 : <span class="cabinet_jump_disabled" title="[+ fiscal_policy_timer +] months remaining">Consult</span> ?]
+Secretary of Treasury: [+ sect_treasury +] ([+ sect_treasury_party +]) [? if rep_majority = 1 and (fiscal_policy_timer = 0 or monetary_policy_timer <= 0) : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('treasury_chooser')">Consult</button> ?][? if rep_majority = 1 and fiscal_policy_timer > 0 and monetary_policy_timer > 0 : <span class="cabinet_jump_disabled" title="Both Treasury matters on cooldown">Consult</span> ?]
 
 Secretary of Agriculture: [+ sect_agriculture +] ([+ sect_agriculture_party +]) [? if sect_agriculture_party = "R" : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('agricultural_policy')">Consult</button> ?]
 

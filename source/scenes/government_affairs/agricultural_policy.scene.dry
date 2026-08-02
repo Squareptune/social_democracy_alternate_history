@@ -1,8 +1,8 @@
 title: Agricultural Policy
 new-page: true
 is-card: true
-on-arrival: agricultural_policy_timer += 6; month_actions += 1
-view-if: sect_agriculture_party = "R"
+on-arrival: agricultural_policy_timer += 6; month_actions += 1; agricultural_policy += 6
+view-if: sect_agriculture_party = "R"; agricultural_policy <= 0
 card-image: img/portraits/Julian.jpg
 tags: potus_affairs, cabinet
 #subtitle: Farmer financing, grain purchasing, and land reform.
