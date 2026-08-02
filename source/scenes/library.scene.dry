@@ -365,7 +365,8 @@ if (d3 && window) {
         var lines_2 = d3.linegraph(true, true,
             ["rep", "dem", "lib", "other"].filter(p => Q.party_support_records.some(r => r[p] > 0)),
             {"rep": "#B22222", "dem": "#003366", "lib": "#DAA520", "other": "#AAAAAA"},
-            {"rep": "Republican", "dem": "Democrat", "lib": "Liberal Republican", "other": "Other"}
+            {"rep": "Republican", "dem": "Democrat", "lib": "Liberal Republican", "other": "Other"},
+            100, 0, 10
         );
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
