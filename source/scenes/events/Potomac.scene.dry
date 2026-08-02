@@ -3,7 +3,6 @@ new-page: true
 tags: event
 view-if: year == 1865 and month == 6
 max-visits: 1
-on-arrival: military_policy_timer += 4
 
 = Demoblize the Army
 
