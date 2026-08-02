@@ -159,8 +159,6 @@ Unemployed: <span style="color: #c00000;">**Republican**</span>: [+ unemployed_r
 
 @cabinet
 
-@cabinet
-
 = Cabinet
 
 Secretary of State: [+ sect_state +] ([+ sect_state_party +]) [? if sect_state_party = "R" and foreign_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('foreign_policy')">Consult</button> ?][? if sect_state_party = "R" and foreign_policy_timer > 0 : <span class="cabinet_jump_disabled" title="[+ foreign_policy_timer +] months remaining">Consult</span> ?]
