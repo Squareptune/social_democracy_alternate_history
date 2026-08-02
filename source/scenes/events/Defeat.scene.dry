@@ -19,6 +19,7 @@ on-arrival: {!
     Q.middle_class_dem += 4;
     Q.rural_dem += 2;
     Q.workers_dem += 2;
+    Q.war_stage = 5;
 !}
 
 = Defeat in Cuba

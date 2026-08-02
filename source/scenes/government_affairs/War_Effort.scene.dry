@@ -4,7 +4,7 @@ is-card: true
 tags: potus_affairs, cabinet
 view-if: spain_war = 1 and war_stage < 4 and war_room_timer <= 0
 card-image: img/CUBA.png
-on-arrival: war_room_timer += 2;
+on-arrival: war_room_timer += 1;
 
 = Prosecuting the War
 

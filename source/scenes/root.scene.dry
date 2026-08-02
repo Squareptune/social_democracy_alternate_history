@@ -1886,7 +1886,7 @@ if (!Array.isArray(Q.timers)) {
         'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
         'police', 'interior_policy', 'postmaster_policy', 'shuffle_cabinet', 'social_welfare',
         'homosexual_rights', 'economic_policy', 'coalition_affairs',
-        'war_guilt', 'war_room_timer', 'high_inflation_ticker_timer',
+        'war_guilt', 'war_room', 'high_inflation_ticker_timer',
         'monetary_policy',
         'constitutional_reform', 'labor_rights',
         'education_science', 'curriculum', 'civil_rights',
