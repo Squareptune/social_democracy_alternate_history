@@ -89,6 +89,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
           .call(d3.axisLeft(yScale));
 
       const partyLine = (party) => d3.line()
+          .defined(d => d[party] != null && !isNaN(d[party]))
           .x(d => xScale(new Date(d.date)))
           .y(d => yScale(d[party]));
 

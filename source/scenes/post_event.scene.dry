@@ -125,6 +125,7 @@ let libPowerHouse = Q.liberal_split ? Math.pow(libShareHouse, 3) : 0;
 let otherPowerHouse = Math.pow(otherShareHouse, 3);
 
 let powerTotalHouse = repPowerHouse + demPowerHouse + libPowerHouse + otherPowerHouse;
+if (powerTotalHouse === 0) powerTotalHouse = 1;
 
 // Same per-year seat totals as the real House election
 let totalSeatsHouse;
