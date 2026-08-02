@@ -19,7 +19,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
         parties = ['rep', 'dem', 'other'];
     }
     if (!partyColors) {
-        partyColors = {'rep': '#E3000F', 'dem': '#2644d9', 'other': '#a0a0a0'};
+        partyColors = {'rep': '#E3000F', 'dem': '#2644d9', 'other': '#00cc00'};
     }
     if (!partyNames) {
         partyNames = {'rep': 'Republicans', 'dem': 'Democrats','other': 'Others'};
