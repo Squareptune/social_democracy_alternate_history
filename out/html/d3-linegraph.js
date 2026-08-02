@@ -40,7 +40,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
      dataset.each(function (data) {
       const dates = data.map(d => new Date(d.date));
       // Map the data to an array of arrays of {x, y} tuples.
-      const series = parties.map(party => data.map(d => ({'x': new Date(d.date), 'y': d[party], 'series': party}))re.filter(d => d.y != null && !isNaN(d.y)));
+      const series = parties.map(party => data.map(d => ({'x': new Date(d.date), 'y': d[party], 'series': party})).filter(d => d.y != null && !isNaN(d.y)));
 
       // Declare the x (horizontal position) scale.
       const maxDate = d3.max(dates);
