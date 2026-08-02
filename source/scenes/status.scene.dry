@@ -171,7 +171,7 @@ Secretary of War: [+ sect_war +] ([+ sect_war_party +])
 
 Secretary of Treasury: [+ sect_treasury +] ([+ sect_treasury_party +])
 
-[? if sect_agriculture_party = "R" and agricultural_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('agricultural_policy')">Consult</button> ?]
+Secretary of Agriculture: [+ sect_agriculture +] ([+ sect_agriculture_party +]) [? if sect_agriculture_party = "R" and agricultural_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('agricultural_policy')">Consult</button> ?]
 
 Postmaster General: [+ sect_postmaster +] ([+ sect_postmaster_party +])
 
