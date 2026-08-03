@@ -32,6 +32,9 @@ on-arrival: {!
     Q.moderate_dissent += 3;
     Q.dem_relation -= 5;
     Q.reconstruction_support -= 2;
+
+    Q.workers_dem += 5;
+    Q.rural_dem += 5;
 !}
 tags: event
 view-if: (year = 1873 and month >= 9) or panic_pending = 1

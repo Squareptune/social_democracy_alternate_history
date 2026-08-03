@@ -252,6 +252,7 @@ on-arrival: {!
     
     // GRANT CABINET
     if (Q.Candidate == "Grant") {
+        Q.Winner_68 = "Grant";
         Q.sect_state = "Hamilton Fish";
         Q.sect_state_party = "R";
         Q.sect_treasury = "George S. Boutwell";
@@ -270,6 +271,7 @@ on-arrival: {!
     
     // WADE CABINET
     if (Q.Candidate == "Wade") {
+        Q.Winner_68 = "Wade";
         Q.sect_state = "Charles Sumner";
         Q.sect_state_party = "R";
         Q.sect_treasury = "Henry C. Carey";
@@ -288,6 +290,7 @@ on-arrival: {!
     
     // CHASE CABINET
     if (Q.Candidate == "Chase") {
+        Q.Winner_68 = "Chase";
         Q.sect_state = "William H. Seward";
         Q.sect_state_party = "R";
         Q.sect_treasury = "John Sherman";
@@ -346,6 +349,7 @@ on-arrival: {!
     Q.president = Q.Candidate;
     Q.president_party = "rep"
     if (Q.Candidate == "Grant") {
+      Q.Winner_68 = "Grant";
       Q.sect_state = "Hamilton Fish";
       Q.sect_state_party = "R";
       Q.sect_treasury = "George S. Boutwell";
@@ -364,6 +368,7 @@ on-arrival: {!
     
     // WADE CABINET
     if (Q.Candidate == "Wade") {
+        Q.Winner_68 = "Wade";
         Q.sect_state = "Charles Sumner";
         Q.sect_state_party = "R";
         Q.sect_treasury = "Henry C. Carey";
@@ -382,6 +387,7 @@ on-arrival: {!
     
     // CHASE CABINET
     if (Q.Candidate == "Chase") {
+        Q.Winner_68 = "Chase";
         Q.sect_state = "William H. Seward";
         Q.sect_state_party = "R";
         Q.sect_treasury = "John Sherman";

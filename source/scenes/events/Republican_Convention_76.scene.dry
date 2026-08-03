@@ -1,0 +1,9 @@
+title: 1872 Republican National Convention
+subtitle: Republican Candidate for President
+tags: event
+view-if: year = 1876 and month = 6
+max-visits: 1
+
+= Republican National Convention, 1876
+
+Work in Progress

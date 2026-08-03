@@ -1809,6 +1809,8 @@ Q.reconstructionPlanActive = 0;
 
 Q.Candidate = "";
 Q.VPCandidate = "";
+Q.Winner_68 = "";
+Q.Winner_72 = "";
 
 Q.liberal_reunion_triggered = 0;
 Q.liberal_reunion_seen = 0;

@@ -293,9 +293,12 @@ subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ repEVTotal +]
 view-if: potus_winner = "rep"
 on-arrival: {!
     Q.president = Q.Candidate;
+    Q.Winner_72 = Q.Candidate;
     Q.president_party = "rep";
     Q.liberal_split = 0; // Liberal Republicans largely return to fold after defeat
     Q.liberal_reunion_triggered = 1;
+
+    
 !}
 
 The <span style="color: #c00000;">**Republicans**</span> have won the election. 

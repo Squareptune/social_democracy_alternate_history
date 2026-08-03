@@ -56,7 +56,7 @@ go-to: Menu
 Cooler heads prevail, for now. We step back from the brink and return our attention to the matter as it stands. The crew of the *Virginius* are still dead, and Spain is still waiting for an answer.
 
 @mobilize_for_war
-view-if: rep_majority >= 2
+view-if: rep_majority >= 1
 on-arrival: {!
     Q.spain_relation -= 8;
     Q.budget -= 3;
