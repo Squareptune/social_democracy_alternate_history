@@ -15,7 +15,6 @@ The Union League is a quasi-secretive men's club formed during the Civil War and
 - @militant_2: Use our existing resources to support more training for the Union League.
 - @same: Keep the Union League as it is.
 - @cut_rb: Cut funding for the Union League.
-- @women_rb
 - @easy_discard
 - @cancel_advisor_action
 
@@ -45,15 +44,3 @@ on-arrival: resources += 1; Union_League_strength -= 100; Union_League_militancy
 
 Cutting resources to the Union League causes a drop in the membership, and leads some would-be members to join the labor unions or democrats instead.
 
-@women_rb
-title: Allow women to join the Union Leagues.
-subtitle: -1 resources - This might cause a backlash from existing members.
-choose-if: resources > 0
-view-if: womens_rights >= 4
-on-arrival: resources -= 1; Union_League_militancy *= 0.85; Union_League_strength += 400; liberal_strength += 3; radical_strength += 1; conservative_dissent += 2
-max-visits: 1
-achievement: women_union_league
-
-The suggestion to allow women into the Union League is ridiculed by most, except for some progressive members. But this is an exceptional time, and we need anyone who is willing to join. Thus, we organize specialized units for women.
-
-After allowing women to join, the number of comrades who leave is more than balanced out by the number of radicalized women and others who join. However, many of our departed members were veterans, and many of the new members have no experience with military-style training.

@@ -129,15 +129,15 @@ if (powerTotalHouse === 0) powerTotalHouse = 1;
 
 // Same per-year seat totals as the real House election
 let totalSeatsHouse;
-if (Q.year == 1866) {
+if (Q.year <= 1866) {
     totalSeatsHouse = Q.house_total_seat_1866;
-} else if (Q.year == 1868) {
+} else if (Q.year <= 1868) {
     totalSeatsHouse = Q.house_total_seat_1868;
-} else if (Q.year == 1870) {
+} else if (Q.year <= 1870) {
     totalSeatsHouse = Q.house_total_seat_1870;
-} else if (Q.year == 1872) {
+} else if (Q.year <= 1872) {
     totalSeatsHouse = Q.house_total_seat_1872;
-} else if (Q.year == 1874) {
+} else if (Q.year <= 1874) {
     totalSeatsHouse = Q.house_total_seat_1874;
 } else {
     totalSeatsHouse = Q.house_total_seat_1876;
@@ -441,7 +441,12 @@ for (let state of Q.southern_states) {
 
   score = Math.max(0, Math.min(100, Math.round(score)));
   Q[state + "_reconstructionScore"] = score;
-  Q[state + "_canReadmit"] = score >= threshold ? 1 : 0;
+
+  // Track the best score this state has ever reached, so a temporary
+  // backslide (KKK suppression spike, etc.) doesn't erase earned progress.
+  Q[state + "_reconstructionScoreBest"] = Math.max(Q[state + "_reconstructionScoreBest"] || 0, score);
+
+  Q[state + "_canReadmit"] = Q[state + "_reconstructionScoreBest"] >= threshold ? 1 : 0;
 
   // --- Percent relative to plan difficulty ---
   if (threshold > 0) {

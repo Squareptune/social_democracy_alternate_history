@@ -174,6 +174,17 @@ Q.AK_reconstructionScore = 0;
 Q.TX_reconstructionScore = 0;
 Q.LA_reconstructionScore = 0;
 
+Q.VA_reconstructionScoreBest = 0;
+Q.NC_reconstructionScoreBest = 0;
+Q.SC_reconstructionScoreBest = 0;
+Q.GA_reconstructionScoreBest = 0;
+Q.AL_reconstructionScoreBest = 0;
+Q.FL_reconstructionScoreBest = 0;
+Q.MS_reconstructionScoreBest = 0;
+Q.AK_reconstructionScoreBest = 0;
+Q.TX_reconstructionScoreBest = 0;
+Q.LA_reconstructionScoreBest = 0;
+
 Q.VA_canReadmit = 0;
 Q.NC_canReadmit = 0;
 Q.SC_canReadmit = 0;

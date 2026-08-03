@@ -1,0 +1,52 @@
+title: Reconstruction Fatigue
+tags: event
+new-page: true
+max-visits: 1
+view-if: reconstructionPlanActive = 1 and year = 1872 and month = 3 and (VA_admitted = 0 or NC_admitted = 0 or SC_admitted = 0 or GA_admitted = 0 or AL_admitted = 0 or FL_admitted = 0 or MS_admitted = 0 or AK_admitted = 0 or TX_admitted = 0 or LA_admitted = 0)
+on-arrival: {!
+    Q.fatigue_readmit_list = "";
+    let stateNames = {
+        VA: "Virginia", NC: "North Carolina", SC: "South Carolina", GA: "Georgia",
+        AL: "Alabama", FL: "Florida", MS: "Mississippi", AK: "Arkansas",
+        TX: "Texas", LA: "Louisiana"
+    };
+
+    for (let state of Q.southern_states) {
+        if (Q[state + "_admitted"] == 0) {
+            if (Q.fatigue_readmit_list.length > 0) Q.fatigue_readmit_list += ", ";
+            Q.fatigue_readmit_list += stateNames[state];
+        }
+    }
+!}
+
+= The Public Tires of Reconstruction
+
+A decade of occupation, military tribunals, and federal oversight has worn down Northern patience. Newspapers North and South increasingly call Reconstruction a failed, endless project, and even sympathetic Republicans admit the public no longer has the stomach to hold the remaining Southern states outside the Union indefinitely.
+
+Still outside Congress: [+ fatigue_readmit_list +].
+
+Do you let public pressure force the issue and clear these states for readmission regardless of where their Reconstruction Score currently stands?
+
+- @force_readmit: Yield to the pressure — clear the remaining states for readmission.
+- @refuse_readmit: Hold the line — keep Reconstruction's conditions in place, popularity be damned.
+
+@force_readmit
+on-arrival: {!
+    for (let state of Q.southern_states) {
+        if (Q[state + "_admitted"] == 0) {
+            Q[state + "_canReadmit"] = 1;
+        }
+    }
+!}
+
+Congress moves to formally clear the way for readmission, whatever the lingering conditions. It is a practical concession to public fatigue — and a quiet admission that Reconstruction's aims will go unfinished in [+ fatigue_readmit_list +].
+
+@refuse_readmit
+on-arrival: {!
+    reconstruction_support -= 15;
+    radical_dissent -= 3;
+    conservative_strength += 5;
+    conservative_dissent -= 2;
+!}
+
+You hold firm. [+ fatigue_readmit_list +] will remain outside Congress until they meet the conditions laid out under Reconstruction — no matter how loudly the public clamors for an end to it. It is a deeply unpopular stand, but a principled one.

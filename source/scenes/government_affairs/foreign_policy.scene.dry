@@ -129,7 +129,7 @@ choose-if: year >= 1871
 unavailable-subtitle: Arbitration cannot proceed until 1871.
 on-arrival: {!
     Q.san_juan_resolved = 1;
-    let chance = 0.55 + (Q.europe_relation / 100);
+    let chance = 0.55 + (Q.germany_relation / 100);
     Q.san_juan_won = (Math.random() < chance) ? 1 : 0;
     if (Q.san_juan_won === 1) {
         Q.navy_strength += 5;
