@@ -222,6 +222,7 @@ view-if: potus_winner = "disputed"
 go-to: Disputed
 
 @Disputed
+title: Ummmmm...
 
 = A Disputed Election
 
