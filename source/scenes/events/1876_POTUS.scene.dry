@@ -218,11 +218,11 @@ on-arrival: {!
 [+ dem_candidate_1876 +] and the <span style="color: #0015bc;">**Democratic Party**</span> have carried a clear majority of the electoral vote. For the first time since before the war, a <span style="color: #0015bc;">**Democrat**</span> will occupy the White House. The Redemption of the South, already well underway in statehouses across the region, now has a friend in Washington.
 
 @disputed_election_1876
+title: Ummmmm...
 view-if: potus_winner = "disputed"
 go-to: Disputed
 
 @Disputed
-title: Ummmmm...
 
 = A Disputed Election
 
