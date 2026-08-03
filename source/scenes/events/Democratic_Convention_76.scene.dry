@@ -1,0 +1,147 @@
+title: 1876 <span style="color: #0015bc;">**Democratic Party**</span> National Convention
+subtitle: Redeemers or Reformers?
+tags: event
+view-if: year = 1876 and month = 7
+max-visits: 1
+
+= Democratic National Convention, 1876
+
+The <span style="color: #0015bc;">**Democratic Party**</span> gathers in St. Louis, and for the first time since the war a sense of real blood in the water. But the party arrives divided against itself.
+
+On one side stand the <span style="color: #4682B4;">**Northern Democrats**</span> reformers who want to run on clean government, hard money, and an end to corruption, epitomized by the machine-busting reputation of New York's governor.
+
+On the other stand the <span style="color: #002765;">**Bourbon Democrats**</span>, the party's Redeemer wing, rooted in the South and the soft-money Midwest, for whom "home rule" and the rollback of Reconstruction are the only planks that matter.
+
+[? if dem_reform_strength > dem_bourbon_strength : The reform wing enters the convention with real momentum, though the Bourbons still control a great many delegations outright. ?]
+[? if dem_bourbon_strength >= dem_reform_strength : The Bourbon wing enters the convention firmly in control, though a vocal reform bloc is determined to make itself heard. ?]
+
+- @dem_convention_decision_76: See what the convention decides...
+
+@dem_convention_decision_76
+on-arrival: {!
+
+let reformFloor = Q.dem_reform_strength || 0;
+reformFloor -= (Q.dem_reform_dissent || 0) * 0.5;
+reformFloor += (Math.random() * 20) - 10;
+
+let bourbonFloor = Q.dem_bourbon_strength || 0;
+bourbonFloor -= (Q.dem_bourbon_dissent || 0) * 0.5;
+// Organized Redeemer muscle in the South translates directly into convention delegates
+bourbonFloor += ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) * 0.03;
+bourbonFloor += (Math.random() * 20) - 10;
+
+Q.dem_reform_dominant_76 = (reformFloor > bourbonFloor) ? 1 : 0;
+
+if (Q.dem_reform_dominant_76 === 1) {
+    // Reform wing wins: the Tilden ticket
+    Q.dem_candidate_1876 = "Tilden";
+    Q.dem_vp_candidate_1876 = "Hendricks";
+
+    Q.dem_reform_strength += 6;
+    Q.dem_reform_dissent -= 4;
+    Q.dem_bourbon_dissent += 8;
+
+    Q.dem_relation += 3;
+    Q.middle_class_dem += 5;
+    Q.workers_dem += 2;
+    Q.rural_dem -= 2;
+    Q.immigrant_laborers_dem += 2;
+
+    Q.whiteL_militancy -= 0.02;
+
+} else {
+    // Bourbon/Redeemer wing wins: weighted pick among Bourbon standard-bearers
+    let weights = {
+        "Hendricks": 45 + (Math.random() * 20),
+        "Bayard":    30 + (Math.random() * 20),
+        "Hancock":   30 + (Math.random() * 20),
+        "Allen":     20 + (Math.random() * 20),
+    };
+
+    if ((Q.unemployed || 0) > 8) weights["Allen"] += 15;
+    if ((Q.inflation || 0) < 0) weights["Allen"] += 10;
+
+    let repStrength = (Q.rep_r || 0) / ((Q.total_house_seats || 293) / 100);
+    if (repStrength >= 55) weights["Hancock"] += 15;
+
+    if ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0) >= 400) weights["Bayard"] += 15;
+
+    let totalWeight = Object.values(weights).reduce((a, b) => a + b, 0);
+    let roll = Math.random() * totalWeight;
+    let cumulative = 0;
+    let chosen = "Hendricks";
+    for (let [candidate, weight] of Object.entries(weights)) {
+        cumulative += weight;
+        if (roll <= cumulative) {
+            chosen = candidate;
+            break;
+        }
+    }
+
+    Q.dem_candidate_1876 = chosen;
+    Q.dem_bourbon_strength += 6;
+    Q.dem_bourbon_dissent -= 4;
+    Q.dem_reform_dissent += 8;
+    Q.dem_relation += 2;
+
+    Q.whiteL_militancy += 0.03;
+    Q.kkk_militancy += 0.02;
+
+    if (chosen === "Hendricks") {
+        Q.dem_vp_candidate_1876 = "Hampton";
+        Q.rural_dem += 4;
+        Q.workers_dem += 3;
+        Q.inflation += 0.15;
+        Q.middle_class_dem -= 2;
+    }
+    else if (chosen === "Bayard") {
+        Q.dem_vp_candidate_1876 = "Hampton";
+        Q.rural_dem += 5;
+        Q.middle_class_dem += 4;
+        Q.workers_dem -= 2;
+        Q.DE_rural_dem += 5;
+        Q.MD_rural_dem += 4;
+        Q.MO_rural_dem += 3;
+    }
+    else if (chosen === "Hancock") {
+        Q.dem_vp_candidate_1876 = "English";
+        Q.workers_dem += 4;
+        Q.rural_dem += 5;
+        Q.middle_class_dem += 3;
+        Q.immigrant_laborers_dem += 3;
+        Q.workers_rep -= 2;
+        Q.rural_rep -= 2;
+    }
+    else if (chosen === "Allen") {
+        Q.dem_vp_candidate_1876 = "Hampton";
+        Q.workers_dem += 6;
+        Q.unemployed_dem += 5;
+        Q.rural_dem += 4;
+        Q.middle_class_dem -= 3;
+        Q.immigrant_laborers_dem += 3;
+        Q.inflation += 0.25;
+    }
+}
+!}
+go-to: dem_convention_end_76
+
+@dem_convention_end_76
+
+= The Democrats Have Chosen
+
+[? if dem_reform_dominant_76 = 1 : The <span style="color: #4682B4;">**Northern**</span> reform wing carries the day. The convention nominates **Samuel J. Tilden** for President and **[+ dem_vp_candidate_1876 +]** for Vice President, a ticket built to run against Republican corruption at the ballot box. ?]
+
+[? if dem_reform_dominant_76 = 0 : The <span style="color: #002765;">**Bourbon**</span> wing prevails. The convention nominates **[+ dem_candidate_1876 +]** for President and **[+ dem_vp_candidate_1876 +]** for Vice President, a ticket built around Redemption and the restoration of home rule in the South. ?]
+
+[? if dem_candidate_1876 = "Tilden" : Tilden's reputation as the man who broke the Tweed Ring gives the ticket real reform credibility in the North, though Southern <span style="color: #002765;">**Bourbon**</span> delegates worry he will go soft on Redemption. ?]
+
+[? if dem_candidate_1876 = "Hendricks" : Hendricks' soft-money sympathies and Bourbon backing make him a reliable friend to the Redeemer cause, though hard-money reformers in the Northeast are unimpressed. ?]
+
+[? if dem_candidate_1876 = "Bayard" : Bayard's hard-money conservatism and deep Bourbon roots make him the establishment's safest choice, though he inspires little enthusiasm among the party's working-class wing. ?]
+
+[? if dem_candidate_1876 = "Hancock" : Hancock's war record gives the <span style="color: #002765;">**Bourbon**</span> ticket a rare crossover appeal, blunting Republican charges of disloyalty. ?]
+
+[? if dem_candidate_1876 = "Allen" : Allen's Greenback sympathies fire up debtors and laborers, but hard-money men in the party are already threatening to sit out the fall campaign. ?]
+
+[? if dem_reform_dissent >= 25 : The reform wing is furious about the outcome, and some threaten to withhold their organizing muscle in the fall. ?]
+[? if dem_bourbon_dissent >= 25 : The <span style="color: #002765;">**Bourbon**</span> wing is seething, and Southern Redeemer newspapers are already sniping at the ticket. ?]

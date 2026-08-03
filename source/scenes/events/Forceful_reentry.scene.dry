@@ -2,7 +2,7 @@ title: Reconstruction Fatigue
 tags: event
 new-page: true
 max-visits: 1
-view-if: reconstructionPlanActive = 1 and year = 1872 and month = 3 and (VA_admitted = 0 or NC_admitted = 0 or SC_admitted = 0 or GA_admitted = 0 or AL_admitted = 0 or FL_admitted = 0 or MS_admitted = 0 or AK_admitted = 0 or TX_admitted = 0 or LA_admitted = 0)
+view-if: reconstructionPlanActive = 1 and year = 1872 and month = 3 and (VA_admitted = 0 or NC_admitted = 0 or SC_admitted = 0 or GA_admitted = 0 or AL_admitted = 0 or FL_admitted = 0 or MS_admitted = 0 or AR_admitted = 0 or TX_admitted = 0 or LA_admitted = 0)
 on-arrival: {!
     Q.fatigue_readmit_list = "";
     let stateNames = {

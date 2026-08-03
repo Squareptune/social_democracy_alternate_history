@@ -161,7 +161,7 @@ Q.Panic_seen = 0;
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
 Q.parties = ['rep', 'dem', 'lib', 'other'];
 
-Q.southern_states = ['VA', 'NC', 'SC', 'GA', 'AL', 'FL', 'MS', 'AK', 'TX', 'LA'];
+Q.southern_states = ['VA', 'NC', 'SC', 'GA', 'AL', 'FL', 'MS', 'AR', 'TX', 'LA'];
 
 Q.VA_reconstructionScore = 0;
 Q.NC_reconstructionScore = 0;
@@ -170,7 +170,7 @@ Q.GA_reconstructionScore = 0;
 Q.AL_reconstructionScore = 0;
 Q.FL_reconstructionScore = 0;
 Q.MS_reconstructionScore = 0;
-Q.AK_reconstructionScore = 0;
+Q.AR_reconstructionScore = 0;
 Q.TX_reconstructionScore = 0;
 Q.LA_reconstructionScore = 0;
 
@@ -181,7 +181,7 @@ Q.GA_reconstructionScoreBest = 0;
 Q.AL_reconstructionScoreBest = 0;
 Q.FL_reconstructionScoreBest = 0;
 Q.MS_reconstructionScoreBest = 0;
-Q.AK_reconstructionScoreBest = 0;
+Q.AR_reconstructionScoreBest = 0;
 Q.TX_reconstructionScoreBest = 0;
 Q.LA_reconstructionScoreBest = 0;
 
@@ -192,7 +192,7 @@ Q.GA_canReadmit = 0;
 Q.AL_canReadmit = 0;
 Q.FL_canReadmit = 0;
 Q.MS_canReadmit = 0;
-Q.AK_canReadmit = 0;
+Q.AR_canReadmit = 0;
 Q.TX_canReadmit = 0;
 Q.LA_canReadmit = 0;
 
@@ -203,7 +203,7 @@ Q.GA_admitted = 0;
 Q.AL_admitted = 0;
 Q.FL_admitted = 0;
 Q.MS_admitted = 0;
-Q.AK_admitted = 0;
+Q.AR_admitted = 0;
 Q.TX_admitted = 0;
 Q.LA_admitted = 0;
 

@@ -1,9 +1,233 @@
-title: 1872 Republican National Convention
-subtitle: Republican Candidate for President
+title: 1876 <span style="color: #c00000;">**Republican**</span>National Convention
+subtitle: <span style="color: #c00000;">**Republican**</span>Candidate for President
 tags: event
 view-if: year = 1876 and month = 6
 max-visits: 1
+on-arrival: {!
+Q.third_term_bid = (Q.Winner_68 !== "" && Q.Winner_68 === Q.Winner_72) ? 1 : 0;
+!}
 
-= Republican National Convention, 1876
+= <span style="color: #c00000;">**Republican**</span> National Convention, 1876
 
-Work in Progress
+[? if third_term_bid = 1 : President [+ president +] has now won two terms in office, and whispers of an unprecedented third nomination are swirling around the convention hall. No two-term president has ever sought a third term. Some delegates see continuity and strength; others see the makings of a monarchy. ?]
+
+[? if third_term_bid = 0 and president = "Grant" : President Grant, having succeeded to a first full term of his own, could seek renomination, though the party's mood has shifted considerably since his first victory. ?]
+
+[? if third_term_bid = 0 and president = "Wade" : President Wade's **<span style="color: #7A1F5C;">radical</span>** tenure has energized the base but alarmed **<span style="color: #B5651D;">Conservatives</span>** and **<span style="color: #9D2933;">Moderates</span>**  alike. Whether he stands again is very much in question. ?]
+
+[? if third_term_bid = 0 and president = "Chase" : President Chase's **<span style="color: #9D2933;">Moderate</span>** course has frustrated the **<span style="color: #7A1F5C;">Radicals</span>** wing throughout his term, and challengers are already lining up ahead of the convention. ?]
+
+[? if president = "Blaine" or president = "Conkling" : President [+ president +] enters the convention as the incumbent, having taken the office after the last contested floor fight. The party is not entirely settled behind him. ?]
+
+- @ThirdTerm_Push: Push for a historic third term
+- @ThirdTerm_Decline: [+ president +] steps aside for a new standard-bearer
+- @Incumbent_Renominate: Renominate President [+ president +]
+- @Reno_challenge_Incumbent: Support a challenger against [+ president +]
+- @Open_Convention_Direct: Let the convention decide from a fresh field
+
+@ThirdTerm_Push
+title: Push for a third term
+view-if: third_term_bid = 1
+choose-if: (radical_strength + moderate_strength + conservative_strength) / 3 >= 40
+unavailable-subtitle: The party's factions are too divided to sustain a third-term push.
+on-arrival: {!
+Q.Candidate = Q.president;
+Q.radical_dissent += 10;
+Q.moderate_dissent += 6;
+Q.conservative_dissent += 12;
+Q.liberal_dissent += 15;
+Q.dem_relation -= 5;
+Q.third_term_won = 1;
+!}
+go-to: VP_1876
+
+The convention breaks with a century of precedent. [+ Candidate +] is renominated for a third term amid cheers from loyalists and open dismay from delegates who warn the party is flirting with a one-man rule. The <span class="tooltip-text" title="Democratic" style="color: #0015bc;">**Democrats**</span> press will make the "third term" into a rallying cry all autumn.
+
+@ThirdTerm_Decline
+title: Decline a third term
+view-if: third_term_bid = 1
+on-arrival: {!
+Q.third_term_won = 0;
+!}
+go-to: Open_Convention
+
+[+ president +] declines to seek a third term, citing the tradition set by Washington himself. The convention floor opens to a genuinely contested field.
+
+@Incumbent_Renominate
+title: Renominate the incumbent
+view-if: third_term_bid = 0
+choose-if: (president = "Grant" and moderate_strength + conservative_strength >= 35) or (president = "Wade" and radical_strength >= 35) or (president = "Chase" and moderate_strength + conservative_strength >= 40) or (president = "Blaine" or president = "Conkling")
+unavailable-subtitle: The party's factions won't hold the line for a renomination fight.
+on-arrival: {!
+Q.Candidate = Q.president;
+Q.radical_dissent += (Q.president === "Wade") ? -5 : 6;
+Q.moderate_dissent += (Q.president === "Chase") ? -3 : 3;
+Q.conservative_dissent += (Q.president === "Grant") ? -3 : 4;
+Q.liberal_dissent += 4;
+!}
+go-to: VP_1876
+
+The party rallies behind [+ Candidate +] for another term, though enthusiasm is far from unanimous. The **<span style="color: #DAA520;">Liberal Republican</span>** wing continues to eye its own path.
+
+@Reno_challenge_Incumbent
+title: Support a challenger to unseat the incumbent
+view-if: president = "Grant" or president = "Wade" or president = "Chase" or president = "Blaine" or president = "Conkling"
+on-arrival: {!
+let incumbentBloc = 0;
+if (Q.president === "Wade") incumbentBloc = (Q.radical_strength || 0) + 15;
+else if (Q.president === "Chase") incumbentBloc = (Q.moderate_strength || 0) + (Q.conservative_strength || 0) + 15;
+else incumbentBloc = (Q.moderate_strength || 0) + (Q.conservative_strength || 0) + (Q.radical_strength || 0) / 2 + 15;
+
+let challengerBloc = (Q.moderate_strength || 0) + (Q.conservative_strength || 0) + (Q.liberal_strength || 0) + (Q.radical_strength || 0) - incumbentBloc + 40;
+
+Q.challenger_beat_incumbent = (challengerBloc > incumbentBloc) ? 1 : 0;
+!}
+go-to: Open_Convention if challenger_beat_incumbent = 1; incumbent_holds_76 if challenger_beat_incumbent = 0
+
+@incumbent_holds_76
+
+Despite the challenge, [+ president +]'s bloc holds the floor. The incumbent is renominated, though the fight has left the party bruised heading into the fall.
+
+- @VP_1876: Proceed to the Vice Presidential nomination.
+
+@Open_Convention_Direct
+go-to: Open_Convention
+
+@Open_Convention
+
+= An Open Field
+
+With no incumbent standing, the convention turns into a genuine contest between the party's rising men. Seven ballots deep, the delegates must choose.
+
+- @Blaine_nominate: James G. Blaine of Maine , the **<span style="color: #9D2933;">Moderate</span>** favorite, tarnished by rumors of railroad corruption
+- @Morton_nominate: Oliver P. Morton of Indiana , a **<span style="color: #7A1F5C;">Radical</span>** stalwart, though his health is failing
+- @Conkling_nominate: Roscoe Conkling of New York , the **<span style="color: #B5651D;">Conservatives</span>** machine's man
+- @Hayes_nominate: Rutherford B. Hayes of Ohio, a compromise candidate, untainted by scandal
+
+@Blaine_nominate
+choose-if: moderate_strength >= 30
+unavailable-subtitle: The **<span style="color: #9D2933;">Moderate</span>** faction lacks the delegate strength to carry Blaine.
+on-arrival: {!
+Q.Candidate = "Blaine";
+Q.moderate_strength += 4;
+Q.moderate_dissent -= 3;
+Q.conservative_dissent += 5;
+Q.radical_dissent += 3;
+Q.middle_class_rep += 3;
+Q.workers_rep += 1;
+!}
+go-to: VP_1876
+
+Blaine's magnetism carries the **<span style="color: #9D2933;">Moderates</span>**, though whispers of the Mulligan letters and his railroad dealings will dog him through the general election.
+
+@Morton_nominate
+choose-if: radical_strength >= 30
+unavailable-subtitle: The **<span style="color: #7A1F5C;">Radical</span>** faction lacks the delegate strength to carry Morton.
+on-arrival: {!
+Q.Candidate = "Morton";
+Q.radical_strength += 4;
+Q.radical_dissent -= 4;
+Q.moderate_dissent += 4;
+Q.conservative_dissent += 6;
+Q.freemen_rep += 4;
+Q.rural_rep -= 1;
+!}
+go-to: VP_1876
+
+Morton, the last true voice of **<span style="color: #7A1F5C;">Radical</span>** Reconstruction, wins the nomination despite doctors' warnings about the strain of a national campaign.
+
+@Conkling_nominate
+choose-if: conservative_strength >= 30
+unavailable-subtitle: The **<span style="color: #B5651D;">Conservative</span>** faction lacks the delegate strength to carry Conkling.
+on-arrival: {!
+Q.Candidate = "Conkling";
+Q.conservative_strength += 4;
+Q.conservative_dissent -= 3;
+Q.radical_dissent += 5;
+Q.liberal_dissent += 3;
+Q.middle_class_rep += 2;
+Q.rural_rep += 2;
+!}
+go-to: VP_1876
+
+Conkling's New York machine delivers him the nomination. Reformers in the party grumble about the spoils system, but the organization behind him is formidable.
+
+@Hayes_nominate
+on-arrival: {!
+Q.Candidate = "Hayes";
+Q.moderate_strength += 2;
+Q.radical_dissent -= 2;
+Q.conservative_dissent -= 2;
+Q.liberal_dissent -= 4;
+Q.middle_class_rep += 2;
+Q.rural_rep += 2;
+!}
+go-to: VP_1876
+
+Deadlocked between Blaine, Morton, and Conkling, the convention turns to Hayes as a compromise: a three-term Ohio governor with a clean reputation and no enemies to speak of. It is not a nomination of enthusiasm, but of exhaustion.
+
+@VP_1876
+
+= Vice Presidential Nomination
+
+Our candidate is **[+ Candidate +]**.
+
+- @Wheeler_VP: William A. Wheeler (New York)
+- @Bristow_VP: Benjamin Bristow (Kentucky)
+- @Frelinghuysen_VP: Frederick Frelinghuysen (New Jersey)
+
+@Wheeler_VP
+subtitle: Reformer. Little-known but scrupulously honest.
+on-arrival: {!
+Q.VPCandidate = "Wheeler";
+Q.moderate_strength += 2;
+Q.conservative_dissent -= 2;
+Q.radical_dissent += 1;
+Q.middle_class_rep += 2;
+!}
+go-to: convention_end_1876
+
+Wheeler is a virtual unknown outside New York, but his reputation for honesty balances a ticket increasingly worried about the party's reformist credentials.
+
+@Bristow_VP
+subtitle: Reformer. Led the prosecution of the Whiskey Ring; alienates the party machine.
+choose-if: liberal_strength + moderate_strength >= 30
+unavailable-subtitle: The reform wing isn't strong enough to force Bristow onto the ticket.
+on-arrival: {!
+Q.VPCandidate = "Bristow";
+Q.liberal_strength += 3;
+Q.liberal_dissent -= 5;
+Q.conservative_dissent += 6;
+Q.radical_dissent += 2;
+Q.middle_class_rep += 4;
+!}
+go-to: convention_end_1876
+
+Bristow's anti-corruption credentials thrill reformers and reassure **<span style="color: #DAA520;">liberals</span>**, but the party machine, still smarting from the Whiskey Ring prosecutions, is furious.
+
+@Frelinghuysen_VP
+subtitle: **<span style="color: #B5651D;">Conservative</span>**. A safe, unremarkable New Jersey senator.
+on-arrival: {!
+Q.VPCandidate = "Frelinghuysen";
+Q.conservative_strength += 3;
+Q.conservative_dissent -= 3;
+Q.radical_dissent += 2;
+Q.rural_rep += 2;
+!}
+go-to: convention_end_1876
+
+Frelinghuysen brings no particular strength to the ticket, but no particular liability either; a safe hand chosen to avoid further factional strife.
+
+@convention_end_1876
+
+= The Ticket is Set
+
+The <span style="color: #c00000;">**Republican Party**</span> will enter the 1876 election with **[+ Candidate +]** for President and **[+ VPCandidate +]** for Vice President.
+
+[? if third_term_bid = 1 and third_term_won = 1 : The third-term nomination has handed the <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>  their central campaign issue before the race has even begun. ?]
+
+[? if liberal_dissent >= 25 : The **<span style="color: #DAA520;">Liberal Republican</span>** wing is deeply unhappy with the ticket, and turnout among reform-minded voters may suffer. ?]
+
+[? if radical_dissent >= 25 : **<span style="color: #7A1F5C;">Radical Republicans</span>** are openly grumbling. Their lukewarm support could suppress turnout among freedmen and Northern reformers alike. ?]
+
+[? if liberal_dissent < 25 and radical_dissent < 25 : The party appears reasonably unified behind the ticket, all things considered. ?]

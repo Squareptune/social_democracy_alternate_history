@@ -1,0 +1,275 @@
+title: 1876 Presidential Election
+subtitle: [+ Candidate +] vs. [+ dem_candidate_1876 +]
+tags: event
+view-if: year = 1876 and month = 11
+max-visits: 1
+
+= Elections, [+ month +] [+ year +]
+
+The Presidential election is to be held now. <span style="color: #c00000;">**Republicans**</span> and <span style="color: #0015bc;">**Democrats**</span> face off in a straight two-party contest, the closest since the war began.
+
+- @POTUS_election_algorithm_1876: May we do our best...
+
+@POTUS_election_algorithm_1876
+on-arrival: {!
+Q.repEVTotal = 0;
+Q.demEVTotal = 0;
+Q.disputedRepEV = 0;
+Q.disputedDemEV = 0;
+
+
+let closeStates = {
+  "VT":  75.00,
+  "MA":  68.00,
+  "RI":  67.00,
+  "KS":  62.00,
+  "NE":  65.00,
+  "ME":  56.00,
+  "NH":  49.00,
+  "MN":  58.00,
+  "MI":  59.00,
+  "IA":  57.00,
+  "IL":  53.00,
+  "WI":  50.00,
+  "OH":  50.50,
+  "IN":  49.30,
+  "PA":  50.60,
+  "NV":  53.00,
+  "CA":  51.00,
+  "OR":  50.90,
+  "CT":  48.80,
+  "NJ":  47.90,
+  "NY":  48.30,
+  "WV":  46.50,
+  "KY":  -30.00,
+  "MD":  -34.00,
+  "DE":  -24.00,
+  "MO":  -32.00
+};
+
+let baselineRep = 53;
+let baselineDem = 44;
+let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.freemen_rep + Q.immigrant_laborers_rep + Q.unemployed_rep) / 6 - baselineRep;
+let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
+
+Q.disputed_states_1876 = [];
+
+for (let state of Q.states) {
+  let votes = { rep: 0, dem: 0 };
+  let isSouthern = southernCodes.includes(state);
+
+  // A southern state is "bad reconstruction" if its plan score has badly lapsed
+  // or organized Redeemer paramilitaries dominate — same threshold Louisiana-style crises use.
+  let planThreshold = Q.Radical_plan ? 50 : (Q.Moderate_plan ? 35 : 20);
+  let stateScore = Q[state + "_reconstructionScore"] || 0;
+  let badReconstruction = isSouthern && (stateScore < planThreshold * 0.6 || ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) >= 400);
+
+  for (let cls of Q.classes) {
+    if (cls === "freemen" && Q.fifthteen == 0) continue;
+
+    let pop = Q[state + "_" + cls] || 0;
+
+    if (cls === "freemen") {
+      let localTurnout = Q.freedmen_turnout;
+      if (badReconstruction) localTurnout = localTurnout * 0.4; // suppression at the ballot box
+      pop = pop * (localTurnout / 100);
+    }
+
+    if (pop <= 0) continue;
+
+    let localRep = Q[state + "_" + cls + "_rep"] || 0;
+    let localDem = Q[state + "_" + cls + "_dem"] || 0;
+    let nationalRep = Q[cls + "_rep"] || 0;
+    let nationalDem = Q[cls + "_dem"] || 0;
+
+    let adjRep = 0.5 * localRep + 0.5 * nationalRep;
+    let adjDem = 0.5 * localDem + 0.5 * nationalDem;
+
+    adjRep = Math.max(0, adjRep + nationalRepSwing * 0.3);
+    adjDem = Math.max(0, adjDem + nationalDemSwing * 0.3);
+
+    adjRep *= (0.92 + Math.random() * 0.16);
+    adjDem *= (0.92 + Math.random() * 0.16);
+
+    let total = adjRep + adjDem;
+    if (!total) continue;
+
+    votes.rep += pop * (adjRep / total);
+    votes.dem += pop * (adjDem / total);
+  }
+
+  // Non-southern close-state nudge, same as the 1872 model
+  if (!isSouthern && closeStates[state] !== undefined) {
+    let nudge = closeStates[state] * 0.1;
+    let randomJitter = (Math.random() * 0.8) - 0.4;
+    let marginTarget = nudge + randomJitter;
+
+    let twoPartyTotal = votes.rep + votes.dem;
+    if (twoPartyTotal > 0) {
+      let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
+      let marginDiff = marginTarget - currentMargin;
+      votes.rep += twoPartyTotal * (marginDiff / 200);
+      votes.dem -= twoPartyTotal * (marginDiff / 200);
+      votes.rep = Math.max(0, votes.rep);
+      votes.dem = Math.max(0, votes.dem);
+    }
+  }
+
+  let stateDisputed = 0;
+
+  // Ballot-box fraud only in bad-reconstruction southern states, and only
+  // once the underlying vote is actually close enough to steal.
+  if (badReconstruction) {
+    let twoPartyTotal = votes.rep + votes.dem;
+    if (twoPartyTotal > 0) {
+      let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
+      // Redeemer machines manufacture a dem-favoring shift, scaled by how organized they are
+      let fraudPower = Math.min(25, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 40);
+      let fraudShift = fraudPower + (Math.random() * 6) - 3;
+
+      votes.rep -= twoPartyTotal * (fraudShift / 200);
+      votes.dem += twoPartyTotal * (fraudShift / 200);
+      votes.rep = Math.max(0, votes.rep);
+      votes.dem = Math.max(0, votes.dem);
+
+      let postFraudMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
+      if (Math.abs(postFraudMargin) <= 6) {
+        stateDisputed = 1;
+        Q.disputed_states_1876.push(state);
+      }
+    }
+  }
+
+  let winner = votes.dem >= votes.rep ? "dem" : "rep";
+  Q[state + "_winner"] = winner;
+  Q[state + "_disputed_1876"] = stateDisputed;
+
+  let color = winner === "dem" ? "#4575b4" : "#d73027";
+  if (stateDisputed) color = "#DAA520";
+  Q[state.toLowerCase() + "_winner_color"] = color;
+}
+
+for (let state of Q.states) {
+  let ev = Q[state + "_EV_1876"];
+  if (!ev) continue;
+
+  let w = Q[state + "_winner"];
+  let disputed = Q[state + "_disputed_1876"];
+
+  if (w === "rep") Q.repEVTotal += ev;
+  else Q.demEVTotal += ev;
+
+  if (disputed) {
+    if (w === "rep") Q.disputedRepEV += ev;
+    else Q.disputedDemEV += ev;
+  }
+}
+
+let totalEV = Q.repEVTotal + Q.demEVTotal;
+let majority = Math.floor(totalEV / 2) + 1;
+
+let repUndisputed = Q.repEVTotal - Q.disputedRepEV;
+let demUndisputed = Q.demEVTotal - Q.disputedDemEV;
+
+if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisputed < majority) {
+  Q.potus_winner = "disputed";
+} else if (Q.repEVTotal >= majority) {
+  Q.potus_winner = "rep";
+} else {
+  Q.potus_winner = "dem";
+}
+!}
+go-to: potus_menu_1876
+
+{!<table>!}
+{!<tr><td>Party</td><td>Electoral votes</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}<span style="color: #c00000;">**Republicans ([+ Candidate +])**</span>{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
+{!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #0015bc;">**Democrats**</span> ([+ dem_candidate_1876 +]){!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
+{!</table>!}
+
+@potus_menu_1876
+
+- @victory_1876
+- @defeat_dem_1876
+- @disputed_election_1876
+
+@victory_1876
+title: <span style="color: #c00000;">**Republicans**</span> win the 1876 election!
+subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ repEVTotal +] electoral votes
+view-if: potus_winner = "rep"
+on-arrival: {!
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+!}
+
+The <span style="color: #c00000;">**Republicans**</span> have carried a clear majority. [+ Candidate +] will be the next President of the United States, with no dispute over the outcome.
+
+[? if third_term_bid = 1 and third_term_won = 1 : The third-term question, so feared by the party's managers, did not sink the ticket after all. ?]
+
+@defeat_dem_1876
+title: The <span style="color: #0015bc;">**Democrats**</span> have won the presidency.
+subtitle: <span style="color: #0015bc;">**Democrats**</span>: [+ demEVTotal +] electoral votes
+view-if: potus_winner = "dem"
+on-arrival: {!
+    Q.president = Q.dem_candidate_1876;
+    Q.president_party = "dem";
+!}
+
+[+ dem_candidate_1876 +] and the <span style="color: #0015bc;">**Democratic Party**</span> have carried a clear majority of the electoral vote. For the first time since before the war, a <span style="color: #0015bc;">**Democrat**</span> will occupy the White House. The Redemption of the South, already well underway in statehouses across the region, now has a friend in Washington.
+
+@disputed_election_1876
+view-if: potus_winner = "disputed"
+
+= A Disputed Election
+
+Neither candidate has secured an undisputed majority. Returning boards in [+ disputed_states_1876 +] have submitted competing sets of electoral votes — one certified by <span style="color: #002765;">**Bourbon Democrat**</span>-aligned officials, one by Republican-appointed returning boards backed by federal troops. Both candidates are claiming victory. The Constitution offers no clear mechanism for resolving a dispute of this kind, and the nation has not faced one before.
+
+How does the administration proceed?
+
+- @fight_for_electors: Press for full federal certification of the disputed Republican electors
+- @concede_disputed: Accept the Democratic returning boards' certifications and concede the disputed states
+- @broker_compromise: Broker a compromise — the presidency in exchange for the end of Reconstruction
+
+@fight_for_electors
+choose-if: occupation >= 1
+unavailable-subtitle: Federal occupation in the disputed states is too weak to make this claim stick.
+on-arrival: {!
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+    Q.potus_winner = "rep";
+    Q.compromise_1877 = 0;
+    Q.whiteL_militancy += 0.12;
+    Q.kkk_militancy += 0.08;
+    Q.radical_strength += 3;
+    Q.dem_relation -= 10;
+!}
+
+The administration presses the returning boards to certify the Republican electors in every disputed state, backed by the continued presence of federal troops. [+ Candidate +] takes the presidency, but <span style="color: #002765;">**Bourbon Democrats**</span> across the South call it a stolen election imposed at bayonet-point. Redeemer militias, already organized and armed, treat the outcome as final proof that only force will settle the question of home rule.
+
+@concede_disputed
+on-arrival: {!
+    Q.president = Q.dem_candidate_1876;
+    Q.president_party = "dem";
+    Q.potus_winner = "dem";
+    Q.compromise_1877 = 0;
+    Q.dem_relation += 8;
+!}
+
+Rather than contest returning boards openly aligned with armed Redeemer organizations, the administration accepts the Democratic certifications. [+ dem_candidate_1876 +] will be the next President. It avoids a constitutional crisis, but it hands the <span style="color: #002765;">**Bourbon**</span> wing of the Democratic Party exactly the validation it wanted, in exactly the states where the ballot was least free.
+
+@broker_compromise
+on-arrival: {!
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+    Q.potus_winner = "rep";
+    Q.compromise_1877 = 1;
+    Q.reconstructionPlanActive = 0;
+    Q.occupation = 0;
+    Q.South_army_strength = 0;
+    Q.whiteL_militancy -= 0.10;
+    Q.dem_relation += 5;
+    Q.radical_dissent += 20;
+    Q.freemen_rep -= 10;
+!}
+
+Quiet negotiations produce a bargain: [+ Candidate +] will take the presidency, and in exchange, federal troops will withdraw from the last occupied statehouses in the South. Reconstruction, in any meaningful sense, is over. <span style="color: #002765;">**Bourbon Democrats**</span> get the home rule they have fought a decade for. <span style="color: #7A1F5C;">**Radical Republicans**</span> call it a betrayal of everything the party once stood for. Freedmen across the South understand, correctly, that the federal government has just walked away from them.

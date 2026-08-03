@@ -20,7 +20,7 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-<span style="color: #c00000;">**Republican**</span> position: [? if rep_majority = 1 : Majority government ?][? if rep_majority != 1 : Minority government ?]
+<span style="color: #c00000;">**Republican**</span> position: [? if rep_majority = 1 : Majority government ?][? if rep_majority != 1 : Out of Government ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
@@ -201,7 +201,7 @@ Florida: [? if reconstructionPlanActive = 1: Reconstruction Score: [+ FL_reconst
 
 Mississippi: [? if reconstructionPlanActive = 1: Reconstruction Score: [+ MS_reconstructionScore +] / [? if Radical_plan = 1: 50 ?][? if Moderate_plan = 1: 35 ?][? if Johnson_plan = 1: 20 ?] Admission Status: [? if MS_admitted = 1: Admitted ?][? if MS_canReadmit = 1 and MS_admitted = 0: Ready for readmission ?][? if MS_canReadmit = 0: Not yet eligible ?] ?]
 
-Arkansas: [? if reconstructionPlanActive = 1: Reconstruction Score: [+ AK_reconstructionScore +] / [? if Radical_plan = 1: 50 ?][? if Moderate_plan = 1: 35 ?][? if Johnson_plan = 1: 20 ?] Admission Status: [? if AK_admitted = 1: Admitted ?][? if AK_canReadmit = 1 and AK_admitted = 0: Ready for readmission ?][? if AK_canReadmit = 0: Not yet eligible ?] ?]
+Arkansas: [? if reconstructionPlanActive = 1: Reconstruction Score: [+ AR_reconstructionScore +] / [? if Radical_plan = 1: 50 ?][? if Moderate_plan = 1: 35 ?][? if Johnson_plan = 1: 20 ?] Admission Status: [? if AR_admitted = 1: Admitted ?][? if AR_canReadmit = 1 and AR_admitted = 0: Ready for readmission ?][? if AR_canReadmit = 0: Not yet eligible ?] ?]
 
 Texas: [? if reconstructionPlanActive = 1: Reconstruction Score: [+ TX_reconstructionScore +] / [? if Radical_plan = 1: 50 ?][? if Moderate_plan = 1: 35 ?][? if Johnson_plan = 1: 20 ?] Admission Status: [? if TX_admitted = 1: Admitted ?][? if TX_canReadmit = 1 and TX_admitted = 0: Ready for readmission ?][? if TX_canReadmit = 0: Not yet eligible ?] ?]
 
