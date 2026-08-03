@@ -219,6 +219,9 @@ on-arrival: {!
 
 @disputed_election_1876
 view-if: potus_winner = "disputed"
+go-to: Disputed
+
+@Disputed
 
 = A Disputed Election
 
