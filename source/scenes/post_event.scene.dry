@@ -1,3 +1,4 @@
+
 title: Post Event
 new-page: true
 on-arrival: {!
@@ -284,6 +285,26 @@ if (Q.dissent < 0) {
 } else if (Q.dissent > 0.95) {
     Q.dissent = 0.95;
 }
+
+let radicalPressure = Math.max(0, (Q.radical_strength - 25) / 25);      // 0 and up as radicals dominate GOP
+let liberalPull = Math.max(0, (Q.liberal_strength - 10) / 10);          // 0 and up as GOP liberals gain ground
+let gopDissentPressure = Math.max(0, ((Q.dissent_percent || 0) - 30) / 30);
+let redeemerMuscle = ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 400; // self-reinforcing organized muscle
+let bourbonMonthlyGain = (0.15 * radicalPressure) + (0.10 * redeemerMuscle);
+let reformMonthlyGain = (0.10 * liberalPull) + (0.08 * gopDissentPressure);
+Q.dem_bourbon_strength += bourbonMonthlyGain;
+Q.dem_reform_strength += reformMonthlyGain;
+if (redeemerMuscle > 0.5) {
+    Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 0.05);
+}
+if (radicalPressure > 1) {
+    Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 0.03);
+}
+if (gopDissentPressure > 0.5) {
+    Q.dem_reform_dissent = Math.max(0, Q.dem_reform_dissent - 0.03);
+}
+Q.dem_reform_strength = Math.max(0, Q.dem_reform_strength);
+Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength);
 
 Q.Base_Support = 0.35 * Q.freemen_rep + 0.20 * Q.workers_rep + 0.20* Q.middle_class_rep + 0.15 * Q.immigrant_laborers_rep + 0.10 * Q.unemployed_rep;
 
@@ -906,3 +927,4 @@ go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0
 - #event
 
 # This scene is solely for updating numbers after events, and routing to special events.
+

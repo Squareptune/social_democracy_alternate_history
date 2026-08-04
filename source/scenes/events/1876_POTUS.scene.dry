@@ -17,7 +17,13 @@ Q.demEVTotal = 0;
 Q.disputedRepEV = 0;
 Q.disputedDemEV = 0;
 
+// Southern states use the corrected AR code for Arkansas (see note: Q.southern_states
+// currently stores "AK", a bug — this scene works around it with its own list).
+let southernCodes = ["VA", "NC", "SC", "GA", "AL", "FL", "MS", "AR", "TX", "LA"];
 
+// Historical-ish 1876 margins (Republican margin in percentage points) for the North/border.
+// Southern states are NOT seeded here — their outcome is driven entirely by
+// reconstruction state and fraud below, not a fixed historical nudge.
 let closeStates = {
   "VT":  75.00,
   "MA":  68.00,
@@ -53,6 +59,10 @@ let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.fre
 let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
 
 Q.disputed_states_1876 = [];
+
+// Southern states use the corrected AR code for Arkansas (Q.southern_states currently
+// stores "AK" for Arkansas, a bug — this scene uses its own corrected list instead).
+let southernCodes = ["VA", "NC", "SC", "GA", "AL", "FL", "MS", "AR", "TX", "LA"];
 
 for (let state of Q.states) {
   let votes = { rep: 0, dem: 0 };
@@ -226,17 +236,17 @@ go-to: Disputed
 
 = A Disputed Election
 
-Neither candidate has secured an undisputed majority. Returning boards in [+ disputed_states_1876 +] have submitted competing sets of electoral votes — one certified by <span style="color: #002765;">**Bourbon Democrat**</span>-aligned officials, one by Republican-appointed returning boards backed by federal troops. Both candidates are claiming victory. The Constitution offers no clear mechanism for resolving a dispute of this kind, and the nation has not faced one before.
+Neither candidate has secured an undisputed majority. Returning boards in [+ disputed_states_1876 +] have submitted competing sets of electoral votes one certified by <span style="color: #002765;">**Bourbon Democrat**</span>-aligned officials, one by Republican-appointed returning boards backed by federal troops. Both candidates are claiming victory. The Constitution offers no clear mechanism for resolving a dispute of this kind, and the nation has not faced one before.
 
 How does the administration proceed?
 
-- @fight_for_electors: Press for full federal certification of the disputed Republican electors
-- @concede_disputed: Accept the Democratic returning boards' certifications and concede the disputed states
-- @broker_compromise: Broker a compromise — the presidency in exchange for the end of Reconstruction
+- @fight_for_electors: Have Congress certify the results in favor of [+ Candidate +]
+- @concede_disputed: Concede the disputed states to the Democrats
+- @broker_compromise: Leave the decision to an Bipartisan Commission of Congress
 
 @fight_for_electors
-choose-if: occupation >= 1
-unavailable-subtitle: Federal occupation in the disputed states is too weak to make this claim stick.
+choose-if: rep_majority = 1
+unavailable-subtitle: The Republicans don't have a majority in Congress
 on-arrival: {!
     Q.president = Q.Candidate;
     Q.president_party = "rep";
@@ -246,9 +256,10 @@ on-arrival: {!
     Q.kkk_militancy += 0.08;
     Q.radical_strength += 3;
     Q.dem_relation -= 10;
+    Q.March_DC = 1;
 !}
 
-The administration presses the returning boards to certify the Republican electors in every disputed state, backed by the continued presence of federal troops. [+ Candidate +] takes the presidency, but <span style="color: #002765;">**Bourbon Democrats**</span> across the South call it a stolen election imposed at bayonet-point. Redeemer militias, already organized and armed, treat the outcome as final proof that only force will settle the question of home rule.
+The Republicans congressman offically certify the electoral votes allowing [+ Candidate +] to be offically declared President of the United States.
 
 @concede_disputed
 on-arrival: {!
@@ -276,4 +287,4 @@ on-arrival: {!
     Q.freemen_rep -= 10;
 !}
 
-Quiet negotiations produce a bargain: [+ Candidate +] will take the presidency, and in exchange, federal troops will withdraw from the last occupied statehouses in the South. Reconstruction, in any meaningful sense, is over. <span style="color: #002765;">**Bourbon Democrats**</span> get the home rule they have fought a decade for. <span style="color: #7A1F5C;">**Radical Republicans**</span> call it a betrayal of everything the party once stood for. Freedmen across the South understand, correctly, that the federal government has just walked away from them.
+Negotiations begin between the Democrats and Republican over the disputed election results and what to do about it.
