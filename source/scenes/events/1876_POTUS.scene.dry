@@ -60,10 +60,6 @@ let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.fre
 
 Q.disputed_states_1876 = [];
 
-// Southern states use the corrected AR code for Arkansas (Q.southern_states currently
-// stores "AK" for Arkansas, a bug — this scene uses its own corrected list instead).
-let southernCodes = ["VA", "NC", "SC", "GA", "AL", "FL", "MS", "AR", "TX", "LA"];
-
 for (let state of Q.states) {
   let votes = { rep: 0, dem: 0 };
   let isSouthern = southernCodes.includes(state);
