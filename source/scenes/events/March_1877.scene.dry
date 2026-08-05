@@ -1,5 +1,6 @@
 title: Presidential Inauguration
 subtitle: [+ president +] takes the oath of office
+tags: event
 view-if: year = 1877 and month = 3
 
 = Presidential Inauguration 
