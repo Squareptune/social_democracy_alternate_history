@@ -1,0 +1,225 @@
+title: The Electoral Commission
+subtitle: An Bipartisan Commission of Congress will decide the disputed states.
+tags: event
+new-page: true
+view-if: compromise_1877 = 1
+max-visits: 1
+
+= The Electoral Commission
+
+Congress forms a special Electoral Commission with members drawn from the House, the Senate, and the Supreme Court to rule on the disputed returns once and for all. Its finding, by law, will be final. Whichever way it rules, the country has agreed in advance to accept it rather than fight over it any further.
+
+- @commission_convenes: The Commission convenes.
+
+@commission_convenes
+on-arrival: {!
+    let repScore = 40 + (Q.rep_majority ? 30 : 0) + (((Q.house_majority || 0) + (Q.sen_majority || 0)) * 3) + ((Q.radical_strength || 0) * 0.3) + ((Q.occupation || 0) * 2);
+    let demScore = 40 + ((Q.dem_bourbon_strength || 0) * 0.4) + (((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) * 0.03) - ((Q.dem_relation || 0) * 0.2);
+
+    repScore += (Math.random() * 20) - 10;
+    demScore += (Math.random() * 20) - 10;
+
+    Q.commission_outcome = (repScore > demScore) ? "rep" : "dem";
+!}
+go-to: commission_rules_dem if commission_outcome = "dem"; commission_rules_rep if commission_outcome = "rep"
+
+The Commission deliberates behind closed doors for the better part of a week. Whatever the outcome, both parties have already committed publicly to abide by it.
+
+@commission_rules_dem
+on-arrival: {!
+    Q.president = Q.dem_candidate_1876;
+    Q.president_party = "dem";
+    Q.potus_winner = "dem";
+!}
+go-to: commission_end
+
+The Commission rules in favor of [+ dem_candidate_1876 +], and both parties, having agreed in advance to abide by the finding, accept it without further incident. [+ dem_candidate_1876 +] will be the next President of the United States. It is a quiet end to what could have been a genuine constitutional crisis, and the <span style="color: #002765;">**Bourbon**</span> wing of the party gets exactly what it wanted without having to bargain for a single term.
+
+@commission_rules_rep
+on-arrival: {!
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+    Q.potus_winner = "rep";
+
+    let houseSeatPower = (Q.house_majority || 0) + (Q.sen_majority || 0);
+    Q.commission_leverage = 15 + (houseSeatPower * 3) + ((Q.occupation || 0) * 6) - ((Q.radical_strength || 0) * 0.15) + ((Q.dem_relation || 0) * 0.3);
+    Q.commission_leverage = Math.max(5, Math.round(Q.commission_leverage));
+
+    Q.satisfaction_needed = Math.round(20 + ((Q.dem_bourbon_strength || 0) - (Q.dem_reform_strength || 0)) * 0.3);
+    if (Q.satisfaction_needed < 10) Q.satisfaction_needed = 10;
+
+    Q.concession_value = 0;
+    Q.term_troops = "none";
+    Q.term_cabinet = 0;
+    Q.term_home_rule = 0;
+    Q.term_railroad = 0;
+    Q.term_improvements = 0;
+    Q.term_patronage = 0;
+!}
+go-to: commission_negotiate
+
+The Commission rules for [+ Candidate +]. But a ruling on paper is not the same as a peace the country will actually accept. Word reaches the White House that Southern <span style="color: #002765;">**Bourbon**</span> Democrats are prepared to let the ruling stand quietly for a price.
+
+@commission_negotiate
+
+= Terms for the Democrats
+
+Intermediaries are carrying offers back and forth between Washington and the Southern <span style="color: #002765;">**Bourbon**</span> leadership. [? if concession_value = 0 : So far, nothing concrete has been put on the table. ?][? if concession_value > 0 and concession_value < satisfaction_needed * 0.5 : What's been offered so far hasn't moved them. ?][? if concession_value >= satisfaction_needed * 0.5 and concession_value < satisfaction_needed * 0.85 : They're listening now, but it isn't enough yet. ?][? if concession_value >= satisfaction_needed * 0.85 and concession_value < satisfaction_needed : We're close. A little more and they may accept. ?][? if concession_value >= satisfaction_needed : They've indicated they would accept a deal along these lines. ?]
+
+- @term_total_troops: Offer total troop removal - end federal occupation in the South entirely.
+- @term_partial_troops: Offer partial troop removal - draw down federal occupation significantly.
+- @term_home_rule: Offer Home Rule - formally recognize the Redeemer state governments and pledge non-interference.
+- @term_cabinet: Offer a Cabinet position to a Southern Democrat.
+- @term_railroad: Offer federal backing for a Southern Transcontinental Railroad.
+- @term_improvements: Offer federal money for Southern Internal Improvements.
+- @term_patronage: Offer Federal Patronage - local postmasterships and appointments.
+- @lock_in_deal: Lock in the deal.
+- @walk_away: Break off negotiations and let the ruling stand as it is.
+
+@term_total_troops
+choose-if: commission_leverage >= 30 and term_troops != "total"
+unavailable-subtitle: [? if term_troops = "total": We've already offered this. ?][? if commission_leverage < 30: We don't have the standing left to offer this. ?]
+on-arrival: {!
+    if (Q.term_troops === "partial") { Q.commission_leverage += 15; Q.concession_value -= 15; }
+    Q.commission_leverage -= 30;
+    Q.concession_value += 30;
+    Q.term_troops = "total";
+!}
+go-to: commission_negotiate
+
+We offer to withdraw federal troops from the South entirely, ending occupation everywhere it still exists. It is the single term the <span style="color: #002765;">**Bourbon**</span> wing wants most - and the one <span style="color: #7A1F5C;">**Radicals**</span> will least forgive us for.
+
+@term_partial_troops
+choose-if: commission_leverage >= 15 and term_troops != "partial"
+unavailable-subtitle: [? if term_troops = "partial": We've already offered this. ?][? if commission_leverage < 15: We don't have the standing left to offer this. ?]
+on-arrival: {!
+    if (Q.term_troops === "total") { Q.commission_leverage += 30; Q.concession_value -= 30; }
+    Q.commission_leverage -= 15;
+    Q.concession_value += 15;
+    Q.term_troops = "partial";
+!}
+go-to: commission_negotiate
+
+We offer a significant drawdown of federal troops in the South, short of a full withdrawal. It will satisfy the <span style="color: #002765;">**Bourbons**</span> less than total removal, but it costs us less standing to offer.
+
+@term_home_rule
+choose-if: commission_leverage >= 25 and term_home_rule = 0
+unavailable-subtitle: We don't have the standing left to offer this.
+on-arrival: {!
+    Q.commission_leverage -= 25;
+    Q.concession_value += 25;
+    Q.term_home_rule = 1;
+!}
+go-to: commission_negotiate
+
+We pledge to formally recognize the Redeemer governments already in place across the South and to leave them to govern without federal interference going forward.
+
+@term_cabinet
+choose-if: commission_leverage >= 15 and term_cabinet = 0
+unavailable-subtitle: We don't have the standing left to offer this.
+on-arrival: {!
+    Q.commission_leverage -= 15;
+    Q.concession_value += 15;
+    Q.term_cabinet = 1;
+!}
+go-to: commission_negotiate
+
+We offer a seat in the Cabinet to a Southern Democrat of the <span style="color: #002765;">**Bourbon**</span> wing's choosing - a real hand in the new administration, not just a promise.
+
+@term_railroad
+choose-if: commission_leverage >= 12 and term_railroad = 0
+unavailable-subtitle: We don't have the standing left to offer this.
+on-arrival: {!
+    Q.commission_leverage -= 12;
+    Q.concession_value += 12;
+    Q.term_railroad = 1;
+!}
+go-to: commission_negotiate
+
+We commit federal backing to a Southern transcontinental line, the kind of project Southern boosters have wanted funded for a decade.
+
+@term_improvements
+choose-if: commission_leverage >= 8 and term_improvements = 0
+unavailable-subtitle: We don't have the standing left to offer this.
+on-arrival: {!
+    Q.commission_leverage -= 8;
+    Q.concession_value += 8;
+    Q.term_improvements = 1;
+!}
+go-to: commission_negotiate
+
+We commit federal money to levees, harbors, and river improvements across the South - real spending, if modest next to a railroad.
+
+@term_patronage
+choose-if: commission_leverage >= 6 and term_patronage = 0
+unavailable-subtitle: We don't have the standing left to offer this.
+on-arrival: {!
+    Q.commission_leverage -= 6;
+    Q.concession_value += 6;
+    Q.term_patronage = 1;
+!}
+go-to: commission_negotiate
+
+We agree to hand local postmasterships and federal appointments across the South to Democratic nominees rather than Republican loyalists.
+
+@lock_in_deal
+view-if: concession_value >= satisfaction_needed
+on-arrival: {!
+    Q.compromise_1877_success = 1;
+
+    if (Q.term_troops === "total") {
+        Q.occupation = 0;
+        Q.South_army_strength = 0;
+        Q.whiteL_militancy = Math.max(0, Q.whiteL_militancy - 0.10);
+        Q.freemen_rep -= 10;
+        Q.radical_dissent += 15;
+    } else if (Q.term_troops === "partial") {
+        Q.occupation = Math.max(0, (Q.occupation || 0) - 1);
+        Q.South_army_strength = Math.round((Q.South_army_strength || 0) * 0.5);
+        Q.whiteL_militancy = Math.max(0, Q.whiteL_militancy - 0.04);
+        Q.freemen_rep -= 4;
+        Q.radical_dissent += 6;
+    }
+
+    if (Q.term_home_rule === 1) {
+        Q.reconstructionPlanActive = 0;
+        Q.freemen_rep -= 6;
+        Q.radical_dissent += 10;
+    }
+
+    if (Q.term_cabinet === 1) {
+        Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 6);
+        Q.conservative_strength += 2;
+    }
+
+    if (Q.term_railroad === 1) {
+        Q.budget -= 3;
+        Q.economic_growth += 0.15;
+        Q.rural_dem += 3;
+    }
+
+    if (Q.term_improvements === 1) {
+        Q.budget -= 1;
+        Q.middle_class_dem += 2;
+    }
+
+    if (Q.term_patronage === 1) {
+        Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 3);
+    }
+
+    Q.dem_relation += 6;
+    Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength - 5);
+!}
+go-to: commission_success
+
+@commission_success
+
+= The Bargain Holds
+
+The terms are carried south by intermediaries, and word comes back within days: the <span style="color: #002765;">**Bourbon**</span> leadership will accept them. [+ Candidate +] is inaugurated without further incident, and the disputed states quietly stop being disputed. It is not a peace built on principle it is a peace built on a ledger, paid for in troops, offices, and federal dollars. <span style="color: #7A1F5C;">**Radicals**</span> who spent a decade fighting for Reconstruction watch it get negotiated away in a matter of weeks.
+
+- @commission_end: Continue.
+
+@commission_end
+
+- @return: Continue.

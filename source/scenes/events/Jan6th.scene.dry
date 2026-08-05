@@ -1,0 +1,169 @@
+title: The Valentine's Day Riot
+subtitle: A mob descends on the Capitol as Congress moves to certify the election.
+tags: event
+new-page: true
+view-if: March_DC = 1 and year = 1877 and month = 2 and (dem_bourbon_strength > dem_reform_strength)
+max-visits: 1
+on-arrival: {!
+    Q.riot_prep_choices = 0;
+!}
+go-to: vdr_muster
+
+= The Valentine's Day Riot
+
+Congress has convened to formally certify [+ Candidate +]'s electoral votes. Outside, the count that ended the war of returning boards is being answered in the streets. <span style="color: #002765;">**Bourbon Democrat**</span> organizers have called their people to Washington, and the same organized muscle that has run the Redemption of the South — White League companies, Klan riders, men who have done this before — has come with them. Thousands now surround the Capitol, vowing that the certification will not happen while they still draw breath.
+
+Inside, the Vice President gavels the joint session to order. Outside, the crowd is already testing the doors.
+
+@vdr_muster
+
+The mob outside numbers in the thousands, and word says more are still arriving by rail. What can be mustered to hold the Capitol?
+
+- @vdr_rally_army: Call up the Army garrison stationed in the capital.
+- @vdr_rally_police: Mobilize the Metropolitan Police of Washington.
+- @vdr_rally_radicals: Call on Radical allies and armed Union veterans in the city.
+- @vdr_to_confrontation: Enough preparation. Hold the building.
+
+@vdr_rally_army
+max-visits: 1
+go-to: vdr_muster
+choose-if: army_strength >= 5 and army_loyalty >= 0.5
+unavailable-subtitle: [? if army_strength < 5: There isn't enough of an active garrison left in the capital to call up. ?][? if army_loyalty < 0.5: The army's loyalty is too uncertain to trust with this. ?]
+on-arrival: {!
+    Q.riot_prep_choices += 1;
+    Q.army_strength -= 5;
+    Q.vdr_army_committed = 1;
+!}
+
+The Army garrison forms up around the Capitol grounds, bayonets fixed. [? if army_loyalty < 0.7 : Some officers are visibly uneasy about turning soldiers on a crowd of American citizens, whatever that crowd intends. ?][? if army_loyalty >= 0.7 : The garrison holds its position without hesitation, awaiting orders. ?]
+
+@vdr_rally_police
+max-visits: 1
+go-to: vdr_muster
+on-arrival: {!
+    Q.riot_prep_choices += 1;
+    Q.Us_police_strength += 4;
+    Q.Us_police_militancy += 0.05;
+!}
+
+The Metropolitan Police turn out in full strength to hold the building's doors and stairs. [? if Us_police_loyalty < 0.4 : Given the political temperature in the city, more than a few officers find reasons to be elsewhere. ?][? if Us_police_loyalty >= 0.4 and Us_police_loyalty < 0.7 : Most report for duty, though the lines look thinner than the Superintendent would like. ?][? if Us_police_loyalty >= 0.7 : The force turns out nearly to a man, forming a cordon around the entrances. ?]
+
+@vdr_rally_radicals
+max-visits: 1
+go-to: vdr_muster
+choose-if: radical_strength >= 20
+unavailable-subtitle: The Radical wing isn't strong enough in the capital to raise an armed response on short notice.
+on-arrival: {!
+    Q.riot_prep_choices += 1;
+    Q.radical_strength += 2;
+    Q.vdr_radicals_committed = 1;
+!}
+
+Word goes out to Radical allies and Union veterans still living in the city, and armed men begin filtering in through the side streets to reinforce the building. It is an improvised defense, but a determined one.
+
+@vdr_to_confrontation
+choose-if: riot_prep_choices >= 2
+unavailable-subtitle: Gather more of a defense before the crowd reaches the doors.
+on-arrival: {!
+    Q.defender_power = (Q.vdr_army_committed ? Q.army_strength * Q.army_loyalty * 3 : 0)
+        + (Q.Us_police_strength * Q.Us_police_militancy * Q.Us_police_loyalty * 1.5)
+        + (Q.vdr_radicals_committed ? Q.radical_strength * 0.4 : 0);
+
+    Q.attacker_power = (Q.dem_bourbon_strength * 1.2)
+        + (Q.whiteL_strength * Q.whiteL_militancy * 0.6)
+        + (Q.kkk_strength * Q.kkk_militancy * 0.3);
+
+    if (Q.defender_power > Q.attacker_power * 1.1) {
+        Q.vdr_outcome = "victory";
+    } else if (Q.defender_power / Q.attacker_power >= 0.6) {
+        Q.vdr_outcome = "holdout";
+    } else {
+        Q.vdr_outcome = "defeat";
+    }
+!}
+go-to: vdr_victory if vdr_outcome = "victory"; vdr_holdout if vdr_outcome = "holdout"; vdr_defeat if vdr_outcome = "defeat"
+
+= The Doors
+
+The crowd surges up the Capitol steps. [? if vdr_army_committed = 1 : [+ army_strength +] soldiers ?][? if vdr_army_committed = 0 : no federal troops ?], [+ Us_police_strength +] Metropolitan Police, and [? if vdr_radicals_committed = 1 : an improvised company of armed Radical volunteers ?][? if vdr_radicals_committed = 0 : no additional volunteers ?] stand between the mob and the House chamber, where the electoral count still sits uncertified on the clerk's desk.
+
+@vdr_victory
+on-arrival: {!
+    Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength - 20);
+    Q.dem_bourbon_dissent += 15;
+    Q.whiteL_militancy = Math.max(0, Q.whiteL_militancy - 0.1);
+    Q.kkk_militancy = Math.max(0, Q.kkk_militancy - 0.05);
+    Q.radical_strength += 4;
+    Q.dem_relation -= 8;
+!}
+
+= The Capitol Holds
+
+The line breaks against the steps, not the doors. By nightfall the crowd disperses into the surrounding streets, and inside, a shaken but unbroken joint session finishes what it came to do: [+ Candidate +]'s electoral votes are certified without further incident. The image of an armed mob turned back from the seat of government will follow the <span style="color: #002765;">**Bourbon**</span> wing of the Democratic Party for a generation. Even many Democrats who wanted the disputed states counted their way are appalled at how close the count came to being settled by force rather than by law.
+
+- @vdr_end: Continue.
+
+@vdr_holdout
+on-arrival: {!
+    Q.dem_bourbon_strength += 5;
+    Q.radical_dissent += 6;
+    Q.Us_police_strength = Math.max(0, Q.Us_police_strength - 8);
+    Q.dem_relation -= 3;
+!}
+go-to: vdr_army_intervenes
+
+= The Rotunda
+
+The doors give out before the afternoon is over. The crowd fills the Rotunda itself, and for a time it is genuinely unclear whether the joint session will be allowed to reconvene at all. Members of Congress are hustled out through a side corridor under guard while the mob occupies the building's ground floor, chanting for the count to be thrown out entirely.
+
+@vdr_defeat
+on-arrival: {!
+    Q.dem_bourbon_strength += 15;
+    Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 5);
+    Q.radical_dissent += 15;
+    Q.Us_police_strength = Math.max(0, Q.Us_police_strength - 20);
+    Q.vdr_capitol_seized = 1;
+!}
+go-to: vdr_army_intervenes
+
+= The Capitol Falls
+
+The defense collapses within the hour. The mob takes the House chamber itself, scatters the electoral count across the floor, and for the first time in the nation's history, the Capitol of the United States sits in the hands of an armed political mob rather than its elected government. Word of what is happening in Washington spreads over the telegraph wires within minutes. No one in the country has ever seen anything like it.
+
+@vdr_army_intervenes
+
+- @vdr_call_reinforcements: Order every available federal soldier within reach of Washington to retake the Capitol.
+- @vdr_negotiate_withdrawal: Send terms to the crowd's organizers rather than risk more bloodshed in the building itself.
+
+@vdr_call_reinforcements
+choose-if: army_strength >= 10 and army_loyalty >= 0.5
+unavailable-subtitle: [? if army_strength < 10: There isn't enough of the Army left uncommitted to retake the building by force. ?][? if army_loyalty < 0.5: The Army's loyalty is too uncertain to trust with retaking the seat of government. ?]
+on-arrival: {!
+    Q.army_strength -= 10;
+    Q.whiteL_strength = Math.max(0, Q.whiteL_strength - 25);
+    Q.kkk_strength = Math.max(0, Q.kkk_strength - 15);
+    Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength - 10);
+    Q.dem_relation -= 15;
+    Q.radical_strength += 5;
+    Q.vdr_capitol_retaken = 1;
+!}
+go-to: vdr_end
+
+Federal troops move on the Capitol before dawn and clear it by force. The electoral count is recovered, and the joint session reconvenes under armed guard to finish its work. [+ Candidate +] is certified as President, but the country has now watched soldiers retake its own legislature at bayonet-point. Whatever legitimacy the outcome carries, it will forever share the page with the image of the Rotunda under military occupation.
+
+@vdr_negotiate_withdrawal
+on-arrival: {!
+    Q.dem_bourbon_strength += 10;
+    Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 10);
+    Q.radical_dissent += 20;
+    Q.freemen_rep -= 8;
+    Q.dem_relation += 4;
+    Q.vdr_negotiated_end = 1;
+!}
+go-to: vdr_end
+
+Rather than risk a second battle inside the Capitol itself, terms are sent to the crowd's organizers: withdraw, and the disputed states' certification will be revisited by an independent process rather than forced through tonight. The mob disperses by morning, having gotten exactly what it came for without a shot fired inside the building. <span style="color: #7A1F5C;">**Radicals**</span> call it a surrender to armed insurrection. Everyone else calls it the only way the night ended without a body count.
+
+@vdr_end
+
+- @return: Continue.
