@@ -3,7 +3,18 @@ subtitle: Victory at last!!!
 on-arrival: civil_war = 0; army_strength = 50;
 tags: event
 view-if: year = 1865 and month = 4
-face-image: img/General_Robert_E._Lee_surrenders_at_Appomattox_Court_House_1865.jpg
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/General_Robert_E._Lee_surrenders_at_Appomattox_Court_House_1865.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 max-visits: 1
  
 The long and bloody conflict draws to a close. General Robert E. Lee, commanding the battered remnants of the Confederate Army of Northern Virginia, has surrendered to Union General Ulysses S. Grant. The terms are generous—officers may keep their swords, men their horses.

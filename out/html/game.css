@@ -411,6 +411,16 @@ a.card:focus .card-tooltip, a.card:hover .card-tooltip {
   margin-bottom: 0.5em;
   overflow: hidden;
 }
+.face-figure2 {
+  /*vertical-align: top;*/
+  display: inline-block;
+  border: 5px solid #ccc;
+  float: left;
+  /*max-height: 180px;*/
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
 .face-img {
   /*max-width: 150px;*/
   vertical-align: bottom;
