@@ -176,7 +176,6 @@ if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisput
   Q.potus_winner = "dem";
 }
 !}
-!}
 on-display: {!
   var winners = {
     al: Q.al_winner_color,
