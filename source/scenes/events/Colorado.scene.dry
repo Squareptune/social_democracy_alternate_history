@@ -3,7 +3,7 @@ on-arrival: {!
 Q.states.push("CO");  
 !}
 tags: event
-view-if: year = 1867 and month = 3 
+view-if: year = 1876 and month = 8 
 max-visits: 1 
 
 Colorado has officially joined the Union as the Centennial State. With a predominantly rural and pro-<span style="color: #c00000;">**Republican**</span> population.
