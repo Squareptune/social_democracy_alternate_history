@@ -74,7 +74,6 @@ Intermediaries are carrying offers back and forth between Washington and the Sou
 - @term_improvements: Offer federal money for Southern Internal Improvements.
 - @term_patronage: Offer Federal Patronage - local postmasterships and appointments.
 - @lock_in_deal: Lock in the deal.
-- @walk_away: Break off negotiations and let the ruling stand as it is.
 
 @term_total_troops
 choose-if: commission_leverage >= 30 and term_troops != "total"
