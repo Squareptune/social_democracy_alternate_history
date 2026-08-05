@@ -29,7 +29,6 @@ on-display: {!
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
 !}
-
 on-arrival: radical_strength += 1; radical_dissent -= 2; moderate_strength -= 1; conservative_strength -= 2; conservative_dissent += 2; kkk_strength += 5; kkk_militancy += 0.1;
 
 Congress votes to put Davis on trial. <span style="color: #7A1F5C;">**Radicals**</span> celebrate a stand for the Republic, while <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> warn of the dangers: Southern resentment may explode, and a hostile court could even declare secession legal, threatening the legitimacy of Reconstruction.
