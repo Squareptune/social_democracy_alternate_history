@@ -176,7 +176,66 @@ if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisput
   Q.potus_winner = "dem";
 }
 !}
+!}
+on-display: {!
+  var winners = {
+    al: Q.al_winner_color,
+    ar: Q.ar_winner_color,
+    ca: Q.ca_winner_color,
+    co: Q.co_winner_color,
+    ct: Q.ct_winner_color,
+    de: Q.de_winner_color,
+    fl: Q.fl_winner_color,
+    ga: Q.ga_winner_color,
+    il: Q.il_winner_color,
+    in: Q.in_winner_color,
+    ia: Q.ia_winner_color,
+    ks: Q.ks_winner_color,
+    ky: Q.ky_winner_color,
+    la: Q.la_winner_color,
+    me: Q.me_winner_color,
+    md: Q.md_winner_color,
+    ma: Q.ma_winner_color,
+    mi: Q.mi_winner_color,
+    mn: Q.mn_winner_color,
+    ms: Q.ms_winner_color,
+    mo: Q.mo_winner_color,
+    ne: Q.ne_winner_color,
+    nv: Q.nv_winner_color,
+    nh: Q.nh_winner_color,
+    nj: Q.nj_winner_color,
+    ny: Q.ny_winner_color,
+    nc: Q.nc_winner_color,
+    oh: Q.oh_winner_color,
+    or: Q.or_winner_color,
+    pa: Q.pa_winner_color,
+    ri: Q.ri_winner_color,
+    sc: Q.sc_winner_color,
+    tn: Q.tn_winner_color,
+    tx: Q.tx_winner_color,
+    vt: Q.vt_winner_color,
+    va: Q.va_winner_color,
+    wv: Q.wv_winner_color,
+    wi: Q.wi_winner_color,
+    dc: Q.dc_winner_color,
+  };
+
+  function drawMap() {
+    ElectoralMap.draw({ container: "#electoral-map", winners: winners });
+  }
+
+  if (typeof ElectoralMap !== 'undefined') {
+    drawMap();
+  } else {
+    var script = document.createElement('script');
+    script.src = 'electoral-map.js';
+    script.onload = drawMap;
+    document.head.appendChild(script);
+  }
+!}
 go-to: potus_menu_1876
+
+{!<div id="electoral-map"></div>!}
 
 {!<table>!}
 {!<tr><td>Party</td><td>Electoral votes</td></tr>!}

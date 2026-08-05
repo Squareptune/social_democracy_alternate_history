@@ -1,4 +1,4 @@
-Title: Presidential Inauguration
+title: Presidential Inauguration
 subtitle: [+ president +] takes the oath of office
 view-if: year = 1877 and month = 3
 
