@@ -15,7 +15,6 @@ on-display: {!
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
 !}
-
 max-visits: 1
 
 President Lincoln was assassinated by John Wilkes Booth while watching a play at Ford's Theatre. Government forces are currently on the lookout for the assassin, but now Lincoln's vice president, southern sympathiser Andrew Johnson, is president, much to our dismay.
