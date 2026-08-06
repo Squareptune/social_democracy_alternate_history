@@ -591,3 +591,39 @@ table {
     text-decoration: underline;
     text-decoration-style: dotted;
 }
+
+.achievement-icon {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #c00000;
+    background: rgba(192, 0, 0, 0.15);
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.achievement-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.achievement-info {
+    border: 2px solid #c00000;
+    background: rgba(91, 154, 141, 0.1);
+    vertical-align: middle;
+    padding: 10px 14px;
+}
+
+.achievement-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.achievement-description {
+    font-size: 90%;
+    color: #666;
+    margin-top: 3px;
+}
