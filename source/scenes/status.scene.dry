@@ -151,7 +151,7 @@ Rural: <span style="color: #c00000;">**Republican**</span>: [+ rural_rep +]%, <s
 
 Middle Class: <span style="color: #c00000;">**Republican**</span>: [+ middle_class_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ middle_class_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ middle_class_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ middle_class_other +]%
 
-{!<span class="tooltip-text" title= [+ freedmen_turnout +] >Freedmen</span>!}: <span style="color: #c00000;">**Republican**</span>: [+ freemen_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ freemen_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ freemen_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ freemen_other +]%
+{!<span class="tooltip-text" title="[+ freedmen_turnout +] %" >Freedmen</span>!}: <span style="color: #c00000;">**Republican**</span>: [+ freemen_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ freemen_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ freemen_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ freemen_other +]%
 
 Immigrant Laborers: <span style="color: #c00000;">**Republican**</span>: [+ immigrant_laborers_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ immigrant_laborers_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ immigrant_laborers_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ immigrant_laborers_other +]%
 
@@ -165,7 +165,7 @@ Secretary of State: [+ sect_state +] ([+ sect_state_party +]) [? if sect_state_p
 
 Secretary of Interior: [+ sect_interior +] ([+ sect_interior_party +]) [? if sect_interior_party = "R" and interior_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('Interior_policy')">Consult</button> ?][? if sect_interior_party = "R" and interior_policy_timer > 0 : <span class="cabinet_jump_disabled" title="[+ interior_policy_timer +] months remaining">Consult</span> ?]
 
-Attorney General: [+ attorney_general +] ([+ attorney_general_party +]) [? if attorney_general_party = "R" and judiciary_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('judiciary')">Consult</button> ?][? if attorney_general_party = "R" and judiciary_timer > 0 : <span class="cabinet_jump_disabled" title="[+ interior_policy_timer +] months remaining">Consult</span> ?]
+Attorney General: [+ attorney_general +] ([+ attorney_general_party +]) [? if attorney_general_party = "R" and judiciary_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('judiciary')">Consult</button> ?][? if attorney_general_party = "R" and judiciary_timer > 0 : <span class="cabinet_jump_disabled" title="[+ judiciary_timer +] months remaining">Consult</span> ?]
 
 Secretary of War: [+ sect_war +] ([+ sect_war_party +]) [? if sect_war_party = "R" and military_policy_timer <= 0 : <button class="cabinet_jump" onclick="window.dendryUI.dendryEngine.goToScene('military_policy')">Consult</button> ?][? if sect_war_party = "R" and military_policy_timer > 0 : <span class="cabinet_jump_disabled" title="[+ military_policy_timer +] months remaining">Consult</span> ?]
 
