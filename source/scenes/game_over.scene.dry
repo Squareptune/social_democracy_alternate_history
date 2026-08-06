@@ -547,7 +547,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 = Incomplete Achievements
 
-[? if game_achievement_radical: 
+[? if not game_achievement_radical: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
     <img src="img/Achievements/Radical.png" alt="Radical Icon"
