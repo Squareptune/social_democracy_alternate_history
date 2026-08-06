@@ -534,7 +534,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_radical: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Radical.png" alt="Radical Icon">
+        <img src="img/Acheivements/Radical.png" alt="Radical Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -550,7 +550,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_empire: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Imperii_Americani.png" alt="Empire Icon">
+        <img src="img/Acheivements/Imperii_Americani.png" alt="Empire Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -566,7 +566,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_rejection: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Rejection.png" alt="Rejecy Icon">
+        <img src="img/Acheivements/Rejection.png" alt="Rejecy Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -582,7 +582,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_smith: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Smith.png" alt="Smith Icon">
+        <img src="img/Acheivements/Smith.png" alt="Smith Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -598,7 +598,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_subjects: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Subjects.png" alt="Subjects Icon">
+        <img src="img/Acheivements/Subjects.png" alt="Subjects Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -614,7 +614,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_washington: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="Washington.png" alt="Washington Icon">
+        <img src="img/Acheivements/Washington.png" alt="Washington Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
