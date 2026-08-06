@@ -574,7 +574,7 @@ if (Q.month_actions >= 1) {
         let panicChance = (Q.economic_expansion - 60) * 0.015;
         if (Math.random() < panicChance) {
             Q.panic_triggered = 1;
-            Q.panic_pending = 1; // consumed by your Panic scene's view-if
+            Q.panic_pending = 1;
         }
     }
 

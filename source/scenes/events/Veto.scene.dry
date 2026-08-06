@@ -2,7 +2,7 @@ title: Presidential Veto
 subtitle: [+ president +] vetoes the [+ veto_reason +]
 tags: event
 new-page: true
-view-if: veto > 0
+view-if: veto > 0 and president_party = "dem"
 on-arrival: {!
 
     Q.veto = 0;

@@ -1,6 +1,6 @@
 title: Lincoln Assassinated
 subtitle: A great travesty
-on-arrival: moderate_strength -= 2; radical_strength += 2; president = "Johnson"
+on-arrival: moderate_strength -= 2; radical_strength += 2; president = "Johnson"; president_party = "dem"
 tags: event
 view-if: year = 1865 and month = 4
 on-display: {!  

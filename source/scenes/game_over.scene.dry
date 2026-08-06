@@ -322,7 +322,20 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 = Completed Achievements in this Playthrough
 
 
-[? if game_achievement_eiserne_front : **Eiserne Front** - form the Iron Front. ?]
+[? if game_achievement_radical: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/Achievements/Radical.png" alt="Radical Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">A New South Forged in Fire</div>
+      <div style="font-size: 90%; color: #444; "> - Acheive the Radical Ending </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 
 [? if game_achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
 
@@ -534,7 +547,20 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 = Incomplete Achievements
 
-[? if not achievement_eiserne_front : **Eiserne Front** - form the Iron Front. ?]
+[? if game_achievement_radical: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/Achievements/Radical.png" alt="Radical Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">A New South Forged in Fire</div>
+      <div style="font-size: 90%; color: #444; "> - Acheive the Radical Ending </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 
 [? if not achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
 

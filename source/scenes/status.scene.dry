@@ -26,7 +26,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 = Government
 
-President: [+ president +]
+President: [+ president +] ([+ president_party +])
 
 Speaker of House: [+ speaker +] ([+ speaker_party +])
 
