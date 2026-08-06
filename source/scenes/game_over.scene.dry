@@ -562,8 +562,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             Achieve the Radical Ending
         {!</div>!}
     {!</td>!}
-{!</tr>!}
-?]
+{!</tr>!} ?]
 
 [? if not achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
 
