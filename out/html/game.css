@@ -595,8 +595,8 @@ table {
 .achievement-icon {
     width: 64px;
     height: 64px;
-    border: 2px solid #c00000;
-    background: rgba(192, 0, 0, 0.15);
+    border: 2px solid #00205B;
+    background: #8fa0bf;
     text-align: center;
     vertical-align: middle;
     padding: 0;
@@ -611,8 +611,8 @@ table {
 }
 
 .achievement-info {
-    border: 2px solid #c00000;
-    background: rgba(91, 154, 141, 0.1);
+    border: 2px solid #BF0A30;
+    background: #d5b3bb;
     vertical-align: middle;
     padding: 10px 14px;
 }
@@ -624,6 +624,35 @@ table {
 
 .achievement-description {
     font-size: 90%;
-    color: #666;
+    color: #545454;
+    margin-top: 3px;
+}
+
+.achievement-icon-locked {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #2d2d2d;
+    background: #8fa0bf;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    filter: grayscale(100%);
+}
+
+.achievement-info-locked{
+    border: 2px solid #646464;
+    background: #c3c3c3;
+    vertical-align: middle;
+    padding: 10px 14px;    
+}
+.achievement-title-locked {
+    font-weight: bold;
+    font-size: 16px;
+    color: #646464
+}
+
+.achievement-description-locked {
+    font-size: 90%;
+    color: #545454;
     margin-top: 3px;
 }

@@ -322,234 +322,9 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 = Completed Achievements in this Playthrough
 
 
-[? if game_achievement_radical: 
-{!<tr>!}
-  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/Achievements/Radical.png" alt="Radical Icon"
-         style="width: 100%; height: 100%; object-fit: cover; display: block;">
-  {!</td>!}
-  {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
-    <div style="padding-left: 0.5em;">
-      <div style="font-weight: bold;">A New South Forged in Fire</div>
-      <div style="font-size: 90%; color: #444; "> - Acheive the Radical Ending </div>
-    </div>
-  {!</td>!}
-{!</tr>!}
-?]
-
-[? if game_achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
-
-[? if game_achievement_einigkeit : **Einigkeit** - reach the end of the game without a civil war on easy. ?]
-
-[? if game_achievement_einigkeit_und_recht : **Einigkeit und Recht** - reach the end of the game without a civil war on normal. ?]
-
-[? if game_achievement_einigkeit_und_recht_und_freiheit : **Einigkeit und Recht und Freiheit** - reach the end of the game without a civil war on hard. ?]
-
-[? if game_achievement_schwarz_rot_gold : **Schwarz-Rot-Gold** - reach the end of the game without a civil war on historical mode. ?]
-
-[? if game_achievement_victory_for_the_republic: **Sieg für die Republik** - win the civil war. ?]
-
-[? if game_achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
-
-[? if game_achievement_red_tzar_of_prussia : **Roter Zar von Preußen** - Otto Braun is President, Chancellor, and Minister-President. ?]
-
-[? if game_achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the SPD and KPD. ?]
-
-[? if game_achievement_einheitsfront_2: **Sieg für die Einheitsfront** - Form a Left Front that survives the KPD demands. ?]
-
-[? if game_achievement_volksfront: **Volksfront** - Form a government consisting of the SPD, KPD, Z, and DDP. ?]
-
-[? if game_achievement_grosse_volksfront: **Große Volksfront** - With Joos leading the Center Party and the Conciliators leading the KPD, form a government consisting of the SPD, KPD, Z, and DDP. ?]
-
-[? if game_achievement_volksfront_2: **Sieg für die Volksfront** - Form a Popular Front that survives the KPD demands. ?]
-
-[? if game_achievement_constitutional_coalition: **Verfassungskoalition** - form a "constitutional coalition". ?]
-
-[? if game_achievement_weimar_coalition: **Weimarer Koalition** - form a Weimar coalition. ?]
-
-[? if game_achievement_majority_party: **Mehrheitspartei** - form an SPD-only majority government. ?]
-
-[? if game_achievement_minderheitsregierung: **Minderheitsregierung** - form an SPD minority government. ?]
-
-[? if game_achievement_volkspartei: **Volkspartei** - the SPD is a People's Party. ?]
-
-[? if game_achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either president or chancellor. ?]
-
-[? if game_achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is president. ?]
-
-[? if game_achievement_versohnler: **Versöhnler** - the Conciliators lead the KPD. ?]
-
-[? if game_achievement_deport_hitler : **Der österreichische Gefreite** - deported Hitler ?]
-
-[? if game_achievement_wirtschaftspolitik: **Wirtschaftspolitik** - enact an economic plan. ?]
-
-[? if game_achievement_wirtschaftswunder: **Wirtschaftswunder** - After 1932, have unemployment less than in 1928, inflation below 5%, and a budget surplus. ?]
-
-[? if game_achievement_wirtschaftsexperiment: **Wirtschaftsexperiment** - enact two different economic plans. ?]
-
-[? if game_achievement_freie_marktwirtschaft: **Freie Marktwirtschaft** - survive to the end of the game without adopting an economic plan. ?]
-
-[? if game_achievement_equality: **Gleichheit** - pass reforms for women's rights. ?]
-
-[? if game_achievement_hirschfeld: **Hirschfeld** - pass reforms for homosexual rights. ?]
-
-[? if game_achievement_women_reichsbanner: **Mädchen in Uniform** - a woman's place is in the Reichsbanner. ?]
-
-[? if game_achievement_bruder_zur_sonne: **Brüder, zur Sonne, zur Freiheit** - reduce unemployment, pause reparations, increase women's rights, elect an SPD president, and deport Hitler in one playthrough on at least normal difficulty. ?]
-
-[? if game_achievement_die_rote_fahne: **Die Rote Fahne** - join the KPD in their May Day march. ?]
-
-[? if game_achievement_panik_im_mittelstand: **Panik im Mittelstand** - SPD new middle class support is at least 50%. ?]
-
-[? if game_achievement_bauernrevolution: **Bauernrevolution** - SPD rural support is at least 50%. ?]
-
-[? if game_achievement_katholischer_sozialismus: **Katholischer Sozialismus** - SPD Catholic support is at least 50%. ?]
-
-[? if game_achievement_grosse_volkspartei: **Große Volkspartei** - All classes have at least 40% SPD support. ?]
-
-[? if game_achievement_klassenkampf: **Klassenkampf** - SPD worker support is at least 80%, while middle-class and rural supports are less than 20%. ?]
-
-[? if game_achievement_raterepublik: **Räterepublik** - begin the transformation to a socialist economy. ?]
-
-[? if game_achievement_polykrise: **Polykrise** - survive a capital strike and a fascist coup. ?]
-
-[? if game_achievement_syndikalismus: **Syndikalismus** - support factory takeovers by the workers. ?]
-
-[? if game_achievement_drei_pfeile: **Drei Pfeile** - defeat a coup without a civil war. ?]
-
-[? if game_achievement_ausnahmezustand: **Ausnahmezustand** - use emergency powers to cancel elections. ?]
-
-[? if game_achievement_eu: **Vereinigte Staaten von Europa** - form a "European Union". ?]
-
-[? if game_achievement_heidelberger_programm: **Heidelberger Programm** - achieve the goals of the SPD's Heidelberg Program: social welfare, judicial reform, women's rights in the workplace and family, progressive taxation, works councils, and the formation of a European Union. ?]
-
-[? if game_achievement_verfassungsreform: **Verfassungsreform** - pass a constitutional amendment. ?]
-
-[? if game_achievement_zeppelin_kapitan : **Zeppelinkapitän** - Hugo Eckener has been elected president. ?]
-
-[? if game_achievement_wahlrechts : **Wahlrechts für Frauen** - Marie Juchacz has been elected president. ?]
-
-[? if game_achievement_bundesrepublik : **Bundesrepublik** - Konrad Adenauer or Kurt Schumacher has been elected president, and constitutional reforms have reduced presidential power. ?]
-
-[? if game_achievement_republik_der_wissenschaft : **Republik der Wissenschaft** - Albert Einstein has been elected president. ?]
-
-[? if game_achievement_arbeiter_von_wien : **Arbeiter von Wien** - SDAPÖ victory in Austria. ?]
-
-[? if game_achievement_stolperstein: **Stolperstein** - we lost, but history might memorialize us... ?]
-
-
-
-= Completed Achievements Overall
-
-
-[? if achievement_eiserne_front : **Eiserne Front** - form the Iron Front. ?]
-
-[? if achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
-
-[? if achievement_einigkeit : **Einigkeit** - reach the end of the game without a civil war on easy. ?]
-
-[? if achievement_einigkeit_und_recht : **Einigkeit und Recht** - reach the end of the game without a civil war on normal. ?]
-
-[? if achievement_einigkeit_und_recht_und_freiheit : **Einigkeit und Recht und Freiheit** - reach the end of the game without a civil war on hard. ?]
-
-[? if achievement_schwarz_rot_gold : **Schwarz-Rot-Gold** - reach the end of the game without a civil war on historical mode. ?]
-
-[? if achievement_victory_for_the_republic: **Sieg für die Republik** - win the civil war. ?]
-
-[? if achievement_bollwerk_der_demokratie: **Bollwerk der Demokratie** - Resist the Prussian Coup and win. ?]
-
-[? if achievement_red_tzar_of_prussia : **Roter Zar von Preußen** - Otto Braun is President, Chancellor, and Minister-President. ?]
-
-[? if achievement_einheitsfront: **Einheitsfront** - Form a government consisting of the SPD and KPD. ?]
-
-[? if achievement_einheitsfront_2: **Sieg für die Einheitsfront** - Form a Left Front that survives the KPD demands. ?]
-
-[? if achievement_volksfront: **Volksfront** - Form a government consisting of the SPD, KPD, Z, and DDP. ?]
-
-[? if achievement_grosse_volksfront: **Große Volksfront** - With Joos leading the Center Party and the Conciliators leading the KPD, form a government consisting of the SPD, KPD, Z, and DDP. ?]
-
-[? if achievement_volksfront_2: **Sieg für die Volksfront** - Form a Popular Front that survives the KPD demands. ?]
-
-[? if achievement_constitutional_coalition: **Verfassungskoalition** - form a "constitutional coalition". ?]
-
-[? if achievement_weimar_coalition: **Weimarer Koalition** - form a Weimar coalition. ?]
-
-[? if achievement_majority_party: **Mehrheitspartei** - form an SPD-only majority government. ?]
-
-[? if achievement_minderheitsregierung: **Minderheitsregierung** - form an SPD minority government. ?]
-
-[? if achievement_volkspartei: **Volkspartei** - the SPD is a People's Party. ?]
-
-[? if achievement_sohn_seiner_klasse: **Sohn seiner Klasse** - Ernst Thälmann is either president or chancellor. ?]
-
-[? if achievement_rote_millionar: **Der rote Millionär** - Willi Münzenberg is president. ?]
-
-[? if achievement_versohnler: **Versöhnler** - the Conciliators lead the KPD. ?]
-
-[? if achievement_deport_hitler : **Der österreichische Gefreite** - deported Hitler ?]
-
-[? if achievement_wirtschaftspolitik: **Wirtschaftspolitik** - enact an economic plan. ?]
-
-[? if achievement_wirtschaftswunder: **Wirtschaftswunder** - After 1932, have unemployment less than in 1928, inflation below 5%, and a budget surplus. ?]
-
-[? if achievement_wirtschaftsexperiment: **Wirtschaftsexperiment** - enact two different economic plans. ?]
-
-[? if achievement_freie_marktwirtschaft: **Freie Marktwirtschaft** - survive to the end of the game without adopting an economic plan. ?]
-
-[? if achievement_equality: **Gleichheit** - pass reforms for women's rights. ?]
-
-[? if achievement_hirschfeld: **Hirschfeld** - pass reforms for homosexual rights. ?]
-
-[? if achievement_women_reichsbanner: **Mädchen in Uniform** - a woman's place is in the Reichsbanner. ?]
-
-[? if achievement_bruder_zur_sonne: **Brüder, zur Sonne, zur Freiheit** - reduce unemployment, pause reparations, increase women's rights, elect an SPD president, and deport Hitler in one playthrough on at least normal difficulty. ?]
-
-[? if achievement_die_rote_fahne: **Die Rote Fahne** - join the KPD in their May Day march. ?]
-
-[? if achievement_panik_im_mittelstand: **Panik im Mittelstand** - SPD new middle class support is at least 50%. ?]
-
-[? if achievement_bauernrevolution: **Bauernrevolution** - SPD rural support is at least 50%. ?]
-
-[? if achievement_katholischer_sozialismus: **Katholischer Sozialismus** - SPD Catholic support is at least 50%. ?]
-
-[? if achievement_grosse_volkspartei: **Große Volkspartei** - All classes have at least 40% SPD support. ?]
-
-[? if achievement_klassenkampf: **Klassenkampf** - SPD worker support is at least 80%, while middle-class and rural supports are less than 20%. ?]
-
-[? if achievement_raterepublik: **Räterepublik** - begin the transformation to a socialist economy. ?]
-
-[? if achievement_polykrise: **Polykrise** - survive a capital strike and a fascist coup. ?]
-
-[? if achievement_syndikalismus: **Syndikalismus** - support factory takeovers by the workers. ?]
-
-[? if achievement_drei_pfeile: **Drei Pfeile** - defeat a coup without a civil war. ?]
-
-[? if achievement_ausnahmezustand: **Ausnahmezustand** - use emergency powers to cancel elections. ?]
-
-[? if achievement_eu: **Vereinigte Staaten von Europa** - form a "European Union". ?]
-
-[? if achievement_heidelberger_programm: **Heidelberger Programm** - achieve the goals of the SPD's Heidelberg Program: social welfare, judicial reform, women's rights in the workplace and family, progressive taxation, works councils, and the formation of a European Union. ?]
-
-[? if achievement_verfassungsreform: **Verfassungsreform** - pass a constitutional amendment. ?]
-
-[? if achievement_zeppelin_kapitan : **Zeppelinkapitän** - Hugo Eckener has been elected president. ?]
-
-[? if achievement_wahlrechts : **Wahlrechts für Frauen** - Marie Juchacz has been elected president. ?]
-
-[? if achievement_bundesrepublik : **Bundesrepublik** - Konrad Adenauer or Kurt Schumacher has been elected president, and constitutional reforms have reduced presidential power. ?]
-
-[? if achievement_republik_der_wissenschaft : **Republik der Wissenschaft** - Albert Einstein has been elected president. ?]
-
-[? if achievement_arbeiter_von_wien : **Arbeiter von Wien** - SDAPÖ victory in Austria. ?]
-
-[? if achievement_stolperstein: **Stolperstein** - we lost, but history might memorialize us... ?]
-
-
-= Incomplete Achievements
-
 {!<table style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">!}
 
-[? if not game_achievement_radical: 
+[? if game_achievement_radical: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Radical.png" alt="Radical Icon">
@@ -565,7 +340,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if not game_achievement_empire: 
+[? if game_achievement_empire: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Imperii_Americani.png" alt="Empire Icon">
@@ -581,7 +356,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if not game_achievement_rejection: 
+[? if game_achievement_rejection: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Rejection.png" alt="Rejecy Icon">
@@ -597,7 +372,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if not game_achievement_smith: 
+[? if game_achievement_smith: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Smith.png" alt="Smith Icon">
@@ -613,7 +388,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if not game_achievement_subjects: 
+[? if game_achievement_subjects: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Subjects.png" alt="Subjects Icon">
@@ -629,7 +404,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if not game_achievement_washington: 
+[? if game_achievement_washington: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
         <img src="Washington.png" alt="Washington Icon">
@@ -639,6 +414,213 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             Washington Reborn
         </div>
         <div class="achievement-description">
+            Sweep all the states in a presidential election! 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+{!</table>!}
+
+
+= Completed Achievements Overall
+
+
+{!<table style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">!}
+
+[? if achievement_radical: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Radical.png" alt="Radical Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            A New South Forged in Fire
+        </div>
+        <div class="achievement-description">
+            Achieve the Radical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_empire: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Imperii_Americani.png" alt="Empire Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Imperii Americani
+        </div>
+        <div class="achievement-description">
+            Achieve all possible territorial gains
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_rejection: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Rejection.png" alt="Rejecy Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Rejection
+        </div>
+        <div class="achievement-description">
+            Keep the South out of the union for the entire game
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_smith: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Smith.png" alt="Smith Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            The Wealth of Nations
+        </div>
+        <div class="achievement-description">
+            Cut all taxes and tariffs, readopt the Gold Standard, and refuse to intervene during an economic crisis. 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_subjects: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Subjects.png" alt="Subjects Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            MY SUBJECTS!!
+        </div>
+        <div class="achievement-description">
+            win a third consecutive presidential term 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_washington: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="Washington.png" alt="Washington Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Washington Reborn
+        </div>
+        <div class="achievement-description">
+            Sweep all the states in a presidential election! 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+{!</table>!}
+
+
+= Incomplete Achievements
+
+{!<table style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">!}
+
+[? if not achievement_radical: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Radical.png" alt="Radical Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            A New South Forged in Fire
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Radical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_empire: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Imperii_Americani.png" alt="Empire Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Imperii Americani
+        </div>
+        <div class="achievement-description-locked">
+            Achieve all possible territorial gains
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_rejection: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Rejection.png" alt="Rejecy Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Rejection
+        </div>
+        <div class="achievement-description-locked">
+            Keep the South out of the union for the entire game
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_smith: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Smith.png" alt="Smith Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            The Wealth of Nations
+        </div>
+        <div class="achievement-description-locked">
+            Cut all taxes and tariffs, readopt the Gold Standard, and refuse to intervene during an economic crisis. 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_subjects: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Subjects.png" alt="Subjects Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            MY SUBJECTS!!
+        </div>
+        <div class="achievement-description-locked">
+            win a third consecutive presidential term 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_washington: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="Washington.png" alt="Washington Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Washington Reborn
+        </div>
+        <div class="achievement-description-locked">
             Sweep all the states in a presidential election! 
         </div>
     {!</td>!}
