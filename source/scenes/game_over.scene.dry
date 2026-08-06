@@ -557,7 +557,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             A New South Forged in Fire
         </div>
         <div class="achievement-description">
-            Achieve the Radical Ending
+            Achieve the Radical Ending.
         </div>
     {!</td>!}
 {!</tr>!}
