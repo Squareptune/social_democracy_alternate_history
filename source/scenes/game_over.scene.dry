@@ -327,7 +327,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_radical: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Radical.png" alt="Radical Icon">
+        <img src="img/Acheivements/Radical.png" alt="Radical Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -343,7 +343,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_empire: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Imperii_Americani.png" alt="Empire Icon">
+        <img src="img/Acheivements/Imperii_Americani.png" alt="Empire Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -359,7 +359,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_rejection: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Rejection.png" alt="Rejecy Icon">
+        <img src="img/Acheivements/Rejection.png" alt="Rejecy Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -375,7 +375,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_smith: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Smith.png" alt="Smith Icon">
+        <img src="img/Acheivements/Smith.png" alt="Smith Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -391,7 +391,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_subjects: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Subjects.png" alt="Subjects Icon">
+        <img src="img/Acheivements/Subjects.png" alt="Subjects Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -407,7 +407,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_washington: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Washington.png" alt="Washington Icon">
+        <img src="img/Acheivements/Washington.png" alt="Washington Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -431,7 +431,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_radical: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Radical.png" alt="Radical Icon">
+        <img src="img/Acheivements/Radical.png" alt="Radical Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -447,7 +447,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_empire: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Imperii_Americani.png" alt="Empire Icon">
+        <img src="img/Acheivements/Imperii_Americani.png" alt="Empire Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -463,7 +463,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_rejection: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Rejection.png" alt="Rejecy Icon">
+        <img src="img/Acheivements/Rejection.png" alt="Rejecy Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -479,7 +479,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_smith: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Smith.png" alt="Smith Icon">
+        <img src="img/Acheivements/Smith.png" alt="Smith Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -495,7 +495,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_subjects: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Subjects.png" alt="Subjects Icon">
+        <img src="img/Acheivements/Subjects.png" alt="Subjects Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -511,7 +511,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_washington: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="Washington.png" alt="Washington Icon">
+        <img src="img/Acheivements/Washington.png" alt="Washington Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
