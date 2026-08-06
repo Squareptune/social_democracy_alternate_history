@@ -550,19 +550,20 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not game_achievement_radical: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        {!<img src="Radical.png" alt="Radical Icon">!}
+        <img src="Radical.png" alt="Radical Icon">
     {!</td>!}
 
     {!<td class="achievement-info">!}
-        {!<div class="achievement-title">!}
+        <div class="achievement-title">
             A New South Forged in Fire
-        {!</div>!}
+        </div>
 
-        {!<div class="achievement-description">!}
+        <div class="achievement-description">
             Achieve the Radical Ending
-        {!</div>!}
+        </div>
     {!</td>!}
-{!</tr>!} ?]
+{!</tr>!}
+?]
 
 [? if not achievement_civil_war : **Bürgerkrieg** - enter a long civil war. ?]
 
