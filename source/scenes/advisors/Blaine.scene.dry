@@ -7,9 +7,9 @@ new-page: true
 
 = James G. Blaine
 
-James G. Blaine is a representative from Maine and is one of the leading figures of the House of representatives with his mix between Radicalism and Moderate policies.
+James G. Blaine is a representative from Maine and is one of the leading figures of the House of representatives with his mix between **<span style="color: #7A1F5C;">Radical</span>** and **<span style="color: #9D2933;">Moderate</span>** policies.
 
-- @Blaine_Unity: Unify the Radicals and Moderates
+- @Blaine_Unity: Unify the **<span style="color: #7A1F5C;">Radicals</span>** and **<span style="color: #9D2933;">Moderates</span>**
 - @Blaine_WASP: **I HATE CATHOLICS!!**
 - @root: Return to main
 
@@ -19,7 +19,7 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_strength += 3; moderate_strength += 3; radical_dissent -= 3; moderate_dissent -=3;
 
-Blaine reduces the tensions between the Radical and Moderate Republicans.
+Blaine reduces the tensions between the **<span style="color: #7A1F5C;">Radical</span>** and **<span style="color: #9D2933;">Moderate Republicans</span>**.
 
 @Blaine_WASP
 subtitle: **THESE DAMN IRISHMEN AND THERE DRUNKEDNESS!!!!**

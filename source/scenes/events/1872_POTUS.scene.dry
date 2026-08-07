@@ -303,7 +303,7 @@ on-arrival: {!
 
 The <span style="color: #c00000;">**Republicans**</span> have won the election. 
 
-[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. Greeley, humiliated by his catastrophic defeat, will not long survive it — he dies within weeks of the election, a broken man. ?]
+[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. ?]
 
 [? if Candidate = "Wade" : Wade's Radical coalition has held together long enough to win. The <span style="color: #DAA520;">**Liberal Republicans**</span> are routed. Reconstruction enters a new, more forceful phase. ?]
 
@@ -335,7 +335,7 @@ subtitle: <span style="color: #DAA520;">**Liberal Republicans**</span>/<span sty
 view-if: potus_winner = "lib" and greeley_fusion = 1
 on-arrival: president = "Greeley"; president_party = "lib"; liberal_split = 0;
 
-The impossible has happened. The combined <span style="color: #0015bc;">**Democratic**</span> and <span style="color: #DAA520;">**Liberal Republican**</span> coalition has carried enough states to deny the <span style="color: #c00000;">**Republicans**</span> an electoral majority. Horace Greeley — the eccentric editor who spent decades denouncing the <span style="color: #0015bc;">**Democratic Party**</span> — will be the next President of the United States, carried there on <span style="color: #0015bc;">**Democratic**</span> votes.
+The impossible has happened. The combined <span style="color: #0015bc;">**Democratic**</span> and <span style="color: #DAA520;">**Liberal Republican**</span> coalition has carried enough states to deny the <span style="color: #c00000;">**Republicans**</span> an electoral majority. Horace Greeley the eccentric editor who spent decades denouncing the <span style="color: #0015bc;">**Democratic Party**</span> will be the next President of the United States, carried there on <span style="color: #0015bc;">**Democratic**</span> votes.
 
 The victory is bittersweet for everyone. <span style="color: #0015bc;">**Democrats**</span> feel they have swallowed a bitter pill. <span style="color: #DAA520;">**Liberal Republicans**</span> are triumphant but uncertain whether Greeley can govern. The <span style="color: #c00000;">**Republican Party**</span>, for the first time since the war, finds itself locked out of the White House. Reconstruction's future hangs in the balance.
 
@@ -348,7 +348,7 @@ on-arrival: president = "Greeley"; president_party = "lib"; liberal_split = 0;
 In a stunning three-way upset, Horace Greeley and the <span style="color: #DAA520;">**Liberal Republicans**</span> have won an electoral majority without <span style="color: #0015bc;">**Democratic**</span> fusion. The split opposition vote has somehow broken in Greeley's favor. The <span style="color: #c00000;">**Republican Party**</span> is shattered, and Reconstruction faces an uncertain future under a president who campaigned on ending military occupation of the South.
 
 @house_decides_1872
-title: No majority — the election goes to the House!
+title: No majority with the election going to the House!
 subtitle: Rep: [+ repEVTotal +] | Dem: [+ demEVTotal +] | Lib: [+ libEVTotal +]
 view-if: potus_winner = "house"
 on-arrival: {!

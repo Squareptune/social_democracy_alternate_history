@@ -7,7 +7,7 @@ new-page: true
 
 = Benjamin Butler
 
-Benjamin Butler of Massachusetts is the most controversial figure in the Radical wing possibly in the entire Republican Party. His wartime administration of New Orleans earned him the nickname "Beast Butler" in the South and considerable admiration in the North..
+Benjamin Butler of Massachusetts is the most controversial figure in the **<span style="color: #7A1F5C;">Radical wing</span>** possibly in the entire <span style="color: #c00000;">**Republican Party**</span>. His wartime administration of New Orleans earned him the nickname "Beast Butler" in the South and considerable admiration in the North.
 
 - @butler_impeachment_pressure: Apply Impeachment Pressure
 - @butler_labor_appeal: Appeal to Labor
@@ -31,7 +31,7 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; workers_rep += 4; unemployed_rep += 3; immigrant_laborers_rep += 2;
 
-Butler speaks the language of the factory floor with genuine conviction. His attacks on capital and his championing of the eight-hour day draw working men to the Republican Party who might otherwise drift toward the Democrats or independent labor candidates.
+Butler speaks the language of the factory floor with genuine conviction. His attacks on capital and his championing of the eight-hour day draw working men to the <span style="color: #c00000;">**Republican Party**</span> who might otherwise drift toward the Democrats or independent labor candidates.
 
 @butler_opposition_research
 title: Dig Up Opposition Research
@@ -40,4 +40,4 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; dem_relation -= 6; workers_dem -= 3; middle_class_dem -= 2; rural_dem -= 1; moderate_dissent += 2;
 
-Butler sets his investigators to work on Democratic leaders, and as usual they find something worth using. The resulting exposés damage Democratic standing with key constituencies. Butler does not believe in clean fights.
+Butler sets his investigators to work on <span style="color: #0015bc;">**Democratic**</span> leaders, and as usual they find something worth using. The resulting exposés damage <span style="color: #0015bc;">**Democratic**</span> standing with key constituencies. Butler does not believe in clean fights.

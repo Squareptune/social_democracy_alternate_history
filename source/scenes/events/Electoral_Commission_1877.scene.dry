@@ -215,7 +215,7 @@ go-to: commission_success
 
 = The Bargain Holds
 
-The terms are carried south by intermediaries, and word comes back within days: the <span style="color: #002765;">**Bourbon**</span> leadership will accept them. [+ Candidate +] is inaugurated without further incident, and the disputed states quietly stop being disputed. It is not a peace built on principle it is a peace built on a ledger, paid for in troops, offices, and federal dollars. <span style="color: #7A1F5C;">**Radicals**</span> who spent a decade fighting for Reconstruction watch it get negotiated away in a matter of weeks.
+The terms are carried south by intermediaries, and word comes back within days: the <span style="color: #002765;">**Bourbon**</span> leadership will accept them. [+ Candidate +] is inaugurated without further incident, and the disputed states quietly stop being disputed. It is not a peace built on principle but on a ledger, paid for in troops, offices, and federal dollars. <span style="color: #7A1F5C;">**Radicals**</span> who spent a decade fighting for Reconstruction watch it get negotiated away in a matter of weeks.
 
 - @commission_end: Continue.
 

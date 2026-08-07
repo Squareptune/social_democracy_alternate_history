@@ -7,9 +7,9 @@ new-page: true
 
 = Rutherford B. Hayes
 
-Rutherford B. Hayes of Ohio is a war hero whose combat record speaks for itself—wounded five times, promoted to brevet major general for valor. Unlike many Republican politicians, Hayes carries the credibility of genuine sacrifice. His reputation for integrity and honesty is uncommon in an era of machine politics and corruption scandals.
+Rutherford B. Hayes of Ohio is a war hero whose combat record speaks for itself: Wounded five times and promoted to brevet major general for valor. Unlike many <span style="color: #c00000;">**Republican**</span> politicians, Hayes carries the credibility of genuine sacrifice. His reputation for integrity and honesty is uncommon in an era of machine politics and corruption scandals.
 
-Hayes represents the moderate Republican who believes in Reconstruction without radicalism, and in honest government without self-dealing. As Chairman of the Joint Committee on the Library of Congress, he controls significant cultural patronage. His standing with the Army officer corps remains strong from his wartime service.
+Hayes represents the **<span style="color: #9D2933;">Moderate Republican</span>** who believes in Reconstruction without radicalism, and in honest government without self-dealing. As Chairman of the Joint Committee on the Library of Congress, he controls significant cultural patronage. His standing with the Army officer corps remains strong from his wartime service.
 
 - @hayes_border_state_outreach: Appeal to Border State Unionists
 - @hayes_library_committee: Use Library Committee Influence
@@ -18,12 +18,12 @@ Hayes represents the moderate Republican who believes in Reconstruction without 
 
 @hayes_border_state_outreach
 title: Appeal to Border State Unionists
-subtitle: Hayes reaches out to former Whigs and conditional Unionists in Kentucky, Missouri, and Maryland.
+subtitle: Hayes reaches out to former <span style="color: #c4b369;">**Whigs**</span> and conditional <span style="color: #B22222;">**Unionists**</span> in Kentucky, Missouri, and Maryland.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; KY_middle_class_rep += 4; KY_rural_rep += 3; MO_middle_class_rep += 3; MO_rural_rep += 2; MD_middle_class_rep += 3; WV_rural_rep += 2;
 
-Hayes, as a border state Republican himself, understands the hesitation of former Whigs and conditional Unionists. His war record and moderate approach appeal to those who want Union restored without social revolution. He travels the border states, speaking to merchants, lawyers, and farmers who fear both radical change and Democratic restoration. Support grows among those who see Hayes as a safe Republican choice.
+Hayes, as a border state <span style="color: #c00000;">**Republican**</span> himself, understands the hesitation of former <span style="color: #c4b369;">**Whigs**</span> and conditional <span style="color: #B22222;">**Unionists**</span>. His war record and **<span style="color: #9D2933;">moderate</span>** approach appeal to those who want Union restored without social revolution. He travels the border states, speaking to merchants, lawyers, and farmers who fear both **<span style="color: #7A1F5C;">radical</span>** change and <span style="color: #0015bc;">**Democratic**</span> restoration. Support grows among those who see Hayes as a safe <span style="color: #c00000;">**Republican**</span> choice.
 
 @hayes_library_committee
 title: Use Library Committee Influence
@@ -33,13 +33,13 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
 go-to: media
 
-As Chairman of the Joint Committee on the Library of Congress, Hayes controls significant cultural patronage—library acquisitions, manuscript collections, and appointments. He directs funds toward Republican newspapers' archives, supports loyal historians and scholars, and ensures that the narrative of the war and Reconstruction is told favorably. The Library becomes a tool of Republican cultural influence. Conservatives grumble about intellectual waste; liberals appreciate the support for learning.
+As Chairman of the Joint Committee on the Library of Congress, Hayes controls significant cultural patronage sich as library acquisitions, manuscript collections, and appointments. He directs funds toward <span style="color: #c00000;">**Republican**</span> newspapers' archives, supports loyal historians and scholars, and ensures that the narrative of the war and Reconstruction is told favorably. The Library becomes a tool of <span style="color: #c00000;">**Republican**</span> cultural influence. **<span style="color: #B5651D;">Conservatives</span>** grumble about intellectual waste while **<span style="color: #DAA520;">Liberals</span>** appreciate the support for learning.
 
 @hayes_army_loyalty
 title: Strengthen Army Officer Loyalty
-subtitle: Hayes leverages his standing with Union officers to improve Army loyalty to Republican government.
+subtitle: Hayes leverages his standing with Union officers to improve Army loyalty to <span style="color: #c00000;">**Republican**</span> government.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; army_loyalty += 0.1;
 
-Hayes, still trusted by the officer corps from his wartime service, works quietly with key generals and colonels to ensure that the Army remains loyal to the Republican government and committed to Reconstruction. His credibility with military men—built on five combat wounds and genuine battlefield valor—opens doors that other Republican politicians cannot access. Officer loyalty strengthens.
+Hayes, still trusted by the officer corps from his wartime service, works quietly with key generals and colonels to ensure that the Army remains loyal to the <span style="color: #c00000;">**Republican**</span> government and committed to Reconstruction. His credibility with military menbuilt opens doors that other <span style="color: #c00000;">**Republican**</span> politicians cannot access. Officer loyalty strengthens.

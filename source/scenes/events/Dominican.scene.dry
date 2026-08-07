@@ -8,17 +8,17 @@ on-arrival: dominican_seen = 1
 
 = A Treaty from the Tropics
 
-Orville Babcock, personal secretary to President [+ president +], has returned from Santo Domingo with a draft annexation treaty. The Dominican Republic, wracked by debt and political instability, is willing — even eager — to become part of the United States.
+Orville Babcock, personal secretary to President [+ president +], has returned from Santo Domingo with a draft annexation treaty. The Dominican Republic, wracked by debt and political instability, is willing (even eager) to become part of the United States.
 
 The terms are generous to the Dominicans: the United States would assume $1,500,000 of Dominican national debt, offer the Dominican Republic the right to eventual statehood, and separately lease the strategic harbor of **Samaná Bay** at $150,000 per year for 50 years. In exchange, the United States gains a Caribbean foothold, a potential new state, and a naval base that could enforce the Monroe Doctrine across the hemisphere.
 
 The proposal has powerful enemies. Senator Charles Sumner, chairman of the Foreign Relations Committee, regards it as a scheme to drag the country into Caribbean adventurism and burden the freedmen of the South with yet another distraction. Many <span style="color: #7A1F5C;">**Radical Republicans**</span> share his skepticism. <span style="color: #0015bc;">**Democrats**</span> are uniformly opposed.
 
-[? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with <span style="color: #c00000;">**Republican**</span> ambitions. But his radical base is divided — some see Caribbean annexation as imperialism dressed up in republican clothing. ?]
+[? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with <span style="color: #c00000;">**Republican**</span> ambitions. But his radical base is divided with some seeing Caribbean annexation as imperialism dressed up in republican clothing. ?]
 
 [? if president = "Grant" : President Grant is personally committed to the treaty and has dispatched Babcock precisely because he wanted a favorable result. His reputation is now somewhat tied to its passage. ?]
 
-- @push_hard: Push hard for ratification — use political capital to bring wavering Republicans on board.
+- @push_hard: Push hard for ratification using political capital to bring wavering Republicans on board.
 - @moderate_push: Support the treaty but leave the Senate to its own deliberations.
 - @oppose: Come out against the treaty and side with Sumner.
 - @samanabay_only: Abandon full annexation but pursue the Samaná Bay lease alone.
@@ -240,7 +240,7 @@ Q.europe_relation   += 1;
 !}
 go-to: treaty_result
 
-We side with Sumner and the skeptics. The Senate will now vote without executive backing — though whether the pro-annexation factions are strong and cohesive enough to carry it on their own is another matter.
+We side with Sumner and the skeptics. The Senate will now vote without executive backing though whether the pro-annexation factions are strong and cohesive enough to carry it on their own is another matter.
 
 @samanabay_only
 subtitle: Pursue the lease, not the annexation
@@ -368,7 +368,7 @@ if (!Q.dominican_pushed_hard) {
 
 !}
 
-The Senate ratifies the annexation treaty[? if dominican_pushed_hard = 0 : , passing it without — or even against — executive support, a remarkable show of Congressional independence?]. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
+The Senate ratifies the annexation treaty [? if dominican_pushed_hard = 0 :, passing it without or even against executive support, a remarkable show of Congressional independence ?]. The Dominican Republic will be formally incorporated into the United States, its debt assumed by the Treasury, and Samaná Bay opened to the U.S. Navy.
 
 Senator Sumner delivers a thundering denunciation from the floor, warning that the Republic has taken a step toward empire. <span style="color: #7A1F5C;">**Radical**</span> newspapers echo his concern. But the <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings of the party celebrate a triumph of Manifest Destiny.
 
@@ -377,7 +377,7 @@ Senator Sumner delivers a thundering denunciation from the floor, warning that t
 @dominican_statehood_note
 on-arrival: dominican_statehood_debate = 1
 
-The treaty grants the Dominican Republic the right to apply for statehood, but does not guarantee it. That debate will come later — and it will be fierce. For now, we have the territory, the harbor, and the debt.
+The treaty grants the Dominican Republic the right to apply for statehood, but does not guarantee it. That debate will come later and it will be fierce. For now, we have the territory, the harbor, and the debt.
 
 @treaty_fails
 on-arrival: {!
@@ -404,7 +404,7 @@ The treaty falls short of the [+ dominican_required +] votes required for ratifi
 [? if dominican_pushed_hard = 1 : Despite our best efforts to bring wavering Republicans into line, too many sided with Sumner's wing of the party. The expenditure of political capital stings. ?]
 [? if dominican_pushed_hard = 0 : Without executive pressure, the pro-annexation senators could not organize enough votes to clear the two-thirds bar. ?]
 
-Sumner emerges from the chamber with the look of a man who has saved the Republic from folly. The Dominican Republic will remain independent — for now.
+Sumner emerges from the chamber with the look of a man who has saved the Republic from folly. The Dominican Republic will remain independent for now.
 
 @samana_result
 on-display: {!

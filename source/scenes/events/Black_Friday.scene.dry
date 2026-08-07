@@ -35,7 +35,7 @@ The stock market drops twenty percent in a single day. The streets outside the G
 
 Grant was in Pennsylvania when it happened. He has returned to Washington pale and furious, insisting he had no knowledge of the scheme. His brother-in-law Corbin is less convincing.
 
-We must respond — both to the immediate financial crisis and to the political one gathering around the President.
+We must respond both to the immediate financial crisis and to the political one gathering around the President.
 
 - @treasury_intervention: Support Treasury intervention to stabilize the gold market.
 - @demand_resignation: Demand Corbin's immediate removal from any government influence.
@@ -81,9 +81,9 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We issue a public statement calling for Abel Corbin to sever all connections to any government business and demanding a full accounting of his communications with Treasury officials. We do not name the President — but we make clear that proximity to corruption is itself a problem, regardless of intent.
+We issue a public statement calling for Abel Corbin to sever all connections to any government business and demanding a full accounting of his communications with Treasury officials. We do not name the President but we make clear that proximity to corruption is itself a problem, regardless of intent.
 
-The reformist press applauds. The <span style="color: #DAA520;">**Liberal Republicans**</span>, who have been looking for reasons to stay in the party, find this mildly encouraging. Grant's personal allies are furious, seeing it as a betrayal — washing the President in public to save ourselves.
+The reformist press applauds. The <span style="color: #DAA520;">**Liberal Republicans**</span>, who have been looking for reasons to stay in the party, find this mildly encouraging. Grant's personal allies are furious, seeing it as a betrayal washing the President in public to save ourselves.
 
 The statement draws a line. Whether it is enough depends on what the investigation finds.
 
@@ -103,7 +103,7 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We issue a full-throated defense of the President. Grant was deceived by scheming men who exploited his trust and his family connections. He acted decisively the moment he understood what was happening — ordering the Treasury release that broke the conspiracy. He is the victim here, not the villain.
+We issue a full-throated defense of the President. Grant was deceived by scheming men who exploited his trust and his family connections. He acted decisively the moment he understood what was happening and orders the Treasury release that broke the conspiracy. He is the victim here, not the villain.
 
 <span style="color: #B5651D;">**Conservative Republicans**</span> rally around the flag. The party faithful, who want to believe the best of their President, are reassured.
 
@@ -135,7 +135,7 @@ In politics, silence in a scandal is rarely interpreted as wisdom. It is interpr
 
 The immediate financial crisis is being managed. But the political crisis has only deepened.
 
-A congressional investigation into the gold conspiracy is now inevitable. The question is whether we shape it — or let the <span style="color: #0015bc;">**Democrats**</span> shape it for us. A committee will be formed. Its membership, its mandate, and its conclusions are still undecided.
+A congressional investigation into the gold conspiracy is now inevitable. The question is whether we shape it or let the <span style="color: #0015bc;">**Democrats**</span> shape it for us. A committee will be formed. Its membership, its mandate, and its conclusions are still undecided.
 
 Abel Corbin has gone quiet. James Fisk is already telling anyone who will listen that he was acting alone, that Grant knew nothing, that Gould was the real mastermind. Gould is saying nothing at all.
 
@@ -165,7 +165,7 @@ on-arrival: {!
     }
 !}
 
-We move quickly to ensure <span style="color: #c00000;">**Republicans**</span> chair the investigating committee and set its terms of reference. The investigation will be thorough — we will say that loudly and often — but it will be conducted by men who understand the difference between legitimate inquiry and a partisan witch hunt.
+We move quickly to ensure <span style="color: #c00000;">**Republicans**</span> chair the investigating committee and set its terms of reference. The investigation will be thorough and we will say that loudly and often but it will be conducted by men who understand the difference between legitimate inquiry and a partisan witch hunt.
 
 The committee does its work. It finds that Gould and Fisk acted largely alone. Corbin is embarrassed but not criminally implicated. The President is cleared of direct knowledge.
 
@@ -189,11 +189,11 @@ on-arrival: {!
     Q.moderate_dissent += 3;    // findings may hurt us
 !}
 
-We call for a bipartisan investigating committee — not because we have anything to hide, but because the public will only believe findings that come from a body it trusts. If Grant is innocent, an independent investigation will establish that more conclusively than any party-controlled committee ever could.
+We call for a bipartisan investigating committee not because we have anything to hide, but because the public will only believe findings that come from a body it trusts. If Grant is innocent, an independent investigation will establish that more conclusively than any party-controlled committee ever could.
 
 <span style="color: #DAA520;">**Liberal Republicans**</span> are quietly impressed. The reform press calls it statesmanlike. Even some <span style="color: #0015bc;">**Democrats**</span> grant us grudging credit for the gesture.
 
-The investigation is slower and less predictable than we would like. Its findings implicate several figures closer to the administration than we had hoped. But when it concludes, its conclusions carry genuine weight — weight that a partisan committee could never have provided.
+The investigation is slower and less predictable than we would like. Its findings implicate several figures closer to the administration than we had hoped. But when it concludes, its conclusions carry genuine weight that a partisan committee could never have provided.
 
 @block_investigation
 on-arrival: {!
@@ -214,7 +214,7 @@ on-arrival: {!
     }
 !}
 
-We move procedurally to limit the committee's mandate — restricting its subpoena power, narrowing its focus to Gould and Fisk and away from Treasury communications, ensuring that the most damaging lines of inquiry are ruled out of scope before they begin.
+We move procedurally to limit the committee's mandate restricting its subpoena power, narrowing its focus to Gould and Fisk and away from Treasury communications, ensuring that the most damaging lines of inquiry are ruled out of scope before they begin.
 
 <span style="color: #B5651D;">**Conservative Republicans**</span> are relieved. The Grant circle is grateful.
 
@@ -245,4 +245,4 @@ We step back. We make clear, in private if not in public, that the party will no
 
 Reformers and independents, however, take note. The <span style="color: #c00000;">**Republican Party**</span> is capable of holding its own President accountable. That is not nothing, in a season of scandals.
 
-The investigation runs its course. The findings are mixed — damaging to the administration's reputation, but short of criminal. We emerge with our integrity somewhat intact and our relations with the Grant wing of the party in ruins.
+The investigation runs its course. The findings are mixed by damaging to the administration's reputation, but short of criminal. We emerge with our integrity somewhat intact and our relations with the Grant wing of the party in ruins.

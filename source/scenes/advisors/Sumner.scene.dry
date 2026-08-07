@@ -7,7 +7,7 @@ new-page: true
 
 = Charles Sumner
 
-Charles Sumner is the senior Senator from Massachusetts and the moral conscience of the Radical Republican movement. His passionate oratory on behalf of Black civil rights has made him the most recognizable abolitionist voice in the Senate and the most hated man in the South.
+Charles Sumner is the senior Senator from Massachusetts and the moral conscience of the **<span style="color: #7A1F5C;">Radical Republican</span>** movement. His passionate oratory on behalf of Black civil rights has made him the most recognizable abolitionist voice in the Senate and the most hated man in the South.
 
 - @sumner_freedmen_campaign: Champion the Freedmen
 - @sumner_civil_rights_push: Push for Civil Rights Legislation
@@ -35,9 +35,9 @@ Sumner marshals his Senate allies and pushes a civil rights measure through comm
 
 @sumner_senate_pressure
 title: Apply Pressure in the Senate
-subtitle: Reduce dissent and tighten the Radical coalition.
+subtitle: Reduce dissent and tighten the **<span style="color: #7A1F5C;">Radical</span>** coalition.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; radical_dissent -= 3;
 
-Sumner reduced tensions between the Radical Republicans and the rest of the party
+Sumner reduces tensions between the **<span style="color: #7A1F5C;">Radical Republicans</span>** and the rest of the party.
