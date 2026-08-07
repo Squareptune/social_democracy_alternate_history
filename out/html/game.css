@@ -610,6 +610,14 @@ table {
     margin: auto;
 }
 
+.achievement-icon video {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
 .achievement-info {
     border: 2px solid #BF0A30;
     background: #d5b3bb;
