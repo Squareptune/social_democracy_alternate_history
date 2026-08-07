@@ -656,3 +656,12 @@ table {
     color: #545454;
     margin-top: 3px;
 }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td.achievement-icon-locked {
+  width: 64px; /* Now this will be strictly enforced */
+}
