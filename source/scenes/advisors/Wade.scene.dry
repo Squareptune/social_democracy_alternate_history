@@ -7,7 +7,7 @@ new-page: true
 
 = Benjamin Wade
 
-Benjamin Wade of Ohio is one of the most combative figures in the Republican Party. His blunt, unpolished manner conceals a razor-sharp political mind.
+Benjamin Wade of Ohio is one of the most combative figures in the <span style="color: #c00000;">**Republican party**</span>. His blunt, unpolished manner conceals a razor-sharp political mind.
 
 - @wade_ohio_machine: Mobilize the Ohio Machine
 - @wade_worker_outreach: Reach Out to Workers
@@ -20,7 +20,7 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; OH_workers_rep += 4; OH_immigrant_laborers_rep += 3; OH_middle_class_rep += 1; OH_rural_rep -= 2
 
-Wade's network of loyal Ohio Republicans springs into action. Ward bosses, veterans' lodges, and union halls all receive the word. Ohio, always competitive, swings a few degrees toward us.
+Wade's network of loyal Ohio <span style="color: #c00000;">**Republicans**</span> springs into action. Ward bosses, veterans' lodges, and union halls all receive the word. Ohio, always competitive, swings a few degrees toward us.
 
 @wade_worker_outreach
 title: Reach Out to Workers
