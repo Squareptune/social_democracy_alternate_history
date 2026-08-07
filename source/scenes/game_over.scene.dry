@@ -420,6 +420,438 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
+[? if game_achievement_contested: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Contested Reconstruction
+        </div>
+        <div class="achievement-description">
+            Achieve the Contested Reconstruction Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_historical: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Historical.png" alt="Historical Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Historical
+        </div>
+        <div class="achievement-description">
+            Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_liminal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Liminal.png" alt="Liminal Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Liminal
+        </div>
+        <div class="achievement-description">
+            Achieve the Liminal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_ambiguous: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Ambiguous
+        </div>
+        <div class="achievement-description">
+            Achieve the Ambiguous Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_betrayal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Betrayal.png" alt="Betrayal Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Betrayal
+        </div>
+        <div class="achievement-description">
+            Achieve the Betrayal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_occupation: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/OccupationSouth.png" alt="Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Occupation
+        </div>
+        <div class="achievement-description">
+            Achieve the Occupation Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_redemption: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Redemption.png" alt="Redemption Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Redemption
+        </div>
+        <div class="achievement-description">
+            Achieve the Redemption Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_unbroken_coalition: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Unbroken Coalition
+        </div>
+        <div class="achievement-description">
+            Finish the game having never lost the House majority.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_iron_fist: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Iron_Fist.png" alt="Iron Clad Oath Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Iron Clad Oath
+        </div>
+        <div class="achievement-description">
+            Get all ten Southern states readmitted under the Radical Plan specifically.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_forty_acres: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Forty_Acres.png" alt="40 Acres Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            40 Acres
+        </div>
+        <div class="achievement-description">
+            Perform this action at least 5 times.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_master_rewriter: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Master_Rewriter.png" alt="Master Rewriter Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Master Rewriter
+        </div>
+        <div class="achievement-description">
+            Achieve all possible changes to the Constitution.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_klan_buster: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Occupation.jpg" alt="Klan Buster Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Klan Buster
+        </div>
+        <div class="achievement-description">
+            Reduce KKK strength to zero after it previously posed a serious threat.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_youre_fired: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Youre_Fired.gif" alt="You're Fired Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            You're Fired
+        </div>
+        <div class="achievement-description">
+            Remove Andrew Johnson from office.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_stonks: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Stonks.png" alt="Stonks Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Stonks
+        </div>
+        <div class="achievement-description">
+            Achieve low inflation and an economic boom.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_team_of_rivals: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Team_of_Rivals.png" alt="Team of Rivals Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Team of Rivals
+        </div>
+        <div class="achievement-description">
+            Have all four factions (Radical, Moderate, Conservative, Liberal) represented among your active advisors at once.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_douglass_ear: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Douglass_Ear.png" alt="Frederick Douglass' Ear Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Frederick Douglass' Ear
+        </div>
+        <div class="achievement-description">
+            Use "Mobilize the Freedmen" via Douglass at least 5 times in one game.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_fenian_games: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Fenian_Games.png" alt="Fenian Games Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Fenian Games
+        </div>
+        <div class="achievement-description">
+            Support the Fenians while remaining on good terms with Britain.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_dream_of_republican_town: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Dream_of_Republican_Town.png" alt="I Dream of Republican Town Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            I Dream of Republican Town
+        </div>
+        <div class="achievement-description">
+            Win every vote and election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_shermanposting: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Shermanposting.png" alt="Shermanposting Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Shermanposting
+        </div>
+        <div class="achievement-description">
+            Have John Sherman as an advisor while occupying the Southern states.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_reverse_jan6: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Reverse_Jan6.png" alt="Reverse January 6th Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Reverse January 6th
+        </div>
+        <div class="achievement-description">
+            Have the Democrats storm the Capitol to overturn the election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_great_compromiser: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Great_Compromiser.png" alt="The Great Compromiser Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            The Great Compromiser
+        </div>
+        <div class="achievement-description">
+            Issue a compromise with the Democrats for the presidency.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_order_of_congress: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Order_of_Congress.png" alt="By Order of Congress Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            By Order of Congress
+        </div>
+        <div class="achievement-description">
+            Never allow Andrew Johnson to successfully veto a single bill.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_party_of_lincoln: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Party_of_Lincoln.png" alt="The Party of Lincoln Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            The Party of Lincoln
+        </div>
+        <div class="achievement-description">
+            Reach 75% or higher support among every voter class simultaneously.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_carpetbagger_supreme: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Carpetbagger_Supreme.png" alt="Carpetbagger Supreme Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Carpetbagger Supreme
+        </div>
+        <div class="achievement-description">
+            Successfully readmit every Southern state before the historical schedule.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_liberty_place_victory: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Liberty_Place_Victory.png" alt="Victory at Liberty Place Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Victory at Liberty Place
+        </div>
+        <div class="achievement-description">
+            Win at Colfax and Liberty Place without federal intervention.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_pro_re_publica: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Pro_Re_Publica.png" alt="Pro Re Publica! Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Pro Re Publica!
+        </div>
+        <div class="achievement-description">
+            Finish the game with maximum Army loyalty and Navy loyalty.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_three_purple_hearts: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Three_Purple_Hearts.png" alt="Three Purple Hearts Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            <span style="color: #673996;">**Three Purple Hearts**</span>
+        </div>
+        <div class="achievement-description">
+            Elect three Republican presidents with military service.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
 {!</table>!}
 
 
@@ -524,6 +956,438 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
+[? if achievement_contested: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Contested Reconstruction
+        </div>
+        <div class="achievement-description">
+            Achieve the Contested Reconstruction Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_historical: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Historical.png" alt="Historical Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Historical
+        </div>
+        <div class="achievement-description">
+            Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_liminal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Liminal.png" alt="Liminal Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Liminal
+        </div>
+        <div class="achievement-description">
+            Achieve the Liminal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_ambiguous: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Ambiguous
+        </div>
+        <div class="achievement-description">
+            Achieve the Ambiguous Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_betrayal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Betrayal.png" alt="Betrayal Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Betrayal
+        </div>
+        <div class="achievement-description">
+            Achieve the Betrayal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_occupation: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/OccupationSouth.png" alt="Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Occupation
+        </div>
+        <div class="achievement-description">
+            Achieve the Occupation Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_redemption: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Redemption.png" alt="Redemption Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Redemption
+        </div>
+        <div class="achievement-description">
+            Achieve the Redemption Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_unbroken_coalition: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Unbroken Coalition
+        </div>
+        <div class="achievement-description">
+            Finish the game having never lost the House majority.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_iron_fist: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Iron_Fist.png" alt="Iron Clad Oath Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Iron Clad Oath
+        </div>
+        <div class="achievement-description">
+            Get all ten Southern states readmitted under the Radical Plan specifically.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_forty_acres: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Forty_Acres.png" alt="40 Acres Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            40 Acres
+        </div>
+        <div class="achievement-description">
+            Perform this action at least 5 times.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_master_rewriter: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Master_Rewriter.png" alt="Master Rewriter Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Master Rewriter
+        </div>
+        <div class="achievement-description">
+            Achieve all possible changes to the Constitution.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_klan_buster: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Occupation.jpg" alt="Klan Buster Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Klan Buster
+        </div>
+        <div class="achievement-description">
+            Reduce KKK strength to zero after it previously posed a serious threat.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_youre_fired: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Youre_Fired.gif" alt="You're Fired Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            You're Fired
+        </div>
+        <div class="achievement-description">
+            Remove Andrew Johnson from office.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_stonks: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Stonks.png" alt="Stonks Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Stonks
+        </div>
+        <div class="achievement-description">
+            Achieve low inflation and an economic boom.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_team_of_rivals: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Team_of_Rivals.png" alt="Team of Rivals Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Team of Rivals
+        </div>
+        <div class="achievement-description">
+            Have all four factions (Radical, Moderate, Conservative, Liberal) represented among your active advisors at once.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_douglass_ear: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Douglass_Ear.png" alt="Frederick Douglass' Ear Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Frederick Douglass' Ear
+        </div>
+        <div class="achievement-description">
+            Use "Mobilize the Freedmen" via Douglass at least 5 times in one game.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_fenian_games: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Fenian_Games.png" alt="Fenian Games Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Fenian Games
+        </div>
+        <div class="achievement-description">
+            Support the Fenians while remaining on good terms with Britain.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_dream_of_republican_town: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Dream_of_Republican_Town.png" alt="I Dream of Republican Town Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            I Dream of Republican Town
+        </div>
+        <div class="achievement-description">
+            Win every vote and election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_shermanposting: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Shermanposting.png" alt="Shermanposting Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Shermanposting
+        </div>
+        <div class="achievement-description">
+            Have John Sherman as an advisor while occupying the Southern states.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_reverse_jan6: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Reverse_Jan6.png" alt="Reverse January 6th Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Reverse January 6th
+        </div>
+        <div class="achievement-description">
+            Have the Democrats storm the Capitol to overturn the election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_great_compromiser: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Great_Compromiser.png" alt="The Great Compromiser Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            The Great Compromiser
+        </div>
+        <div class="achievement-description">
+            Issue a compromise with the Democrats for the presidency.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_order_of_congress: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Order_of_Congress.png" alt="By Order of Congress Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            By Order of Congress
+        </div>
+        <div class="achievement-description">
+            Never allow Andrew Johnson to successfully veto a single bill.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_party_of_lincoln: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Party_of_Lincoln.png" alt="The Party of Lincoln Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            The Party of Lincoln
+        </div>
+        <div class="achievement-description">
+            Reach 75% or higher support among every voter class simultaneously.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_carpetbagger_supreme: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Carpetbagger_Supreme.png" alt="Carpetbagger Supreme Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Carpetbagger Supreme
+        </div>
+        <div class="achievement-description">
+            Successfully readmit every Southern state before the historical schedule.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_liberty_place_victory: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Liberty_Place_Victory.png" alt="Victory at Liberty Place Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Victory at Liberty Place
+        </div>
+        <div class="achievement-description">
+            Win at Colfax and Liberty Place without federal intervention.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_pro_re_publica: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Pro_Re_Publica.png" alt="Pro Re Publica! Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Pro Re Publica!
+        </div>
+        <div class="achievement-description">
+            Finish the game with maximum Army loyalty and Navy loyalty.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_three_purple_hearts: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Three_Purple_Hearts.png" alt="Three Purple Hearts Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            <span style="color: #673996;">**Three Purple Hearts**</span>
+        </div>
+        <div class="achievement-description">
+            Elect three Republican presidents with military service.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
 {!</table>!}
 
 
@@ -622,6 +1486,438 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description-locked">
             Sweep all the states in a presidential election! 
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_contested: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Contested Reconstruction
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Contested Reconstruction Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_historical: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Historical.png" alt="Historical Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Historical
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_liminal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Liminal.png" alt="Liminal Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Liminal
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Liminal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ambiguous: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Ambiguous
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Ambiguous Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_betrayal: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Betrayal.png" alt="Betrayal Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Betrayal
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Betrayal Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_occupation: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/OccupationSouth.png" alt="Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Occupation
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Occupation Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_redemption: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Redemption.png" alt="Redemption Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Redemption
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Redemption Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_unbroken_coalition: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Unbroken Coalition
+        </div>
+        <div class="achievement-description-locked">
+            Finish the game having never lost the House majority.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_iron_fist: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Iron_Fist.png" alt="Iron Clad Oath Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Iron Clad Oath
+        </div>
+        <div class="achievement-description-locked">
+            Get all ten Southern states readmitted under the Radical Plan specifically.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_forty_acres: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Forty_Acres.png" alt="40 Acres Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            40 Acres
+        </div>
+        <div class="achievement-description-locked">
+            Perform this action at least 5 times.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_master_rewriter: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Master_Rewriter.png" alt="Master Rewriter Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Master Rewriter
+        </div>
+        <div class="achievement-description-locked">
+            Achieve all possible changes to the Constitution.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_klan_buster: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Occupation.jpg" alt="Klan Buster Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Klan Buster
+        </div>
+        <div class="achievement-description-locked">
+            Reduce KKK strength to zero after it previously posed a serious threat.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_youre_fired: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Youre_Fired.gif" alt="You're Fired Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            You're Fired
+        </div>
+        <div class="achievement-description-locked">
+            Remove Andrew Johnson from office.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_stonks: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Stonks.png" alt="Stonks Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Stonks
+        </div>
+        <div class="achievement-description-locked">
+            Achieve low inflation and an economic boom.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_team_of_rivals: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Team_of_Rivals.png" alt="Team of Rivals Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Team of Rivals
+        </div>
+        <div class="achievement-description-locked">
+            Have all four factions (Radical, Moderate, Conservative, Liberal) represented among your active advisors at once.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_douglass_ear: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Douglass_Ear.png" alt="Frederick Douglass' Ear Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Frederick Douglass' Ear
+        </div>
+        <div class="achievement-description-locked">
+            Use "Mobilize the Freedmen" via Douglass at least 5 times in one game.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_fenian_games: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Fenian_Games.png" alt="Fenian Games Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Fenian Games
+        </div>
+        <div class="achievement-description-locked">
+            Support the Fenians while remaining on good terms with Britain.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_dream_of_republican_town: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Dream_of_Republican_Town.png" alt="I Dream of Republican Town Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            I Dream of Republican Town
+        </div>
+        <div class="achievement-description-locked">
+            Win every vote and election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_shermanposting: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Shermanposting.png" alt="Shermanposting Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Shermanposting
+        </div>
+        <div class="achievement-description-locked">
+            Have John Sherman as an advisor while occupying the Southern states.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_reverse_jan6: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Reverse_Jan6.png" alt="Reverse January 6th Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Reverse January 6th
+        </div>
+        <div class="achievement-description-locked">
+            Have the Democrats storm the Capitol to overturn the election.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_great_compromiser: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Great_Compromiser.png" alt="The Great Compromiser Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            The Great Compromiser
+        </div>
+        <div class="achievement-description-locked">
+            Issue a compromise with the Democrats for the presidency.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_order_of_congress: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Order_of_Congress.png" alt="By Order of Congress Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            By Order of Congress
+        </div>
+        <div class="achievement-description-locked">
+            Never allow Andrew Johnson to successfully veto a single bill.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_party_of_lincoln: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Party_of_Lincoln.png" alt="The Party of Lincoln Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            The Party of Lincoln
+        </div>
+        <div class="achievement-description-locked">
+            Reach 75% or higher support among every voter class simultaneously.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_carpetbagger_supreme: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Carpetbagger_Supreme.png" alt="Carpetbagger Supreme Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Carpetbagger Supreme
+        </div>
+        <div class="achievement-description-locked">
+            Successfully readmit every Southern state before the historical schedule.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_liberty_place_victory: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Liberty_Place_Victory.png" alt="Victory at Liberty Place Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Victory at Liberty Place
+        </div>
+        <div class="achievement-description-locked">
+            Win at Colfax and Liberty Place without federal intervention.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_pro_re_publica: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Pro_Re_Publica.png" alt="Pro Re Publica! Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Pro Re Publica!
+        </div>
+        <div class="achievement-description-locked">
+            Finish the game with maximum Army loyalty and Navy loyalty.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_three_purple_hearts: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Three_Purple_Hearts.png" alt="Three Purple Hearts Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            <span style="color: #673996;">**Three Purple Hearts**</span>
+        </div>
+        <div class="achievement-description-locked">
+            Elect three Republican presidents with military service.
         </div>
     {!</td>!}
 {!</tr>!}
