@@ -535,7 +535,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_unbroken_coalition: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+        <video src="img/Achievements/Unbroken_Coalition.mp4" alt="Unbroken Coalition Icon" autoplay loop muted playsinline></video>
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -1071,7 +1071,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_unbroken_coalition: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+        <video src="img/Achievements/Unbroken_Coalition.mp4" alt="Unbroken Coalition Icon" autoplay loop muted playsinline></video>
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -1606,7 +1606,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_unbroken_coalition: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="img/Achievements/Unbroken_Coalition.gif" alt="Unbroken Coalition Icon">
+        <video src="img/Achievements/Unbroken_Coalition.mp4" alt="Unbroken Coalition Icon" autoplay loop muted playsinline></video>
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
