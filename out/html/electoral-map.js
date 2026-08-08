@@ -289,131 +289,122 @@ var ElectoralMap = {
       </svg>
     `;
 
-    var ElectoralMap = {
-    draw: function(opts) {
-      var container = document.querySelector(opts.container);
-      if (!container) return;
+    ElectoralMap._initTooltip();
+    ElectoralMap._wireHoverEvents(container, opts.results || {}, opts.stateNames || {});
+  },  
 
-      // ... your existing innerHTML injection with the <svg>/<path> markup stays exactly as-is ...
-      container.innerHTML = `...`; // (unchanged from before)
 
-      // ---- NEW: hover tooltip with pie chart ----
-      ElectoralMap._initTooltip();
-      ElectoralMap._wireHoverEvents(container, opts.results || {}, opts.stateNames || {});
-    },
 
-    _tooltip: null,
+  _tooltip: null,
 
-    _initTooltip: function() {
-      if (ElectoralMap._tooltip) return; // only build it once
-      var tip = document.createElement('div');
-      tip.id = 'electoral-tooltip';
-      tip.style.display = 'none';
-      document.body.appendChild(tip);
-      ElectoralMap._tooltip = tip;
-    },
+  _initTooltip: function() {
+    if (ElectoralMap._tooltip) return; // only build it once
+    var tip = document.createElement('div');
+    tip.id = 'electoral-tooltip';
+    tip.style.display = 'none';
+    document.body.appendChild(tip);
+    ElectoralMap._tooltip = tip;
+  },
 
-    _wireHoverEvents: function(container, results, stateNames) {
-      var paths = container.querySelectorAll('.state path');
-      paths.forEach(function(path) {
-        // class list is like "path al" -- grab the 2-letter state code
-        var stateCode = Array.from(path.classList).find(function(c) {
-          return c.length === 2;
-        });
-        if (!stateCode) return;
-
-        path.addEventListener('mouseenter', function(e) {
-          ElectoralMap._showTooltip(stateCode, results[stateCode], stateNames[stateCode] || stateCode.toUpperCase(), e);
-        });
-        path.addEventListener('mousemove', function(e) {
-          ElectoralMap._positionTooltip(e);
-        });
-        path.addEventListener('mouseleave', function() {
-          ElectoralMap._tooltip.style.display = 'none';
-        });
+  _wireHoverEvents: function(container, results, stateNames) {
+    var paths = container.querySelectorAll('.state path');
+    paths.forEach(function(path) {
+      // class list is like "path al" -- grab the 2-letter state code
+      var stateCode = Array.from(path.classList).find(function(c) {
+        return c.length === 2;
       });
-    },
+      if (!stateCode) return;
 
-    _showTooltip: function(stateCode, stateResults, stateLabel, e) {
-      var tip = ElectoralMap._tooltip;
-      if (!stateResults) {
-        tip.style.display = 'none';
-        return;
-      }
+      path.addEventListener('mouseenter', function(e) {
+        ElectoralMap._showTooltip(stateCode, results[stateCode], stateNames[stateCode] || stateCode.toUpperCase(), e);
+      });
+      path.addEventListener('mousemove', function(e) {
+        ElectoralMap._positionTooltip(e);
+      });
+      path.addEventListener('mouseleave', function() {
+        ElectoralMap._tooltip.style.display = 'none';
+      });
+    });
+  },
 
-      // Build the party list, e.g. { "Republican": 48.2, "Democratic": 45.1, "Liberal Republican": 6.7 }
-      var entries = Object.entries(stateResults).filter(function(d) { return d[1] > 0; });
-
-      var partyColors = {
-        "Republican": "#c00000",
-        "Democratic": "#0015bc",
-        "Liberal Republican": "#DAA520",
-        "Other": "#909090"
-      };
-
-      let stateResult = { "Republican": repPct, "Democratic": demPct };
-      if (Q.greeley_fusion === 1) {
-        stateResult["Liberal Republican"] = libRepPct
-      }
-
-      // Build a small SVG pie with d3
-      var size = 90, radius = size / 2;
-      var pieSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      pieSvg.setAttribute("width", size);
-      pieSvg.setAttribute("height", size);
-      pieSvg.setAttribute("viewBox", `0 0 ${size} ${size}`);
-
-      var g = d3.select(pieSvg).append("g")
-        .attr("transform", `translate(${radius},${radius})`);
-
-      var pie = d3.pie().value(function(d) { return d[1]; }).sort(null);
-      var arc = d3.arc().innerRadius(0).outerRadius(radius - 2);
-
-      g.selectAll("path")
-        .data(pie(entries))
-        .join("path")
-        .attr("d", arc)
-        .attr("fill", function(d) { return partyColors[d.data[0]] || partyColors.Other; })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1);
-
-      // Build the text rows
-      var rows = entries.map(function(d) {
-        var color = partyColors[d[0]] || partyColors.Other;
-        return `<div class="et-row"><span class="et-swatch" style="background:${color};"></span>${d[0]}: ${d[1].toFixed(1)}%</div>`;
-      }).join("");
-
-      tip.innerHTML = `
-        <div class="et-title">${stateLabel}</div>
-        <div class="et-body">
-          <div class="et-results">${rows}</div>
-          <div class="et-pie"></div>
-        </div>
-      `;
-      tip.querySelector(".et-pie").appendChild(pieSvg);
-
-      tip.style.display = 'block';
-      ElectoralMap._positionTooltip(e);
-    },
-
-    _positionTooltip: function(e) {
-      var tip = ElectoralMap._tooltip;
-      var offset = 14;
-      var x = e.pageX + offset;
-      var y = e.pageY + offset;
-
-      // keep it on-screen
-      var tipRect = tip.getBoundingClientRect();
-      if (x + tipRect.width > window.innerWidth + window.scrollX) {
-        x = e.pageX - tipRect.width - offset;
-      }
-      if (y + tipRect.height > window.innerHeight + window.scrollY) {
-        y = e.pageY - tipRect.height - offset;
-      }
-
-      tip.style.left = x + 'px';
-      tip.style.top = y + 'px';
+  _showTooltip: function(stateCode, stateResults, stateLabel, e) {
+    var tip = ElectoralMap._tooltip;
+    if (!stateResults) {
+      tip.style.display = 'none';
+      return;
     }
-  };
+
+    // Build the party list, e.g. { "Republican": 48.2, "Democratic": 45.1, "Liberal Republican": 6.7 }
+    var entries = Object.entries(stateResults).filter(function(d) { return d[1] > 0; });
+
+    var partyColors = {
+      "Republican": "#c00000",
+      "Democratic": "#0015bc",
+      "Liberal Republican": "#DAA520",
+      "Other": "#909090"
+    };
+
+    let stateResult = { "Republican": repPct, "Democratic": demPct };
+    if (Q.greeley_fusion === 1) {
+      stateResult["Liberal Republican"] = libRepPct
+    }
+
+    // Build a small SVG pie with d3
+    var size = 90, radius = size / 2;
+    var pieSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    pieSvg.setAttribute("width", size);
+    pieSvg.setAttribute("height", size);
+    pieSvg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+
+    var g = d3.select(pieSvg).append("g")
+      .attr("transform", `translate(${radius},${radius})`);
+
+    var pie = d3.pie().value(function(d) { return d[1]; }).sort(null);
+    var arc = d3.arc().innerRadius(0).outerRadius(radius - 2);
+
+    g.selectAll("path")
+      .data(pie(entries))
+      .join("path")
+      .attr("d", arc)
+      .attr("fill", function(d) { return partyColors[d.data[0]] || partyColors.Other; })
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1);
+
+    // Build the text rows
+    var rows = entries.map(function(d) {
+      var color = partyColors[d[0]] || partyColors.Other;
+      return `<div class="et-row"><span class="et-swatch" style="background:${color};"></span>${d[0]}: ${d[1].toFixed(1)}%</div>`;
+    }).join("");
+
+    tip.innerHTML = `
+      <div class="et-title">${stateLabel}</div>
+      <div class="et-body">
+        <div class="et-results">${rows}</div>
+        <div class="et-pie"></div>
+      </div>
+    `;
+    tip.querySelector(".et-pie").appendChild(pieSvg);
+
+    tip.style.display = 'block';
+    ElectoralMap._positionTooltip(e);
+  },
+
+  _positionTooltip: function(e) {
+    var tip = ElectoralMap._tooltip;
+    var offset = 14;
+    var x = e.pageX + offset;
+    var y = e.pageY + offset;
+
+    // keep it on-screen
+    var tipRect = tip.getBoundingClientRect();
+    if (x + tipRect.width > window.innerWidth + window.scrollX) {
+      x = e.pageX - tipRect.width - offset;
+    }
+    if (y + tipRect.height > window.innerHeight + window.scrollY) {
+      y = e.pageY - tipRect.height - offset;
+    }
+
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
   }
 };
