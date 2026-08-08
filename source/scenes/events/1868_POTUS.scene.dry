@@ -208,6 +208,11 @@ on-display: {!
     dc: Q.dc_winner_color,
   };
 
+  let results = {
+    al: { "Republican": 55.2, "Democratic": 44.8 },
+    ny: { "Republican": 43.1, "Democratic": 51.0}
+  };
+
   function drawMap() {
     ElectoralMap.draw({ container: "#electoral-map", winners: winners, results: results });
   }
