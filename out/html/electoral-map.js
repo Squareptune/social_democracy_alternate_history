@@ -344,11 +344,6 @@ var ElectoralMap = {
       "Other": "#909090"
     };
 
-    let stateResult = { "Republican": repPct, "Democratic": demPct };
-    if (Q.greeley_fusion === 1) {
-      stateResult["Liberal Republican"] = libRepPct
-    }
-
     // Build a small SVG pie with d3
     var size = 90, radius = size / 2;
     var pieSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");

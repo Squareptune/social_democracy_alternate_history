@@ -209,7 +209,7 @@ on-display: {!
   };
 
   function drawMap() {
-    ElectoralMap.draw({ container: "#electoral-map", winners: winners });
+    ElectoralMap.draw({ container: "#electoral-map", winners: winners, results: results });
   }
 
   if (typeof ElectoralMap !== 'undefined') {
