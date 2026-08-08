@@ -3,12 +3,7 @@ new-page: true
 is-card: true
 tags: potus_affairs, cabinet
 on-arrival: {!
-    if (Q.consult = 0){
-        Q.month_actions += 1;
-    }
-    else{
-        Q.consult = 1;
-    }
+    Q.month_actions += 1;
     Q.foreign_policy_timer += 8;
     if (Q.french_mexico < 2 && Q.year >= 1868) {
         Q.french_mexico = 2;

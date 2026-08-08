@@ -7,18 +7,21 @@ if (Q.month_actions > 0) {
 }
 // return card to hand
 var card = this.state.lastPlayedCard;
-card.image = card.cardImage;
-if (Q.difficulty >= 0) {
-    this.state.currentHands['main'].push(card);
-} else {
-    this.state.currentHands['main.main_easy'].push(card);
+if (card) {
+    card.image = card.cardImage;
+    if (Q.difficulty >= 0) {
+        this.state.currentHands['main'].push(card);
+    } else {
+        this.state.currentHands['main.main_easy'].push(card);
+    }
 }
-// reset the timer...
-if (Q[card.id + "_timer"]) {
-    Q[card.id + "_timer"] = 0;
+
+var prevScene = this.game.scenes[this.state.prevTopSceneId];
+if (prevScene && Q[prevScene.id + "_timer"] !== undefined) {
+    Q[prevScene.id + "_timer"] = 0;
 }
-// reduce visit count
-if (this.state.visits[card.id]) {
-    this.state.visits[card.id] -= 1;
+
+if (this.state.visits[prevScene ? prevScene.id : (card ? card.id : null)]) {
+    this.state.visits[prevScene ? prevScene.id : card.id] -= 1;
 }
 !}
