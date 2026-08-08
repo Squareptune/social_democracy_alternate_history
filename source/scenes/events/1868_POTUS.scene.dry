@@ -208,10 +208,20 @@ on-display: {!
     dc: Q.dc_winner_color,
   };
 
-  let results = {
-    al: { "Republican": 55.2, "Democratic": 44.8 },
-    ny: { "Republican": 43.1, "Democratic": 51.0}
-  };
+  // NEW: build results from the percentages saved during on-arrival,
+  // instead of hardcoding two states by hand
+  let results = {};
+  for (let state of Q.states) {
+    let key = state.toLowerCase();
+    let entry = {
+      "Republican": Q[state + "_rep_pct"] || 0,
+      "Democratic": Q[state + "_dem_pct"] || 0,
+    };
+    if (Q.liberal_split && (Q[state + "_lib_pct"] || 0) > 0) {
+      entry["Liberal Republican"] = Q[state + "_lib_pct"];
+    }
+    results[key] = entry;
+  }
 
   function drawMap() {
     ElectoralMap.draw({ container: "#electoral-map", winners: winners, results: results });
