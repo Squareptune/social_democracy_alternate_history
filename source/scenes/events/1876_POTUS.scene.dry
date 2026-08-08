@@ -142,8 +142,14 @@ for (let state of Q.states) {
   Q[state + "_disputed_1876"] = stateDisputed;
 
   let color = winner === "dem" ? "#4575b4" : "#d73027";
-  if (stateDisputed) color = "#DAA520";
+  if (stateDisputed) color = "#8E536E";
   Q[state.toLowerCase() + "_winner_color"] = color;
+
+  // Save the actual vote percentages so on-display can build the pie-chart tooltip
+  let stateTotal = votes.rep + votes.dem + (votes.lib || 0);
+  Q[state + "_rep_pct"] = stateTotal ? (votes.rep / stateTotal) * 100 : 0;
+  Q[state + "_dem_pct"] = stateTotal ? (votes.dem / stateTotal) * 100 : 0;
+  Q[state + "_lib_pct"] = (Q.liberal_split && stateTotal) ? (votes.lib / stateTotal) * 100 : 0;
 }
 
 for (let state of Q.states) {
@@ -219,8 +225,6 @@ on-display: {!
     dc: Q.dc_winner_color,
   };
 
-  // NEW: build results from the percentages saved during on-arrival,
-  // instead of hardcoding two states by hand
   let results = {};
   for (let state of Q.states) {
     let key = state.toLowerCase();

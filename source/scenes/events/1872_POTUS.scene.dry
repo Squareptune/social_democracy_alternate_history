@@ -180,6 +180,12 @@ for (let state of Q.states) {
   if (winner === "lib") color = "#DAA520";
   Q[state.toLowerCase() + "_winner_color"] = color;
 
+  // Save the actual vote percentages so on-display can build the pie-chart tooltip
+  let stateTotal = votes.rep + votes.dem + (votes.lib || 0);
+  Q[state + "_rep_pct"] = stateTotal ? (votes.rep / stateTotal) * 100 : 0;
+  Q[state + "_dem_pct"] = stateTotal ? (votes.dem / stateTotal) * 100 : 0;
+  Q[state + "_lib_pct"] = (Q.liberal_split && stateTotal) ? (votes.lib / stateTotal) * 100 : 0;
+
   let margin = votes.rep - (votes.dem + votes.lib);
   let marginPct = ((Math.abs(margin) / (votes.rep + votes.dem + (votes.lib || 0))) * 100).toFixed(2);
   console.log(`${state} winner: ${winner}, rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${marginPct}%`);
