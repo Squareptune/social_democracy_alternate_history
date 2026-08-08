@@ -160,7 +160,7 @@ His broad appeal reduces factional friction and opens up Reconstruction-minded l
 
 @Washburne
 title: Elihu Washburne (Illinois)
-subtitle: Grant ally. Reliably loyal, limited ambition, strong in foreign affairs.
+subtitle: Reliably loyal, limited ambition, strong in foreign affairs.
 view-if: year >= 1866 and year <= 1872
 on-arrival: {!
     Q.speaker = "Washburne";
