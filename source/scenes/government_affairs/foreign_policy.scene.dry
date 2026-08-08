@@ -104,7 +104,7 @@ Britain’s stance during the Civil War — especially its early recognition of 
 We seek talks on outstanding issues, including the *Alabama Claims* and Canadian border friction.
 
 @british_reconciliation2
-title: Improve relations with Britain.
+title: Continue to improve relations with Britain.
 view-if: treaty_Washington = 1
 on-arrival: treaty_Washington += 1; economic_growth += 0.2; middle_class_rep += 3; moderate_strength += 2; moderate_dissent -= 2;
 
@@ -124,9 +124,7 @@ The money goes straight into the Treasury. Border disputes are resolved peaceful
 @san_juan_arbitration
 title: Press our claim in the San Juan Boundary arbitration.
 subtitle: Kaiser Wilhelm I has agreed to arbitrate.
-view-if: treaty_Washington >= 3 and san_juan_resolved != 1
-choose-if: year >= 1871
-unavailable-subtitle: Arbitration cannot proceed until 1871.
+view-if: treaty_Washington >= 3 and san_juan_resolved != 1 and year >= 1871
 on-arrival: {!
     Q.san_juan_resolved = 1;
     let chance = 0.55 + (Q.germany_relation / 100);

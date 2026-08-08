@@ -683,3 +683,59 @@ video {
   display: inline;
   vertical-align: middle;
 }
+
+#electoral-map {
+  text-align: center;
+}
+
+#electoral-tooltip {
+  position: absolute;
+  z-index: 10;
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+  padding: 0.6em 0.8em;
+  font-size: 0.85em;
+  color: var(--text-color);
+  pointer-events: none; /* don't let the tooltip itself steal hover */
+  max-width: 260px;
+}
+
+.et-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.4em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.et-body {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.et-results {
+  flex: 1;
+}
+
+.et-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: 0.15em;
+  white-space: nowrap;
+}
+
+.et-swatch {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.et-pie {
+  flex-shrink: 0;
+}

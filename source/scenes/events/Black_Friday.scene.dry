@@ -25,20 +25,20 @@ max-visits: 1
 
 On September 24th, 1869, the gold market collapses.
 
-For months, financiers Jay Gould and James Fisk had been quietly buying up gold, driving the price skyward. Their scheme required one thing above all else: that the federal Treasury not release its gold reserves to break the corner. To ensure this, they cultivated a relationship with Abel Corbin, a New York speculator who had recently married Virginia Grant, the younger sister of President Ulysses S. Grant.
+For months, financiers Jay Gould and James Fisk have been buying gold in an attempt to corner the market. Their scheme depends on keeping the Treasury from releasing its reserves. To help with this, they cultivated Abel Corbin, a New York speculator who married Virginia Grant, the President's sister.
 
-Whether Grant himself knew of the scheme is the question now on every lip in Washington.
+Now Washington is asking the obvious question: how much did Grant know?
 
-When Treasury Secretary Boutwell finally acts and releases $4 million in gold, the price collapses in minutes. Fortunes evaporate. Merchants who had bought on credit to meet harvest contracts find themselves ruined. Across the agricultural Midwest and South, farmers who needed gold to pay debts watch the price swing wildly and settle in disaster.
+When Treasury Secretary George Boutwell releases $4 million in gold, prices collapse within minutes. Speculators who bought on credit are ruined. Merchants are caught in the panic and farmers across the Midwest and South face heavier debts.
 
-The stock market drops twenty percent in a single day. The streets outside the Gold Room on Broad Street descend into something close to riot.
+The Gold Room on Broad Street descends into chaos as traders scramble to escape their losses.
 
-Grant was in Pennsylvania when it happened. He has returned to Washington pale and furious, insisting he had no knowledge of the scheme. His brother-in-law Corbin is less convincing.
+Grant was in Pennsylvania when the crash began. He has returned to Washington furious, insisting that he knew nothing of the scheme. Corbin's involvement has made that claim harder to defend.
 
-We must respond both to the immediate financial crisis and to the political one gathering around the President.
+The financial crisis is already underway. Now the scandal is spreading to the White House.
 
 - @treasury_intervention: Support Treasury intervention to stabilize the gold market.
-- @demand_resignation: Demand Corbin's immediate removal from any government influence.
+- @demand_resignation: Demand Corbin's removal from government affairs.
 - @protect_grant: Publicly defend Grant and insist the President was deceived.
 - @wait_and_see: Say nothing until the facts are clearer.
 
@@ -59,11 +59,11 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We publicly endorse Secretary Boutwell's decision to flood the market with Treasury gold and call for further stabilizing measures. The intervention was correct, and we say so plainly.
+We publicly endorse Secretary Boutwell's decision to release Treasury gold and call for further measures to steady the market.
 
-Markets begin to settle. Farmers and merchants who had feared total ruin find themselves merely damaged rather than destroyed. Our swift endorsement of action gives the impression of competent governance in a moment of crisis.
+The panic begins to subside. Merchants and farmers still face losses, but the worst of the financial shock has passed.
 
-But questions linger. If the Treasury intervention was the right move, why did it take so long? Who was advising the President to hold back? The <span style="color: #0015bc;">**Democrats**</span> are already sharpening their pens.
+Our support for Boutwell gives the administration credit for acting when the crisis struck. Questions about the President remain. The <span style="color: #0015bc;">**Democrats**</span> are already demanding answers.
 
 @demand_resignation
 on-arrival: {!
@@ -81,11 +81,11 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We issue a public statement calling for Abel Corbin to sever all connections to any government business and demanding a full accounting of his communications with Treasury officials. We do not name the President but we make clear that proximity to corruption is itself a problem, regardless of intent.
+We call for Abel Corbin to sever his connections to government business and demand a full accounting of his dealings with Treasury officials.
 
-The reformist press applauds. The <span style="color: #DAA520;">**Liberal Republicans**</span>, who have been looking for reasons to stay in the party, find this mildly encouraging. Grant's personal allies are furious, seeing it as a betrayal washing the President in public to save ourselves.
+We do not accuse the President of wrongdoing. We make clear that Corbin's position alone warrants scrutiny.
 
-The statement draws a line. Whether it is enough depends on what the investigation finds.
+The reformist press approves. **<span style="color: #DAA520;">Liberal Republicans</span>**, already uneasy with Grant, take some encouragement from the decision. Grant's allies see it as an attack on the President by his own party.
 
 @protect_grant
 on-arrival: {!
@@ -103,11 +103,13 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We issue a full-throated defense of the President. Grant was deceived by scheming men who exploited his trust and his family connections. He acted decisively the moment he understood what was happening and orders the Treasury release that broke the conspiracy. He is the victim here, not the villain.
+We issue a full defense of the President. Grant was deceived by men who exploited his trust and his family connections. Once he understood what was happening, he ordered the Treasury to release its gold.
 
-<span style="color: #B5651D;">**Conservative Republicans**</span> rally around the flag. The party faithful, who want to believe the best of their President, are reassured.
+The **<span style="color: #B5651D;">Conservatives</span>** rally behind him. Grant's supporters are reassured.
 
-The reformist press is contemptuous. The <span style="color: #0015bc;">**Democrats**</span> call it a whitewash. We have staked our credibility on Grant's innocence. We had better be right.
+The reformist press is contemptuous. The <span style="color: #0015bc;">**Democrats**</span> call the statement a whitewash.
+
+We have tied the party's credibility to Grant's innocence.
 
 @wait_and_see
 on-arrival: {!
@@ -123,28 +125,28 @@ on-arrival: {!
 !}
 go-to: investigate_question
 
-We say nothing. We wait. We allow the facts to emerge before committing to any position.
+We say nothing and wait for the facts.
 
-It is the cautious choice and it satisfies no one. The <span style="color: #0015bc;">**Democrats**</span> fill the silence with accusations. The reformers see cowardice. Even Grant's allies wonder why the party is not defending him.
+The choice satisfies no one. The <span style="color: #0015bc;">**Democrats**</span> fill the silence with accusations while reformers question our nerve. Even Grant's allies wonder why the party will not defend him.
 
-In politics, silence in a scandal is rarely interpreted as wisdom. It is interpreted as guilt.
+The scandal grows while we remain silent.
 
 @investigate_question
 
 = What Do We Do About the Investigation?
 
-The immediate financial crisis is being managed. But the political crisis has only deepened.
+The financial panic is under control. The political crisis is not.
 
-A congressional investigation into the gold conspiracy is now inevitable. The question is whether we shape it or let the <span style="color: #0015bc;">**Democrats**</span> shape it for us. A committee will be formed. Its membership, its mandate, and its conclusions are still undecided.
+Congressional investigation of the gold conspiracy is now unavoidable. A committee will be formed, and its membership and mandate are still undecided.
 
-Abel Corbin has gone quiet. James Fisk is already telling anyone who will listen that he was acting alone, that Grant knew nothing, that Gould was the real mastermind. Gould is saying nothing at all.
+Abel Corbin has gone quiet. James Fisk claims he acted alone and insists Grant knew nothing. Gould has said little.
 
-What role do we play in the investigation?
+We can shape the investigation or leave it to the <span style="color: #0015bc;">**Democrats**</span>.
 
-- @lead_investigation: Push for a Republican-led investigation that controls the narrative.
-- @support_independent: Support an independent bipartisan committee to demonstrate good faith.
-- @block_investigation: Work to limit the investigation's scope and protect the administration.
-- @let_it_burn: Let the investigation proceed without interference and distance ourselves from Grant.
+- @lead_investigation: Push for a Republican-led investigation.
+- @support_independent: Support an independent bipartisan committee.
+- @block_investigation: Limit the investigation and protect the administration.
+- @let_it_burn: Let the investigation proceed without interference.
 
 @lead_investigation
 on-arrival: {!
@@ -165,13 +167,13 @@ on-arrival: {!
     }
 !}
 
-We move quickly to ensure <span style="color: #c00000;">**Republicans**</span> chair the investigating committee and set its terms of reference. The investigation will be thorough and we will say that loudly and often but it will be conducted by men who understand the difference between legitimate inquiry and a partisan witch hunt.
+We move to ensure **<span style="color: #c00000;">Republicans</span>** chair the committee and control its terms. We promise a thorough investigation while keeping the proceedings in friendly hands.
 
-The committee does its work. It finds that Gould and Fisk acted largely alone. Corbin is embarrassed but not criminally implicated. The President is cleared of direct knowledge.
+The committee finds that Gould and Fisk were chiefly responsible. Corbin is embarrassed but escapes criminal charges. The investigation finds no evidence that Grant knew of the scheme.
 
-The <span style="color: #0015bc;">**Democrats**</span> call it a whitewash from the first day to the last. The <span style="color: #DAA520;">**Liberal Republican**</span> press publishes long, skeptical editorials about the reliability of investigations run by the party being investigated.
+The <span style="color: #0015bc;">**Democrats**</span> call the findings a whitewash. The **<span style="color: #DAA520;">Liberal Republican</span>** press questions whether a party can fairly investigate its own administration.
 
-We have protected Grant. Whether we have protected the party's reputation for integrity is less certain.
+Grant is protected. The party's reputation is less secure.
 
 @support_independent
 on-arrival: {!
@@ -189,11 +191,11 @@ on-arrival: {!
     Q.moderate_dissent += 3;    // findings may hurt us
 !}
 
-We call for a bipartisan investigating committee not because we have anything to hide, but because the public will only believe findings that come from a body it trusts. If Grant is innocent, an independent investigation will establish that more conclusively than any party-controlled committee ever could.
+We call for a bipartisan committee. If Grant is innocent, an independent investigation will make that case more convincingly than a committee controlled by his own party.
 
-<span style="color: #DAA520;">**Liberal Republicans**</span> are quietly impressed. The reform press calls it statesmanlike. Even some <span style="color: #0015bc;">**Democrats**</span> grant us grudging credit for the gesture.
+**<span style="color: #DAA520;">Liberal Republicans</span>** approve. Reform newspapers praise the decision and even some <span style="color: #0015bc;">**Democrats**</span> give us credit.
 
-The investigation is slower and less predictable than we would like. Its findings implicate several figures closer to the administration than we had hoped. But when it concludes, its conclusions carry genuine weight that a partisan committee could never have provided.
+The investigation takes longer and reaches further than we expected. Several figures close to the administration come under scrutiny. Its final findings carry more weight because neither party controlled the inquiry.
 
 @block_investigation
 on-arrival: {!
@@ -214,15 +216,13 @@ on-arrival: {!
     }
 !}
 
-We move procedurally to limit the committee's mandate restricting its subpoena power, narrowing its focus to Gould and Fisk and away from Treasury communications, ensuring that the most damaging lines of inquiry are ruled out of scope before they begin.
+We move to restrict the committee's subpoena power and narrow its investigation to Gould and Fisk. Treasury communications and other sensitive matters are kept outside its mandate.
 
-<span style="color: #B5651D;">**Conservative Republicans**</span> are relieved. The Grant circle is grateful.
+**<span style="color: #B5651D;">Conservatives</span>** are relieved. Grant's allies are grateful.
 
-Everyone else sees exactly what we are doing.
+The **<span style="color: #DAA520;">Liberal Republican</span>** press accuses us of protecting the administration. Moderate newspapers begin to distance themselves from the party.
 
-The <span style="color: #DAA520;">**Liberal Republican**</span> press publishes a series of thundering editorials. The moderate newspapers that had been our friends begin to cool. On the streets and in the counting houses, the perception hardens: the <span style="color: #c00000;">**Republican Party**</span> protects its own, and the public interest be damned.
-
-The seeds of the <span style="color: #DAA520;">**Liberal Republican**</span> split, if they have not already sprouted, are now well watered.
+The **<span style="color: #c00000;">Republican Party</span>** now has a reputation for protecting its own.
 
 @let_it_burn
 on-arrival: {!
@@ -239,10 +239,10 @@ on-arrival: {!
     Q.dem_relation -= 2;   // Dems don't trust our sudden principle either
 !}
 
-We step back. We make clear, in private if not in public, that the party will not be spending political capital to protect the President from a legitimate investigation. If Grant is innocent, the investigation will say so. If he is not, the party should not be implicated in the cover-up.
+We step aside and refuse to spend political capital protecting the President. If Grant is innocent, the investigation can establish it. If he is not, the party will not take responsibility for the cover-up.
 
-<span style="color: #B5651D;">**Conservative Republicans**</span> are appalled. Grant's allies see it as cold-blooded abandonment. Several prominent party figures let it be known they will have long memories.
+**<span style="color: #B5651D;">Conservatives</span>** are furious. Grant's allies see the decision as abandonment.
 
-Reformers and independents, however, take note. The <span style="color: #c00000;">**Republican Party**</span> is capable of holding its own President accountable. That is not nothing, in a season of scandals.
+Reformers and independents take notice. The **<span style="color: #c00000;">Republican Party</span>** is willing to let Congress investigate its own President.
 
-The investigation runs its course. The findings are mixed by damaging to the administration's reputation, but short of criminal. We emerge with our integrity somewhat intact and our relations with the Grant wing of the party in ruins.
+The investigation produces damaging findings about the administration, though nothing criminal. We preserve some credibility while relations with Grant's wing of the party collapse.

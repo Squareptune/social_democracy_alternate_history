@@ -4,9 +4,9 @@ view-if: war_stage = 1 and invasion_force_strength > 0
 
 = Crossing the Florida Strait
 
-Weeks of preparation have led to this moment. Along Florida's southern coast, thousands of American soldiers file aboard crowded transports while naval officers make their final inspections and supply wagons empty their last crates onto waiting ships. Flags wave from every mast as bands play patriotic marches for the crowds gathered along the docks, each spectator hoping to witness the beginning of a swift and glorious campaign.
+Weeks of preparation have brought the expedition to Florida's southern coast. Thousands of American soldiers board crowded transports as naval officers make final inspections and supply crews load the last provisions. Crowds gather along the docks to watch the fleet depart.
 
-Escorted by the warships of the United States Navy, the American Expeditionary Force prepares to cross the Florida Strait and carry the war to Spanish Cuba. For many of the young men aboard, this will be their first taste of combat. Across the nation, families offer prayers for loved ones sailing into uncertain waters.
+Escorted by the United States Navy, the American Expeditionary Force heads across the Florida Strait toward Cuba. For many of the soldiers aboard, this will be their first combat. Families across the country wait for news of those sailing south.
 
 God bless the troops.
 
@@ -17,11 +17,13 @@ go-to: Battle
 
 @Battle
 
-= Spain Vessals Appear
+= Spanish Vessels Appear
 
-The invasion fleet steams south beneath clear skies, its columns of transports shielded by American cruisers and ironclads. As Cuba's coastline emerges on the horizon, lookouts report smoke rising from the east. Moments later, Spanish warships appear, determined to block the crossing before American soldiers can set foot on the island.
+The invasion fleet steams south under clear skies. American warships screen the transports as the Cuban coast comes into view.
 
-Signal flags race across both fleets as guns are run out and magazines opened. There will be no peaceful landing today. Control of the sea, and perhaps the fate of the campaign itself, will be decided in the coming hours.
+Then the lookouts spot smoke to the east.
+
+Spanish warships are approaching the convoy, attempting to stop the invasion before the American army can reach Cuba. Signal flags go up across the fleet as guns are loaded and crews take their positions.
 
 - @Fight: Engage the Spanish Fleet!
 - @Retreat: Order a Retreat
@@ -55,9 +57,7 @@ go-to: Defeat
 
 = VICTORY
 
-The opposing fleets exchange thunderous broadsides in what newspapers would later christen the **Battle of the Florida Strait**. American gunnery proves faster and more accurate, while superior seamanship allows the United States Navy to outflank the Spanish squadron and force it into a disorderly retreat. Several Spanish vessels are sunk or driven ashore, while the remainder scatter toward Havana under relentless pursuit.
-
-With command of the surrounding waters secured, the troop transports continue unmolested toward the Cuban coast. As landing craft are lowered and the first American soldiers step ashore, the invasion of Cuba has truly begun. The success of the landing marks a decisive turning point, but the hardest fighting still lies ahead.
+The fleets exchange fire in what newspapers will soon call the Battle of the Florida Strait. American gunnery and maneuvering give the United States the advantage. Several Spanish vessels are sunk or driven ashore while the remainder retreat toward Havana.
 
 - @Continue: Continue
 

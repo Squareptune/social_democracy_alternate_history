@@ -8,15 +8,17 @@ on-arrival: amnesty_act_seen = 1
 
 = The Amnesty Act
 
-Congress is debating a bill that would restore full political rights to most former Confederates, allowing them to hold federal and state office once again. The push comes from members who argue that a decade after the war, continued political exclusion only breeds resentment and keeps the South ungovernable.
+Congress is considering a bill restoring political rights to most former Confederates, allowing them to once again hold federal and state office. Supporters argue that nearly a decade has passed since the Civil War and that it is time to restore the Union.
 
-The numbers are not small. Around 150,000 men currently barred from office would regain their rights. Most of them are prominent figures in their communities. Most of them are <span style="color: #0015bc;">**Democrats**</span>.
+Around 150,000 men, most of them <span style="color: #0015bc;">**Democrats**</span>, would regain the right to hold office.
 
-The <span style="color: #7A1F5C;">**Radical**</span> wing is opposed. Their position is that any amnesty must come paired with new civil rights guarantees, or it amounts to handing political power back to the same men who enforced the Black Codes and rode with paramilitary organizations. The <span style="color: #9D2933;">**moderates**</span> want the amnesty clean and simple, arguing that conditions will kill the bill entirely.
+The **<span style="color: #7A1F5C;">Radicals</span>** oppose unconditional amnesty, insisting it be paired with new civil rights protections. **<span style="color: #9D2933;">Moderates</span>** argue that adding conditions would doom the bill.
 
-[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> have made this a centerpiece of their platform, calling continued political exclusion an obstacle to genuine national reconciliation. ?]
-[? if reconstruction_support < 30 : Enthusiasm for Reconstruction has been fading in the North for some time. The amnesty bill has genuine popular support, and the political winds are not in our favor. ?]
-[? if radical_strength >= 40 : The <span style="color: #7A1F5C;">**Radical**</span> wing is strong enough that attaching conditions to the bill is a real possibility, not just a gesture. ?]
+[? if liberal_split = 1 : **<span style="color: #DAA520;">Liberals</span>** have embraced the measure, arguing continued political exclusion only delays national reconciliation. ?]
+
+[? if reconstruction_support < 30 : Northern support for Reconstruction has faded. Public opinion is largely on the bill's side. ?]
+
+[? if radical_strength >= 40 : The **<span style="color: #7A1F5C;">Radicals</span>** have enough influence to make civil rights protections a serious possibility, not just a symbolic gesture. ?]
 
 - @support_clean: Back the bill as written, no conditions.
 - @support_conditions: Back amnesty only if paired with civil rights protections.
@@ -52,11 +54,11 @@ on-arrival: {!
     Q.whiteL_strength = Math.min(1000, (Q.whiteL_strength || 0) + 10);
 !}
 
-We back the bill without conditions. The amnesty passes.
+We back the bill without conditions. It passes.
 
-The <span style="color: #9D2933;">**moderate**</span> and <span style="color: #B5651D;">**conservative**</span> wings are relieved. The <span style="color: #DAA520;">**Liberal Republican**</span> press calls it overdue.
+The **<span style="color: #9D2933;">Moderates</span>** and **<span style="color: #B5651D;">Conservatives</span>** welcome the decision, while the **<span style="color: #DAA520;">Liberals</span>** call it long overdue.
 
-The <span style="color: #7A1F5C;">**Radical**</span> wing does not take it quietly. Freedmen communities across the South receive the news with dread, and they are not wrong to. The men returning to political eligibility are not reformed. They are simply patient. They will run for office, win, and use that office the same way they used it before the war. The South will feel this before the North does.
+The **<span style="color: #7A1F5C;">Radicals</span>** denounce the measure. Across the South, freedmen fear the return of political leaders determined to roll back Reconstruction and restore white <span style="color: #0015bc;">**Democratic**</span> rule.
 
 @support_conditions
 on-arrival: {!
@@ -104,13 +106,13 @@ on-arrival: {!
 !}
 go-to: conditions_result
 
-We make our position clear. Amnesty can pass, but only alongside meaningful civil rights protections. Former Confederates can have their political rights back when freedmen have a genuine guarantee of theirs.
+We support amnesty, but only alongside new civil rights protections. If former Confederates are restored to office, the rights secured since the war must be protected as well.
 
 @conditions_result
 
-[? if amnesty_conditions = 1 : The paired bill holds together. Former Confederates regain political eligibility, but the civil rights provisions that accompany the amnesty give freedmen new legal standing to defend themselves. Neither side is satisfied, which may mean the compromise is about as fair as these things get. ?]
+[? if amnesty_conditions = 1 : Former Confederates regain their political rights, but the amnesty is paired with new civil rights protections. Neither side is satisfied. **<span style="color: #7A1F5C;">Radicals</span>** wanted stronger guarantees while opponents object to any conditions at all. It is an uneasy compromise, but a compromise nonetheless. ?]
 
-[? if amnesty_conditions = 0 : The conditions are stripped out before the bill reaches the floor. <span style="color: #B5651D;">**Conservative**</span> and <span style="color: #DAA520;">**Liberal**</span> members gut the civil rights provisions in committee and the amnesty passes clean. We tried for something better and came away with nothing to show for it. The <span style="color: #7A1F5C;">**Radical**</span> wing blames the attempt. They are not entirely wrong, but the votes were never there. ?]
+[? if amnesty_conditions = 0 : The civil rights provisions are stripped from the bill before it reaches the floor. **<span style="color: #B5651D;">Conservatives</span>** and **<span style="color: #DAA520;">Liberals</span>** refuse to accept any conditions, and the amnesty passes on its own. The **<span style="color: #7A1F5C;">Radicals</span>** blame us for chasing a compromise that never had the votes. ?]
 
 @oppose
 on-arrival: {!
@@ -136,11 +138,11 @@ on-arrival: {!
     }
 !}
 
-We come out against the bill. A decade is not long enough. The men who led secession, commanded Confederate forces, and returned home to build paramilitary organizations and enforce racial terror through law have not demonstrated the kind of loyalty that earns back political power.
+We oppose the bill. A decade is not enough. The men who led secession and now support violent resistance to Reconstruction have done little to earn back political power.
 
-The <span style="color: #7A1F5C;">**Radical**</span> wing is relieved. Freedmen communities take note.
+The **<span style="color: #7A1F5C;">Radicals</span>** approve and freedmen leaders welcome our stand.
 
-The <span style="color: #DAA520;">**Liberal Republicans**</span> treat this as confirmation of everything they have been arguing. <span style="color: #B5651D;">**Conservative**</span> members are quietly frustrated. In the South, paramilitary organizations that had been watching Congress grow angrier.
+**<span style="color: #DAA520;">Liberals</span>** condemn the decision while **<span style="color: #B5651D;">Conservatives</span>** grow increasingly frustrated. Across the South, paramilitary groups become more defiant.
 
 @let_it_pass
 on-arrival: {!
@@ -163,8 +165,8 @@ on-arrival: {!
     Q.kkk_strength = Math.min(1000, (Q.kkk_strength || 0) + 10);
 !}
 
-We say nothing. The bill moves through Congress on its own momentum.
+We stay silent and let Congress decide.
 
-It passes. It was always going to pass. Our silence buys goodwill with members who did not want an executive fight over this, and spares us the Radical fury that an open endorsement would have drawn.
+The bill passes with little difficulty. Our silence avoids a fight with Congress, but the outcome is no different than if we had endorsed it.
 
-The practical result is the same as if we had backed it outright. Former Confederates are returning to political eligibility across the South, and we chose not to say a word about it. Freedmen leaders who were watching for a signal from Washington got none.
+Former Confederates regain political rights across the South. Freedmen leaders looked to Washington for leadership and found none.

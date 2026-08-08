@@ -5,7 +5,7 @@ var ElectoralMap = {
 
     // Inject the SVG with winners already applied
     container.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" width="480" height="297">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" style="width: 100%; height: auto;">
         <defs>
           <style>
             .path { fill: #A0A0A0; }
@@ -80,7 +80,7 @@ var ElectoralMap = {
         <path class="path ca" style="fill: ${opts.winners.ca};" d="m 69.4,365.6 3.4,5.2 -1.4,.1 -1.8,-1.9 z m 1.9,-9.8 1.8,4.1 2.6,1 .7,-.6 -1.3,-2.5 -2.6,-2.4 z m -19.9,-19 v 2.4 l 2,1.2 4.4,-.2 1,-1 -3.1,-.2 z m -5.9,.1 3.3,.5 1.4,2.2 h -3.8 z m 47.9,45.5 -1,-3 .2,-3 -.4,-7.9 -1.8,-4.8 -1.2,-1.4 -.6,-1.5 -7,-8.6 -3.6,.1 -2,-1.9 1.1,-1.8 -.7,-3.7 -2.2,-1.2 -3.9,-.6 -2.8,-1.3 -1.5,-1.9 -4.5,-6.6 -2.7,-2.2 -3.7,-.5 -3.1,-2.3 -4.7,-1.5 -2.8,-.3 -2.5,-2.5 .2,-2.8 .8,-4.8 1.8,-5.1 -1.4,-1.6 -4,-9.4 -2.7,-3.7 -.4,-3 -1.6,-2.3 .2,-2.5 -2,-5 -2.9,-2.7 .6,-7.1 2.4,-.8 1.8,-3.1 -.4,-3.2 -1,-.9 h -2.5 l -2.5,-3.3 -1.5,-3.5 v -7.5 l 1.2,-4.2 .2,-2.1 2.5,.2 -.1,1.6 -.8,.7 v 2.5 l 3.7,3.2 v -4.7 l -1.4,-3.4 .5,-1.1 -1,-1.7 2.8,-1.5 -1.9,-3 -1.4,.5 -1.5,3.8 .5,1.3 -.8,1 -.9,-.1 -5.4,-6.1 .7,-5.6 -1.1,-3.9 -6.5,-12.8 .8,-10.7 2.3,-3.6 .2,-6.4 -5.5,-11.1 .3,-5.2 6.9,-7.5 1.7,-2.4 -.1,-1.4 4,-9.2 .1,-8.4 .9,-2.5 66.1,18.6 -16.4,63.1 1.1,3.5 70.4,105 -.9,2.1 1.3,3.4 1.4,1.8 1.2,5.8 2.3,2.5 .4,1.9 -1.3,1.3 -4.8,1.7 -2.4,3.6 -1.6,7 -2.4,3.2 -1.6,.3 -1.1,6.9 1.1,1.6 1.8,.2 1,1.6 -.8,2.4 -3,2.2 -2.2,-.1 z">
         <title>California</title></path>
 
-        <path class="path co" style="fill: ${opts.winners.co}{!;" d="m 374.6,323.3 -16.5,-1 -51.7,-4.8 -52.6,-6.5 11.5,-88.3 44.9,5.7 37.5,3.4 33.1,2.4 -1.4,22.1 z">
+        <path class="path co" style="fill: ${opts.winners.co};" d="m 374.6,323.3 -16.5,-1 -51.7,-4.8 -52.6,-6.5 11.5,-88.3 44.9,5.7 37.5,3.4 33.1,2.4 -1.4,22.1 z">
         <title>Colorado</title></path>
 
         <path class="path ct" style="fill: ${opts.winners.ct};" d="m 873.5,178.9 .4,-1.1 -3.2,-12.3 -.1,-.3 -14.9,3.4 v .7 l -.9,.3 -.5,-.7 -10.5,2.4 2.8,16.3 1.8,1.5 -3.5,3.4 1.7,2.2 5.4,-4.5 1.7,-1.3 h .8 l 2.4,-3.1 1.4,.1 2.9,-1.1 h 2.1 l 5.3,-2.7 2.8,-.9 1,-1 1.5,.5 z">
@@ -288,5 +288,132 @@ var ElectoralMap = {
         </g>
       </svg>
     `;
+
+    var ElectoralMap = {
+    draw: function(opts) {
+      var container = document.querySelector(opts.container);
+      if (!container) return;
+
+      // ... your existing innerHTML injection with the <svg>/<path> markup stays exactly as-is ...
+      container.innerHTML = `...`; // (unchanged from before)
+
+      // ---- NEW: hover tooltip with pie chart ----
+      ElectoralMap._initTooltip();
+      ElectoralMap._wireHoverEvents(container, opts.results || {}, opts.stateNames || {});
+    },
+
+    _tooltip: null,
+
+    _initTooltip: function() {
+      if (ElectoralMap._tooltip) return; // only build it once
+      var tip = document.createElement('div');
+      tip.id = 'electoral-tooltip';
+      tip.style.display = 'none';
+      document.body.appendChild(tip);
+      ElectoralMap._tooltip = tip;
+    },
+
+    _wireHoverEvents: function(container, results, stateNames) {
+      var paths = container.querySelectorAll('.state path');
+      paths.forEach(function(path) {
+        // class list is like "path al" -- grab the 2-letter state code
+        var stateCode = Array.from(path.classList).find(function(c) {
+          return c.length === 2;
+        });
+        if (!stateCode) return;
+
+        path.addEventListener('mouseenter', function(e) {
+          ElectoralMap._showTooltip(stateCode, results[stateCode], stateNames[stateCode] || stateCode.toUpperCase(), e);
+        });
+        path.addEventListener('mousemove', function(e) {
+          ElectoralMap._positionTooltip(e);
+        });
+        path.addEventListener('mouseleave', function() {
+          ElectoralMap._tooltip.style.display = 'none';
+        });
+      });
+    },
+
+    _showTooltip: function(stateCode, stateResults, stateLabel, e) {
+      var tip = ElectoralMap._tooltip;
+      if (!stateResults) {
+        tip.style.display = 'none';
+        return;
+      }
+
+      // Build the party list, e.g. { "Republican": 48.2, "Democratic": 45.1, "Liberal Republican": 6.7 }
+      var entries = Object.entries(stateResults).filter(function(d) { return d[1] > 0; });
+
+      var partyColors = {
+        "Republican": "#c00000",
+        "Democratic": "#0015bc",
+        "Liberal Republican": "#DAA520",
+        "Other": "#909090"
+      };
+
+      let stateResult = { "Republican": repPct, "Democratic": demPct };
+      if (Q.greeley_fusion === 1) {
+        stateResult["Liberal Republican"] = libRepPct
+      }
+
+      // Build a small SVG pie with d3
+      var size = 90, radius = size / 2;
+      var pieSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      pieSvg.setAttribute("width", size);
+      pieSvg.setAttribute("height", size);
+      pieSvg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+
+      var g = d3.select(pieSvg).append("g")
+        .attr("transform", `translate(${radius},${radius})`);
+
+      var pie = d3.pie().value(function(d) { return d[1]; }).sort(null);
+      var arc = d3.arc().innerRadius(0).outerRadius(radius - 2);
+
+      g.selectAll("path")
+        .data(pie(entries))
+        .join("path")
+        .attr("d", arc)
+        .attr("fill", function(d) { return partyColors[d.data[0]] || partyColors.Other; })
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 1);
+
+      // Build the text rows
+      var rows = entries.map(function(d) {
+        var color = partyColors[d[0]] || partyColors.Other;
+        return `<div class="et-row"><span class="et-swatch" style="background:${color};"></span>${d[0]}: ${d[1].toFixed(1)}%</div>`;
+      }).join("");
+
+      tip.innerHTML = `
+        <div class="et-title">${stateLabel}</div>
+        <div class="et-body">
+          <div class="et-results">${rows}</div>
+          <div class="et-pie"></div>
+        </div>
+      `;
+      tip.querySelector(".et-pie").appendChild(pieSvg);
+
+      tip.style.display = 'block';
+      ElectoralMap._positionTooltip(e);
+    },
+
+    _positionTooltip: function(e) {
+      var tip = ElectoralMap._tooltip;
+      var offset = 14;
+      var x = e.pageX + offset;
+      var y = e.pageY + offset;
+
+      // keep it on-screen
+      var tipRect = tip.getBoundingClientRect();
+      if (x + tipRect.width > window.innerWidth + window.scrollX) {
+        x = e.pageX - tipRect.width - offset;
+      }
+      if (y + tipRect.height > window.innerHeight + window.scrollY) {
+        y = e.pageY - tipRect.height - offset;
+      }
+
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    }
+  };
   }
 };

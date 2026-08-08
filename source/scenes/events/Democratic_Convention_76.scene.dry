@@ -6,14 +6,14 @@ max-visits: 1
 
 = Democratic National Convention, 1876
 
-The <span style="color: #0015bc;">**Democratic Party**</span> gathers in St. Louis, and for the first time since the war a sense of real blood in the water. But the party arrives divided against itself.
+The <span style="color: #0015bc;">Democratic Party</span> gathers in St. Louis divided over what the party should become.
 
-On one side stand the <span style="color: #4682B4;">**Northern Democrats**</span> reformers who want to run on clean government, hard money, and an end to corruption, epitomized by the machine-busting reputation of New York's governor.
+The <span style="color: #4682B4;">**Northern Democrats**</span> want to run on reform, hard money and an end to corruption, led by New York Governor Samuel J. Tilden and his reputation for breaking the Tweed Ring.
 
-On the other stand the <span style="color: #002765;">**Bourbon Democrats**</span>, the party's Redeemer wing, rooted in the South and the soft-money Midwest, for whom "home rule" and the rollback of Reconstruction are the only planks that matter.
+The <span style="color: #002765;">**Bourbon Democrats**</span>, strongest in the South and among the soft-money men of the Midwest, want "home rule" and an end to Reconstruction. To them, Redemption remains the central issue.
 
-[? if dem_reform_strength > dem_bourbon_strength : The reform wing enters the convention with real momentum, though the Bourbons still control a great many delegations outright. ?]
-[? if dem_bourbon_strength >= dem_reform_strength : The Bourbon wing enters the convention firmly in control, though a vocal reform bloc is determined to make itself heard. ?]
+[? if dem_reform_strength > dem_bourbon_strength : The reform wing arrives with real momentum, though the Bourbons still control many Southern delegations. ?]
+[? if dem_bourbon_strength >= dem_reform_strength : The Bourbon wing enters the convention in a strong position, though the reformers have enough delegates to make their presence felt. ?]
 
 - @dem_convention_decision_76: See what the convention decides...
 
@@ -127,21 +127,22 @@ go-to: dem_convention_end_76
 
 @dem_convention_end_76
 
-= The Democrats Have Chosen
+= The <span style="color: #0015bc;">Democrats</span> Have Chosen
 
-[? if dem_reform_dominant_76 = 1 : The <span style="color: #4682B4;">**Northern**</span> reform wing carries the day. The convention nominates **Samuel J. Tilden** for President and **[+ dem_vp_candidate_1876 +]** for Vice President, a ticket built to run against Republican corruption at the ballot box. ?]
+[? if dem_reform_dominant_76 = 1 : The <span style="color: #4682B4;">Northern Democrats</span> carry the convention. Samuel J. Tilden is nominated for President with [+ dem_vp_candidate_1876 +] for Vice President. The ticket will make Republican corruption its central issue. ?]
 
-[? if dem_reform_dominant_76 = 0 : The <span style="color: #002765;">**Bourbon**</span> wing prevails. The convention nominates **[+ dem_candidate_1876 +]** for President and **[+ dem_vp_candidate_1876 +]** for Vice President, a ticket built around Redemption and the restoration of home rule in the South. ?]
+[? if dem_reform_dominant_76 = 0 : The <span style="color: #002765;">Bourbon Democrats</span> prevail. [+ dem_candidate_1876 +] is nominated for President with [+ dem_vp_candidate_1876 +] for Vice President. The ticket will campaign on Redemption and home rule in the South. ?]
 
-[? if dem_candidate_1876 = "Tilden" : Tilden's reputation as the man who broke the Tweed Ring gives the ticket real reform credibility in the North, though Southern <span style="color: #002765;">**Bourbon**</span> delegates worry he will go soft on Redemption. ?]
+[? if dem_candidate_1876 = "Tilden" : Tilden's record against the Tweed Ring gives the <span style="color: #4682B4;">reformers</span> a strong candidate in the North, though Southern <span style="color: #002765;">Bourbons</span> remain wary of his position on Reconstruction. ?]
 
-[? if dem_candidate_1876 = "Hendricks" : Hendricks' soft-money sympathies and Bourbon backing make him a reliable friend to the Redeemer cause, though hard-money reformers in the Northeast are unimpressed. ?]
+[? if dem_candidate_1876 = "Hendricks" : Hendricks' soft-money views and ties to the <span style="color: #002765;">Bourbon Democrats</span> make him a reliable choice for the Redeemer cause, though hard-money <span style="color: #4682B4;">reformers</span> in the Northeast are dissatisfied. ?]
 
-[? if dem_candidate_1876 = "Bayard" : Bayard's hard-money conservatism and deep Bourbon roots make him the establishment's safest choice, though he inspires little enthusiasm among the party's working-class wing. ?]
+[? if dem_candidate_1876 = "Bayard" : Bayard's hard-money views and deep ties to the <span style="color: #002765;">Bourbon Democrats</span> make him a safe choice for the party establishment, though he has little appeal among working-class <span style="color: #0015bc;">Democrats</span>. ?]
 
-[? if dem_candidate_1876 = "Hancock" : Hancock's war record gives the <span style="color: #002765;">**Bourbon**</span> ticket a rare crossover appeal, blunting Republican charges of disloyalty. ?]
+[? if dem_candidate_1876 = "Hancock" : Hancock's Civil War record gives the <span style="color: #002765;">Bourbon</span> ticket an answer to Republican attacks on Democratic loyalty. ?]
 
-[? if dem_candidate_1876 = "Allen" : Allen's Greenback sympathies fire up debtors and laborers, but hard-money men in the party are already threatening to sit out the fall campaign. ?]
+[? if dem_candidate_1876 = "Allen" : Allen's Greenback sympathies appeal to debtors and laborers, while hard-money <span style="color: #4682B4;">Democrats</span> threaten to stay home in November. ?]
 
-[? if dem_reform_dissent >= 25 : The reform wing is furious about the outcome, and some threaten to withhold their organizing muscle in the fall. ?]
-[? if dem_bourbon_dissent >= 25 : The <span style="color: #002765;">**Bourbon**</span> wing is seething, and Southern Redeemer newspapers are already sniping at the ticket. ?]
+[? if dem_reform_dominant_76 = 0 : The <span style="color: #4682B4;">reformers</span> are furious with the outcome. Some threaten to withhold their support from the fall campaign. ?]
+
+[? if dem_reform_dominant_76 = 1 : The <span style="color: #002765;">Bourbon</span> wing is furious with the outcome, and Southern Redeemer newspapers have begun attacking the ticket. ?]

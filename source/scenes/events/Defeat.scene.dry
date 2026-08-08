@@ -26,23 +26,23 @@ on-arrival: {!
 
 The war is over.
 
-The American expeditionary force has withdrawn from Cuba after failing to force Spain to surrender. Months of fighting, enormous expenditures, and the loss of thousands of American soldiers have ended without achieving the objectives proclaimed by Congress only months before.
+The American expeditionary force has withdrawn from Cuba after failing to force Spain's surrender. Months of fighting, heavy expenditures and thousands of casualties have produced none of the objectives Congress set when the war began.
 
-The fleet returns to American ports carrying exhausted veterans instead of triumphant heroes. Across the country, church bells remain silent, victory parades are cancelled, and newspaper headlines that once promised a short and glorious campaign now demand to know who is responsible for the disaster.
+The fleet returns carrying exhausted veterans instead of victors. Planned celebrations are cancelled. Newspapers that once promised a short campaign now ask who is responsible for the defeat.
 
-Spain celebrates the defense of its Caribbean empire as a remarkable national triumph. Though weakened by civil unrest at home, Madrid has preserved its authority over Cuba and emerged with its honor restored. European observers, many of whom doubted Spain could withstand American intervention, now speak of the conflict as a costly lesson in the limits of American power.
+Spain has retained control of Cuba. Madrid presents the outcome as a victory and a defense of its remaining Caribbean empire.
 
-The political consequences are immediate. Republican leaders who championed the war find themselves under relentless attack in Congress and throughout the press. Democrats accuse the administration of wasting American lives in an unnecessary foreign adventure, while even many Republicans privately question whether the nation was truly prepared for an overseas war.
+The political damage is immediate. Republican leaders who supported the war face attacks in Congress and the press. <span style="color: #0015bc;">Democrats</span> accuse the administration of wasting American lives on a foreign adventure, while Republicans begin questioning the country's military preparedness.
 
-The defeat leaves a lasting scar upon the American military. Calls for sweeping reforms echo through the War and Navy Departments as officers study every mistake made during the campaign. Whether the nation chooses to retreat from foreign affairs or prepare for another opportunity remains to be seen.
+The War and Navy Departments face demands for reform. Officers begin reviewing the failures of the campaign as the country turns away from the war.
 
 - @peace_terms: Negotiate Peace
 
 @peace_terms
 
-Spain has agreed to end hostilities, but victory has given Madrid the stronger position at the negotiating table.
+Spain has agreed to end hostilities, but its victory gives Madrid the stronger position at the negotiating table.
 
-American diplomats must now decide how much they are willing to concede in order to secure the return of prisoners, end the conflict, and restore normal relations.
+American diplomats must now secure the return of prisoners and bring the war to an end. Spain is demanding compensation for the cost of the conflict.
 
 - @pay_indemnity: Pay an indemnity to Spain.
 - @white_peace: Negotiate a white peace.
@@ -61,11 +61,11 @@ on-arrival: {!
     Q.conservative_dissent += 2;
 !}
 
-Spain demands financial compensation for the enormous cost of the conflict.
+Spain demands financial compensation for the cost of the war.
 
-Reluctantly, the United States agrees to pay an indemnity in exchange for the return of prisoners and a formal end to the war. Newspapers condemn the settlement as one of the greatest diplomatic humiliations in the nation's history, while Democratic politicians hold it up as proof of Republican incompetence.
+The United States agrees to pay an indemnity in exchange for the return of prisoners and a formal end to hostilities. Newspapers condemn the settlement as a national humiliation, while <span style="color: #0015bc;">Democrats</span> use it as further evidence of Republican incompetence.
 
-The Treasury absorbs the financial burden, but the political cost may prove even greater.
+The Treasury absorbs the cost. The political damage will last longer.
 
 - @End: Continue
 
@@ -77,18 +77,18 @@ on-arrival: {!
     Q.conservative_dissent += 2;
 !}
 
-After weeks of negotiation, both governments agree to restore the status quo.
+After weeks of negotiations, both governments agree to restore the status quo.
 
-Spain retains Cuba and Puerto Rico, while the United States abandons all claims arising from the conflict. Although no indemnity is paid, many Americans still view the treaty as a humiliating failure after so much blood and treasure were spent for no tangible gain.
+Spain retains Cuba and Puerto Rico while the United States abandons its claims arising from the war. No indemnity is paid, but the treaty does little to ease the humiliation of a war fought at great cost with nothing gained.
 
-The Republican administration survives, but its prestige has been severely damaged.
+The Republican administration survives, but its prestige is badly damaged.
 
 - @End: Continue
 
 @End
 
-The nation now turns inward.
+The nation turns inward.
 
-Questions that seemed settled only months before dominate political debate once again. Should the United States abandon dreams of overseas intervention? Can the military be trusted to defend American interests abroad? And above all, who should bear responsibility for the defeat?
+Debate over military preparedness and overseas intervention returns to Washington. The defeat has also left a simpler question hanging over the Republican Party: who is responsible?
 
-The next election will answer those questions.
+The next election will decide who answers for the war.

@@ -5,7 +5,7 @@ new-page: true
 
 Which matter would you like to bring before the Treasury?
 
-- @go_fiscal: Fiscal Policy — taxation, budget, and tariffs.
+- @go_fiscal: Fiscal Policy
 - @go_monetary: Monetary Policy
 - @cancel_treasury: Never mind
 

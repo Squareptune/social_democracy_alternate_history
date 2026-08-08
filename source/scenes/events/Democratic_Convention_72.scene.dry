@@ -6,9 +6,9 @@ max-visits: 1
 
 = Democratic National Convention, 1872
 
-The <span style="color: #0015bc;">**Democratic Party**</span> gathers in Baltimore, bruised and divided. Four years of Republican Reconstruction have left the party searching for a path back to relevance.
+The <span style="color: #0015bc;">Democratic Party</span> gathers in Baltimore, divided and badly out of power. Four years of Republican rule have left the party searching for a way back.
 
-[? if liberal_split = 1 : Two broad strategies have emerged among the delegates. The first is to nominate their own candidate, a true <span style="color: #0015bc;">**Democrat**</span> who can rally the party faithful. The second, championed by prominent party leaders including August Belmont, is to throw <span style="color: #0015bc;">**Democratic**</span> support behind the <span style="color: #DAA520;">**Liberal Republican**</span> ticket of **Horace Greeley** and **B. Gratz Brown**. Greeley is no <span style="color: #0015bc;">**Democrat**</span> — he has spent decades denouncing the party — but he is running against Grant, and that may be enough. ?]
+[? if liberal_split = 1 : Two strategies have emerged. One faction wants to nominate a <span style="color: #0015bc;">Democrat</span> and rebuild the party on its own terms. The other, led by figures such as August Belmont, wants to support the <span style="color: #DAA520;">Liberal Republican</span> ticket of Horace Greeley and B. Gratz Brown. Greeley has spent much of his career attacking the <span style="color: #0015bc;">Democrats</span>, but he has one advantage: he is running against [+ Candidate +]. ?]
 
 [? if liberal_split = 0 : The party must choose its own standard-bearer. The <span style="color: #0015bc;">**Democrats**</span> must stand on their own. ?]
 
@@ -19,20 +19,22 @@ on-arrival: {!
 
 // If the Liberal Republican split has occurred, the Democrats
 // weigh fusion against running their own candidate.
-// The decision is driven by party faction strengths and dissent.
+// Now driven by the Reform vs. Bourbon faction system instead of dem_relation.
+
+let reformFloor = (Q.dem_reform_strength || 0) - (Q.dem_reform_dissent || 0) * 0.5;
+let bourbonFloor = (Q.dem_bourbon_strength || 0) - (Q.dem_bourbon_dissent || 0) * 0.5;
 
 if (Q.liberal_split === 1) {
 
-    // Fusion faction: pragmatists who just want to beat Grant
-    let fusionStrength = 40;
-    fusionStrength += Math.max(0, (Q.dem_relation - 30) * 0.3);
+    // Fusion faction: Reform-minded Democrats who see Greeley as a natural ally
+    let fusionStrength = 20 + (reformFloor * 0.6);
     // High liberal dissent within Republicans means Greeley is weaker, dems less keen
     fusionStrength -= (Q.liberal_dissent || 0) * 0.3;
     // Add some randomness
     fusionStrength += (Math.random() * 20) - 10;
 
-    // Independence faction: old guard Democrats who refuse to back a lifelong enemy
-    let independenceStrength = 60;
+    // Independence faction: Bourbon old guard who refuse to back a lifelong enemy
+    let independenceStrength = 20 + (bourbonFloor * 0.6);
     independenceStrength += (Math.random() * 20) - 10;
 
     if (fusionStrength > independenceStrength) {
@@ -45,6 +47,10 @@ if (Q.liberal_split === 1) {
         Q.liberal_relation += 10;
         Q.liberal_dissent -= 5;
         Q.liberal_strength += 5;
+
+        Q.dem_reform_strength += 6;
+        Q.dem_reform_dissent = Math.max(0, (Q.dem_reform_dissent || 0) - 4);
+        Q.dem_bourbon_dissent += 8;
 
         Q.middle_class_dem += 3;
         Q.rural_dem += 2;
@@ -59,6 +65,10 @@ if (Q.liberal_split === 1) {
         // Dems run their own candidate
         Q.greeley_fusion = 0;
         Q.dem_independent_1872 = 1;
+
+        Q.dem_bourbon_strength += 6;
+        Q.dem_bourbon_dissent = Math.max(0, (Q.dem_bourbon_dissent || 0) - 4);
+        Q.dem_reform_dissent += 8;
     }
 
 } else {
@@ -77,6 +87,18 @@ if (Q.dem_independent_1872 === 1) {
         "Bayard":   20 + (Math.random() * 20),
         "Pendleton": 25 + (Math.random() * 20),
     };
+
+    // Hancock: safe establishment pick, favored when the Bourbon machine is running strong and unified
+    weights["Hancock"] += bourbonFloor * 0.3;
+
+    // Thurman: mild reform credentials, the "Old Roman" of honest government
+    weights["Thurman"] += reformFloor * 0.3;
+
+    // Bayard: the Bourbons' truest favorite — hard money, conservative, Southern-aligned
+    weights["Bayard"] += bourbonFloor * 0.4;
+
+    // Pendleton: the reform/soft-money populist wing's pick
+    weights["Pendleton"] += reformFloor * 0.4;
 
     // Hancock becomes more likely if Republicans are weak
     let repStrength = (Q.rep_r || 0) / ((Q.total_house_seats || 241) / 100);
@@ -116,6 +138,10 @@ if (Q.dem_independent_1872 === 1) {
         Q.moderate_dissent += 3;
         Q.conservative_dissent += 2;
         Q.liberal_dissent += 4;
+
+        Q.dem_bourbon_strength += 4;
+        Q.dem_bourbon_dissent = Math.max(0, (Q.dem_bourbon_dissent || 0) - 3);
+        Q.dem_reform_dissent += 3;
     }
     else if (chosen === "Thurman") {
         Q.dem_vp_candidate_1872 = "Hendricks";
@@ -130,6 +156,10 @@ if (Q.dem_independent_1872 === 1) {
         Q.OH_middle_class_dem += 3;
         Q.moderate_dissent += 1;
         Q.liberal_dissent += 2;
+
+        Q.dem_reform_strength += 4;
+        Q.dem_reform_dissent = Math.max(0, (Q.dem_reform_dissent || 0) - 3);
+        Q.dem_bourbon_dissent += 2;
     }
     else if (chosen === "Bayard") {
         Q.dem_vp_candidate_1872 = "Thurman";
@@ -146,6 +176,10 @@ if (Q.dem_independent_1872 === 1) {
         Q.conservative_dissent += 3;
         Q.liberal_dissent += 3;
         Q.radical_dissent -= 2;
+
+        Q.dem_bourbon_strength += 6;
+        Q.dem_bourbon_dissent = Math.max(0, (Q.dem_bourbon_dissent || 0) - 4);
+        Q.dem_reform_dissent += 6;
     }
     else if (chosen === "Pendleton") {
         Q.dem_vp_candidate_1872 = "Hancock";
@@ -163,6 +197,10 @@ if (Q.dem_independent_1872 === 1) {
         Q.liberal_dissent -= 5;
         Q.moderate_dissent += 4;
         Q.conservative_dissent += 5;
+
+        Q.dem_reform_strength += 5;
+        Q.dem_reform_dissent = Math.max(0, (Q.dem_reform_dissent || 0) - 4);
+        Q.dem_bourbon_dissent += 6;
     }
 }
 !}
@@ -172,18 +210,18 @@ go-to: dem_convention_end
 
 = The Democrats Have Chosen
 
-[? if greeley_fusion = 1 : After bitter debate, the convention votes to endorse the <span style="color: #DAA520;">**Liberal Republican**</span> ticket. **Horace Greeley** and **B. Gratz Brown** will carry the <span style="color: #0015bc;">**Democratic**</span> banner as well as the <span style="color: #DAA520;">**Liberal Republican**</span> one. Irish Democrats in the gallery boo loudly. Several Southern delegates walk out. The party chairman calls it a "coalition of necessity."?]
+[? if greeley_fusion = 1 : After bitter debate, the convention endorses the <span style="color: #DAA520;">Liberal Republican</span> ticket. Horace Greeley and B. Gratz Brown will now carry the <span style="color: #0015bc;">Democratic</span> nomination alongside the <span style="color: #DAA520;">Liberal Republican</span> one. Some delegates object loudly, while several Southern delegates leave the convention. The chairman describes the arrangement as a "coalition of necessity." ?]
 
-[? if greeley_fusion = 0 : The old guard prevails. The convention rejects fusion and nominates its own ticket: **[+ dem_candidate_1872 +]** for President and **[+ dem_vp_candidate_1872 +]** for Vice President.?]
+[? if greeley_fusion = 0 : The old guard prevails. The convention rejects fusion and nominates its own ticket: [+ dem_candidate_1872 +] for President and [+ dem_vp_candidate_1872 +] for Vice President. ?]
 
-[? if dem_candidate_1872 = "Hancock" : General Hancock's nomination is widely regarded as the <span style="color: #0015bc;">**Democrats'**</span> strongest possible play. <span style="color: #c00000;">**Republicans**</span> are taking this race seriously. ?]
+[? if dem_candidate_1872 = "Hancock" : General Hancock is seen as the <span style="color: #0015bc;">Democrats'</span> strongest candidate. The <span style="color: #c00000;">Republicans</span> will have to take the race seriously. ?]
 
-[? if dem_candidate_1872 = "Thurman" : The "Old Roman" is a reliable choice — not inspiring, but dependable. Ohio is now genuinely competitive. ?]
+[? if dem_candidate_1872 = "Thurman" : The "Old Roman" is a dependable choice. Ohio, once safely Republican, becomes a genuine battleground. ?]
 
-[? if dem_candidate_1872 = "Bayard" : Bayard's conservatism makes him a clean contrast with the <span style="color: #c00000;">**Republicans**</span>, though his hard money stance alienates the party's working-class base. ?]
+[? if dem_candidate_1872 = "Bayard" : Bayard offers a clear conservative alternative to the <span style="color: #c00000;">Republicans</span>, though his hard-money views may cost him support among working-class voters. ?]
 
-[? if dem_candidate_1872 = "Pendleton" : Pendleton's Greenback platform fires up workers and farmers but makes any <span style="color: #DAA520;">**Liberal Republican**</span> fusion completely impossible. ?]
+[? if dem_candidate_1872 = "Pendleton" : Pendleton's financial platform appeals to workers and farmers but leaves little room for cooperation with the reformers. ?]
 
-[? if greeley_fusion = 0 and liberal_split = 1 : With the <span style="color: #0015bc;">**Democrats**</span> running their own candidate, the opposition to Grant is now split between two tickets. This almost certainly benefits the <span style="color: #c00000;">**Republicans**</span>. ?]
+[? if greeley_fusion = 0 and liberal_split = 1 : The opposition to [+ Candidate +] is now divided between two tickets. The <span style="color: #c00000;">Republicans</span> are the immediate beneficiaries. ?]
 
-[? if greeley_fusion = 1 : Whether this coalition of convenience can hold together through a national campaign is another question entirely. ?]
+[? if greeley_fusion = 1 : The <span style="color: #0015bc;">Democrats</span> and <span style="color: #DAA520;">Liberal Republicans</span> now have to campaign together despite years of hostility between them. ?]

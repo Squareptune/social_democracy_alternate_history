@@ -10,7 +10,7 @@ max-visits: 5
 
 = Party Organizations
 
-Political parties in America are more than just electoral machines—they are hubs of civic activity. From newspapers and veterans’ groups to schools and aid societies, parties cultivate lasting influence through community institutions.
+Political parties in America are more than just electoral machines but they are hubs of civic activity. From newspapers and veterans’ groups to schools and aid societies, parties cultivate lasting influence through community institutions.
 
 - @newspapers: Expand our party-affiliated press.
 - @welfare: Fund mutual aid for workingmen and freedmen.
@@ -27,7 +27,7 @@ subtitle: -1 resources
 on-arrival: resources -= 1; media_timer = 0; middle_class_rep += 2; workers_rep += 1; liberal_strength += 2; liberal_dissent -= 1;
 go-to: media
 
-We invest in loyal newspapers and pamphleteers to bolster our political messaging. As the saying goes: control the ink, control the narrative.
+We invest in loyal newspapers and pamphleteers to bolster our political messaging.
 
 @welfare
 choose-if: resources > 0
