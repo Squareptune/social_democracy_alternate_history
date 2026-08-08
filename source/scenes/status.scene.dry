@@ -148,7 +148,7 @@ Rural: <span style="color: #c00000;">**Republican**</span>: [+ rural_rep +]%, <s
 
 Middle Class: <span style="color: #c00000;">**Republican**</span>: [+ middle_class_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ middle_class_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ middle_class_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ middle_class_other +]%
 
-{!<span class="tooltip-text" title='[+ freedmen_turnout +]%'>Freedmen</span>!}: <span style="color: #c00000;">**Republican**</span>: [+ freemen_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ freemen_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ freemen_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ freemen_other +]%
+Freedmen ([+ freedmen_turnout +]% turnout): <span style="color: #c00000;">**Republican**</span>: [+ freemen_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ freemen_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ freemen_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ freemen_other +]% 
 
 Immigrant Laborers: <span style="color: #c00000;">**Republican**</span>: [+ immigrant_laborers_rep +]%, <span style="color: #0015bc;">**Democrats**</span>: [+ immigrant_laborers_dem +]%[? if liberal_split = 1 : , <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ immigrant_laborers_lib +]% ?], <span style="color: #00cc00;">**Other**</span>: [+ immigrant_laborers_other +]%
 
