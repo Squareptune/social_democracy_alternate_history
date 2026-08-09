@@ -77,7 +77,6 @@ for (let state of Q.states) {
 
     if (pop <= 0) continue;
 
-    // 50% local, 50% national blend (was 20/80 — too anchored to national)
     let localRep   = Q[state + "_" + cls + "_rep"] || 0;
     let localDem   = Q[state + "_" + cls + "_dem"] || 0;
     let localLib   = Q[state + "_" + cls + "_lib"] || 0;
@@ -106,8 +105,6 @@ for (let state of Q.states) {
     if (Q.liberal_split) votes.lib += pop * (adjLib / total);
   }
 
-  // Close state nudge — weaker now, just a small thumb on the scale
-  // Player actions can still fully override this
   if (closeStates[state] !== undefined) {
     let nudge = closeStates[state] * 0.1; // only 30% as strong as before
     let randomJitter = (Math.random() * 0.8) - 0.4; // wider jitter
@@ -359,7 +356,6 @@ title: No majority with the election going to the House!
 subtitle: Rep: [+ repEVTotal +] | Dem: [+ demEVTotal +][? if liberal_split = 1 : | Lib: [+ libEVTotal +] ?]
 view-if: potus_winner = "house"
 on-arrival: {!
-  // House decides — Republican House majority means Republican wins
   if (Q.house_majority >= 2) {
     Q.potus_winner = "rep";
     Q.president = Q.Candidate;

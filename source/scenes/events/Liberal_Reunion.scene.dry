@@ -307,7 +307,7 @@ Q.lib_senate_returned = senateReturn;
 Q.moderate_strength += 3;
 Q.moderate_dissent += 4;
 Q.liberal_strength += 2;
-Q.liberal_dissent += 18; // very high — they feel humiliated
+Q.liberal_dissent += 18; // very high they feel humiliated
 Q.conservative_dissent -= 2; // conservatives actually appreciate the cold shoulder
 Q.radical_dissent += 2;
 

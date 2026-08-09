@@ -129,7 +129,7 @@ if (Q.liberal_split === 1 && Q.liberal_reunion_seen !== 1) {
     let libPct = (libSeats / totalHouse) * 100;
  
     // They've lost balance of power (can't kingmake) AND dropped below 8% of seats
-    // Adjust 8% threshold to taste — lower = harder to trigger reunion
+    // Adjust 8% threshold to taste. lower = harder to trigger reunion
     let libCanKingmake = Q.rep_lib_working_majority === 0 && libSeats > 0;
     let libCollapsed = libPct < 8;
  

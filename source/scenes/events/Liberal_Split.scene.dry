@@ -12,7 +12,7 @@ The tensions within the <span style="color: #c00000;">**Republican Party**</span
 
 [? if radical_strength >= 40 : The <span style="color: #7A1F5C;">**Radical**</span> wing's dominance of the party has been the final straw. Liberals see the continued military occupation of the South as a dangerous overreach of federal power and a betrayal of constitutional principles. ?]
 
-[? if radical_strength < 40 : Despite the party's moderate course, the Liberal faction remains deeply dissatisfied — particularly with the spoils system, the corruption of the Grant administration, and what they see as endless Reconstruction with no clear endpoint. ?]
+[? if radical_strength < 40 : Despite the party's moderate course, the Liberal faction remains deeply dissatisfied particularly with the spoils system, the corruption of the Grant administration, and what they see as endless Reconstruction with no clear endpoint. ?]
 
 They have broken away to form the **<span style="color: #DAA520;">Liberal Republican Party</span>**, advocating for civil service reform, reconciliation with the South, and a return to limited government. Many of their sympathizers in the press, particularly at the *New York Tribune* under Horace Greeley, have already begun endorsing their cause.
 
@@ -76,7 +76,7 @@ on-arrival: {!
 
 A painful but perhaps inevitable rupture. The <span style="color: #DAA520;">**Liberal Republicans**</span> depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats. Their appeal is strongest among the educated middle class and reformist press.
 
-Without them, the party is more ideologically coherent — but potentially weaker in key Northern states where liberal sentiment runs high.
+Without them, the party is more ideologically coherent but potentially weaker in key Northern states where liberal sentiment runs high.
 
 @reach_out
 subtitle: -2 resources
@@ -193,6 +193,6 @@ on-arrival: {!
     }
 !}
 
-Our condemnation only hardens their resolve. The <span style="color: #DAA520;">**Liberal Republicans**</span> depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats — more than they might have taken otherwise. The reformist press brands us as the party of military despotism and corruption.
+Our condemnation only hardens their resolve. The <span style="color: #DAA520;">**Liberal Republicans**</span> depart with [+ lib_r +] House seats and [+ lib_senate_r +] Senate seats more than they might have taken otherwise. The reformist press brands us as the party of military despotism and corruption.
 
 <span style="color: #7A1F5C;">**Radicals**</span> are pleased. But we have made enemies of men who were recently our allies.

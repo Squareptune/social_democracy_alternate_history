@@ -106,7 +106,6 @@ for (let state of Q.states) {
     adjDem = Math.max(0, adjDem + nationalDemSwing * 0.3);
 
     // If fusion occurred, Democratic voters fold into the Greeley/lib vote
-    // Irish Democrats and old guard are reluctant — only 70% transfer
     if (Q.greeley_fusion) {
       adjLib += adjDem * 0.70;
       adjDem = adjDem * 0.30; // residual protest vote / abstentions modeled as reduced dem

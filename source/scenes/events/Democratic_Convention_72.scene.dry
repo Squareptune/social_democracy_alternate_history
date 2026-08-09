@@ -72,7 +72,6 @@ if (Q.liberal_split === 1) {
     }
 
 } else {
-    // No liberal split — Dems must run their own candidate
     Q.greeley_fusion = 0;
     Q.dem_independent_1872 = 1;
 }
@@ -94,7 +93,7 @@ if (Q.dem_independent_1872 === 1) {
     // Thurman: mild reform credentials, the "Old Roman" of honest government
     weights["Thurman"] += reformFloor * 0.3;
 
-    // Bayard: the Bourbons' truest favorite — hard money, conservative, Southern-aligned
+    // Bayard: the Bourbons' truest favorite, hard money, conservative, Southern-aligned
     weights["Bayard"] += bourbonFloor * 0.4;
 
     // Pendleton: the reform/soft-money populist wing's pick
