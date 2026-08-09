@@ -38,4 +38,4 @@ choose-if: radical_strength >= 30
 unavailable-subtitle: The Radical faction is not yet strong enough to mount a challenge.
 on-arrival: radical_strength += 8; moderate_dissent += 5; freemen_rep += 4; workers_rep += 2; unemployed_other += 2; middle_class_rep -= 2
 
-We launch a full-throated campaign against Johnson's appeasement of the slaveocracy. Radical newspapers erupt, and the demand for Black citizenship and loyal governance grows louder. The party begins to split—into those who want justice, and those who want peace.
+We launch a full-throated campaign against Johnson's appeasement of the slaveocracy. Radical newspapers erupt and the demand for Black citizenship and loyal governance grows louder. The party begins to split between into those who want justice, and those who want peace.

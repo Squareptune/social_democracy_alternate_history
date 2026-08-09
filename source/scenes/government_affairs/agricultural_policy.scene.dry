@@ -8,7 +8,7 @@ tags: potus_affairs, cabinet
 
 = Agricultural Policy
 
-The <span style="color: #c00000;">**Republican**</span> Party must address the crisis of Southern agriculture. Former plantations lie fallow, freedmen demand land, and poor whites face ruin. Our Northern industrial base wants cheap cotton and food, while Southern <span style="color: #c00000;">**Republicans**</span>—Black and white—need economic survival. <span style="color: #7A1F5C;">**Radicals**</span> push for confiscating Confederate estates, while <span style="color: #9D2933;">**Moderates**</span> prefer market solutions.  
+The <span style="color: #c00000;">**Republican**</span> Party must address the crisis of Southern agriculture. Former plantations lie fallow, freedmen demand land, and poor whites face ruin. Our Northern industrial base wants cheap cotton and food, while Southern <span style="color: #c00000;">**Republicans**</span> people need economic survival. <span style="color: #7A1F5C;">**Radicals**</span> push for confiscating Confederate estates, while <span style="color: #9D2933;">**Moderates**</span> prefer market solutions.  
 
 - @land_reform
 - @land_reform2
@@ -27,7 +27,7 @@ choose-if: judicial_reform >= 2 and budget > 0
 view-if: fifth_A = 0
 on-arrival: budget -= 1; PoliticalCostPenalty += 1; freemen_rep += 3; land_reform += 1; rural_dem -= 8*(1-dissent); radical_strength += 8; moderate_dissent += 5; kkk_militancy += 0.1; agriculture_goal_completed += 1; liberal_strength += 3; liberal_dissent -= 2
 
-We seize rebel estates under the Confiscation Acts, granting land to freedmen’s cooperatives. Former slaves become yeoman farmers—but ex-Confederates scream of ‘Negro domination.’ The Klan burns crops in response.
+We seize rebel estates under the Confiscation Acts, granting land to freedmen’s cooperatives. Former slaves become yeoman farmers but ex-Confederates scream of ‘Negro domination.’ The Klan burns crops in response.
 
 @land_reform2
 title: 40 Acres and a Mule

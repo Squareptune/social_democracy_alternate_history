@@ -47,7 +47,7 @@ on-arrival: {!
 
 President [+ president +] has vetoed the [+ veto_reason +], declaring it "an unconstitutional assault on states' rights and an invitation to tyranny."
 
-<span style="color: #7A1F5C;">**Radical Republicans**</span> are outraged. They see this as further proof that [+ president +] is siding with the <span style="color: #002765;">**Redeemers**</span> and obstructing the goals of Reconstruction. <span style="color: #9D2933;">**Moderates**</span> are split—some urge an override, others warn of political overreach.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> are outraged. They see this as further proof that [+ president +] is siding with the <span style="color: #002765;">**Redeemers**</span> and obstructing the goals of Reconstruction. <span style="color: #9D2933;">**Moderates**</span> are split on the issue.
 
 With the Radical base demanding action and the President daring Congress to respond, the veto becomes a moment of truth.
 
@@ -91,7 +91,7 @@ on-arrival: {!
     Q.veto_reason = "";
 !}
 
-We move swiftly to override the President's veto. With overwhelming support in Congress, the law is enacted anyway. [+ president +]'s influence shrinks—and our <span style="color: #7A1F5C;">**Radical**</span> base cheers.
+We move swiftly to override the President's veto. With overwhelming support in Congress, the law is enacted anyway. [+ president +]'s influence shrinks and our <span style="color: #7A1F5C;">**Radical**</span> base cheers.
 
 @stand_down
 subtitle: Political caution.
@@ -102,4 +102,4 @@ on-arrival: {!
     Q.veto_reason = "";
 !}
 
-We are forced to back down as [+ president +] has won this time. <span style="color: #9D2933;">**Moderates**</span> defend our decision as strategic—but to many, it looks like cowardice. The veto holds.
+We are forced to back down as [+ president +] has won this time. <span style="color: #9D2933;">**Moderates**</span> defend our decision as strategic but to many, it looks like cowardice. The veto holds.

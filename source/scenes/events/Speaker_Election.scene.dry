@@ -72,9 +72,6 @@ go-to: speaker_end
 
 Thaddeus Stevens storms into the Speaker's chair like a force of nature. His iron control of the House floor and committee assignments transforms the chamber into an engine of Radical Reconstruction. <span style="color: #0015bc;">**Democrats**</span> are apoplectic. <span style="color: #B5651D;">**Conservative Republicans**</span> are alarmed. <span style="color: #7A1F5C;">**Radicals**</span> are finally satisfied.
 
-His dual role as Speaker and party advisor means he cannot devote his full attention to either — his advisor actions will come more slowly.
-
-
 @Blaine
 title: James Blaine (Maine)
 subtitle: [? if speaker = "Blaine" : Currently serving ?][? if speaker != "Blaine" : Ambitious moderate. Strong legislator, eye on the presidency. ?]
@@ -180,8 +177,7 @@ go-to: speaker_end
 
 Elihu Washburne, Grant's close political ally from Illinois, takes the gavel. Reliable, unflashy, and content to serve the party rather than himself, he keeps the caucus orderly and the Grant White House happy.
 
-His deep interest in foreign affairs — he will later serve as minister to France — opens new diplomatic avenues.
-
+His deep interest in foreign affairs opens new diplomatic avenues.
 
 @keep_speaker
 title: Retain [+ speaker +] as Speaker.

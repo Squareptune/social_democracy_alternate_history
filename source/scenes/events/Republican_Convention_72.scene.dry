@@ -86,7 +86,6 @@ on-arrival: {!
     let wadeStrength = (Q.radical_strength || 0) + 20; // incumbency bonus
 
     if (challengerStrength > wadeStrength) {
-        // Challenger wins — pick based on dominant faction
         if ((Q.conservative_strength || 0) >= (Q.moderate_strength || 0)) {
             Q.Candidate = "Conkling";
         } else {
