@@ -297,7 +297,7 @@ subtitle: <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_r
 view-if: house_majority = 0 and rep_lib_working_majority = 0 and dem_r <= rep_r and liberal_split = 1
 on-arrival: speaker_election_needed = 1
 
-No party commands a majority. The <span style="color: #DAA520;">**Liberal Republicans**</span> find themselves in the position of kingmakers — their votes will determine whether Reconstruction legislation advances or stalls.
+No party commands a majority. The <span style="color: #DAA520;">**Liberal Republicans**</span> find themselves in the position of kingmakers and their votes will determine whether Reconstruction legislation advances or stalls.
 
 @house_tie
 title: The House is tied!

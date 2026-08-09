@@ -40,4 +40,4 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; europe_relation += 4;
 
-Douglass corresponds with European abolitionists, reform movements, and liberal politicians, framing American Reconstruction as part of a global struggle for human freedom. European liberal opinion, already sympathetic, shifts further in our favor — making it harder for foreign governments to treat the former Confederacy as a legitimate grievance.
+Douglass corresponds with European abolitionists, reform movements, and liberal politicians, framing American Reconstruction as part of a global struggle for human freedom. European liberal opinion shifts further in our favor making it harder for foreign governments to treat the former Confederacy as a legitimate grievance.

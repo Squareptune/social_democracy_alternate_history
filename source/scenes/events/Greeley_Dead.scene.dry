@@ -9,7 +9,7 @@ go-to: greeley_loss; crisis_menu if potus_winner = "lib"
 
 = The Death of Horace Greeley
 
-Horace Greeley is dead. Exhausted by the campaign, humiliated at the polls, and broken by his wife's death only weeks before, the editor of the *New York Tribune* has succumbed within days of the election. The electors who pledged themselves to him have not yet met — under the Constitution, the formal vote of the Electoral College does not take place until December.
+Horace Greeley is dead. Exhausted by the campaign, humiliated at the polls, and broken by his wife's death only weeks before, the editor of the *New York Tribune* has succumbed within days of the election. The electors who pledged themselves to him have not yet met. Under the Constitution, the formal vote of the Electoral College does not take place until December.
 
 [? if potus_winner != "lib" : His death changes little politically. He lost, and the question of his electors is a footnote rather than a crisis. ?]
 
@@ -101,7 +101,7 @@ go-to: greeley_end
 
 We argue that with no living candidate holding a certifiable majority, the contingent election procedure of the Twelfth Amendment applies, and the question falls to the House, voting by state delegation. With a <span style="color: #c00000;">**Republican**</span> majority of delegations, the outcome is not seriously in doubt. [+ Candidate +] is elected President by the House.
 
-It is a narrower, less dramatic path than a court ruling, and it draws correspondingly less outrage — Congress settling a presidential election is, after all, a remedy the Constitution explicitly provides for.
+It is a narrower, less dramatic path than a court ruling, and it draws correspondingly less outrage as Congress settling a presidential election is, after all, a remedy the Constitution explicitly provides for.
 
 @congress_ruling_against
 on-arrival: {!

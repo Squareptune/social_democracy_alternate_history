@@ -46,10 +46,6 @@ on-arrival: {!
 
 We begin the return to specie payments and retire the Greenbacks. Creditors and bankers welcome the decision, while foreign investors regain confidence in the dollar.
 
-The cost falls heavily on debtors. Falling prices make debts harder to repay, while farmers and small businesses face tighter credit. Veterans and others living on fixed payments feel the same pressure.
-
-<span style="color: #7A1F5C;">Radicals</span> denounce the policy as a victory for creditors. Financial interests praise it as sound money.
-
 @maintain_greenbacks
 subtitle: Preserves credit while keeping inflation under control.
 View-if: GreenBacks = 1
@@ -69,8 +65,6 @@ on-arrival: {!
 We leave the Greenbacks in circulation and make no further change to the currency.
 
 Credit remains available to industry, farmers, and Reconstruction projects. Inflation rises only modestly, while neither creditors nor debtors get everything they want.
-
-<span style="color: #B5651D;">Conservatives</span> demand a return to hard money. <span style="color: #7A1F5C;">Radicals</span> argue that we should go further.
 
 @inflate_currency
 subtitle: Cheapens credit, but risks inflation and the confidence of creditors.
@@ -97,8 +91,6 @@ We authorize a major expansion of the Greenback currency. Credit becomes cheaper
 
 The policy brings faster growth, but prices begin to rise. Creditors and savers see the value of their holdings fall, while bankers warn that confidence in the dollar is being undermined.
 
-<span style="color: #7A1F5C;">Radicals</span> welcome the expansion. <span style="color: #B5651D;">Conservatives</span> and financial interests demand that we reverse course.
-
 @debt_repayment
 subtitle: -1 budget. Reassures creditors, but leaves less for Reconstruction.
 choose-if: budget >= 1
@@ -123,10 +115,6 @@ We devote federal funds to retiring the war debt.
 
 Bondholders and foreign lenders welcome the decision. Confidence in federal finances improves, and future borrowing becomes easier.
 
-The money cannot be spent twice. Every dollar sent to the Treasury's creditors is a dollar unavailable for Reconstruction, education, or public works.
-
-<span style="color: #7A1F5C;">Radicals</span> accuse us of putting creditors ahead of Reconstruction.
-
 @banking_expansion
 subtitle: +0.5 budget. Brings Southern commerce into the national banking system.
 on-arrival: {!
@@ -145,8 +133,6 @@ on-arrival: {!
 We expand the national banking system into the South, bringing Northern capital and federal banking institutions into the region.
 
 New banks provide credit for farms, businesses, and Reconstruction projects while tying Southern commerce more closely to the national economy.
-
-<span style="color: #0015bc;">Democrats</span> condemn the policy as Northern financial control. Southern planters resent the growing influence of Northern banks. Republican business interests welcome it.
 
 @contraction
 subtitle: Reduces inflation, but tightens credit and slows growth.
@@ -171,8 +157,6 @@ on-arrival: {!
 With prices rising, we begin retiring Greenbacks from circulation.
 
 The policy slows inflation, but credit becomes more expensive. Farmers, small businesses, and builders feel the squeeze as investment falls and unemployment rises.
-
-<span style="color: #7A1F5C;">Radicals</span> accuse the administration of protecting creditors at the expense of workers and farmers. <span style="color: #B5651D;">Conservatives</span> welcome the return toward sound money.
 
 @root
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0

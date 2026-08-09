@@ -549,7 +549,6 @@ if (Q.month_actions >= 1) {
     }
     Q.economic_records.push({date: new Date(Q.year, Q.month - 1),inflation: Q.inflation,unemployment: Q.unemployment_rate, growth: Q.economic_growth});
 
-    // INFLATION — driven by money supply
     let inflationDrift = 0;
     if (Q.GreenBacks == 1) {
         inflationDrift += 0.03;
@@ -560,7 +559,6 @@ if (Q.month_actions >= 1) {
     inflationDrift += (Q.tariffs || 0) * 0.01; // small secondary effect from consumer prices
     Q.inflation = Math.max(-8, Math.min(12, Q.inflation + inflationDrift));
 
-    // === 2. ECONOMIC_EXPANSION — hidden speculative/credit accumulator ===
     let expansionDrift = 0;
     if (Q.economic_growth >= 2) expansionDrift += 0.4;
     if (Q.GreenBacks == 1) expansionDrift += 0.2;
@@ -568,7 +566,6 @@ if (Q.month_actions >= 1) {
     if (Q.GreenBacks == 0) expansionDrift -= 0.3; // hard money bleeds off speculation
     Q.economic_expansion = Math.max(0, Q.economic_expansion + expansionDrift);
 
-    // Organic panic trigger — a rising chance once exposure crosses a threshold,
     // rather than a hard date-based tripwire
     if (Q.economic_expansion >= 60 && Q.panic_triggered != 1) {
         let panicChance = (Q.economic_expansion - 60) * 0.015;
@@ -578,7 +575,6 @@ if (Q.month_actions >= 1) {
         }
     }
 
-    // === 3. ECONOMIC GROWTH — self-correcting, symmetric ceiling and floor ===
     if (Q.economic_growth >= 4 && Q.inflation >= 7.5) Q.economic_growth -= 0.15;
     if (Q.economic_growth >= -2.5 && Q.inflation <= -5) Q.economic_growth -= 0.15;
     if (Q.economic_growth >= 7) Q.economic_growth -= 0.1;
@@ -599,7 +595,6 @@ if (Q.month_actions >= 1) {
     if (Q.inflation >= 8) unemploymentDrift += 0.05;
     Q.unemployment_rate = Math.max(2, Math.min(35, Q.unemployment_rate + unemploymentDrift));
 
-    // === 5. CLASS DRIFT — one-way trigger, slow reversible recovery ===
     let CRISIS_THRESHOLD = 10;
 
     if (Q.unemployment_rate > CRISIS_THRESHOLD) {
@@ -619,7 +614,6 @@ if (Q.month_actions >= 1) {
             let oldPool = Q[state + "_unemployed"] || 0;
             Q[state + "_unemployed"] = oldPool + shift;
 
-            // New arrivals blame the incumbent — Republican presidents lose more
             // of this cohort to the Democrats than Democratic presidents do
             let incumbentPenalty = (Q.president_party === "rep") ? 1 : (Q.president_party === "dem" ? -0.5 : 0.25);
             let demLean = 55 + (10 * incumbentPenalty);
@@ -641,7 +635,6 @@ if (Q.month_actions >= 1) {
         Q.unemployed += (nWorkers + nRural + nImm);
 
     } else {
-        // Recovery — only once the macro rate is back under the threshold, at
         // roughly half the speed of the crisis drift, and only pulling down the
         // *excess* over the original baseline, never below it
         let recoveryRate = 0.004;

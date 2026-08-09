@@ -44,7 +44,7 @@ The financial crisis is already underway. Now the scandal is spreading to the Wh
 
 @treasury_intervention
 on-arrival: {!
-    // Boutwell's gold release already happened — we endorse and expand it
+    // Boutwell's gold release already happened we endorse and expand it
     Q.economic_growth += 0.4;
     Q.inflation -= 0.4;
     Q.budget -= 1;
@@ -98,7 +98,7 @@ on-arrival: {!
     Q.middle_class_dem += 3;  // middle class doesn't believe us
     Q.rural_dem += 2;
 
-    // Betting on Grant's innocence — if investigation clears him, pays off
+    // Betting on Grant's innocence if investigation clears him, pays off
     Q.protect_grant_chosen = 1;
 !}
 go-to: investigate_question

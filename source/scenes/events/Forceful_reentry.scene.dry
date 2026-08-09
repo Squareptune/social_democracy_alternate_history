@@ -27,8 +27,8 @@ Still outside Congress: [+ fatigue_readmit_list +].
 
 Do you let public pressure force the issue and clear these states for readmission regardless of where their Reconstruction Score currently stands?
 
-- @force_readmit: Yield to the pressure — clear the remaining states for readmission.
-- @refuse_readmit: Hold the line — keep Reconstruction's conditions in place, popularity be damned.
+- @force_readmit: Clear the remaining states for readmission.
+- @refuse_readmit: Kkeep Reconstruction's conditions in place, popularity be damned.
 
 @force_readmit
 on-arrival: {!
@@ -39,7 +39,7 @@ on-arrival: {!
     }
 !}
 
-Congress moves to formally clear the way for readmission, whatever the lingering conditions. It is a practical concession to public fatigue — and a quiet admission that Reconstruction's aims will go unfinished in [+ fatigue_readmit_list +].
+Congress moves to formally clear the way for readmission, whatever the lingering conditions. It is a practical concession to public fatigue and a quiet admission that Reconstruction's aims will go unfinished in [+ fatigue_readmit_list +].
 
 @refuse_readmit
 on-arrival: {!
@@ -49,4 +49,4 @@ on-arrival: {!
     conservative_dissent -= 2;
 !}
 
-You hold firm. [+ fatigue_readmit_list +] will remain outside Congress until they meet the conditions laid out under Reconstruction — no matter how loudly the public clamors for an end to it. It is a deeply unpopular stand, but a principled one.
+You hold firm. [+ fatigue_readmit_list +] will remain outside Congress until they meet the conditions laid out under Reconstruction no matter how loudly the public clamors for an end to it. It is a deeply unpopular stand, but a principled one.
