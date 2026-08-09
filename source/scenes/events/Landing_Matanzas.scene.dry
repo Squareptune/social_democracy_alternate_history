@@ -4,9 +4,13 @@ view-if: war_stage = 2
 
 = Ashore at Matanzas
 
-With the Florida Strait firmly under American control, the Expeditionary Force turns toward the Cuban coast. After careful deliberation, General Sherman selects the port city of Matanzas as the site of the invasion. Close enough to threaten Havana yet beyond the reach of the capital's coastal batteries, it offers the best opportunity to establish a secure foothold on the island.
+With the Florida Strait secure, the American expedition turns toward Cuba.
 
-For months, Mambise scouts and sympathizers have quietly mapped beaches, roads, and Spanish positions, slipping through the blockade to deliver invaluable intelligence. Now they wait along the shore to guide the first wave through the reefs and onto the beaches. Every hour, however, increases the likelihood that Spanish colonial forces will arrive to contest the landing. Surprise is America's greatest advantage, and it will not last forever.
+After weighing several possible landing sites, General Sherman selects the port of Matanzas. Close enough to threaten Havana yet beyond the range of the capital's principal defenses, it offers the best chance of establishing a permanent foothold before Spain can concentrate its forces.
+
+For months, Mambí scouts have quietly surveyed beaches, roads, and Spanish positions, slipping through the blockade to deliver invaluable intelligence. Now they wait along the coast to guide the first assault wave through the reefs and onto the beaches.
+
+But surprise is a wasting asset. Every hour gives Spanish commanders more time to reinforce Matanzas. If the invasion is to succeed, it must begin now.
 
 - @Land: Order the landing.
 - @Withdraw: Call off the invasion.
@@ -38,7 +42,9 @@ subtitle: Abandon the invasion before it lands.
 on-arrival: spain_war = 0
 go-to: Defeat
 
-The American High Command decides to give up. Booho
+The invasion is called off before the first boats leave their transports.
+
+With no secure landing possible, the expedition returns to Florida. The blockade remains in place, but the opportunity to strike directly at western Cuba slips away. Spanish authorities proclaim the withdrawal as proof that the United States lacks the resolve to carry the war onto Cuban soil.
 
 @lose
 title: Defeat at Matanzas
@@ -46,18 +52,28 @@ subtitle: Oops
 on-arrival: spain_war = 0; invasion_force_strength *= 0.25
 go-to: Defeat
 
+The landing collapses almost as soon as it begins.
+
+Spanish artillery catches the invasion force while it is still struggling ashore, sinking landing craft and scattering entire companies before they can form. The surviving troops are forced back to their transports under heavy fire, abandoning equipment and hundreds of casualties on the beaches.
+
+The expedition withdraws to Florida in disorder. Any hope of a quick campaign against Havana has vanished, and Spain emerges from the battle with renewed confidence.
+
 @Victory
 
 = Victory at Matanzas
 
-Before dawn, the first landing craft emerge from the morning mist, covered by the thunder of American warships anchored offshore. Naval shells crash into Spanish positions overlooking the beaches as soldiers leap into the surf, rifles held high above the water. Mambise guides lead the advancing columns inland, steering them around marshes and hidden Spanish outposts while engineers race to unload artillery, horses, and supplies.
+Before dawn, the first landing craft emerge from the morning mist under the protection of the Atlantic Squadron. Heavy naval gunfire pounds Spanish batteries overlooking the beaches as American infantry wades ashore through the surf, rifles held above their heads.
 
-Spanish pickets offer stubborn resistance but are overwhelmed by the weight of the assault. Unable to organize a coordinated defense before the Americans secure the shoreline, colonial forces withdraw toward the interior to regroup. By nightfall, the Stars and Stripes flies over the growing beachhead as thousands of troops and tons of equipment pour ashore without interruption.
+Waiting beyond the shoreline, Mambí guides lead the advancing columns inland, steering them around marshes and hidden Spanish positions while engineers race to unload artillery, ammunition, and supplies.
 
-Matanzas is firmly in American hands. Supply lines are established, artillery is brought forward, and the expedition now possesses the secure foothold it needs to begin the march on Havana. Spain's hold on western Cuba has suffered its first major blow.
+Caught off balance by the speed of the assault, the Spanish garrison fights stubbornly but cannot prevent the Americans from securing the harbor. By nightfall, Matanzas is firmly in American hands, and fresh troops continue pouring ashore without interruption.
+
+For the first time in the war, the United States possesses a permanent foothold on Cuban soil. Supply depots are established, siege guns are landed, and the road to Havana lies open.
 
 - @Continue: Continue
 
 @Continue
 
-With Matanzas secured behind them, the American army begins its advance west along the coastal road. Each mile brings the expedition closer to Havana, where Spain is hastily gathering every available regiment for what may prove the decisive battle of the war.
+With Matanzas secure, the expedition begins advancing west along the coastal road toward Havana.
+
+Spanish commanders rush reinforcements from across western Cuba, determined to make their stand before the capital. The next battle may decide not only the fate of Havana, but of Spain's empire in the Caribbean itself.

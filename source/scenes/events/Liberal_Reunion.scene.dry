@@ -7,17 +7,27 @@ on-arrival: liberal_reunion_seen = 1
 
 = A Reluctant Homecoming
 
-The <span style="color: #DAA520;">**Liberal Republican**</span> experiment has, by any measure, failed. Their seats in Congress have dwindled, their presidential ambitions collapsed, and the <span style="color: #0015bc;">**Democratic Party**</span> for all their overtures has proven an uncomfortable home for men who, at heart, still believe in the Union cause.
+The <span style="color: #DAA520;">**Liberal Republican**</span> experiment has failed.
 
-Quietly, in caucus rooms and editorial offices, former allies are beginning to ask the same question: *was it worth it?*
+Their representation in Congress has withered, their presidential ambitions collapsed, and the <span style="color: #0015bc;">**Democratic Party**</span>, despite every overture, has proven an uneasy home for men who still think of themselves as Union Republicans.
 
-The answer, for most of them, is an embittered no. Not because the <span style="color: #c00000;">**Republicans**</span> were right as many still nurse deep grievances against the party but because the alternative proved worse.
+Quietly, in caucus rooms and newspaper offices, former allies have begun asking the same question:
 
-[? if liberal_relation >= 50 : Our ongoing communications with <span style="color: #DAA520;">**Liberal Republican**</span> leaders have kept the door open. Some of them speak of our party almost warmly, compared to how they speak of the <span style="color: #0015bc;">**Democrats**</span>. ?]
-[? if liberal_relation < 50 and liberal_relation >= 25 : Relations between our parties have been cold but not poisonous. A reunion is possible, though it will require genuine concessions. ?]
-[? if liberal_relation < 25 : Our relations with the <span style="color: #DAA520;">**Liberal Republicans**</span> have been openly hostile. Any reunion will be painful and incomplete as many of them would sooner burn their membership cards than shake hands with us again. ?]
+*Was it worth it?*
 
-A delegation of <span style="color: #DAA520;">**Liberal Republican**</span> leaders has approached our party leadership. They are not asking for a triumphant return. They are asking for terms.
+For most, the answer is a bitter no. Not because they have forgiven the <span style="color: #c00000;">**Republicans**</span>, many still harbor deep grievances against the party, but because the alternative proved even less appealing.
+
+[? if liberal_relation >= 50 : Our efforts to keep the door open have not gone unnoticed. Some <span style="color: #DAA520;">**Liberal Republican**</span> leaders now speak more favorably of us than they do of the <span style="color: #0015bc;">**Democrats**</span>. ?]
+
+[? if liberal_relation < 50 and liberal_relation >= 25 : Relations have remained cool but never beyond repair. A reunion is possible, though not without concessions. ?]
+
+[? if liberal_relation < 25 : Relations have deteriorated into open hostility. Any reunion would be uneasy at best, as many would sooner burn their party cards than shake hands with us again. ?]
+
+A delegation of <span style="color: #DAA520;">**Liberal Republican**</span> leaders has approached our party.
+
+They seek neither vindication nor apology.
+
+They simply want terms.
 
 - @welcome_back: Welcome them back with open arms and promises of reform.
 - @civil_service_deal: Offer concrete civil service reform concessions.
@@ -90,13 +100,15 @@ else { Q.house_majority = 0; }
 
 !}
 
-We extend an open hand. The response is... muted.
+We extend an open hand.
 
-[+ lib_house_returned +] <span style="color: #DAA520;">**Liberal Republican**</span> House members and [+ lib_senate_returned +] senators return to our caucus. They file in without fanfare, taking their old seats with the air of men who have swallowed something unpleasant.
+The response is restrained.
 
-[+ lib_house_dem +] of their colleagues, however, decline. Some cross the aisle to the <span style="color: #0015bc;">**Democrats**</span>. Others drift toward independent status. These men are gone, and they will not return.
+[+ lib_house_returned +] <span style="color: #DAA520;">**Liberal Republican**</span> representatives and [+ lib_senate_returned +] senators return to the Republican caucus. They reclaim their old seats with little ceremony, looking less like victors than men admitting an unpleasant mistake.
 
-The reunion is real, but it is not warm. Our moderate and liberal factions absorb the returnees, though both sides eye each other with lingering suspicion. <span style="color: #B5651D;">**Conservative**</span> members mutter that we have let in a Trojan horse.
+[+ lib_house_dem +] of their former colleagues refuse. Some remain with the <span style="color: #0015bc;">**Democrats**</span>; others choose independence. Their departure is permanent.
+
+The reunion restores much of the old coalition, but not its old trust. Moderates and liberals welcome the returnees cautiously, while <span style="color: #B5651D;">**Conservative Republicans**</span> quietly wonder whether they have invited future dissent back into the party.
 
 - @reform_promise: Promise genuine civil service reform to ease the tension.
 - @move_on: Accept the awkwardness and move forward.
@@ -167,13 +179,15 @@ else { Q.house_majority = 0; }
 
 !}
 
-We pledge concrete movement on civil service reform such as merit-based hiring, an end to the worst patronage abuses, and a commission to study the spoils system. It is exactly what the <span style="color: #DAA520;">**Liberal Republicans**</span> broke away over.
+We promise meaningful civil service reform: appointments based on merit, limits on the spoils system, and a commission to recommend broader changes.
 
-The concession works better than a handshake. [+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return. They come back with less resentment than we might have expected, though they make clear this promise must be kept.
+It is precisely the sort of reform many <span style="color: #DAA520;">**Liberal Republicans**</span> had demanded before leaving.
 
-[+ lib_house_dem +] still refuse. Some join the <span style="color: #0015bc;">**Democrats**</span>. Their grievances run too deep for any platform pledge to fix.
+The offer succeeds where simple reconciliation could not. [+ lib_house_returned +] representatives and [+ lib_senate_returned +] senators return with noticeably less resentment, though they make it clear the promise will be judged by deeds rather than speeches.
 
-<span style="color: #B5651D;">**Conservative Republicans**</span> are furious. They see the civil service promise as a capitulation to men who betrayed the party. The tension will need managing.
+[+ lib_house_dem +] still refuse. Their break with the party has become too deep for any platform pledge to repair.
+
+<span style="color: #B5651D;">**Conservative Republicans**</span> denounce the agreement as an unnecessary concession to men who abandoned the party in its hour of need.
 
 - @move_on: Accept the new arrangement and move forward.
 
@@ -245,13 +259,13 @@ else { Q.house_majority = 0; }
 
 !}
 
-Money talks. We offer key Liberal leaders federal appointments, customs house positions, and diplomatic posts. It is transactional and everyone knows it but it gets results.
+No one mistakes the arrangement for reconciliation, but it works.
 
-[+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return to the fold, motivated by the practical benefits of being on the winning side of patronage.
+[+ lib_house_returned +] representatives and [+ lib_senate_returned +] senators return to the Republican fold, persuaded less by shared principle than by the advantages of belonging to the governing party.
 
-[+ lib_house_dem +] cannot be bought. They go to the <span style="color: #0015bc;">**Democrats**</span> or drift away entirely.
+[+ lib_house_dem +] refuse every offer. They remain with the <span style="color: #0015bc;">**Democrats**</span> or leave public life altogether.
 
-<span style="color: #7A1F5C;">**Radical Republicans**</span> are scathing in private. Rewarding the men who split the party feels like an insult to those who stayed loyal. The resentment will simmer.
+Among <span style="color: #7A1F5C;">**Radical Republicans**</span>, the bargain leaves a bitter taste. Many see it as rewarding the very men who fractured the party.
 
 - @move_on: Accept the new arrangement and move forward.
 
@@ -318,13 +332,15 @@ else { Q.house_majority = 0; }
 
 !}
 
-We open the door but offer nothing. No promises, no positions, no acknowledgment that their grievances had any merit whatsoever. The message is clear: *you left, you lost, you may return.*
+We leave the door open but offer nothing else.
 
-[+ lib_house_returned +] House members and [+ lib_senate_returned +] senators return not out of goodwill, but out of pragmatic surrender. They take their seats with the quiet fury of people who have no better option.
+No promises. No appointments. No acknowledgment that their grievances were ever justified.
 
-[+ lib_house_dem +] refuse outright. The cold reception is the final insult. They cross to the <span style="color: #0015bc;">**Democrats**</span> or leave politics entirely.
+[+ lib_house_returned +] representatives and [+ lib_senate_returned +] senators rejoin the caucus, not out of renewed loyalty, but because they have nowhere else to go. They take their seats quietly, carrying more resentment than enthusiasm.
 
-The returning liberals are a sullen presence in our caucus. Their dissent will need watching.
+[+ lib_house_dem +] refuse outright. For them, the cold reception settles the matter. They join the <span style="color: #0015bc;">**Democrats**</span> or leave politics altogether.
+
+Those who return become a sullen minority within the party, present but far from reconciled.
 
 - @move_on: Accept the new arrangement and move forward.
 
@@ -339,10 +355,16 @@ go-to: reunion_end
 
 @reunion_end
 
-The <span style="color: #DAA520;">**Liberal Republican Party**</span> is, for all practical purposes, finished. Their banner comes down. Their newspapers slowly drift back into the <span style="color: #c00000;">**Republican**</span> orbit, or fold entirely.
+= Reunion Complete
 
-What remains is a party changed by the experience. The men who stayed were tested. The men who returned carry resentments that will not quickly fade. And some the true believers, the ones who could not stomach either choice are simply gone from politics.
+The <span style="color: #DAA520;">**Liberal Republican Party**</span> has, for all practical purposes, ceased to exist.
 
-[? if lib_house_dem > 2 : [+ lib_house_dem +] former <span style="color: #DAA520;">**Liberal Republicans**</span> now sit with the <span style="color: #0015bc;">**Democrats**</span>. They will be adversaries for years to come, carrying institutional knowledge of our party's weaknesses. ?]
+Its banner disappears. Its newspapers gradually return to the <span style="color: #c00000;">**Republican**</span> orbit or close their presses altogether.
 
-Whether this reunion strengthens us or merely adds new fault lines to the old ones remains to be seen.
+The Republican Party emerges larger than before, but not unchanged. The men who never left feel vindicated. Those who returned bring old grievances that will not quickly disappear.
+
+Some, however, could accept neither party. They simply withdraw from public life.
+
+[? if lib_house_dem > 2 : [+ lib_house_dem +] former <span style="color: #DAA520;">**Liberal Republicans**</span> now sit with the <span style="color: #0015bc;">**Democrats**</span>, carrying with them an intimate understanding of our party's strengths and weaknesses. ?]
+
+Whether the reunion restores the Republican coalition or merely postpones its next internal struggle remains uncertain.

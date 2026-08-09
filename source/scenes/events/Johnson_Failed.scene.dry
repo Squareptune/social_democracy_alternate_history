@@ -1,24 +1,28 @@
-title: Redeemer back in Control
+title: The South Rejects Reconstruction
 subtitle: JOHNSON!!!!!!!!!!!!!!
 on-arrival: radical_strength += 1; moderate_strength -= 1; conservative_strength -= 2; liberal_strength -= 2;
 tags: event
 view-if: year = 1867 and month >= 1
 max-visits: 1
 
-= The South Resists Reform
+= The South Rejects Reconstruction
 
-The 1866 elections have delivered a verdict the <span style="color: #7A1F5C;">**Radical Republicans**</span> refuse to accept. Across the former Confederate states, voters have sent former rebels, Confederate officers, and open opponents of Reconstruction to Washington. Several of the men elected to the House and Senate served in the Confederate army or government. One was the Confederate Vice President himself.
+The elections of 1866 have delivered an unmistakable message from the former Confederate states.
 
-Under Johnson's plan, these men are entitled to their seats. Under any standard of loyalty to the Union, they are not.
+Under President Johnson's lenient Reconstruction policy, Southern voters have elected former Confederate generals, civil officials, and outspoken opponents of Reconstruction to Congress. Among them is none other than the former Vice President of the Confederacy.
 
-The Joint Committee on Reconstruction has been meeting in closed session. These delegations were elected under conditions that cannot be called free under states that have not demonstrated loyalty to the federal government. The committee recommends that Congress exercise its constitutional authority to judge the qualifications of its own members and refuse to seat them.
+Legally, they possess certificates of election. Whether they possess the loyalty required to sit in Congress is another matter entirely.
 
-The choice now falls to us.
+Meeting behind closed doors, the Joint Committee on Reconstruction concludes that governments established under Johnson's policies cannot yet be considered truly republican. Until the former Confederate states demonstrate genuine loyalty to the Union and guarantee the civil rights of their citizens, Congress, they argue, has every constitutional right to refuse their representatives.
+
+The decision now rests with us.
 
 - @Refuse: Refuse to seat the Southern delegations in Congress.
 - @allow_seating: Allow the Southern members to take their seats.
 
 @Refuse
+choose-if: radical_strength >= 30
+unavailable-subtitle: Our party doesn't support such radical ideas
 on-arrival: {!    
     let seatsRemoved = 0;
     let senateSeatsRemoved = 0;
@@ -81,11 +85,13 @@ on-arrival: {!
 !}
 go-to: Occupation
 
-The Joint Committee moves immediately. The clerk of the House is instructed not to call the names of Southern members when the roll is taken. They are not recognized. They are not given the oath. They stand in the gallery and watch as Congress organizes without them.
+The Joint Committee acts immediately.
 
-The <span style="color: #0015bc;">**Democrats**</span> and President Johnson calls it unconstitutional but we don't give a shit about them.
+When the House Clerk begins the roll call, the names of the Southern delegations are simply omitted. Their members are denied the oath of office and left watching from the galleries as Congress organizes without them.
 
-With [+ seats_removed +] House seats and [+ senate_seats_removed +] Senate seats set aside, the arithmetic of Congress shifts dramatically in our favor.
+<span style="color: #0015bc;">**Democrats**</span> denounce the decision as an unconstitutional seizure of power, while President Johnson condemns Congress for usurping the will of the states.
+
+With [+ seats_removed +] House seats and [+ senate_seats_removed +] Senate seats left vacant, the balance of power in Washington shifts dramatically in favor of the <span style="color: #c00000;">**Republicans**</span>.
 
 @allow_seating
 on-arrival: {!
@@ -97,13 +103,23 @@ on-arrival: {!
 !}
 go-to: Occupation
 
-The Southern delegations are sworn in. Former Confederates take their seats alongside the men who fought to preserve the Union. <span style="color: #7A1F5C;">**Radical Republicans**</span> are furious. Several walk out of the chamber in protest.
+The Southern delegations are admitted without objection.
 
-Johnson's allies celebrate. The <span style="color: #0015bc;">**Democratic**</span> caucus, suddenly swelled with Southern members, becomes a far more formidable opposition.
+Former Confederate officers and politicians take their seats beside the men who fought to preserve the Union, a sight that sends shockwaves through the Republican caucus.
+
+<span style="color: #7A1F5C;">**Radical Republicans**</span> erupt in protest, with several members refusing to remain in the chamber during the swearing-in ceremony.
+
+President Johnson's allies celebrate the victory, while the enlarged <span style="color: #0015bc;">**Democratic**</span> caucus suddenly becomes a far more formidable force in Congress.
 
 @Occupation
 
-Faced with this reactionary resurgence, Congressional <span style="color: #c00000;">**Republicans**</span> are now forced to act. Will the federal government take control of Reconstruction and the South itself?
+= Reconstruction Policy
+
+Whether or not the Southern delegations have been seated, one fact is now impossible to ignore.
+
+Across the South, former Confederates have rapidly returned to positions of political power, while violence against freedmen continues with little sign of abating.
+
+Congress must now decide who will control Reconstruction: the federal government, or the governments President Johnson has already restored.
 
 - @full_plan: Enact full military occupation of the south!
 - @limited_plan: Enact limited federal oversight
@@ -130,9 +146,13 @@ on-arrival: {!
     }
 !}
 
-Congress passes the **Military Reconstruction Act** of 1867. The South is divided into five military districts under Union command. Confederate officials are removed, and new governments must guarantee Black suffrage.  
+Congress passes the **Military Reconstruction Act of 1867**.
 
-<span style="color: #7A1F5C;">**Radical Republicans**</span> celebrate. But resistance mounts. The Klan stirs in the shadows.
+The former Confederate states are divided into five military districts under Union commanders. Civil governments are placed under federal supervision, Confederate officeholders are removed, and new state constitutions must recognize Black suffrage before readmission.
+
+<span style="color: #7A1F5C;">**Radical Republicans**</span> hail the legislation as the fulfillment of Reconstruction.
+
+Across the South, however, resistance hardens. Secret societies recruit openly, and the Ku Klux Klan begins expanding its campaign of terror.
 
 @limited_plan
 on-arrival: {!
@@ -153,14 +173,22 @@ on-arrival: {!
     }
 !}
 
-Congress compromises on a **moderate Reconstruction plan**: military governors oversee Southern elections, but states retain some autonomy.  
+Congress settles on a compromise.
 
-Freedmen gain some protections, but <span style="color: #002765;">**Redeemer**</span> influence lingers—and violence persists under the surface.
+Federal military commanders are given authority to supervise elections and protect the rights of freedmen, but Southern governments retain broad control over their own affairs.
+
+It is enough to reassure many <span style="color: #9D2933;">**Moderate Republicans**</span>, but not enough to satisfy the <span style="color: #7A1F5C;">**Radical**</span> wing.
+
+Reconstruction survives, though its foundations remain uncertain.
 
 @Johnson_plan
 subtitle: Stay the Course
 on-arrival: radical_strength += 5;  radical_dissent += 2; moderate_strength += 1;  moderate_dissent += 1; liberal_dissent +=1
 
-Congress hesitates, and President Johnson's plan remains in place. Southern states reintegrate quickly, but at a terrible cost.  
+Congress declines to intervene.
 
-Black codes tighten. Freedmen are brutalized. The <span style="color: #7A1F5C;">**Radical**</span> wing explodes in fury—accusing Johnson of betraying the Union's victory.
+President Johnson's Reconstruction policy remains the law of the land, and the former Confederate states continue restoring civilian government with little federal oversight.
+
+Black Codes spread across the South, violence against freedmen intensifies, and many former Confederates quickly return to public office.
+
+<span style="color: #7A1F5C;">**Radical Republicans**</span> condemn the decision as a betrayal of the Union victory, accusing the administration of surrendering the peace it had won on the battlefield.
