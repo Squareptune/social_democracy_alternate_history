@@ -206,7 +206,7 @@ choose-if: {!
     }
     else
     {
-        Q.(difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
+        Q.n_advisors < 3
     }
 
 !}

@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 tags: party_affairs
 view-if: reichsbanner_timer <= 0
-card-image: img/Union League.png
+card-image: img/Union League.jpg
 on-arrival: month_actions += 1; reichsbanner_timer += 6; rb_militarization_cost = 2 if Union_League_militancy > 0.1 else rb_militarization_cost = 1; rb_militarization_cost = 3 if Union_League_militancy > 0.25
 max-visits: 5
 
