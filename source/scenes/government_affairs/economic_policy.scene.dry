@@ -8,24 +8,22 @@ card-image: img/portraits/McCulloch.png
 
 = Monetary Policy
 
-The Civil War has left the federal government with unprecedented levels of debt and a currency in flux. With Greenbacks—paper money not backed by specie—still in circulation, fierce debate surrounds whether to return to the gold standard or continue issuing fiat currency to fuel Reconstruction.
+The Civil War transformed the nation's finances. The government emerged burdened by enormous debt, while millions of dollars in Greenbacks remained in circulation beside gold.
 
-Creditors demand "sound money" to stabilize the economy and protect their assets, while debtors, farmers, and many veterans call for an expanded money supply to avoid deflation and ease their burdens. Every decision has consequences for national unity, economic growth, and class politics.
+The debate is fierce. Creditors, bankers, and merchants demand a return to hard money, arguing that only gold-backed currency can restore confidence. Farmers, workers, and many veterans favor keeping Greenbacks in circulation, warning that deflation would make debts harder to repay and slow growth.
 
-The choice before us will shape the financial future of the Republic.
-
-- @return_gold: Return to the gold standard and retire Greenbacks.
-- @maintain_greenbacks: Continue issuing Greenbacks to fuel the economy.
-- @inflate_currency: Issue aggressively to support labor and farmers.
-- @debt_repayment: Prioritize paying down national debt to reassure markets.
-- @banking_expansion: Expand national banks in the South to promote recovery.
-- @contraction: Contract the money supply to fight inflation.
-- @root: Do not change monetary policy for now.
+- @return_gold: Resume specie payments and retire the Greenbacks.
+- @maintain_greenbacks: Keep the Greenbacks in circulation.
+- @inflate_currency: Expand the currency to aid debtors and farmers.
+- @debt_repayment: Use federal funds to retire the war debt.
+- @banking_expansion: Expand national banking across the South.
+- @contraction: Reduce the money supply to curb inflation.
+- @root: Leave monetary policy unchanged.
 - @easy_discard
 - @cancel_advisor_action
 
 @return_gold
-subtitle: Pleases bankers and foreign investors, but squeezes farmers and workers who rely on cheap credit.
+subtitle: Strengthens the dollar, but makes credit harder to obtain..
 view-if: GreenBacks = 1
 on-arrival: {!
     Q.GreenBacks = 0;
@@ -46,14 +44,14 @@ on-arrival: {!
     Q.economic_expansion -= 10;
 !}
 
-We announce a gradual resumption of specie payments, signaling commitment to "hard money." Wall Street celebrates, and Northern creditors regain confidence in the dollar. European investors, reassured by our fiscal discipline, increase their holdings of American bonds.
+We begin the return to specie payments and retire the Greenbacks. Creditors and bankers welcome the decision, while foreign investors regain confidence in the dollar.
 
-But the effects on ordinary Americans are severe. Deflation spreads as the money supply contracts. Farmers who borrowed at high interest rates find their debts growing in real terms. War veterans promised pensions discover their value shrinking. Rural areas, dependent on credit for spring planting, suffer acute distress.
+The cost falls heavily on debtors. Falling prices make debts harder to repay, while farmers and small businesses face tighter credit. Veterans and others living on fixed payments feel the same pressure.
 
-The <span style="color: #7A1F5C;">**Radical**</span> press denounces this as betrayal of the working man. Yet the financial establishment applauds our "responsibility."
+<span style="color: #7A1F5C;">Radicals</span> denounce the policy as a victory for creditors. Financial interests praise it as sound money.
 
 @maintain_greenbacks
-subtitle: A middle path. Keeps credit flowing without fully satisfying either creditors or debtors.
+subtitle: Preserves credit while keeping inflation under control.
 View-if: GreenBacks = 1
 on-arrival: {!
     Q.inflation += 0.05;
@@ -68,12 +66,14 @@ on-arrival: {!
     Q.lib_strength += 1;
 !}
 
-We maintain Greenback circulation at current levels, balancing economic growth with modest inflation. The policy keeps liquidity available for Northern industry and Southern reconstruction without alarming creditors entirely.
+We leave the Greenbacks in circulation and make no further change to the currency.
 
-This middle path satisfies few completely. <span style="color: #B5651D;">**Conservatives**</span> grumble that we're not fully committed to hard money. <span style="color: #7A1F5C;">**Radicals**</span> complain we're not doing enough to relieve debtors. But the economy hums along at a sustainable pace.
+Credit remains available to industry, farmers, and Reconstruction projects. Inflation rises only modestly, while neither creditors nor debtors get everything they want.
+
+<span style="color: #B5651D;">Conservatives</span> demand a return to hard money. <span style="color: #7A1F5C;">Radicals</span> argue that we should go further.
 
 @inflate_currency
-subtitle: Cheap credit for farmers and workers, but it comes at the cost of rising prices and angry creditors.
+subtitle: Cheapens credit, but risks inflation and the confidence of creditors.
 view-if: GreenBacks = 1
 on-arrival: {!
     Q.inflation += 0.4;
@@ -93,16 +93,16 @@ on-arrival: {!
     Q.economic_expansion += 5;
 !}
 
-We authorize massive new issues of Greenbacks, flooding the economy with liquidity. Farmers and workers cheer as credit becomes cheap and abundant. Reconstruction projects accelerate. The Southern economy, starved for capital, begins to revive.
+We authorize a major expansion of the Greenback currency. Credit becomes cheaper, giving farmers, workers, and Southern businesses greater access to capital.
 
-But the cost is inflation. Prices rise. Savers and creditors watch their holdings lose value. The financial press erupts in alarm. European investors, fearing the depreciation of American securities, begin selling. The dollar weakens against gold and foreign currencies.
+The policy brings faster growth, but prices begin to rise. Creditors and savers see the value of their holdings fall, while bankers warn that confidence in the dollar is being undermined.
 
-Bankers warn of ruin. Reformers and <span style="color: #B5651D;">**Conservatives**</span> desert us. Yet the common people—laborers, farmers, freedmen—see opportunity and relief for the first time since the war's end.
+<span style="color: #7A1F5C;">Radicals</span> welcome the expansion. <span style="color: #B5651D;">Conservatives</span> and financial interests demand that we reverse course.
 
 @debt_repayment
-subtitle: -1 budget. Pays down war debt to reassure bankers, at the cost of Reconstruction funding.
+subtitle: -1 budget. Reassures creditors, but leaves less for Reconstruction.
 choose-if: budget >= 1
-unavailable-subtitle: [? if budget < 1 : We cannot afford to allocate funds to debt repayment. ?]
+unavailable-subtitle: We cannot spare the funds for debt repayment.
 on-arrival: {!
     Q.budget -= 1;
     Q.inflation -= 0.1;
@@ -119,14 +119,16 @@ on-arrival: {!
     Q.economic_expansion -= 3;
 !}
 
-We commit budgetary surplus to retiring the war debt. This builds credibility with foreign lenders and domestic bondholders. Confidence in federal finances strengthens. Interest rates on government borrowing fall slightly.
+We devote federal funds to retiring the war debt.
 
-The down side: funds that might have gone to Reconstruction programs, education, or infrastructure now vanish into debt service. <span style="color: #7A1F5C;">**Radicals**</span> accuse us of prioritizing Wall Street over the freedmen. The pace of Southern recovery slows.
+Bondholders and foreign lenders welcome the decision. Confidence in federal finances improves, and future borrowing becomes easier.
 
-Yet markets are reassured, and the long-term fiscal position of the government improves.
+The money cannot be spent twice. Every dollar sent to the Treasury's creditors is a dollar unavailable for Reconstruction, education, or public works.
+
+<span style="color: #7A1F5C;">Radicals</span> accuse us of putting creditors ahead of Reconstruction.
 
 @banking_expansion
-subtitle: +0.5 budget. Extends Northern banks into the South, though planters and Democrats resent it.
+subtitle: +0.5 budget. Brings Southern commerce into the national banking system.
 on-arrival: {!
     Q.inflation += 0.08;
     Q.economic_growth += 0.25;
@@ -140,14 +142,14 @@ on-arrival: {!
     Q.economic_expansion += 4;
 !}
 
-We charter a network of national banks throughout the former Confederate states, spreading Northern financial institutions and capital into the South. These banks finance reconstruction projects, help freedmen establish businesses, and integrate Southern commerce into national markets.
+We expand the national banking system into the South, bringing Northern capital and federal banking institutions into the region.
 
-The policy works. Capital flows southward. New towns sprout. The Southern economy, shattered by war, begins to rebuild on Northern lines.
+New banks provide credit for farms, businesses, and Reconstruction projects while tying Southern commerce more closely to the national economy.
 
-But the banks also concentrate economic power in <span style="color: #c00000;">**Republican**</span> hands—a political asset now, but potentially dangerous. <span style="color: #0015bc;">**Democrats**</span> cry foul about carpetbagger finance. Traditional Southern planters resent Northern bankers' control. Still, growth is real, and <span style="color: #c00000;">**Republican**</span> business allies are satisfied.
+<span style="color: #0015bc;">Democrats</span> condemn the policy as Northern financial control. Southern planters resent the growing influence of Northern banks. Republican business interests welcome it.
 
 @contraction
-subtitle: Tightens the money supply to fight inflation, causing a short but real economic pinch.
+subtitle: Reduces inflation, but tightens credit and slows growth.
 view-if: inflation >= 2 and GreenBacks = 1
 choose-if: inflation >= 2
 unavailable-subtitle: [? if inflation < 2 : Inflation is not yet high enough to justify contraction. ?]
@@ -166,15 +168,13 @@ on-arrival: {!
     Q.economic_expansion -= 6;
 !}
 
-With inflation rising, we move to contract the money supply. The Treasury begins retiring Greenbacks, reducing liquidity. Interest rates rise. Prices stabilize.
+With prices rising, we begin retiring Greenbacks from circulation.
 
-The immediate effect is painful. Credit dries up. Farmers and small businesses struggle to meet obligations. Construction projects stall for lack of financing. Unemployment ticks upward as economic activity slows.
+The policy slows inflation, but credit becomes more expensive. Farmers, small businesses, and builders feel the squeeze as investment falls and unemployment rises.
 
-The <span style="color: #7A1F5C;">**Radical**</span> wing erupts in fury. We are, they cry, crushing the poor to appease creditors. Yet inflation does ease, and by year's end, prices stabilize and confidence partially returns.
-
-It is a Hobson's choice: allow inflation to run, or accept contraction's short-term pain for long-term stability.
+<span style="color: #7A1F5C;">Radicals</span> accuse the administration of protecting creditors at the expense of workers and farmers. <span style="color: #B5651D;">Conservatives</span> welcome the return toward sound money.
 
 @root
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-We maintain the current monetary stance and do not change course at this time.
+We leave monetary policy unchanged.

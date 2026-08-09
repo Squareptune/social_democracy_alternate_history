@@ -1888,7 +1888,7 @@ Q.tariffs = 5;
 
 Q.electoral_threshold = 0;
 
-Q.n_advisors = 0;
+Q.n_advisors = 3;
 if (!Array.isArray(Q.timers)) {
     Q.timers = ['advisor_action', 'bureau_timer', 'crisis_program',
         'fundraising', 'ideology',

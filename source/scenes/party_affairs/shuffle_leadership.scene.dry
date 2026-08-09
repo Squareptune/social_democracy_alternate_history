@@ -199,8 +199,18 @@ Douglass has been removed as an advisor. The <span style="color: #7A1F5C;">**Rad
 
 @add_advisors
 title: Add advisors
-choose-if: n_advisors < 3
-unavailable-subtitle: Maximum of 3 advisors.
+choose-if: {!
+    if(Q.difficulty == -1)
+    {
+        Q.n_advisors < 4
+    }
+    else
+    {
+        Q.n_advisors < 3
+    }
+
+!}
+unavailable-subtitle: [? if difficulty = -1: Maximum of 4 advisors. ?][? if difficulty > -1: Maximum of 3 advisors. ?]
 go-to: advisor_menu
 
 @advisor_menu
