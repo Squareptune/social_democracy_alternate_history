@@ -7,7 +7,7 @@ on-arrival: month_actions += 1; international_relations_timer += 12;
 card-image: img/international.jpg
 max-visits: 4
 
-As the <span style="color: #c00000;">**Republican**</span> Party emerges as a force for liberty and union, we have a chance to build relationships with foreign allies who share our ideals—radicals, abolitionists, and republicans across the globe.
+As the <span style="color: #c00000;">**Republican**</span> Party emerges as a force for liberty and union, we have a chance to build relationships with foreign allies across the globe who share our ideals.
 
 - @britain: Correspond with British Liberals and anti-slavery reformers. 
 - @germany: Observe the German Forty-Eighters and support constitutionalism. 
@@ -39,7 +39,7 @@ choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 1;
 
-The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symbolic ties strengthens our claim to moral leadership in the post-slavery world—even if few in Congress care to notice.
+The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symbolic ties strengthens our claim to moral leadership in the post-slavery world even if few in Congress care to notice.
 
 @france
 subtitle: -1 resources

@@ -16,7 +16,7 @@ on-arrival:{!
 
 General Oliver Howard's Bureau operates schools, labor offices, and makeshift courts across the South but its agents work under constant threat. Every dollar spent in hostile territory costs more than it would in peacetime.
 
-[? if kkk_strength + whiteL_strength >= 800 : Paramilitary violence is severe. Bureau operations are costly and dangerous — each action will require [+ bureau_cost +] budget. ?]
+[? if kkk_strength + whiteL_strength >= 800 : Paramilitary violence is severe. Bureau operations are costly and dangerous causing each action will require [+ bureau_cost +] budget. ?]
 
 [? if kkk_strength + whiteL_strength >= 400 and kkk_strength + whiteL_strength < 800 : Resistance is significant. Bureau actions will cost [+ bureau_cost +] budget. ?]
 

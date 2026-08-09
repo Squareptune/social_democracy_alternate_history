@@ -82,6 +82,6 @@ We condemn Southern terror and lawlessness. Our firm stance strengthens our imag
 @local
 on-arrival: workers_rep += 2; unemployed_rep += 2; middle_class_rep += 1; liberal_strength += 1;
 
-We tailor our message to the specific needs of the area—jobs, infrastructure, and fairness.
+We tailor our message to the specific needs of the area such as jobs, infrastructure, and fairness.
 
 @easy_discard

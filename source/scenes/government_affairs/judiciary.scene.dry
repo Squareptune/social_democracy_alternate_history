@@ -27,7 +27,7 @@ unavailable-subtitle: Not enough budget.
 choose-if: budget >= 1
 on-arrival: judicial_reform += 1; budget -= 1; PoliticalCostPenalty += 1; radical_strength += 5; conservative_dissent += 5; moderate_dissent += 5; freemen_rep += 5;
 
-<span style="color: #7A1F5C;">**Radical Republicans**</span> launch a full-scale campaign to overhaul the judiciary—impeaching obstructionist judges, appointing new justices, and passing legislation to expand the court's size. The move unleashes <span style="color: #B5651D;">**Conservative**</span> backlash but opens the door for ambitious reform.
+<span style="color: #7A1F5C;">**Radical Republicans**</span> launch a full-scale campaign to overhaul the judiciary by impeaching obstructionist judges, appointing new justices, and passing legislation to expand the court's size. The move unleashes <span style="color: #B5651D;">**Conservative**</span> backlash but opens the door for ambitious reform.
 
 @Act
 subtitle: -2 budget

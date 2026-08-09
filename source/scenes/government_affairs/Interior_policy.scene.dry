@@ -42,7 +42,7 @@ The Interior Department begins efforts to manage the nation’s vast public land
 
 @purchase
 
-We open large swaths of federal land in the West for sale, a key step in raising revenue and encouraging settlement. But who shall we favor in distributing this land — the formerly enslaved, poor white homesteaders, or wealthy corporations?
+We open large swaths of federal land in the West for sale, a key step in raising revenue and encouraging settlement. But who shall we favor in distributing this land: The formerly enslaved, poor white homesteaders, or wealthy corporations?
 
 -@Freemen: Prioritize land access for freedmen and black families.
 -@White: Prioritize small land sales to white homesteaders and Union veterans.
@@ -101,7 +101,7 @@ on-arrival: native_relations += 2; army_loyalty += 0.1; conservative_dissent += 
 
 We sign the Second Treaty of Fort Laramie. Representing the United States are General William Tecumseh Sherman and Commissioner of Indian Affairs Nathaniel G. Taylor.
 
-The treaty ends Red Cloud’s War, establishes the Great Sioux Reservation—including the Black Hills—and guarantees hunting rights in unceded territory. The U.S. agrees to abandon several forts and pledges to keep settlers out of Sioux land.
+The treaty ends Red Cloud’s War, establishes the Great Sioux Reservation including the Black Hills and guarantees hunting rights in unceded territory. The U.S. agrees to abandon several forts and pledges to keep settlers out of Sioux land.
 
 @military_action
 subtitle: -1 Budget
