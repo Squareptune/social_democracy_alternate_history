@@ -16,11 +16,11 @@ on-arrival:{!
 
 General Oliver Howard's Bureau operates schools, labor offices, and makeshift courts across the South but its agents work under constant threat. Every dollar spent in hostile territory costs more than it would in peacetime.
 
-[? if kkk_strength + whiteL_strength >= 800 : Paramilitary violence is severe. Bureau operations are costly and dangerous causing each action will require [+ bureau_cost +] budget. ?]
+[? if kkk_strength + whiteL_strength >= 400 : Paramilitary violence is severe. Bureau operations are costly and dangerous causing each action will require [+ bureau_cost +] budget. ?]
 
-[? if kkk_strength + whiteL_strength >= 400 and kkk_strength + whiteL_strength < 800 : Resistance is significant. Bureau actions will cost [+ bureau_cost +] budget. ?]
+[? if kkk_strength + whiteL_strength >= 200 and kkk_strength + whiteL_strength < 400 : Resistance is significant. Bureau actions will cost [+ bureau_cost +] budget. ?]
 
-[? if kkk_strength + whiteL_strength < 400 : The South is relatively calm. Bureau operations cost [+ bureau_cost +] budget. ?]
+[? if kkk_strength + whiteL_strength < 150 : The South is relatively calm. Bureau operations cost [+ bureau_cost +] budget. ?]
 
 Which state should we concentrate Bureau resources on this season?
 
@@ -86,6 +86,8 @@ Bureau agents are on the ground in [+ bureau_target +]. What should they priorit
 - @registration: Send agents door to door to register freedmen voters and explain their rights.
 - @outreach: Expand Bureau offices and build relationships with local <span style="color: #c00000;">**Republican**</span> leaders and freedmen communities.
 - @soldiers: Request a detachment of federal soldiers to protect Bureau headquarters and agents.
+- @easy_discard
+- @cancel_advisor_action
 
 
 @schools

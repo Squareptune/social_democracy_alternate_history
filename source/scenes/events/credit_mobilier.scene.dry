@@ -14,20 +14,17 @@ on-arrival: {!
     Q.dem_relation -= 6;
     Q.dem_reform_strength += 2;
 !}
+face-image: img/Keppler_Credit_Mobilier_Hari-Kari.png
 
 = The Credit Mobilier Scandal
 
 The morning papers hit Washington hard. Documents have surfaced exposing a scheme tied to Credit Mobilier, the construction company responsible for much of the Union Pacific Railroad. The company charged the railroad far more than the actual cost of construction and used the proceeds to enrich its officers and associates.
 
-To discourage congressional scrutiny, discounted Credit Mobilier shares were distributed to several members of Congress. The names cross party factions. Prominent <span style="color: #7A1F5C;">Radicals</span> and <span style="color: #9D2933;">Moderates</span> are implicated. So is the Republican Vice Presidential nominee.
+To discourage congressional scrutiny, discounted Credit Mobilier shares were distributed to several members of Congress. Prominent <span style="color: #7A1F5C;">Radicals</span> and <span style="color: #9D2933;">Moderates</span> are implicated.
 
 [? if vice_president = "Colfax" : Worse still, Vice President Schuyler Colfax is among those named. He is accused of receiving shares while serving as Speaker of the House. Colfax denies wrongdoing, but the evidence has already damaged his defense. ?]
 
-The election is only weeks away.
-
 [? if liberal_split = 1 : The <span style="color: #DAA520;">Liberal Republicans</span> call the scandal proof of the corruption they have warned about for years. The <span style="color: #0015bc;">Democrats</span> are making the same argument from the other side of the aisle. ?]
-
-[? if liberal_split = 0 : The reformers inside the party have been looking for an opening. They now have one. ?]
 
 How do we respond?
 
@@ -50,9 +47,7 @@ on-arrival: {!
 
 We instruct party newspapers to dismiss the story as a partisan attack timed to damage us before the election. Friendly editors question the documents and the motives of those who published them. The implicated members are told to keep quiet.
 
-For the moment, the damage is contained. Our core supporters remain with us and the campaign continues.
-
-Inside the party, the reaction is harsher. Reformers who joined the <span style="color: #c00000;">Republicans</span> to oppose corruption now see the party defending it. The <span style="color: #0015bc;">Democrats</span> have an accusation that is difficult to dismiss when the documents themselves are real.
+For the moment, the damage is contained. Our core supporters remain with us and the campaign continues. Inside the party, the reaction is harsher. Reformers who joined the <span style="color: #c00000;">Republicans</span> to oppose corruption now see the party defending it. The <span style="color: #0015bc;">Democrats</span> have an accusation that is difficult to dismiss when the documents themselves are real.
 
 [? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> are using this in every speech and pamphlet between now and November. ?]
 
@@ -87,9 +82,7 @@ on-arrival: {!
 !}
 go-to: kick_out
 
-We cut loose the implicated members, but Schuyler Colfax presents a larger problem. His denials have failed to settle the matter and his continued presence on the ticket is becoming a liability.
-
-We begin the process of pushing him out.
+We cut loose the implicated members, but Schuyler Colfax presents a larger problem. His denials have failed to settle the matter and his continued presence on the ticket is becoming a liability. We begin the process of pushing him out.
 
 @independent_investigation
 choose-if: budget >= 1
@@ -113,11 +106,9 @@ The reformist wing approves. Members who had been drifting toward the <span styl
 
 The investigation will hurt. Several prominent <span style="color: #c00000;">Republicans</span> will come under scrutiny, including men who expected the party to protect them. <span style="color: #B5651D;">Conservatives</span> and <span style="color: #7A1F5C;">Radicals</span> alike resent the exposure.
 
-The hearings will continue into the new year.
-
 @kick_out
 
-The Vice President must go. The question is how.
+The Vice President must go. The question is how?
 
 - @Dropped: Have the President pressure Colfax to step aside.
 - @Slap: Give Colfax a slap on the wrist for the media

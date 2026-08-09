@@ -5,12 +5,13 @@ new-page: true
 view-if: year = 1872 and month >= 3
 max-visits: 1
 on-arrival: amnesty_act_seen = 1
+face-image: img/portraits/Benjamin_Butler.jpg
 
 = The Amnesty Act
 
 Congress is considering a bill restoring political rights to most former Confederates, allowing them to once again hold federal and state office. Supporters argue that nearly a decade has passed since the Civil War and that it is time to restore the Union.
 
-Around 150,000 men, most of them <span style="color: #0015bc;">**Democrats**</span>, would regain the right to hold office.
+Around 150,000 men, most of them <span style="color: #0015bc;">**Democrats**</span>, would regain the right to hold office. Supported by **<span style="color: #7A1F5C;">Radical</span>** representative Benjamin Butler to manage the wave of individual petitions, it aims to stabilize the Union.
 
 The **<span style="color: #7A1F5C;">Radicals</span>** oppose unconditional amnesty, insisting it be paired with new civil rights protections. **<span style="color: #9D2933;">Moderates</span>** argue that adding conditions would doom the bill.
 

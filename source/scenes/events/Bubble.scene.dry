@@ -3,6 +3,19 @@ tags: event
 view-if: flag_credit_bubble = 1
 max-visits: 1
 on-arrival: flag_credit_bubble = 0; bubble_ticker_timer = 12; middle_class_rep += 1; conservative_dissent += 2; liberal_dissent += 2
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/Bubble.png";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
 
 = A Growing Bubble
 

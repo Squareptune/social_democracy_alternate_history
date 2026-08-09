@@ -11,6 +11,7 @@ on-arrival: {!
     Q.whiteL_strength += 4;
     Q.kkk_strength += 2;
 !}
+face-image: img/ColfaxMassacre.jpg
 
 = The Colfax Massacre
 

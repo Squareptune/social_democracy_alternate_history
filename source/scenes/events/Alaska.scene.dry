@@ -2,6 +2,7 @@ title: The Alaska Offer
 subtitle: Russia offers to sell a frozen frontier.
 tags: event
 view-if: year = 1867 and month >= 3 and alaska_purchased != 1
+face-image: img/1860-russian-america.jpg
 max-visits: 1
 
 = A Deal in the North
@@ -20,6 +21,19 @@ subtitle: -2 budget
 choose-if: budget >= 2
 unavailable-subtitle: [? if budget < 2: Not enough budget. ?]
 on-arrival: alaska_purchased = 1; budget -= 2; moderate_strength += 2; conservative_dissent += 2; freemen_rep -= 2; freemen_other += 2; workers_rep -= 3; workers_other += 3; middle_class_rep += 2; rural_rep -= 2; rural_other += 2; immigrant_laborers_rep -= 2; immigrant_laborers_other += 2; unemployed_rep -= 2; unemployed_other += 2; europe_relation -= 3;
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/Alaska purchase.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
 
 We finalize the Alaska Purchase. While critics remain vocal, visionaries hail the acquisition as a step toward America's growing influence in the Pacific and Arctic. However, many question prioritizing expansion over justice at home.
 
