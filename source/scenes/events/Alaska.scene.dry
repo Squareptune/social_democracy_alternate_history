@@ -27,7 +27,7 @@ on-display: {!
 
     var image = new Image();  
     image.className = "face-img";  
-    image.src = "img/Alaska purchase.jpg";  
+    image.src = "img/Alaska_purchase.jpg";  
 
     cardEl.appendChild(image);  
     var contentDiv = document.querySelector("#page #mid_panel #content");

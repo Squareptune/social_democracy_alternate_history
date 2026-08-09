@@ -8,11 +8,11 @@ on-arrival: dominican_seen = 1
 
 = A Treaty from the Tropics
 
-Orville Babcock, personal secretary to President [+ president +], has returned from Santo Domingo with a draft annexation treaty. The Dominican Republic, wracked by debt and political instability, is willing (even eager) to become part of the United States.
+Orville Babcock, personal secretary to President [+ president +], has returned from Santo Domingo with a draft annexation treaty. The Dominican Republic, wracked by debt and political instability, is willing to become part of the United States.
 
 The terms are generous to the Dominicans: the United States would assume $1,500,000 of Dominican national debt, offer the Dominican Republic the right to eventual statehood, and separately lease the strategic harbor of **Samaná Bay** at $150,000 per year for 50 years. In exchange, the United States gains a Caribbean foothold, a potential new state, and a naval base that could enforce the Monroe Doctrine across the hemisphere.
 
-The proposal has powerful enemies. Senator Charles Sumner, chairman of the Foreign Relations Committee, regards it as a scheme to drag the country into Caribbean adventurism and burden the freedmen of the South with yet another distraction. Many <span style="color: #7A1F5C;">**Radical Republicans**</span> share his skepticism. <span style="color: #0015bc;">**Democrats**</span> are uniformly opposed.
+The proposal has powerful enemies. Senator Charles Sumner regards it as a scheme to drag the country into Caribbean adventurism. The <span style="color: #0015bc;">**Democrats**</span> are uniformly opposed for similar reasons.
 
 [? if president = "Wade" : President Wade is personally enthusiastic about the treaty, seeing expansion as consistent with <span style="color: #c00000;">**Republican**</span> ambitions. But his radical base is divided with some seeing Caribbean annexation as imperialism dressed up in republican clothing. ?]
 
@@ -32,28 +32,12 @@ on-arrival: {!
 Q.resources -= 2;
 Q.dominican_pushed_hard = 1;
 
-// --- Step 1: Total Senate seats from current state list ---
-// Each admitted state sends 2 senators.
 let totalSenate = Q.states.length * 2;
 Q.dominican_total_senate = totalSenate;
 
-// Two-thirds required for treaty ratification
-let requiredVotes = Math.ceil(totalSenate * (2/3));
-Q.dominican_required = requiredVotes;
-
-// --- Step 2: Republican yea votes via faction math ---
-// Base support rates per faction for this treaty:
-//   Conservative: 0.85 - strongly pro-expansion
-//   Moderate:     0.65 - generally supportive
-//   Liberal:      0.45 - skeptical of federal overreach
-//   Radical:      0.25 - Sumner wing, mostly opposed
-// Pushing hard adds a flat bonus to each rate.
-// High dissent within a faction reduces their yea rate
-// dissentful senators vote their conscience against the party line.
-
 let repSeats = Q.rep_senate_r || 0;
 
-let conYea  = 0.85 + 0.10; // push hard bonus
+let conYea  = 0.85 + 0.10;
 let modYea  = 0.65 + 0.10;
 let libYea  = 0.45 + 0.08;
 let radYea  = 0.25 + 0.06;
@@ -68,7 +52,6 @@ modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
 
-// Faction strength is normalized 0-100, summing to ~100 across all four
 let conStr = (Q.conservative_strength || 0) / 100;
 let modStr = (Q.moderate_strength     || 0) / 100;
 let libStr = (Q.liberal_strength      || 0) / 100;
@@ -81,8 +64,6 @@ let repYea = Math.round(repSeats * (
     radStr * radYea
 ));
 
-// --- Step 3: Democrat, Liberal Republican, and other yea votes ---
-// Democrats almost uniformly opposed; lib reps mixed; others lean no
 let demSeats   = Q.dem_senate_r   || 0;
 let libRepSeats = Q.lib_senate_r  || 0;
 let otherSeats = Q.other_senate_r || 0;
@@ -171,12 +152,6 @@ Q.dominican_required = requiredVotes;
 
 let repSeats = Q.rep_senate_r || 0;
 
-// Opposing reduces yea rates across the board the executive
-// signal matters. However, if conservative and moderate factions
-// are dominant AND have low dissent, they may defy us and pass it
-// anyway on their own conviction. This models the historical
-// reality that a strong congressional wing can act independently.
-
 let oppositionPenalty = 0.20;
 
 let conYea = Math.max(0, 0.85 - oppositionPenalty);
@@ -189,9 +164,6 @@ let modDis = (Q.moderate_dissent     || 0) / 100;
 let libDis = (Q.liberal_dissent      || 0) / 100;
 let radDis = (Q.radical_dissent      || 0) / 100;
 
-// Low-dissent, high-strength factions partially resist executive opposition:
-// they vote their own convictions. The stronger and more cohesive the faction,
-// the more it can push back against being whipped against a bill it supports.
 let conResist = Math.max(0, ((Q.conservative_strength || 0) - 30) / 100) * (1 - conDis);
 let modResist = Math.max(0, ((Q.moderate_strength     || 0) - 40) / 100) * (1 - modDis);
 
@@ -219,7 +191,6 @@ let demSeats    = Q.dem_senate_r   || 0;
 let libRepSeats = Q.lib_senate_r   || 0;
 let otherSeats  = Q.other_senate_r || 0;
 
-// Democrats barely move; lib reps and others unaffected by our stance
 let demYeaVotes    = Math.round(demSeats    * 0.03);
 let libRepYeaVotes = Math.round(libRepSeats * 0.35);
 let otherYeaVotes  = Math.round(otherSeats  * 0.25);
@@ -229,7 +200,6 @@ Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;
 Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
 
-// Political effects of public opposition regardless of outcome
 Q.radical_strength  += 4;
 Q.radical_dissent   -= 3;
 Q.moderate_dissent  += 3;
@@ -249,7 +219,6 @@ on-arrival: {!
 let totalSenate = Q.states.length * 2;
 Q.dominican_total_senate = totalSenate;
 
-// Lease only requires simple majority, not two-thirds
 let requiredVotes = Math.floor(totalSenate / 2) + 1;
 Q.dominican_required = requiredVotes;
 
@@ -258,7 +227,6 @@ let demSeats    = Q.dem_senate_r   || 0;
 let libRepSeats = Q.lib_senate_r   || 0;
 let otherSeats  = Q.other_senate_r || 0;
 
-// Lease is far less controversial higher base rates, dissent matters less
 let conDis = (Q.conservative_dissent || 0) / 100;
 let modDis = (Q.moderate_dissent     || 0) / 100;
 
@@ -337,9 +305,9 @@ go-to: treaty_passes if dominican_passes = 1; treaty_fails if dominican_passes =
 
 {!<table>!}
 {!<tr><td>Vote</td><td>Count</td></tr>!}
-{!<tr><td><div class="box" style='background-color: #fc0303; outline: 2px solid;'> </div> !} Yea: {!</td><td>!} [+ dominican_yea +] votes {!</td></tr>!}
-{!<tr><td><div class="box" style='background-color: #1fa721; outline: 2px solid;'> </div> !} Nay: {!</td><td>!} [+ dominican_nah +] votes {!</td></tr>!}
-{!<tr><td colspan="2">!} Simple majority required: [+ dominican_required +] of [+ dominican_total_senate +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color: #228B22; outline: 2px solid;'> </div> !} Yea: {!</td><td>!} [+ dominican_yea +] votes {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color: #8B0000; outline: 2px solid;'> </div> !} Nay: {!</td><td>!} [+ dominican_nah +] votes {!</td></tr>!}
+{!<tr><td colspan="2">!} Super majority required: [+ dominican_required +] of [+ dominican_total_senate +] {!</td></tr>!}
 {!</table>!}
 
 @treaty_passes
@@ -450,8 +418,8 @@ on-display: {!
 
 {!<table>!}
 {!<tr><td>Vote</td><td>Count</td></tr>!}
-{!<tr><td><div class="box" style='background-color: #fc0303; outline: 2px solid;'> </div> !} Yea: {!</td><td>!} [+ dominican_yea +] votes {!</td></tr>!}
-{!<tr><td><div class="box" style='background-color: #1fa721; outline: 2px solid;'> </div> !} Nay: {!</td><td>!} [+ dominican_nah +] votes {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color: #228B22; outline: 2px solid;'> </div> !} Yea: {!</td><td>!} [+ dominican_yea +] votes {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color: #8B0000; outline: 2px solid;'> </div> !} Nay: {!</td><td>!} [+ dominican_nah +] votes {!</td></tr>!}
 {!<tr><td colspan="2">!} Simple majority required: [+ dominican_required +] of [+ dominican_total_senate +] {!</td></tr>!}
 {!</table>!}
 

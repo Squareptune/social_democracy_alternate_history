@@ -4,6 +4,18 @@ tags: event
 view-if: year = 1868 and month = 10 and ten_years_war_started != 1
 max-visits: 1
 on-arrival: ten_years_war_started = 1;
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/Cry_of_Yara.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 = The Cry of Yara
 
