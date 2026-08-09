@@ -206,7 +206,7 @@ choose-if: {!
     }
     else
     {
-        Q.n_advisors < 3
+        Q.(difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
     }
 
 !}
@@ -227,27 +227,27 @@ frequency: 1
 - @remove_none: Stop changing advisors.
 
 @Radical
-view-if: n_advisors < 3
+view-if: (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
 
 - #radical_advisor
 
 @Moderate
-view-if: n_advisors < 3
+view-if: (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
 
 - #moderate_advisor
 
 @Conservative
-view-if: n_advisors < 3
+view-if: (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
 
 - #conservative_advisor
 
 @Liberal
-view-if: n_advisors < 3
+view-if: (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
 
 - #liberal_advisor
 
 @Nonfactional
-view-if: n_advisors < 3
+view-if: (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
 
 - #nonfactional_advisor
 
@@ -259,7 +259,7 @@ subtitle: Leader of the <span style="color: #7A1F5C;">**Radical Republicans**</s
 is-card: true
 card-image: img/portraits/Thaddeus_Stevens.jpg
 tags: radical_advisor
-view-if: stevens_advisor = 0 and stevens_dead = 0 and n_advisors < 3
+view-if: stevens_advisor = 0 and stevens_dead = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: stevens_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3
 go-to: advisor_menu
 
@@ -271,7 +271,7 @@ subtitle: Senate leader of the <span style="color: #7A1F5C;">**Radical Republica
 is-card: true
 card-image: img/portraits/Charles_Sumner.jpg
 tags: radical_advisor
-view-if: sumner_advisor = 0 and n_advisors < 3 and liberal_split = 0
+view-if: sumner_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3) and liberal_split = 0
 on-arrival: sumner_advisor = 1; n_advisors += 1; radical_strength += 4; radical_dissent -= 4; freemen_rep += 2
 go-to: advisor_menu
 
@@ -283,7 +283,7 @@ subtitle: Senate President Pro Tempore. <span style="color: #7A1F5C;">Radical</s
 is-card: true
 card-image: img/portraits/Benjamin_F_Wade.jpg
 tags: radical_advisor
-view-if: wade_advisor = 0 and n_advisors < 3 and president != "Wade"
+view-if: wade_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3) and president != "Wade"
 on-arrival: wade_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3; conservative_dissent += 2
 go-to: advisor_menu
 
@@ -295,7 +295,7 @@ subtitle: Michigan senator and aggressive <span style="color: #7A1F5C;">Radical<
 is-card: true
 card-image: img/portraits/Zachariah_Chandler.jpg
 tags: radical_advisor
-view-if: chandler_advisor = 0 and n_advisors < 3
+view-if: chandler_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: chandler_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 3
 go-to: advisor_menu
 
@@ -307,7 +307,7 @@ subtitle: Indiana governor and senator. One of the most powerful <span style="co
 is-card: true
 card-image: img/portraits/Oliver_Hazard_Perry_Morton.jpg
 tags: radical_advisor
-view-if: morton_advisor = 0 and n_advisors < 3
+view-if: morton_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: morton_advisor = 1; n_advisors += 1; radical_strength += 4; radical_dissent -= 3; IN_workers_rep += 3; IN_rural_rep += 2
 go-to: advisor_menu
 
@@ -319,7 +319,7 @@ subtitle: Controversial Massachusetts <span style="color: #7A1F5C;">Radical</spa
 is-card: true
 card-image: img/portraits/Benjamin_Butler.jpg
 tags: radical_advisor
-view-if: butler_advisor = 0 and n_advisors < 3
+view-if: butler_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: butler_advisor = 1; n_advisors += 1; radical_strength += 3; radical_dissent -= 4; moderate_dissent += 3; liberal_dissent += 3
 go-to: advisor_menu
 
@@ -333,7 +333,7 @@ subtitle: Ohio war hero and rising <span style="color: #9D2933;">**Moderates**</
 is-card: true
 card-image: img/portraits/James_Abram_Garfield.jpg
 tags: moderate_advisor
-view-if: garfield_advisor = 0 and n_advisors < 3
+view-if: garfield_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: garfield_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 3; workers_rep += 2; rural_rep += 2
 go-to: advisor_menu
 
@@ -345,7 +345,7 @@ subtitle: Ohio senator and fiscal <span style="color: #9D2933;">**Moderates**</s
 is-card: true
 card-image: img/portraits/John-Sherman.jpg
 tags: moderate_advisor
-view-if: sherman_advisor = 0 and n_advisors < 3
+view-if: sherman_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: sherman_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 2; middle_class_rep += 3; conservative_dissent -= 2
 go-to: advisor_menu
 
@@ -357,7 +357,7 @@ subtitle: Maine congressman. Ambitious, skilled, and broadly popular.
 is-card: true
 card-image: img/portraits/James_G._Blaine.jpg
 tags: moderate_advisor
-view-if: blaine_advisor = 0 and n_advisors < 3
+view-if: blaine_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: blaine_advisor = 1; n_advisors += 1; moderate_strength += 4; moderate_dissent -= 3; middle_class_rep += 2; rural_rep += 1
 go-to: advisor_menu
 
@@ -369,7 +369,7 @@ subtitle: Ohioian. <span style="color: #9D2933;">**Moderates**</span>, honest, a
 is-card: true
 card-image: img/portraits/Rutherford_Hayes.jpg
 tags: moderate_advisor
-view-if: hayes_advisor = 0 and n_advisors < 3
+view-if: hayes_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: hayes_advisor = 1; n_advisors += 1; moderate_strength += 3; moderate_dissent -= 2; OH_rural_rep += 3; OH_workers_rep += 2
 go-to: advisor_menu
 
@@ -381,7 +381,7 @@ subtitle: New York <span style="color: #9D2933;">**Moderates**</span>. A steady 
 is-card: true
 card-image: img/portraits/Hamilton_Fish.jpg
 tags: moderate_advisor
-view-if: fish_advisor = 0 and n_advisors < 3
+view-if: fish_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: fish_advisor = 1; n_advisors += 1; moderate_strength += 2; moderate_dissent -= 2; europe_relation += 3
 go-to: advisor_menu
 
@@ -395,7 +395,7 @@ subtitle: New York machine boss and dominant <span style="color: #B5651D;">**Con
 is-card: true
 card-image: img/portraits/Roscoe_Conkling.jpg
 tags: conservative_advisor
-view-if: conkling_advisor = 0 and n_advisors < 3
+view-if: conkling_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: conkling_advisor = 1; n_advisors += 1; conservative_strength += 5; conservative_dissent -= 4; resources += 1; liberal_dissent += 3
 go-to: advisor_menu
 
@@ -407,7 +407,7 @@ subtitle: Pennsylvania party boss and former Secretary of War. Old-guard patrona
 is-card: true
 card-image: img/portraits/Smn_Cameron.jpg
 tags: conservative_advisor
-view-if: cameron_advisor = 0 and n_advisors < 3
+view-if: cameron_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: cameron_advisor = 1; n_advisors += 1; conservative_strength += 4; conservative_dissent -= 3; resources += 1; liberal_dissent += 2
 go-to: advisor_menu
 
@@ -419,7 +419,7 @@ subtitle: Secretary of State and former Whig leader. Pragmatic <span style="colo
 is-card: true
 card-image: img/portraits/Seward.jpg
 tags: conservative_advisor
-view-if: seward_advisor = 0 and n_advisors < 3
+view-if: seward_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: seward_advisor = 1; n_advisors += 1; conservative_strength += 3; conservative_dissent -= 3; europe_relation += 2; radical_dissent += 3
 go-to: advisor_menu
 
@@ -433,7 +433,7 @@ subtitle: Missouri senator and intellectual leader of the <span style="color: #D
 is-card: true
 card-image: img/portraits/Schurz,_Hon._Carl.jpg
 tags: liberal_advisor
-view-if: schurz_advisor = 0 and n_advisors < 3 and liberal_split = 0 
+view-if: schurz_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3) and liberal_split = 0 
 on-arrival: schurz_advisor = 1; n_advisors += 1; liberal_strength += 5; liberal_dissent -= 4; civil_service_reform += 1; middle_class_rep += 2
 go-to: advisor_menu
 
@@ -445,7 +445,7 @@ subtitle: Illinois senator. Drifting steadily toward the <span style="color: #DA
 is-card: true
 card-image: img/portraits/Lyman_Trumbull.jpg
 tags: liberal_advisor
-view-if: trumbull_advisor = 0 and n_advisors < 3 and liberal_split = 0
+view-if: trumbull_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3) and liberal_split = 0
 on-arrival: trumbull_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; radical_dissent += 4; moderate_dissent += 2
 go-to: advisor_menu
 
@@ -457,7 +457,7 @@ subtitle: Ohio politician and Committed reformer.
 is-card: true
 card-image: img/portraits/Jacob_Cox.jpg
 tags: liberal_advisor
-view-if: cox_advisor = 0 and n_advisors < 3 and liberal_split = 0
+view-if: cox_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3) and liberal_split = 0
 on-arrival: cox_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; civil_service_reform += 1; conservative_dissent += 2
 go-to: advisor_menu
 
@@ -471,7 +471,7 @@ subtitle: The most prominent Black leader in America. His endorsement carries en
 is-card: true
 card-image: img/portraits/Frederick_Douglass.jpg
 tags: nonfactional_advisor
-view-if: douglass_advisor = 0 and n_advisors < 3
+view-if: douglass_advisor = 0 and (difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3)
 on-arrival: douglass_advisor = 1; n_advisors += 1; freemen_rep += 5; workers_rep += 2; radical_dissent -= 3; liberal_dissent += 2
 go-to: advisor_menu
 
