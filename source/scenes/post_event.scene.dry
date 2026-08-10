@@ -466,7 +466,7 @@ for (let state of Q.southern_states) {
   // backslide (KKK suppression spike, etc.) doesn't erase earned progress.
   Q[state + "_reconstructionScoreBest"] = Math.max(Q[state + "_reconstructionScoreBest"] || 0, score);
 
-  Q[state + "_canReadmit"] = Q[state + "_reconstructionScoreBest"] >= threshold ? 1 : 0;
+  Q[state + "_canReadmit"] = (Q[state + "_readmit_forced"] == 1) ? 1 : (Q[state + "_reconstructionScoreBest"] >= threshold ? 1 : 0);
 
   // --- Percent relative to plan difficulty ---
   if (threshold > 0) {
@@ -918,5 +918,4 @@ go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0
 
 - #event
 
-# This scene is solely for updating numbers after events, and routing to special events.
-
+# This scene is solely for updating numbers after events, and routing to special events

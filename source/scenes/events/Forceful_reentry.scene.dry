@@ -1,3 +1,4 @@
+
 title: Reconstruction Fatigue
 tags: event
 new-page: true
@@ -7,7 +8,7 @@ on-arrival: {!
     Q.fatigue_readmit_list = "";
     let stateNames = {
         VA: "Virginia", NC: "North Carolina", SC: "South Carolina", GA: "Georgia",
-        AL: "Alabama", FL: "Florida", MS: "Mississippi", AK: "Arkansas",
+        AL: "Alabama", FL: "Florida", MS: "Mississippi", AR: "Arkansas",
         TX: "Texas", LA: "Louisiana"
     };
 
@@ -28,13 +29,14 @@ Still outside Congress: [+ fatigue_readmit_list +].
 Do you let public pressure force the issue and clear these states for readmission regardless of where their Reconstruction Score currently stands?
 
 - @force_readmit: Clear the remaining states for readmission.
-- @refuse_readmit: Kkeep Reconstruction's conditions in place, popularity be damned.
+- @refuse_readmit: Keep Reconstruction's conditions in place, popularity be damned.
 
 @force_readmit
 on-arrival: {!
     for (let state of Q.southern_states) {
         if (Q[state + "_admitted"] == 0) {
             Q[state + "_canReadmit"] = 1;
+            Q[state + "_readmit_forced"] = 1;
         }
     }
 !}

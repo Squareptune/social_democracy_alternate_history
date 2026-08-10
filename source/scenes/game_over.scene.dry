@@ -423,7 +423,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_contested: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+        <img src="img/Achievements/ContestedR.jpg" alt="Contested Reconstruction Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -447,6 +447,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description">
             Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_contestedOcc: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Contested Occupation
+        </div>
+        <div class="achievement-description">
+            Achieve the Contested Occupation Ending.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -959,7 +975,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_contested: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+        <img src="img/Achievements/ContestedR.jpg" alt="Contested Reconstruction Icon">
     {!</td>!}
     {!<td class="achievement-info">!}
         <div class="achievement-title">
@@ -983,6 +999,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description">
             Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_contestedOcc: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Contested Occupation
+        </div>
+        <div class="achievement-description">
+            Achieve the Contested Occupation Ending.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -1494,7 +1526,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_contested: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon-locked">!}
-        <img src="img/Achievements/Contested.png" alt="Contested Reconstruction Icon">
+        <img src="img/Achievements/ContestedR.jpg" alt="Contested Reconstruction Icon">
     {!</td>!}
     {!<td class="achievement-info-locked">!}
         <div class="achievement-title-locked">
@@ -1518,6 +1550,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description-locked">
             Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_contestedOcc: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Contested.png" alt="Contested Occupation Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Contested Occupation
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Contested Occupation Ending.
         </div>
     {!</td>!}
 {!</tr>!}

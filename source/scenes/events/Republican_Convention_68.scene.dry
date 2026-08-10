@@ -82,7 +82,7 @@ on-arrival: {!
 !}
 go-to: VP
 
-Salmon P. Chase is chosen as our candidate. He is supported by the Old Guard and the "Anti-Grant" faction, who fear nominating a military strongman. This choice upsets the <span style="color: #7A1F5C;">**Radicals**</span>, who resent Chase [? if president == "Johnson": as they believe his impartial handling of Andrew Johnson's impeachment blocked their opportunity to "railroad" the President.?].
+Salmon P. Chase is chosen as our candidate. He is supported by the Old Guard and the "Anti-Grant" faction, who fear nominating a military strongman. This choice upsets the <span style="color: #7A1F5C;">**Radicals**</span>, who resent Chase [? if president == "Johnson" and House_Impeach = 1: as they believe his impartial handling of Andrew Johnson's impeachment blocked their opportunity to "railroad" the President.?].
 
 However, some fear that Chase's history of shifting party allegiances could make him an unreliable candidate for President.
 

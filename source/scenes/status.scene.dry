@@ -88,7 +88,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 {!<span class="tooltip-text" title="The Ku Klux Klan is a white supremacist group aimed against Reconstruction governments and freedmen.">KKK</span>!} Strength: [+ kkk_strength +] thousand
 
-KKK_Militarization: [+ kkk_militancy : militancy +]
+KKK Militarization: [+ kkk_militancy : militancy +]
 
 [? if whiteL_formed = 1 : {!<span class="tooltip-text" title="The White League, also known as the White Man's League is a white supremacist paramilitary terrorist organization">White League</span>!} Strength: [+ whiteL_strength +] thousand ?]
 

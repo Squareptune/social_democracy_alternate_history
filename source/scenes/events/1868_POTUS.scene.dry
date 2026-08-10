@@ -261,7 +261,7 @@ view-if: potus_winner = "rep"
 on-arrival: {!
     Q.president = Candidate;
     Q.vice_president = Q.VPCandidate; 
-    president_party = "rep";
+    Q.president_party = "rep";
     
     // GRANT CABINET
     if (Q.Candidate == "Grant") {
