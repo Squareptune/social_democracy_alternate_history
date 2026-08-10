@@ -157,8 +157,3 @@ on-arrival: {!
 With prices rising, we begin retiring Greenbacks from circulation.
 
 The policy slows inflation, but credit becomes more expensive. Farmers, small businesses, and builders feel the squeeze as investment falls and unemployment rises.
-
-@root
-go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
-
-We leave monetary policy unchanged.
