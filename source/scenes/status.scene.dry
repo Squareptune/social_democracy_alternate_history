@@ -60,6 +60,8 @@ Inflation: [+ inflation_2 +]%
 
 Economic growth: [+ economic_growth_2 +]%
 
+Test: [+ has_event +]
+
 # = Public Opinion
 
 @politics
