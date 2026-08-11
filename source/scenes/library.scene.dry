@@ -405,13 +405,7 @@ if (d3 && window) {
 [? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div></td><td>!} **Liberal Republican:** {!</td><td>!} **[+ lib_senate_r +] seats** {!</td></tr>!} ?]
 {!</table>!}
 
-= Election History
-
-[? if year < 1866 : No federal elections yet. ?]
-
-{!<svg id="election_history" style="width: 500px; height: 400px;"> </svg>!}
-
-= Party Support History
+= Projected House Results (%)
 
 [? if historical_mode: Not available in historical mode. ?]
 

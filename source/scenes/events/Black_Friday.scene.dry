@@ -6,16 +6,14 @@ on-arrival: {!
     Q.inflation *= 1.12;
     Q.rural_rep -= 5;
     Q.rural_dem += 5;
-    Q.reconstruction_support -= 2;
-
-    // Political shockwave
     Q.moderate_dissent += 4;
     Q.conservative_dissent += 3;
-    Q.liberal_dissent += 6;    // liberals were already suspicious of Grant
+    Q.liberal_dissent += 6;
     Q.radical_dissent += 3;
-    Q.dem_relation -= 6;       // Democrats smell corruption
+    Q.dem_relation -= 6;
     Q.middle_class_dem += 3;
     Q.workers_dem += 2;
+    Q.dem_reform_strength += 5;
 !}
 tags: event
 view-if: year = 1869 and month >= 9 and president = "Grant"

@@ -484,22 +484,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if game_achievement_ambiguous: 
-{!<tr class="achievement">!}
-    {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
-    {!</td>!}
-    {!<td class="achievement-info">!}
-        <div class="achievement-title">
-            Ambiguous
-        </div>
-        <div class="achievement-description">
-            Achieve the Ambiguous Ending.
-        </div>
-    {!</td>!}
-{!</tr>!}
-?]
-
 [? if game_achievement_betrayal: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
@@ -1036,22 +1020,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
-[? if achievement_ambiguous: 
-{!<tr class="achievement">!}
-    {!<td class="achievement-icon">!}
-        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
-    {!</td>!}
-    {!<td class="achievement-info">!}
-        <div class="achievement-title">
-            Ambiguous
-        </div>
-        <div class="achievement-description">
-            Achieve the Ambiguous Ending.
-        </div>
-    {!</td>!}
-{!</tr>!}
-?]
-
 [? if achievement_betrayal: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
@@ -1582,22 +1550,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description-locked">
             Achieve the Liminal Ending.
-        </div>
-    {!</td>!}
-{!</tr>!}
-?]
-
-[? if not achievement_ambiguous: 
-{!<tr class="achievement">!}
-    {!<td class="achievement-icon-locked">!}
-        <img src="img/Achievements/Ambiguous.png" alt="Ambiguous Icon">
-    {!</td>!}
-    {!<td class="achievement-info-locked">!}
-        <div class="achievement-title-locked">
-            Ambiguous
-        </div>
-        <div class="achievement-description-locked">
-            Achieve the Ambiguous Ending.
         </div>
     {!</td>!}
 {!</tr>!}

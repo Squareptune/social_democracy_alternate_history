@@ -1,9 +1,47 @@
 title: The South Rejects Reconstruction
 subtitle: JOHNSON!!!!!!!!!!!!!!
-on-arrival: radical_strength += 1; moderate_strength -= 1; conservative_strength -= 2; liberal_strength -= 2;
+on-arrival: {! 
+
+    Q.radical_strength += 1; 
+    Q.moderate_strength -= 1; 
+    Q.conservative_strength -= 2; 
+    Q.liberal_strength -= 2; 
+
+    let seatsRemoved = 0; 
+    let senateSeatsRemoved = 0; 
+
+    for (let state of Q.southern_states) { 
+        if (Q.states.indexOf(state) === -1) continue; 
+        let demVotes = 0; 
+        let totalVotes = 0; 
+    
+        for (let cls of Q.classes) { 
+            let pop = Q[state + "_" + cls] || 0; 
+            let dem = Q[state + "_" + cls + "_dem"] || 0; 
+            let rep = Q[state + "_" + cls + "_rep"] || 0; 
+            let other = Q[state + "_" + cls + "_other"] || 0; 
+            demVotes += pop * dem; 
+            totalVotes += pop * (dem + rep + other); 
+        } 
+        let demShare = totalVotes > 0 ? demVotes / totalVotes : 0.6; 
+        let stateHouseSeats = 6; 
+        let stateDemSeats = Math.round(stateHouseSeats * demShare); 
+        let stateRepSeats = stateHouseSeats - stateDemSeats; 
+        seatsRemoved += stateHouseSeats; 
+        let stateDemSenate = Math.round(2 * demShare); 
+        let stateRepSenate = 2 - stateDemSenate; 
+        senateSeatsRemoved += 2; 
+    } 
+    Q.seats_removed = seatsRemoved; 
+    Q.senate_seats_removed = senateSeatsRemoved;
+    Q.southgone = Q.seats_removed + Q.senate_seats_removed;
+!}
 tags: event
 view-if: year = 1867 and month >= 1
 max-visits: 1
+go-to: seats if southgone > 0; Occupation if southgone = 0
+
+@seats
 
 = The South Rejects Reconstruction
 
@@ -115,9 +153,9 @@ President Johnson's allies celebrate the victory, while the enlarged <span style
 
 = Reconstruction Policy
 
-Whether or not the Southern delegations have been seated, one fact is now impossible to ignore.
+[? if southgone = 0: The elections of 1866 have delivered an unmistakable message from the former Confederate states. ?]
 
-Across the South, former Confederates have rapidly returned to positions of political power, while violence against freedmen continues with little sign of abating.
+[? if southgone = 0: Under President Johnson's lenient Reconstruction policy, Southern voters have elected former Confederate generals, civil officials, and outspoken opponents of Reconstruction to Congress. Among them is none other than the former Vice President of the Confederacy. ?]
 
 Congress must now decide who will control Reconstruction: the federal government, or the governments President Johnson has already restored.
 

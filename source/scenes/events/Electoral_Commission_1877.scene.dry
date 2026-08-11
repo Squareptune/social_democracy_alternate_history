@@ -66,13 +66,13 @@ The Commission rules for [+ Candidate +]. But a ruling on paper is not the same 
 
 Intermediaries are carrying offers back and forth between Washington and the Southern <span style="color: #002765;">**Bourbon**</span> leadership. [? if concession_value = 0 : So far, nothing concrete has been put on the table. ?][? if concession_value > 0 and concession_value < satisfaction_needed * 0.5 : What's been offered so far hasn't moved them. ?][? if concession_value >= satisfaction_needed * 0.5 and concession_value < satisfaction_needed * 0.85 : They're listening now, but it isn't enough yet. ?][? if concession_value >= satisfaction_needed * 0.85 and concession_value < satisfaction_needed : We're close. A little more and they may accept. ?][? if concession_value >= satisfaction_needed : They've indicated they would accept a deal along these lines. ?]
 
-- @term_total_troops: Offer total troop removal - end federal occupation in the South entirely.
-- @term_partial_troops: Offer partial troop removal - draw down federal occupation significantly.
-- @term_home_rule: Offer Home Rule - formally recognize the Redeemer state governments and pledge non-interference.
+- @term_total_troops: Offer total troop removal ending federal occupation in the South entirely.
+- @term_partial_troops: Offer partial troop removal drawing down federal occupation significantly.
+- @term_home_rule: Offer Home Rule: formally recognize the Redeemer state governments and pledge non-interference.
 - @term_cabinet: Offer a Cabinet position to a Southern Democrat.
 - @term_railroad: Offer federal backing for a Southern Transcontinental Railroad.
 - @term_improvements: Offer federal money for Southern Internal Improvements.
-- @term_patronage: Offer Federal Patronage - local postmasterships and appointments.
+- @term_patronage: Offer Federal Patronage (local postmasterships and appointments)
 - @lock_in_deal: Lock in the deal.
 
 @term_total_troops

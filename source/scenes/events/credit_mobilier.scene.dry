@@ -12,7 +12,7 @@ on-arrival: {!
     Q.workers_dem += 2;
     Q.rural_dem += 2;
     Q.dem_relation -= 6;
-    Q.dem_reform_strength += 2;
+    Q.dem_reform_strength += 8;
 !}
 face-image: img/Keppler_Credit_Mobilier_Hari-Kari.png
 
@@ -43,7 +43,7 @@ on-arrival: {!
     Q.workers_dem += 2;
     Q.rural_dem += 2;
     Q.dem_relation -= 4;
-    Q.dem_reform_strength += 4;
+    Q.dem_reform_strength += 7;
 !}
 
 We instruct party newspapers to dismiss the story as a partisan attack timed to damage us before the election. Friendly editors question the documents and the motives of those who published them. The implicated members are told to keep quiet.
