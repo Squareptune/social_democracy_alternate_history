@@ -307,21 +307,20 @@ subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ repEVTotal +]
 view-if: potus_winner = "rep"
 on-arrival: {!
     Q.president = Q.Candidate;
+    Q.vice_president = Q.VPCandidate;
     Q.Winner_72 = Q.Candidate;
     Q.president_party = "rep";
-    Q.liberal_split = 0; // Liberal Republicans largely return to fold after defeat
     Q.liberal_reunion_triggered = 1;
 
-    
 !}
 
 The <span style="color: #c00000;">**Republicans**</span> have won the election. 
 
-[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. ?]
+[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. ?]
 
-[? if Candidate = "Wade" : Wade's Radical coalition has held together long enough to win. The <span style="color: #DAA520;">**Liberal Republicans**</span> are routed. Reconstruction enters a new, more forceful phase. ?]
+[? if Candidate = "Wade" : Wade's Radical coalition has held together long enough to win. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republicans**</span> are routed. Reconstruction enters a new, more forceful phase. ?]
 
-[? if Candidate = "Chase" : Chase wins a second term, vindicating his moderate course. The Radicals are displeased but powerless. The <span style="color: #DAA520;">**Liberal Republican**</span> challenge has collapsed. ?]
+[? if Candidate = "Chase" : Chase wins a second term, vindicating his moderate course. The Radicals are displeased but powerless. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republican**hallenge has collapsed.</span> ?]
 
 [? if Candidate = "Blaine" : James Blaine carries the <span style="color: #c00000;">**Republican**</span> banner to victory. The new president will chart his own course, distinct from the Radical era. ?]
 

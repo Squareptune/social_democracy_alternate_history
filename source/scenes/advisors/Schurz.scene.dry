@@ -21,7 +21,7 @@ choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; immigrant_rep += 3; germany_relation += 2;
 
-Schurz travels among German American communities, promoting the administration's achievements and reaffirming its commitment to opportunity and equal rights. [if year >= 1871: His reputation also strengthens goodwill with the newly unified German Empire.]
+Schurz travels among German American communities, promoting the administration's achievements and reaffirming its commitment to opportunity and equal rights. [? if year >= 1871: His reputation also strengthens goodwill with the newly unified German Empire. ?]
 
 @schurz_missouri
 title: Strengthen Missouri Republicans

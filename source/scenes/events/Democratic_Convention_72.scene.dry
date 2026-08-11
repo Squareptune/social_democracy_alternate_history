@@ -6,7 +6,7 @@ max-visits: 1
 
 = Democratic National Convention, 1872
 
-The <span style="color: #0015bc;">Democratic Party</span> gathers in Baltimore, divided and badly out of power. Four years of Republican rule have left the party searching for a way back.
+The <span style="color: #0015bc;">**Democratic Party**</span> gathers in Baltimore, divided and badly out of power. Four years of Republican rule have left the party searching for a way back.
 
 [? if liberal_split = 1 : Two strategies have emerged. One faction wants to nominate a <span style="color: #0015bc;">Democrat</span> and rebuild the party on its own terms. The other, led by figures such as August Belmont, wants to support the <span style="color: #DAA520;">Liberal Republican</span> ticket of Horace Greeley and B. Gratz Brown. Greeley has spent much of his career attacking the <span style="color: #0015bc;">Democrats</span>, but he has one advantage: he is running against [+ Candidate +]. ?]
 
@@ -211,7 +211,7 @@ go-to: dem_convention_end
 
 [? if greeley_fusion = 1 : After bitter debate, the convention endorses the <span style="color: #DAA520;">Liberal Republican</span> ticket. Horace Greeley and B. Gratz Brown will now carry the <span style="color: #0015bc;">Democratic</span> nomination alongside the <span style="color: #DAA520;">Liberal Republican</span> one. Some delegates object loudly, while several Southern delegates leave the convention. The chairman describes the arrangement as a "coalition of necessity." ?]
 
-[? if greeley_fusion = 0 : The old guard prevails. The convention rejects fusion and nominates its own ticket: [+ dem_candidate_1872 +] for President and [+ dem_vp_candidate_1872 +] for Vice President. ?]
+[? if greeley_fusion = 0 : The old guard prevails. The convention nominates its own ticket: [+ dem_candidate_1872 +] for President and [+ dem_vp_candidate_1872 +] for Vice President. ?]
 
 [? if dem_candidate_1872 = "Hancock" : General Hancock is seen as the <span style="color: #0015bc;">Democrats'</span> strongest candidate. The <span style="color: #c00000;">Republicans</span> will have to take the race seriously. ?]
 

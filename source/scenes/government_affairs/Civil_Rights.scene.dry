@@ -4,7 +4,7 @@ is-card: true
 tags: cotus_affairs, cabinet
 view-if: rep_majority = 1 and civil_rights_timer = 0
 card-image: img/Freedmen.jpg
-on-arrival: civil_rights_timer += 6;
+on-arrival: civil_rights_timer += 6; month_actions += 1
 
 = Radicals Demand a Civil Rights Act
 

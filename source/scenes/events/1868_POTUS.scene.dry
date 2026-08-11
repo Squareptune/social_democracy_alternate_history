@@ -259,7 +259,7 @@ title: <span style="color: #c00000;">**Republicans**</span> won the election!
 subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ repEVTotal +] electoral votes
 view-if: potus_winner = "rep"
 on-arrival: {!
-    Q.president = Candidate;
+    Q.president = Q.Candidate;
     Q.vice_president = Q.VPCandidate; 
     Q.president_party = "rep";
     

@@ -20,11 +20,11 @@ face-image: img/Keppler_Credit_Mobilier_Hari-Kari.png
 
 The morning papers hit Washington hard. Documents have surfaced exposing a scheme tied to Credit Mobilier, the construction company responsible for much of the Union Pacific Railroad. The company charged the railroad far more than the actual cost of construction and used the proceeds to enrich its officers and associates.
 
-To discourage congressional scrutiny, discounted Credit Mobilier shares were distributed to several members of Congress. Prominent <span style="color: #7A1F5C;">Radicals</span> and <span style="color: #9D2933;">Moderates</span> are implicated.
+To discourage congressional scrutiny, discounted Credit Mobilier shares were distributed to several members of Congress. Prominent <span style="color: #7A1F5C;">**Radicals**</span> and <span style="color: #9D2933;">**Moderates**</span> are implicated.
 
 [? if vice_president = "Colfax" : Worse still, Vice President Schuyler Colfax is among those named. He is accused of receiving shares while serving as Speaker of the House. Colfax denies wrongdoing, but the evidence has already damaged his defense. ?]
 
-[? if liberal_split = 1 : The <span style="color: #DAA520;">Liberal Republicans</span> call the scandal proof of the corruption they have warned about for years. The <span style="color: #0015bc;">Democrats</span> are making the same argument from the other side of the aisle. ?]
+[? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> call the scandal proof of the corruption they have warned about for years. The <span style="color: #0015bc;">**Democrats**</span> are making the same argument from the other side of the aisle. ?]
 
 How do we respond?
 
@@ -43,11 +43,12 @@ on-arrival: {!
     Q.workers_dem += 2;
     Q.rural_dem += 2;
     Q.dem_relation -= 4;
+    Q.dem_reform_strength += 4;
 !}
 
 We instruct party newspapers to dismiss the story as a partisan attack timed to damage us before the election. Friendly editors question the documents and the motives of those who published them. The implicated members are told to keep quiet.
 
-For the moment, the damage is contained. Our core supporters remain with us and the campaign continues. Inside the party, the reaction is harsher. Reformers who joined the <span style="color: #c00000;">Republicans</span> to oppose corruption now see the party defending it. The <span style="color: #0015bc;">Democrats</span> have an accusation that is difficult to dismiss when the documents themselves are real.
+For the moment, the damage is contained. Our core supporters remain with us and the campaign continues. Inside the party, the reaction is harsher. Reformers who joined the <span style="color: #c00000;">**Republicans**</span> to oppose corruption now see the party defending it. The <span style="color: #0015bc;">**Democrats**</span> have an accusation that is difficult to dismiss when the documents themselves are real.
 
 [? if liberal_split = 1 : The <span style="color: #DAA520;">**Liberal Republicans**</span> are using this in every speech and pamphlet between now and November. ?]
 
@@ -63,9 +64,9 @@ on-arrival: {!
     Q.resources -= 1;
 !}
 
-We move quickly. Several of the most visibly implicated members are encouraged to step away from public office or decline to seek reelection. The administration calls for a full accounting rather than waiting for the <span style="color: #0015bc;">Democrats</span> to set the terms of the debate.
+We move quickly. Several of the most visibly implicated members are encouraged to step away from public office or decline to seek reelection. The administration calls for a full accounting rather than waiting for the <span style="color: #0015bc;">**Democrats**</span> to set the terms of the debate.
 
-Reformers give us some credit for acting. The men being cut loose and their allies are less forgiving. <span style="color: #B5651D;">Conservatives</span> and <span style="color: #7A1F5C;">Radicals</span> who depended on those members resent the decision.
+Reformers give us some credit for acting. The men being cut loose and their allies are less forgiving. <span style="color: #B5651D;">**Conservatives**</span> and <span style="color: #7A1F5C;">**Radicals**</span> who depended on those members resent the decision.
 
 The scandal still hurts, but the party has shown some willingness to discipline its own.
 
@@ -96,7 +97,6 @@ on-arrival: {!
     Q.middle_class_rep += 5;
     Q.middle_class_dem -= 2;
     Q.dem_relation += 4;
-    Q.reconstruction_support -= 1;
     Q.budget -= 1;
 !}
 

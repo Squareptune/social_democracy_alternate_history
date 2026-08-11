@@ -26,7 +26,6 @@ reformFloor += (Math.random() * 20) - 10;
 
 let bourbonFloor = Q.dem_bourbon_strength || 0;
 bourbonFloor -= (Q.dem_bourbon_dissent || 0) * 0.5;
-// Organized Redeemer muscle in the South translates directly into convention delegates
 bourbonFloor += ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) * 0.03;
 bourbonFloor += (Math.random() * 20) - 10;
 

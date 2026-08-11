@@ -3,7 +3,7 @@ new-page: true
 tags: event
 view-if: liberal_split = 1 and liberal_reunion_triggered = 1 and liberal_reunion_seen = 0
 max-visits: 1
-on-arrival: liberal_reunion_seen = 1
+on-arrival: liberal_reunion_seen = 1; liberal_split = 1
 
 = A Reluctant Homecoming
 
