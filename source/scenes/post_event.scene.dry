@@ -700,7 +700,7 @@ if (Q.month_actions >= 1) {
     {
         this.achieve("team_of_rivals");
     }
-    if(Q.fenian > 0 && Q.treaty_Washington = 3)
+    if(Q.fenian > 0 && Q.treaty_Washington == 3)
     {
         this.achieve("fenian_games");
     }
@@ -708,7 +708,7 @@ if (Q.month_actions >= 1) {
     {
         this.achieve("shermanposting");
     }
-    
+
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
         if (Q.pro_republic < 60) {
