@@ -3,7 +3,7 @@ subtitle: Who will the Democrats nominate?
 tags: event
 view-if: year = 1872 and month = 7
 max-visits: 1
-face-image: 1872 Democratic National Convention - Maryland (cropped).jpg
+face-image: img/1872 Democratic National Convention - Maryland (cropped).jpg
 
 = Democratic National Convention, 1872
 
@@ -210,7 +210,7 @@ go-to: dem_convention_end
 
 = The Democrats Have Chosen
 
-[? if greeley_fusion = 1 : <img src="img/portrait/Horace Greeley restored.jpg" alt="Horace Greeley" class="face-image"> ?][? if dem_candidate_1872 = "Hancock" : <img src="img/portrait/Gen. Winfield S. Hancock - NARA - 529369 (cropped, retouched).jpg" alt="Winfield Hancock" class="face-image"> ?][? if dem_candidate_1872 = "Thurman" : <img src="img/portrait/Allen G. Thurman - Brady-Handy.jpg" alt="Allen Thurman" class="face-image"> ?][? if dem_candidate_1872 = "Bayard" : <img src="img/portrait/Thomas F. Bayard, Brady-Handy photo portrait, circa 1870-1880 (cropped)(b).jpg" alt="Thomas Bayard" class="face-image"> ?][? if dem_candidate_1872 = "Pendleton" : <img src="img/portrait/GeorgeHPendleton.png" alt="George Pendleton" class="face-image"> ?]
+[? if greeley_fusion = 1 : <div class="face-figure"><img src="img/portraits/Horace Greeley restored.jpg" alt="Horace Greeley" class="face-img"></div> ?][? if dem_candidate_1872 = "Hancock" : <div class="face-figure"><img src="img/portraits/Gen. Winfield S. Hancock - NARA - 529369 (cropped, retouched).jpg" alt="Winfield Hancock" class="face-img"></div> ?][? if dem_candidate_1872 = "Thurman" : <div class="face-figure"><img src="img/portraits/Allen G. Thurman - Brady-Handy.jpg" alt="Allen Thurman" class="face-img"></div> ?][? if dem_candidate_1872 = "Bayard" : <div class="face-figure"><img src="img/portraits/Thomas F. Bayard, Brady-Handy photo portrait, circa 1870-1880 (cropped)(b).jpg" alt="Thomas Bayard" class="face-img"></div> ?][? if dem_candidate_1872 = "Pendleton" : <div class="face-figure"><img src="img/portraits/GeorgeHPendleton.png" alt="George Pendleton" class="face-img"></div> ?]
 
 [? if greeley_fusion = 1 : After bitter debate, the convention endorses the <span style="color: #DAA520;">Liberal Republican</span> ticket. Horace Greeley and B. Gratz Brown will now carry the <span style="color: #0015bc;">Democratic</span> nomination alongside the <span style="color: #DAA520;">Liberal Republican</span> one. Some delegates object loudly, while several Southern delegates leave the convention. The chairman describes the arrangement as a "coalition of necessity." ?]
 
