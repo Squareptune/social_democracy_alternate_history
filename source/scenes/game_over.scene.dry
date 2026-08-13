@@ -126,9 +126,25 @@ if(Q.lose_vote == 1)
 {
     this.achieve("dream_of_republican_town");
 }
-if(Q.March_DC == 1)
+if(Q.compromise_1877_success == 1)
 {
-    this.achieve("reverse_jan6");
+    this.achieve("great_compromiser");
+}
+if(Q.veto_success == 1)
+{
+    this.achieve("order_of_congress");
+}
+if(Q.Carpetbagger_Supreme == 10)
+{
+    this.achieve("carpetbagger_supreme");
+}
+if(Q.army_loyalty >= 1 && Q.navy_loyalty >= 1)
+{
+    this.achieve("pro_re_publica");
+}
+if(Q.Winner_68 = "Grant" && Q.Winner_72 = "Grant" && (Q.president = "Grant" || Q.president = "Hayes"))
+{
+    this.achieve("three_purple_hearts");
 }
 
 !}
@@ -151,13 +167,13 @@ audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
 
 The centennial of the American Republic marked the triumph of Reconstruction. Once an elitist republic sustained by slavery, the United States emerged as a constitutional democracy where equality before the law became a national principle rather than an empty promise. Civil rights were firmly enforced across the South, and the <span style="color: #c00000;">**Republican Party**</span> entered the post-Reconstruction era as the undisputed architect of the nation's political order. 
 
-Unable to escape its association with secession, slavery, and violent resistance to Reconstruction, the <span style="color: #0015bc;">**Democratic Party**</span> fractured in 1879. <span style="color: #4682B4;">Northern Reformers</span> led by Samuel Tilden and Thomas Hendricks founded the <span style="color: #00AEEF;">National Conservative Party</span>, accepting the constitutional settlement while campaigning on fiscal restraint, civil service reform, and opposition to <span style="color: #c00000;">**Republican**</span> patronage. <span style="color: #002765;">**Southern Democrats**</span> rejected reconciliation, reorganizing as the <span style="color: #414978;">**States' Rights Democratic Party**</span> dedicated to restoring home rule and white supremacy.
+Unable to escape its association with secession, slavery, and violent resistance to Reconstruction, the <span style="color: #0015bc;">**Democratic Party**</span> fractured in 1879. <span style="color: #4682B4;">Northern Democrats</span> led by Samuel Tilden and Thomas Hendricks broke from the party to form the <span style="color: #00AEEF;">National Conservative Party</span>, accepting the constitutional settlement while campaigning on fiscal restraint, civil service reform, and opposition to <span style="color: #c00000;">**Republican**</span> patronage. <span style="color: #002765;">**Southern Democrats**</span> rejected reconciliation, reorganizing as the <span style="color: #414978;">**States' Rights Democratic Party**</span> dedicated to restoring home rule and white supremacy.
 
 <span style="color: #c00000;">**Republican**</span> success in protecting civil rights and presiding over rapid industrial growth gave the party unmatched political legitimacy. The <span style="color: #00AEEF;">National Conservative Party</span> remained a competitive regional opposition but failed to challenge <span style="color: #c00000;">**Republican**</span> control of the federal government, while the <span style="color: #414978;">**States' Rights Democrats**</span> faded into a sectional protest movement. Federal anti-subversion laws and continued military enforcement prevented organized efforts to overturn Reconstruction. 
 
 With national elections rarely in doubt, the <span style="color: #c00000;">**Republican**</span> National Convention became the center of American politics. **<span style="color: #7A1F5C;">Radicals</span>**, **<span style="color: #9D2933;">Moderates</span>**, **industrialists**, **western settlers**, and **Southern freedmen** all competed for influence within a single governing coalition. Protective tariffs fueled industrial expansion, while federal investment tied Southern reconstruction and western development to continued <span style="color: #c00000;">**Republican**</span> rule. 
 
-By the early twentieth century, however, decades of one-party dominance began to strain the coalition. Western farmers and rural communities increasingly drifted toward the <span style="color: #00AEEF;">National Conservatives</span>, transforming them into a credible national opposition. By the 1920s, American politics had settled into a competitive two-party system between the liberal minded <span style="color: #c00000;">**Republicans**</span> and the <span style="color: #00AEEF;">National Conservatives</span>, while the <span style="color: #414978;">**States' Rights Democrats**</span> disappeared into the conservative wing of their former rivals. Reconstruction endured, and with it the constitutional revolution that had remade the United States.
+By the early twentieth century, however, decades of one-party dominance began to strain the coalition. Western farmers and rural communities increasingly drifted toward the <span style="color: #00AEEF;">National Conservatives</span>, transforming them into a credible national opposition. By the 1920s, American politics had settled into a competitive two-party system between the increasingly liberal <span style="color: #c00000;">**Republicans**</span> and the <span style="color: #00AEEF;">National Conservatives</span>, while the <span style="color: #414978;">**States' Rights Democrats**</span> disappeared into the conservative wing of their former rivals. Reconstruction endured, and with it the constitutional revolution that had remade the United States.
 
 @Occupation
 view-if: ending = "Occupation"
@@ -808,7 +824,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             Victory at Liberty Place
         </div>
         <div class="achievement-description">
-            Win at Colfax and Liberty Place without federal intervention.
+            Win at Liberty Place without federal intervention.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -840,7 +856,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             <span style="color: #673996;">**Three Purple Hearts**</span>
         </div>
         <div class="achievement-description">
-            Elect three Republican presidents with military service.
+            Elect only Republican presidents with military service.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -1360,7 +1376,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             Victory at Liberty Place
         </div>
         <div class="achievement-description">
-            Win at Colfax and Liberty Place without federal intervention.
+            Win at Liberty Place without federal intervention.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -1392,7 +1408,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             <span style="color: #673996;">**Three Purple Hearts**</span>
         </div>
         <div class="achievement-description">
-            Elect three Republican presidents with military service.
+            Elect only Republican presidents with military service.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -1911,7 +1927,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             Victory at Liberty Place
         </div>
         <div class="achievement-description-locked">
-            Win at Colfax and Liberty Place without federal intervention.
+            Win at Liberty Place without federal intervention.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -1943,7 +1959,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
             <span style="color: #673996;">**Three Purple Hearts**</span>
         </div>
         <div class="achievement-description-locked">
-            Elect three Republican presidents with military service.
+            Elect only Republican presidents with military service.
         </div>
     {!</td>!}
 {!</tr>!}

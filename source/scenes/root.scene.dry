@@ -82,6 +82,7 @@ Q.Johnson_plan = 0;
 Q.Moderate_plan = 0;
 Q.Radical_plan = 0;
 Q.Radical_plan_Count = 0;
+Q.Carpetbagger_Supreme = 0;
 Q.veto = 0;
 Q.veto_reason = "";
 Q.civil_rights_act = 0;
@@ -89,6 +90,7 @@ Q.civil_rights_act_passed = 0;
 Q.civil_rights = 0;
 
 Q.lose_vote = 0;
+Q.veto_success = 0;
 
 // inter-party relations
 Q.dem_relation = 5;

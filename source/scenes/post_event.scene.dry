@@ -708,6 +708,10 @@ if (Q.month_actions >= 1) {
     {
         this.achieve("shermanposting");
     }
+    if(Q.freedmen_rep >= 75 && Q.workers_rep >= 75 && Q.middle_class_rep >= 75 && Q.rural_rep >= 75 && Q.immigrant_laborers_rep >= 75 && Q.unemployed_rep >= 75)
+    {
+        this.achieve("party_of_lincoln");
+    }
 
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
