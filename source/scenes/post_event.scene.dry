@@ -832,7 +832,7 @@ if (Q.month_actions >= 1) {
         Q.rural_dem += pressure * 2;
         Q.rural_rep -= pressure * 2;
     }
-    if (Q.kkk_strength >= 150 and Q.kkk_rise == 0)
+    if (Q.kkk_strength >= 150 && Q.kkk_rise == 0)
     {
         Q.kkk_rise = 1;
     }
