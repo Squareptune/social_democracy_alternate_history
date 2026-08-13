@@ -16,7 +16,6 @@ let Rights = Math.min(100,Amendments * Q.freedmen_education * Q.civil_rights * Q
 
 let Cohesion = 100 - Q.dissent_percent;
 
-
 // Historical
 if (Q.President == "Hayes" && Q.term_troops == "total" && Q.term_home_rule == 1 && Amendments == 2 && Rights >= 35 && Rights <= 66 && Authority >= 20 && Authority <= 40)
 {
@@ -142,7 +141,7 @@ if(Q.army_loyalty >= 1 && Q.navy_loyalty >= 1)
 {
     this.achieve("pro_re_publica");
 }
-if(Q.Winner_68 = "Grant" && Q.Winner_72 = "Grant" && (Q.president = "Grant" || Q.president = "Hayes"))
+if(Q.Winner_68 == "Grant" && Q.Winner_72 == "Grant" && (Q.president == "Grant" || Q.president == "Hayes"))
 {
     this.achieve("three_purple_hearts");
 }
