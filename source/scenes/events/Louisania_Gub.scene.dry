@@ -2,7 +2,7 @@ title: The Louisiana Question
 subtitle: Two governors, two legislatures, one state.
 tags: event
 new-page: true
-view-if: year = 1872 and month = 12 and kkk_strength + whiteL_strength >= 400
+view-if: year = 1872 and month = 12 and kkk_strength + whiteL_strength >= 250
 max-visits: 1
 on-arrival: louisiana_crisis = 1;
 

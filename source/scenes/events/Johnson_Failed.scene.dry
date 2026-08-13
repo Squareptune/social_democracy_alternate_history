@@ -39,6 +39,7 @@ on-arrival: {!
 tags: event
 view-if: year = 1867 and month >= 1
 max-visits: 1
+face-image: img/portraits/Johnson.jpg
 go-to: seats if southgone > 0; Occupation if southgone = 0
 
 @seats

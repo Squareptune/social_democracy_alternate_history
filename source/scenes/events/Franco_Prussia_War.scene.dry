@@ -4,6 +4,7 @@ tags: event
 new-page: true
 view-if: year = 1870 and month = 7 and franco_prussian_stance = ""
 max-visits: 1
+face-image: img/A_v_Werner_-_Kaiserproklamation_am_18_Januar_1871_(3._Fassung_1885).jpg
 
 = The Franco-Prussian War
 

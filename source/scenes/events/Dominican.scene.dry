@@ -5,6 +5,7 @@ new-page: true
 view-if: year = 1869 and month >= 9 and (president = "Grant" or president = "Wade") and dominican_seen != 1
 max-visits: 1
 on-arrival: dominican_seen = 1
+face-image: img/Annexation_demonstration_in_San_Domingo_City-the_Seybo_regiment_in_the_citadel,_bearing_the_U.S._colors_LCCN93515587.jpg
 
 = A Treaty from the Tropics
 

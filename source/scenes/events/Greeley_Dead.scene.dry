@@ -6,6 +6,7 @@ view-if: year = 1872 and month = 11 and liberal_split = 1
 max-visits: 1
 on-arrival: greeley_dead = 1;
 go-to: greeley_loss; crisis_menu if potus_winner = "lib"
+face-image: img/portrait/500px-Horace_Greeley_restored.jpg
 
 = The Death of Horace Greeley
 
@@ -76,6 +77,7 @@ on-arrival: {!
     Q.middle_class_rep -= 3;
     Q.lose_vote = 1;
 !}
+face-image: img/portrait/BGratzBrown.png
 go-to: greeley_end
 
 The Court will not be rushed into rewriting the Constitution on the administration's behalf. The bench still thick with holdovers unmoved by reform rules that the electors are bound by their state's popular result and free to cast their ballots for whichever living man they judge their pledge most honors. In state after state, the opposing electors coalesce behind B. Gratz Brown.
@@ -113,6 +115,7 @@ on-arrival: {!
     Q.dem_relation += 4;
     Q.lose_vote = 1;
 !}
+face-image: img/portrait/BGratzBrown.png
 go-to: greeley_end
 
 The argument goes nowhere. Without a <span style="color: #c00000;">**Republican**</span> majority of state delegations behind us, pushing the question to the House only hands the opposition a forum to ratify what was already happening in the states. The electors cast their ballots for B. Gratz Brown, and Congress, when it counts them in February, raises no objection.
@@ -123,6 +126,7 @@ on-arrival: {!
     Q.president_party = "lib";
     Q.lose_vote = 1;
 !}
+face-image: img/portrait/BGratzBrown.png
 go-to: greeley_end
 
 We choose not to intervene. It is the path of least chaos, and perhaps the most honest one the Constitution gives the electors discretion, and discretion is what they exercise. State by state, the electors settle on B. Gratz Brown as the only candidate who can plausibly inherit the mandate Greeley won. There is no court fight, no charge of a stolen election, and no precedent broken beyond the one already broken by a dead man winning the presidency in the first place.
