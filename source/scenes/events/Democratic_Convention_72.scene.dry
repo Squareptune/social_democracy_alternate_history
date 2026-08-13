@@ -207,9 +207,10 @@ if (Q.dem_independent_1872 === 1) {
 go-to: dem_convention_end
 
 @dem_convention_end
-face-image: img/portrait/Horace Greeley restored.jpg if greeley_fusion = 1; img/portrait/Gen. Winfield S. Hancock - NARA - 529369 (cropped, retouched).jpg if dem_candidate_1872 = "Hancock"; img/portrait/Allen G. Thurman - Brady-Handy.jpg if dem_candidate_1872 = "Thurman"; img/portrait/Thomas F. Bayard, Brady-Handy photo portrait, circa 1870-1880 (cropped)(b).jpg if dem_candidate_1872 = "Bayard"; img/portrait/GeorgeHPendleton.png if dem_candidate_1872 = "Pendleton"
 
 = The Democrats Have Chosen
+
+[? if greeley_fusion = 1 : <img src="img/portrait/Horace Greeley restored.jpg" alt="Horace Greeley" class="face-image"> ?][? if dem_candidate_1872 = "Hancock" : <img src="img/portrait/Gen. Winfield S. Hancock - NARA - 529369 (cropped, retouched).jpg" alt="Winfield Hancock" class="face-image"> ?][? if dem_candidate_1872 = "Thurman" : <img src="img/portrait/Allen G. Thurman - Brady-Handy.jpg" alt="Allen Thurman" class="face-image"> ?][? if dem_candidate_1872 = "Bayard" : <img src="img/portrait/Thomas F. Bayard, Brady-Handy photo portrait, circa 1870-1880 (cropped)(b).jpg" alt="Thomas Bayard" class="face-image"> ?][? if dem_candidate_1872 = "Pendleton" : <img src="img/portrait/GeorgeHPendleton.png" alt="George Pendleton" class="face-image"> ?]
 
 [? if greeley_fusion = 1 : After bitter debate, the convention endorses the <span style="color: #DAA520;">Liberal Republican</span> ticket. Horace Greeley and B. Gratz Brown will now carry the <span style="color: #0015bc;">Democratic</span> nomination alongside the <span style="color: #DAA520;">Liberal Republican</span> one. Some delegates object loudly, while several Southern delegates leave the convention. The chairman describes the arrangement as a "coalition of necessity." ?]
 
