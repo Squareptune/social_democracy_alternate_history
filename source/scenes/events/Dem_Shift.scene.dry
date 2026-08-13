@@ -10,6 +10,7 @@ on-arrival: {!
     Q.dem_reform_strength += 8; 
     Q.dem_bourbon_dissent += 4;
 !}
+face-image: img/portrait/August Belmont.png
 
 = The New Departure
 

@@ -3,6 +3,7 @@ subtitle: Who will the Democrats nominate?
 tags: event
 view-if: year = 1872 and month = 7
 max-visits: 1
+face-image: 1872 Democratic National Convention - Maryland (cropped).jpg
 
 = Democratic National Convention, 1872
 
@@ -206,6 +207,7 @@ if (Q.dem_independent_1872 === 1) {
 go-to: dem_convention_end
 
 @dem_convention_end
+face-image: img/portrait/Horace Greeley restored.jpg if greeley_fusion = 1; img/portrait/Gen. Winfield S. Hancock - NARA - 529369 (cropped, retouched).jpg if dem_candidate_1872 = "Hancock"; img/portrait/Allen G. Thurman - Brady-Handy.jpg if dem_candidate_1872 = "Thurman"; img/portrait/Thomas F. Bayard, Brady-Handy photo portrait, circa 1870-1880 (cropped)(b).jpg if dem_candidate_1872 = "Bayard"; img/portrait/GeorgeHPendleton.png if dem_candidate_1872 = "Pendleton"
 
 = The Democrats Have Chosen
 
