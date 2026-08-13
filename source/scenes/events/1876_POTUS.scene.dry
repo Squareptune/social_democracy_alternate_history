@@ -291,10 +291,11 @@ The <span style="color: #c00000;">**Republicans**</span> have carried a clear ma
 @defeat_dem_1876
 title: The <span style="color: #0015bc;">**Democrats**</span> have won the presidency.
 subtitle: <span style="color: #0015bc;">**Democrats**</span>: [+ demEVTotal +] electoral votes
-view-if: potus_winner = "dem"; lose_vote = 1;
+view-if: potus_winner = "dem";
 on-arrival: {!
     Q.president = Q.dem_candidate_1876;
     Q.president_party = "dem";
+    Q.lose_vote = 1;
 !}
 
 [+ dem_candidate_1876 +] and the <span style="color: #0015bc;">**Democratic Party**</span> have carried a clear majority of the electoral vote. For the first time since before the war, a <span style="color: #0015bc;">**Democrat**</span> will occupy the White House. The Redemption of the South, already well underway in statehouses across the region, now has a friend in Washington.
