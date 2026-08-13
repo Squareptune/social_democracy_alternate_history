@@ -3,6 +3,7 @@ subtitle: Redeemers or Reformers?
 tags: event
 view-if: year = 1876 and month = 7
 max-visits: 1
+face-img: img/1876 Democratic National Convention - Missouri.jpg
 
 = Democratic National Convention, 1876
 
@@ -127,6 +128,8 @@ go-to: dem_convention_end_76
 @dem_convention_end_76
 
 = The <span style="color: #0015bc;">Democrats</span> Have Chosen
+
+[? if dem_candidate_1876 = "Tilden" : <div class="face-figure"><img src="img/portraits/Samuel Tilden. Portrait of the American politician, who served as the 25th Governor of New York, Samuel Jones Tilden (1814-1886), by José María Mora, c. 1870.jpg" alt="Samuel Tilden" class="face-img"></div> ?][? if dem_candidate_1876 = "Hendricks" : <div class="face-figure"><img src="img/portraits/Thomas Andrews Hendricks, photo portrait seated, 1860-65.jpg" alt="Samuel Tilden" class="face-img"></div> ?][? if dem_candidate_1876 = "Bayard" : <div class="face-figure"><img src="img/portraits/960px-Thomas_F._Bayard,_Brady-Handy_photo_portrait,_circa_1870-1880_(cropped)(b).jpg" alt="Thomas Bayard" class="face-img"></div> ?][? if dem_candidate_1876 = "Hancock" : <div class="face-figure"><img src="img/portraits/Gen._Winfield_S._Hancock_-_NARA_-_529369_(cropped,_retouched).jpg" alt="Winfield Hancock" class="face-img"></div> ?][? if dem_candidate_1876 = "Allen" : <div class="face-figure"><img src="img/portraits/William Allen governor - Brady-Handy.jpg" alt="William Allen" class="face-img"></div> ?]
 
 [? if dem_reform_dominant_76 = 1 : The <span style="color: #4682B4;">Northern Democrats</span> carry the convention. Samuel J. Tilden is nominated for President with [+ dem_vp_candidate_1876 +] for Vice President. The ticket will make Republican corruption its central issue. ?]
 
