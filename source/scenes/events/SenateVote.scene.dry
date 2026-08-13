@@ -122,7 +122,14 @@ go-to: senate_vote
 title: Johnson is removed from office
 subtitle: Guilty votes: [+ yea_s_disp +]
 view-if: senate_convicted = 2
-on-arrival: president = "Wade"; president_party = "rep"; Senate_Impeach = 0;
+on-arrival: {! 
+
+  Q.president = "Wade"; 
+  Q.president_party = "rep"; 
+  Q.Senate_Impeach = 0; 
+  this.achieve("youre_fired");
+
+!}
 
 Andrew Johnson is convicted by the Senate and removed from the presidency. Under constitutional custom, Senate President Pro Tempore Benjamin Wade assumes the presidency to oversee the remainder of the term.
 
@@ -130,5 +137,6 @@ Andrew Johnson is convicted by the Senate and removed from the presidency. Under
 title: Johnson survives impeachment
 subtitle: Not Guilty votes: [+ nah_s_disp +]
 view-if: senate_convicted = 1
+on-arrival: lose_vote = 1;
 
 The Senate falls short of removal. Andrew Johnson remains president, bruised, embittered, and openly hostile toward Congress.

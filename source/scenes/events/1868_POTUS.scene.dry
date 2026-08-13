@@ -160,8 +160,12 @@ else if (Q.demEVTotal >= majority) Q.potus_winner = "dem";
 else if (Q.libEVTotal >= majority) Q.potus_winner = "lib";
 else Q.potus_winner = "house";
 
-console.log(`EV totals: REP=${Q.repEVTotal}, DEM=${Q.demEVTotal}, LIB=${Q.libEVTotal}`);
-console.log(`POTUS winner: ${Q.potus_winner}`);
+if(Q.demEVTotal == 0 && Q.libEVTotal == 0)
+{
+  this.achieve("washington")
+}
+
+
 !}
 on-display: {!
   var winners = {
@@ -331,6 +335,7 @@ on-arrival: {!
     Q.president = "Horatio Seymour";
     Q.vice_president = Q.VPCandidate; 
     Q.president_party = "dem";
+    Q.lose_vote = 1;
     
     // SEYMOUR CABINET
     Q.sect_state = "James Guthrie";
@@ -451,7 +456,7 @@ No candidate has secured a majority of electoral votes. Under the Constitution, 
 title: Something has gone very wrong.
 subtitle: Other: [+ otherEVTotal +] votes
 view-if: potus_winner = "other"
-on-arrival: president = "???"; president_party = "???";
+on-arrival: president = "???"; president_party = "???"; lose_vote = 1;
 
 This outcome was not supposed to be possible. Someone has been tampering with the console.
 

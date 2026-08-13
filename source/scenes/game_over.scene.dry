@@ -3,115 +3,134 @@ new-page: true
 go-to: eg_menu
 on-arrival: {!
 Q.game_over = 1;
-// Achievements:
-// Große Koalition - form a grand coalition
-// Eiserne Front - Form the Iron Front.
-this.achieve('game_completed');
 
-// Roter Zar von Preußen - At the end of the game, Otto Braun is president, chancellor, and minister-president of prussia at the same time.
-if (Q.president == 'Braun' && Q.chancellor == 'Braun' && Q.spd_prussia) {
-    this.achieve('red_tzar_of_prussia');
-}
-// Bürgerkrieg - enter a long civil war.
-if (Q.long_war) {
-    this.achieve('civil_war');
-}
-// Sieg für die Republik - victory for the republic
-if (Q.republic_victory) {
-    this.achieve('victory_for_the_republic');
-}
-// Einigkeit - survive on easy without a civil war.
-// Einigkeit und Recht - survive on medium without a civil war.
-// Einigkeit und Recht und Freiheit - survive on hard without a civil war.
+let AuthorityNum =(Q.occupation + Q.South_army_strength + (Q.Union_League_strength * Q.Union_League_militancy) + (Q.Us_police_strength * Q.Us_police_loyalty))- 10 *((Q.kkk_strength * Q.kkk_militancy) + (Q.whiteL_strength * Q.whiteL_militancy));
 
-// Einheitsfront - form a united front with the KPD, and win the civil war.
+let AuthorityDom = (Q.occupation + Q.South_army_strength + (Q.Union_League_strength * Q.Union_League_militancy) + (Q.Us_police_strength * Q.Us_police_loyalty)) + 10 * ((Q.kkk_strength * Q.kkk_militancy) + (Q.whiteL_strength * Q.whiteL_militancy));
 
-// Volksfront - form a popular front government, and win the civil war.
+let Authority = Math.round((AuthorityNum / AuthorityDom) * 100);
 
-// Verfassungskoalition - form a Constitutional Coalition.
-// Wirtschaftspolitik - enact an economic plan.
-// Wirtschaftswunder - reduce unemployment below 10% and have a non-negative budget by 1933.
-if (Q.year >= 1932  && Q.unemployed < 8.6 && Q.budget > 0 && Q.inflation < 5) {
-    this.achieve('wirtschaftswunder');
-}
-// Bollwerk der Demokratie - resist the Prussian Coup, and win.
-if (Q.republic_victory && Q.resist_coup) {
-    this.achieve('bollwerk_der_demokratie');
-}
-// Der österreichische Gefreiter - deport hitler
-// Volkspartei - form a people's party
-// Hirschfeld - legalize 2 of homosexual rights and trans rights.
-if (Q.homosexual_rights >= 2) {
-    this.achieve('hirschfeld');
-}
-// Mädchen und Uniform - a woman's place is in the Reichsbanner.
-// Gleichheit - Support and enact reforms for women's rights.
-if ((Q.womens_work && Q.womens_rights >= 5) || (Q.abortion_rights && Q.womens_rights >= 3)) {
-    this.achieve('equality');
+let Amendments = Q.fourteenth_A + Q.fifteenth_A;
+
+let Rights = Math.min(100,Amendments * Q.freedmen_education * Q.civil_rights * Q.judicial_reform);
+
+let Cohesion = 100 - Q.dissent_percent;
+
+
+// Historical
+if (Q.President == "Hayes" && Q.term_troops == "total" && Q.term_home_rule == 1 && Amendments == 2 && Rights >= 35 && Rights <= 66 && Authority >= 20 && Authority <= 40)
+{
+    this.achieve("historical");
+    Q.ending = "Historical";
 }
 
-// Sohn seiner Klasse - elect Ernst Thälmann as president or chancellor.
-if (Q.chancellor == "Thälmann" || Q.president == "Thälmann") {
-    this.achieve('sohn_seiner_klasse');
+// Radical
+else if ( Amendments == 2 && Rights >= 80 && Authority >= 70 && Cohesion >= 70)
+{
+    this.achieve("radical");
+    Q.ending = "Radical";
 }
 
-// calculate normalized class voting for the achievements
-for (var c of Q.classes) {
-    var class_votes = 0;
-    for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-        class_votes += Q[c+'_'+party];
-    }
-    for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = Math.round(100*Q[c+'_'+party]/class_votes);
-    }
+// Contested Occupation
+else if (Amendments == 2 && Rights >= 75 && Authority >= 75 && Cohesion < 70)
+{
+    this.achieve("ConOccupation");
+    Q.ending = "Contested Occupation";
 }
 
-// Die Rote Fahne - join the KPD in the May Day march.
-// Mehrheitspartei - form an SPD majority government in the Reichstag.
-// Panik im Mittelstand - have over 50% of New Middle Class support.
-if (Q.new_middle_spd_normalized && Q.new_middle_spd_normalized >= 50) {
-    this.achieve('panik_im_mittelstand');
+// Contested Reconstruction
+else if (Amendments == 2 && Rights >= 75 && Authority >= 40 && Authority <= 74 &&Cohesion < 70)
+{
+    this.achieve("contested");
+    Q.ending = "Contested Reconstruction";
 }
-// Bauernrevolution - have over 50% rural support.
-if (Q.rural_spd_normalized && Q.rural_spd_normalized >= 50) {
-    this.achieve('bauernrevolution');
+
+// Occupation
+else if (Authority >= 75 && Rights >= 30 && Rights <= 74)
+{
+    this.achieve("occupation");
+    Q.ending = "Occupation";
 }
-if (Q.catholics_spd_normalized && Q.catholics_spd_normalized >= 50) {
-    this.achieve('katholischer_sozialismus');
+
+// Betrayal
+else if (Amendments == 2 && Authority <= 25 && Rights >= 25 && Rights <= 50)
+{
+    this.achieve("betrayal");
+    Q.ending = "Betrayal";
 }
-if (Q.workers_spd_normalized >= 80 && Q.new_middle_spd_normalized <= 20 && Q.old_middle_spd_normalized <= 20 && Q.rural_spd_normalized <= 20) {
-    this.achieve('klassenkampf');
+
+// Redemption
+else if (Amendments <= 1 || (Rights < 25 && Authority < 25))
+{
+    this.achieve("redemption");
+    Q.ending = "Redemption";
 }
-if (Q.workers_spd_normalized >= 40 && Q.new_middle_spd_normalized >= 40 && Q.old_middle_spd_normalized >= 40 && Q.rural_spd_normalized >= 40) {
-    this.achieve('grosse_volkspartei');
+
+// Compromise
+else if (Amendments == 2 && Rights >= 35 && Rights <= 74 && Authority >= 20 && Authority <= 74)
+{
+    this.achieve("compromise");
+    Q.ending = "Compromise";
 }
-// Räterepublik - begin the transformation to a socialist economy.
-if (Q.spd_in_government && ((Q.nationalization_progress >= 2 && Q.economic_democracy >= 3) || (Q.nationalization_progress >= 1 && Q.economic_democracy >= 4))) {
-    this.achieve('raterepublik');
+
+// Liminal
+else
+{
+    this.achieve("liminal");
+    Q.ending = "Liminal";
 }
-// Polykrise - survive both a fascist coup and a capital strike.
-if (Q.march_on_berlin_seen && Q.capital_strike_seen && Q.chancellor != "Hitler" && Q.president != "Hitler" && !Q.total_defeat) {
-    this.achieve("polykrise");
+
+//Other Acheivements:
+
+if(Q.alaska_purchased == 1 && Q.dominican_annexed == 1 && Q.cuba_status == "Annexed" && Q.puerto_rico_status == "Annexed" && Q.san_juan_won == 1)
+{
+    this.achieve("empire");
 }
-// Wirtschaftsexperiment - implement two different economic plans.
-if ((Q.nationalization_progress >= 1 && Q.wtb_implemented >= 1) || (Q.wtb_implemented >= 1 && Q.moderate_plan_progress >= 1) || (Q.nationalization_progress >= 1 && Q.moderate_plan_progress >= 1)) {
-    this.achieve("wirtschaftsexperiment");
+if(Q.states.length == 28)
+{
+    this.achieve("rejection");
 }
-// Syndikalismus - support factory takeovers by workers.
-if (Q.factory_takeovers >= 2) {
-    this.achieve("syndikalismus");
+if(Q.upper_tax_rates == -5 && Q.lower_tax_rates == -5 && Q.tariffs == -5 && Q.laissez_faire == 1)
+{
+    this.achieve("smith");
 }
-// Stolperstein - lose the civil war against Hitler.
-if ((Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.president == "Hitler") && Q.total_defeat) {
-    this.achieve('stolperstein');
+if(Q.Winner_68 == Q.Winner_72 && Q.president)
+{
+    this.achieve("subjects");
 }
-// Heidelberger Programm - fulfill the goals of the Heidelberg programm - increase welfare, reform justice, support women's rights, progressive taxation, works councils, build a European Union.
-if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_law >= 1 && Q.upper_tax_rates > Q.lower_tax_rates && Q.works_councils > 0 && Q.eu > 0)) {
-    this.achieve('heidelberger_programm');
+if(Q.majority_lost == 1);
+{
+    this.achieve("unbroken_coalition");
 }
+if(Q.Radical_plan_Count >= 10)
+{
+    this.achieve("iron_fist");
+}
+if(Q.Forty_Acres >= 5)
+{
+    this.achieve("forty_acres");
+}
+if(Q.fifth_A == 1 && Q.fortheen_A == 1 && Q.fifthteen == 1 && Q.Blain == 1)
+{
+    this.achieve("master_rewriter");
+}
+if(Q.kkk_rise == 2)
+{
+    this.achieve("klan_buster");
+}
+if(Q.douglass_ear >= 5)
+{
+    this.achieve("douglass_ear");
+}
+if(Q.lose_vote == 1)
+{
+    this.achieve("dream_of_republican_town");
+}
+if(Q.March_DC == 1)
+{
+    this.achieve("reverse_jan6");
+}
+
 !}
 
 = End
@@ -123,195 +142,154 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 - @end_game: End game.
 
 
-@hitler_wins
-view-if: (chancellor == "Hitler" or president == "Hitler") and (total_defeat==1 or civil_war_seen == 0)
-title: Adolf Hitler is in undisputed control over Germany.
+@Radical
+view-if: ending = "Radical"
+title: Radical: A New South Forged in Fire!
 tags: endings
 go-to: eg_menu
+audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
 
-Adolf Hitler is in undisputed control over Germany. The SPD, along with all of the democratic forces, have failed.
+The centennial of the American Republic marked the triumph of Reconstruction. Once an elitist republic sustained by slavery, the United States emerged as a constitutional democracy where equality before the law became a national principle rather than an empty promise. Civil rights were firmly enforced across the South, and the <span style="color: #c00000;">**Republican Party**</span> entered the post-Reconstruction era as the undisputed architect of the nation's political order. 
 
-[? if civil_war_seen == 1 : At the very least, we fought back. Perhaps our resistance will be celebrated in an impossible-to-forsee future. ?]
+Unable to escape its association with secession, slavery, and violent resistance to Reconstruction, the <span style="color: #0015bc;">**Democratic Party**</span> fractured in 1879. <span style="color: #4682B4;">Northern Reformers</span> led by Samuel Tilden and Thomas Hendricks founded the <span style="color: #00AEEF;">National Conservative Party</span>, accepting the constitutional settlement while campaigning on fiscal restraint, civil service reform, and opposition to <span style="color: #c00000;">**Republican**</span> patronage. <span style="color: #002765;">**Southern Democrats**</span> rejected reconciliation, reorganizing as the <span style="color: #414978;">**States' Rights Democratic Party**</span> dedicated to restoring home rule and white supremacy.
 
-@war_against_hitler
-view-if: (chancellor == "Hitler" or president == "Hitler") and (long_war == 1)
-title: Adolf Hitler is in power, but we are fighting to stop him.
+<span style="color: #c00000;">**Republican**</span> success in protecting civil rights and presiding over rapid industrial growth gave the party unmatched political legitimacy. The <span style="color: #00AEEF;">National Conservative Party</span> remained a competitive regional opposition but failed to challenge <span style="color: #c00000;">**Republican**</span> control of the federal government, while the <span style="color: #414978;">**States' Rights Democrats**</span> faded into a sectional protest movement. Federal anti-subversion laws and continued military enforcement prevented organized efforts to overturn Reconstruction. 
+
+With national elections rarely in doubt, the <span style="color: #c00000;">**Republican**</span> National Convention became the center of American politics. **<span style="color: #7A1F5C;">Radicals</span>**, **<span style="color: #9D2933;">Moderates</span>**, **industrialists**, **western settlers**, and **Southern freedmen** all competed for influence within a single governing coalition. Protective tariffs fueled industrial expansion, while federal investment tied Southern reconstruction and western development to continued <span style="color: #c00000;">**Republican**</span> rule. 
+
+By the early twentieth century, however, decades of one-party dominance began to strain the coalition. Western farmers and rural communities increasingly drifted toward the <span style="color: #00AEEF;">National Conservatives</span>, transforming them into a credible national opposition. By the 1920s, American politics had settled into a competitive two-party system between the liberal minded <span style="color: #c00000;">**Republicans**</span> and the <span style="color: #00AEEF;">National Conservatives</span>, while the <span style="color: #414978;">**States' Rights Democrats**</span> disappeared into the conservative wing of their former rivals. Reconstruction endured, and with it the constitutional revolution that had remade the United States.
+
+@Occupation
+view-if: ending = "Occupation"
+title: Occupation: South at gun’s point
 tags: endings
 go-to: eg_menu
+audio: music/_Kingdom_Coming__by_Henry_C._Work_–_sung_by_Frank_Crumit_(1927).mp3
 
-Adolf Hitler has taken power in Germany. However, we have rallied the democratic forces of the country against him, and are fighting back. The outcome of this war is uncertain.
+Reconstruction survived because the federal government refused to leave. Rejecting calls for reconciliation, successive <span style="color: #c00000;">**Republican**</span> administrations maintained a permanent military presence across the former Confederacy to enforce the Reconstruction Amendments and protect <span style="color: #c00000;">**Republican**</span> governments. Under federal protection, freedmen voted in large numbers, held public office, and built lasting political, educational, and religious institutions. Constitutional equality endured, but only because Washington possessed both the will and the soldiers to defend it.
 
+The occupation never won Southern acceptance. <span style="color: #002765;">**Redeemer**</span> organizations evolved into a permanent insurgency, with groups such as the Ku Klux Klan and the White League abandoning sporadic terror for coordinated guerrilla warfare. Political assassinations, sabotage, and intimidation became routine as insurgents sought to make federal rule too costly to sustain. Much of the South settled into a cycle of military patrols, emergency powers, and recurring outbreaks of violence that neither side could decisively end.
 
-@no_hitler
-view-if: chancellor != "Hitler" and president != "Hitler" and president != "Göring" and chancellor_party != "NSDAP"
-title: Hitler does not yet control Germany...
-tags: endings
+The conflict transformed national politics. In the North, decades of occupation produced growing war weariness. Critics condemned the military government as incompatible with republican government, arguing that Reconstruction had become an endless campaign fought against American citizens rather than a temporary measure to restore the Union. <span style="color: #0015bc;">**Democrats**</span> united around demands to end the occupation, while <span style="color: #c00000;">**Republicans**</span> argued that withdrawing federal troops would abandon millions of loyal citizens to political violence and undo the achievements of Reconstruction.
+
+By the beginning of the twentieth century, the United States had become a nation at peace everywhere except the South. Elections remained free and interracial democracy endured, but polling places were guarded by soldiers, public officials traveled under armed protection, and federal garrisons became permanent fixtures of Southern life. Reconstruction was never overturned, yet neither was it fully accepted. The Union had preserved equal rights through overwhelming federal power, but the price was a generation of occupation that transformed the South into America's permanent internal frontier.
+
+@ConOccupation
+view-if: ending = "Contested Occupation"
+title: Contested OCCUPATION: South in eternal conflict.
+tags: ending
 go-to: eg_menu
+audio: music/_Kingdom_Coming__by_Henry_C._Work_–_sung_by_Frank_Crumit_(1927).mp3
 
-Hitler does not yet control Germany. [? if chancellor == "Papen" : However, Chancellor Papen's authoritarianism and far-right politics are paving the way for Hitler, or someone like him, to take power. ?] [? if chancellor == "Schleicher" : However, Chancellor Schleicher's authoritarianism and scheming is paving the way for Hitler, or someone like him, to take power. ?][? if resist_coup == 1 and republic_victory == 0 and long_war == 0 and coup_victory == 0 : Given our defeat in the Prussian coup, the far-right appears to be ascendant. ?][? if chancellor == "Brüning" : However, Chancellor Brüning's austerity policies and the continuation of the depression are paving the way for Hitler, or someone like him, to take power. ?]
+Reconstruction survived only through force. Unable to reconcile the former Confederacy to the new constitutional order, successive <span style="color: #c00000;">**Republican**</span> administrations maintained a permanent military occupation of the South. Federal troops suppressed open rebellion, upheld <span style="color: #c00000;">**Republican**</span> governments, and prevented the restoration of the planter elite, but the promise of Reconstruction never extended far beyond the reach of the army.
 
-[? if hitler_deported == 1 : We have deported Hitler back to Austria. Hopefully he will never return. ?]
+The rights guaranteed by the Reconstruction Amendments remained law, yet they were rarely secure in practice. Black Americans could vote, hold office, and seek protection from the federal government, but only under constant military supervision. Outside the larger cities and garrison towns, intimidation, violence, and economic coercion remained facts of daily life. Many freedmen looked to federal troops rather than local authorities as the only reliable guardians of their liberty.
 
-@nsdap_win
-view-if: chancellor == "Goebbels" or president == "Göring"
-title: Despite the deportation of Hitler, the Nazis have still taken power...
-tags: endings
+<span style="color: #002765;">**Redeemer**</span> organizations transformed into a permanent insurgency. The Ku Klux Klan, the White League, and countless local militias abandoned hopes of immediate victory, instead waging a relentless campaign of assassinations, sabotage, and terrorism designed to make federal rule impossible to sustain. The South became a region of recurring emergencies where martial law, military tribunals, and counterinsurgency operations became ordinary instruments of government.
+
+The occupation reshaped the Republic itself. Military appropriations consumed enormous federal resources, while emergency powers granted during Reconstruction became permanent features of American government. Northern support steadily eroded as generations grew up knowing only an endless conflict that seemed to have no conclusion. <span style="color: #0015bc;">**Democrats**</span> condemned the occupation as tyranny, while <span style="color: #c00000;">**Republicans**</span> argued that withdrawal would condemn millions of loyal citizens to violence and lawlessness.
+
+By the twentieth century, the Civil War had never truly ended. The Union remained intact, and the Confederacy had been defeated beyond recovery, but the peace had never been won. The South existed in a permanent state of military occupation, its politics defined by soldiers, insurgents, and emergency rule rather than stable civil government.
+
+@ConReconstruction
+view-if: ending = "Contested Reconstruction"
+title: Contested Reconstruction: Reconstruction achieved…but our party is divided.
+tags: ending
 go-to: eg_menu
+audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
 
-Despite the deportation of Hitler, the NSDAP has somehow still wormed its way into power. [? if long_war == 1 : We are fighting them for control of Germany. ?]
+Reconstruction achieved its essential purpose. The former Confederate states were restored to the Union under <span style="color: #c00000;">**Republican**</span> governments, slavery was abolished, and the rights of the freedmen were secured in law. Federal authority remained strong enough to prevent the immediate restoration of the old Southern order, and the <span style="color: #c00000;">**Republican Party**</span> emerged from the struggle as the dominant political force in the reunited United States.
 
+Yet victory brought its own problems. The coalition that had carried Reconstruction through the war and its aftermath began to fracture over what the new South should become. **<span style="color: #7A1F5C;">Radicals</span>** demanded continued federal enforcement of civil rights and a permanent transformation of Southern society, while **<span style="color: #9D2933;">Moderates</span>** sought to consolidate existing gains and restore greater authority to the states. **<span style="color: #B5651D;">Conservatives</span>** within the party increasingly opposed continued intervention, and Western <span style="color: #c00000;">**Republican**</span> pushed for attention to land policy, railroads, and the interests of farmers and new states.
 
-@civil_war_won
-title: We have won the civil war.
-view-if: republic_victory == 1
-tags: endings
+These divisions prevented the <span style="color: #c00000;">**Republican Party**</span> from establishing the political monopoly many had expected after the collapse of the Confederacy. <span style="color: #c00000;">**Republican**</span> governments remained powerful across the South, but factional disputes weakened party organization and created openings for its opponents. The <span style="color: #0015bc;">**Democrats**</span>, meanwhile, gradually abandoned their old identity as the party of secession and resistance. Recognizing the permanence of the Union and the constitutional settlement, a new generation of <span style="color: #0015bc;">**Democrats**</span> rebuilt the party around acceptance of Reconstruction’s basic framework.
+
+By the 1880s, this transformation had begun to bear fruit. <span style="color: #4682B4;">**Northern Democrats**</span> presented themselves as critics of <span style="color: #c00000;">**Republican**</span> corruption, high tariffs, and expanding federal authority, advocating fiscal restraint, civil service reform, and limited government. In the South, the party reorganized around state rights and local control, while carefully avoiding open calls to overturn Reconstruction. This dual strategy allowed <span style="color: #0015bc;">**Democrats**</span> to re-enter national politics as a credible opposition without directly challenging the postwar order.
+
+The result was a fragile but enduring political balance. Reconstruction survived, but <span style="color: #c00000;">**Republican**</span> unity did not. The South and West became competitive battlegrounds, as <span style="color: #0015bc;">**Democratic**</span> resurgence combined with <span style="color: #c00000;">**Republican**</span> factionalism to prevent either party from achieving lasting dominance. By the early twentieth century, the United States had settled into a competitive two-party system in which <span style="color: #c00000;">**Republicans**</span> defended the Reconstruction settlement, and <span style="color: #0015bc;">**Democrats**</span> contested its direction. 
+
+@Historical
+view-if: ending = "Historical"
+title: Historical: Hayes, Hayes, we all love Hayes.
+tags: ending
 go-to: eg_menu
+audio: music/For Hayes and Wheeler Too!.mp3
 
-We have won the civil war against the reactionary forces. Germany will be changed forever, but it is too early to know how.
+The disputed election of 1876 ended Reconstruction as a national project. In exchange for Rutherford B. Hayes assuming the presidency, the last federal troops withdrew from the South, bringing an end to more than a decade of military occupation and <span style="color: #c00000;">**Republican**</span> rule. Though the Reconstruction Amendments remained part of the Constitution, their enforcement largely passed into the hands of state governments.
 
-@civil_war_lost
-title: We lost the civil war.
-view-if: total_defeat == 1
-tags: endings
+Over the following decades, <span style="color: #002765;">**Redeemer**</span> governments systematically dismantled the political gains of Reconstruction. Through intimidation, poll taxes, literacy tests, and segregation, Black Americans were gradually stripped of their civil and political rights across the South. The promises of equal citizenship survived in law but disappeared in practice as the <span class="tooltip-text" title="System of racial laws aimed to enforce white Supremacy">**Jim Crow**</span> system became firmly established.
+
+The <span style="color: #c00000;">**Republican Party**</span> gradually shifted its attention toward industrialization, westward expansion, and economic policy, while the <span style="color: #0015bc;">**Democratic Party**</span> reestablished itself as the dominant force throughout the South. National politics settled into the familiar rivalry between the two parties, but the sectional divide created by the Civil War endured for generations. 
+
+Reconstruction left an enduring constitutional legacy, abolishing slavery and establishing birthright citizenship and equal protection under the law. Yet many of its greatest achievements remained unrealized until the Civil Rights Movement nearly a century later, when the federal government once again undertook the task Reconstruction had left unfinished.
+
+@Compromise
+view-if: ending = "Compromise"
+title: Compromise: Reconstruction over too soon
+tags: ending
 go-to: eg_menu
+audio: music/We_shall_overcome.mp3
 
-We have lost the civil war. At least it was a quick coup, and ended before Germany could be plunged into total war.
+The election of 1876 ended Reconstruction as a national project. The federal government being overstretched by the daunting task of reconstruction has decided to end it before completion. The last federal troops withdrew from the South, bringing an end to more than a decade of military occupation and <span style="color: #c00000;">**Republican**</span> rule. Though the Reconstruction Amendments remained part of the Constitution, their enforcement largely passed into the hands of state governments.
 
-@long_war
-title: Germany is gripped by civil war.
-view-if: long_war == 1
-tags: endings
+Over the following decades, <span style="color: #002765;">**Redeemer**</span> governments systematically dismantled the political gains of Reconstruction. Through intimidation, poll taxes, literacy tests, and segregation, Black Americans were gradually stripped of their civil and political rights across the South. The promises of equal citizenship survived in law but disappeared in practice as the <span class="tooltip-text" title="System of racial laws aimed to enforce white Supremacy">**Jim Crow**</span> system became firmly established.
+
+The <span style="color: #c00000;">**Republican Party**</span> gradually shifted its attention toward industrialization, westward expansion, and economic policy, while the <span style="color: #0015bc;">**Democratic Party**</span> reestablished itself as the dominant force throughout the South. National politics settled into the familiar rivalry between the two parties, but the sectional divide created by the Civil War endured for generations. 
+
+Reconstruction left an enduring constitutional legacy, abolishing slavery and establishing birthright citizenship and equal protection under the law. Yet many of its greatest achievements remained unrealized until the Civil Rights Movement nearly a century later, when the federal government once again undertook the task Reconstruction had left unfinished.
+
+@Liminal
+view-if: ending = "Liminal"
+title: LIMINAL: Stalemate
+tags: ending
 go-to: eg_menu
+audio: music/We_shall_overcome.mp3
 
-Germany is currently in the grip of a civil war, a brutal affair that has no obvious end. Thousands of lives have already been extinguished, and it is likely that the war will not stop until Germany's cities are reduced to ruins. 
+Reconstruction never reached a decisive conclusion. The constitutional settlement survived, but its promises remained unevenly enforced. The former Confederate states were restored to the Union, yet neither the federal government nor the Southern states gained enough authority to impose a lasting political order. <span style="color: #c00000;">**Republican**</span> governments continued to defend the rights created by Reconstruction, while their opponents steadily rebuilt their political organizations and challenged federal authority at every turn.
 
-[? if is_favorable == 0 : The current conditions are not favorable for us. ?][? if west_relation >= 2: Our cause is popular in the West, but their sclerotic governments are reluctant to send us aid. ?][? if soviet_aid >= 1 : The Soviet Union has aided the Communists, but not the socialists and democrats, in an attempt to shape Germany's future government. ?][? if east_aid >= 1 : Poland and Czechoslovakia have sent some assistance against the fascists. ?]
+The result was a South caught between two systems. Freedmen could vote and hold office in some states, while in others their political influence was steadily reduced through intimidation, discriminatory laws, and economic dependence. Federal troops remained in some areas but withdrew from others. Elections changed the balance of power without resolving the underlying conflict, leaving governments constantly vulnerable to political violence and renewed intervention.
 
+Neither party could force the country toward a final settlement. <span style="color: #c00000;">**Republican**</span> remained committed to the constitutional changes born from the Civil War, but their factions disagreed over how far federal power should reach. <span style="color: #0015bc;">**Democrats**</span> regained influence without fully overturning Reconstruction, leaving them caught between accepting the new constitutional order and demanding greater control over Southern affairs.
 
-@braun_victorious
-title: Otto Braun victorious
-view-if: president == "Braun"
-tags: endings
+By the beginning of the twentieth century, Americans had grown accustomed to an unresolved Reconstruction. The amendments remained in the Constitution. Black political participation survived in parts of the South. White supremacy remained deeply entrenched elsewhere. Federal authority could still be called upon, but Washington had never found the will or the means to settle the question permanently. The United States entered the new century carrying the unfinished business of the Civil War with it.
+
+@Betrayal
+view-if: ending = "Betrayal"
+title: Betrayal: Freemen have rights…or do they?
+tags: ending
 go-to: eg_menu
+audio: music/Dixie's_Land_Instrumental.mp3
 
-Otto Braun has been elected as President of Germany. He had never desired to be the most powerful man in Germany, but now he is.
+The constitutional revolution was complete. Slavery had been abolished, citizenship guaranteed, and Black suffrage written into the Constitution. On paper, the <span style="color: #c00000;">**Republican Party**</span> had achieved everything it set out to accomplish. Convinced that its work was finished, the federal government withdrew from the South and left the enforcement of Reconstruction to state governments.
 
-@president_schumacher
-title: Kurt Schumacher victorious
-view-if: president == "Schumacher"
-tags: endings
+The settlement proved far less secure than its architects had imagined. Across the former Confederacy, <span style="color: #002765;">**Redeemer**</span> governments quickly regained political influence and set about hollowing out Reconstruction without openly challenging the Constitution itself. Federal protections remained in law, but Washington increasingly treated their enforcement as a matter of local concern rather than national responsibility.
+
+Southern officials learned that rights did not have to be repealed to become meaningless. Intimidation at the polls, economic coercion, discriminatory election laws, and selective enforcement steadily reduced Black political participation while allowing state governments to insist they remained faithful to the Constitution. Violence by organizations such as the Ku Klux Klan and the White League was met with indifference or half-hearted intervention, as successive administrations proved unwilling to recommit federal troops to the South.
+
+The <span style="color: #c00000;">**Republican Party**</span> defended the achievements of Reconstruction in speeches and campaign platforms, yet increasingly devoted its attention to industry, western expansion, and economic growth. Many Northern voters concluded that the South's problems had been settled years before. As memories of the Civil War faded, so too did the political will to enforce the principles for which it had been fought.
+
+By the beginning of the twentieth century, the Reconstruction Amendments remained among the most celebrated achievements of the <span style="color: #c00000;">**Republican Party**</span>. Their promises, however, survived more completely in constitutional law than in everyday life. Millions of Black Americans possessed rights the federal government no longer had the determination to defend.
+
+@Redemption
+view-if: ending = "Redemption"
+title: Redemption: The White man’s South.
+tags: ending
 go-to: eg_menu
+audio: music/Dixie's_Land_Instrumental.mp3
 
-Kurt Schumacher has been elected as President of Germany. As a young and ambitious SPD member, he will be shaping Germany for years to come.
+In the exhausted aftermath of Appomattox, Northern political will fractured almost immediately. The question of what freedom should mean for four million formerly enslaved people proved too divisive, too expensive, and too politically unstable for a nation eager to reunite. Rather than impose a new order on the defeated South, Congress settled for rapid readmission of the former Confederate states under their prewar political leadership, trusting local elites to manage the transition in their own way.
 
-@president_juchacz
-title: Marie Juchacz is President
-view-if: president == "Juchacz"
-tags: endings
-go-to: eg_menu
+The proposed Reconstruction Amendments never became the foundation of a new national settlement. The Thirteenth Amendment passed in name, but without sustained enforcement mechanisms or federal commitment, emancipation remained uneven and fragile across much of the South. [? if Amendments = 2: The Fourteenth and Fifteenth Amendments managed to be passed but not enforced in the south, leaving the Freedmen population as permanent 2nd class citizens. ?][? if Amendments < 2: The Fourteenth and Fifteenth Amendments failed to be passed, leaving the Freedmen population as permanent 2nd class citizens. ?]
 
-Marie Juchacz has been elected as President of Germany. She is the first woman to be elected as the head of state of any republic, and will contribute to shaping Germany for years to come.
+<span style="color: #002765;">**Redeemer**</span> governments moved quickly to restore order on their own terms. Former Confederates returned to power through local elections that excluded much of the Black population through [? if fifteenth_A = 1 : informal intimidation, property requirements, and administrative control of voter rolls ?] [? if fifteenth_A = 0: racial requirements barring any "colored" people from being allowed to vote in new state constitutions ?]. Without federal oversight, these measures hardened into permanent structures of political exclusion. Within a generation, Black political participation had been reduced to a symbolic minimum in most Southern states.
 
-@president_einstein
-title: Albert Einstein is President
-view-if: president == "Einstein"
-tags: endings
-go-to: eg_menu
+Sharecropping, tenancy contracts, and debt arrangements tied freedpeople to the land in cycles of dependency that replaced slavery with a form of pseudo-serfdom. Local courts routinely enforced these arrangements in favor of landowners, while law enforcement treated labor disputes as matters of public order rather than civil rights.
 
-Albert Einstein, possibly the most famous scientist in the world, has been elected as President of Germany. As a German Jew and a pacifist, he is the repudiation of everything the Nazis stood for, and a symbol of a new German Republic that has moved beyond its checkered past.
+White paramilitary organizations transitioned from illegal terrorists into semi-legitimate auxiliaries to local government to preserve the strict racial order of the south and “protect elections from the Yankee-Negro interference" 
 
+Over time, the Lost Cause became the organizing myth of the postwar South. Confederate leaders were rehabilitated as defenders of constitutional liberty, while Reconstruction itself was remembered not as an unfinished democratic experiment, but as a brief period of Northern domination that had threatened the natural order of Southern society. This interpretation was reinforced in schools, churches, and public commemorations, shaping generations of civic identity.
 
-
-@spd_victorious
-title: SPD still in government
-view-if: spd_in_government == 1 and chancellor_party == "SPD" and total_defeat == 0 and long_war == 0
-tags: endings
-go-to: eg_menu
-
-The SPD is still in government, under Chancellor [+ chancellor +]. Given the circumstances, this is a substantial accomplishment.
-
-@communist_victory
-title: Communist victory
-view-if: chancellor_party == "KPD" or president == "Thälmann" and total_defeat == 0 and long_war == 0
-tags: endings
-go-to: eg_menu
-
-The KPD has won power in Germany, with our assistance. They will try to remake Germany in the Soviet image. How much they succeed is yet to be determined.
-
-@works_program
-title: Works program enacted!
-view-if: works_program > 0
-tags: endings
-go-to: eg_menu
-
-Our government has enacted a public works program!
-
-@unemployment_reduced
-title: Unemployment has been reduced from its peak.
-view-if: unemployed <= 20 and unemployed >= 10 and year >= 1930
-tags: endings
-go-to: eg_menu
-
-While still uncomfortably high, unemployment levels are nowhere near their peak. This is a success of our economic policy.
-
-@unemployment_reduced_2
-title: Unemployment has been successfully reduced!
-view-if: unemployed < 10 and year >= 1930
-tags: endings
-go-to: eg_menu
-
-Unemployment levels have fallen substantially! This is a success of our economic policy.
-
-
-
-@unemployment_high
-title: Unemployment is still too high.
-view-if: unemployed >= 20 and (chancellor != "Hitler" and president != "Hitler") and (total_defeat == 0) and long_war == 0
-tags: endings
-go-to: eg_menu
-
-Unemployment is still at dangerously high levels. Even though Hitler is not in power, the situation is ripe for instability and extremism.
-
-
-@emergency_government
-title: SPD ruling in an emergency government.
-view-if: in_emergency_government == 1
-tags: endings
-go-to: eg_menu
-
-The SPD is ruling as part of an emergency minority government, led by President [+ president +] and Chancellor [+ chancellor +]. This is a temporary and unstable arrangement, leaving the door open to further authoritarianism.
-
-@peoples_party_achieved
-title: The SPD is a "People's Party".
-view-if: peoples_party == 1
-tags: endings
-go-to: eg_menu
-
-The SPD has been declared a "People's Party", representing all of the people, not just the working class. This policy has many supporters and detractors, and what will become of the party is still unclear.
-
-@nationalization_achieved
-title: Socialization of the economy has commenced.
-view-if: nationalization_progress >= 2
-tags: endings
-go-to: eg_menu
-
-As part of our socialist economic plan, we have nationalized a substantial portion of the economy, beginning the transition to actual socialism.
-
-@works_councils
-title: Works councils have more power.
-view-if: works_councils >= 3
-tags: endings
-go-to: eg_menu
-
-Works councils now have substantially greater influence, giving workers democratic control over their economic lives.
-
-@european_union
-title: There is now a European Union!
-view-if: eu = 1
-tags: endings
-go-to: eg_menu
-
-We have helped to form a European Union to bring peace and prosperity to the continent. Time will tell how effective it will be.
+Nationally, the North chose reconciliation over reconstruction. By the turn of the twentieth century, the United States had been politically reunited, but never socially reconstructed. The South remained governed by a rigid racial hierarchy that had emerged not from the collapse of Reconstruction, but from its absence. Freedom had been declared, but never fully built. <a href="https://www.youtube.com/playlist?list=PLwCiRao53J1y_gqJJOH6Rcgpb-vaW9wF0">Checkmate, Lincolnites!</a>
 
 @achievements
 title: Achievements
@@ -447,6 +425,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description">
             Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_compromise: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Compromise.jpg" alt="Compromise Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Compromise
+        </div>
+        <div class="achievement-description">
+            Achieve the Compromise Ending.
         </div>
     {!</td>!}
 {!</tr>!}
@@ -988,6 +982,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 {!</tr>!}
 ?]
 
+[? if achievement_compromise: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon">!}
+        <img src="img/Achievements/Compromise.jpg" alt="Compromise Icon">
+    {!</td>!}
+    {!<td class="achievement-info">!}
+        <div class="achievement-title">
+            Compromise
+        </div>
+        <div class="achievement-description">
+            Achieve the Compromise Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
 [? if achievement_occupation: 
 {!<tr class="achievement">!}
     {!<td class="achievement-icon">!}
@@ -1518,6 +1528,22 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
         </div>
         <div class="achievement-description-locked">
             Achieve the Historical Ending.
+        </div>
+    {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_compromise: 
+{!<tr class="achievement">!}
+    {!<td class="achievement-icon-locked">!}
+        <img src="img/Achievements/Compromise.jpg" alt="Compromise Icon">
+    {!</td>!}
+    {!<td class="achievement-info-locked">!}
+        <div class="achievement-title-locked">
+            Compromise
+        </div>
+        <div class="achievement-description-locked">
+            Achieve the Compromise Ending.
         </div>
     {!</td>!}
 {!</tr>!}

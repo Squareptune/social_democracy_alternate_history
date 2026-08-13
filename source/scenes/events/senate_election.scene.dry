@@ -291,6 +291,7 @@ The <span style="color: #c00000;">**Republicans**</span> have gained a supermajo
 title: <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> hold a working Senate majority
 subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats, <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 1 and liberal_split = 1
+on-arrival: lose_vote = 1;
 
 Neither party holds an outright Senate majority, but <span style="color: #c00000;">**Republicans**</span> and <span style="color: #DAA520;">**Liberal Republicans**</span> together command enough seats to organize the chamber if they can find common ground. Their cooperation on legislation will not come without concessions.
 
@@ -298,6 +299,7 @@ Neither party holds an outright Senate majority, but <span style="color: #c00000
 title: <span style="color: #c00000;">**Republicans**</span> have lost the Senate
 subtitle: <span style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 0 and dem_senate_r > rep_senate_r
+on-arrival: lose_vote = 1;
 
 The <span style="color: #c00000;">**Republicans**</span> have lost control of the Senate to the <span style="color: #0015bc;">**Democrats**</span>.
 
@@ -305,6 +307,7 @@ The <span style="color: #c00000;">**Republicans**</span> have lost control of th
 title: <span style="color: #DAA520;">**Liberal Republicans**</span> hold the balance of power in the Senate
 subtitle: <span style="color: #DAA520;">**Liberal Republicans**</span>: [+ lib_senate_r +] seats
 view-if: sen_majority = 0 and rep_lib_working_majority_senate = 0 and dem_senate_r <= rep_senate_r and liberal_split = 1
+on-arrival: lose_vote = 1;
 
 No party commands a Senate majority. The <span style="color: #DAA520;">**Liberal Republicans**</span> find themselves holding the balance of power. Every major vote will require negotiating their support.
 
@@ -312,6 +315,7 @@ No party commands a Senate majority. The <span style="color: #DAA520;">**Liberal
 title: A tied Senate!
 subtitle: <span style="color: #c00000;">**Republicans**</span> and <span style="color: #0015bc;">**Democrats**</span>: [+ rep_senate_r +] – [+ dem_senate_r +]
 view-if: rep_senate_r = dem_senate_r and sen_majority = 0 and rep_lib_working_majority_senate = 0
+on-arrival: lose_vote = 1;
 
 In a stunning turn of events, the Senate election has ended in a tie.
 

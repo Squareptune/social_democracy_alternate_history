@@ -74,6 +74,7 @@ on-arrival: {!
     Q.conservative_dissent += 4;
     Q.dem_relation += 6;
     Q.middle_class_rep -= 3;
+    Q.lose_vote = 1;
 !}
 go-to: greeley_end
 
@@ -110,6 +111,7 @@ on-arrival: {!
     Q.moderate_dissent += 3;
     Q.radical_dissent += 4;
     Q.dem_relation += 4;
+    Q.lose_vote = 1;
 !}
 go-to: greeley_end
 
@@ -119,6 +121,7 @@ The argument goes nowhere. Without a <span style="color: #c00000;">**Republican*
 on-arrival: {!
     Q.president = "Brown";
     Q.president_party = "lib";
+    Q.lose_vote = 1;
 !}
 go-to: greeley_end
 

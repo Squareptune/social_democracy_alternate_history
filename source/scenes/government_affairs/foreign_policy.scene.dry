@@ -113,8 +113,6 @@ We continue to discuss the main issue for a great Anglo-sphere relationship, par
 @british_reconciliation3
 title: Sign the Treaty of Washington
 view-if: treaty_Washington = 2
-choose-if: fenian = 0
-unavailable-subtitle: Our inaction to the Fenian raids in Canada has made the British unwilling to sign the treaty.
 on-arrival: treaty_Washington += 1; economic_growth += 0.2; middle_class_rep += 3; moderate_strength += 2; moderate_dissent -= 2; budget += 4;
 
 We signed the *Treaty of Washington*, a landmark diplomatic success. The Alabama Claims are settled via arbitration, and Britain agrees to pay $15.5 million in gold to the United States as compensation for damages.

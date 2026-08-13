@@ -25,7 +25,7 @@ subtitle: -1 budget - Break up Confederate plantations for freedmen’s homestea
 unavailable-subtitle: [? if budget <= 0 : Requires 1 budget. ?] [? if judicial_reform < 2 : The courts wouldn't support such action ?]
 choose-if: judicial_reform >= 2 and budget > 0
 view-if: fifth_A = 0
-on-arrival: budget -= 1; PoliticalCostPenalty += 1; freemen_rep += 3; land_reform += 1; rural_dem -= 8*(1-dissent); radical_strength += 8; moderate_dissent += 5; kkk_militancy += 0.1; agriculture_goal_completed += 1; liberal_strength += 3; liberal_dissent -= 2
+on-arrival: budget -= 1; PoliticalCostPenalty += 1; freemen_rep += 3; land_reform += 1; rural_dem -= 8*(1-dissent); radical_strength += 8; moderate_dissent += 5; kkk_militancy += 0.1; liberal_strength += 3; liberal_dissent -= 2; Forty_Acres += 1
 
 We seize rebel estates under the Confiscation Acts, granting land to freedmen’s cooperatives. Former slaves become yeoman farmers but ex-Confederates scream of ‘Negro domination.’ The Klan burns crops in response.
 
@@ -35,7 +35,7 @@ subtitle: Break up Confederate plantations for freedmen’s homesteads without c
 unavailable-subtitle: [? if judicial_reform < 2 : The courts wouldn't support such action ?]
 choose-if: judicial_reform >= 2
 view-if: fifth_A = 1
-on-arrival: freemen_rep += 4; land_reform += 2; rural_dem -= 9*(1-dissent); radical_strength += 9; moderate_dissent += 6; kkk_militancy += 0.2; agriculture_goal_completed += 1; liberal_strength += 4; liberal_dissent -= 3
+on-arrival: freemen_rep += 4; land_reform += 2; rural_dem -= 9*(1-dissent); radical_strength += 9; moderate_dissent += 6; kkk_militancy += 0.2; agriculture_goal_completed += 1; liberal_strength += 4; liberal_dissent -= 3; Forty_Acres += 1
 
 The Reconstruction government has authorized a bold land redistribution effort: seizing and subdividing former Confederate plantations for freedmen, without compensating their former owners. Thanks to judicial reform and a revised Fifth Amendment, the courts now allow such a radical move.
 

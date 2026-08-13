@@ -19,6 +19,8 @@ Q.disputedDemEV = 0;
 
 Q.disputed_states_1876 = [];
 
+// Southern states use the corrected AR code for Arkansas (Q.southern_states currently
+// stores "AK" for Arkansas, a bug - this scene uses its own corrected list instead).
 let southernCodes = ["VA", "NC", "SC", "GA", "AL", "FL", "MS", "AR", "TX", "LA"];
 
 let closeStates = {
@@ -54,6 +56,14 @@ let baselineRep = 53;
 let baselineDem = 44;
 let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.freemen_rep + Q.immigrant_laborers_rep + Q.unemployed_rep) / 6 - baselineRep;
 let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
+
+let candidateNorthShift = {
+  "Tilden":    -2.5,
+  "Hendricks": -0.5,
+  "Bayard":     1.0,
+  "Hancock":    0,
+  "Allen":     -1.0
+}[Q.dem_candidate_1876] || 0;
 
 for (let state of Q.states) {
   let votes = { rep: 0, dem: 0 };
@@ -98,7 +108,7 @@ for (let state of Q.states) {
   }
 
   if (!isSouthern && closeStates[state] !== undefined) {
-    let nudge = closeStates[state] * 0.1;
+    let nudge = closeStates[state] * 0.1 + candidateNorthShift;
     let randomJitter = (Math.random() * 0.8) - 0.4;
     let marginTarget = nudge + randomJitter;
 
@@ -173,6 +183,12 @@ if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisput
 } else {
   Q.potus_winner = "dem";
 }
+
+if(Q.demEVTotal == 0 && Q.libEVTotal == 0)
+{
+  this.achieve("washington");
+}
+
 !}
 on-display: {!
   var winners = {
@@ -275,7 +291,7 @@ The <span style="color: #c00000;">**Republicans**</span> have carried a clear ma
 @defeat_dem_1876
 title: The <span style="color: #0015bc;">**Democrats**</span> have won the presidency.
 subtitle: <span style="color: #0015bc;">**Democrats**</span>: [+ demEVTotal +] electoral votes
-view-if: potus_winner = "dem"
+view-if: potus_winner = "dem"; lose_vote = 1;
 on-arrival: {!
     Q.president = Q.dem_candidate_1876;
     Q.president_party = "dem";
@@ -322,8 +338,8 @@ on-arrival: {!
     Q.president = Q.dem_candidate_1876;
     Q.president_party = "dem";
     Q.potus_winner = "dem";
-    Q.compromise_1877 = 0;
     Q.dem_relation += 8;
+    Q.lose_vote = 1;
 !}
 
 Rather than contest returning boards openly aligned with armed Redeemer organizations, the administration accepts the Democratic certifications. [+ dem_candidate_1876 +] will be the next President. It avoids a constitutional crisis, but it hands the <span style="color: #002765;">**Bourbon**</span> wing of the Democratic Party exactly the validation it wanted, in exactly the states where the ballot was least free.

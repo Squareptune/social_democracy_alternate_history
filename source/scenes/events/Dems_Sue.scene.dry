@@ -81,6 +81,7 @@ on-arrival: {!
     Q.kkk_strength *= 1.15;
     Q.freemen_rep -= 3;
     Q.reconstruction_support -= 2;
+    Q.lose_vote = 1;
 !}
 go-to: court_outcome
 

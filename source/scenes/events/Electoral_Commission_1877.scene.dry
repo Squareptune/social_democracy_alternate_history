@@ -30,6 +30,7 @@ on-arrival: {!
     Q.president = Q.dem_candidate_1876;
     Q.president_party = "dem";
     Q.potus_winner = "dem";
+    Q.lose_vote = 1;
 !}
 go-to: commission_end
 
@@ -42,7 +43,7 @@ on-arrival: {!
     Q.potus_winner = "rep";
 
     let houseSeatPower = (Q.house_majority || 0) + (Q.sen_majority || 0);
-    Q.commission_leverage = 15 + (houseSeatPower * 3) + ((Q.occupation || 0) * 6) - ((Q.radical_strength || 0) * 0.15) + ((Q.dem_relation || 0) * 0.3);
+    Q.commission_leverage = 30 + (houseSeatPower * 3) + ((Q.occupation || 0) * 6) - ((Q.radical_strength || 0) * 0.15) + ((Q.dem_relation || 0) * 0.3);
     Q.commission_leverage = Math.max(5, Math.round(Q.commission_leverage));
 
     Q.satisfaction_needed = Math.round(20 + ((Q.dem_bourbon_strength || 0) - (Q.dem_reform_strength || 0)) * 0.3);

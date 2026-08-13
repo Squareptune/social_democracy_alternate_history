@@ -254,6 +254,13 @@ if (Q.samanabay_lease) {
     Q.liberal_strength  += 2;
     Q.radical_dissent   += 1;
 }
+else
+{
+  Q.lose_vote = 1;
+  Q.moderate_strength -= 2;
+  Q.liberal_strength -= 2;
+  Q.radical_dissent -= 2;
+}
 
 !}
 go-to: samana_result
@@ -364,6 +371,7 @@ Q.radical_dissent  -= 2;
 Q.liberal_strength += 1;
 Q.dem_relation     += 2;
 Q.europe_relation  += 1;
+Q.lose_vote = 1;
 
 !}
 

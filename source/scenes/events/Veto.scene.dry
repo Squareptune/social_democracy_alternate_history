@@ -100,6 +100,7 @@ on-arrival: {!
     Q.radical_dissent += 4;
     Q.freedmen_rep -= 2;
     Q.veto_reason = "";
+    Q.lose_vote = 1;
 !}
 
 We are forced to back down as [+ president +] has won this time. <span style="color: #9D2933;">**Moderates**</span> defend our decision as strategic but to many, it looks like cowardice. The veto holds.

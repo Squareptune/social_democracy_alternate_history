@@ -19,7 +19,7 @@ title: Mobilize the Freedmen
 subtitle: Douglass travels through the South organizing freedmen communities and Union Leagues.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; last_advisor_action = 1; freemen_rep += 5; Union_League_strength += 10;
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; freemen_rep += 5; Union_League_strength += 10; douglass_ear += 1;
 
 Douglass travels through the South at considerable personal risk, speaking to freedmen's communities and building up Union League organization. His presence electrifies Black audiences.
 

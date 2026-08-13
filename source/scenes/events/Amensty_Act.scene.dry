@@ -92,6 +92,7 @@ on-arrival: {!
     } else {
         Q.amnesty_act = 1;
         Q.amnesty_conditions = 0;
+        Q.lose_vote = 1;
         Q.freemen_rep -= 3;
         Q.reconstruction_support -= 3;
         Q.radical_dissent += 6;

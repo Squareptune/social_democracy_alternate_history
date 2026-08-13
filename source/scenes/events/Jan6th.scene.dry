@@ -2,7 +2,7 @@ title: The Valentine's Day Riot
 subtitle: A mob descends on the Capitol as Congress moves to certify the election.
 tags: event
 new-page: true
-view-if: March_DC = 1 and year = 1877 and month = 2 and (dem_bourbon_strength > dem_reform_strength)
+view-if: March_DC = 1 and year = 1877 and month = 2
 max-visits: 1
 on-arrival: {!
     Q.riot_prep_choices = 0;

@@ -75,15 +75,20 @@ Q.impeachment_unlocked = 0;
 Q.rep_lib_working_majority = 0;
 Q.rep_lib_working_majority_senate = 0;
 
+Q.majority_lost = 0;
+
 Q.reconstruction_support = 70;
 Q.Johnson_plan = 0;
 Q.Moderate_plan = 0;
 Q.Radical_plan = 0;
+Q.Radical_plan_Count = 0;
 Q.veto = 0;
 Q.veto_reason = "";
 Q.civil_rights_act = 0;
 Q.civil_rights_act_passed = 0;
 Q.civil_rights = 0;
+
+Q.lose_vote = 0;
 
 // inter-party relations
 Q.dem_relation = 5;
@@ -94,6 +99,7 @@ Q.kkk_strength = 1;
 Q.kkk_militancy = 0.01;
 Q.kkk_history = [];
 Q.whiteL_strength = 0;
+Q.kkk_rise = 0;
 Q.whiteL_militancy = 0;
 Q.whiteL_formed = 0;
 Q.white_league_trigger = 0;
@@ -150,6 +156,7 @@ Q.fortheen_A = 0;
 Q.fifthteen = 0;
 Q.Blain = 0;
 Q.limit = 1;
+Q.Forty_Acres = 0;
 
 Q.budget = 4;
 Q.inflation = 3.82;
@@ -157,7 +164,7 @@ Q.GreenBacks = 1;
 Q.economic_growth = 2.9;
 Q.economic_expansion = 0;
 Q.Panic_seen = 0;
-
+Q.laissez_faire = 0;
 
 Q.classes = ['workers', 'middle_class', 'rural', 'freemen', 'immigrant_laborers', 'unemployed'];
 Q.parties = ['rep', 'dem', 'lib', 'other'];
@@ -1986,6 +1993,7 @@ Q.schurz_advisor = 0;
 Q.trumbull_advisor = 0;
 Q.cox_advisor = 0;
 Q.douglass_advisor = 0;
+Q.douglass_ear = 0;
 Q.greeley_dead = 0;
 
 !}

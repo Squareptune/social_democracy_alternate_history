@@ -122,5 +122,6 @@ The articles of impeachment are adopted and sent to the Senate for trial.
 title: Impeachment fails in the House
 subtitle: Nay votes: [+ nah_disp +]
 view-if: house_impeach_passed = 1
+on-arrival: lose_vote = 1;
 
 The impeachment effort collapses. President Johnson survives and emerges emboldened.

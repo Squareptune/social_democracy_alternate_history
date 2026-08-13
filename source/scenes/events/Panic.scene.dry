@@ -8,11 +8,9 @@ on-arrival: {!
 
     Q.economic_expansion = Math.max(0, Q.economic_expansion - 50);
 
-    // Direct hit to growth and the macro unemployment rate
     Q.economic_growth -= 4.5;
     Q.unemployment_rate += 6;
 
-    // a credit crunch is deflationary whether or not Greenbacks are still circulating
     if (Q.GreenBacks == 1) {
         Q.inflation -= 0.8;
     } else {
@@ -67,27 +65,21 @@ What course do we take?
 
 @laissez_faire
 on-arrival: {!
-    // Conservative/Liberal approval, worker anger
+    Q.laissez_faire = 1;
     Q.conservative_dissent -= 5;
     Q.conservative_strength += 3;
     Q.liberal_dissent -= 3;
     Q.liberal_strength += 2;
     Q.radical_dissent += 6;
     Q.moderate_dissent += 3;
-
-    // Economy slowly corrects but workers suffer longer
     Q.unemployment_rate += 1.5;
     Q.economic_growth -= 0.5;
     Q.workers_dem += 4;
     Q.immigrant_laborers_dem += 3;
     Q.unemployed_dem += 4;
     Q.middle_class_dem += 2;
-
-    // Middle class and rural appreciate restraint
     Q.middle_class_rep += 3;
     Q.rural_rep += 2;
-
-    // Budget improves slightly from reduced spending pressure
     Q.budget += 1;
 !}
 

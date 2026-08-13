@@ -79,8 +79,8 @@ go-to: Deploy
 
 @crackdown_kkk
 title: Crack down on the KKK
-choose-if: (enforcement_acts = 1 or (occupation >= 1 and Us_police_loyalty >= 0.6))
-unavailable-subtitle: [? if enforcement_acts = 0 and occupation < 1: Federal occupation is required. ?][? if enforcement_acts = 0 and Us_police_loyalty < 0.6: Local police will not cooperate. ?]
+choose-if: (enforcement_acts = 1 or (occupation >= 1 and Us_police_loyalty >= 0.6)) and kkk_strength > 0
+unavailable-subtitle: [? if enforcement_acts = 0 and occupation < 1: Federal occupation is required. ?][? if enforcement_acts = 0 and Us_police_loyalty < 0.6: Local police will not cooperate. ?][? if kkk_strength <= 0: The KKK is basically eradicated?]
 on-arrival: {!
     let base = Q.enforcement_acts ? 0.65 : 0.70;
     Q.kkk_strength *= base;
@@ -96,8 +96,8 @@ We launch coordinated action against suspected Klan operations.[? if enforcement
 @persecute_kkk
 title: Prosecute Klan leadership
 view-if: enforcement_acts = 1
-choose-if: occupation >= 1 and judicial_reform >= 2 and Us_police_loyalty >= 0.6
-unavailable-subtitle: [? if occupation < 1: Federal presence in the South is required. ?][? if judicial_reform < 2: The courts are not yet capable of handling these prosecutions. ?][? if Us_police_loyalty < 0.6: Law enforcement will not cooperate. ?]
+choose-if: occupation >= 1 and judicial_reform >= 2 and Us_police_loyalty >= 0.6 and kkk_strength > 0
+unavailable-subtitle: [? if occupation < 1: Federal presence in the South is required. ?][? if judicial_reform < 2: The courts are not yet capable of handling these prosecutions. ?][? if Us_police_loyalty < 0.6: Law enforcement will not cooperate. ?][? if kkk_strength <= 0: The KKK is basically eradicated?]
 on-arrival: {!
     Q.kkk_strength *= Q.habeas_suspended ? 0.45 : 0.60;
     Q.kkk_militancy -= Q.habeas_suspended ? 0.10 : 0.07;

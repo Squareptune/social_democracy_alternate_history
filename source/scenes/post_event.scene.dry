@@ -491,8 +491,8 @@ if (Q.fifthteen == 0) {
 } else {
     let registrationRate = Math.min(1,
         0.20
-        + (Q.Union_League_strength / 1000) * 0.40
-        + (Q.freedmen_education / 100) * 0.25
+        + (((Q.South_army_strength) + (Q.Union_League_strength * 0.5)) / 20) * 0.25
+        + (Q.freedmen_education / 100) * 0.55
     );
 
     let rawSuppression = Math.min(1, (Q.ViolencePenalty || 0) / 30);
@@ -692,6 +692,23 @@ if (Q.month_actions >= 1) {
     Q.bubble_ticker_timer = Math.max(0, (Q.bubble_ticker_timer || 0) - 1);
     Q.boom_ticker_timer = Math.max(0, (Q.boom_ticker_timer || 0) - 1);
 
+    if(Q.inflation <= 3.50 && Q.flag_boom == 1)
+    {
+        this.achieve("stonks");
+    }
+    if((Q.stevens_advisor == 1 || Q.sumner_advisor == 1 || Q.wade_advisor == 1 || Q.chandler_advisor == 1 || Q.morton_advisor == 1 || Q.butler_advisor == 1 ) && (Q.garfield_advisor == 1 || Q.sherman_advisor == 1 || Q.blaine_advisor == 1 || Q.hayes_advisor == 1 || Q.fish_advisor == 1) && (Q.conkling_advisor == 1 || Q.cameron_advisor == 1 || Q.seward_advisor == 1) && (Q.schurz_advisor == 1 || Q.trumbull_advisor == 1 || Q.cox_advisor == 1))
+    {
+        this.achieve("team_of_rivals");
+    }
+    if(Q.fenian > 0 && Q.treaty_Washington = 3)
+    {
+        this.achieve("fenian_games");
+    }
+    if(Q.sherman_advisor == 1 && Q.occupation >= 2)
+    {
+        this.achieve("shermanposting");
+    }
+    
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
         if (Q.pro_republic < 60) {
@@ -814,6 +831,14 @@ if (Q.month_actions >= 1) {
         let pressure = (Q.whiteL_strength / 1000) * Q.whiteL_militancy;
         Q.rural_dem += pressure * 2;
         Q.rural_rep -= pressure * 2;
+    }
+    if (Q.kkk_strength >= 150 and Q.kkk_rise == 0)
+    {
+        Q.kkk_rise = 1;
+    }
+    if (Q.kkk_rise == 1 && Q.kkk_strength == 0)
+    {
+        Q.kkk_rise = 2;
     }
     
     let demReformDominant = (Q.dem_reform_strength > Q.dem_bourbon_strength) && (Q.dem_reform_dissent < Q.dem_bourbon_dissent);
