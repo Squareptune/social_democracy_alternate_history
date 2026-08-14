@@ -30,8 +30,11 @@ on-arrival: {!
     Q.reconstruction_support -= 2;
 
     Q.workers_dem += 10;
+    Q.worker_rep -= 5
     Q.rural_dem += 10;
+    Q.rural_rep -= 5;
     Q.immigrant_laborers_dem += 10;
+    Q.immigrant_laborer_rep -= 5;
 !}
 tags: event
 view-if: (year = 1873 and month >= 9) or panic_pending = 1
