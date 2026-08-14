@@ -317,13 +317,11 @@ on-arrival: {!
 
 !}
 
-The <span style="color: #c00000;">**Republicans**</span> have won the election. 
-
-[? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. ?]
+The <span style="color: #c00000;">**Republicans**</span> have won the election. [? if Candidate = "Grant" : Grant's victory is a resounding endorsement of his first term. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republican**</span> revolt has been crushed at the polls. ?]
 
 [? if Candidate = "Wade" : Wade's Radical coalition has held together long enough to win. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republicans**</span> are routed. Reconstruction enters a new, more forceful phase. ?]
 
-[? if Candidate = "Chase" : Chase wins a second term, vindicating his moderate course. The Radicals are displeased but powerless. ?][? if liberal_split = 1: The <span style="color: #DAA520;">**Liberal Republican**hallenge has collapsed.</span> ?]
+[? if Candidate = "Chase" : Chase wins a second term, vindicating his moderate course. The Radicals are displeased but powerless. ?][? if liberal_split = 1 and Candidate = "Chase": The <span style="color: #DAA520;">**Liberal Republican**</span> challenge has collapsed. ?]
 
 [? if Candidate = "Blaine" : James Blaine carries the <span style="color: #c00000;">**Republican**</span> banner to victory. The new president will chart his own course, distinct from the Radical era. ?]
 

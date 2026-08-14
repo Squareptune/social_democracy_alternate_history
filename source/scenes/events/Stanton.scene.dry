@@ -5,6 +5,7 @@ max-visits: 1
 tags: event
 new-page: true
 go-to: Response
+face-image: img/portraits/Stanton.jpg
 on-arrival: sect_war = "Edwin M. Stanton"; sect_war_party = "R"; radical_dissent += 2; moderate_dissent += 1; conservative_strength += 1; radicalization += 5;
 
 = The Dismissal of Edwin Stanton

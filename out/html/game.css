@@ -603,16 +603,16 @@ table {
 }
 
 .achievement-icon img {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
     display: block;
     margin: auto;
 }
 
 .achievement-icon video {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
     display: block;
     margin: auto;
@@ -671,7 +671,7 @@ table {
 }
 
 td.achievement-icon-locked {
-  width: 64px; /* Now this will be strictly enforced */
+  width: 64px;
 }
 
 video {

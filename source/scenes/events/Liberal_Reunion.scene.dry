@@ -11,11 +11,7 @@ The <span style="color: #DAA520;">**Liberal Republican**</span> experiment has f
 
 Their representation in Congress has withered, their presidential ambitions collapsed, and the <span style="color: #0015bc;">**Democratic Party**</span>, despite every overture, has proven an uneasy home for men who still think of themselves as Union Republicans.
 
-Quietly, in caucus rooms and newspaper offices, former allies have begun asking the same question:
-
-*Was it worth it?*
-
-For most, the answer is a bitter no. Not because they have forgiven the <span style="color: #c00000;">**Republicans**</span>, many still harbor deep grievances against the party, but because the alternative proved even less appealing.
+They have forgiven the <span style="color: #c00000;">**Republicans**</span>, many still harbor deep grievances against the party, but because the alternative proved even less appealing.
 
 [? if liberal_relation >= 50 : Our efforts to keep the door open have not gone unnoticed. Some <span style="color: #DAA520;">**Liberal Republican**</span> leaders now speak more favorably of us than they do of the <span style="color: #0015bc;">**Democrats**</span>. ?]
 
@@ -23,11 +19,7 @@ For most, the answer is a bitter no. Not because they have forgiven the <span st
 
 [? if liberal_relation < 25 : Relations have deteriorated into open hostility. Any reunion would be uneasy at best, as many would sooner burn their party cards than shake hands with us again. ?]
 
-A delegation of <span style="color: #DAA520;">**Liberal Republican**</span> leaders has approached our party.
-
-They seek neither vindication nor apology.
-
-They simply want terms.
+A delegation of <span style="color: #DAA520;">**Liberal Republican**</span> leaders has approached our party aiming to ask what will it take from them to rejoin the Republican Party.
 
 - @welcome_back: Welcome them back with open arms and promises of reform.
 - @civil_service_deal: Offer concrete civil service reform concessions.

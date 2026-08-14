@@ -4,7 +4,7 @@ go-to: eg_menu
 on-arrival: {!
 Q.game_over = 1;
 
-let AuthorityNum =(Q.occupation + Q.South_army_strength + (Q.Union_League_strength * Q.Union_League_militancy) + (Q.Us_police_strength * Q.Us_police_loyalty))- 10 *((Q.kkk_strength * Q.kkk_militancy) + (Q.whiteL_strength * Q.whiteL_militancy));
+let AuthorityNum = (Q.occupation + Q.South_army_strength + (Q.Union_League_strength * Q.Union_League_militancy) + (Q.Us_police_strength * Q.Us_police_loyalty))- 10 *((Q.kkk_strength * Q.kkk_militancy) + (Q.whiteL_strength * Q.whiteL_militancy));
 
 let AuthorityDom = (Q.occupation + Q.South_army_strength + (Q.Union_League_strength * Q.Union_League_militancy) + (Q.Us_police_strength * Q.Us_police_loyalty)) + 10 * ((Q.kkk_strength * Q.kkk_militancy) + (Q.whiteL_strength * Q.whiteL_militancy));
 
@@ -17,7 +17,7 @@ let Rights = Math.min(100,Amendments * Q.freedmen_education * Q.civil_rights * Q
 let Cohesion = 100 - Q.dissent_percent;
 
 // Historical
-if (Q.President == "Hayes" && Q.term_troops == "total" && Q.term_home_rule == 1 && Amendments == 2 && Rights >= 35 && Rights <= 66 && Authority >= 20 && Authority <= 40)
+if (Q.president == "Hayes" && Q.term_troops == "total" && Q.term_home_rule == 1 && Amendments == 2 && Rights >= 35 && Rights <= 66 && Authority >= 20 && Authority <= 40)
 {
     this.achieve("historical");
     Q.ending = "Historical";
@@ -93,7 +93,7 @@ if(Q.upper_tax_rates == -5 && Q.lower_tax_rates == -5 && Q.tariffs == -5 && Q.la
 {
     this.achieve("smith");
 }
-if(Q.Winner_68 == Q.Winner_72 && Q.president)
+if (Q.Winner_68 === Q.Winner_72 && Q.Winner_72 === Q.president)
 {
     this.achieve("subjects");
 }
@@ -121,7 +121,7 @@ if(Q.douglass_ear >= 5)
 {
     this.achieve("douglass_ear");
 }
-if(Q.lose_vote == 1)
+if(Q.lose_vote == 0)
 {
     this.achieve("dream_of_republican_town");
 }
@@ -192,7 +192,7 @@ By the beginning of the twentieth century, the United States had become a nation
 @ConOccupation
 view-if: ending = "Contested Occupation"
 title: Contested OCCUPATION: South in eternal conflict.
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/_Kingdom_Coming__by_Henry_C._Work_–_sung_by_Frank_Crumit_(1927).mp3
 
@@ -209,7 +209,7 @@ By the twentieth century, the Civil War had never truly ended. The Union remaine
 @ConReconstruction
 view-if: ending = "Contested Reconstruction"
 title: Contested Reconstruction: Reconstruction achieved…but our party is divided.
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
 
@@ -226,7 +226,7 @@ The result was a fragile but enduring political balance. Reconstruction survived
 @Historical
 view-if: ending = "Historical"
 title: Historical: Hayes, Hayes, we all love Hayes.
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/For Hayes and Wheeler Too!.mp3
 
@@ -241,7 +241,7 @@ Reconstruction left an enduring constitutional legacy, abolishing slavery and es
 @Compromise
 view-if: ending = "Compromise"
 title: Compromise: Reconstruction over too soon
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/We_shall_overcome.mp3
 
@@ -256,7 +256,7 @@ Reconstruction left an enduring constitutional legacy, abolishing slavery and es
 @Liminal
 view-if: ending = "Liminal"
 title: LIMINAL: Stalemate
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/We_shall_overcome.mp3
 
@@ -271,7 +271,7 @@ By the beginning of the twentieth century, Americans had grown accustomed to an 
 @Betrayal
 view-if: ending = "Betrayal"
 title: Betrayal: Freemen have rights…or do they?
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/Dixie's_Land_Instrumental.mp3
 
@@ -288,7 +288,7 @@ By the beginning of the twentieth century, the Reconstruction Amendments remaine
 @Redemption
 view-if: ending = "Redemption"
 title: Redemption: The White man’s South.
-tags: ending
+tags: endings
 go-to: eg_menu
 audio: music/Dixie's_Land_Instrumental.mp3
 

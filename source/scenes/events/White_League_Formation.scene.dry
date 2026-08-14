@@ -3,6 +3,7 @@ subtitle: The Ghost of the Confederacy
 on-arrival: whiteL_formed = 1; whiteL_strength += 2; whiteL_militancy = 0.35; kkk_strength -= 2;
 tags: event
 view-if: white_league_trigger >= 1
+face-image: img/kkk.webp
 max-visits: 1
 
 = Formation of the White Leagues

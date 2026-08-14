@@ -5,6 +5,7 @@ max-visits: 1
 tags: event
 new-page: true
 go-to: Response
+face-image: img/portraits/Johnson.jpg
 on-arrival: sect_interior = "Orville H. Browning"; sect_interior_party = "R"; sect_attorney = "Henry Stanbery"; sect_attorney_party = "D"; sect_postmaster = "Alexander Randall"; sect_postmaster = "Alexander Randall"; radical_dissent += 1; moderate_dissent += 1; conservative_strength += 1;
 
 = Johnson sacks Cabinet
@@ -13,9 +14,9 @@ In a dramatic shakeup, President Andrew Johnson removes several key members of A
 
 Secretary of the Interior **James Harlan** resigns under pressure, citing irreconcilable differences with Johnson's Reconstruction policies. **Attorney General James Speed** also steps down, objecting to the president's attempts to undermine civil rights legislation. **Postmaster General William Dennison** follows suit, expressing frustration with the administration's direction.
 
-In their place, Johnson appoints loyalists: **Orville H. Browning** takes over Interior, **Henry Stanbery** becomes Attorney General, and **Alexander Randall** assumes the post of Postmaster General. All are seen as aligned with Johnson's lenient stance toward the former Confederacy.
+In their place, Johnson appoints loyalists who are aligned with his lenient stance toward the former Confederacy. The reshuffle deepens tensions between the president and congressional <span style="color: #c00000;">**Republicans**</span>, who view the dismissals as a hostile power grab by an increasingly isolated executive. 
 
-The reshuffle deepens tensions between the president and congressional <span style="color: #c00000;">**Republicans**</span>, who view the dismissals as a hostile power grab by an increasingly isolated executive. Members of the <span style="color: #7A1F5C;">**Radicals**</span> begins rallying in the shadows to aim to remove Johnson from office, they begin drafting the ideas of a bill that will limit the president's power that Johnson will surely violate which will give Congress the perfect reason for his removal.
+Members of the <span style="color: #7A1F5C;">**Radicals**</span> begins rallying in the shadows to aim to remove Johnson from office, they begin drafting the ideas of a bill that will limit the president's power that Johnson will surely violate which will give Congress the perfect reason for his removal.
 
 @Response
 
