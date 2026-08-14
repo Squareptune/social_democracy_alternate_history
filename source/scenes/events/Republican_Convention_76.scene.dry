@@ -41,6 +41,8 @@ Q.third_term_won = 1;
 !}
 go-to: VP_1876
 
+[? if Candidate = "Grant" : <div class="face-figure"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg" alt="Grant" class="face-img"></div> ?][? if Candidate = "Wade" : <div class="face-figure"><img src="img/portraits/Benjamin_F_Wade.jpg" alt="Wade" class="face-img"></div> ?][? if Candidate = "Chase" : <div class="face-figure"><img src="img/portraits/Salmon-P-Chase.webp" alt="Chase" class="face-img"></div> ?]
+
 The convention breaks with a century of precedent. [+ Candidate +] is renominated for a third term amid cheers from loyalists and open dismay from delegates who warn the party is flirting with a one-man rule. The <span class="tooltip-text" title="Democratic" style="color: #0015bc;">**Democrats**</span> press will make the "third term" into a rallying cry all autumn.
 
 @ThirdTerm_Decline
@@ -67,6 +69,8 @@ Q.liberal_dissent += 4;
 !}
 go-to: VP_1876
 
+[? if Candidate = "Grant" : <div class="face-figure"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg" alt="Grant" class="face-img"></div> ?][? if Candidate = "Wade" : <div class="face-figure"><img src="img/portraits/Benjamin_F_Wade.jpg" alt="Wade" class="face-img"></div> ?][? if Candidate = "Chase" : <div class="face-figure"><img src="img/portraits/Salmon-P-Chase.webp" alt="Chase" class="face-img"></div> ?][? if Candidate = "Conkling" : <div class="face-figure"><img src="img/portraits/Roscoe_Conkling.jpg" alt="Roscoe Conkling" class="face-img"></div> ?][? if Candidate = "Blaine" : <div class="face-figure"><img src="img/portraits/James_G._Blaine.jpg" alt="James Blaine" class="face-img"></div> ?]
+
 The party rallies behind [+ Candidate +] for another term, though enthusiasm is far from unanimous. The **<span style="color: #DAA520;">Liberal Republican</span>** wing continues to eye its own path.
 
 @Reno_challenge_Incumbent
@@ -85,6 +89,8 @@ Q.challenger_beat_incumbent = (challengerBloc > incumbentBloc) ? 1 : 0;
 go-to: Open_Convention if challenger_beat_incumbent = 1; incumbent_holds_76 if challenger_beat_incumbent = 0
 
 @incumbent_holds_76
+
+[? if Candidate = "Grant" : <div class="face-figure"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg" alt="Grant" class="face-img"></div> ?][? if Candidate = "Wade" : <div class="face-figure"><img src="img/portraits/Benjamin_F_Wade.jpg" alt="Wade" class="face-img"></div> ?][? if Candidate = "Chase" : <div class="face-figure"><img src="img/portraits/Salmon-P-Chase.webp" alt="Chase" class="face-img"></div> ?][? if Candidate = "Conkling" : <div class="face-figure"><img src="img/portraits/Roscoe_Conkling.jpg" alt="Roscoe Conkling" class="face-img"></div> ?][? if Candidate = "Blaine" : <div class="face-figure"><img src="img/portraits/James_G._Blaine.jpg" alt="James Blaine" class="face-img"></div> ?]
 
 Despite the challenge, [+ president +]'s bloc holds the floor. The incumbent is renominated, though the fight has left the party bruised heading into the fall.
 
@@ -116,6 +122,7 @@ Q.radical_dissent += 3;
 Q.middle_class_rep += 3;
 Q.workers_rep += 1;
 !}
+face-image: img/portraits/James_G._Blaine.jpg
 go-to: VP_1876
 
 Blaine's magnetism carries the **<span style="color: #9D2933;">Moderates</span>**, though whispers of the Mulligan letters and his railroad dealings will dog him through the general election.
@@ -132,6 +139,7 @@ Q.conservative_dissent += 6;
 Q.freemen_rep += 4;
 Q.rural_rep -= 1;
 !}
+face-image: img/portraits/Oliver_Hazard_Perry_Morton.jpg
 go-to: VP_1876
 
 Morton, the last true voice of **<span style="color: #7A1F5C;">Radical</span>** Reconstruction, wins the nomination despite doctors' warnings about the strain of a national campaign.
@@ -148,6 +156,7 @@ Q.liberal_dissent += 3;
 Q.middle_class_rep += 2;
 Q.rural_rep += 2;
 !}
+face-image: img/portraits/Roscoe_Conkling.jpg
 go-to: VP_1876
 
 Conkling's New York machine delivers him the nomination. Reformers in the party grumble about the spoils system, but the organization behind him is formidable.
@@ -162,6 +171,7 @@ Q.liberal_dissent -= 4;
 Q.middle_class_rep += 2;
 Q.rural_rep += 2;
 !}
+face-image: img/portraits/Rutherford_Hayes.jpg
 go-to: VP_1876
 
 Deadlocked between Blaine, Morton, and Conkling, the convention turns to Hayes as a compromise: a three-term Ohio governor with a clean reputation and no enemies to speak of. It is not a nomination of enthusiasm, but of exhaustion.
@@ -185,6 +195,7 @@ Q.conservative_dissent -= 2;
 Q.radical_dissent += 1;
 Q.middle_class_rep += 2;
 !}
+face-image: img/portraits/19_William_Wheeler_3x4.jpg
 go-to: convention_end_1876
 
 Wheeler is a virtual unknown outside New York, but his reputation for honesty balances a ticket increasingly worried about the party's reformist credentials.
@@ -201,6 +212,7 @@ Q.conservative_dissent += 6;
 Q.radical_dissent += 2;
 Q.middle_class_rep += 4;
 !}
+face-image: img/portraits/Benjamin_Helm_Bristow_Brady_-_Handy_U.S._Secretary_of_Treasury.jpg
 go-to: convention_end_1876
 
 Bristow's anti-corruption credentials thrill reformers and reassure **<span style="color: #DAA520;">liberals</span>**, but the party machine, still smarting from the Whiskey Ring prosecutions, is furious.
@@ -214,6 +226,7 @@ Q.conservative_dissent -= 3;
 Q.radical_dissent += 2;
 Q.rural_rep += 2;
 !}
+face-image: img/portraits/Frederick_T._Frelinghuysen_-_Brady-Handy.jpg
 go-to: convention_end_1876
 
 Frelinghuysen brings no particular strength to the ticket, but no particular liability either; a safe hand chosen to avoid further factional strife.

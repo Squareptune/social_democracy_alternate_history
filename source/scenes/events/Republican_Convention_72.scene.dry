@@ -31,6 +31,7 @@ on-arrival: {!
     Q.rural_rep += 1;
     Q.workers_rep += 1;
 !}
+face-image: img/portraits/Ulysses_S._Grant_1870-1880.jpg
 go-to: VP_1872
 
 Grant is unanimously renominated. The party rallies around the incumbent president, presenting a united front going into the general election. The <span style="color: #DAA520;">**Liberal Republicans**</span> are dissatisfied with Grant and there dissent increases.
@@ -52,6 +53,7 @@ on-arrival: {!
     Q.middle_class_rep -= 2;
     Q.rural_rep -= 1;
 !}
+face-image: img/portraits/Benjamin_F_Wade.jpg
 go-to: VP_1872
 
 After a bruising floor fight, Wade secures renomination. The **<span style="color: #7A1F5C;">Radical</span>** wing is triumphant, but the convention has left deep scars. **<span style="color: #B5651D;">Conservative</span>** and **<span style="color: #9D2933;">moderate</span>** delegates walk out muttering about bolt candidates. The <span style="color: #DAA520;">**Liberal Republicans**</span> dissent continues to increase.
@@ -72,6 +74,7 @@ on-arrival: {!
     Q.freemen_rep -= 3;
     Q.workers_rep -= 1;
 !}
+face-image: img/portraits/Salmon-P-Chase.webp
 go-to: VP_1872
 
 Chase is renominated over **<span style="color: #7A1F5C;">Radical</span>** objections. The **<span style="color: #7A1F5C;">Radical</span>** wing is furious several prominent members publicly refuse to campaign for him. The <span style="color: #DAA520;">**Liberal Republicans**</span>, who had flirted with running their own candidate, are somewhat mollified but not fully satisfied.
@@ -118,6 +121,7 @@ go-to: challenger_wade_result
 go-to: VP_1872 if challenger_beat_wade = 1; wade_holds if challenger_beat_wade = 0
 
 @wade_holds
+face-image: img/portraits/Benjamin_F_Wade.jpg
 
 The challenge fails. Despite fierce opposition from **<span style="color: #9D2933;">Moderates</span>** and **<span style="color: #B5651D;">Conservatives</span>**, Wade's **<span style="color: #7A1F5C;">Radical</span>** base holds firm on the convention floor. Wade is renominated, though the battle has wounded the party.
 
@@ -126,6 +130,8 @@ The challenge fails. Despite fierce opposition from **<span style="color: #9D293
 @challenger_wade_result_win
 view-if: Candidate = "Conkling" or Candidate = "Blaine"
 go-to: VP_1872
+
+[? if Candidate = "Conkling" : <div class="face-figure"><img src="img/portraits/Roscoe_Conkling.jpg" alt="Roscoe Conkling" class="face-img"></div> ?][? if Candidate = "Blaine" : <div class="face-figure"><img src="img/portraits/James_G._Blaine.jpg" alt="James Blaine" class="face-img"></div> ?]
 
 [? if Candidate = "Conkling" : Roscoe Conkling of New York, backed by the **<span style="color: #B5651D;">conservative</span>** machine, defeats Wade on the convention floor. The **<span style="color: #7A1F5C;">Radicals</span>** are incandescent with rage. ?][? if Candidate = "Blaine" : James Blaine of Maine, the **<span style="color: #9D2933;">moderate</span>** favorite, outmaneuvers Wade's forces and secures the nomination. The **<span style="color: #7A1F5C;">Radicals</span>** feel betrayed. ?]
 
@@ -162,6 +168,7 @@ go-to: challenger_chase_result
 go-to: VP_1872 if challenger_beat_chase = 1; chase_holds if challenger_beat_chase = 0
 
 @chase_holds
+face-image: img/portraits/Salmon-P-Chase.webp
 
 Chase's **<span style="color: #9D2933;">moderate</span>** and **<span style="color: #B5651D;">conservative</span>** coalition holds on the convention floor. The **<span style="color: #7A1F5C;">Radicals</span>** challenge is beaten back, though the bitterness will linger through the campaign.
 
@@ -193,6 +200,7 @@ on-arrival: {!
     Q.immigrant_laborers_rep += 2;
     Q.middle_class_rep -= 1;
 !}
+face-image: img/portraits/Henry_Wilson,_VP_of_the_United_States.jpg
 go-to: convention_end_1872
 
 Henry Wilson, the "Natick Cobbler," brings strong **<span style="color: #7A1F5C;">Radical</span>** and labor credentials to the ticket. A former shoemaker turned senator, his working-class origins appeal to Northern industrial workers. He is deeply committed to Black civil rights, which energizes the freedmen vote but alarms **<span style="color: #B5651D;">conservatives</span>**.
@@ -209,6 +217,7 @@ on-arrival: {!
     Q.rural_rep += 2;
     Q.workers_rep += 1;
 !}
+face-image: img/portraits/Schuyler_Colfax,_photo_portrait_seated,_c1855-1865.jpg
 go-to: convention_end_1872
 
 Schuyler Colfax, the affable Speaker of the House, is a safe and familiar choice. His **<span style="color: #9D2933;">Moderate</span>** Republicanism and broad name recognition make him acceptable to most factions. The **<span style="color: #7A1F5C;">Radicals</span>** are not thrilled, but they will campaign for the ticket.
@@ -229,6 +238,7 @@ on-arrival: {!
     Q.WV_rural_rep += 3;
 !}
 go-to: convention_end_1872
+face-image: img/portraits/Horace_Maynard_-_Brady-Handy.jpg
 
 Horace Maynard of Tennessee is a <span style="color: #B22222;">**Southern Unionist**</span> whose nomination signals the party's desire to build a broader coalition in the upper South. His selection pleases **<span style="color: #B5651D;">conservatives</span>** and border-state <span style="color: #c00000;">**Republicans**</span>, but **<span style="color: #7A1F5C;">Radicals</span>** deeply distrust any overture toward Southern reconciliation.
 
@@ -249,6 +259,7 @@ on-arrival: {!
     Q.freemen_rep -= 1;
 !}
 go-to: convention_end_1872
+face-image: img/portraits/David_Davis_Supreme_Court_justice_-_Brady-Handy.jpg
 
 David Davis, Lincoln's old friend and former campaign manager, brings a pragmatic independence that appeals to **<span style="color: #9D2933;">moderates</span>** and **<span style="color: #DAA520;">liberals</span>**. He is not a doctrinaire **<span style="color: #7A1F5C;">Radical</span>**, and his selection is seen as a gesture toward the <span style="color: #DAA520;">**Liberal Republicans**</span> dissidents. The **<span style="color: #7A1F5C;">Radical</span>** wing is displeased but not mutinous.
 
