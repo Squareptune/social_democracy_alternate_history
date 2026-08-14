@@ -913,7 +913,7 @@ if (Q.month_actions >= 1) {
             Q[state + '_unemployed_dem'] = (Q[state + '_unemployed_dem'] || 0) + 2/12;
         }
     }
-    if(Q.liberal_split = 1)
+    if(Q.liberal_split == 1)
     {
         Q.middle_class_rep -= 3/12;
         Q.middle_class_lib += 3/12;
