@@ -72,6 +72,8 @@ Q.house_impeach_passed = 0;
 Q.house_impeachment_total = 0;
 Q.impeachment_unlocked = 0;
 
+Q.impeach_month = 0;
+
 Q.rep_lib_working_majority = 0;
 Q.rep_lib_working_majority_senate = 0;
 

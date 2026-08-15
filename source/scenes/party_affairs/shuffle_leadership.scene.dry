@@ -208,10 +208,10 @@ title: Add other advisors.
 tags: radical_advisor, moderate_advisor, conservative_advisor, liberal_advisor, nonfactional_advisor
 frequency: 1
 
-- @Radical: Add <span style="color: #7A1F5C;">Radical</span> advisor
+- @Radical: Add <span style="color: #7A1F5C;">**Radical**</span> advisor
 - @Moderate: Add <span style="color: #9D2933;">**Moderates**</span> advisor
 - @Conservative: Add <span style="color: #B5651D;">**Conservatives**</span> advisor
-- @Liberal: Add <span style="color: #DAA520;">Liberal</span> advisor
+- @Liberal: Add <span style="color: #DAA520;">**Liberal**</span> advisor
 - @Nonfactional: Add non-factional advisor
 - @rm_main: Remove advisors instead.
 - @remove_none: Stop changing advisors.
@@ -269,7 +269,7 @@ Charles Sumner is now an advisor. His moral authority on questions of equality i
 
 @add_wade
 title: Benjamin Wade
-subtitle: Senate President Pro Tempore. <span style="color: #7A1F5C;">Radical</span> firebrand and potential president.
+subtitle: Senate President Pro Tempore. <span style="color: #7A1F5C;">**Radical**</span> firebrand and potential president.
 is-card: true
 card-image: img/portraits/Benjamin_F_Wade.jpg
 tags: radical_advisor
@@ -281,7 +281,7 @@ Benjamin Wade is now an advisor. His blunt radicalism energizes the party's left
 
 @add_chandler
 title: Zachariah Chandler
-subtitle: Michigan senator and aggressive <span style="color: #7A1F5C;">Radical</span> party organizer.
+subtitle: Michigan senator and aggressive <span style="color: #7A1F5C;">**Radical**</span> party organizer.
 is-card: true
 card-image: img/portraits/Zachariah_Chandler.jpg
 tags: radical_advisor
@@ -293,7 +293,7 @@ Zachariah Chandler is now an advisor. He lacks Stevens's philosophical depth but
 
 @add_morton
 title: Oliver Morton
-subtitle: Indiana governor and senator. One of the most powerful <span style="color: #7A1F5C;">Radical</span> party bosses in the country.
+subtitle: Indiana governor and senator. One of the most powerful <span style="color: #7A1F5C;">**Radical**</span> party bosses in the country.
 is-card: true
 card-image: img/portraits/Oliver_Hazard_Perry_Morton.jpg
 tags: radical_advisor
@@ -305,7 +305,7 @@ Oliver Morton is now an advisor. His iron grip on Indiana Republican politics is
 
 @add_butler
 title: Benjamin Butler
-subtitle: Controversial Massachusetts <span style="color: #7A1F5C;">Radical</span>. Ruthless and effective.
+subtitle: Controversial Massachusetts <span style="color: #7A1F5C;">**Radical**</span>. Ruthless and effective.
 is-card: true
 card-image: img/portraits/Benjamin_Butler.jpg
 tags: radical_advisor
@@ -413,7 +413,7 @@ view-if: seward_advisor = 0 and ((difficulty = -1 and n_advisors < 4) or (diffic
 on-arrival: seward_advisor = 1; n_advisors += 1; conservative_strength += 3; conservative_dissent -= 3; europe_relation += 2; radical_dissent += 3
 go-to: advisor_menu
 
-William Seward is now an advisor. His long experience in government is valuable, though the <span style="color: #7A1F5C;">Radicals</span> deeply distrust him.
+William Seward is now an advisor. His long experience in government is valuable, though the <span style="color: #7A1F5C;">**Radicals**</span> deeply distrust him.
 
 ###################### LIBERAL ADVISORS
 
@@ -424,7 +424,7 @@ is-card: true
 card-image: img/portraits/Schurz,_Hon._Carl.jpg
 tags: liberal_advisor
 view-if: schurz_advisor = 0 and liberal_split = 0 and ((difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
-on-arrival: schurz_advisor = 1; n_advisors += 1; liberal_strength += 5; liberal_dissent -= 4; civil_service_reform += 1; middle_class_rep += 2
+on-arrival: schurz_advisor = 1; n_advisors += 1; liberal_strength += 5; liberal_dissent -= 4; middle_class_rep += 2
 go-to: advisor_menu
 
 Carl Schurz is now an advisor. His reform credentials and German-American connections are significant assets but his loyalty to the party is conditional on genuine reform.
@@ -448,7 +448,7 @@ is-card: true
 card-image: img/portraits/Jacob_Cox.jpg
 tags: liberal_advisor
 view-if: cox_advisor = 0 and liberal_split = 0 and ((difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
-on-arrival: cox_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; civil_service_reform += 1; conservative_dissent += 2
+on-arrival: cox_advisor = 1; n_advisors += 1; liberal_strength += 3; liberal_dissent -= 3; conservative_dissent += 2
 go-to: advisor_menu
 
 Jacob Cox is now an advisor. His reform credentials are genuine, and his Ohio connections are useful.
