@@ -73,6 +73,8 @@ let demYeaVotes   = Math.round(demSeats    * 0.05);
 let libRepYeaVotes = Math.round(libRepSeats * 0.40);
 let otherYeaVotes = Math.round(otherSeats  * 0.30);
 
+let requiredVotes = Math.ceil(totalSenate * (2/3));
+
 let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
 Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;

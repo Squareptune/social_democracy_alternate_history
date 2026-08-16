@@ -5,6 +5,7 @@ tags: potus_affairs
 view-if: rep_majority >= 1 and bureau_timer <= 0
 card-image: img/Oliver_Otis_Howard.jpg
 on-arrival:{! 
+
     Q.month_actions += 1;
     Q.bureau_timer += 6;
     Q.bureau_cost = Math.min(5, 1 + Math.floor((Q.kkk_strength + Q.whiteL_strength) / 400));

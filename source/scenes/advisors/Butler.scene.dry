@@ -17,7 +17,7 @@ Benjamin Butler of Massachusetts is the most controversial figure in the **<span
 @butler_impeachment_pressure
 title: Apply Impeachment Pressure
 subtitle: Butler uses the threat of impeachment proceedings to force compliance from hostile officials.
-view-if: president = "Johnson" and year >= 1867
+view-if: president = "c" and year >= 1867
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; impeachment_unlocked = 1; radical_strength += 5; radical_dissent -= 4; moderate_dissent += 4; conservative_dissent += 4;

@@ -92,11 +92,7 @@ else { Q.house_majority = 0; }
 
 !}
 
-We extend an open hand.
-
-The response is restrained.
-
-<span style="color: #DAA520;">**Liberal Republican**</span> representatives and senators return to the Republican caucus. They reclaim their old seats with little ceremony, looking less like victors than men admitting an unpleasant mistake.
+We extend an open hand. <span style="color: #DAA520;">**Liberal Republican**</span> representatives and senators return to the Republican caucus. They reclaim their old seats with little ceremony, looking less like victors than men admitting an unpleasant mistake.
 
 A number of their former colleagues refuse. Some remain with the <span style="color: #0015bc;">**Democrats**</span>; others choose independence. Their departure is permanent.
 
@@ -251,9 +247,7 @@ else { Q.house_majority = 0; }
 
 !}
 
-No one mistakes the arrangement for reconciliation, but it works.
-
-Representatives and senators return to the Republican fold, persuaded less by shared principle than by the advantages of belonging to the governing party.
+No one mistakes the arrangement for reconciliation, but it works. Representatives and senators return to the Republican fold, persuaded less by shared principle than by the advantages of belonging to the governing party.
 
 A number refuse every offer. They remain with the <span style="color: #0015bc;">**Democrats**</span> or leave public life altogether.
 
@@ -324,9 +318,7 @@ else { Q.house_majority = 0; }
 
 !}
 
-We leave the door open but offer nothing else.
-
-No promises. No appointments. No acknowledgment that their grievances were ever justified.
+We leave the door open but offer nothing else. No promises. No appointments. No acknowledgment that their grievances were ever justified.
 
 Representatives and senators rejoin the caucus, not out of renewed loyalty, but because they have nowhere else to go. They take their seats quietly, carrying more resentment than enthusiasm.
 
@@ -355,8 +347,6 @@ Its banner disappears. Its newspapers gradually return to the <span style="color
 
 The Republican Party emerges larger than before, but not unchanged. The men who never left feel vindicated. Those who returned bring old grievances that will not quickly disappear.
 
-Some, however, could accept neither party. They simply withdraw from public life.
-
-[? if lib_house_dem > 2 : Former <span style="color: #DAA520;">**Liberal Republicans**</span> now sit with the <span style="color: #0015bc;">**Democrats**</span>, carrying with them an intimate understanding of our party's strengths and weaknesses. ?]
+Some, however, could accept neither party. They simply withdraw from public life. [? if lib_house_dem > 2 : Former <span style="color: #DAA520;">**Liberal Republicans**</span> now sit with the <span style="color: #0015bc;">**Democrats**</span>, carrying with them an intimate understanding of our party's strengths and weaknesses. ?]
 
 Whether the reunion restores the Republican coalition or merely postpones its next internal struggle remains uncertain.

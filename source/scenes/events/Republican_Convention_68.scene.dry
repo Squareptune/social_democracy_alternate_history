@@ -15,11 +15,8 @@ Yet the cause is far from lost. The <span style="color: #c00000;">**Republican P
 - @Chase: Salmon P. Chase
 
 @Grant
-subtitle: [? if president = "Johnson": Grant is our default candidate ?][? if president = "Wade": We need to convince the Party with 2 resources ?]
+subtitle: [? if president = "Johnson": Grant is our default candidate ?]
 on-arrival: {! 
-    if(Q.president = "Wade"){
-        Q.resources -= 2; 
-    }
     Q.Candidate = "Grant";
     Q.freedmen_rep += 2;
     Q.rural_rep += 1;
@@ -93,7 +90,7 @@ However, some fear that Chase's history of shifting party allegiances could make
 
 It is time to choose a running mate for our presidential candidate. The VP choice can balance the ticket and appeal to different factions of the party.
 
-The options range from the <span style="color: #9D2933;">Moderate</span> choice Schuyler Colfax to more partisan candidates such as <span style="color: #7A1F5C;">Radical</span> Henry Wilson or <span style="color: #B5651D;">Conservative</span> Reuben Fenton.
+The options range from the <span style="color: #9D2933;">**Moderate**</span> choice Schuyler Colfax to more partisan candidates such as <span style="color: #7A1F5C;">**Radical**</span> Henry Wilson or <span style="color: #B5651D;">**Conservative**</span> Reuben Fenton.
 
 - @Colfax: Schuyler Colfax
 - @Wilson: Henry Wilson

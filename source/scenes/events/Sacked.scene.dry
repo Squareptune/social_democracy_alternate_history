@@ -1,6 +1,6 @@
 title: Johnson sacks Cabinet
 subtitle: Purging the Past
-view-if: year = 1866 and month = 8
+view-if: year = 1866 and month = 8 and president = "Johnson"
 max-visits: 1
 tags: event
 new-page: true

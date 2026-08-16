@@ -285,10 +285,10 @@ if (Q.dissent < 0) {
     Q.dissent = 0.95;
 }
 
-let radicalPressure = Math.max(0, (Q.radical_strength - 25) / 25);      // 0 and up as radicals dominate GOP
-let liberalPull = Math.max(0, (Q.liberal_strength - 10) / 10);          // 0 and up as GOP liberals gain ground
+let radicalPressure = Math.max(2, (Q.radical_strength - 25) / 25);
+let liberalPull = Math.max(0, (Q.liberal_strength - 10) / 10);
 let gopDissentPressure = Math.max(0, ((Q.dissent_percent || 0) - 30) / 30);
-let redeemerMuscle = ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 400; // self-reinforcing organized muscle
+let redeemerMuscle = ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 400;
 let bourbonMonthlyGain = (0.15 * radicalPressure) + (0.10 * redeemerMuscle);
 let reformMonthlyGain = (0.10 * liberalPull) + (0.08 * gopDissentPressure);
 Q.dem_bourbon_strength += bourbonMonthlyGain;
@@ -405,7 +405,7 @@ for (let state of Q.southern_states) {
   let whiteL = Q.whiteL_strength || 0;
   let unionLeague = Q.Union_League_strength || 0;
 
-  if (Q.Union_League_strength > 0) {
+  if (Q.Union_League_strength > 0 && Q.whiteL_formed == 1) {
     Q.whiteL_strength -= (Q.Union_League_strength / 1000) * Q.Union_League_militancy;
   }
 

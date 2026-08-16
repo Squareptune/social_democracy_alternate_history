@@ -9,7 +9,7 @@ face-image: img/960px-1872_Democratic_National_Convention_-_Maryland_(cropped).j
 
 The <span style="color: #0015bc;">**Democratic Party**</span> gathers in Baltimore, divided and badly out of power. Four years of Republican rule have left the party searching for a way back.
 
-[? if liberal_split = 1 : Two strategies have emerged. One faction wants to nominate a <span style="color: #0015bc;">Democrat</span> and rebuild the party on its own terms. The other, led by figures such as August Belmont, wants to support the <span style="color: #DAA520;">Liberal Republican</span> ticket of Horace Greeley and B. Gratz Brown. Greeley has spent much of his career attacking the <span style="color: #0015bc;">Democrats</span>, but he has one advantage: he is running against [+ Candidate +]. ?]
+[? if liberal_split = 1 : Two strategies have emerged. One faction wants to nominate a <span style="color: #0015bc;">**Democrat**</span> and rebuild the party on its own terms. The other, led by figures such as August Belmont, wants to support the <span style="color: #DAA520;">**Liberal Republican**</span> ticket of Horace Greeley and B. Gratz Brown. Greeley has spent much of his career attacking the <span style="color: #0015bc;">**Democrats**</span>, but he has one advantage: he is running against [+ Candidate +]. ?]
 
 [? if liberal_split = 0 : The party must choose its own standard-bearer. The <span style="color: #0015bc;">**Democrats**</span> must stand on their own. ?]
 

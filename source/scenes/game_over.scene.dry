@@ -10,7 +10,7 @@ let AuthorityDom = (Q.occupation + Q.South_army_strength + (Q.Union_League_stren
 
 let Authority = Math.round((AuthorityNum / AuthorityDom) * 100);
 
-let Amendments = Q.fourteenth_A + Q.fifteenth_A;
+let Amendments = Q.fortheen_A + Q.fifthteen_A;
 
 let Rights = Math.min(100,Amendments * Q.freedmen_education * Q.civil_rights * Q.judicial_reform);
 
@@ -23,7 +23,6 @@ if (Q.president == "Hayes" && Q.term_troops == "total" && Q.term_home_rule == 1 
     Q.ending = "Historical";
 }
 
-// Radical
 else if ( Amendments == 2 && Rights >= 80 && Authority >= 70 && Cohesion >= 70)
 {
     this.achieve("radical");
@@ -129,7 +128,7 @@ if(Q.compromise_1877_success == 1)
 {
     this.achieve("great_compromiser");
 }
-if(Q.veto_success == 1)
+if(Q.veto_success == 0)
 {
     this.achieve("order_of_congress");
 }
@@ -314,7 +313,7 @@ In the exhausted aftermath of Appomattox, Northern political will fractured almo
 
 The proposed Reconstruction Amendments never became the foundation of a new national settlement. The Thirteenth Amendment passed in name, but without sustained enforcement mechanisms or federal commitment, emancipation remained uneven and fragile across much of the South. [? if Amendments = 2: The Fourteenth and Fifteenth Amendments managed to be passed but not enforced in the south, leaving the Freedmen population as permanent 2nd class citizens. ?][? if Amendments < 2: The Fourteenth and Fifteenth Amendments failed to be passed, leaving the Freedmen population as permanent 2nd class citizens. ?]
 
-<span style="color: #002765;">**Redeemer**</span> governments moved quickly to restore order on their own terms. Former Confederates returned to power through local elections that excluded much of the Black population through [? if fifteenth_A = 1 : informal intimidation, property requirements, and administrative control of voter rolls ?] [? if fifteenth_A = 0: racial requirements barring any "colored" people from being allowed to vote in new state constitutions ?]. Without federal oversight, these measures hardened into permanent structures of political exclusion. Within a generation, Black political participation had been reduced to a symbolic minimum in most Southern states.
+<span style="color: #002765;">**Redeemer**</span> governments moved quickly to restore order on their own terms. Former Confederates returned to power through local elections that excluded much of the Black population through [? if fifthteen = 1 : informal intimidation, property requirements, and administrative control of voter rolls ?] [? if fifthteen = 0: racial requirements barring any "colored" people from being allowed to vote in new state constitutions ?]. Without federal oversight, these measures hardened into permanent structures of political exclusion. Within a generation, Black political participation had been reduced to a symbolic minimum in most Southern states.
 
 Sharecropping, tenancy contracts, and debt arrangements tied freedpeople to the land in cycles of dependency that replaced slavery with a form of pseudo-serfdom. Local courts routinely enforced these arrangements in favor of landowners, while law enforcement treated labor disputes as matters of public order rather than civil rights.
 
