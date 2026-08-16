@@ -71,7 +71,7 @@ for (let state of Q.states) {
 
   let planThreshold = Q.Radical_plan ? 50 : (Q.Moderate_plan ? 35 : 20);
   let stateScore = Q[state + "_reconstructionScore"] || 0;
-  let badReconstruction = isSouthern && (stateScore < planThreshold * 0.6 || ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) >= 400);
+  let badReconstruction = isSouthern && (stateScore < planThreshold * 0.6 || ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) >= 300);
 
   for (let cls of Q.classes) {
     if (cls === "freemen" && Q.fifthteen == 0) continue;
@@ -129,7 +129,7 @@ for (let state of Q.states) {
     let twoPartyTotal = votes.rep + votes.dem;
     if (twoPartyTotal > 0) {
       let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
-      let fraudPower = Math.min(25, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 40);
+      let fraudPower = Math.min(25, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 35);
       let fraudShift = fraudPower + (Math.random() * 6) - 3;
 
       votes.rep -= twoPartyTotal * (fraudShift / 200);
@@ -138,7 +138,7 @@ for (let state of Q.states) {
       votes.dem = Math.max(0, votes.dem);
 
       let postFraudMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
-      if (Math.abs(postFraudMargin) <= 6) {
+      if (Math.abs(postFraudMargin) <= 9) {
         stateDisputed = 1;
         Q.disputed_states_1876.push(state);
       }

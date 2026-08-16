@@ -10,7 +10,7 @@ let AuthorityDom = (Q.occupation + Q.South_army_strength + (Q.Union_League_stren
 
 let Authority = Math.round((AuthorityNum / AuthorityDom) * 100);
 
-let Amendments = Q.fortheen_A + Q.fifthteen_A;
+let Amendments = Q.fortheen_A + Q.fifthteen;
 
 let Rights = Math.min(100,Amendments * Q.freedmen_education * Q.civil_rights * Q.judicial_reform);
 
