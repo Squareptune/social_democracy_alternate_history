@@ -313,6 +313,11 @@ Q.FatiguePenalty = Math.min(Q.year - 1865, 10);
 
 Q.reconstruction_support = Q.Base_Support - Q.ViolencePenalty - Q.FatiguePenalty - Math.min(Q.PoliticalCostPenalty * 0.25, 15);
 
+if(year >= 1871)
+{
+    Q.dem_reform_strength += 3/12;
+}
+
 
 //Amendments 
 
@@ -405,7 +410,7 @@ for (let state of Q.southern_states) {
   let whiteL = Q.whiteL_strength || 0;
   let unionLeague = Q.Union_League_strength || 0;
 
-  if (Q.Union_League_strength > 0 && Q.whiteL_formed == 1) {
+  if (Q.Union_League_strength > 0 && Q.whiteL_formed == 1 && Q.whiteL_strength > 0) {
     Q.whiteL_strength -= (Q.Union_League_strength / 1000) * Q.Union_League_militancy;
   }
 

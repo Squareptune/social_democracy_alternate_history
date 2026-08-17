@@ -52,7 +52,8 @@ on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; libera
 Though France has slid back under imperial rule, republican sentiment remains strong. Our engagement signals that the Republican Party is part of a global democracy movement.
 
 @france2
-subtitle: year > 1870 or (year == 1870 and month > 7)
+subtitle: -1 resources
+view-if: year > 1870 or (year == 1870 and month > 7)
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 2; france_relation += 1;

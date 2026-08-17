@@ -16,7 +16,19 @@ on-arrival: {!
     Q.middle_class_rep += 3;
     Q.rural_rep += 2;
 !}
-face-image: img/John_Hay_signs_Treaty_of_Paris,_1899.JPG
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/John_Hay_signs_Treaty_of_Paris,_1899.JPG";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
 
 = The Peace of Havana
 

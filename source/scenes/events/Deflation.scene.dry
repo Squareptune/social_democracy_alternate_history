@@ -2,6 +2,7 @@ title: Significant Deflation
 tags: event
 view-if: flag_deflation  = 1
 max-visits: 1
+priority: -1
 on-arrival: flag_deflation = 0; deflation_ticker_timer = 12; rural_rep -= 2; rural_dem += 2; conservative_dissent -= 1; radical_dissent += 2
 
 = Prices Are Falling

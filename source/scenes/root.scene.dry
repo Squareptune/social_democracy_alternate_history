@@ -54,6 +54,7 @@ Q.conservative_dissent = 5;
 Q.liberal_strength = 5;
 Q.liberal_dissent = 10;
 Q.liberal_split = 0;
+Q.Greeley_Camp = 0;
 Q.liberal_split_timer = 0;
 
 //Democrat Factions

@@ -1,6 +1,7 @@
 title: High Inflation
 tags: event
 view-if: flag_high_inflation = 1
+priority: -1
 on-arrival: flag_high_inflation = 0; high_inflation_ticker_timer = 12; middle_class_rep -= 2; middle_class_dem += 2; conservative_dissent += 2; liberal_dissent += 1
 
 = Prices Are Climbing

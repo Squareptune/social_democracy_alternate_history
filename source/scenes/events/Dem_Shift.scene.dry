@@ -8,7 +8,7 @@ on-arrival: {!
     Q.liberal_relation += 5;
     Q.radical_dissent += 2;
     Q.dem_reform_strength += 8; 
-    Q.dem_bourbon_dissent += 4;
+    Q.dem_bourbon_strength += 4;
 !}
 face-image: img/portraits/August_Belmont.png
 
