@@ -60,7 +60,7 @@ for (let state of Q.states) {
       libVotes += pop * (adjLib / totalPct);
       otherVotes += pop * (adjOther / totalPct);
 
-      if (Q.fifteenth == 0) {
+      if (Q.fifthteen == 0) {
         repVotes *= 1.0025;
       }
     }

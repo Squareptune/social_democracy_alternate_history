@@ -15,11 +15,11 @@ face-image: img/ColfaxMassacre.jpg
 
 = The Colfax Massacre
 
-On Easter Sunday, a force of armed white <span style="color: #0015bc;">Democrats</span> and White League militants surrounded the courthouse at Colfax, Louisiana. A company of Black militia had gathered there to defend Kellogg's government against supporters of John McEnery.
+On Easter Sunday, a force of armed white <span style="color: #0015bc;">**Democrats**</span> and White League militants surrounded the courthouse at Colfax, Louisiana. A company of Black militia had gathered there to defend Kellogg's government against supporters of John McEnery.
 
 After a day-long siege, the courthouse was set ablaze. Those who surrendered were shot. Between sixty and more than one hundred men were killed.
 
-News reaches Washington within days. Northern newspapers are calling it a massacre. Southern <span style="color: #0015bc;">Democrats</span> describe it as the suppression of an armed insurrection. Congress now wants to know what the federal government intends to do.
+News reaches Washington within days. Northern newspapers are calling it a massacre. Southern <span style="color: #0015bc;">**Democrats**</span> describe it as the suppression of an armed insurrection. Congress now wants to know what the federal government intends to do.
 
 - @full_prosecution: Prosecute the perpetrators under the Enforcement Acts
 - @troop_deployment: Deploy federal troops to occupy Grant Parish
@@ -42,7 +42,7 @@ on-arrival: {!
 
 Federal marshals arrest dozens of participants and bring charges under the Enforcement Acts. It is one of the first major tests of federal power against organized political violence on this scale.
 
-[? if WhiteL_formed = 1: The <span style="color: #B5651D;">White Leagues</span> and ?] <span style="color: #0015bc;">Democrats</span> denounce the prosecutions as federal tyranny imposed on a local dispute. They vow to fight the charges in every court available to them.
+[? if WhiteL_formed = 1: The White Leagues and ?] <span style="color: #0015bc;">**Democrats**</span> denounce the prosecutions as federal tyranny imposed on a local dispute. They vow to fight the charges in every court available to them.
 
 @troop_deployment
 choose-if: occupation >= 1 and army_loyalty >= 0.5
@@ -92,11 +92,11 @@ on-arrival: {!
 
 Washington leaves the prosecution to Louisiana's courts.
 
-[? if colfax_local_outcome = "convictions" : Reconstruction institutions still have enough strength to secure convictions against several of those involved. It falls short of what the <span style="color: #7A1F5C;">Radicals</span> wanted, but the convictions send a clear warning to the **<span style="color: #B5651D;">White Leagues</span>. ?]
+[? if colfax_local_outcome = "convictions" : Reconstruction institutions still have enough strength to secure convictions against several of those involved. It falls short of what the <span style="color: #7A1F5C;">**Radicals**</span> wanted, but the convictions send a clear warning to the White Leagues. ?]
 
-[? if colfax_local_outcome = "mixed" : Grand juries in Grant Parish and the surrounding countryside are divided. A handful of indictments move forward, while others are dropped or end in acquittal. Witnesses recant or refuse to appear. The <span style="color: #B5651D;">White Leagues</span> take note of how little resistance they face. ?]
+[? if colfax_local_outcome = "mixed" : Grand juries in Grant Parish and the surrounding countryside are divided. A handful of indictments move forward, while others are dropped or end in acquittal. Witnesses recant or refuse to appear. The White Leagues take note of how little resistance they face. ?]
 
-[? if colfax_local_outcome = "acquittal" : Grand juries decline to indict, or acquit outright, in case after case. Louisiana's Reconstruction government is too weak and the local white majority too dominant for convictions to follow. Within weeks, it is clear that no one will face serious consequences for Colfax. The <span style="color: #B5651D;">White Leagues</span> take note. Black communities across Louisiana do as well. ?]
+[? if colfax_local_outcome = "acquittal" : Grand juries decline to indict, or acquit outright, in case after case. Louisiana's Reconstruction government is too weak and the local white majority too dominant for convictions to follow. Within weeks, it is clear that no one will face serious consequences for Colfax. The White Leagues take note. Black communities across Louisiana do as well. ?]
 
 
 @downplay

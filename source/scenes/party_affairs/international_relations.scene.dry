@@ -13,6 +13,7 @@ As the <span style="color: #c00000;">**Republican**</span> Party emerges as a fo
 - @germany: Observe the German Forty-Eighters and support constitutionalism. 
 - @haiti: Reaffirm ties with the Haitian Republic. 
 - @france: Connect with French republicans fighting Bonapartist reaction.
+- @france2: Connect with French republicans for there new Republic.
 - @return: We do not need international contacts at the moment.
 - @easy_discard
 - @cancel_advisor_action
@@ -43,11 +44,20 @@ The Haitian Republic remains a beacon of freedom to many freedmen. Renewing symb
 
 @france
 subtitle: -1 resources
+view-if: year < 1870 or (year == 1870 and month <= 7)
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 2;
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 2; france_relation += 1;
 
 Though France has slid back under imperial rule, republican sentiment remains strong. Our engagement signals that the Republican Party is part of a global democracy movement.
+
+@france2
+subtitle: year > 1870 or (year == 1870 and month > 7)
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; moderate_strength += 1; europe_relation += 1; liberal_strength += 2; france_relation += 1;
+
+The French republicans have once again triumphed over the forces of monarchy. The Republican Party will support our oldest ally in the global fight for liberty.
 
 @reduce
 

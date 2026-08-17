@@ -111,7 +111,7 @@ on-arrival: treaty_Washington += 1; economic_growth += 0.2; middle_class_rep += 
 We continue to discuss the main issue for a great Anglo-sphere relationship, particularly the Alabama Claims and Border scrummages on the Canadian border.
 
 @british_reconciliation3
-title: Sign the Treaty of Washington
+title: Sign the Treaty of Washington (+4 Budget)
 view-if: treaty_Washington = 2
 on-arrival: treaty_Washington += 1; economic_growth += 0.2; middle_class_rep += 3; moderate_strength += 2; moderate_dissent -= 2; budget += 4;
 

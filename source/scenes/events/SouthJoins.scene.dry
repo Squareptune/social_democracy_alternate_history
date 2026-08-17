@@ -119,7 +119,7 @@ if (Q.MS_canReadmit === 1 && Q.MS_admitted === 0) {
 // Arkansas
 if (Q.AR_canReadmit === 1 && Q.AR_admitted === 0) {
     if (Q.readmitted_list.length > 0) Q.readmitted_list += ", ";
-    Q.states.push("AK");
+    Q.states.push("AR");
     Q.AR_admitted = 1;
     Q.readmitted_list += "Arkansas";
     if(Q.Radical_plan == 1)

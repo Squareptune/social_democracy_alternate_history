@@ -40,7 +40,7 @@ subtitle: -1 budget
 unavailable-subtitle: [? if budget < 2: Not enough budget. ?][? if president_party != "rep": We don't control the executive. ?]
 choose-if: budget >= 1 and president_party = "rep"
 view-if: civil_rights_act_passed = 1
-on-arrival: civil_rights += 3; kkk_strength -= 3; whiteL_strength -= 1.5; radical_strength += 3;
+on-arrival: civil_rights += 3; budget -= 1; kkk_strength -= 3; radical_strength += 3;
 
 We continue to enforce the civil rights act across the country to ensure the freedmen are treated equal.
 

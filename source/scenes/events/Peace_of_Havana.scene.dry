@@ -16,7 +16,7 @@ on-arrival: {!
     Q.middle_class_rep += 3;
     Q.rural_rep += 2;
 !}
-face-image: img/John_Hay_signs_Treaty_of_Paris,_1899.jpg
+face-image: img/John_Hay_signs_Treaty_of_Paris,_1899.JPG
 
 = The Peace of Havana
 

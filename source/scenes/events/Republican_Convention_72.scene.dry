@@ -271,6 +271,6 @@ The <span style="color: #c00000;">**Republican Party**</span> will enter the 187
 
 [? if liberal_dissent >= 25 : The <span style="color: #DAA520;">**Liberal Republicans**</span> faction is threatening to bolt and run their own candidate. If they do, the anti-<span style="color: #0015bc;">**Democrat**</span> vote will be split. ?]
 
-[? if radical_dissent >= 25 : <span style="color: #7A1F5C;">Radical Republicans</span> are openly grumbling about the ticket. Their enthusiasm or lack of it could suppress turnout among freedmen and Northern reformers. ?]
+[? if radical_dissent >= 25 : <span style="color: #7A1F5C;">**Radical Republicans**</span> are openly grumbling about the ticket. Their enthusiasm or lack of it could suppress turnout among freedmen and Northern reformers. ?]
 
 [? if liberal_dissent < 25 and radical_dissent < 25 : The party appears broadly unified behind the ticket. ?]

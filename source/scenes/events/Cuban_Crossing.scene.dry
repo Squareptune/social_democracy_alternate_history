@@ -1,7 +1,7 @@
 title: The American Crossing to Cuba
 tags: event
 view-if: war_stage = 1 and invasion_force_strength > 0
-face-image: img/Tr great white fleet from photo nh100349 USS Connecticut 1907.jpg
+face-image: img/Tr_great_white_fleet_from_photo_nh100349_USS_Connecticut_1907.jpg
 
 = Crossing the Florida Strait
 
