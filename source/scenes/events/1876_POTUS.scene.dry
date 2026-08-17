@@ -192,6 +192,11 @@ let majority = Math.floor(totalEV / 2) + 1;
 let repUndisputed = Q.repEVTotal - Q.disputedRepEV;
 let demUndisputed = Q.demEVTotal - Q.disputedDemEV;
 
+if (Q.disputed_states_1876.length > 0)
+{
+  Q.Disputed_Yes = 1;
+}
+
 if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisputed < majority) {
   Q.potus_winner = "disputed";
 } else if (Q.repEVTotal >= majority) {
@@ -286,9 +291,9 @@ go-to: potus_menu_1876
 [? if disputed_states_1876.length > 0 : {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #8E536E;">**Disputed Results**</span> {!</td><td>!}[+ disputedRepEV + disputedDemEV +] votes{!</td></tr>!} ?]
 {!</table>!}
 
-[? if disputed_states_1876.length > 0 : The following states have submitted competing sets of electoral votes: {!<p style="font-weight: bold; color: #8E536E;">!}[+ disputed_states_1876.join(", ") +]{!</p>!} A total of [+ disputedRepEV + disputedDemEV +] electoral votes are in dispute. ?]
+[? if Disputed_Yes = 1 : The following states have submitted competing sets of electoral votes: {!<p style="font-weight: bold; color: #8E536E;">!}[+ disputed_states_1876.join(", ") +]{!</p>!} A total of [+ disputedRepEV + disputedDemEV +] electoral votes are in dispute. ?]
 
-[? if potus_winner != "disputed" and disputed_states_1876.length > 0: But fortunately, the disputed states didn't matter in resulting in the winner of the election. ?]
+[? if potus_winner != "disputed" and Disputed_Yes = 1 : But fortunately, the disputed states didn't matter in resulting in the winner of the election. ?]
 
 @potus_menu_1876
 
