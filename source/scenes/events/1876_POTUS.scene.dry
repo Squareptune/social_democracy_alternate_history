@@ -19,8 +19,6 @@ Q.disputedDemEV = 0;
 
 Q.disputed_states_1876 = [];
 
-// Southern states use the corrected AR code for Arkansas (Q.southern_states currently
-// stores "AK" for Arkansas, a bug - this scene uses its own corrected list instead).
 let southernCodes = ["VA", "NC", "SC", "GA", "AL", "FL", "MS", "AR", "TX", "LA"];
 
 let closeStates = {
@@ -129,8 +127,9 @@ for (let state of Q.states) {
     let twoPartyTotal = votes.rep + votes.dem;
     if (twoPartyTotal > 0) {
       let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
-      let fraudPower = Math.min(25, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 35);
-      let fraudShift = fraudPower + (Math.random() * 6) - 3;
+      
+      let fraudPower = Math.min(35, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 20);
+      let fraudShift = fraudPower + (Math.random() * 10) - 5;
 
       votes.rep -= twoPartyTotal * (fraudShift / 200);
       votes.dem += twoPartyTotal * (fraudShift / 200);
@@ -138,9 +137,19 @@ for (let state of Q.states) {
       votes.dem = Math.max(0, votes.dem);
 
       let postFraudMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
-      if (Math.abs(postFraudMargin) <= 9) {
+      
+      if (Math.abs(postFraudMargin) <= 14) {
         stateDisputed = 1;
         Q.disputed_states_1876.push(state);
+      }
+      
+      if ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0) >= 400) {
+        if (Math.random() < 0.5) {
+          stateDisputed = 1;
+          if (!Q.disputed_states_1876.includes(state)) {
+            Q.disputed_states_1876.push(state);
+          }
+        }
       }
     }
   }
@@ -283,20 +292,20 @@ on-arrival: {!
     Q.president = Q.Candidate;
     Q.president_party = "rep";
     if (Q.Candidate == "Grant") {
-        Q.sect_state = "Hamilton Fish";
-        Q.sect_state_party = "R";
-        Q.sect_treasury = "William A. Richardson";
-        Q.sect_treasury_party = "R";
-        Q.sect_war = "William W. Belknap";
-        Q.sect_war_party = "R";
-        Q.sect_interior = "Columbus Delano";
-        Q.sect_interior_party = "R";
-        Q.sect_postmaster = "John A. J. Creswell";
-        Q.sect_postmaster_party = "R";
-        Q.attorney_general = "George H. Williams";
-        Q.attorney_general_party = "R";
-        Q.sect_agriculture = "Horace Capron";
-        Q.sect_agriculture_party = "R";
+      Q.sect_state = "Hamilton Fish";
+      Q.sect_state_party = "R";
+      Q.sect_treasury = "William A. Richardson";
+      Q.sect_treasury_party = "R";
+      Q.sect_war = "William W. Belknap";
+      Q.sect_war_party = "R";
+      Q.sect_interior = "Columbus Delano";
+      Q.sect_interior_party = "R";
+      Q.sect_postmaster = "John A. J. Creswell";
+      Q.sect_postmaster_party = "R";
+      Q.attorney_general = "George H. Williams";
+      Q.attorney_general_party = "R";
+      Q.sect_agriculture = "Horace Capron";
+      Q.sect_agriculture_party = "R";
     }
     if (Q.Candidate == "Wade") {
         Q.sect_state = "Charles Sumner";
@@ -507,7 +516,7 @@ How does the administration proceed?
 
 - @fight_for_electors: Have Congress certify the results in favor of [+ Candidate +]
 - @concede_disputed: Concede the disputed states to the Democrats
-- @broker_compromise: Leave the decision to an Bipartisan Commission of Congress
+- @broker_compromise: Leave the decision to a Bipartisan Commission of Congress
 
 @fight_for_electors
 choose-if: rep_majority = 1
@@ -636,7 +645,7 @@ on-arrival: {!
     }
 !}
 
-The Republicans congressman offically certify the electoral votes allowing [+ Candidate +] to be offically declared President of the United States.
+The Republicans in Congress officially certify the electoral votes, allowing [+ Candidate +] to be declared President of the United States. The decision inflames Democratic members and Northern newspapers, but a majority holds. For now, constitutional order prevails, even if barely.
 
 @concede_disputed
 on-arrival: {!

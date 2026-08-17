@@ -289,10 +289,15 @@ let radicalPressure = Math.max(2, (Q.radical_strength - 25) / 25);
 let liberalPull = Math.max(0, (Q.liberal_strength - 10) / 10);
 let gopDissentPressure = Math.max(0, ((Q.dissent_percent || 0) - 30) / 30);
 let redeemerMuscle = ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 400;
-let bourbonMonthlyGain = (0.15 * radicalPressure) + (0.10 * redeemerMuscle);
-let reformMonthlyGain = (0.10 * liberalPull) + (0.08 * gopDissentPressure);
+let economicCrisis = Math.max(0, (2 - Q.economic_growth) / 2);
+let moderatePresidentialBoost = (Q.president_party === "rep" && Q.moderate_strength >= 40) ? 0.08 : 0;
+
+let bourbonMonthlyGain = (0.15 * radicalPressure) + (0.06 * redeemerMuscle);
+let reformMonthlyGain = (0.10 * liberalPull) + (0.08 * gopDissentPressure) + (0.12 * economicCrisis) + moderatePresidentialBoost;
+
 Q.dem_bourbon_strength += bourbonMonthlyGain;
 Q.dem_reform_strength += reformMonthlyGain;
+
 if (redeemerMuscle > 0.5) {
     Q.dem_bourbon_dissent = Math.max(0, Q.dem_bourbon_dissent - 0.05);
 }
@@ -302,6 +307,11 @@ if (radicalPressure > 1) {
 if (gopDissentPressure > 0.5) {
     Q.dem_reform_dissent = Math.max(0, Q.dem_reform_dissent - 0.03);
 }
+if(Q.year >= 1871)
+{
+    Q.dem_reform_strength += 3/12;
+}
+
 Q.dem_reform_strength = Math.max(0, Q.dem_reform_strength);
 Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength);
 
@@ -312,11 +322,6 @@ Q.ViolencePenalty = Math.min(30, (Q.kkk_strength / 1000) * Q.kkk_militancy * 20 
 Q.FatiguePenalty = Math.min(Q.year - 1865, 10);
 
 Q.reconstruction_support = Q.Base_Support - Q.ViolencePenalty - Q.FatiguePenalty - Math.min(Q.PoliticalCostPenalty * 0.25, 15);
-
-if(year >= 1871)
-{
-    Q.dem_reform_strength += 3/12;
-}
 
 
 //Amendments 
@@ -366,7 +371,7 @@ for (let state of Q.states) {
 
         repVotes += pop * (adjRep / totalAdj);
         demVotes += pop * (adjDem / totalAdj);
-        demVotes  += pop * (adjLib   / totalAdj);
+        libVotes += pop * (adjLib / totalAdj);
         otherVotes += pop * (adjOther / totalAdj);
     }
   }
