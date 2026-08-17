@@ -156,11 +156,7 @@ Q.lib_senate_pro = 0;
 Q.other_senate_pro = 0;
 
 for (let state of Q.states) {
-
-    let repVotes = 0; 
-    let demVotes = 0; 
-    let libVotes = 0; 
-    let otherVotes = 0;
+    let repVotes = 0; demVotes = 0, libVotes = 0, otherVotes = 0;
 
     for (let cls of Q.classes) {
 
@@ -336,6 +332,7 @@ let totalStates = Q.states.length;
 for (let state of Q.states) {
   let repVotes = 0;
   let demVotes = 0;
+  let libVotes = 0;
   let otherVotes = 0;
 
   for (let cls of Q.classes) {
