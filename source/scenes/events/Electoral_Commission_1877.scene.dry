@@ -209,6 +209,123 @@ on-arrival: {!
 
     Q.dem_relation += 6;
     Q.dem_bourbon_strength = Math.max(0, Q.dem_bourbon_strength - 5);
+
+    Q.president = Q.Candidate;
+    Q.president_party = "rep";
+    Q.potus_winner = "rep";
+    
+    if (Q.Candidate == "Grant") {
+      Q.sect_state = "Hamilton Fish";
+      Q.sect_state_party = "R";
+      Q.sect_treasury = "William A. Richardson";
+      Q.sect_treasury_party = "R";
+      Q.sect_war = "William W. Belknap";
+      Q.sect_war_party = "R";
+      Q.sect_interior = "Columbus Delano";
+      Q.sect_interior_party = "R";
+      Q.sect_postmaster = "John A. J. Creswell";
+      Q.sect_postmaster_party = "R";
+      Q.attorney_general = "George H. Williams";
+      Q.attorney_general_party = "R";
+      Q.sect_agriculture = "Horace Capron";
+      Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Wade") {
+        Q.sect_state = "Charles Sumner";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "Henry C. Carey";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "Benjamin F. Butler";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Zachariah Chandler";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Oliver P. Morton";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "George S. Boutwell";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "Isaac Newton";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Chase") {
+        Q.sect_state = "William H. Seward";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "John Sherman";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "John A. Dix";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Jacob D. Cox";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Marshall Jewell";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "Benjamin H. Brewster";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "Horace Capron";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Conkling") {
+        Q.sect_state = "Hamilton Fish";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "Levi P. Morton";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "William W. Belknap";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Zachariah Chandler";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Chester A. Arthur";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "George H. Williams";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "Horace Capron";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Blaine") {
+        Q.sect_state = "James F. Wilson";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "John Sherman";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "William T. Sherman";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Jacob D. Cox";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Marshall Jewell";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "George H. Williams";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "Horace Capron";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Morton") {
+        Q.sect_state = "James G. Blaine";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "Benjamin H. Bristow";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "Benjamin F. Butler";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Zachariah Chandler";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Marshall Jewell";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "Edwards Pierrepont";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "Horace Capron";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Hayes") {
+        Q.sect_state = "William M. Evarts";
+        Q.sect_state_party = "R";
+        Q.sect_treasury = "John Sherman";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "George W. McCrary";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Carl Schurz";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "George H. Williams";
+        Q.sect_postmaster_party = "R";
+        Q.attorney_general = "Charles Devens";
+        Q.attorney_general_party = "R";
+        Q.sect_agriculture = "William G. Le Duc";
+        Q.sect_agriculture_party = "R";
+    }
 !}
 go-to: commission_success
 
