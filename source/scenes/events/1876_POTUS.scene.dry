@@ -241,7 +241,7 @@ on-display: {!
     wi: Q.wi_winner_color,
     dc: Q.dc_winner_color,
   };
-
+ 
   let results = {};
   for (let state of Q.states) {
     let key = state.toLowerCase();
@@ -254,11 +254,11 @@ on-display: {!
     }
     results[key] = entry;
   }
-
+ 
   function drawMap() {
     ElectoralMap.draw({ container: "#electoral-map", winners: winners, results: results });
   }
-
+ 
   if (typeof ElectoralMap !== 'undefined') {
     drawMap();
   } else {
@@ -268,15 +268,48 @@ on-display: {!
     document.head.appendChild(script);
   }
 !}
-go-to: potus_menu_1876
-
+ 
 {!<div id="electoral-map"></div>!}
-
-{!<table>!}
-{!<tr><td>Party</td><td>Electoral votes</td></tr>!}
-{!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}<span style="color: #c00000;">**Republicans ([+ Candidate +])**</span>{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
-{!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #0015bc;">**Democrats**</span> ([+ dem_candidate_1876 +]){!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
-{!</table>!}
+ 
+[? if disputed_states_1876.length > 0 : **Disputed States** — The following states have submitted competing sets of electoral votes: {!<p style="font-weight: bold; color: #8E536E;">!}[+ disputed_states_1876.join(", ") +]{!</p>!} A total of [+ disputedRepEV + disputedDemEV +] electoral votes are in dispute. ?]
+ 
+[? if disputed_states_1876.length > 0 : {!<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">!}
+{!<tr style="border-bottom: 2px solid #333;">!}
+{!<td style="padding: 10px; font-weight: bold;">Party</td>!}
+{!<td style="padding: 10px; font-weight: bold; text-align: center;">Total Electoral Votes</td>!}
+{!<td style="padding: 10px; font-weight: bold; text-align: center;">Undisputed Votes</td>!}
+{!<td style="padding: 10px; font-weight: bold; text-align: center;">Disputed Votes</td>!}
+{!</tr>!}
+{!<tr style="border-bottom: 1px solid #ccc;">!}
+{!<td style="padding: 10px;"><div class="box" style="background-color:#d73027; outline:2px solid; display: inline-block; width: 20px; height: 20px; margin-right: 10px;"></div><span style="color: #c00000;">**Republicans ([+ Candidate +])**</span></td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ repEVTotal +]{!</td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ repEVTotal - disputedRepEV +]{!</td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ disputedRepEV +]{!</td>!}
+{!</tr>!}
+{!<tr style="border-bottom: 1px solid #ccc;">!}
+{!<td style="padding: 10px;"><div class="box" style="background-color:#4575b4; outline:2px solid; display: inline-block; width: 20px; height: 20px; margin-right: 10px;"></div><span style="color: #0015bc;">**Democrats ([+ dem_candidate_1876 +])**</span></td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ demEVTotal +]{!</td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ demEVTotal - disputedDemEV +]{!</td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ disputedDemEV +]{!</td>!}
+{!</tr>!}
+{!</table>!} ?]
+ 
+[? if disputed_states_1876.length == 0 : {!<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">!}
+{!<tr style="border-bottom: 2px solid #333;">!}
+{!<td style="padding: 10px; font-weight: bold;">Party</td>!}
+{!<td style="padding: 10px; font-weight: bold; text-align: center;">Electoral Votes</td>!}
+{!</tr>!}
+{!<tr style="border-bottom: 1px solid #ccc;">!}
+{!<td style="padding: 10px;"><div class="box" style="background-color:#d73027; outline:2px solid; display: inline-block; width: 20px; height: 20px; margin-right: 10px;"></div><span style="color: #c00000;">**Republicans ([+ Candidate +])**</span></td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ repEVTotal +]{!</td>!}
+{!</tr>!}
+{!<tr style="border-bottom: 1px solid #ccc;">!}
+{!<td style="padding: 10px;"><div class="box" style="background-color:#4575b4; outline:2px solid; display: inline-block; width: 20px; height: 20px; margin-right: 10px;"></div><span style="color: #0015bc;">**Democrats ([+ dem_candidate_1876 +])**</span></td>!}
+{!<td style="padding: 10px; text-align: center;">!}[+ demEVTotal +]{!</td>!}
+{!</tr>!}
+{!</table>!} ?]
+ 
+[? if disputed_states_1876.length > 0 : **Electoral Majority Required:** 185 votes — <span style="color: #c00000;">**Republicans (undisputed):**</span> [+ repEVTotal - disputedRepEV +] votes | <span style="color: #0015bc;">**Democrats (undisputed):**</span> [+ demEVTotal - disputedDemEV +] votes — Neither candidate has secured an undisputed majority. The outcome will be determined by how the disputed electoral votes are resolved. ?]
 
 @potus_menu_1876
 

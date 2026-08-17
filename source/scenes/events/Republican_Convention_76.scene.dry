@@ -57,7 +57,7 @@ go-to: Open_Convention
 
 @Incumbent_Renominate
 title: Renominate the incumbent
-view-if: third_term_bid = 0
+view-if: third_term_bid = 0 and president_party = "rep"
 choose-if: (president = "Grant" and moderate_strength + conservative_strength >= 35) or (president = "Wade" and radical_strength >= 35) or (president = "Chase" and moderate_strength + conservative_strength >= 40) or (president = "Blaine" or president = "Conkling")
 unavailable-subtitle: The party's factions won't hold the line for a renomination fight.
 on-arrival: {!
