@@ -13,9 +13,33 @@ if (Q.difficulty >= 0) {
 } else {
     this.state.currentHands['main.main_easy'].push(card);
 }
-// reset the timer...
-if (Q[card.id + "_timer"]) {
-    Q[card.id + "_timer"] = 0;
+
+var timerOverrides = {
+    "Civil_Rights": "civil_rights_timer",
+    "Interior_policy": "interior_policy_timer",
+    "War_Effort": "war_room_timer",
+    "economic_policy": "monetary_policy_timer",
+    "post_policy": "postmaster_policy_timer"
+};
+
+var timerVar = timerOverrides[card.id];
+
+if (!timerVar) {
+    var standardKey = card.id + "_timer";
+    if (Q.hasOwnProperty(standardKey)) {
+        timerVar = standardKey;
+    } else {
+        var lowerTarget = standardKey.toLowerCase();
+        for (var key in Q) {
+            if (key.toLowerCase() === lowerTarget) {
+                timerVar = key;
+                break;
+            }
+        }
+    }
+}
+if (timerVar && Q[timerVar]) {
+    Q[timerVar] = 0;
 }
 // reduce visit count
 if (this.state.visits[card.id]) {
