@@ -47,6 +47,11 @@ if (Q.dem_reform_dominant_76 === 1) {
     Q.rural_dem -= 2;
     Q.immigrant_laborers_dem += 2;
 
+    Q.NY_workers_dem += 10;
+    Q.NY_rural_dem += 10;
+    Q.NY_immigrant_laborers_dem += 10;
+    Q.NY_unemployed_dem += 10;
+
     Q.whiteL_militancy -= 0.02;
 
 } else {
