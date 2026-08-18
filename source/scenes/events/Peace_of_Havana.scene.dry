@@ -193,6 +193,7 @@ The settlement is praised as a demonstration that victory does not require humil
 
 
 @forgive_spain
+subtitle: -1 Budget
 choose-if: budget >= 1
 unavailable-subtitle: We don't have the extra cash to allow this
 on-arrival: {!

@@ -33,31 +33,43 @@ on-arrival: {!
 Q.resources -= 2;
 Q.dominican_pushed_hard = 1;
 
-let totalSenate = Q.states.length * 2;
+// Senate composition
+let repSeats = Q.rep_senate_r || 0;
+let demSeats = Q.dem_senate_r || 0;
+let libSeats = Q.lib_senate_r || 0;
+let otherSeats = Q.other_senate_r || 0;
+
+let totalSenate = repSeats + demSeats + libSeats + otherSeats;
 Q.dominican_total_senate = totalSenate;
 
-let repSeats = Q.rep_senate_r || 0;
+// Two-thirds majority required for treaty
+let requiredVotes = Math.ceil(totalSenate * (2/3));
+Q.dominican_required = requiredVotes;
 
-let conYea  = 0.85 + 0.10;
-let modYea  = 0.65 + 0.10;
-let libYea  = 0.45 + 0.08;
-let radYea  = 0.25 + 0.06;
+// Base support by faction (when we push hard, add bonus)
+let conYea = 0.85 + 0.10;
+let modYea = 0.65 + 0.10;
+let libYea = 0.45 + 0.08;
+let radYea = 0.25 + 0.06;
 
+// Dissent reduces support
 let conDis = (Q.conservative_dissent || 0) / 100;
-let modDis = (Q.moderate_dissent     || 0) / 100;
-let libDis = (Q.liberal_dissent      || 0) / 100;
-let radDis = (Q.radical_dissent      || 0) / 100;
+let modDis = (Q.moderate_dissent || 0) / 100;
+let libDis = (Q.liberal_dissent || 0) / 100;
+let radDis = (Q.radical_dissent || 0) / 100;
 
 conYea = Math.max(0, Math.min(1, conYea - conDis * 0.4));
 modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
 
+// Faction strength weights
 let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength     || 0) / 100;
-let libStr = (Q.liberal_strength      || 0) / 100;
-let radStr = (Q.radical_strength      || 0) / 100;
+let modStr = (Q.moderate_strength || 0) / 100;
+let libStr = (Q.liberal_strength || 0) / 100;
+let radStr = (Q.radical_strength || 0) / 100;
 
+// Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
     conStr * conYea +
     modStr * modYea +
@@ -65,17 +77,12 @@ let repYea = Math.round(repSeats * (
     radStr * radYea
 ));
 
-let demSeats   = Q.dem_senate_r   || 0;
-let libRepSeats = Q.lib_senate_r  || 0;
-let otherSeats = Q.other_senate_r || 0;
+// Other parties mostly oppose
+let demYea = Math.round(demSeats * 0.05);
+let libYea_votes = Math.round(libSeats * 0.40);
+let otherYea = Math.round(otherSeats * 0.30);
 
-let demYeaVotes   = Math.round(demSeats    * 0.05);
-let libRepYeaVotes = Math.round(libRepSeats * 0.40);
-let otherYeaVotes = Math.round(otherSeats  * 0.30);
-
-let requiredVotes = Math.ceil(totalSenate * (2/3));
-
-let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+let totalYea = repYea + demYea + libYea_votes + otherYea;
 Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;
 Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
@@ -90,12 +97,18 @@ on-arrival: {!
 
 Q.dominican_pushed_hard = 0;
 
-let totalSenate = Q.states.length * 2;
+// Senate composition
+let repSeats = Q.rep_senate_r || 0;
+let demSeats = Q.dem_senate_r || 0;
+let libSeats = Q.lib_senate_r || 0;
+let otherSeats = Q.other_senate_r || 0;
+
+let totalSenate = repSeats + demSeats + libSeats + otherSeats;
 Q.dominican_total_senate = totalSenate;
+
+// Two-thirds majority required for treaty
 let requiredVotes = Math.ceil(totalSenate * (2/3));
 Q.dominican_required = requiredVotes;
-
-let repSeats = Q.rep_senate_r || 0;
 
 // No push hard bonus, base rates only
 let conYea = 0.85;
@@ -103,21 +116,24 @@ let modYea = 0.65;
 let libYea = 0.45;
 let radYea = 0.25;
 
+// Dissent reduces support
 let conDis = (Q.conservative_dissent || 0) / 100;
-let modDis = (Q.moderate_dissent     || 0) / 100;
-let libDis = (Q.liberal_dissent      || 0) / 100;
-let radDis = (Q.radical_dissent      || 0) / 100;
+let modDis = (Q.moderate_dissent || 0) / 100;
+let libDis = (Q.liberal_dissent || 0) / 100;
+let radDis = (Q.radical_dissent || 0) / 100;
 
 conYea = Math.max(0, Math.min(1, conYea - conDis * 0.4));
 modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
 
+// Faction strength weights
 let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength     || 0) / 100;
-let libStr = (Q.liberal_strength      || 0) / 100;
-let radStr = (Q.radical_strength      || 0) / 100;
+let modStr = (Q.moderate_strength || 0) / 100;
+let libStr = (Q.liberal_strength || 0) / 100;
+let radStr = (Q.radical_strength || 0) / 100;
 
+// Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
     conStr * conYea +
     modStr * modYea +
@@ -125,15 +141,12 @@ let repYea = Math.round(repSeats * (
     radStr * radYea
 ));
 
-let demSeats    = Q.dem_senate_r   || 0;
-let libRepSeats = Q.lib_senate_r   || 0;
-let otherSeats  = Q.other_senate_r || 0;
+// Other parties mostly oppose
+let demYea = Math.round(demSeats * 0.05);
+let libYea_votes = Math.round(libSeats * 0.40);
+let otherYea = Math.round(otherSeats * 0.30);
 
-let demYeaVotes    = Math.round(demSeats    * 0.05);
-let libRepYeaVotes = Math.round(libRepSeats * 0.40);
-let otherYeaVotes  = Math.round(otherSeats  * 0.30);
-
-let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+let totalYea = repYea + demYea + libYea_votes + otherYea;
 Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;
 Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
@@ -148,13 +161,20 @@ on-arrival: {!
 
 Q.dominican_pushed_hard = 0;
 
-let totalSenate = Q.states.length * 2;
+// Senate composition
+let repSeats = Q.rep_senate_r || 0;
+let demSeats = Q.dem_senate_r || 0;
+let libSeats = Q.lib_senate_r || 0;
+let otherSeats = Q.other_senate_r || 0;
+
+let totalSenate = repSeats + demSeats + libSeats + otherSeats;
 Q.dominican_total_senate = totalSenate;
+
+// Two-thirds majority required for treaty
 let requiredVotes = Math.ceil(totalSenate * (2/3));
 Q.dominican_required = requiredVotes;
 
-let repSeats = Q.rep_senate_r || 0;
-
+// Opposition penalty: reduces support across all factions
 let oppositionPenalty = 0.20;
 
 let conYea = Math.max(0, 0.85 - oppositionPenalty);
@@ -162,27 +182,24 @@ let modYea = Math.max(0, 0.65 - oppositionPenalty);
 let libYea = Math.max(0, 0.45 - oppositionPenalty);
 let radYea = Math.max(0, 0.25 - oppositionPenalty);
 
+// Dissent reduces support
 let conDis = (Q.conservative_dissent || 0) / 100;
-let modDis = (Q.moderate_dissent     || 0) / 100;
-let libDis = (Q.liberal_dissent      || 0) / 100;
-let radDis = (Q.radical_dissent      || 0) / 100;
-
-let conResist = Math.max(0, ((Q.conservative_strength || 0) - 30) / 100) * (1 - conDis);
-let modResist = Math.max(0, ((Q.moderate_strength     || 0) - 40) / 100) * (1 - modDis);
-
-conYea = Math.min(0.85, conYea + conResist * 0.30);
-modYea = Math.min(0.65, modYea + modResist * 0.20);
+let modDis = (Q.moderate_dissent || 0) / 100;
+let libDis = (Q.liberal_dissent || 0) / 100;
+let radDis = (Q.radical_dissent || 0) / 100;
 
 conYea = Math.max(0, Math.min(1, conYea - conDis * 0.3));
 modYea = Math.max(0, Math.min(1, modYea - modDis * 0.3));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.3));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.3));
 
+// Faction strength weights
 let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength     || 0) / 100;
-let libStr = (Q.liberal_strength      || 0) / 100;
-let radStr = (Q.radical_strength      || 0) / 100;
+let modStr = (Q.moderate_strength || 0) / 100;
+let libStr = (Q.liberal_strength || 0) / 100;
+let radStr = (Q.radical_strength || 0) / 100;
 
+// Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
     conStr * conYea +
     modStr * modYea +
@@ -190,15 +207,12 @@ let repYea = Math.round(repSeats * (
     radStr * radYea
 ));
 
-let demSeats    = Q.dem_senate_r   || 0;
-let libRepSeats = Q.lib_senate_r   || 0;
-let otherSeats  = Q.other_senate_r || 0;
+// Other parties mostly oppose
+let demYea = Math.round(demSeats * 0.03);
+let libYea_votes = Math.round(libSeats * 0.35);
+let otherYea = Math.round(otherSeats * 0.25);
 
-let demYeaVotes    = Math.round(demSeats    * 0.03);
-let libRepYeaVotes = Math.round(libRepSeats * 0.35);
-let otherYeaVotes  = Math.round(otherSeats  * 0.25);
-
-let totalYea = repYea + demYeaVotes + libRepYeaVotes + otherYeaVotes;
+let totalYea = repYea + demYea + libYea_votes + otherYea;
 Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;
 Q.dominican_passes = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
@@ -219,35 +233,60 @@ We side with Sumner and the skeptics. The Senate will now vote without executive
 subtitle: Pursue the lease, not the annexation
 on-arrival: {!
 
-let totalSenate = Q.states.length * 2;
+// Senate composition
+let repSeats = Q.rep_senate_r || 0;
+let demSeats = Q.dem_senate_r || 0;
+let libSeats = Q.lib_senate_r || 0;
+let otherSeats = Q.other_senate_r || 0;
+
+let totalSenate = repSeats + demSeats + libSeats + otherSeats;
 Q.dominican_total_senate = totalSenate;
 
+// Simple majority required for lease (easier than annexation)
 let requiredVotes = Math.floor(totalSenate / 2) + 1;
 Q.dominican_required = requiredVotes;
 
-let repSeats    = Q.rep_senate_r   || 0;
-let demSeats    = Q.dem_senate_r   || 0;
-let libRepSeats = Q.lib_senate_r   || 0;
-let otherSeats  = Q.other_senate_r || 0;
+// Higher support for modest lease proposal
+let conYea = 0.80;
+let modYea = 0.70;
+let libYea = 0.55;
+let radYea = 0.35;
 
+// Dissent reduces support
 let conDis = (Q.conservative_dissent || 0) / 100;
-let modDis = (Q.moderate_dissent     || 0) / 100;
+let modDis = (Q.moderate_dissent || 0) / 100;
+let libDis = (Q.liberal_dissent || 0) / 100;
+let radDis = (Q.radical_dissent || 0) / 100;
 
-let repYeaRate   = Math.max(0, Math.min(1, 0.80 - conDis * 0.15 - modDis * 0.15));
-let demYeaRate   = 0.20;
-let libRepYeaRate = 0.55;
-let otherYeaRate = 0.45;
+conYea = Math.max(0, Math.min(1, conYea - conDis * 0.3));
+modYea = Math.max(0, Math.min(1, modYea - modDis * 0.3));
+libYea = Math.max(0, Math.min(1, libYea - libDis * 0.3));
+radYea = Math.max(0, Math.min(1, radYea - radDis * 0.3));
 
-let totalYea =
-    Math.round(repSeats    * repYeaRate)    +
-    Math.round(demSeats    * demYeaRate)    +
-    Math.round(libRepSeats * libRepYeaRate) +
-    Math.round(otherSeats  * otherYeaRate);
+// Faction strength weights
+let conStr = (Q.conservative_strength || 0) / 100;
+let modStr = (Q.moderate_strength || 0) / 100;
+let libStr = (Q.liberal_strength || 0) / 100;
+let radStr = (Q.radical_strength || 0) / 100;
 
+// Republican votes weighted by faction composition
+let repYea = Math.round(repSeats * (
+    conStr * conYea +
+    modStr * modYea +
+    libStr * libYea +
+    radStr * radYea
+));
+
+// Other parties more amenable to lease-only proposal
+let demYea = Math.round(demSeats * 0.20);
+let libYea_votes = Math.round(libSeats * 0.55);
+let otherYea = Math.round(otherSeats * 0.45);
+
+let totalYea = repYea + demYea + libYea_votes + otherYea;
 Q.dominican_yea = Math.max(0, Math.min(totalSenate, totalYea));
 Q.dominican_nah = totalSenate - Q.dominican_yea;
-Q.dominican_passes = 0; // full annexation never comes to vote
 Q.samanabay_lease = (Q.dominican_yea >= requiredVotes) ? 1 : 0;
+Q.dominican_passes = 0; // full annexation never comes to vote
 
 if (Q.samanabay_lease) {
     Q.budget         += 1;

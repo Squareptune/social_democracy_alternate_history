@@ -1435,6 +1435,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 = Incomplete Achievements
 
+<span style="font-style: italic;"> Some achievements are only registered on the game over screen. So if you close the game before the end screen, some achievements you might have gained might not be recorded. </span>
+
 {!<table style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">!}
 
 [? if not achievement_radical: 

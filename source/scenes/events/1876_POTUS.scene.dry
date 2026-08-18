@@ -288,7 +288,7 @@ go-to: potus_menu_1876
 {!<tr><td>Party</td><td>Electoral votes</td></tr>!}
 {!<tr><td><div class="box" style="background-color:#d73027; outline:2px solid;"></div> !}<span style="color: #c00000;">**Republicans ([+ Candidate +])**</span>{!</td><td>!}[+ repEVTotal +] votes{!</td></tr>!}
 {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #0015bc;">**Democrats**</span> ([+ dem_candidate_1876 +]){!</td><td>!}[+ demEVTotal +] votes{!</td></tr>!}
-[? if Disputed_Yes == 1 : {!<tr><td><div class="box" style="background-color:#4575b4; outline:2px solid;"></div> !}<span style="color: #8E536E;">**Disputed Results**</span> {!</td><td>!}[+ disputedRepEV + disputedDemEV +] votes{!</td></tr>!} ?]
+[? if Disputed_Yes == 1 : {!<tr><td><div class="box" style="background-color:#8E536E; outline:2px solid;"></div> !}<span style="color: #8E536E;">**Disputed Results**</span> {!</td><td>!}[+ disputedRepEV + disputedDemEV +] votes{!</td></tr>!} ?]
 {!</table>!}
 
 [? if Disputed_Yes == 1 : The following number is the amount of disputed electoral votes produced from the election:  [+ disputedRepEV + disputedDemEV +] electoral votes ?]
