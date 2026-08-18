@@ -27,7 +27,7 @@ With <span style="color: #c00000;">**Republican**</span> control of Congress, we
 
 @enforcement_acts_btn
 title: Pass the Enforcement Acts
-view-if: enforcement_acts = 0 and kkk_strength + whiteL_strength >= 400
+view-if: enforcement_acts = 0 and kkk_strength + whiteL_strength >= 275
 choose-if: rep_majority >= 1 and radical_strength + moderate_strength >= 50
 unavailable-subtitle: [? if rep_majority < 1: We do not control Congress. ?][? if radical_strength + moderate_strength < 50: The <span style="color: #7A1F5C;">**Radical**</span> and <span style="color: #9D2933;">**Moderate**</span> factions are not strong enough to push this through. ?]
 on-arrival: {!

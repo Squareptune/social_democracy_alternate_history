@@ -129,8 +129,6 @@ for (let state of Q.states) {
     if (twoPartyTotal > 0) {
       let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
       
-      // FIXED: Make fraud much stronger to match historical violence levels
-      // KKK+WhiteL of 500+ should reliably shift close races
       let fraudPower = Math.min(35, ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) / 20);
       let fraudShift = fraudPower + (Math.random() * 10) - 5;
 
@@ -141,16 +139,12 @@ for (let state of Q.states) {
 
       let postFraudMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
       
-      // FIXED: Widen dispute window from 9 to 14 percentage points
-      // This makes disputes actually achievable with your -6 to +6 natural variation
       if (Math.abs(postFraudMargin) <= 14) {
         stateDisputed = 1;
         Q.disputed_states_1876.push(state);
       }
       
-      // FIXED: Add secondary uncertainty mechanism for extreme violence
-      // High violence creates ambiguous returns independent of margin
-      if ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0) >= 400) {
+      if ((Q.kkk_strength) + (Q.whiteL_strength ) >= 350) {
         if (Math.random() < 0.5) {  // 50% chance of disputed returns with extreme violence
           stateDisputed = 1;
           if (!Q.disputed_states_1876.includes(state)) {
@@ -204,6 +198,8 @@ if (Q.disputed_states_1876.length > 0 && repUndisputed < majority && demUndisput
 } else {
   Q.potus_winner = "dem";
 }
+
+console.log(`${state} winner: ${winner}, rep=${votes.rep.toFixed(0)}, dem=${votes.dem.toFixed(0)}, lib=${votes.lib.toFixed(0)}, margin=${marginPct}%`);
 
 if(Q.demEVTotal == 0 && Q.libEVTotal == 0)
 {
