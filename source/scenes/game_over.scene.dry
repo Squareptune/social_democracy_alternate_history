@@ -162,6 +162,7 @@ title: Radical: A New South Forged in Fire!
 tags: endings
 go-to: eg_menu
 audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
+set-bg: img/15th-amendment-celebration-1870.jpg
 
 = Radical Ending
 
@@ -181,6 +182,7 @@ title: Occupation: South at gun’s point
 tags: endings
 go-to: eg_menu
 audio: music/_Kingdom_Coming__by_Henry_C._Work_–_sung_by_Frank_Crumit_(1927).mp3
+set-bg: img/Occupation_Ending_BG.jpg
 
 = Occupation Ending
 
@@ -198,6 +200,7 @@ title: Contested OCCUPATION: South in eternal conflict.
 tags: endings
 go-to: eg_menu
 audio: music/_Kingdom_Coming__by_Henry_C._Work_–_sung_by_Frank_Crumit_(1927).mp3
+set-bg: img/Battle_of_Liberty_Place_Leslies_Illustrated_Newspaper.jpg
 
 = Contested Occupation Ending
 
@@ -217,6 +220,7 @@ title: Contested Reconstruction: Reconstruction achieved…but our party is divi
 tags: endings
 go-to: eg_menu
 audio: music/BattleHymnoftheRepublic-RareInstrumental.mp3
+set-bg: img/Freedmen_School.jpg
 
 = Contested Reconstruction Ending
 
@@ -236,6 +240,7 @@ title: Historical: Hayes, Hayes, we all love Hayes.
 tags: endings
 go-to: eg_menu
 audio: music/For Hayes and Wheeler Too!.mp3
+set-bg: img/The_political_farce_of_1876_LCCN2006677483.jpg
 
 = Historical Ending
 
@@ -253,6 +258,7 @@ title: Compromise: Reconstruction over too soon
 tags: endings
 go-to: eg_menu
 audio: music/We_shall_overcome.mp3
+set-bg: img/Achievements/Compromise.jpg
 
 = Compromise Ending
 
@@ -270,6 +276,7 @@ title: LIMINAL: Stalemate
 tags: endings
 go-to: eg_menu
 audio: music/We_shall_overcome.mp3
+set-bg: img/United_States_Capitol_(3678157107).jpg
 
 = Liminal Ending
 
@@ -287,6 +294,7 @@ title: Betrayal: Freemen have rights…or do they?
 tags: endings
 go-to: eg_menu
 audio: music/Dixie's_Land_Instrumental.mp3
+set-bg: img/Ku_Klux_Klan_on_parade,_Springfield,_Ohio.jpg
 
 = Betrayal Ending
 
@@ -306,6 +314,7 @@ title: Redemption: The White man’s South.
 tags: endings
 go-to: eg_menu
 audio: music/Dixie's_Land_Instrumental.mp3
+set-bg: img/Cotton_plantation_on_the_Mississippi,_1884_(cropped).jpg
 
 = Redemption Ending
 

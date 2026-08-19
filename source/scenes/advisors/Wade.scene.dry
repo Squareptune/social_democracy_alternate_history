@@ -2,7 +2,7 @@ title: Benjamin Wade
 is-pinned-card: true
 tags: advisor
 card-image: img/portraits/Benjamin_F_Wade.jpg
-view-if: wade_advisor = 1 and president != "Wade"
+view-if: wade_advisor = 1
 new-page: true
 
 = Benjamin Wade
