@@ -1990,6 +1990,7 @@ Q.garfield_advisor = 0;
 Q.sherman_advisor = 0;
 Q.blaine_advisor = 0;
 Q.hayes_advisor = 0;
+Q.secret_hayes = 0;
 Q.fish_advisor = 0;
 Q.conkling_advisor = 0;
 Q.cameron_advisor = 0;

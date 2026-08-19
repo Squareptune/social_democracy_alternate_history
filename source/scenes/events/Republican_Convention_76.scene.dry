@@ -170,9 +170,21 @@ Q.conservative_dissent -= 2;
 Q.liberal_dissent -= 4;
 Q.middle_class_rep += 2;
 Q.rural_rep += 2;
+
+if (Math.random() < 0.01) 
+{
+    Q.secret_hayes = 1;
+    this.achieve("Secret_Hayes");
+}
+else
+{
+    Q.secret_hayes = 0;
+}
+
 !}
-face-image: img/portraits/Rutherford_Hayes.jpg
 go-to: VP_1876
+
+[? if secret_hayes = 0 : <div class="face-figure"><img src="img/portraits/Rutherford_Hayes.jpg" alt="Hayes" class="face-img"></div> ?][? if secret_hayes = 1 : <div class="face-figure"><img src="img/Achievements/Secret_Hayes.png" alt="Hayes" class="face-img"></div> ?]
 
 Deadlocked between Blaine, Morton, and Conkling, the convention turns to Hayes as a compromise: a three-term Ohio governor with a clean reputation and no enemies to speak of. It is not a nomination of enthusiasm, but of exhaustion.
 
