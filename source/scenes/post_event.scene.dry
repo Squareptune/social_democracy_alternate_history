@@ -441,8 +441,8 @@ for (let state of Q.southern_states) {
 
   // Amendment equality bonus
   raceEqualitySupport += 5;
-  if (Q.fortheen_A == 1) raceEqualitySupport += 15;
-  if (Q.fifthteen == 1)  raceEqualitySupport += 10;
+  if (Q.fortheen_A == 1) raceEqualitySupport += 8;
+  if (Q.fifthteen == 1)  raceEqualitySupport += 9;
 
   raceEqualitySupport = Math.max(0, Math.min(100, Math.round(raceEqualitySupport)));
   Q[state + "_raceEqualitySupport"] = raceEqualitySupport;

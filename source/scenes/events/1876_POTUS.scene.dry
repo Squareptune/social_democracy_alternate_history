@@ -57,7 +57,7 @@ let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.fre
 let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
 
 let candidateNorthShift = {
-  "Tilden":    -3.5,
+  "Tilden":    -6.0,
   "Hendricks": -1.5,
   "Bayard":     1.0,
   "Hancock":    0,
@@ -115,8 +115,8 @@ for (let state of Q.states) {
     if (twoPartyTotal > 0) {
       let currentMargin = ((votes.rep - votes.dem) / twoPartyTotal) * 100;
       let marginDiff = marginTarget - currentMargin;
-      votes.rep += twoPartyTotal * (marginDiff / 200);
-      votes.dem -= twoPartyTotal * (marginDiff / 200);
+      votes.rep += twoPartyTotal * (marginDiff / 150);
+      votes.dem -= twoPartyTotal * (marginDiff / 150);
       votes.rep = Math.max(0, votes.rep);
       votes.dem = Math.max(0, votes.dem);
     }
