@@ -12,7 +12,7 @@ go-to: start_menu_2
 
 - @start: Start game
 - @credits: Credits
-- @Update: Update Logs/Future Ideas
+- @log: Update Logs/Future Ideas
 - @game_over.achievements
 
 
