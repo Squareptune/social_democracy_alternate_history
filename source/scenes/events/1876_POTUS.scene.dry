@@ -57,7 +57,7 @@ let nationalRepSwing = (Q.workers_rep + Q.middle_class_rep + Q.rural_rep + Q.fre
 let nationalDemSwing = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.freemen_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 6 - baselineDem;
 
 let candidateNorthShift = {
-  "Tilden":    -6.0,
+  "Tilden":    -4.75,
   "Hendricks": -1.5,
   "Bayard":     1.0,
   "Hancock":    0,
