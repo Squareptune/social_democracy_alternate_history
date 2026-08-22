@@ -19,6 +19,7 @@ The Union League is a quasi-secretive men's club formed during the Civil War and
 - @cancel_advisor_action
 
 @militant
+view-if: kkk_strength > Union_League_strength
 choose-if: resources >= rb_militarization_cost
 unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
 subtitle: -[+ rb_militarization_cost +] resources
@@ -27,7 +28,6 @@ on-arrival: resources -= rb_militarization_cost; rb_investment += 1; Union_Leagu
 Some in our party decry the increasing militarization of the Union League. They say it is emulating the Southern Redeemers or the labor radicals, and risks alienating our allies in the moderate factions. On the other hand, more <span style="color: #7A1F5C;">**Radical Republicans**</span> are being drawn to our organizations, away from the labor agitators.
 
 @militant_2
-view-if: kkk_strength >= nion_League_strength
 on-arrival: Union_League_militancy += 0.02; funded_reichsbanner -= 1; radical_strength += 1; liberal_dissent += 1
 
 As we have already funded resources towards the Union League, we can invest in building up their militancy.

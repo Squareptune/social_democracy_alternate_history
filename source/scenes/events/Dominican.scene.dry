@@ -63,11 +63,14 @@ modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
 
-// Faction strength weights
-let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength || 0) / 100;
-let libStr = (Q.liberal_strength || 0) / 100;
-let radStr = (Q.radical_strength || 0) / 100;
+// Faction strength weights, normalized against their actual sum
+// (these are raw accumulating point totals, NOT percentages,
+// so we can't assume they sum to 100)
+let factionTotal = (Q.conservative_strength || 0) + (Q.moderate_strength || 0) + (Q.liberal_strength || 0) + (Q.radical_strength || 0);
+let conStr = factionTotal ? (Q.conservative_strength || 0) / factionTotal : 0.25;
+let modStr = factionTotal ? (Q.moderate_strength || 0) / factionTotal : 0.25;
+let libStr = factionTotal ? (Q.liberal_strength || 0) / factionTotal : 0.25;
+let radStr = factionTotal ? (Q.radical_strength || 0) / factionTotal : 0.25;
 
 // Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
@@ -127,11 +130,12 @@ modYea = Math.max(0, Math.min(1, modYea - modDis * 0.4));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.4));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.4));
 
-// Faction strength weights
-let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength || 0) / 100;
-let libStr = (Q.liberal_strength || 0) / 100;
-let radStr = (Q.radical_strength || 0) / 100;
+// Faction strength weights, normalized against their actual sum
+let factionTotal = (Q.conservative_strength || 0) + (Q.moderate_strength || 0) + (Q.liberal_strength || 0) + (Q.radical_strength || 0);
+let conStr = factionTotal ? (Q.conservative_strength || 0) / factionTotal : 0.25;
+let modStr = factionTotal ? (Q.moderate_strength || 0) / factionTotal : 0.25;
+let libStr = factionTotal ? (Q.liberal_strength || 0) / factionTotal : 0.25;
+let radStr = factionTotal ? (Q.radical_strength || 0) / factionTotal : 0.25;
 
 // Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
@@ -193,11 +197,12 @@ modYea = Math.max(0, Math.min(1, modYea - modDis * 0.3));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.3));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.3));
 
-// Faction strength weights
-let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength || 0) / 100;
-let libStr = (Q.liberal_strength || 0) / 100;
-let radStr = (Q.radical_strength || 0) / 100;
+// Faction strength weights, normalized against their actual sum
+let factionTotal = (Q.conservative_strength || 0) + (Q.moderate_strength || 0) + (Q.liberal_strength || 0) + (Q.radical_strength || 0);
+let conStr = factionTotal ? (Q.conservative_strength || 0) / factionTotal : 0.25;
+let modStr = factionTotal ? (Q.moderate_strength || 0) / factionTotal : 0.25;
+let libStr = factionTotal ? (Q.liberal_strength || 0) / factionTotal : 0.25;
+let radStr = factionTotal ? (Q.radical_strength || 0) / factionTotal : 0.25;
 
 // Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
@@ -263,11 +268,12 @@ modYea = Math.max(0, Math.min(1, modYea - modDis * 0.3));
 libYea = Math.max(0, Math.min(1, libYea - libDis * 0.3));
 radYea = Math.max(0, Math.min(1, radYea - radDis * 0.3));
 
-// Faction strength weights
-let conStr = (Q.conservative_strength || 0) / 100;
-let modStr = (Q.moderate_strength || 0) / 100;
-let libStr = (Q.liberal_strength || 0) / 100;
-let radStr = (Q.radical_strength || 0) / 100;
+// Faction strength weights, normalized against their actual sum
+let factionTotal = (Q.conservative_strength || 0) + (Q.moderate_strength || 0) + (Q.liberal_strength || 0) + (Q.radical_strength || 0);
+let conStr = factionTotal ? (Q.conservative_strength || 0) / factionTotal : 0.25;
+let modStr = factionTotal ? (Q.moderate_strength || 0) / factionTotal : 0.25;
+let libStr = factionTotal ? (Q.liberal_strength || 0) / factionTotal : 0.25;
+let radStr = factionTotal ? (Q.radical_strength || 0) / factionTotal : 0.25;
 
 // Republican votes weighted by faction composition
 let repYea = Math.round(repSeats * (
