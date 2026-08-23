@@ -12,7 +12,8 @@ Q.economic_growth_2 = '0';
 if (Q.economic_growth) {
     Q.economic_growth_2 = Q.economic_growth.toFixed(1);
 }
-
+!}
+on-display: {!
 function drawStatusCharts() {
     let houseData = [
         { id: "rep", legend: "Republican", name: "Republican", color: "#B22222", outline: "#600000", seats: Math.floor(Q.rep_r) },
@@ -20,14 +21,14 @@ function drawStatusCharts() {
         { id: "other", legend: "Other", name: "Other", color: "#AAAAAA", outline: "#666666", seats: Math.floor(Q.other_r) },
         { id: "lib", legend: "Liberal Republicans", name: "Liberal Republican", color: "#DAA520", outline: "#866614", seats: Math.floor(Q.lib_r) }
     ];
-
+    console.log("houseData:", houseData);
     let senateData = [
         { id: "rep", legend: "Republican", name: "Republican", color: "#B22222", outline: "#600000", seats: Math.floor(Q.rep_senate_r) },
         { id: "dem", legend: "Democrat", name: "Democrat", color: "#003366", outline: "#001933", seats: Math.floor(Q.dem_senate_r) },
         { id: "other", legend: "Other", name: "Other", color: "#AAAAAA", outline: "#666666", seats: Math.floor(Q.other_senate_r) },
         { id: "lib", legend: "Liberal Republicans", name: "Liberal Republican", color: "#DAA520", outline: "#866614", seats: Math.floor(Q.lib_senate_r) }
     ];
-
+    console.log("senateData:", senateData);
     var width = 500;
     var screenWidth = document.getElementById('content').offsetWidth;
     if (screenWidth < width - 50) {
