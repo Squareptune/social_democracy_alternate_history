@@ -28,7 +28,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +] ([+ president_party +])
 
-<div class="face-figure"><img src="img/portraits/Benjamin_Butler.jpg" alt="Ben Butler" class="face-img"></div>
+<div class="Panel-img"><img src="img/portraits/Benjamin_Butler.jpg"></div>
 
 Speaker of House: [+ speaker +] ([+ speaker_party +])
 
