@@ -33,10 +33,11 @@ President: [+ president +] ([+ president_party +])
 [? if president = "Wade": <div class="Panel-img"><img src="img/portraits/Benjamin_F_Wade.jpg"></div> ?]
 [? if president = "Grant": <div class="Panel-img"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg"></div> ?]
 [? if president = "Chase": <div class="Panel-img"><img src="img/portraits/Salmon-P-Chase.webp"></div> ?]
+[? if president = "Seymour": <img src="img/portraits/Horatio_Seymour_(cropped,_retouched).jpg" style="outline: 3px solid #161d99;"> ?]
 
 Speaker of House: [+ speaker +] ([+ speaker_party +])
 
-Congress composition:
+= Congress composition
 
 House of Representatives:
 

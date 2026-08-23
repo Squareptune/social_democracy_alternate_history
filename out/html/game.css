@@ -726,9 +726,9 @@ video {
   flex-shrink: 0;
 }
 
-.Panel-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
+.Panel-img img { 
+  display: block; 
+  margin: 0 auto; 
+  width: 75%; 
+  outline: 3px solid #991616; 
 }
