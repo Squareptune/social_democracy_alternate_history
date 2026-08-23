@@ -212,7 +212,7 @@ on-display: {!
         id: "others",
         seats: Math.round(Q.other_senate_r),
         color: "#00cc00",
-        outline: "#a0a0a0"
+        outline: "#00cc00"
       }
     ].filter(d => d.seats > 0);
 

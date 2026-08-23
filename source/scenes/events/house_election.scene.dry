@@ -195,7 +195,7 @@ on-display: {!
         id: "others",
         seats: Math.round(Q.other_r),
         color: "#00cc00",
-        outline: "#a0a0a0"
+        outline: "#00cc00"
       }
     ].filter(d => d.seats > 0);
 
@@ -247,7 +247,7 @@ go-to: house_menu
 
 [? if liberal_split = 1 : {!<tr><td><div class="box" style='background-color:#DAA520'> </div> !} <span style="color: #DAA520;">**Liberal Republicans**</span>: {!</td><td>!} [+ lib_r_disp +] seats {!</td><td>!} [+ str_change_lib_r +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r_disp +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color: #00cc00'> </div> !} Others: {!</td><td>!} [+ other_r_disp +] seats {!</td><td>!} [+ str_change_other_r +] {!</td></tr>!}
 {!</table>!}
 
 @house_menu

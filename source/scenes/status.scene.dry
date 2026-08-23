@@ -18,17 +18,17 @@ function _addP(list, id, legend, color, outline, seats) {
 }
 
 var _house = [];
-_addP(_house, 'rep', 'Republican', '#B22222', '#600000', Q.rep_r);
-_addP(_house, 'dem', 'Democrat', '#003366', '#001933', Q.dem_r);
-_addP(_house, 'other', 'Other', '#AAAAAA', '#666666', Q.other_r);
-_addP(_house, 'lib', 'Liberal Republican', '#DAA520', '#866614', Q.lib_r);
+_addP(_house, 'rep', 'Republican', '#c00000', '#E3000F', Q.rep_r);
+_addP(_house, 'dem', 'Democrat', '#0015bc', '#0015bc', Q.dem_r);
+_addP(_house, 'other', 'Other', '#00cc00', '#00cc00', Q.other_r);
+_addP(_house, 'lib', 'Liberal Republican', '#DAA520', '#DAA520', Q.lib_r);
 window._houseData = _house;
 
 var _senate = [];
-_addP(_senate, 'rep', 'Republican', '#B22222', '#600000', Q.rep_senate_r);
-_addP(_senate, 'dem', 'Democrat', '#003366', '#001933', Q.dem_senate_r);
-_addP(_senate, 'other', 'Other', '#AAAAAA', '#666666', Q.other_senate_r);
-_addP(_senate, 'lib', 'Liberal Republican', '#DAA520', '#866614', Q.lib_senate_r);
+_addP(_senate, 'rep', 'Republican', '#c00000', '#c00000', Q.rep_senate_r);
+_addP(_senate, 'dem', 'Democrat', '#0015bc', '#0015bc', Q.dem_senate_r);
+_addP(_senate, 'other', 'Other', '#00cc00', '#00cc00', Q.other_senate_r);
+_addP(_senate, 'lib', 'Liberal Republican', '#DAA520', '#DAA520', Q.lib_senate_r);
 window._senateData = _senate;
 !}
 
