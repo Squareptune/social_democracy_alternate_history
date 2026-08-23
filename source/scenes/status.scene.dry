@@ -31,7 +31,6 @@ _addP(_senate, 'other', 'Other', '#AAAAAA', '#666666', Q.other_senate_r);
 _addP(_senate, 'lib', 'Liberal Republican', '#DAA520', '#866614', Q.lib_senate_r);
 window._senateData = _senate;
 !}
-
 = Status
 
 [+ month : month +] [+ year +]
@@ -83,6 +82,12 @@ House of Representatives:
     el.setAttribute('height', Math.round(w * 0.5));
     var parl = d3.parliament();
     parl.width(w).height(Math.round(w * 0.5)).innerRadiusCoef(0.4);
+    // No animation - instant redraw every time
+    parl.enter.smallToBig = false;
+    parl.enter.fromCenter = false;
+    parl.exit.toCenter = false;
+    parl.exit.bigToSmall = false;
+    parl.update.animate = false;
     d3.select('#house_chart').datum(window._houseData).call(parl);
 })();
 </script>!}
@@ -105,6 +110,11 @@ Senate Seats:
     el.setAttribute('height', Math.round(w * 0.5));
     var parl = d3.parliament();
     parl.width(w).height(Math.round(w * 0.5)).innerRadiusCoef(0.4);
+    parl.enter.smallToBig = false;
+    parl.enter.fromCenter = false;
+    parl.exit.toCenter = false;
+    parl.exit.bigToSmall = false;
+    parl.update.animate = false;
     d3.select('#senate_chart').datum(window._senateData).call(parl);
 })();
 </script>!}
