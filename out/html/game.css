@@ -725,3 +725,10 @@ video {
 .et-pie {
   flex-shrink: 0;
 }
+
+.Panel-img img { 
+  display: block; 
+  margin: 0 auto; 
+  width: 75%; 
+  outline: 3px solid #991616; 
+}

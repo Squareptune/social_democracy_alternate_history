@@ -12,6 +12,24 @@ Q.economic_growth_2 = '0';
 if (Q.economic_growth) {
     Q.economic_growth_2 = Q.economic_growth.toFixed(1);
 }
+
+function _addP(list, id, legend, color, outline, seats) {
+    if (seats && seats > 0) list.push({ id: id, legend: legend, name: legend, color: color, outline: outline, seats: Math.floor(seats) });
+}
+
+var _house = [];
+_addP(_house, 'rep', 'Republican', '#c00000', '#E3000F', Q.rep_r);
+_addP(_house, 'dem', 'Democrat', '#0015bc', '#0015bc', Q.dem_r);
+_addP(_house, 'other', 'Other', '#00cc00', '#00cc00', Q.other_r);
+_addP(_house, 'lib', 'Liberal Republican', '#DAA520', '#DAA520', Q.lib_r);
+window._houseData = _house;
+
+var _senate = [];
+_addP(_senate, 'rep', 'Republican', '#c00000', '#c00000', Q.rep_senate_r);
+_addP(_senate, 'dem', 'Democrat', '#0015bc', '#0015bc', Q.dem_senate_r);
+_addP(_senate, 'other', 'Other', '#00cc00', '#00cc00', Q.other_senate_r);
+_addP(_senate, 'lib', 'Liberal Republican', '#DAA520', '#DAA520', Q.lib_senate_r);
+window._senateData = _senate;
 !}
 
 = Status
@@ -28,11 +46,51 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +] ([+ president_party +])
 
+[? if president = "Lincoln": <div class="Panel-img"><img src="img/portraits/Abraham_Lincoln_O-116_by_Gardner,_1865-crop.png"></div> ?]
+[? if president = "Johnson": <div class="Panel-img"><img src="img/portraits/Johnson.jpg"></div> ?]
+[? if president = "Wade": <div class="Panel-img"><img src="img/portraits/Benjamin_F_Wade.jpg"></div> ?]
+[? if president = "Grant": <div class="Panel-img"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg"></div> ?]
+[? if president = "Chase": <div class="Panel-img"><img src="img/portraits/Salmon-P-Chase.webp"></div> ?]
+[? if president = "Seymour": <img src="img/portraits/Horatio_Seymour_(cropped,_retouched).jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Conkling": <div class="Panel-img"><img src="img/portraits/Roscoe_Conkling.jpg"></div> ?]
+[? if president = "Blaine": <div class="Panel-img"><img src="img/portraits/James_G._Blaine.jpg"></div> ?]
+[? if president = "Hancock": <img src="img/portraits/Gen._Winfield_S._Hancock_-_NARA_-_529369_(cropped,_retouched).jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Thurman": <img src="img/portraits/Allen_G._Thurman_-_Brady-Handy.jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Bayard": <img src="img/portraits/960px-Thomas_F._Bayard,_Brady-Handy_photo_portrait,_circa_1870-1880_(cropped)(b).jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Pendleton": <img src="img/portraits/250px-GeorgeHPendleton.png" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Greeley": <img src="img/portraits/500px-Horace_Greeley_restored.jpg" style="outline: 3px solid #DAA520; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Brown": <img src="img/portraits/BGratzBrown.png" style="outline: 3px solid #DAA520; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Morton": <div class="Panel-img"><img src="img/portraits/Oliver_Hazard_Perry_Morton.jpg"></div> ?]
+[? if president = "Hayes": <div class="Panel-img"><img src="img/portraits/Rutherford_Hayes.jpg"></div> ?]
+[? if president = "Tilden": <img src="img/portraits/Samuel_Tilden._Portrait_of_the_American_politician,_who_served_as_the_25th_Governor_of_New_York,_Samuel_Jones_Tilden_(1814-1886),_by_José_María_Mora,_c._1870.jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Hendricks": <img src="img/portraits/Thomas_Andrews_Hendricks,_photo_portrait_seated,_1860-65.jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+[? if president = "Allen": <img src="img/portraits/William_Allen_governor_-_Brady-Handy.jpg" style="outline: 3px solid #161d99; display: block; margin: 0 auto; width: 75%;"> ?]
+
 Speaker of House: [+ speaker +] ([+ speaker_party +])
 
-Congress composition:
+= Congress composition
 
 House of Representatives:
+
+{!<svg id="house_chart" style="width: 100%; display: block;"></svg>
+<script>
+(function() {
+    if (typeof d3 === 'undefined' || !d3.parliament || !window._houseData || window._houseData.length === 0) return;
+    var el = document.getElementById('house_chart');
+    if (!el) return;
+    var w = el.parentElement.offsetWidth || 500;
+    el.setAttribute('width', w);
+    el.setAttribute('height', Math.round(w * 0.5));
+    var parl = d3.parliament();
+    parl.width(w).innerRadiusCoef(0.4);
+    parl.enter.smallToBig(false);
+    parl.enter.fromCenter(false);
+    parl.exit.toCenter(false);
+    parl.exit.bigToSmall(false);
+    parl.update.animate(false);
+    d3.select('#house_chart').datum(window._houseData).call(parl);
+})();
+</script>!}
 
 <span class="tooltip-text" title="Republican Party" style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats
 <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>: [+ dem_r +] seats
@@ -40,6 +98,26 @@ House of Representatives:
 <span class="tooltip-text" title="Other" style="color: #00cc00;">**Other**</span>: [+ other_r +] seats
 
 Senate Seats:
+
+{!<svg id="senate_chart" style="width: 100%; display: block;"></svg>
+<script>
+(function() {
+    if (typeof d3 === 'undefined' || !d3.parliament || !window._senateData || window._senateData.length === 0) return;
+    var el = document.getElementById('senate_chart');
+    if (!el) return;
+    var w = el.parentElement.offsetWidth || 500;
+    el.setAttribute('width', w);
+    el.setAttribute('height', Math.round(w * 0.5));
+    var parl = d3.parliament();
+    parl.width(w).innerRadiusCoef(0.4);
+    parl.enter.smallToBig(false);
+    parl.enter.fromCenter(false);
+    parl.exit.toCenter(false);
+    parl.exit.bigToSmall(false);
+    parl.update.animate(false);
+    d3.select('#senate_chart').datum(window._senateData).call(parl);
+})();
+</script>!}
 
 <span class="tooltip-text" title="Republican Party" style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats 
 <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>: [+ dem_senate_r +] seats 
