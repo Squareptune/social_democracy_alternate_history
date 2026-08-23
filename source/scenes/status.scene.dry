@@ -1,35 +1,28 @@
 title: Status
 new-page: true
 is-special: true
-on-arrival: {!
-if (Q.unemployed) {
-    Q.unemployed_2 = Q.unemployed.toFixed(1);
-}
-if (Q.inflation) {
-    Q.inflation_2 = Q.inflation.toFixed(1);
-}
-Q.economic_growth_2 = '0';
-if (Q.economic_growth) {
-    Q.economic_growth_2 = Q.economic_growth.toFixed(1);
+on-display: {!
+function _drawParl(id, data) {
+    if (typeof d3 === 'undefined' || !d3.parliament || !data || data.length === 0) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    var w = el.parentElement.offsetWidth || 500;
+    el.setAttribute('width', w);
+    el.setAttribute('height', Math.round(w * 0.5));
+    var parl = d3.parliament();
+    parl.width(w).height(Math.round(w * 0.5)).innerRadiusCoef(0.4);
+    parl.enter.smallToBig = false;
+    parl.enter.fromCenter = false;
+    parl.exit.toCenter = false;
+    parl.exit.bigToSmall = false;
+    parl.update.animate = false;
+    d3.select('#' + id).datum(data).call(parl);
 }
 
-function _addP(list, id, legend, color, outline, seats) {
-    if (seats && seats > 0) list.push({ id: id, legend: legend, name: legend, color: color, outline: outline, seats: Math.floor(seats) });
-}
-
-var _house = [];
-_addP(_house, 'rep', 'Republican', '#B22222', '#600000', Q.rep_r);
-_addP(_house, 'dem', 'Democrat', '#003366', '#001933', Q.dem_r);
-_addP(_house, 'other', 'Other', '#AAAAAA', '#666666', Q.other_r);
-_addP(_house, 'lib', 'Liberal Republican', '#DAA520', '#866614', Q.lib_r);
-window._houseData = _house;
-
-var _senate = [];
-_addP(_senate, 'rep', 'Republican', '#B22222', '#600000', Q.rep_senate_r);
-_addP(_senate, 'dem', 'Democrat', '#003366', '#001933', Q.dem_senate_r);
-_addP(_senate, 'other', 'Other', '#AAAAAA', '#666666', Q.other_senate_r);
-_addP(_senate, 'lib', 'Liberal Republican', '#DAA520', '#866614', Q.lib_senate_r);
-window._senateData = _senate;
+setTimeout(function() {
+    _drawParl('house_chart', window._houseData);
+    _drawParl('senate_chart', window._senateData);
+}, 0);
 !}
 
 = Status
@@ -72,26 +65,7 @@ Speaker of House: [+ speaker +] ([+ speaker_party +])
 
 House of Representatives:
 
-{!<svg id="house_chart" style="width: 100%; display: block;"></svg>
-<script>
-(function() {
-    if (typeof d3 === 'undefined' || !d3.parliament || !window._houseData || window._houseData.length === 0) return;
-    var el = document.getElementById('house_chart');
-    if (!el) return;
-    var w = el.parentElement.offsetWidth || 500;
-    el.setAttribute('width', w);
-    el.setAttribute('height', Math.round(w * 0.5));
-    var parl = d3.parliament();
-    parl.width(w).height(Math.round(w * 0.5)).innerRadiusCoef(0.4);
-    // No animation - instant redraw every time
-    parl.enter.smallToBig = false;
-    parl.enter.fromCenter = false;
-    parl.exit.toCenter = false;
-    parl.exit.bigToSmall = false;
-    parl.update.animate = false;
-    d3.select('#house_chart').datum(window._houseData).call(parl);
-})();
-</script>!}
+{!<svg id="house_chart" style="width: 100%; display: block;"></svg>!}
 
 <span class="tooltip-text" title="Republican Party" style="color: #c00000;">**Republicans**</span>: [+ rep_r +] seats
 <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>: [+ dem_r +] seats
@@ -100,25 +74,7 @@ House of Representatives:
 
 Senate Seats:
 
-{!<svg id="senate_chart" style="width: 100%; display: block;"></svg>
-<script>
-(function() {
-    if (typeof d3 === 'undefined' || !d3.parliament || !window._senateData || window._senateData.length === 0) return;
-    var el = document.getElementById('senate_chart');
-    if (!el) return;
-    var w = el.parentElement.offsetWidth || 500;
-    el.setAttribute('width', w);
-    el.setAttribute('height', Math.round(w * 0.5));
-    var parl = d3.parliament();
-    parl.width(w).height(Math.round(w * 0.5)).innerRadiusCoef(0.4);
-    parl.enter.smallToBig = false;
-    parl.enter.fromCenter = false;
-    parl.exit.toCenter = false;
-    parl.exit.bigToSmall = false;
-    parl.update.animate = false;
-    d3.select('#senate_chart').datum(window._senateData).call(parl);
-})();
-</script>!}
+{!<svg id="senate_chart" style="width: 100%; display: block;"></svg>!}
 
 <span class="tooltip-text" title="Republican Party" style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats 
 <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>: [+ dem_senate_r +] seats 
