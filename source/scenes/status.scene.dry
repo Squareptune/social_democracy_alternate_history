@@ -28,7 +28,11 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +] ([+ president_party +])
 
-<div class="Panel-img"><img src="img/portraits/Benjamin_Butler.jpg"></div>
+[? if president = "Lincoln": <div class="Panel-img"><img src="img/portraits/Abraham_Lincoln_O-116_by_Gardner,_1865-crop.png"></div> ?]
+[? if president = "Johnson": <div class="Panel-img"><img src="img/portraits/Johnson.jpg"></div> ?]
+[? if president = "Wade": <div class="Panel-img"><img src="img/portraits/Benjamin_F_Wade.jpg"></div> ?]
+[? if president = "Grant": <div class="Panel-img"><img src="img/portraits/Ulysses_S._Grant_1870-1880.jpg"></div> ?]
+[? if president = "Chase": <div class="Panel-img"><img src="img/portraits/Salmon-P-Chase.webp"></div> ?]
 
 Speaker of House: [+ speaker +] ([+ speaker_party +])
 
