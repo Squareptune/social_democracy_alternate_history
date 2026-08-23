@@ -14,86 +14,32 @@ if (Q.economic_growth) {
 }
 !}
 on-display: {!
-let houseData = [
-    {
-        id: "rep",
-        legend: "Republican",
-        name: "Republican",
-        color: "#B22222",
-        outline: "#600000",
-        seats: Math.floor(Q.rep_r),
-    },
-    {
-        id: "dem",
-        legend: "Democrat",
-        name: "Democrat",
-        color: "#003366",
-        outline: "#001933",
-        seats: Math.floor(Q.dem_r),
-    },
-    {
-        id: "other",
-        legend: "Other",
-        name: "Other",
-        color: "#AAAAAA",
-        outline: "#666666",
-        seats: Math.floor(Q.other_r),
-    },
-    {
-        id: "lib",
-        legend: "Liberal Republicans",
-        name: "Liberal Republican",
-        color: "#DAA520",
-        outline: "#866614",
-        seats: Math.floor(Q.lib_r),
-    }
-];
+function drawStatusCharts() {
+    let houseData = [
+        { id: "rep", legend: "Republican", name: "Republican", color: "#B22222", outline: "#600000", seats: Math.floor(Q.rep_r) },
+        { id: "dem", legend: "Democrat", name: "Democrat", color: "#003366", outline: "#001933", seats: Math.floor(Q.dem_r) },
+        { id: "other", legend: "Other", name: "Other", color: "#AAAAAA", outline: "#666666", seats: Math.floor(Q.other_r) },
+        { id: "lib", legend: "Liberal Republicans", name: "Liberal Republican", color: "#DAA520", outline: "#866614", seats: Math.floor(Q.lib_r) }
+    ];
 
-let senateData = [
-    {
-        id: "rep",
-        legend: "Republican",
-        name: "Republican",
-        color: "#B22222",
-        outline: "#600000",
-        seats: Q.rep_senate_r,
-    },
-    {
-        id: "dem",
-        legend: "Democrat",
-        name: "Democrat",
-        color: "#003366",
-        outline: "#001933",
-        seats: Q.dem_senate_r,
-    },
-    {
-        id: "other",
-        legend: "Other",
-        name: "Other",
-        color: "#AAAAAA",
-        outline: "#666666",
-        seats: Q.other_senate_r,
-    },
-    {
-        id: "lib",
-        legend: "Liberal Republicans",
-        name: "Liberal Republican",
-        color: "#DAA520",
-        outline: "#866614",
-        seats: Math.floor(Q.lib_senate_r),
-    }
-];
+    let senateData = [
+        { id: "rep", legend: "Republican", name: "Republican", color: "#B22222", outline: "#600000", seats: Math.floor(Q.rep_senate_r) },
+        { id: "dem", legend: "Democrat", name: "Democrat", color: "#003366", outline: "#001933", seats: Math.floor(Q.dem_senate_r) },
+        { id: "other", legend: "Other", name: "Other", color: "#AAAAAA", outline: "#666666", seats: Math.floor(Q.other_senate_r) },
+        { id: "lib", legend: "Liberal Republicans", name: "Liberal Republican", color: "#DAA520", outline: "#866614", seats: Math.floor(Q.lib_senate_r) }
+    ];
 
-if (d3 && window) {
     var width = 500;
-    var height = 500;
     var screenWidth = document.getElementById('content').offsetWidth;
     if (screenWidth < width - 50) {
         width = screenWidth - 50;
-        height = width;
-        document.getElementById("house_chart").style.height = screenWidth/2 + "px";
-        document.getElementById("senate_chart").style.height = screenWidth/2 + "px";
     }
+    var height = width / 2;
+
+    var houseEl = document.getElementById("house_chart");
+    var senateEl = document.getElementById("senate_chart");
+    if (houseEl) houseEl.style.height = height + "px";
+    if (senateEl) senateEl.style.height = height + "px";
 
     var parliament = d3.parliament()
         .width(width)
@@ -106,9 +52,28 @@ if (d3 && window) {
     parliament.exit.bigToSmall = true;
     parliament.update.animate = true;
 
-    d3.select("#house_chart").datum(houseData).call(parliament);
-    d3.select("#senate_chart").datum(senateData).call(parliament);
-  }
+    if (houseEl) d3.select("#house_chart").datum(houseData).call(parliament);
+    if (senateEl) d3.select("#senate_chart").datum(senateData).call(parliament);
+}
+
+if (!window.d3) {
+    var s = document.createElement("script");
+    s.src = "https://d3js.org/d3.v7.min.js";
+    s.onload = function() {
+        var p = document.createElement("script");
+        p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+        p.onload = drawStatusCharts;
+        document.head.appendChild(p);
+    };
+    document.head.appendChild(s);
+} else if (!window.d3.parliament) {
+    var p = document.createElement("script");
+    p.src = "https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js";
+    p.onload = drawStatusCharts;
+    document.head.appendChild(p);
+} else {
+    drawStatusCharts();
+}
 !}
 
 = Status
@@ -159,6 +124,8 @@ House of Representatives:
 <span class="tooltip-text" title="Other" style="color: #00cc00;">**Other**</span>: [+ other_r +] seats
 
 Senate Seats:
+
+{!<svg id="senate_chart" style="width: 500px; height: 250px;"> </svg>!}
 
 <span class="tooltip-text" title="Republican Party" style="color: #c00000;">**Republicans**</span>: [+ rep_senate_r +] seats 
 <span class="tooltip-text" title="Democratic Party" style="color: #0015bc;">**Democrats**</span>: [+ dem_senate_r +] seats 
