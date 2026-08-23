@@ -12,8 +12,7 @@ Q.economic_growth_2 = '0';
 if (Q.economic_growth) {
     Q.economic_growth_2 = Q.economic_growth.toFixed(1);
 }
-!}
-on-display: {!
+
 function drawStatusCharts() {
     let houseData = [
         { id: "rep", legend: "Republican", name: "Republican", color: "#B22222", outline: "#600000", seats: Math.floor(Q.rep_r) },
