@@ -1,0 +1,235 @@
+title: 1867 Canadian federal election
+view-if: year == 1867 and month == 9
+new-page: true
+tags: event
+priority: 3
+max-visits: 1
+set-bg: img/Canada.png
+
+= Elections, [+ month : month +] [+ year +]
+
+The Canadian Confederation are to hold their 1st legislative elections now.
+
+- @Canada: Hope for a favorable northern neighbor...
+
+@Canada
+on-arrival: {!
+
+// con is Conservative Party of Canada
+// lib is Liberal Party of Canada
+// libcon is the Liberal-Conservative Party of Canada
+// ac is the Anti-Confederation Party
+
+var canada_adjustment_factors = {
+    con: 1.0,
+    libcon: 1.0,
+    lib: 1.0,
+    ac: 1.0,
+};
+
+Q.con_canada_elections_vote = 23.92;
+Q.libcon_canada_elections_vote = 29.2;
+Q.lib_canada_elections_vote = 13.6;
+Q.ac_canada_elections_vote = 19.0;
+
+if (Q.treaty_Washington == 0) {
+    canada_adjustment_factors.con += 0.06;
+    canada_adjustment_factors.libcon += 0.06;
+    canada_adjustment_factors.ac += 0.06;
+} else if (Q.treaty_Washington == 1) {
+    canada_adjustment_factors.con += 0.03;
+    canada_adjustment_factors.libcon += 0.03;
+    canada_adjustment_factors.ac += 0.03;
+    canada_adjustment_factors.lib += 0.03;
+} else if (Q.treaty_Washington == 2) {
+    canada_adjustment_factors.lib += 0.06;
+} 
+
+if (Q.fenian >= 4) {
+    canada_adjustment_factors.con += 0.06;
+    canada_adjustment_factors.libcon += 0.06;
+} else if (Q.fenian == 3) {
+    canada_adjustment_factors.con += 0.04;
+    canada_adjustment_factors.libcon += 0.04;
+} else if (Q.fenian == 2) {
+    canada_adjustment_factors.con += 0.03;
+    canada_adjustment_factors.libcon += 0.03;
+} else if (Q.fenian == 1) {
+    canada_adjustment_factors.con += 0.02;
+    canada_adjustment_factors.libcon += 0.02;
+} else if (Q.fenian <= 0) {
+    canada_adjustment_factors.lib += 0.04;
+    canada_adjustment_factors.ac += 0.03;
+}
+
+if (Q.europe_relation >= 3 && Q.rep_majority) {
+    canada_adjustment_factors.lib += (Q.europe_relation / 50);
+    if (Q.radical_strength >= 50) {
+        canada_adjustment_factors.con += (Q.radical_strength / 400);
+        canada_adjustment_factors.libcon += (Q.radical_strength / 400);
+    }
+}
+
+if (Q.economic_growth >= 6) {
+    canada_adjustment_factors.lib += (Q.economic_growth / 150);
+} else if (Q.economic_growth <= -2) {
+    canada_adjustment_factors.ac += 0.03;
+    canada_adjustment_factors.con += 0.02;
+}
+
+if (Q.inflation >= 7) {
+    canada_adjustment_factors.ac += 0.04;
+    canada_adjustment_factors.lib -= 0.02;
+} else if (Q.inflation <= 0) {
+    canada_adjustment_factors.lib += 0.03;
+}
+
+if (Q.alaska_purchased == 1) {
+    canada_adjustment_factors.con += 0.05;
+    canada_adjustment_factors.libcon += 0.05;
+}
+
+Q.con_canada_elections_vote = Q.con_canada_elections_vote*canada_adjustment_factors.con;
+Q.libcon_canada_elections_vote = Q.libcon_canada_elections_vote*canada_adjustment_factors.libcon;
+Q.lib_canada_elections_vote = Q.lib_canada_elections_vote*canada_adjustment_factors.lib;
+Q.ac_canada_elections_vote = Q.ac_canada_elections_vote*canada_adjustment_factors.ac;
+
+Q.total_votes_canada = Q.con_canada_elections_vote + Q.libcon_canada_elections_vote + Q.lib_canada_elections_vote + Q.ac_canada_elections_vote;
+
+Q.con_r = 0;
+Q.libcon_r = 0;
+Q.clib_r = 0;
+Q.ac_r = 0;
+Q.n = 1.25;
+
+Q.parties = ['con', 'libcon', 'clib', 'ac'];
+
+let totalPow = Math.pow(Q.con_canada_elections_vote, Q.n) +
+    Math.pow(Q.libcon_canada_elections_vote, Q.n) +
+    Math.pow(Q.lib_canada_elections_vote, Q.n) +
+    Math.pow(Q.ac_canada_elections_vote, Q.n);
+
+let exactSeats = {};
+let flooredSeats = {};
+let seatsGivenOut = 0;
+
+for (let party of Q.parties) {
+    let precent = Math.pow(Q[party + "_canada_elections_vote"], Q.n) / totalPow;
+    exactSeats[party] = 180 * precent;
+    flooredSeats[party] = Math.floor(exactSeats[party]);
+    seatsGivenOut += flooredSeats[party];
+}
+
+let seatsLeft = 180 - seatsGivenOut;
+
+while (seatsLeft > 0) {
+    let bestParty = null;
+    let bestRemainder = -1;
+
+    for (let party of Q.parties) {
+        let remainder = exactSeats[party] - flooredSeats[party];
+        if (remainder > bestRemainder) {
+            bestRemainder = remainder;
+            bestParty = party;
+        }
+    }
+
+    flooredSeats[bestParty] += 1;
+    exactSeats[bestParty] = -1;
+    seatsLeft -= 1;
+}
+
+for (let party of Q.parties) {
+    Q[party + "_r"] = flooredSeats[party];
+}
+
+!}
+on-display: {!
+  function drawChart() {
+    var chartData = [
+      {
+        id: "conservatives",
+        seats: Math.round(Q.con_r),
+        color: "#6495ED",
+        outline: "#6495ED"
+      },
+      {
+        id: "liberal_conservatives",
+        seats: Math.round(Q.libcon_r),
+        color: "#9999FF",
+        outline: "#9999FF"
+      },
+      {
+        id: "liberals",
+        seats: Math.round(Q.clib_r),
+        color: "#EA6D6A",
+        outline: "#EA6D6A"
+      },
+      {
+        id: "anti_confederation",
+        seats: Math.round(Q.ac_r),
+        color: "#EABB94",
+        outline: "#EABB94"
+      }
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
+
+    var container = d3.select("#houseChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "houseChart");
+    }
+    container.attr("width", width)
+             .attr("height", width / 2)
+             .html("");
+
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var script = document.createElement('script');
+    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.onload = function() {
+      var subscript = document.createElement('script');
+      subscript.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+      subscript.onload = drawChart;
+      document.head.appendChild(subscript);
+    };
+    document.head.appendChild(script);
+  } else if (!window.d3.parliament) {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+    script.onload = drawChart;
+    document.head.appendChild(script);
+  } else {
+    drawChart();
+  }
+!}
+go-to: canada_menu
+
+
+**Canadian results:**
+
+{!<svg id="houseChart" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Vote share</td><td>Parliament Seats</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #6495ED;">Conservatives:</span> {!</td><td>!} [+ con_r +] seats {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #9999FF;">Liberal Conservatives:</span> {!</td><td>!} [+ libcon_r +] seats {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #EA6D6A;">Liberals:</span> {!</td><td>!} [+ clib_r +] seats {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #EABB94;">Anti-Confederation:</span> {!</td><td>!} [+ ac_r +] seats {!</td></tr>!}
+{!</table>!}
+
+@canada_menu
+
+- @test
+
+
+@test
+
+hi
