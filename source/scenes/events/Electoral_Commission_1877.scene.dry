@@ -31,6 +31,86 @@ on-arrival: {!
     Q.president_party = "dem";
     Q.potus_winner = "dem";
     Q.lose_vote = 1;
+    if (Q.Candidate == "Tilden") {
+        Q.sect_state = "Thomas F. Bayard";
+        Q.sect_state_party = "D";
+        Q.sect_treasury = "John G. Carlisle";
+        Q.sect_treasury_party = "D";
+        Q.sect_war = "William B. Franklin";
+        Q.sect_war_party = "D";
+        Q.sect_interior = "Carl Schurz";
+        Q.sect_interior_party = "R";
+        Q.sect_postmaster = "Samuel J. Randall";
+        Q.sect_postmaster_party = "D";
+        Q.attorney_general = "Richard T. Merrick";
+        Q.attorney_general_party = "D";
+        Q.sect_agriculture = "William Le Duc";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Bayard") {
+        Q.sect_state = "Thomas Ewing Jr.";
+        Q.sect_state_party = "D";
+        Q.sect_treasury = "John G. Carlisle";
+        Q.sect_treasury_party = "D";
+        Q.sect_war = "George B. McClellan";
+        Q.sect_war_party = "D";
+        Q.sect_interior = "William L. Scott";
+        Q.sect_interior_party = "D";
+        Q.sect_postmaster = "Samuel J. Randall";
+        Q.sect_postmaster_party = "D";
+        Q.attorney_general = "Jeremiah S. Black";
+        Q.attorney_general_party = "D";
+        Q.sect_agriculture = "George W. McCrary";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Hancock") {
+        Q.sect_state = "Thomas F. Bayard";
+        Q.sect_state_party = "D";
+        Q.sect_treasury = "William B. Allison";
+        Q.sect_treasury_party = "R";
+        Q.sect_war = "William T. Sherman";
+        Q.sect_war_party = "R";
+        Q.sect_interior = "Daniel W. Voorhees";
+        Q.sect_interior_party = "D";
+        Q.sect_postmaster = "Samuel J. Randall";
+        Q.sect_postmaster_party = "D";
+        Q.attorney_general = "Jeremiah S. Black";
+        Q.attorney_general_party = "D";
+        Q.sect_agriculture = "Horace Capron";
+        Q.sect_agriculture_party = "R";
+    }
+    if (Q.Candidate == "Hendricks") {
+        Q.sect_state = "Thomas F. Bayard";
+        Q.sect_state_party = "D";
+        Q.sect_treasury = "John G. Carlisle";
+        Q.sect_treasury_party = "D";
+        Q.sect_war = "George W. McClellan";
+        Q.sect_war_party = "D";
+        Q.sect_interior = "Daniel W. Voorhees";
+        Q.sect_interior_party = "D";
+        Q.sect_postmaster = "Samuel J. Randall";
+        Q.sect_postmaster_party = "D";
+        Q.attorney_general = "Jeremiah S. Black";
+        Q.attorney_general_party = "D";
+        Q.sect_agriculture = "William B. Franklin";
+        Q.sect_agriculture_party = "D";
+    }
+    if (Q.Candidate == "Allen") {
+        Q.sect_state = "George W. Julian";
+        Q.sect_state_party = "D";
+        Q.sect_treasury = "Peter Cooper";
+        Q.sect_treasury_party = "GB";
+        Q.sect_war = "George W. McClellan";
+        Q.sect_war_party = "D";
+        Q.sect_interior = "William M. Springer";
+        Q.sect_interior_party = "D";
+        Q.sect_postmaster = "Samuel S. Cox";
+        Q.sect_postmaster_party = "D";
+        Q.attorney_general = "David Dudley Field";
+        Q.attorney_general_party = "D";
+        Q.sect_agriculture = "William A. Wallace";
+        Q.sect_agriculture_party = "GB";
+    }
 !}
 go-to: commission_end
 

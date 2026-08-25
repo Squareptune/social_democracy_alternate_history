@@ -851,7 +851,7 @@ if (Q.month_actions >= 1) {
     {
         Q.kkk_rise = 1;
     }
-    if (Q.kkk_rise == 1 && Q.kkk_strength == 0)
+    if (Q.kkk_rise == 1 && Q.kkk_strength <= 0)
     {
         Q.kkk_rise = 2;
     }
