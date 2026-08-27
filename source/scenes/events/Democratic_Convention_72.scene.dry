@@ -28,7 +28,7 @@ let bourbonFloor = (Q.dem_bourbon_strength || 0) - (Q.dem_bourbon_dissent || 0) 
 if (Q.liberal_split === 1) {
 
     // Fusion faction: Reform-minded Democrats who see Greeley as a natural ally
-    let fusionStrength = 28 + (reformFloor * 0.8);
+    let fusionStrength = 31 + (reformFloor * 0.8);
     // High liberal dissent within Republicans means Greeley is weaker, dems less keen
     fusionStrength -= (Q.liberal_dissent || 0) * 0.3;
     // Add some randomness
