@@ -161,8 +161,8 @@ for (let state of Q.states) {
   // Determine state winner
   let winner = "rep";
   if (Q.greeley_fusion) {
-    // Fusion: lib is the main opposition candidate
-    if (votes.lib >= votes.rep) winner = "lib";
+    let oppTotal = votes.lib + votes.dem;
+    if (oppTotal >= votes.rep) winner = "lib";
   } else if (Q.liberal_split) {
     // Three-way race
     if (votes.dem >= votes.rep && votes.dem >= votes.lib) winner = "dem";
@@ -252,8 +252,6 @@ on-display: {!
     dc: Q.dc_winner_color,
   };
 
-  // NEW: build results from the percentages saved during on-arrival,
-  // instead of hardcoding two states by hand
   let results = {};
   for (let state of Q.states) {
     let key = state.toLowerCase();
