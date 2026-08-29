@@ -145,6 +145,8 @@ if(Q.Winner_68 == "Grant" && Q.Winner_72 == "Grant" && (Q.president == "Grant" |
     this.achieve("three_purple_hearts");
 }
 
+this.achieve('game_completed');
+
 !}
 
 = End
