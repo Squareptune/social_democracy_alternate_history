@@ -27,13 +27,19 @@ reformFloor += (Math.random() * 20) - 10;
 
 let bourbonFloor = Q.dem_bourbon_strength || 0;
 bourbonFloor -= (Q.dem_bourbon_dissent || 0) * 0.5;
-bourbonFloor += ((Q.kkk_strength || 0) + (Q.whiteL_strength || 0)) * 0.03;
 bourbonFloor += (Math.random() * 20) - 10;
+
+let demNationalSupport = (Q.workers_dem + Q.middle_class_dem + Q.rural_dem + Q.immigrant_laborers_dem + Q.unemployed_dem) / 5;
+
+if (demNationalSupport < 45) {
+    reformFloor += 20;
+} else {
+    bourbonFloor += 15;
+}
 
 Q.dem_reform_dominant_76 = (reformFloor > bourbonFloor) ? 1 : 0;
 
 if (Q.dem_reform_dominant_76 === 1) {
-    // Reform wing wins: the Tilden ticket
     Q.dem_candidate_1876 = "Tilden";
     Q.dem_vp_candidate_1876 = "Hendricks";
 
@@ -55,7 +61,6 @@ if (Q.dem_reform_dominant_76 === 1) {
     Q.whiteL_militancy -= 0.02;
 
 } else {
-    // Bourbon/Redeemer wing wins: weighted pick among Bourbon standard-bearers
     let weights = {
         "Hendricks": 45 + (Math.random() * 20),
         "Bayard":    30 + (Math.random() * 20),
