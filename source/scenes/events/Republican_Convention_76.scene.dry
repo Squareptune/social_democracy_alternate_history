@@ -28,7 +28,7 @@ Q.third_term_bid = (Q.Winner_68 !== "" && Q.Winner_68 === Q.Winner_72) ? 1 : 0;
 @ThirdTerm_Push
 title: Push for a third term
 view-if: third_term_bid = 1
-choose-if: (radical_strength + moderate_strength + conservative_strength) / 3 >= 40
+choose-if: dissent_percent <= 30
 unavailable-subtitle: The party's factions are too divided to sustain a third-term push.
 on-arrival: {!
 Q.Candidate = Q.president;

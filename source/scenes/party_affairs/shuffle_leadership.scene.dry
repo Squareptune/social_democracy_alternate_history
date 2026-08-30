@@ -386,7 +386,7 @@ is-card: true
 card-image: img/portraits/Roscoe_Conkling.jpg
 tags: conservative_advisor
 view-if: conkling_advisor = 0 and ((difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
-on-arrival: conkling_advisor = 1; n_advisors += 1; conservative_strength += 5; conservative_dissent -= 4; resources += 1; liberal_dissent += 3
+on-arrival: conkling_advisor = 1; n_advisors += 1; conservative_strength += 5; conservative_dissent -= 4; liberal_dissent += 3
 go-to: advisor_menu
 
 Roscoe Conkling is now an advisor. His machine delivers votes and money at a price.
@@ -398,7 +398,7 @@ is-card: true
 card-image: img/portraits/Smn_Cameron.jpg
 tags: conservative_advisor
 view-if: cameron_advisor = 0 and ((difficulty = -1 and n_advisors < 4) or (difficulty > -1 and n_advisors < 3))
-on-arrival: cameron_advisor = 1; n_advisors += 1; conservative_strength += 4; conservative_dissent -= 3; resources += 1; liberal_dissent += 2
+on-arrival: cameron_advisor = 1; n_advisors += 1; conservative_strength += 4; conservative_dissent -= 3; liberal_dissent += 2
 go-to: advisor_menu
 
 Simon Cameron is now an advisor. His Pennsylvania machine is a formidable asset, though reformers will complain.

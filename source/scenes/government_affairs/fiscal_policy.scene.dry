@@ -114,14 +114,14 @@ Current tariff level: [+ tariffs : taxation +]
 title: Raise import tariffs
 subtitle: +2 budget. May prompt retaliation or reduce trade.
 choose-if: tariffs <= 5
-on-arrival: tariffs += 1; inflation += 0.5; unemployed += 1.5; budget += 2; workers_rep -= 5; freemen_rep -= 5; rural_rep += 4*(1-dissent); middle_class_rep += 3*(1-dissent); conservative_strength += 1; economic_growth -= 0.4
+on-arrival: tariffs += 1; inflation += 0.5; unemployed += 1.5; budget += 2; workers_rep += 4*(1-dissent); middle_class_rep += 5*(1-dissent); rural_rep -= 4; freemen_rep -= 3; conservative_strength += 1; economic_growth -= 0.4
 
-Higher tariffs protect industry and agriculture but hurt workers and freedmen by raising prices.
+Higher tariffs protect Northern industry and manufacturing jobs but raise prices for farmers and freedmen who buy manufactured goods and sell into competitive world markets.
 
 @lower_tariffs
 title: Lower import tariffs
 choose-if: budget >= 2 and tariffs > -5
 subtitle: -2 budget. [? if tariffs <= -5 : Already at free-trade baseline. ?]
-on-arrival: tariffs -= 1; budget -= 2; inflation -= 0.5; workers_rep += 4*(1-dissent); freemen_rep += 4*(1-dissent); rural_rep -= 5; middle_class_rep -= 3; economic_growth += 0.4; economic_expansion += 2
+on-arrival: tariffs -= 1; budget -= 2; inflation -= 0.5; workers_rep -= 5; middle_class_rep -= 4; rural_rep += 4*(1-dissent); freemen_rep += 3*(1-dissent); economic_growth += 0.4; economic_expansion += 2
 
-Lower tariffs help urban laborers but hurt domestic agriculture and industry, especially in the Midwest and Upper South.
+Lower tariffs cut costs for farmers and freedmen but threaten Northern factory jobs and industrial profits.

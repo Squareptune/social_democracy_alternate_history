@@ -121,7 +121,7 @@ on-arrival: {!
     Q.inflation += 0.08;
     Q.economic_growth += 0.25;
     Q.budget += 0.5;
-    Q.rural_rep += 3;
+    Q.rural_rep += 1;
     Q.middle_class_rep += 2;
     Q.conservative_strength += 1;
     Q.moderate_strength += 1;
