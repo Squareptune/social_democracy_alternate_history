@@ -8,11 +8,11 @@ max-visits: 1
 
 President elect [+ president +] at Washington D.C takes the oath of office to become president of the United States of America
 
-[? if president_party = "rep": The <span style="color: #c00000;">**Republican party**</span> has managed to show once again there strength in the post-civil war era in American politics.?]
+[? if president_party = "rep": The <span style="color: #c00000;">**Republican party**</span> has managed to show once again their strength in post-civil war American politics.?]
 
 [? if March_DC = 1: Despite the attempts by the <span style="color: #0015bc;">**Democratic party**</span> to overturn the election results. [+ president +] is still standing on that stage ready to lead the United States into another century of our history. ?]
 
-[? if compromise_1877 = 1: But this victory has secured only by our shady compromise with the southerns to give us there grace to take the office without serious bloodshed. ?]
+[? if compromise_1877 = 1: But this victory was secured only by our shady compromise with the Southerners to give us their grace to take the office without serious bloodshed. ?]
 
 [? if president_party = "dem": The <span style="color: #0015bc;">**Democratic party**</span> has managed to show the nation that they are capable of standing up to the <span style="color: #c00000;">**Republican party**</span> after all that has happened to them ?]
 

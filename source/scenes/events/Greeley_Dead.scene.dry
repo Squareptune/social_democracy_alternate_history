@@ -10,7 +10,7 @@ face-image: img/portraits/500px-Horace_Greeley_restored.jpg
 
 = The Death of Horace Greeley
 
-Horace Greeley is dead. Exhausted by the campaign, humiliated at the polls, and broken by his wife's death only weeks before, the editor of the *New York Tribune* has succumbed within days of the election. The electors who pledged themselves to him have not yet met. Under the Constitution, the formal vote of the Electoral College does not take place until December.
+Horace Greeley is dead. Exhausted by the campaign[? if potus_winner = 'rep':, humiliated at the polls, ?]and broken by his wife's death only weeks before, the editor of the *New York Tribune* has succumbed within days of the election. The electors who pledged themselves to him have not yet met. Under the Constitution, the formal vote of the Electoral College does not take place until December.
 
 [? if potus_winner != "lib" : His death changes little politically. He lost, and the question of his electors is a footnote rather than a crisis. ?]
 
@@ -62,7 +62,7 @@ go-to: greeley_end
 
 The Court, stacked over years with justices who owe their seats to this administration, rules swiftly: electoral votes cast for a deceased candidate cannot be lawfully certified, and with no surviving candidate able to claim a majority of valid votes, the Constitution's remedy is to install the candidate who *did* receive a lawful plurality. [+ Candidate +] will be President.
 
-The ruling is legally creative, to put it gently that even some <span style="color: #c00000;">**Republicans**</span> wince. But the Court has spoken, and the country exhausted by four months of scandal and a dead president-elect largely accepts it rather than face a second crisis on top of the first.
+The ruling is legally creative, to put it so gently that even some <span style="color: #c00000;">**Republicans**</span> wince. But the Court has spoken, and the country exhausted by four months of scandal and a dead president-elect largely accepts it rather than face a second crisis on top of the first.
 
 The years of careful judicial appointments have paid off in the only currency that mattered.
 

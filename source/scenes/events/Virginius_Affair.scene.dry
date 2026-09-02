@@ -20,6 +20,7 @@ How do we respond?
 - @Sure: Strike while the Iron is hot! **TO WAR!!!**
 
 @demand_reparations
+subtitle: +3 Budget
 on-arrival: {!
     Q.spain_relation -= 2;
     Q.budget += 3;

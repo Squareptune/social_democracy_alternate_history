@@ -1,5 +1,5 @@
 title: 1872 Presidential Election
-subtitle: [+ Candidate +] vs. [+ dem_candidate_1872 +][? if liberal_split = 1 and greeley_fusion = 0 : vs. Greeley ?]
+subtitle: [+ Candidate +] vs. [+ dem_candidate_1872 +][? if liberal_split = 1 and greeley_fusion = 0 :  vs. Greeley ?]
 tags: event
 view-if: year = 1872 and month = 11
 max-visits: 1

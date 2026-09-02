@@ -50,7 +50,7 @@ We open large swaths of federal land in the West for sale, a key step in raising
 
 @Freemen
 subtitle: +1 Budget
-on-arrival: reemen_rep += 2; rural_dem -= 1; conservative_dissent += 1; liberal_strength += 1; budget += 1
+on-arrival: freemen_rep += 2; rural_dem -= 1; conservative_dissent += 1; liberal_strength += 1; budget += 1
 
 We move to ensure freedmen have access to land ownership out west, helping black families build economic independence. This angers white Southerners and conservative factions, but boosts support among reformers and black communities.
 
