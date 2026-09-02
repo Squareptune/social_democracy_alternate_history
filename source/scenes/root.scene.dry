@@ -150,6 +150,7 @@ Q.spain_surrendered = 0;
 Q.US_lose = 0;
 Q.cuba_status = "";
 Q.puerto_rico_status = "";
+Q.alaska_purchased = 0;
 
 Q.speaker_election_needed = 0;
 Q.speaker_boosted_committee = "";
